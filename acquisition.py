@@ -12,13 +12,13 @@ class Acquisition:
 			self.f = self.YetAnotherWay
 		else:
 			raise ValueError('Not recognised acquisition function')
-	def ExpectedImprovement(self, xbest, mean, var):
-		return norm.cdf((mean - xbest) / var)
-	def ProbabilityImprovement(self, xbest, mean, var):
-		z = (mean - xbest) / var
+	def ExpectedImprovement(self, xbest, mean, std):
+		return norm.cdf((mean - xbest) / std)
+	def ProbabilityImprovement(self, xbest, mean, std):
+		z = (mean - xbest) / std
 		return (mean - xbest) * norm.cdf(z) + var * norm.pdf(z)
-	def UCB(self, xbest, mean, var, beta):
-		return mean + beta * var
+	def UCB(self, xbest, mean, std, beta):
+		return mean + beta * std
 	def eval(self, xbest, mean, var):
 		return self.f(self, xbest, mean, var, **self.params)
 	
