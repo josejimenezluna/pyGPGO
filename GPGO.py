@@ -19,47 +19,51 @@ class GPGO:
 	def _sampleParam(self):
 		d = OrderedDict()
 		for index, param in enumerate(self.parameter_key):
-			if parameter_type[index] == 'int':
+			if self.parameter_type[index] == 'int':
 				d[param] = np.random.randint(self.parameter_range[index][0], self.parameter_range[index][1])
-			elif parameter_type[index] == 'disc':
+			elif self.parameter_type[index] == 'disc':
 				d[param] = np.random.choice(self.parameter_range[index])
-			elif parameter_type[index] == 'cont':
+			elif self.parameter_type[index] == 'cont':
 				d[param] = np.random.uniform(self.parameter_range[index][0], self.parameter_range[index][1])
 			else:
 				raise ValueError('Unsupported variable type.')
 		return d
 		
 	def _firstRun(self, n_eval = 3):
-		self.X = np.empty((n_eval, len(self.parameter_key))
+		self.X = np.empty((n_eval, len(self.parameter_key)))
 		self.y = np.empty((n_eval, ))
 		for i in range(n_eval):
 			s_param = self._sampleParam()
 			s_param_val = list(s_param.values())
 			self.X[i] = s_param_val
 			self.y[i] = self.f(**s_param)
-		self.GP.fit(X, y)
+		self.GP.fit(self.X, self.y)
 		self.tau = np.max(self.y)
 	
-	def _acqWrapper(self, xnew):
-		new_mean, new_var = GP.predict(xnew)
+	def _acqWrapper(self, xnew): # Returns minimum for optimization purposes
+		new_mean, new_var = self.GP.predict(xnew)
 		new_std = np.sqrt(new_var)
-		return self.A.eval(self.tau, new_mean, new_std)
+		return -self.A.eval(self.tau, new_mean, new_std)
 		
 	def _optimizeAcq(self, method = 'L-BFGS-B', nstart = 100):
-		start_points = [list(self._sampleParam().values()) for i in range(nstart)]
+		start_points_dict = [self._sampleParam() for i in range(nstart)]
+		start_points_arr = [list(s.values()) for s in start_points_dict]
 		x_best = np.empty((n_start, len(self.parameter_key)))
 		f_best = np.empty((n_start,))
-		#TODO use L-BFGS-B or CMA-ES.
 		if method == 'L-BFGS-B':
+			for index, start_point in enumerate(start_points_arr):
+				res = minimize(-self._acqWrapper, x0 = start_point, method = method)
+				x_best[index], f_best[index] = res.x, res.fun
 
-		elif method = 'CMA-ES': # This can be parallelized
-			for index, start_point in enumerate(start_points):
-				res = fmin(-self._acqWrapper, start_point)
+		elif method == 'CMA-ES': # This can be parallelized
+			for index, start_point in enumerate(start_points_arr):
+				res = fmin(-self._acqWrapper, x0 = start_point, sigma0 = 0.1)
 				x_best[index], f_best[index] = res[0], res[1]
 		self.best = x_best[np.argmin(f_best)]		
 	
 	def updateGP(self):
-		self.GP.update(self.best)
+		f_new = self.f(self.best)
+		self.GP.update(self.best, f_new)
 
 	def run(self, max_iter = 10):
 		self._firstRun()

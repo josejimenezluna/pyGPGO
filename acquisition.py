@@ -2,8 +2,9 @@ import numpy as np
 from scipy.stats import norm
 
 class Acquisition:
-	def __init__(self, mode, **params):
+	def __init__(self, mode, eps = 1e04, **params):
 		self.params = params
+		self.eps = eps
 		if mode == 'ExpectedImprovement':
 			self.f = self.ExpectedImprovement
 		elif mode == 'ProbabilityImprovement':
@@ -12,11 +13,12 @@ class Acquisition:
 			self.f = self.UCB
 		else:
 			raise ValueError('Not recognised acquisition function')
-	def ExpectedImprovement(self, tau, mean, std):
-		return norm.cdf((mean - tau) / std)
 	def ProbabilityImprovement(self, tau, mean, std):
-		z = (mean - tau) / std
-		return (mean - tau) * norm.cdf(z) + std * norm.pdf(z)
+		z = (mean - tau - self.eps) / std
+		return norm.cdf(z)[0]
+	def ExpectedImprovement(self, tau, mean, std):
+		z = (mean - tau - self.eps) / std
+		return (mean - tau) * norm.cdf(z) + std * norm.pdf(z)[0]
 	def UCB(self, tau, mean, std, beta):
 		return mean + beta * std
 	def eval(self, tau, mean, std):
