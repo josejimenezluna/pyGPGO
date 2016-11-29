@@ -2,7 +2,7 @@ import numpy as np
 from scipy.stats import norm
 
 class Acquisition:
-	def __init__(self, mode, eps = 1e04, **params):
+	def __init__(self, mode, eps = 1e-04, **params):
 		self.params = params
 		self.eps = eps
 		if mode == 'ExpectedImprovement':

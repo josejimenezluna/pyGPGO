@@ -45,25 +45,28 @@ class GPGO:
 		new_std = np.sqrt(new_var)
 		return -self.A.eval(self.tau, new_mean, new_std)
 		
-	def _optimizeAcq(self, method = 'L-BFGS-B', nstart = 100):
-		start_points_dict = [self._sampleParam() for i in range(nstart)]
-		start_points_arr = [list(s.values()) for s in start_points_dict]
+	def _optimizeAcq(self, method = 'L-BFGS-B', n_start = 100):
+		start_points_dict = [self._sampleParam() for i in range(n_start)]
+		start_points_arr = np.array([list(s.values()) for s in start_points_dict])
 		x_best = np.empty((n_start, len(self.parameter_key)))
 		f_best = np.empty((n_start,))
-		if method == 'L-BFGS-B':
+		local_opt = ['Nelder-Mead', 'Powell', 'CG', 'BFGS', 'Newton-CG', 'L-BFGS-B', 'TNC']
+		if method in local_opt:
 			for index, start_point in enumerate(start_points_arr):
-				res = minimize(-self._acqWrapper, x0 = start_point, method = method)
-				x_best[index], f_best[index] = res.x, res.fun
+				res = minimize(self._acqWrapper, x0 = start_point, method = method,
+					bounds = self.parameter_range)
+				x_best[index], f_best[index] = res.x, res.fun[0]
 
 		elif method == 'CMA-ES': # This can be parallelized
 			for index, start_point in enumerate(start_points_arr):
-				res = fmin(-self._acqWrapper, x0 = start_point, sigma0 = 0.1)
+				res = fmin(self._acqWrapper, x0 = start_point, sigma0 = 0.1)
 				x_best[index], f_best[index] = res[0], res[1]
 		self.best = x_best[np.argmin(f_best)]		
 	
 	def updateGP(self):
 		f_new = self.f(self.best)
-		self.GP.update(self.best, f_new)
+		self.GP.update(np.atleast_2d(self.best), f_new)
+		self.tau = np.max(self.GP.y)
 
 	def run(self, max_iter = 10):
 		self._firstRun()
