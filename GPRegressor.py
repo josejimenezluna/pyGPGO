@@ -35,22 +35,3 @@ class GPRegressor:
 		X = np.concatenate((self.X, xnew), axis = 0)
 		self.fit(X, y)
 
-	
-# Gaussian process implementation for regression
-if __name__ == '__main__':
-	import matplotlib.pyplot as plt
-	from covfunc import *
-	
-	X = np.array([[-4], [-2.5], [0], [2]])
-	y = np.array([-2, 0, 1, -1])
-	sexp = squaredExponential(l = 1)
-
-	gp = GPRegressor(sexp)
-	gp.fit(X, y)
-	x_test = np.linspace(-5, 5, num = 1000)
-	yhat = np.array([gp.predict(x)[0] for x in x_test])
-	yvar = np.array([gp.predict(x)[1] for x in x_test]).flatten()
-	l, u = yhat - 1.96 * yvar, yhat + 1.96 * yvar
-	plt.plot(X.flatten(), y, 'x', color = 'black', ms = 10, mew = 2)
-	plt.fill_between(x_test, l, u, alpha = 0.5, edgecolor = 'blue')
-	plt.show()

@@ -12,7 +12,7 @@ class Acquisition:
 		elif mode == 'UCB':
 			self.f = self.UCB
 		else:
-			raise ValueError('Not recognised acquisition function')
+			raise NotImplementedError('Not recognised acquisition function')
 	def ProbabilityImprovement(self, tau, mean, std):
 		z = (mean - tau - self.eps) / std
 		return norm.cdf(z)[0]

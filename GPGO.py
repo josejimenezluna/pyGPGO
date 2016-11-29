@@ -50,8 +50,7 @@ class GPGO:
 		start_points_arr = np.array([list(s.values()) for s in start_points_dict])
 		x_best = np.empty((n_start, len(self.parameter_key)))
 		f_best = np.empty((n_start,))
-		local_opt = ['Nelder-Mead', 'Powell', 'CG', 'BFGS', 'Newton-CG', 'L-BFGS-B', 'TNC']
-		if method in local_opt:
+		if method == 'L-BFGS-B':
 			for index, start_point in enumerate(start_points_arr):
 				res = minimize(self._acqWrapper, x0 = start_point, method = method,
 					bounds = self.parameter_range)
