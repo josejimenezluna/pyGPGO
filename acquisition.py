@@ -1,6 +1,8 @@
 import numpy as np
 from scipy.stats import norm
 
+#TODO Reimplement fs to accept GP, not mean/std
+
 class Acquisition:
 	def __init__(self, mode, eps = 1e-04, **params):
 		self.params = params
@@ -21,6 +23,8 @@ class Acquisition:
 		return (mean - tau) * norm.cdf(z) + std * norm.pdf(z)[0]
 	def UCB(self, tau, mean, std, beta):
 		return mean + beta * std
+	def Greedy(self, tau, mean, std):
+		return mean		
 	def eval(self, tau, mean, std):
 		return self.f(tau, mean, std, **self.params)
 	

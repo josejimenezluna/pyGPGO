@@ -3,15 +3,23 @@ Example of covariance functions for Gaussian processes
 """
 import numpy as np
 from scipy.special import gamma, kv
+from scipy.spatial.distance import cdist
 
 def l2norm(x, xstar):
 	return(np.sqrt(np.sum((x - xstar)**2, axis = 1)))
+
+def l2norm_(X, Xstar):
+	return cdist(X, Xstar)
 
 class squaredExponential:
 	def __init__(self, l = 1):
 		self.l = l
 	def k(self, x, xstar):
 		r = l2norm(x, xstar)
+		return(np.exp(-.5 * r ** 2) / self.l ** 2)
+
+	def K(self, X, Xstar):
+		r = l2norm_(X, Xstar)
 		return(np.exp(-.5 * r ** 2) / self.l ** 2)
 
 class matern:
@@ -24,6 +32,13 @@ class matern:
 		res = f * bessel 
 		res[np.isnan(res)] = 1
 		return(res)
+	def K(self, X, Xstar):
+		r = l2norm_(x, xstar)
+		bessel = kv(self.v, np.sqrt(2 * self.v) * r / self.f)
+		f = 2 ** (1 - self.v) / gamma(self.v) * (np.sqrt(2 * self.v) * r / self.l) ** self.v
+		res = f * bessel
+		res[np.isnan(res)] = 1
+		return(res)
 
 class gammaExponential:
 	def __init__(self, gamma = 1, l = 1):
@@ -33,12 +48,21 @@ class gammaExponential:
 		r = l2norm(x, xstar)
 		return(np.exp(-(r / self.l) ** self.gamma))
 
+	def K(self, X, Xstar):
+		r = l2norm_(x, xstar)
+		return(np.exp(-(r / self.l) ** self.gamma))
+
+
 class rationalQuadratic:
 	def __init__(self, alpha = 1, l = 1):
 		self.alpha = alpha
 		self.l = l
 	def k(self, x, xstar):
 		r = l2norm(x, xstar)
+		return((1 + r**2/(2 * self.alpha * self.l **2))**(-self.alpha))
+
+	def K(self, X, Xstar):
+		r = l2norm_(x, xstar)
 		return((1 + r**2/(2 * self.alpha * self.l **2))**(-self.alpha))
 
 class arcSin:

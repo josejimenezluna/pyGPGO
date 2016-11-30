@@ -41,7 +41,7 @@ class GPGO:
 		self.tau = np.max(self.y)
 	
 	def _acqWrapper(self, xnew): # Returns minimum for optimization purposes
-		new_mean, new_var = self.GP.predict(xnew)
+		new_mean, new_var = self.GP.predict(xnew, return_std = True)
 		new_std = np.sqrt(new_var)
 		return -self.A.eval(self.tau, new_mean, new_std)
 		

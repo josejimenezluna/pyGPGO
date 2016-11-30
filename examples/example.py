@@ -5,15 +5,15 @@ from acquisition import Acquisition
 from covfunc import *
 from GPGO import GPGO
 
-def plotGPGO(gpgo, param, figure = 1):
+def plotGPGO(gpgo, param):
     param_value = list(param.values())[0][1]
-    x_test = np.linspace(param_value[0], param_value[1], 1000)
-    y_hat = np.array([gpgo.GP.predict(x)[0] for x in x_test])
-    y_var = np.array([gpgo.GP.predict(x)[1] for x in x_test]).flatten()
+    x_test = np.linspace(param_value[0], param_value[1], 1000).reshape((1000, 1))
+    hat = gp.predict(x_test, return_std = True)
+    y_hat, y_var = hat[0], hat[1]
     l, u = y_hat - 1.96 * np.sqrt(y_var), y_hat + 1.96 * np.sqrt(y_var)
-    plt.figure(figure)
+    plt.figure()
     plt.subplot(211)
-    plt.fill_between(x_test, l, u, alpha = 0.2)
+    plt.fill_between(x_test.flatten(), l, u, alpha = 0.2)
     plt.show()
     a = np.array([-gpgo._acqWrapper(np.atleast_1d(x)) for x in x_test]).flatten()
     plt.subplot(212)
@@ -36,5 +36,5 @@ if __name__ == '__main__':
     gpgo._firstRun()
     
     for i in range(5):
-        plotGPGO(gpgo, param, figure = i + 1)
+	plotGPGO(gpgo, param)
         gpgo.updateGP() 
