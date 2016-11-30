@@ -3,6 +3,7 @@ from covfunc import *
 from GPRegressor import GPRegressor
 from acquisition import Acquisition
 from GPGO import GPGO
+from collections import OrderedDict
 import matplotlib.pyplot as plt
 
 def rosen(x, y, a = 1, b = 100):
@@ -28,20 +29,27 @@ def plot2dgpgo(gpgo, param):
 	y_test = np.linspace(r_y[0], r_y[1], 100)
 	z_hat = np.empty((len(x_test), len(y_test)))
 	z_var = np.empty((len(x_test), len(y_test)))
+	ac = np.empty((len(x_test), len(y_test)))
 	for i in range(len(x_test)):
 		for j in range(len(y_test)):
 			res = gpgo.GP.predict([x_test[i], y_test[j]])
 			z_hat[i, j] = res[0]
 			z_var[i, j] = res[1][0]
+			ac[i, j] = -gpgo._acqWrapper(np.atleast_1d([x_test[i], y_test[j]]))
 	plt.figure()
-	plt.subplot(211)
+	plt.subplot(221)
 	plt.imshow(z_hat.T, origin = 'lower', extent = [-1, 1, -1, 1])
 	plt.colorbar()
-	#plt.plot(tested_X[:, 0], tested_X[:, 1], 'x')
-	plt.subplot(212)
+	plt.plot(tested_X[:, 0], tested_X[:, 1], 'wx', markersize = 10)
+	plt.subplot(222)
 	plt.imshow(z_var.T, origin = 'lower', extent = [-1, 1, -1, 1])
-        #plt.plot(tested_X[:, 0], tested_X[:, 1], 'rx')
+        plt.plot(tested_X[:, 0], tested_X[:, 1], 'wx', markersize = 10)
 	plt.colorbar()
+	plt.subplot(223)
+	plt.imshow(ac.T, origin = 'lower', extent = [-1, 1, -1, 1])
+	plt.colorbar()
+	gpgo._optimizeAcq(method = 'L-BFGS-B', n_start = 500)
+	plt.plot(gpgo.best[0], gpgo.best[1], 'gx', markersize = 15)
 	plt.show()
 	
 if __name__ == '__main__':
@@ -53,13 +61,18 @@ if __name__ == '__main__':
 	sexp = squaredExponential()
 	gp = GPRegressor(sexp)
 	acq = Acquisition(mode = 'ExpectedImprovement')
+	
+	param = OrderedDict()
+	param['x'] = ('cont', [-1, 1])
+	param['y'] = ('cont', [-1, 1])
 
-	param = {'x': ('cont', [-1, 1]), 'y': ('cont', [-1, 1])}
 	gpgo = GPGO(gp, acq, rastrigin, param)
-	gpgo._sampleParam()
+	#gpgo._sampleParam()
 	gpgo._firstRun()
 	
-	plot2dgpgo(gpgo, param)
+	for i in range(5):	
+		plot2dgpgo(gpgo, param)
+		gpgo.updateGP()
 
 	
 

@@ -63,8 +63,9 @@ class GPGO:
 		self.best = x_best[np.argmin(f_best)]		
 	
 	def updateGP(self):
-		f_new = self.f(self.best)
-		self.GP.update(np.atleast_2d(self.best), f_new)
+		kw = {param:self.best[i] for i, param in enumerate(self.parameter_key)}
+		f_new = self.f(**kw)
+		self.GP.update(np.atleast_2d(self.best), np.atleast_1d(f_new))
 		self.tau = np.max(self.GP.y)
 
 	def run(self, max_iter = 10):
