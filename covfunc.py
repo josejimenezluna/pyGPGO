@@ -12,15 +12,24 @@ def l2norm_(X, Xstar):
 	return cdist(X, Xstar)
 
 class squaredExponential:
-	def __init__(self, l = 1):
+	def __init__(self, l = 1, sigma2f = 1, sigma2n = 0):
 		self.l = l
-	def k(self, x, xstar):
-		r = l2norm(x, xstar)
-		return(np.exp(-.5 * r ** 2) / self.l ** 2)
+		self.sigma2f = sigma2f
+		self.sigma2n = sigma2n
 
 	def K(self, X, Xstar):
 		r = l2norm_(X, Xstar)
-		return(np.exp(-.5 * r ** 2) / self.l ** 2)
+		return(np.exp(-.5 * r ** 2 / self.l ** 2))
+
+	def gradK(self, X, Xstar, param = 'l'):
+		if param == 'l':
+			r = l2norm_(X, Xstar)
+			num = r**2 * np.exp(-r**2 /(2* self.l**2))
+			den = self.l ** 3
+			l_grad = num/den
+			return(l_grad)
+		else:
+			raise ValueError('Param not found')
 
 class matern:
 	def __init__(self, v = 1, l = 1):

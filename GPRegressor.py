@@ -7,17 +7,30 @@ class GPRegressor:
 		self.covfunc = covfunc
 		self.sigma = sigma
 	def fit(self, X, y):
-		# Preallocate stuff
 		self.X = X
 		self.y = y
 		self.nsamples = self.X.shape[0]
-		# Compute similarity
 		self.K = self.covfunc.K(self.X, self.X)
-		# Compute common parameters
 		self.L = cholesky(self.K + self.sigma * np.eye(self.nsamples)).T
 		self.alpha = solve(self.L.T, solve(self.L, y))
-		self.logp = -.5 * np.dot(self.y, self.alpha) - np.sum(np.diag(self.L)) - self.nsamples/2 * np.log(2 * np.pi)
+		self.logp = -.5 * np.dot(self.y, self.alpha) - np.sum(np.log(np.diag(self.L))) - self.nsamples/2 * np.log(2 * np.pi)
 
+	def param_grad(self, X, y, k_param):
+		k_param_key = list(k_param.keys())
+		covfunc = self.covfunc.__class__(**k_param)
+		n = X.shape[0]
+		K = covfunc.K(X, X)
+		L = cholesky(K + self.sigma * np.eye(n)).T
+		alpha = solve(L.T, solve(L, y))
+		# Compute gradient matrix for each parameter
+		grads = []
+		for param in k_param_key:
+			gradK = covfunc.gradK(X, X, param = param)
+			inner = np.dot(np.atleast_2d(alpha).T, np.atleast_2d(alpha)) - np.linalg.inv(K)
+			gradK = .5 * np.trace(np.dot(inner, gradK))
+			grads.append(gradK)
+		return np.array(grads)
+			
 	def predict(self, Xstar, return_std = False):
 		Xstar = np.atleast_2d(Xstar)
 		kstar = self.covfunc.K(self.X, Xstar).T
