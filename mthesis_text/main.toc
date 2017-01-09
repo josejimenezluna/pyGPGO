@@ -1,0 +1,12 @@
+\contentsline {chapter}{\numberline {1}Organization of this work}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Introduction}{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}How this manual is supposed to be read}{6}{section.1.2}
+\contentsline {chapter}{\numberline {2}Gaussian Process regression}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}A weight space view for Gaussian Processes}{7}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Standard Bayesian linear regression}{7}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Kernel functions in feature space}{8}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}A function space view for Gaussian Processes}{8}{section.2.2}
+\contentsline {section}{\numberline {2.3}Prediction using a Gaussian Process prior}{10}{section.2.3}
+\contentsline {chapter}{\numberline {3}Bayesian optimization}{13}{chapter.3}
+\contentsline {chapter}{\numberline {4}Experiments}{15}{chapter.4}
+\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{17}{chapter.5}

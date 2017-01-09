@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.linalg import cholesky, solve
-
+from collections import OrderedDict
+from scipy.optimize import minimize 
 
 class GPRegressor:
 	def __init__(self, covfunc, sigma = 0):
@@ -30,6 +31,24 @@ class GPRegressor:
 			gradK = .5 * np.trace(np.dot(inner, gradK))
 			grads.append(gradK)
 		return np.array(grads)
+
+	def _lmlik(self, param_vector, param_key):
+		k_param = OrderedDict()
+		for k, v in zip(param_key, param_vector):
+			k_param[k] = v
+		self.covfunc = self.covfunc.__class__(**k_param)
+		self.fit(self.X, self.y)
+		return(- self.logp)
+
+	def optHyp(self, param_key, param_bounds):
+		x0 = np.repeat(1, len(param_key))
+		res = minimize(self._lmlik, x0 = x0 ,args = (param_key), method='L-BFGS-B', bounds = param_bounds)
+		opt_param = res.x
+		k_param = OrderedDict()
+		for k, x in zip(param_key, opt_param):
+			k_param[k] = x
+		self.covfunc = self.covfunc.__class__(**k_param)
+		self.fit(self.X, self.y) 	
 			
 	def predict(self, Xstar, return_std = False):
 		Xstar = np.atleast_2d(Xstar)

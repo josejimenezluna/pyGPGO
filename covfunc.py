@@ -26,7 +26,7 @@ class squaredExponential:
 			r = l2norm_(X, Xstar)
 			num = r**2 * np.exp(-r**2 /(2* self.l**2))
 			den = self.l ** 3
-			l_grad = num/den
+			l_grad = num / den
 			return(l_grad)
 		else:
 			raise ValueError('Param not found')
@@ -53,27 +53,47 @@ class gammaExponential:
 	def __init__(self, gamma = 1, l = 1):
 		self.gamma = gamma
 		self.l = l
-	def k(self, x, xstar):
-		r = l2norm(x, xstar)
-		return(np.exp(-(r / self.l) ** self.gamma))
 
 	def K(self, X, Xstar):
-		r = l2norm_(x, xstar)
+		r = l2norm_(X, Xstar)
 		return(np.exp(-(r / self.l) ** self.gamma))
 
+	def gradK(self, X, Xstar, param):
+		if param == 'gamma':
+			eps = 10e-6
+			r = l2norm_(X, Xstar) + eps
+			first = -np.exp(- (r / self.l) ** self.gamma)
+			sec = (r / self.l) ** self.gamma * np.log(r / self.l)
+			gamma_grad = first * sec
+			return(gamma_grad)
+		if param == 'l':
+			r = l2norm_(X, Xstar)
+			num = self.gamma * np.exp(-(r / self.l)**self.gamma) * (r / self.l) ** self.gamma
+			l_grad = num / self.l
+			return(l_grad)
 
 class rationalQuadratic:
 	def __init__(self, alpha = 1, l = 1):
 		self.alpha = alpha
 		self.l = l
-	def k(self, x, xstar):
-		r = l2norm(x, xstar)
-		return((1 + r**2/(2 * self.alpha * self.l **2))**(-self.alpha))
 
 	def K(self, X, Xstar):
-		r = l2norm_(x, xstar)
+		r = l2norm_(X, Xstar)
 		return((1 + r**2/(2 * self.alpha * self.l **2))**(-self.alpha))
 
+	def gradK(self, X, Xstar, param):
+		if param == 'alpha':
+			r = l2norm_(X, Xstar)
+			one = (r**2/(2 * self.alpha * self.l **2) + 1)**(-self.alpha)
+			two = r**2 / ((2 * self.alpha * self.l **2) * (r**2 / (2 * self.alpha * self.l**2) + 1))
+			three = np.log(r**2/(2* self.alpha * self.l **2) + 1)
+			alpha_grad = one * (two - three)
+			return(alpha_grad)
+		if param == 'l':
+			r = l2norm_(X, Xstar)
+			num = r ** 2 * (r ** 2 /(2 * self.alpha * self.l**2) + 1) ** (-self.alpha - 1)
+			l_grad = num / self.l ** 3
+			return(l_grad)
 class arcSin:
 	def __init__(self, n, sigma = None):
 		if sigma == None:

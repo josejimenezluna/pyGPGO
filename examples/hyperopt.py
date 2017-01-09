@@ -8,7 +8,7 @@ from sklearn.gaussian_process.kernels import RBF
 def gradient(gp, sexp):
 	alpha = gp.alpha
 	K = gp.K
-	gradK = sexp.gradK(gp.X, gp.X)
+	gradK = sexp.gradK(gp.X, gp.X, 'l')
 	inner = np.dot(np.atleast_2d(alpha).T, np.atleast_2d(alpha)) - np.linalg.inv(K)
 	return(.5 * np.trace(np.dot(inner, gradK))) 
 
@@ -21,24 +21,25 @@ if __name__ == '__main__':
 	logsk = []
 	grad = []
 	gradsk = []
-	l_range = np.linspace(0.01, 2, 100)
+	g_range = np.linspace(0.01, 10, 1000)
 
-	for l in l_range:
-		sexp = squaredExponential(l = l)
+	for l in g_range:
+		sexp = rationalQuadratic(alpha = 1, l = l)
 		gp = GPRegressor(sexp)
 		gp.fit(X, y)
 		logp.append(gp.logp)
 		grad.append(gradient(gp, sexp))
 
-		rbf = RBF(l, length_scale_bounds = 'fixed' )
-		u = GaussianProcessRegressor(rbf)
-		u.fit(X, y)
-		logsk.append(u.log_marginal_likelihood_value_)
+		#rbf = RBF(l, length_scale_bounds = 'fixed' )
+		#u = GaussianProcessRegressor(rbf)
+		#u.fit(X, y)
+		#logsk.append(u.log_marginal_likelihood_value_)
 		#gradsk.append(u.log_marginal_likelihood(theta = np.array(), eval_gradient = True)[1])
 
-	plt.plot(l_range, logp)
-	plt.plot(l_range, logsk)
+	plt.plot(g_range, logp)
+	#plt.plot(l_range, logsk)
 	plt.figure()
-	plt.plot(l_range, grad)
+	plt.plot(g_range, grad)
 	#plt.plot(l_range, gradsk)
+	plt.grid()
 	plt.show()
