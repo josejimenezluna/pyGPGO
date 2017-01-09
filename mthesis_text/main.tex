@@ -191,7 +191,7 @@ The squared exponential covariance kernel is equivalent to a Bayesian linear mod
 \boldsymbol{f_*} \sim N\left(\boldsymbol{0}, K(X_*, X_*)\right)
 \end{equation}
 
-To illustrate this point, we will write a very simple Python script to draw (finite) samples from this function. For the moment, consider evenly spaced samples with a step of $\dfrac{\pi}{4}$. Some of the code here already uses the pyGPGO implementation of the covariance function, to simplify computation. This code produces Figure \ref{fig:drawPrior}.
+To illustrate this point, we will write a very simple Python script to draw (finite) samples from this function. For the moment, consider evenly spaced samples with a step of $\dfrac{\pi}{16}$. Some of the code here already uses the pyGPGO implementation of the covariance function, to simplify computation. This code produces Figure \ref{fig:drawPrior}.
 
 \begin{minted}[mathescape,
                linenos,
@@ -293,7 +293,58 @@ We are interested now in the distribution of $\boldsymbol{f_{*}}|\boldsymbol{f}$
 
 This is pretty much everything basic there is to know about Gaussian Process estimation for regression. Now we have a complete predictive distribution over test values $\boldsymbol{f_{*}}$, and we can do with it what we please. For example, one could obtain an estimate of this function by drawing samples from a multivariate normal with the computed posterior parameters, or obtain a MAP estimate using the posterior mean.\\
 
-Let us now consider the scenario where observations are not noise-free, that is, each time you query the function there is a Gaussian error with variance $\sigma_n^2 \neq 0$
+Let us now consider the scenario where observations are not noise-free, that is, each time you query the function there is a i.i.d Gaussian error with mean $0$ and variance $\sigma_n^2 > 0$. Assume now the following prior on the noisy observations:
+
+\begin{equation}
+Cov(\boldsymbol{y}) = K(X, X) + \sigma^2_n I 
+\end{equation}
+
+Following the exact same math as before, but taking into account this new term, we got the following joint distribution:
+
+\begin{equation}
+\begin{bmatrix}
+\boldsymbol{f}\\
+\boldsymbol{f_*}
+\end{bmatrix} \sim N\left(
+\boldsymbol{0},
+\begin{bmatrix}
+K(X, X) + \sigma^2_n I && K(X, X_*) \\
+K(X_*, X) && K(X_*, X_*)
+\end{bmatrix}
+\right)
+\end{equation}
+
+And conditioning again $\boldsymbol{f_{*}}$ on $\boldsymbol{f}$, we obtain our final predictive distribution:
+
+\begin{equation}
+\boldsymbol{f_*|f} \sim N(\boldsymbol{\overline{f_*}},  Cov(\boldsymbol{f_*}))
+\end{equation}
+
+where now:
+
+\begin{align}
+\boldsymbol{\overline{f_*}} = K(X_*, X)\left(K(X, X) + \sigma^2_n I   \right)^{-1}\boldsymbol{y}\\
+Cov(\boldsymbol{f_*}) = K(X_*, X_*) - K(X_*, X)\left(K(X, X) + \sigma_n^2 I \right)^{-1}K(X, X_*)
+\end{align}
+
+It will probably be useful to note that a Gaussian Process model can be written easily in terms of a Bayesian hierarchical model, since:
+
+\begin{align}
+\label{hierarchical}
+\boldsymbol{y}|\boldsymbol{f} \sim N(\boldsymbol{f}, \sigma^2_n I)\\
+\label{hierarchical2}
+\boldsymbol{f}|X \sim N(\boldsymbol{0}, K(X, X))
+\end{align}
+
+In fact, one can also assume other priors, even over $\sigma_n^2$. This representation may help us understand the introduction of the \textit{marginal likelihood}. This marginal likelihood in a Gaussian Process setting is defined as:
+
+\begin{equation}
+p(\boldsymbol{y}|X) = \int p(\boldsymbol{y}|\boldsymbol{f}, X)p(\boldsymbol{f}|X) d\boldsymbol{f}
+\end{equation}
+
+Using the results from Equations \ref{hierarchical} and \ref{hierarchical2} we can derive the integral analitically to obtain:
+\\
+
 
 \chapter{Bayesian optimization}
 \chapter{Experiments}
