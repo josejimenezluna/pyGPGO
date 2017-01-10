@@ -7,6 +7,8 @@
 \usepackage{hyperref}
 \usepackage{minted}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \newtheorem{mydef}{Theorem}
 
 \makeindex
@@ -62,7 +64,7 @@ Before we dive directly into the topic at hand, it is mandatory to explain how t
 
 \chapter{Gaussian Process regression}
 
-We will focus on regression problems in this chapter. Assume we have some labelled data $D = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$, where $x$ is a vector of covariates and $y$ denotes a continuous objective variable. We wish to learn a predictive distribution over new values of $x$, so that we can make predictions and inference over these. In practice, for simplicity we write that $D = \left(X, \boldsymbol{y}\right)$, where $X$ is a covariate matrix.\\
+We will focus on regression problems in this chapter. Assume we have some labelled data $D = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$, where $\boldsymbol{x}$ is a vector of covariates and $y$ denotes a continuous objective variable. We wish to learn a predictive distribution over new values of $\boldsymbol{x}$, so that we can make predictions and inference over these. In practice, for simplicity we write that $D = \left(X, \boldsymbol{y}\right)$, where $X$ is a covariate matrix.\\
 
 One can interpret a Gaussian Process in several ways, the most used one is the function space view, which is the one we will cover second here and the one we will assume for the rest for the manual. In this view, we consider a Gaussian Process to be a distribution over functions, instead of over values. Inference takes place directly in this space. For completeness, we will also provide a weight-space view first, that might be more appealing to readers familiar with Bayesian linear regression.\\
 
@@ -342,8 +344,339 @@ In fact, one can also assume other priors, even over $\sigma_n^2$. This represen
 p(\boldsymbol{y}|X) = \int p(\boldsymbol{y}|\boldsymbol{f}, X)p(\boldsymbol{f}|X) d\boldsymbol{f}
 \end{equation}
 
-Using the results from Equations \ref{hierarchical} and \ref{hierarchical2} we can derive the integral analitically to obtain:
-\\
+Using the results from Equations \ref{hierarchical} and \ref{hierarchical2} we can derive the integral analytically to obtain:
+
+\begin{equation}
+\log p(\boldsymbol{y}|X) = - \dfrac{1}{2}\boldsymbol{y}^T(K + \sigma^2_n I)^{-1}\boldsymbol{y} - \dfrac{1}{2}\log |K + \sigma^2_n I| - \dfrac{n}{2}\log 2\pi
+\end{equation}
+
+We have now all the necessary ingredients to lay down pseudo-code for your own implementation of a Gaussian Process regressor, as presented in Algorithm \ref{alg}. It makes use of several tricks for computational stability, such as a Cholesky decomposition and several linear system of equations to avoid directly inverting matrices.\\
+
+\begin{algorithm}
+	\caption{Gaussian regressor pseudo-code.}
+		\label{alg}
+		\begin{algorithmic}[1]
+			\Function {GPRegressor}{$X$, $\boldsymbol{y}$, $k$, $\sigma_n^2$, $\boldsymbol{x_*}$}
+			\State{$L \gets \textrm{chol}(K + \sigma_n^2 I)$}
+			\State{$\boldsymbol{\alpha} \gets \textrm{linsolve}\left(L^T, \textrm{linsolve}(L, \boldsymbol{y})\right)$}
+			\State{$\overline{f_*} \gets \boldsymbol{k_*}^T\boldsymbol{\alpha}$}
+			\State{$\boldsymbol{v} \gets \textrm{linsolve}(L, \boldsymbol{k_*})$}
+			\State{$\mathbb{V}\left[f_* \right] \gets k(\boldsymbol{x_*}, \boldsymbol{x_*}) - \boldsymbol{v}^T\boldsymbol{v}$}
+			\State{$\log p(\boldsymbol{y}|X) \gets -\dfrac{1}{2}\boldsymbol{y}^T\boldsymbol{\alpha} - \sum_i \log L_{ii} - \dfrac{n}{2}\log 2\pi$}
+			\EndFunction
+		\end{algorithmic}
+\end{algorithm}
+
+pyGPGO includes an implementation of a Gaussian Process regressor under the \texttt{GPRegressor} module. A minimal working skeleton of its code is shown below. We do now show the entirety of the module code since most of it is not relevant at this point.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+               
+import numpy as np
+from scipy.linalg import cholesky, solve
+from collections import OrderedDict
+from scipy.optimize import minimize
+
+class GPRegressor:
+        def __init__(self, covfunc, sigma = 0):
+                self.covfunc = covfunc
+                self.sigma = sigma
+        def fit(self, X, y):
+                self.X = X
+                self.y = y
+                self.nsamples = self.X.shape[0]
+                self.K = self.covfunc.K(self.X, self.X)
+                self.L = cholesky(self.K + self.sigma * np.eye(self.nsamples)).T
+                self.alpha = solve(self.L.T, solve(self.L, y))
+                self.logp = -.5 * np.dot(self.y, self.alpha) - np.sum(np.log(np.diag(self.L))) - self.nsamples/2 * np.log(2 * np.pi)
+
+        def predict(self, Xstar, return_std = False):
+                Xstar = np.atleast_2d(Xstar)
+                kstar = self.covfunc.K(self.X, Xstar).T
+                fmean = np.dot(kstar, self.alpha)
+                v = solve(self.L, kstar.T)
+                fcov = self.covfunc.K(Xstar, Xstar) - np.dot(v.T, v)
+                if return_std:
+                        fcov = np.diag(fcov)
+                return fmean, fcov
+
+        def update(self, xnew, ynew):
+                y = np.concatenate((self.y, ynew), axis = 0)
+                X = np.concatenate((self.X, xnew), axis = 0)
+                self.fit(X, y)
+\end{minted}
+
+A few notes on the code, first notice that the \texttt{GPRegressor} class only takes as input the covariance function to use $k$, and the noise level $\sigma_n^2$. It is only when you call the \texttt{fit} method on the function when you actually fit the model on some data $X, \boldsymbol{y}$. Quantities like the log-marginal likelihood are store within the object. The \texttt{predict} method not only can output the variance for a single prediction, but the covariance matrix for $m$ new ones if asked to. For convenience, we also implement an \texttt{update} method to update the Gaussian Process parameters when new data is available to us.
+
+\subsection{A toy example of Gaussian Process regression}
+
+Now that we have both the algorithm and the tools at hand, it may be interesting how a Gaussian Process regressor behaves with a toy example. We try to approximate a simple sine function in the interval $[0, 2\pi]$, and plot both the posterior mean and a 95\% confidence band using the posterior variance of the fitted process. The code shown below produces Figure \ref{fig:GPsine}.
+
+\newpage
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+
+import numpy as np
+from GPRegressor import GPRegressor
+from covfunc import squaredExponential
+import matplotlib.pyplot as plt
+
+
+if __name__ == '__main__':
+        # Build synthetic data (sine function)
+        x = np.arange(0, 2 * np.pi + 0.01, step = np.pi / 2)
+        y = np.sin(x)
+        X = np.array([np.atleast_2d(u) for u in x])[:, 0]
+
+        # Specify covariance function
+        sexp = squaredExponential()
+        # Instantiate GPRegressor class
+        gp = GPRegressor(sexp)
+        # Fit the model to the data
+        gp.fit(X, y)
+
+        # Predict on new data
+        xstar = np.arange(0, 2*np.pi, step = 0.01)
+        Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]
+        ymean, ystd = gp.predict(Xstar, return_std = True)
+
+        # Confidence interval bounds
+        lower, upper = ymean - 1.96 * ystd, ymean + 1.96 * ystd
+
+        # Plot values
+        plt.figure()
+        plt.plot(xstar, ymean, label = 'Posterior mean')
+        plt.plot(xstar, np.sin(xstar), label = 'True function')
+        plt.fill_between(xstar, lower, upper, alpha = 0.4, label = '95% confidence band')
+        plt.grid()
+        plt.legend(loc = 0)
+        plt.show()
+\end{minted}
+
+\begin{figure}
+\caption{A fitted Gaussian Process regressor to samples of the sine function.}
+\label{fig:GPsine}
+\includegraphics[width=\textwidth]{figures/chapter2/GPsine}
+\end{figure}
+
+\section{On covariance functions}
+
+A covariance function, like the squared exponential kernel that we have been using as a example throughout the chapter encodes our assumptions of similarity between inputs from $\boldsymbol{x}$. We assume \textit{similar} items in input space to have similar values of the target value $y$. Not any function of $\boldsymbol{x}$ and $\boldsymbol{x'}$ can be considered a covariance function, in general should fulfil properties like the following:
+
+\begin{itemize}
+\item \textit{Stationarity}. A covariance function is said to be stationary if it is a function of $|\boldsymbol{x} - \boldsymbol{x'}|$. That is to say that it is invariant to translations in the input space. Most of the covariance functions we will see fall into this category.
+\item \textit{Isotropy}. A covariance function is said to be isotropic if it is \textit{only} function of  $|\boldsymbol{x} - \boldsymbol{x'}|$. Therefore, every isotropic covariance function is stationary.
+\item Dot-product. Some covariance functions are functionals of the dot-product $|\boldsymbol{x}^T \boldsymbol{x'}|$. These kernels, while invariant to rotations are not invariant to translations.
+\end{itemize}
+
+There is an excellent theoretical analysis of covariance functions in Chapter 4 of Carl E. Rasmussen's book \textit{Gaussian Processes for Machine Learning}. We will not cover this here since it falls beyond the scope of this manual. However, we will start providing examples of the most common covariance functions and their implementation in pyGPGO.\\
+
+The \textit{Squared Exponential} covariance function is the one that we have been using so far. It is also arguably the most used in practice. It takes the general form:
+
+\begin{equation}
+k_{SE}(r) = \exp\left(-\dfrac{r^2}{2l^2} \right)
+\end{equation}
+
+Where $l$ is the parameter controlling its characteristic length-scale. It is useful to define these functions in terms of $r$ since we can abstract this calculation to another function. A simple skeleton of its implementation in pyGPGO is the following:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+import numpy as np
+from scipy.special import gamma, kv
+from scipy.spatial.distance import cdist
+
+def l2norm_(X, Xstar):
+        return cdist(X, Xstar)
+
+class squaredExponential:
+        def __init__(self, l = 1, sigma2f = 1, sigma2n = 0):
+                self.l = l
+                self.sigma2f = sigma2f
+                self.sigma2n = sigma2n
+
+        def K(self, X, Xstar):
+                r = l2norm_(X, Xstar)
+                return(np.exp(-.5 * r ** 2 / self.l ** 2))
+\end{minted}
+
+The \textit{Matern class} of covariance functions takes the form:
+
+\begin{equation}
+k_{\textrm{Matern}}(r) = \dfrac{2^{1-\nu}}{\Gamma(\nu)}\left(\dfrac{\sqrt{2\nu} r}{l}    \right)^\nu K_\nu\left( \dfrac{\sqrt{2\nu}r}{l} \right)
+\end{equation}
+
+with $\nu, l > 0$ and $K_\nu$ is a modified Bessel function of the second kind. Notice that if we take limit $\nu \rightarrow \infty$ we obtain our beloved squared exponential covariance function. pyGPGO implementation below.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+class matern:
+        def __init__(self, v = 1, l = 1):
+                self.v, self.l = v, l
+
+        def K(self, X, Xstar):
+                r = l2norm_(x, xstar)
+                bessel = kv(self.v, np.sqrt(2 * self.v) * r / self.f)
+                f = 2 ** (1 - self.v) / gamma(self.v) * 
+                	(np.sqrt(2 * self.v) * r / self.l) ** self.v
+                res = f * bessel
+                res[np.isnan(res)] = 1
+                return(res)               
+\end{minted}
+
+The $\gamma$-exponential covariance function, of which the squared exponential is a special case. It takes the general form:
+
+\begin{equation}
+k(r) = \exp\left( - \left(\dfrac{r}{l}\right)^\gamma  \right)
+\end{equation}
+
+for $0 < \gamma \leq 2$. Its implementation in pyGPGO below:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}               
+class gammaExponential:
+        def __init__(self, gamma = 1, l = 1):
+                self.gamma = gamma
+                self.l = l
+
+        def K(self, X, Xstar):
+                r = l2norm_(X, Xstar)
+                return(np.exp(-(r / self.l) ** self.gamma))              
+\end{minted}
+
+The \textit{Rational Quadratic} covariance function takes the form:
+
+\begin{equation}
+k_{RQ}(r) = \left( 1 + \dfrac{r^2}{2\alpha l^2} \right)^{-\alpha}
+\end{equation}
+
+with $\alpha, l > 0$. And again its implementation:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+class rationalQuadratic:
+        def __init__(self, alpha = 1, l = 1):
+                self.alpha = alpha
+                self.l = l
+
+        def K(self, X, Xstar):
+                r = l2norm_(X, Xstar)
+                return((1 + r**2/(2 * self.alpha * self.l **2))**(-self.alpha))  
+\end{minted}
+
+The \textit{arcSin} kernel is an example of a dot product covariance function, therefore non-stationary:
+
+\begin{equation}
+k_{\textrm{arcSin}}(\boldsymbol{x}, \boldsymbol{x'}) = \dfrac{2}{\pi}\sin^{-1}\left(\dfrac{2\boldsymbol{x}\Sigma\boldsymbol{x'}}{\sqrt{(1 + 2\boldsymbol{x}^T\Sigma\boldsymbol{x})(1 + 2\boldsymbol{x'}^T\Sigma\boldsymbol{x})}}   \right)
+\end{equation}
+
+And I promise this is the final covariance function implementation in this section.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+class arcSin:
+        def __init__(self, n, sigma = None):
+                if sigma == None:
+                        self.sigma = np.eye(n)
+                else:
+                        self.sigma = sigma
+        def k(self, x, xstar):
+                num = 2 * np.dot(np.dot(x[np.newaxis, :], self.sigma), xstar)
+                a = 1 + 2 * np.dot(np.dot(x[np.newaxis, :], self.sigma), x)
+                b = 1 + 2 * np.dot(np.dot(xstar[np.newaxis, :], self.sigma), xstar)
+                res = num / np.sqrt(a * b)
+                return(res)
+   
+\end{minted}
+
+\subsection{A zoo of covariance functions}
+
+We have seen plenty of covariance function specifications in the last section. Remember that these control the degree of \textit{similarity} between input points. As an exercise, it would be good to recreate the same sine function example that we saw before, using four different stationary different covariance functions. The choice of parameters is the default one in pyGPGO. The script shown below produces Figure \ref{fig:zoo}. 
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+import numpy as np
+from covfunc import *
+from GPRegressor import GPRegressor
+import matplotlib.pyplot as plt
+
+
+if __name__ == '__main__':
+        # Build synthetic data (sine function)
+        x = np.arange(0, 2 * np.pi + 0.01, step = np.pi / 2)
+        y = np.sin(x)
+        X = np.array([np.atleast_2d(u) for u in x])[:, 0]
+
+        # Covariance functions to loop over
+        covfuncs = [squaredExponential(), matern(), gammaExponential(), rationalQuadratic()]
+        titles = [r'Squared Exponential ($l = 1$)', r'Matern ($\nu = 1$, $l = 1$)',
+         r'Gamma Exponential ($\gamma = 1, l = 1$)', r'Rational Quadratic ($\alpha = 1, l = 1$)']
+        plt.figure()
+        plt.rc('text', usetex=True)
+        for i, cov in enumerate(covfuncs):
+                gp = GPRegressor(cov)
+                gp.fit(X, y)
+                xstar = np.arange(0, 2 * np.pi, step = 0.01)
+                Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]
+                ymean, ystd = gp.predict(Xstar, return_std = True)
+                
+                lower, upper = ymean - 1.96 * ystd, ymean + 1.96 * ystd
+                plt.subplot(2, 2, i + 1)
+                plt.plot(xstar, ymean, label = 'Posterior mean')
+                plt.plot(xstar, np.sin(xstar), label = 'True function')
+                plt.fill_between(xstar, lower, upper, alpha = 0.4,
+                 label = '95\% confidence band')
+                plt.grid()
+                plt.title(titles[i])
+        plt.legend(loc = 0)
+        plt.show()
+\end{minted}
+
+\begin{figure}
+\caption{Behaviour of different stationary covariance functions with the default parameters in pyGPGO.}
+\label{fig:zoo}
+\includegraphics[width=\textwidth]{figures/chapter2/zoo}
+\end{figure}
 
 
 \chapter{Bayesian optimization}

@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k}{class} \PYG{n+nc}{arcSin}\PYG{p}{:}
+        \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{sigma} \PYG{o}{=} \PYG{n+nb+bp}{None}\PYG{p}{):}
+                \PYG{k}{if} \PYG{n}{sigma} \PYG{o}{==} \PYG{n+nb+bp}{None}\PYG{p}{:}
+                        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{sigma} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{eye}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{sigma} \PYG{o}{=} \PYG{n}{sigma}
+        \PYG{k}{def} \PYG{n+nf}{k}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{xstar}\PYG{p}{):}
+                \PYG{n}{num} \PYG{o}{=} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{np}\PYG{o}{.}\PYG{n}{newaxis}\PYG{p}{,} \PYG{p}{:],} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{sigma}\PYG{p}{),} \PYG{n}{xstar}\PYG{p}{)}
+                \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{[}\PYG{n}{np}\PYG{o}{.}\PYG{n}{newaxis}\PYG{p}{,} \PYG{p}{:],} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{sigma}\PYG{p}{),} \PYG{n}{x}\PYG{p}{)}
+                \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{1} \PYG{o}{+} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{xstar}\PYG{p}{[}\PYG{n}{np}\PYG{o}{.}\PYG{n}{newaxis}\PYG{p}{,} \PYG{p}{:],} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{sigma}\PYG{p}{),} \PYG{n}{xstar}\PYG{p}{)}
+                \PYG{n}{res} \PYG{o}{=} \PYG{n}{num} \PYG{o}{/} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{a} \PYG{o}{*} \PYG{n}{b}\PYG{p}{)}
+                \PYG{k}{return}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}
+\end{Verbatim}

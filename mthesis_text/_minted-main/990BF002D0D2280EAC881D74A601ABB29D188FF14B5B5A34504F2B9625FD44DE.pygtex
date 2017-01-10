@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy.special} \PYG{k+kn}{import} \PYG{n}{gamma}\PYG{p}{,} \PYG{n}{kv}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy.spatial.distance} \PYG{k+kn}{import} \PYG{n}{cdist}
+
+\PYG{k}{def} \PYG{n+nf}{l2norm\PYGZus{}}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Xstar}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n}{cdist}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Xstar}\PYG{p}{)}
+
+\PYG{k}{class} \PYG{n+nc}{squaredExponential}\PYG{p}{:}
+        \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{l} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{sigma2f} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{sigma2n} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{l} \PYG{o}{=} \PYG{n}{l}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{sigma2f} \PYG{o}{=} \PYG{n}{sigma2f}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{sigma2n} \PYG{o}{=} \PYG{n}{sigma2n}
+
+        \PYG{k}{def} \PYG{n+nf}{K}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{X}\PYG{p}{,} \PYG{n}{Xstar}\PYG{p}{):}
+                \PYG{n}{r} \PYG{o}{=} \PYG{n}{l2norm\PYGZus{}}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Xstar}\PYG{p}{)}
+                \PYG{k}{return}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}.}\PYG{l+m+mi}{5} \PYG{o}{*} \PYG{n}{r} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{/} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{l} \PYG{o}{**} \PYG{l+m+mi}{2}\PYG{p}{))}
+\end{Verbatim}

@@ -42,8 +42,8 @@ class matern:
 		res[np.isnan(res)] = 1
 		return(res)
 	def K(self, X, Xstar):
-		r = l2norm_(x, xstar)
-		bessel = kv(self.v, np.sqrt(2 * self.v) * r / self.f)
+		r = l2norm_(X, Xstar)
+		bessel = kv(self.v, np.sqrt(2 * self.v) * r / self.l)
 		f = 2 ** (1 - self.v) / gamma(self.v) * (np.sqrt(2 * self.v) * r / self.l) ** self.v
 		res = f * bessel
 		res[np.isnan(res)] = 1
