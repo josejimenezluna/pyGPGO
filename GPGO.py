@@ -16,6 +16,8 @@ class GPGO:
 		self.parameter_type = [p[0] for p in self.parameter_value]
 		self.parameter_range = [p[1] for p in self.parameter_value]
 
+		self.history = []
+
 	def _sampleParam(self):
 		d = OrderedDict()
 		for index, param in enumerate(self.parameter_key):
@@ -39,6 +41,7 @@ class GPGO:
 			self.y[i] = self.f(**s_param)
 		self.GP.fit(self.X, self.y)
 		self.tau = np.max(self.y)
+		self.history.append(self.tau)
 	
 	def _acqWrapper(self, xnew): # Returns minimum for optimization purposes
 		new_mean, new_var = self.GP.predict(xnew, return_std = True)
@@ -67,6 +70,7 @@ class GPGO:
 		f_new = self.f(**kw)
 		self.GP.update(np.atleast_2d(self.best), np.atleast_1d(f_new))
 		self.tau = np.max(self.GP.y)
+		self.history.append(self.tau)
 
 	def run(self, max_iter = 10):
 		self._firstRun()
