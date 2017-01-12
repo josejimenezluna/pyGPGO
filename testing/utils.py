@@ -21,6 +21,8 @@ class loss:
 			self.loss = log_loss
 		elif self.problem == 'cont':
 			self.loss = mean_squared_error
+		else:
+			self.loss = log_loss
 	def evaluateLoss(self, **param):
 		if self.method == 'holdout':
 			X_train, X_test, y_train, y_test = train_test_split(self.X, self.y, random_state = 93)
@@ -30,8 +32,10 @@ class loss:
 				yhat = clf.predict_proba(X_test)[:, 1]
 			elif self.problem == 'cont':
 				yhat = clf.predict(X_test)
-            		return(- self.loss(y_test, yhat))
-        	elif self.method == '5fold':
+			else:
+				yhat = clf.predict_proba(X_test)
+			return(- self.loss(y_test, yhat))
+		elif self.method == '5fold':
 			kf = KFold(n_splits = 5, shuffle = True, random_state = 93)
 			losses = []
 			for train_index, test_index in kf.split(self.X):
@@ -43,6 +47,8 @@ class loss:
 					yhat = clf.predict_proba(X_test)[:, 1]
 				elif self.problem == 'cont':
 					yhat = clf.predict(X_test)
+				else:
+					yhat = clf.predict_proba(X_test)
 				losses.append(- self.loss(y_test, yhat))
 			return(np.average(losses))
             		
@@ -102,34 +108,5 @@ def evaluateRandom(gpgo, loss, n_eval = 20):
 	return(res)
 
 if __name__ == '__main__':
-	X, y = build('/home/jose/pyGPGO/datasets/indian_liver.csv', target_index = 8)
-	
-	from sklearn.svm import SVC
-	clf = SVC()
-	# param = {'C': 1.0}
-	wrapper = loss(clf, X, y)
-
-	# Go test, boy
-	np.random.seed(230)
-	sexp = squaredExponential()
-	gp = GPRegressor(sexp)
-	acq = Acquisition(mode = 'ExpectedImprovement')
-	parameter_dict = {'C':('cont',(0.01, 5)), 'gamma': ('cont',(0.01, 1))}
-	gpgo = GPGO(gp, acq, wrapper.evaluateLoss, parameter_dict)
-	gpgo.run(max_iter = 20)
-
-	np.random.seed(230)	
-	r = evaluateRandom(gpgo, wrapper, n_eval = 21)
-	r = cumMax(r)
-
-	# Plot
-	import matplotlib.pyplot as plt
-	x = np.arange(1, 22)
-	plt.figure()
-	plt.plot(x, -np.array(gpgo.history), label = 'pyGPGO')
-	plt.plot(x, -r, label = 'Random search')
-	plt.grid()
-	plt.legend()
-	plt.xlabel('Number of evaluations')
-	plt.ylabel('Log-loss')
-	plt.show() 
+	g, r = evaluateDataset('/home/jose/pyGPGO/datasets/breast_cancer.csv', target_index = 0, method = '5fold', seed = 20, max_iter = 50)
+	plotRes(g, r) 
