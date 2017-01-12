@@ -9,6 +9,7 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{placeins}
 \newtheorem{mydef}{Theorem}
 
 \makeindex
@@ -24,11 +25,15 @@
 
 \section{Introduction}
 
-This master's thesis objective is to provide an easy to follow manual to users who want to use some form of Bayesian Optimization in practice. While the theory of Bayesian Optimization itself is pretty new, the foundations on which it is implemented in practice have been formally presented since the 90s. This work itself does not develop any new theory, but aims to provide users with both a theoretical and a practical introduction to Bayesian Optimization, as well as a Python implementation that users can use in their research.\\
+This Master's Thesis provides an introduction to both Gaussian Processes and Bayesian Optimization. This work aims to be a multi-objective optimization task:
 
-Readers will find code during theoretical explanations, as I believe the easiest way to learn is to do. This will hopefully be beneficial for the reader. All the code implemented is available with a MIT license in a GitHub repository (\url{https://github.com/hawk31/pyGPGO}). This is a Python ($>$3.5) package that provides most of the functionality presented in this manual.\\
+\begin{itemize}
+\item The first objective of the thesis is to provide the reader with an introduction to Gaussian Process regression and Bayesian optimization. The work is written in such a way that it alternates very often between theoretical and practical (in terms of programming) background. This work is written like a programming book or a manual.
+\item To show the Bayesian Optimization framework works in several real-world machine learning tasks. I do so by selecting several datasets (most of them from biological/physical phenomena), applying such methodology and comparing to other common strategies applied for the same problem.
+\item Finally, and my personal favourite, to provide the user with usable and easy to use software to apply Bayesian Optimization in their research. This comes in the form of a Python ($>$3.5) package named pyGPGO. The code can be freely obtained in \url{https://github.com/hawk31/pyGPGO}. The software is MIT licensed. All the examples and code snippets throughout this manual are based on this software. 
+\end{itemize}
 
-Bayesian Optimization focuses on the global optimization of a function $f:\mathbb{R}^n \rightarrow \mathbb{R}$ over a compact set $A$. The problem can be formalized as:
+We begin by describing the title of this thesis. Bayesian Optimization focuses on the global optimization of a function $f:\mathbb{R}^n \rightarrow \mathbb{R}$ over a compact set $A$. The problem can be formalized as:
 
 \begin{equation}
 \max_{\boldsymbol{x}\in A} f(x)
@@ -36,31 +41,31 @@ Bayesian Optimization focuses on the global optimization of a function $f:\mathb
 
 Most optimization procedures (local based ones such as gradient ascent, for example) assume that the function $f$ is closed-form, that is, can be written in a paper, that it is convex, with known first or second order derivatives or cheap to evaluate. Bayesian optimization focuses on all these problems proposing a very elegant solution. By the use of a surrogate model, a Gaussian Process, a Bayesian optimization procedure can help to find the global minimum of a non-necessarily convex, expensive functions. These methods shine also where there is no closed-form expression to evaluate and does not need any function derivatives.\\
 
-Now is when the machine learning part of the title comes into play. In machine learning, we are usually interested in minimizing (or maximizing the opposite) a loss function $L$. These losses can take many forms, for example, when doing regression, a typical loss might be the mean squared error between predictions and observed values on a holdout test set.
+Now is when the machine learning part of the title comes into play. In machine learning, we are usually interested in minimizing (or maximizing the opposite) a loss function $\mathcal{L}$. These losses can take many forms, for example, when doing regression, a typical loss might be the mean squared error between predictions and observed values on a holdout test set.
 
 \begin{equation}
-L(\boldsymbol{y}, \boldsymbol{\hat{y}}) = \dfrac{1}{n} \sum_i \left(y_i - \hat{y_i}\right)^2
+\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = \dfrac{1}{n} \sum_i \left(y_i - \hat{y_i}\right)^2
 \end{equation}
 
-In binary classification, for example, a very popular loss function example is the logarithmic loss:
+In binary classification, for example, a very popular choice is the logarithmic loss:
 
 \begin{equation}
-L(\boldsymbol{y}, \boldsymbol{\hat{y}}) = -\dfrac{1}{n} = \sum_i \left(y_i \log(\hat{y_i}) + (1 - y_i)\log(1-\hat{y_i})\right)
+\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = -\dfrac{1}{n} = \sum_i \left(y_i \log(\hat{y_i}) + (1 - y_i)\log(1-\hat{y_i})\right)
 \end{equation}
 
-Focus in any case, that these losses are typically defined in a subset of $\mathbb{R}$. We focus on the supervised setting of machine learning, and more specifically regression. Depending on the problem at hand, even evaluating these losses can be very expensive from a computational point of view. This may have to do with the machine learning algorithm used or the size of the dataset at hand. These machine learning algorithms typically have \textit{hyperparameters}, that is, parameters that have to be tuned in a sensible way to get the best performance possible out of these models. In the machine learning community it is common for practitioners to do an hyperparameter grid search or even randomize it. Since the training of a single model can already take substantial resources in terms of CPU cycles or memory, we would like to have a more efficient and cheap way to optimize these hyperparameters. Bayesian optimization will let us do that by proposing the next candidate point $\boldsymbol{x}$ to evaluate according to several criteria.
+Notice that in any case, that these losses are typically defined in a subset of $\mathbb{R}$. We focus on the supervised setting of machine learning, and more specifically regression. Depending on the problem at hand, even evaluating these losses can be very expensive from a computational point of view. This may have to do with the machine learning algorithm used or the size of the dataset at hand. These machine learning algorithms typically have \textit{hyperparameters}, that is, parameters that have to be tuned in a sensible way to get the best performance possible out of these models. In the machine learning community it is common for practitioners to do an hyperparameter grid search or even randomize it. Since the training of a single model can already take substantial resources in terms of CPU cycles or memory, we would like to have a more efficient and cheap way to optimize these hyperparameters. Bayesian optimization will let us do that by proposing the next candidate point $\boldsymbol{x}$ to evaluate according to several criteria.
 
-\section{How this manual is supposed to be read}
+\section{How do I read this?}
 
-Before we dive directly into the topic at hand, it is mandatory to explain how this manual is intended to be read. Different chapters will cover different material, so if the reader is familiar with a topic in a chapter, for example, the chapter on Gaussian Processes, he can skip directly to the chapter on Bayesian Optimization or to the implementation if he wishes. There is no complicated material in any of the chapters, as this manual does not aim to be research material on the the latest advances in the already quite crowded field.\\
+Before we dive directly into the topic at hand, it is mandatory to explain how this manual is intended to be read. Different chapters will cover different material, so if the reader is familiar with a topic in a chapter, for example, the chapter on Gaussian Processes, he can skip directly to the chapter on Bayesian Optimization or to the implementation if he wishes. There is no complicated or unnecessarily advanced material in any of the chapters, as this manual does not aim to be bleeding edge research material. \\
 
-\textbf{Chapter 2} focuses on a swift but thorough introduction to regression problems using Gaussian Processes. These are the surrogate models we will use for Bayesian Optimization in Chapter 3. We will cover the theory behind them both from a weight space view and from a functional view. We will also explain different covariance functions and their role in these models, as well as methods for optimizing their hyperparameters. Finally we will provide the reader with usable code to fit a Gaussian Process in a regression problem. This chapter is heavily based on Carl E. Rasmussen excellent book \textit{Gaussian Processes for Machine Learning}[ref]. In fact, if the reader is interested in a more advanced, wider, slowly-paced introduction to Gaussian Processes, this is the resource to go to. \\
+\textbf{Chapter 2} focuses on a swift but thorough introduction to regression problems using Gaussian Processes. These are the surrogate models we will use for Bayesian Optimization in Chapter 3. We will cover the theory behind them both from a weight space view and from a functional view. We will also explain different covariance functions and their role in these models, as well as methods for optimizing their hyperparameters. Finally we will provide the reader with usable code to fit a Gaussian Process in a regression problem. This chapter is heavily based on Carl E. Rasmussen excellent book \textit{Gaussian Processes for Machine Learning}[ref], an more specially in chapters 2, 4 and 5. In fact, if the reader is interested in a more advanced, wider, slowly-paced introduction to Gaussian Processes, this is by far the best resource to go to. \\
 
-\textbf{Chapter 3} is about the main topic in this work, Bayesian Optimization. Once we have laid down all the foundations of Gaussian Processes, we can start explaining the theory of Bayesian optimization using these as surrogate models. The algorithms, while simple, are very powerful. The role of several acquisition functions, that is to say, the functions that will propose the next point to evaluate will be discussed, as well as their advantages or disadvantages. The references on this chapter will be more diverse than on the previous chapter, as I will try to summarize several publications.\\
+\textbf{Chapter 3} is about the main topic in this work, Bayesian Optimization. Once we have laid down all the foundations of Gaussian Processes, we can start explaining the theory of Bayesian optimization using these as surrogate models. The algorithms, while simple, are very powerful. The role of several acquisition functions, that is to say, the functions that will propose the next point to evaluate will be discussed, as well as their advantages or disadvantages. The references on this chapter will be more diverse than on the previous chapter, as I will try to summarize several publications. Readers already familiar with Gaussian Processes should jump directly into this chapter.\\
 
-\textbf{Chapter 4} covers experiments using the software provided alongside this manual. These are mostly mid-sized regression or classification problems where we will compare the performance of Bayesian Optimization of hyperparameters with several regressors/classifiers with other strategies, such as random search or simulated annealing. Most of these datasets are related to experimental sciences, and some of them are typically used for other benchmarking purposes in other studies. Readers already familiar with Gaussian Processes should jump directly into this chapter.\\
+\textbf{Chapter 4} covers experiments using the software provided alongside this manual. These are mostly mid-sized regression or classification problems where we will compare the performance of Bayesian Optimization of hyperparameters with several regressors/classifiers with other strategies, such as random search or simulated annealing. Most of these datasets are related to experimental sciences, and some of them are typically used for other benchmarking purposes in other studies. \\
 
-\textbf{Chapter 5} is the shortest one. It will cover technical explanations of pyGPGO, the software developed alongside this manual. I will also try to provide practical examples on how to use the software.
+\textbf{Chapter 5} has no theoretical content and is the shortest one. It will cover technical explanations of pyGPGO, the software developed alongside this manual. I will also try to provide practical examples on how to use the software.
 
 \chapter{Gaussian Process regression}
 
@@ -244,6 +249,7 @@ if __name__ == '__main__':
 There's one important concept to explain before we move on. Notice in Figure \ref{fig:drawPrior} that the drawn functions seem to have a characteristic length-scale. This can be interpreted as the distance you have to move in input space before the function value changes significantly. By default, the squared exponential kernel uses a characteristic length-scale of 1 ($l = 1$). To change this behaviour to another, it is sufficient to consider $r/l$ instead of $r$ in Equation \ref{sqexp}. This can be thought as an hyperparameter to optimize, but we will return to this in another section.
 
 \section{Prediction using a Gaussian Process prior}
+\label{pred}
 
 This is probably the most important section in this chapter. We will learn how to incorporate the knowledge of training data $D = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$ into our Gaussian Process to obtain a posterior predictive distribution. We will start considering the case that we have a noiseless function, that is to say, when $\sigma^2_n = 0$. Let us define $K(X, X_{*})$, the covariance function evaluated on train and test points, $K(X, X)$ the covariance function evaluated at only the training points, $K(X_{*}, X_{*})$ equivalently defined for the test values. Notice the last two have to be square matrices by definition.\\
 
@@ -393,7 +399,8 @@ class GPRegressor:
                 self.K = self.covfunc.K(self.X, self.X)
                 self.L = cholesky(self.K + self.sigma * np.eye(self.nsamples)).T
                 self.alpha = solve(self.L.T, solve(self.L, y))
-                self.logp = -.5 * np.dot(self.y, self.alpha) - np.sum(np.log(np.diag(self.L))) - self.nsamples/2 * np.log(2 * np.pi)
+                self.logp = -.5 * np.dot(self.y, self.alpha) - np.sum(np.log(np.diag(self.L)))
+                 - self.nsamples/2 * np.log(2 * np.pi)
 
         def predict(self, Xstar, return_std = False):
                 Xstar = np.atleast_2d(Xstar)
@@ -679,6 +686,146 @@ if __name__ == '__main__':
 \end{figure}
 
 \section{Hyperparameter optimization}
+
+As seen in the previous sections, different covariance functions have different \textit{hyperparameters}. These control how the kernel measures similarity among different instances of $\boldsymbol{x}$. So far, we have chosen these hyperparameters according to those set default in pyGPGO, but one may want to optimize these according to the data they have at hand. Depending on the situation, this optimization may lead to better models, either in terms of accuracy or interpretability. There are several ways to select these hyperparameters, one more analytical, by optimizing the marginal log-likelihood, and simpler ones based on cross-validation.
+
+\subsection{Type II Maximum Likelihood}
+
+This is the Bayesian analytical approach to optimizing hyperparameters. One may quickly notice that Gaussian Processes are non-parametric models, in the sense that apart from the quantities set in the covariance functions, there is nothing else to optimize for. First we will provide a small background on Bayesian model selection. Assume that we have a model  $\mathcal{H}_i$ with \textit{parameters} $\boldsymbol{w}$, \textit{hyperparameters} $\boldsymbol{\theta}$, and we have some training data $X, \boldsymbol{y}$. The posterior over the parameters is easily given by:
+
+\begin{equation}
+\label{posteriorparam}
+p(\boldsymbol{w}|\boldsymbol{y}, X, \boldsymbol{\theta}, \mathcal{H}_i) = \dfrac{p(\boldsymbol{y}|X, \boldsymbol{w}, \mathcal{H}_i)p(\boldsymbol{w}|\boldsymbol{\theta}, \mathcal{H}_i)}{p(\boldsymbol{y}|X, \boldsymbol{\theta}, \mathcal{H}_i)}
+\end{equation}
+
+where $p(\boldsymbol{y}|X, \boldsymbol{w}, \mathcal{H}_i)$ is the likelihood, $p(\boldsymbol{w}|\boldsymbol{\theta}, \mathcal{H}_i)$ our prior distribution over the parameters and $p(\boldsymbol{y}|X, \boldsymbol{\theta}, \mathcal{H}_i)$ is called the \textit{evidence} or marginal likelihood. Notice that this last quantity is nothing but the integral over parameter space of the numerator in Equation \ref{posteriorparam}.\\
+
+We can do the same at the next level of inference for the hyperparameters. The posterior of hyperparameters is defined as:
+
+\begin{equation}
+\label{posteriorhyper}
+p(\boldsymbol{\theta}|\boldsymbol{y}, X, \mathcal{H}_i) = \dfrac{p(\boldsymbol{y}|X, \boldsymbol{\theta}, \mathcal{H}_i)p(\boldsymbol{\theta}|\mathcal{H}_i)}{p(\boldsymbol{y}|X, \mathcal{H}_i)}
+\end{equation}
+
+where now $p(\boldsymbol{\theta}|\mathcal{H}_i)$ is our prior over hyperparameters. We are interested however in optimizing the denominator in Equation \ref{posteriorhyper} with respect to the hyperparameters. Typically, in Bayesian inference to perform the kind of integrals presented before, one has to resort to sampling procedures related to Markov Chain Monte Carlo, such as the Gibbs sampler. In the case of Gaussian processes, all computations are analytically tractable. In fact, the expression of the marginal likelihood was presented in Section \ref{pred}. We reproduce the expression here for completeness:
+
+\begin{equation}
+\log p(\boldsymbol{y}|X) = - \dfrac{1}{2}\boldsymbol{y}^T(K + \sigma^2_n I)^{-1}\boldsymbol{y} - \dfrac{1}{2}\log |K + \sigma^2_n I| - \dfrac{n}{2}\log 2\pi
+\end{equation}
+
+For typical local optimization methods to work fairly well, we may also need an specification of the derivative of the log-marginal likelihood w.r.t. the hyperparameters.
+
+\begin{equation}
+\dfrac{\partial}{\partial \theta_j}\log p(\boldsymbol{y}|X, \boldsymbol{\theta}) = \dfrac{1}{2}\boldsymbol{y}^T K^{-1}\dfrac{\partial K}{\partial \theta_j}K^{-1}\boldsymbol{y} - \dfrac{1}{2}\textrm{tr}\left(K^{-1} \dfrac{\partial K}{\partial \theta_j} \right)
+\end{equation}
+
+where $\dfrac{\partial K}{\partial \theta_j}$ denotes the derivative of the selected covariance function, evaluated at each pair of instances of the training set. For optimization, one may choose to make use of this expression or not, depending on both of the optimization algorithm (gradient ascent, L-BFGS-B...) or on the cost of evaluation of the derivative. In pyGPGO, most of the covariance functions are implemented with a method \texttt{gradK} to return the gradient, for example, the complete specification of the \texttt{squaredExponential} class is:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+class squaredExponential:
+        def __init__(self, l = 1, sigma2f = 1, sigma2n = 0):
+                self.l = l
+                self.sigma2f = sigma2f
+                self.sigma2n = sigma2n
+
+        def K(self, X, Xstar):
+                r = l2norm_(X, Xstar)
+                return(np.exp(-.5 * r ** 2 / self.l ** 2))
+
+        def gradK(self, X, Xstar, param = 'l'):
+                if param == 'l':
+                        r = l2norm_(X, Xstar)
+                        num = r**2 * np.exp(-r**2 /(2* self.l**2))
+                        den = self.l ** 3
+                        l_grad = num / den
+                        return(l_grad)
+                else:
+                        raise ValueError('Param not found')               
+\end{minted}
+
+By default, the \texttt{GPRegressor} class in pyGPGO does no hyperparameter optimization unless explicitly asked to. If the gradient of the covariance function is available, it will make use of it, if not, it will be estimated in a numerical fashion using the L-BFGS-B algorithm.
+
+
+\subsubsection{Another toy example: Optimizing the characteristic length-scale}
+
+To illustrate the previous point, it may be a good idea to see the behaviour of the marginal log-likelihood and its gradient when we modify the characteristic length scale $l$ in the squared exponential covariance function. The sine function will also serve as playground here. The code below produces Figure \ref{fig:logmarginal}.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+import numpy as np
+from GPRegressor import GPRegressor
+from covfunc import squaredExponential
+import matplotlib.pyplot as plt
+
+def gradient(gp, sexp):
+        alpha = gp.alpha
+        K = gp.K
+        gradK = sexp.gradK(gp.X, gp.X, 'l')
+        inner = np.dot(np.atleast_2d(alpha).T, np.atleast_2d(alpha)) - np.linalg.inv(K)
+        return(.5 * np.trace(np.dot(inner, gradK)))
+
+
+if __name__ == '__main__':
+        x = np.arange(0, 2 * np.pi + 0.01, step = np.pi / 2)
+        X = np.array([np.atleast_2d(u) for u in x])[:, 0]
+        y = np.sin(x)
+
+        logp = []
+        grad = []
+        length_scales = np.linspace(0.1, 2, 1000)
+
+        for l in length_scales:
+                sexp = squaredExponential(l = l)
+                gp = GPRegressor(sexp)
+                gp.fit(X, y)
+                logp.append(gp.logp)
+                grad.append(gradient(gp, sexp))
+
+        plt.figure()
+        plt.subplot(2, 1, 1)
+        plt.plot(length_scales, logp)
+        plt.title('Marginal log-likelihood')
+        plt.xlabel('Characteristic length-scale l')
+        plt.ylabel('log-likelihood')
+        plt.grid()
+        plt.subplot(2, 1, 2)
+        plt.plot(length_scales, grad, '--', color = 'red')
+        plt.title('Gradient w.r.t. l')
+        plt.xlabel('Characteristic length-scale l')
+        plt.grid()
+        plt.show()
+\end{minted}
+\FloatBarrier
+
+\begin{figure}
+\caption{Log-marginal likelihood and its gradient w.r.t to the characteristic length-scale. Notice there seems to be an optimal point at around $l = 1.4$.}
+\label{fig:logmarginal}
+\includegraphics[width=\textwidth]{figures/chapter2/logmarginal}
+\end{figure}
+
+\subsection{Cross validation}
+
+There is a very extensive analytical evaluation of cross validation using Gaussian Process in Rasmussen's book. Here, we will only lay down some very basic ideas related to model selection from a very basic machine learning perspective. The concepts presented here should not be new to the reader, but are more useful if one plans to use Gaussian Processes only as a regression model, not as a surrogate one towards another objective, as we will do in the following chapter. \\
+
+To evaluate the performance of hyperparameters $\boldsymbol{\theta}$, in $D=\left( X, \boldsymbol{y}\right)$ one could do the following:
+
+\begin{itemize}
+\item \textbf{Holdout test}. Consider $D = \left\lbrace D_T, D_V \right\rbrace$ as a training and validation set from your data and $\boldsymbol{\nu}$ the set of hyperparameter vectors $\boldsymbol{\nu}$ to test. Train your Gaussian Process regressor on $D_T$ with some subset of hyperparameters from $\boldsymbol{\nu}$ and test its performance according to some loss metric $\mathcal{L}$ on $D_V$. Choose hyperparameters according to the lower loss obtained.
+\item \textbf{$k$-fold cross validation}. Instead of considering a single test set $D_V$, partition $D={D_1,\dots, D_k}$. Train your model iteratively on $k-1$ sets and test on the remaining one. Consider an average of losses for each hyperparameter to test.  
+\end{itemize}
+
+
 
 \chapter{Bayesian optimization}
 \chapter{Experiments}

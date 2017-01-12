@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  10 JAN 2017 18:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  12 JAN 2017 14:26
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -704,6 +704,8 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip53
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/home/jose/texlive/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
 )
 \c@mydef=\count143
 \@indexfile=\write6
@@ -718,20 +720,20 @@ runsystem(rm main.aex)...executed.
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
  (/home/jose/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count144
@@ -763,7 +765,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring OFF on input line 16.
+Package hyperref Info: Link coloring OFF on input line 17.
 
 (/home/jose/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -773,9 +775,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count150
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 17.
+LaTeX Info: Redefining \pageref on input line 17.
+LaTeX Info: Redefining \nameref on input line 17.
 
 (./main.out) (./main.out)
 \@outlinefile=\write7
@@ -833,11 +835,11 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 20.
+LaTeX Font Info:    Try loading font information for U+msa on input line 21.
 (/home/jose/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 20.
+LaTeX Font Info:    Try loading font information for U+msb on input line 21.
 
 (/home/jose/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -854,63 +856,59 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 Chapter 1.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 31.
+(/home/jose/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 31.
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 29--30
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--56
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 57--58
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
 [6]
 Chapter 2.
 
-Overfull \hbox (15.58939pt too wide) in paragraph at lines 67--68
+Overfull \hbox (15.58939pt too wide) in paragraph at lines 72--73
 \OT1/cmr/m/n/10 We will fo-cus on re-gres-sion prob-lems in this chap-ter. As-s
 ume we have some la-belled data $\OML/cmm/m/it/10 D \OT1/cmr/m/n/10 = []$,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--70
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
 [7
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
@@ -923,20 +921,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
 E.pygtex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
-) <figures/chapter2/drawPrior.pdf, id=161, 812.1341pt x 573.64313pt>
+) <figures/chapter2/drawPrior.pdf, id=171, 812.1341pt x 573.64313pt>
 File: figures/chapter2/drawPrior.pdf Graphic file (type pdf)
 
 <use figures/chapter2/drawPrior.pdf>
-Package pdftex.def Info: figures/chapter2/drawPrior.pdf used on input line 241.
+Package pdftex.def Info: figures/chapter2/drawPrior.pdf used on input line 246.
 
 (pdftex.def)             Requested size: 483.69687pt x 341.65013pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--249
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 296--297
+Underfull \hbox (badness 10000) in paragraph at lines 302--303
 
  []
 
@@ -945,40 +943,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 296--297
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.298 L
+l.304 L
        et us now consider the scenario where observations are not noise-free...
  <./figures/chapter2/drawPrior.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 353--354
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
 
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 356.
+put line 362.
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/C35B2BD8210D039630A1B756DA04E97E9D188FF14B5B5A34504F2B9625FD44D
+(./_minted-main/85B43FECD3A9742F76E3BCC90D3C48A79D188FF14B5B5A34504F2B9625FD44D
 E.pygtex [11]) [12]
 \openout3 = `main.pyg'.
 
 
 (./_minted-main/CBAFD97C67C91ADDAEA34D3DAF0D40079D188FF14B5B5A34504F2B9625FD44D
-E.pygtex) <figures/chapter2/GPsine.pdf, id=249, 760.64174pt x 514.92375pt>
+E.pygtex) <figures/chapter2/GPsine.pdf, id=259, 760.64174pt x 514.92375pt>
 File: figures/chapter2/GPsine.pdf Graphic file (type pdf)
 
 <use figures/chapter2/GPsine.pdf>
-Package pdftex.def Info: figures/chapter2/GPsine.pdf used on input line 470.
+Package pdftex.def Info: figures/chapter2/GPsine.pdf used on input line 477.
 (pdftex.def)             Requested size: 483.69687pt x 327.44437pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 478.
 
-
-(/home/jose/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 478.
-
-Underfull \hbox (badness 10000) in paragraph at lines 483--484
+Underfull \hbox (badness 10000) in paragraph at lines 490--491
 
  []
 
@@ -992,7 +982,7 @@ figure.2.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.522 \end{equation}
+l.529 \end{equation}
                      <./figures/chapter2/GPsine.pdf>]
 \openout3 = `main.pyg'.
 
@@ -1018,50 +1008,84 @@ E.pygtex [15])
 
 
 (./_minted-main/01846CE0AB08FBB5370F551BDD8700E49D188FF14B5B5A34504F2B9625FD44D
-E.pygtex) <figures/chapter2/zoo.pdf, id=304, 995.51924pt x 720.89326pt>
+E.pygtex) <figures/chapter2/zoo.pdf, id=314, 995.51924pt x 720.89326pt>
 File: figures/chapter2/zoo.pdf Graphic file (type pdf)
 
 <use figures/chapter2/zoo.pdf>
-Package pdftex.def Info: figures/chapter2/zoo.pdf used on input line 678.
+Package pdftex.def Info: figures/chapter2/zoo.pdf used on input line 685.
 (pdftex.def)             Requested size: 483.69687pt x 350.25981pt.
  [16] [17pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.2.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.683 \chapter
-              {Bayesian optimization} <./figures/chapter2/zoo.pdf>] [18]
-Chapter 3.
-[19
+l.691 
+       <./figures/chapter2/zoo.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 701--702
 
-] [20
+ []
+
+\openout3 = `main.pyg'.
+
+
+(./_minted-main/778010B1D483D75C07C76F2DA0721C6B9D188FF14B5B5A34504F2B9625FD44D
+E.pygtex [18])
+\openout3 = `main.pyg'.
+
+
+(./_minted-main/69039E575068EBA51D5DDA94862D7B089D188FF14B5B5A34504F2B9625FD44D
+E.pygtex [19])
+<figures/chapter2/logmarginal.pdf, id=366, 710.95612pt x 282.7564pt>
+File: figures/chapter2/logmarginal.pdf Graphic file (type pdf)
+
+<use figures/chapter2/logmarginal.pdf>
+Package pdftex.def Info: figures/chapter2/logmarginal.pdf used on input line 81
+4.
+(pdftex.def)             Requested size: 483.69687pt x 192.37534pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 819--820
+
+ []
+
+[20] [21pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.2.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.830 \chapter
+              {Bayesian optimization} <./figures/chapter2/logmarginal.pdf>]
+[22
+
+]
+Chapter 3.
+[23] [24
 
 ]
 Chapter 4.
-[21] [22
+[25] [26
 
 ]
 Chapter 5.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 687.
-[23]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 687.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 834.
+[27]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 834.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 687.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 687.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 834.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 834.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F8127017F7408B0C953AED36D9471309;1225.
+(rerunfilecheck)             Checksum: F7FC9223B56FA3F1A757DE13E99298A8;1356.
 runsystem(rm main.pyg)...executed.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 687.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 834.
  ) 
 Here is how much of TeX's memory you used:
- 10463 strings out of 493013
- 161549 string characters out of 6135623
- 302614 words of memory out of 5000000
- 13722 multiletter control sequences out of 15000+600000
+ 10509 strings out of 493013
+ 162894 string characters out of 6135623
+ 303189 words of memory out of 5000000
+ 13745 multiletter control sequences out of 15000+600000
  16500 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,13n,35p,1076b,553s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,13n,35p,1082b,555s stack positions out of 5000i,500n,10000p,200000b,80000s
 </home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></h
 ome/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></ho
 me/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/jos
@@ -1086,10 +1110,10 @@ s/type1/public/amsfonts/cm/cmsy7.pfb></home/jose/texlive/texmf-dist/fonts/type1
 c/amsfonts/cm/cmtt10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsf
 onts/symbols/msbm10.pfb></home/jose/texlive/texmf-dist/fonts/type1/urw/helvetic
 /uhvr8a.pfb>
-Output written on main.pdf (23 pages, 511654 bytes).
+Output written on main.pdf (27 pages, 537137 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
- 336 compressed objects within 4 object streams
- 84 named destinations out of 1000 (max. 500000)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 531 PDF objects out of 1000 (max. 8388607)
+ 377 compressed objects within 4 object streams
+ 96 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

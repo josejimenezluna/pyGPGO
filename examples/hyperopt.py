@@ -1,9 +1,7 @@
 import numpy as np
 from GPRegressor import GPRegressor
-from covfunc import *
+from covfunc import squaredExponential
 import matplotlib.pyplot as plt
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF
 
 def gradient(gp, sexp):
 	alpha = gp.alpha
@@ -14,32 +12,31 @@ def gradient(gp, sexp):
 
 
 if __name__ == '__main__':
-	X = np.array([[1], [2], [7], [18]])
-	y = np.array([0.5, 1.2, 0.6, 2])
+	x = np.arange(0, 2 * np.pi + 0.01, step = np.pi / 2)
+	X = np.array([np.atleast_2d(u) for u in x])[:, 0]
+	y = np.sin(x)
 
 	logp = []
-	logsk = []
 	grad = []
-	gradsk = []
-	g_range = np.linspace(0.01, 10, 1000)
+	length_scales = np.linspace(0.1, 2, 1000)
 
-	for l in g_range:
-		sexp = rationalQuadratic(alpha = 1, l = l)
+	for l in length_scales:
+		sexp = squaredExponential(l = l)
 		gp = GPRegressor(sexp)
 		gp.fit(X, y)
 		logp.append(gp.logp)
 		grad.append(gradient(gp, sexp))
 
-		#rbf = RBF(l, length_scale_bounds = 'fixed' )
-		#u = GaussianProcessRegressor(rbf)
-		#u.fit(X, y)
-		#logsk.append(u.log_marginal_likelihood_value_)
-		#gradsk.append(u.log_marginal_likelihood(theta = np.array(), eval_gradient = True)[1])
-
-	plt.plot(g_range, logp)
-	#plt.plot(l_range, logsk)
 	plt.figure()
-	plt.plot(g_range, grad)
-	#plt.plot(l_range, gradsk)
+	plt.subplot(1, 2, 1)
+	plt.plot(length_scales, logp)
+	plt.title('Marginal log-likelihood')
+	plt.xlabel('Characteristic length-scale l')
+	plt.ylabel('log-likelihood')
+	plt.grid()
+	plt.subplot(1, 2, 2)
+	plt.plot(length_scales, grad, '--', color = 'red')
+	plt.title('Gradient w.r.t. l')
+	plt.xlabel('Characteristic length-scale l')
 	plt.grid()
 	plt.show()
