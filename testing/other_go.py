@@ -10,7 +10,7 @@ class SimulatedAnnealing:
 		self.best = -np.inf
 
 	def _accept(self, sample):
-		newval = f(**sample)
+		newval = self.f(**sample)
 		if newval > self.best:
 			self.best = newval
 		else:
@@ -18,11 +18,9 @@ class SimulatedAnnealing:
 			if np.random.uniform() < p:
 				self.best = newval
 		self.history.append(self.best)
-		self.T = self.cooling * self.T
+		self.T *= self.cooling
 
 	def run(self, n_iter = 50):
 		for i in range(n_iter):
 			sample = self.sampler()
-			self._accept(sample)
-		 
-		
+			self._accept(sample)	

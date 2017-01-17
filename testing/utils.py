@@ -69,6 +69,7 @@ def build(csv_path, target_index, header = None):
 	return X, y
 	
 def evaluateDataset(csv_path, target_index, method = 'holdout', seed = 230, max_iter = 50):
+	print('Now evaluating {}...'.format(csv_path))
 	from sklearn.svm import SVC
 	X, y = build(csv_path, target_index)
 
@@ -101,10 +102,12 @@ def plotRes(gpgo_history, random, sa, datasetname):
 	plt.plot(x, -random, label = 'Random search')
 	plt.plot(x, -sa, label = 'Simulated annealing')
 	plt.grid()
-	plt.legend()
+	plt.legend(loc = 0)
 	plt.xlabel('Number of evaluations')
 	plt.ylabel('Best log-loss found')
-	plt.title(datasetname.split('.')[0])
+	datasetname = datasetname.split('.')[0]
+	plt.title(datasetname)
+	plt.savefig(os.path.join(os.path.abspath('.'), 'testing/results/{}.pdf'.format(datasetname)))
 	plt.show()
 	return None
 
