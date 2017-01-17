@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from GPGO import GPGO
 from GPRegressor import GPRegressor
@@ -7,6 +8,7 @@ from sklearn.model_selection import train_test_split, KFold
 from sklearn.metrics import log_loss, mean_squared_error
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
+from testing.other_go import SimulatedAnnealing
 
 class loss:
 	def __init__(self, model, X, y, method = 'holdout', problem = 'binary'):
@@ -84,18 +86,25 @@ def evaluateDataset(csv_path, target_index, method = 'holdout', seed = 230, max_
 	np.random.seed(seed)     
 	r = evaluateRandom(gpgo, wrapper, n_eval = max_iter + 1)
 	r = cumMax(r)
-	return np.array(gpgo.history), r
 
-def plotRes(gpgo_history, random):
+	np.random.seed(seed)
+	sa = evaluateSA(gpgo, wrapper, n_eval = max_iter + 1)
+	sa = cumMax(sa)
+	
+	return np.array(gpgo.history), r, sa
+
+def plotRes(gpgo_history, random, sa, datasetname):
 	import matplotlib.pyplot as plt
 	x = np.arange(1, len(random) + 1)
 	plt.figure()
 	plt.plot(x, -gpgo_history, label = 'pyGPGO')
 	plt.plot(x, -random, label = 'Random search')
+	plt.plot(x, -sa, label = 'Simulated annealing')
 	plt.grid()
 	plt.legend()
 	plt.xlabel('Number of evaluations')
 	plt.ylabel('Best log-loss found')
+	plt.title(datasetname.split('.')[0])
 	plt.show()
 	return None
 
@@ -107,6 +116,16 @@ def evaluateRandom(gpgo, loss, n_eval = 20):
 		res.append(l)
 	return(res)
 
+def evaluateSA(gpgo, loss, T = 100, cooling = 0.9, n_eval = 50):
+	res = []
+	sa = SimulatedAnnealing(gpgo._sampleParam, loss.evaluateLoss, T = T, cooling = cooling)
+	sa.run(n_eval)
+	return(sa.history)
+
 if __name__ == '__main__':
-	g, r = evaluateDataset('/home/jose/pyGPGO/datasets/breast_cancer.csv', target_index = 0, method = '5fold', seed = 20, max_iter = 50)
-	plotRes(g, r) 
+	path = '/home/jose/pyGPGO/datasets/'
+	datasets = ['breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv', 'lsvt.csv', 'pima-indians-diabetes.csv']
+	targets = [0, 10, 16, 0, 8]
+	for dataset, target in zip(datasets, targets):
+		g, r, sa = evaluateDataset(os.path.join(path, dataset), target_index = target, method = '5fold', seed = 20, max_iter = 50)
+		plotRes(g, r, sa, dataset)
