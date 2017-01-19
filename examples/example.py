@@ -8,7 +8,7 @@ from GPGO import GPGO
 def plotGPGO(gpgo, param):
     param_value = list(param.values())[0][1]
     x_test = np.linspace(param_value[0], param_value[1], 1000).reshape((1000, 1))
-    hat = gp.predict(x_test, return_std = True)
+    hat = gpgo.GP.predict(x_test, return_std = True)
     y_hat, y_var = hat[0], hat[1]
     l, u = y_hat - 1.96 * np.sqrt(y_var), y_hat + 1.96 * np.sqrt(y_var)
     plt.figure()

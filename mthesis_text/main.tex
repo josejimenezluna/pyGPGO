@@ -6,11 +6,13 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{minted}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{placeins}
 \newtheorem{mydef}{Theorem}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
 
 \makeindex
 
@@ -826,8 +828,194 @@ To evaluate the performance of hyperparameters $\boldsymbol{\theta}$, in $D=\lef
 \end{itemize}
 
 
-
 \chapter{Bayesian optimization}
+
+\section{Preliminaries}
+
+In this chapter we will deal with the main topic of this master's thesis, Bayesian Optimization. Here, we approach global optimization from the viewpoint of Bayesian theory, as a sequential problem. For the moment, imagine that we have a very expensive function to evaluate $f:\mathbb{R}^n: \rightarrow \mathbb{R}$. This function, for the purposes of this work, will be the negative of a loss function in a machine learning problem, or any other fitness function that we wish to maximize. Formally, we wish to maximize over a compact set $\mathcal{A}$.
+
+\begin{equation}
+\max_{\boldsymbol{x}\in \mathcal{A}} f(\boldsymbol{x})
+\end{equation}
+
+For technical reasons, we also assume that the function is \textit{Lipschitz-continuous}, that is, there exists some constant $C$ such that $\forall \boldsymbol{x}_1, \boldsymbol{x}_2 \in \mathcal{A}$:
+
+\begin{equation}
+\lVert f(\boldsymbol{x}_1) - f(\boldsymbol{x}_2) \rVert \leq C \lVert \boldsymbol{x}_1  - \boldsymbol{x}_2\rVert
+\end{equation}
+
+We are also interested in global optimization instead of local, since loss functions do not have to be convex over hyperparameter space. That is, we can not assume that we can find a point $\boldsymbol{x^{*}}$ such that:
+
+\begin{equation}
+f(\boldsymbol{x}^*) \geq f(\boldsymbol{x}), \forall \boldsymbol{x}\;\; \mathrm{s.t.} \rVert \boldsymbol{x}^* - \boldsymbol{x} \lVert < \epsilon
+\end{equation}
+
+The function we are typically interested may not have an analytical expression that we can analyse, take derivatives etc. Most we will assume here is that we can just query the function over a new point to evaluate $\boldsymbol{x}$ and some bounds to optimize over. This is normally called a \textit{black box} function. Moreover, function response can be noisy. This is the case when optimizing a loss or fitness function in machine learning, since we only have an estimation of its real value.\\ 
+
+Bayesian optimization has risen over the last few years as a very attractive method to optimize expensive to evaluate black box functions. [refs] It has grabbed the attention of machine learning researchers over simpler model hyperparameter optimization strategies, such as grid search [ref], random search [ref] or simulated annealing [ref]. Bayesian optimization uses prior information and evidence to define a posterior distribution over the space of functions. The model we will use to model this posterior is Gaussian Process regression, for which we have studied its basics in the previous chapter.
+
+
+\section{The bayesian optimization framework}
+
+Assume that we have sampled our function $f$ to optimize a small number of times $k$. Notice this can be treated as a regression problem where $\boldsymbol{x}_k$ is the $k$-th point we have sampled and $y_k$ its (possibly noisy) function evaluation. We can fit a Gaussian Process regression model over the set of sampled points and evaluations. Remember from \ref{pred} that this gives us a posterior distribution over all possible values in $\mathcal{A}$. Basically, we will use this information to optimize the function efficiently. Note by $D_n = \left\lbrace \boldsymbol{x}_i, y_i, i=1,\dots,n\right\rbrace$.\\
+
+Bayesian optimization is a sequential model-based approach for optimization. The posterior distribution facilitated by the Gaussian Process allows us to define what we will call an \textit{acquisition function} $\alpha$ that will guide the search for the most promising point from $\mathcal{A}$ to evaluate each step. Once we have sampled said point, we re-fit our Gaussian Process to update our posterior with the new information gathered and proceed the same way until convergence. The mentioned acquisition functions are both heuristic and myopic, in the sense that they define some behaviour given the posterior and only take the information available at a single step of the optimization. Typically, these functions trade-off exploration and exploitation of the target function, and their optima is close to where the posterior variance of the Gaussian Process is large (exploration) or where its posterior mean is high (exploitation). We will choose the next sampled point to evaluate by maximizing these acquisition functions. Algorithm \ref{bayesopt} provides pseudo-code to implement a basic bayesian optimization module.
+
+
+\begin{algorithm}
+	\caption{Bayesian optimization framework.}
+		\label{bayesopt}
+		\begin{algorithmic}[1]
+			\State{Sample a small number of points $\boldsymbol{x} \in \mathcal{A}$. Evaluate $f(\boldsymbol{x})$ to get $\mathcal{D}_n$}
+			\For{$n=1, 2, \dots$}
+				\State{Fit a GP regression model on $\mathcal{D}_n$}
+				\State{$\boldsymbol{x}_{n+1} \gets \argmax_{\boldsymbol{x}} \alpha(\boldsymbol{x}, \mathcal{D}_n)$}
+				\State{Evaluate $f(\boldsymbol{x}_{n+1}) = y_{n+1}$}
+				\State{Augment data $\mathcal{D}_{n+1} = \left\lbrace \mathcal{D}_n, (\boldsymbol{x}_{n+1}, y_{n+1}) \right\rbrace$}
+			\EndFor
+		\end{algorithmic}
+\end{algorithm}
+
+\section{On acquisition functions}
+
+Thus far we have described the statistical model behind the optimization framework. The next natural step to ask is how we can define acquisition functions depending on its behaviour or the function we wish to maximize. In pyGPGO, the most common acquisition functions are implemented under the \texttt{Acquisition} class in the \texttt{acquisition} module. We can classify most of them in three main groups: improvement-based, optimistic, and information-based policies. We will start by analysing each of them:
+
+\subsection{Improvement-based policies}
+
+These acquisition functions' behaviour is to favour points that are in some way likely to improve upon the best observed value so far $\tau$. Since any finite sample of a Gaussian Process is a multivariate Gaussian distribution, the most straightforward idea is to use an estimation of the \textit{probability of improvement} of point evaluation $\nu$ w.r.t. $\tau$.
+
+\begin{equation}
+\alpha_{\mathrm{PI}}(\boldsymbol{x}, \mathcal{D}_n) = P\left(\nu > \tau\right) = \Phi\left(\dfrac{\mu_n(\boldsymbol{x}) - \tau}{\sigma_n(\boldsymbol{x})}  \right)
+\end{equation}
+
+where $\Phi$ denotes the standard normal cumulative density function and $\mu_n(\boldsymbol{x})$ and $\sigma_n(\boldsymbol{x})$ are the posterior mean and standard deviation of the fitted Gaussian Process at step $n$. In a sense, what this acquisition function is doing is just accumulating the posterior probability mass above $\tau$ at $\boldsymbol{x}$. The associated utility function is just an indicator of improvement $I(\boldsymbol{x},\nu, \theta) = \mathbb{I}(\nu > \tau)$. While this is a very natural acquisition function to use, it has been shown [ref] that it behaves greedily if the best $\tau$ is not known. \\
+
+Another very popular acquisition function is called \textit{expected improvement}. This incorporates the amount of improvement over $\tau$ by weighing the probability of improvement over the difference $\nu - \tau$. Formally:
+
+\begin{equation}
+I(\boldsymbol{x}, \nu, \theta) = (\nu - \tau)\mathbb{I}(\nu > \tau)
+\end{equation}
+
+Taking the expectation yields the expected improvement acquisition function:
+
+\begin{equation}
+\alpha_{\mathrm{EI}}(\boldsymbol{x}, \mathcal{D}_n) = \mathbb{E}\left[I(\boldsymbol{x}, \nu, \theta)\right] = (\mu_n(\boldsymbol{x}) - \tau)\Phi\left(\dfrac{\mu_n(\boldsymbol{x}) - \tau}{\sigma_n(\boldsymbol{x})}  \right) + \sigma_n(\boldsymbol{x})\phi\left( \dfrac{\mu_n(\boldsymbol{x}) - \tau}{\sigma_n(\boldsymbol{x})} \right)
+\end{equation}
+
+where $\phi$ is in this case the standard normal density function. This acquisition function is by far the most used, since it has been empirically studied [ref] and proven convergence rates for [ref]. We have assumed that $\tau$ is the best observed value so far during the optimization procedure, but theoretical convergence is only guaranteed when $\tau$ is the best value $f$ can take in $\mathcal{A}$. During practical research, however, this does not seem to be a concern.[ref] 
+
+\subsection{Optimistic policies}
+
+Optimistic acquisition functions have their origins in the multi-armed bandit setting [ref]. These policies behave optimistically in the face of uncertainty, as a way to tradeoff exploration and exploitation. The most popular of methods in this class is the \textit{Gaussian process upper confidence bound} (GP-UCB) [ref], with provable regret bounds. It works by taking a quantile of the posterior process, and since it is Gaussian, we can derive the result analytically:
+
+\begin{equation}
+\alpha_{\mathrm{UCB}}(\boldsymbol{x}, \mathcal{D}_n) = \mu_n(\boldsymbol{x}) + \beta_n\sigma_n(\boldsymbol{x})
+\end{equation}
+
+where $\beta_n$ controls the quantile we may be interested in. Theoretically motivated by the multi-armed bandits, there are guidelines to select and schedule $\beta_n$ dynamically. Notice that if we choose $\beta = \beta_n$, to be one value or another, we will be encouraging the algorithm to exploit frequently by choosing points with high posterior mean (small $\beta$) or to explore frantically by choosing points with high posterior variance (high $\beta$).
+
+\subsection{Information-based policies}
+
+These are a newer class of methods that consider the posterior distribution over an unknown minimizer $\boldsymbol{x}^*$. One of the most popular policies in this categories is again motivated by the multi-armed bandit problem, Thompson sampling. [ref]. This very old strategy consists in randomly sampling rewards from the posterior distribution and picking the highest one. It is a randomized acquisition function in the sense:
+
+\begin{equation}
+\boldsymbol{x}_{n+1} \sim p_{*}(\boldsymbol{x}|\mathcal{D}_n)
+\end{equation}
+
+This method, however, is not as simple to implement as the previously discussed one. It is not entirely clear how to sample in the continuous space of the Gaussian Process. There have been studies that solve this issue by using techniques like spectral sampling [ref]. We could define formally this acquisition function:
+
+\begin{equation}
+\alpha_{\mathrm{TS}}(\boldsymbol{x}, \mathcal{D}_n) = f^{(n)}(\boldsymbol{x})
+\end{equation}
+
+where $f^{(n)} \sim GP\left(\mu(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x'})\right)$ by spectral sampling. It has been shown, however, that this method tends to perform greedily on high-dimensional spaces[ref]. Another new approach is entropy-based [ref]. They aim to reduce the uncertainty in location $\boldsymbol{x}^{*}$ by choosing points likely to reduce the entropy in $p(\boldsymbol{x}|\mathcal{D}_n)$. The acquisition function can be defined as:
+
+\begin{equation}
+\label{acqes}
+\alpha_{\mathrm{ES}}(\boldsymbol{x}|\mathcal{D}_n) = H(\boldsymbol{x}^*|\mathcal{D}_n) - \mathbb{E}_{y|\mathcal{D}_n, \boldsymbol{x}}\left[ H(\boldsymbol{x}^*|\mathcal{D}_n \cup \left\lbrace (\boldsymbol{x}, y) \right\rbrace) \right]
+\end{equation}
+
+where $H$ notes the differential entropy function of the posterior distribution. As with Thompson sampling, the function is not tractable in continuous spaces. Several studies have been done approximating this quantity, either by using simple Monte Carlo sampling [ref] or a space discretization of $\mathcal{A}$. A recent paper [ref] introduced \textit{predictive entropy search} (PES), a method to remove the need for discretization by rewriting Equation \ref{acqes} as:
+
+\begin{equation}
+\alpha_{\mathrm{PES}}(\boldsymbol{x}, \mathcal{D}_n) = H(y|\mathcal{D}_n, \boldsymbol{x}) - \mathbb{E}_{\boldsymbol{x}^*|\mathcal{D}_n}\left[ H(y |\mathcal{D}_n, \boldsymbol{x}, \boldsymbol{x}^*)  \right]
+\end{equation}
+
+The expectation is approximated in the original paper by Monte Carlo with Thompson samples, with simplifying assumptions. This is arguably the state of the art in acquisition functions, according to the results reported in [ref].\\
+
+\subsection{Example: visualizing the behaviour of an acquisition function}
+
+To demonstrate the behaviour of different acquisition functions on a step of Bayesian optimization, we will create a small script with our sine function example. This will help us understand visually the trade-off between exploration and exploitation in each case. The code provided below produces Figure \ref{fig:acqzoo}.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+import numpy as np
+from GPRegressor import GPRegressor
+from acquisition import Acquisition
+from covfunc import squaredExponential
+from GPGO import GPGO
+
+
+def plotGPGO(gpgo, param, index, new = True):
+        param_value = list(param.values())[0][1]
+        x_test = np.linspace(param_value[0], param_value[1], 1000).reshape((1000, 1))
+        y_hat, y_var = gpgo.GP.predict(x_test, return_std = True)
+        std = np.sqrt(y_var)
+        l, u = y_hat - 1.96 * std, y_hat + 1.96 * std
+        if new:
+                plt.figure()
+                plt.subplot(5, 1, 1)
+                plt.fill_between(x_test.flatten(), l, u, alpha = 0.2)
+                plt.plot(x_test.flatten(), y_hat)
+        plt.subplot(5, 1, index)
+        a = np.array([-gpgo._acqWrapper(np.atleast_1d(x)) for x in x_test]).flatten()
+        plt.plot(x_test, a, color = colors[index - 2], label = acq_titles[index - 2])
+        gpgo._optimizeAcq(method = 'L-BFGS-B', n_start = 1000)
+        plt.axvline(x = gpgo.best)
+        plt.legend(loc = 0)
+        
+
+
+if __name__ == '__main__':
+        def f(x):
+                return(np.sin(x))
+
+        acq_1 = Acquisition(mode = 'ExpectedImprovement')
+        acq_2 = Acquisition(mode = 'ProbabilityImprovement')
+        acq_3 = Acquisition(mode = 'UCB', beta = 0.5)
+        acq_4 = Acquisition(mode = 'UCB', beta = 1.5)
+        acq_list = [acq_1, acq_2, acq_3, acq_4]
+        sexp = squaredExponential()
+        param = {'x': ('cont', [0, 2 * np.pi])}
+        new = True
+        colors = ['green', 'red', 'orange', 'black']
+        acq_titles = [r'Expected improvement', r'Probability of Improvement',
+         r'GP-UCB $\beta = .5$', r'GP-UCB $\beta = 1.5$']
+
+        for index, acq in enumerate(acq_list):
+                np.random.seed(200)
+                gp = GPRegressor(sexp)
+                gpgo = GPGO(gp, acq, f, param)
+                gpgo._firstRun(n_eval = 3)
+                plotGPGO(gpgo, param, index = index + 2, new = new)
+                new = False
+
+        plt.show()                  
+\end{minted}
+
+
+\begin{figure}
+\caption{Acquisition function behaviour for Expected Improvement, Probability of Improvement, GP-UCB ($\beta = .5$) and GP-UCB($\beta = 1.5$) in the sine function example.}
+\label{fig:acqzoo}
+\includegraphics[width=\textwidth]{figures/chapter3/acqzoo}
+\end{figure}
+
+
 \chapter{Experiments}
 \chapter{pyGPGO: A simple Python Package for Bayesian Optimization}
 

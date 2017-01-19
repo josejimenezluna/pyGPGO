@@ -10,6 +10,8 @@ from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from testing.other_go import SimulatedAnnealing
 
+from sklearn.svm import SVC
+
 class loss:
 	def __init__(self, model, X, y, method = 'holdout', problem = 'binary'):
 		self.model = model
@@ -28,7 +30,10 @@ class loss:
 	def evaluateLoss(self, **param):
 		if self.method == 'holdout':
 			X_train, X_test, y_train, y_test = train_test_split(self.X, self.y, random_state = 93)
-			clf = self.model.__class__(**param, probability = True)
+			if isinstance(self.model, SVC):
+				clf = self.model.__class__(**param, probability = True)
+			else:
+				clf = self.model.__class__(**param)
 			clf.fit(X_train, y_train)
 			if self.problem == 'binary':
 				yhat = clf.predict_proba(X_test)[:, 1]
@@ -70,7 +75,6 @@ def build(csv_path, target_index, header = None):
 	
 def evaluateDataset(csv_path, target_index, method = 'holdout', seed = 230, max_iter = 50):
 	print('Now evaluating {}...'.format(csv_path))
-	from sklearn.svm import SVC
 	X, y = build(csv_path, target_index)
 
 	clf = SVC()

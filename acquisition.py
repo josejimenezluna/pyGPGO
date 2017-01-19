@@ -16,8 +16,8 @@ class Acquisition:
 		else:
 			raise NotImplementedError('Not recognised acquisition function')
 	def ProbabilityImprovement(self, tau, mean, std):
-		z = (mean - tau - self.eps) / std
-		return norm.cdf(z)[0]
+		z = (mean - tau - self.eps) / std 
+		return norm.cdf(z)
 	def ExpectedImprovement(self, tau, mean, std):
 		z = (mean - tau - self.eps) / std
 		return (mean - tau) * norm.cdf(z) + std * norm.pdf(z)[0]

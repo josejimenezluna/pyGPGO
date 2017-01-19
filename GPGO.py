@@ -23,8 +23,6 @@ class GPGO:
 		for index, param in enumerate(self.parameter_key):
 			if self.parameter_type[index] == 'int':
 				d[param] = np.random.randint(self.parameter_range[index][0], self.parameter_range[index][1])
-			elif self.parameter_type[index] == 'disc':
-				d[param] = np.random.choice(self.parameter_range[index])
 			elif self.parameter_type[index] == 'cont':
 				d[param] = np.random.uniform(self.parameter_range[index][0], self.parameter_range[index][1])
 			else:

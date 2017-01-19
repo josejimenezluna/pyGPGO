@@ -40,27 +40,39 @@
 \newlabel{conditioning}{{1}{10}{Prediction using a Gaussian Process prior}{mydef.1}{}}
 \newlabel{hierarchical}{{2.27}{11}{Prediction using a Gaussian Process prior}{equation.2.3.27}{}}
 \newlabel{hierarchical2}{{2.28}{11}{Prediction using a Gaussian Process prior}{equation.2.3.28}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Gaussian regressor pseudo-code.}}{11}{algorithm.1}}
-\newlabel{alg}{{1}{11}{Prediction using a Gaussian Process prior}{algorithm.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}A toy example of Gaussian Process regression}{12}{subsection.2.3.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}On covariance functions}{13}{section.2.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces A fitted Gaussian Process regressor to samples of the sine function.}}{14}{figure.2.2}}
-\newlabel{fig:GPsine}{{2.2}{14}{A fitted Gaussian Process regressor to samples of the sine function}{figure.2.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}A zoo of covariance functions}{16}{subsection.2.4.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Behaviour of different stationary covariance functions with the default parameters in pyGPGO.}}{17}{figure.2.3}}
-\newlabel{fig:zoo}{{2.3}{17}{Behaviour of different stationary covariance functions with the default parameters in pyGPGO}{figure.2.3}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Gaussian regressor pseudo-code.}}{12}{algorithm.1}}
+\newlabel{alg}{{1}{12}{Prediction using a Gaussian Process prior}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}A toy example of Gaussian Process regression}{13}{subsection.2.3.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}On covariance functions}{14}{section.2.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces A fitted Gaussian Process regressor to samples of the sine function.}}{15}{figure.2.2}}
+\newlabel{fig:GPsine}{{2.2}{15}{A fitted Gaussian Process regressor to samples of the sine function}{figure.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}A zoo of covariance functions}{17}{subsection.2.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Behaviour of different stationary covariance functions with the default parameters in pyGPGO.}}{18}{figure.2.3}}
+\newlabel{fig:zoo}{{2.3}{18}{Behaviour of different stationary covariance functions with the default parameters in pyGPGO}{figure.2.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.5}Hyperparameter optimization}{18}{section.2.5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5.1}Type II Maximum Likelihood}{18}{subsection.2.5.1}}
 \newlabel{posteriorparam}{{2.36}{18}{Type II Maximum Likelihood}{equation.2.5.36}{}}
-\newlabel{posteriorhyper}{{2.37}{18}{Type II Maximum Likelihood}{equation.2.5.37}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Another toy example: Optimizing the characteristic length-scale}{19}{section*.2}}
+\newlabel{posteriorhyper}{{2.37}{19}{Type II Maximum Likelihood}{equation.2.5.37}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Another toy example: Optimizing the characteristic length-scale}{20}{section*.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Cross validation}{20}{subsection.2.5.2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Log-marginal likelihood and its gradient w.r.t to the characteristic length-scale. Notice there seems to be an optimal point at around $l = 1.4$.}}{21}{figure.2.4}}
 \newlabel{fig:logmarginal}{{2.4}{21}{Log-marginal likelihood and its gradient w.r.t to the characteristic length-scale. Notice there seems to be an optimal point at around $l = 1.4$}{figure.2.4}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Bayesian optimization}{23}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Experiments}{25}{chapter.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Preliminaries}{23}{section.3.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}The bayesian optimization framework}{23}{section.3.2}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Bayesian optimization framework.}}{24}{algorithm.2}}
+\newlabel{bayesopt}{{2}{24}{The bayesian optimization framework}{algorithm.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}On acquisition functions}{24}{section.3.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Improvement-based policies}{24}{subsection.3.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Optimistic policies}{25}{subsection.3.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Information-based policies}{25}{subsection.3.3.3}}
+\newlabel{acqes}{{3.10}{25}{Information-based policies}{equation.3.3.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Example: visualizing the behaviour of an acquisition function}{25}{subsection.3.3.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Acquisition function behaviour for Expected Improvement, Probability of Improvement, GP-UCB ($\beta = .5$) and GP-UCB($\beta = 1.5$) in the sine function example.}}{27}{figure.3.1}}
+\newlabel{fig:acqzoo}{{3.1}{27}{Acquisition function behaviour for Expected Improvement, Probability of Improvement, GP-UCB ($\beta = .5$) and GP-UCB($\beta = 1.5$) in the sine function example}{figure.3.1}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Experiments}{29}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \gdef\minted@oldcachelist{,
@@ -76,7 +88,8 @@
   4114330659FF80695AA0581023CABCDE9D188FF14B5B5A34504F2B9625FD44DE.pygtex,
   01846CE0AB08FBB5370F551BDD8700E49D188FF14B5B5A34504F2B9625FD44DE.pygtex,
   778010B1D483D75C07C76F2DA0721C6B9D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  69039E575068EBA51D5DDA94862D7B089D188FF14B5B5A34504F2B9625FD44DE.pygtex}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{27}{chapter.5}}
+  69039E575068EBA51D5DDA94862D7B089D188FF14B5B5A34504F2B9625FD44DE.pygtex,
+  C3FEF1F24A4C8C42E29EB147312F79BA9D188FF14B5B5A34504F2B9625FD44DE.pygtex}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{31}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}

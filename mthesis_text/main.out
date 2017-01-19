@@ -14,5 +14,12 @@
 \BOOKMARK [2][-]{subsection.2.5.1}{Type II Maximum Likelihood}{section.2.5}% 14
 \BOOKMARK [2][-]{subsection.2.5.2}{Cross validation}{section.2.5}% 15
 \BOOKMARK [0][-]{chapter.3}{Bayesian optimization}{}% 16
-\BOOKMARK [0][-]{chapter.4}{Experiments}{}% 17
-\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 18
+\BOOKMARK [1][-]{section.3.1}{Preliminaries}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.2}{The bayesian optimization framework}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.3}{On acquisition functions}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.3.1}{Improvement-based policies}{section.3.3}% 20
+\BOOKMARK [2][-]{subsection.3.3.2}{Optimistic policies}{section.3.3}% 21
+\BOOKMARK [2][-]{subsection.3.3.3}{Information-based policies}{section.3.3}% 22
+\BOOKMARK [2][-]{subsection.3.3.4}{Example: visualizing the behaviour of an acquisition function}{section.3.3}% 23
+\BOOKMARK [0][-]{chapter.4}{Experiments}{}% 24
+\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 25

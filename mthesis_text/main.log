@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  12 JAN 2017 14:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  19 JAN 2017 18:22
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -720,20 +720,20 @@ runsystem(rm main.aex)...executed.
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
  (/home/jose/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count144
@@ -765,7 +765,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring OFF on input line 17.
+Package hyperref Info: Link coloring OFF on input line 19.
 
 (/home/jose/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -775,9 +775,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count150
 )
-LaTeX Info: Redefining \ref on input line 17.
-LaTeX Info: Redefining \pageref on input line 17.
-LaTeX Info: Redefining \nameref on input line 17.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (./main.out) (./main.out)
 \@outlinefile=\write7
@@ -809,15 +809,15 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
-* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=483.69687pt
-* \textheight=731.23584pt
-* \oddsidemargin=-15.36449pt
-* \evensidemargin=-15.36449pt
-* \topmargin=-45.43198pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-31.2056pt
 * \headheight=12.0pt
 * \headsep=18.06749pt
 * \topskip=10.0pt
@@ -835,11 +835,11 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+LaTeX Font Info:    Try loading font information for U+msa on input line 23.
 (/home/jose/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 
 (/home/jose/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -856,23 +856,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 31.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 33.
 (/home/jose/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 31.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 33.
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
@@ -887,17 +882,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+ []
+
 [6]
 Chapter 2.
 
-Overfull \hbox (15.58939pt too wide) in paragraph at lines 72--73
+Overfull \hbox (44.04214pt too wide) in paragraph at lines 74--75
 \OT1/cmr/m/n/10 We will fo-cus on re-gres-sion prob-lems in this chap-ter. As-s
 ume we have some la-belled data $\OML/cmm/m/it/10 D \OT1/cmr/m/n/10 = []$,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 72--73
-
  []
 
 
@@ -905,10 +900,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+
+ []
+
 [7
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 122--123
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
 
  []
 
@@ -921,20 +921,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--123
 E.pygtex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
-) <figures/chapter2/drawPrior.pdf, id=171, 812.1341pt x 573.64313pt>
+ [9])
+<figures/chapter2/drawPrior.pdf, id=216, 812.1341pt x 573.64313pt>
 File: figures/chapter2/drawPrior.pdf Graphic file (type pdf)
 
 <use figures/chapter2/drawPrior.pdf>
-Package pdftex.def Info: figures/chapter2/drawPrior.pdf used on input line 246.
+Package pdftex.def Info: figures/chapter2/drawPrior.pdf used on input line 248.
 
-(pdftex.def)             Requested size: 483.69687pt x 341.65013pt.
+(pdftex.def)             Requested size: 455.24411pt x 321.55307pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 254--255
-
- []
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 302--303
+Underfull \hbox (badness 10000) in paragraph at lines 256--257
 
  []
 
@@ -943,46 +939,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 302--303
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.304 L
-       et us now consider the scenario where observations are not noise-free...
- <./figures/chapter2/drawPrior.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+l.280 \end{mydef}
+                  <./figures/chapter2/drawPrior.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 304--305
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
 
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 362.
+put line 364.
 \openout3 = `main.pyg'.
 
 
 (./_minted-main/85B43FECD3A9742F76E3BCC90D3C48A79D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [11]) [12]
+E.pygtex [11]) [12] [13]
 \openout3 = `main.pyg'.
 
 
 (./_minted-main/CBAFD97C67C91ADDAEA34D3DAF0D40079D188FF14B5B5A34504F2B9625FD44D
-E.pygtex) <figures/chapter2/GPsine.pdf, id=259, 760.64174pt x 514.92375pt>
+E.pygtex) <figures/chapter2/GPsine.pdf, id=299, 760.64174pt x 514.92375pt>
 File: figures/chapter2/GPsine.pdf Graphic file (type pdf)
 
 <use figures/chapter2/GPsine.pdf>
-Package pdftex.def Info: figures/chapter2/GPsine.pdf used on input line 477.
-(pdftex.def)             Requested size: 483.69687pt x 327.44437pt.
+Package pdftex.def Info: figures/chapter2/GPsine.pdf used on input line 479.
+(pdftex.def)             Requested size: 455.24411pt x 308.18663pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 490--491
+Underfull \hbox (badness 10000) in paragraph at lines 492--493
 
  []
 
-[13]
+[14]
 \openout3 = `main.pyg'.
 
 
 (./_minted-main/990BF002D0D2280EAC881D74A601ABB29D188FF14B5B5A34504F2B9625FD44D
-E.pygtex) [14pdfTeX warning (ext4): destination with the same identifier (name{
+E.pygtex) [15pdfTeX warning (ext4): destination with the same identifier (name{
 figure.2.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.529 \end{equation}
+l.531 \end{equation}
                      <./figures/chapter2/GPsine.pdf>]
 \openout3 = `main.pyg'.
 
@@ -1003,47 +1003,48 @@ E.pygtex)
 
 
 (./_minted-main/4114330659FF80695AA0581023CABCDE9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [15])
+E.pygtex [16])
 \openout3 = `main.pyg'.
 
 
 (./_minted-main/01846CE0AB08FBB5370F551BDD8700E49D188FF14B5B5A34504F2B9625FD44D
-E.pygtex) <figures/chapter2/zoo.pdf, id=314, 995.51924pt x 720.89326pt>
+E.pygtex [17]) <figures/chapter2/zoo.pdf, id=359, 995.51924pt x 720.89326pt>
 File: figures/chapter2/zoo.pdf Graphic file (type pdf)
 
 <use figures/chapter2/zoo.pdf>
-Package pdftex.def Info: figures/chapter2/zoo.pdf used on input line 685.
-(pdftex.def)             Requested size: 483.69687pt x 350.25981pt.
- [16] [17pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.2.3}) has been already used, duplicate ignored
+Package pdftex.def Info: figures/chapter2/zoo.pdf used on input line 687.
+(pdftex.def)             Requested size: 455.24411pt x 329.65694pt.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.691 
-       <./figures/chapter2/zoo.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 701--702
+Underfull \hbox (badness 10000) in paragraph at lines 703--704
 
  []
 
+[18pdfTeX warning (ext4): destination with the same identifier (name{figure.2.3
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.704 
+       <./figures/chapter2/zoo.pdf>]
 \openout3 = `main.pyg'.
 
 
 (./_minted-main/778010B1D483D75C07C76F2DA0721C6B9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [18])
+E.pygtex)
 \openout3 = `main.pyg'.
 
 
 (./_minted-main/69039E575068EBA51D5DDA94862D7B089D188FF14B5B5A34504F2B9625FD44D
 E.pygtex [19])
-<figures/chapter2/logmarginal.pdf, id=366, 710.95612pt x 282.7564pt>
+<figures/chapter2/logmarginal.pdf, id=399, 710.95612pt x 282.7564pt>
 File: figures/chapter2/logmarginal.pdf Graphic file (type pdf)
 
 <use figures/chapter2/logmarginal.pdf>
 Package pdftex.def Info: figures/chapter2/logmarginal.pdf used on input line 81
-4.
-(pdftex.def)             Requested size: 483.69687pt x 192.37534pt.
+6.
+(pdftex.def)             Requested size: 455.24411pt x 181.05838pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 819--820
+Underfull \hbox (badness 10000) in paragraph at lines 821--822
 
  []
 
@@ -1052,40 +1053,85 @@ e.2.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.830 \chapter
+l.831 \chapter
               {Bayesian optimization} <./figures/chapter2/logmarginal.pdf>]
 [22
 
 ]
 Chapter 3.
-[23] [24
+
+Underfull \hbox (badness 10000) in paragraph at lines 853--854
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 860--861
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 891--892
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 944--945
+
+ []
+
+\openout3 = `main.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P m
+athescape=True -F gobble:n=0 -P python3=True -o _minted-main/C3FEF1F24A4C8C42E2
+9EB147312F79BA9D188FF14B5B5A34504F2B9625FD44DE.pygtex main.pyg)...executed.
+
+
+(./_minted-main/C3FEF1F24A4C8C42E29EB147312F79BA9D188FF14B5B5A34504F2B9625FD44D
+E.pygtex [25])
+<figures/chapter3/acqzoo.pdf, id=482, 611.58487pt x 732.63715pt>
+File: figures/chapter3/acqzoo.pdf Graphic file (type pdf)
+
+<use figures/chapter3/acqzoo.pdf>
+Package pdftex.def Info: figures/chapter3/acqzoo.pdf used on input line 1015.
+(pdftex.def)             Requested size: 455.24411pt x 545.36258pt.
+ [26] [27pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.3.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1019 \chapter
+               {Experiments} <./figures/chapter3/acqzoo.pdf>] [28
 
 ]
 Chapter 4.
-[25] [26
+[29] [30
 
 ]
 Chapter 5.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 834.
-[27]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 834.
+runsystem(rm _minted-main/12750F533A595901D3F3C5B817BBF85E9D188FF14B5B5A34504F2
+B9625FD44DE.pygtex)...executed.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1022.
+[31]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1022.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 834.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 834.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1022.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1022.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F7FC9223B56FA3F1A757DE13E99298A8;1356.
+(rerunfilecheck)             Checksum: 765277B82A869A30A89A8F7A0381F07F;1917.
 runsystem(rm main.pyg)...executed.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 834.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1022.
  ) 
 Here is how much of TeX's memory you used:
- 10509 strings out of 493013
- 162894 string characters out of 6135623
- 303189 words of memory out of 5000000
- 13745 multiletter control sequences out of 15000+600000
+ 10560 strings out of 493013
+ 163946 string characters out of 6135623
+ 305539 words of memory out of 5000000
+ 13766 multiletter control sequences out of 15000+600000
  16500 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 31i,13n,35p,1082b,555s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,13n,35p,1160b,567s stack positions out of 5000i,500n,10000p,200000b,80000s
 </home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></h
 ome/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></ho
 me/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/jos
@@ -1095,25 +1141,26 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/jose/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></home/jose/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmmi10.pfb></home/jose/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmmi12.pfb></home/jose/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmib10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cmextra/cmmib7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r12.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></home/
-jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/jose/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/jose/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></home/jose/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/jose/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy7.pfb></home/jose/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmti10.pfb></home/jose/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmtt10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsf
-onts/symbols/msbm10.pfb></home/jose/texlive/texmf-dist/fonts/type1/urw/helvetic
-/uhvr8a.pfb>
-Output written on main.pdf (27 pages, 537137 bytes).
+ublic/amsfonts/cm/cmmi5.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmib10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cmex
+tra/cmmib7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></home
+/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></home/jose/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/jose/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/jose/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsl10.pfb></home/jose/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb></home/jose/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy5.pfb></home/jose/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmti10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmtt10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/m
+sbm10.pfb></home/jose/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on main.pdf (31 pages, 613692 bytes).
 PDF statistics:
- 531 PDF objects out of 1000 (max. 8388607)
- 377 compressed objects within 4 object streams
- 96 named destinations out of 1000 (max. 500000)
- 165 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 671 PDF objects out of 1000 (max. 8388607)
+ 467 compressed objects within 5 object streams
+ 120 named destinations out of 1000 (max. 500000)
+ 226 words of extra memory for PDF output out of 10000 (max. 10000000)
 
