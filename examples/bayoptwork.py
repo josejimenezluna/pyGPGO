@@ -28,8 +28,6 @@ if __name__ == '__main__':
 	# Plot values
 	plt.figure()
 	plt.plot(xstar, ymean, label = 'Posterior mean')
-	#plt.plot(xstar, np.sin(xstar), label = 'True function')
-	#plt.fill_between(xstar, lower, upper, alpha = 0.4, label = '95% confidence band')
 	plt.plot(xstar, lower, '--', label = 'Lower confidence bound')
 	plt.plot(xstar, upper, '--', label = 'Upper confidence bound')
 	plt.axhline(y = np.max(lower), color = 'black')

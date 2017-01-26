@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from covfunc import *
 from GPRegressor import GPRegressor
@@ -20,6 +21,7 @@ def plot_f(x_values, y_values, f):
 	plt.imshow(z, origin = 'lower')
 	plt.colorbar()
 	plt.show()
+	plt.savefig(os.path.join(os.getcwd(), 'mthesis_text/figures/chapter3/rosen/rosen.pdf'))
 
 def plot2dgpgo(gpgo, param):
 	tested_X = gpgo.GP.X
@@ -36,20 +38,24 @@ def plot2dgpgo(gpgo, param):
 			z_hat[i, j] = res[0]
 			z_var[i, j] = res[1][0]
 			ac[i, j] = -gpgo._acqWrapper(np.atleast_1d([x_test[i], y_test[j]]))
-	plt.figure()
-	plt.subplot(221)
+	fig = plt.figure()
+	a = fig.add_subplot(2, 2, 1)
+	a.set_title('Posterior mean')
 	plt.imshow(z_hat.T, origin = 'lower', extent = [-1, 1, -1, 1])
 	plt.colorbar()
 	plt.plot(tested_X[:, 0], tested_X[:, 1], 'wx', markersize = 10)
-	plt.subplot(222)
+	a = fig.add_subplot(2, 2, 2)
+	a.set_title('Posterior variance')
 	plt.imshow(z_var.T, origin = 'lower', extent = [-1, 1, -1, 1])
         plt.plot(tested_X[:, 0], tested_X[:, 1], 'wx', markersize = 10)
 	plt.colorbar()
-	plt.subplot(223)
+	a = fig.add_subplot(2, 2, 3)
+	a.set_title('Acquisition function')
 	plt.imshow(ac.T, origin = 'lower', extent = [-1, 1, -1, 1])
 	plt.colorbar()
 	gpgo._optimizeAcq(method = 'L-BFGS-B', n_start = 500)
 	plt.plot(gpgo.best[0], gpgo.best[1], 'gx', markersize = 15)
+	plt.savefig(os.path.join(os.getcwd(), 'mthesis_text/figures/chapter3/rosen/{}.pdf'.format(item)))
 	plt.show()
 	
 if __name__ == '__main__':
@@ -67,14 +73,8 @@ if __name__ == '__main__':
 	param['y'] = ('cont', [-1, 1])
 
 	gpgo = GPGO(gp, acq, rastrigin, param)
-	#gpgo._sampleParam()
 	gpgo._firstRun()
 	
-	for i in range(5):	
+	for item in range(7):	
 		plot2dgpgo(gpgo, param)
 		gpgo.updateGP()
-
-	
-
-	
-	

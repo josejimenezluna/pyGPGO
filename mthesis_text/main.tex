@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{subcaption}
 \usepackage{minted}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{algorithm}
@@ -1036,7 +1037,18 @@ if __name__ == '__main__':
 
 \subsection{Example: why does Bayesian Optimization work?}
 
-In this small section, we will consider very briefly why the Bayesian Optimization procedure is efficiently making use of the information provided by the mean and variance posterior distribution of the GP. The explanation is mostly visual by means of Figure .
+In this small section, we will consider very briefly why the Bayesian Optimization procedure is efficiently making use of the information provided by the mean and variance posterior distribution of the GP. The explanation is mostly visual by means of Figure \ref{fig:explanation}. The plot shows a Gaussian Process regression model, as well as its confidence interval, comprised from a lower confidence bound $L = \mu(\boldsymbol{x}) - q\sigma(\boldsymbol{x})$ and an upper confidence bound $U = \mu(\boldsymbol{x}) + q\sigma(\boldsymbol{x})$ for a quantile $q>0$.\\
+
+In practice, when we are interested in doing hyperparameter search in machine-learning, the algorithms are very blunt, in the sense that the most common strategies explore the entire space, either exhaustively or randomly. The acquisition functions defined in this chapter before use information from the Gaussian Process prior to explore efficiently the space. The specifics of each acquisition function have already been discussed, specially their exploration/exploitation balance, but they all share some common logic.\\
+
+Bayesian Optimization is efficient because it ignores all the space where the predicted upper confidence bound is lower than the maximum value of the lower confidence bound. It only uses the space that fulfills this criteria, according to the strategy selected by the chosen acquisition function. This remains a very reasonable assumption throughout the whole optimization procedure.   
+
+\begin{figure}
+	\caption{A visual explanation on why Bayesian optimization is efficient at exploring the space. It ignores all the input space where the UPB is lower than the point with maximum LCB.}
+	\label{fig:explanation}
+	\includegraphics[width=\textwidth]{figures/chapter3/explanation}
+\end{figure}
+
 
 \section{Role of GP hyperparameters in optimization}
 
@@ -1072,9 +1084,57 @@ However, and to finish this section, in the problems that we will tackle in the 
 
 We have presented many acquisition functions in this chapter and provided a simple example to demonstrate basic functionality. However, so far, we have assumed that the acquisition function can be easily optimized. This is however, a problem of its own. The reader may be thinking that we have, in fact, changed one optimization problem (the one where we are interested in optimizing $f$) for another! (in which we now have to optimize $\alpha$). This is technically true, but bear in mind that while $f$ is very expensive to evaluate, $\alpha$ is very cheap, and it is reasonable to spend a bit more computational effort in evaluating $\alpha$ if it implies having to evaluate $f$ less.\\
 
-Maximizing $\alpha$, however, is not an easy task. The acquisition function is often multi-modal and therefore non-convex, as it can be see again in Figure \ref{fig:acqzoo}. Theoretical convergence, furthermore, is only guaranteed when the optimal point $\boldsymbol{x}^*$ in the acquisition function is found [ref]. At the end of the day, we encounter yet another global optimization problem that needs to be solved. From a practical point of view, there are many approaches the community has taken to solve this problem, from discretization [ref], adaptive-grids [ref]. If gradient information is available (rarely the case), a multi-start gradient ascent approach can be taken [ref]. Evolutionary approaches like CMA-ES can also be used [ref]. pyGPGO, in the \texttt{GPGO} module uses by default a multi-start quasi-Newton method in the (L-BFGS-B) to optimize the acquisition function, which in practice seems to work reasonably well. A CMA-ES optimizer interface is also available for the user.\\
+Maximizing $\alpha$, however, is not an easy task. The acquisition function is often multi-modal and therefore non-convex, as it can be see again in Figure \ref{fig:acqzoo}. Theoretical convergence, furthermore, is only guaranteed when the optimal point $\boldsymbol{x}^*$ in the acquisition function is found [ref]. At the end of the day, we encounter yet another global optimization problem that needs to be solved. From a practical point of view, there are many approaches the community has taken to solve this problem, from discretization [ref], adaptive-grids [ref]. If gradient information is available (rarely the case), a multi-start gradient ascent approach can be taken [ref]. Evolutionary approaches like CMA-ES can also be used [ref]. pyGPGO, in the \texttt{GPGO} module uses by default a multi-start quasi-Newton method (L-BFGS-B) to optimize the acquisition function, which in practice seems to work reasonably well. A CMA-ES optimizer interface is also available for the user.\\
 
 Other methods have been proposed as alternatives to Bayesian Optimization in this aspect. [ref], sequentially building space-partitioning trees by splitting leaves with high function values or upper confidence bounds. This is called \textit{Simultaneous Optimistic Optimization} (SOO) [ref]. Though these algorithms do not require any auxiliary information (smoothness) or optimization, it has been shown that they do not perform quite as competitively as the Bayesian optimization framework, especially when prior knowledge is available. 
+
+\section{A complete 1D example: optimizing the sine function}
+\section{A step by step example: optimizing the Rossenbrock function}
+
+We have explored the basics of Gaussian Process regression and Bayesian Optimization by now. To provide a more thorough understanding on the logic behind Algorithm \ref{bayesopt}, we will try to optimize the two-dimensional Rossenbrock function. A biplot of this function can be checked in Figure \ref{fig:rosen}. This particular version of the Rossenbrock function has four different local optima, therefore it is multimodal. We would expect our GPGO algorithm to converge to one of these optima, while still exploring the space at earlier stages of optimization.\\
+
+\begin{figure}
+	\centering
+	\caption{A 2D representation of the Rossenbrock function.}
+	\label{fig:rosen}
+	\includegraphics[scale=0.5]{figures/chapter3/rosen/rosen}
+\end{figure}
+
+Given the low-dimensional space we are optimizing, we will plot the posterior mean and variance of the Gaussian Process, as well as the acquisition function. In this case, as in most cases throughout this thesis, we will use the Expected Improvement acquisition function. The complete step-by-step optimization procedure can be seen in Figure \ref{fig:2dstep}. For a more visually appealing explanation of the same procedure, there is a video in the linked GitHub repository of this thesis.\\
+
+It can be seen that during the previous steps before fitting a Gaussian Process, that a random evaluation is reasonably close to one of the optima. This causes the acquisition function to exploit that area in the first step. In the second step, however, it starts exploring the area that is close to a second local optima, mostly because it is a large-variance area. It exploits in the third step, and keeps exploring the rest of the space during the following stages, therefore efficiently balancing exploitation and exploration in this optimization stage.
+
+\begin{figure}
+	\centering
+	\caption{Six complete optimization epochs in the Bayesian Optimization framework for the target Rossenbrock 2D function.}
+	\label{fig:2dstep}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 1}
+		\includegraphics[width=\textwidth]{figures/chapter3/rosen/0}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 2}
+		\includegraphics[width=\textwidth]{figures/chapter3/rosen/1}
+	\end{subfigure}
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 3}
+		\includegraphics[width=\textwidth]{figures/chapter3/rosen/2}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 4}
+		\includegraphics[width=\textwidth]{figures/chapter3/rosen/3}
+	\end{subfigure}
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 5}
+		\includegraphics[width=\textwidth]{figures/chapter3/rosen/4}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 6}
+		\includegraphics[width=\textwidth]{figures/chapter3/rosen/5}
+	\end{subfigure}
+\end{figure}
 
 \chapter{Experiments}
 \chapter{pyGPGO: A simple Python Package for Bayesian Optimization}
