@@ -7,12 +7,13 @@
 \usepackage{hyperref}
 \usepackage{subcaption}
 \usepackage{minted}
-\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[left=2.5cm,right=2.5cm,top=3.5cm,bottom=3cm]{geometry}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{placeins}
 \newtheorem{mydef}{Theorem}
 \DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 
 \makeindex
@@ -479,6 +480,25 @@ if __name__ == '__main__':
 \label{fig:GPsine}
 \includegraphics[width=\textwidth]{figures/chapter2/GPsine}
 \end{figure}
+
+\subsection{Picking a winner}
+
+In the previous section we have shown how to compute predictive posterior distribution for function outputs $y_*$ given a new input $\boldsymbol{x}_*$. These are given by a Gaussian distribution with a certain mean and variance. In plenty of production settings, however, it is more common to provide a single value, or estimate $y_{\mathrm{guess}}$ that is \textit{optimal} in some sense. To define a sense of optimality, define a loss function $\mathcal{L}(y_{\mathrm{true}}, y_{\mathrm{guess}})$. This, defines a penalty incurred by taking the decision to use $y_{\mathrm{guess}}$ when the true value is $y_{\mathrm{true}}$. For example, this could be the mean square or mean absolute error function. In the Bayesian setting, there is no clear mention of a loss function in any stage. In the frequentist setting, however, a model is usually trained by minimizing this loss. Furthermore, there is a clear separation between loss and likelihood in the Bayesian setting, the latter used for training, with prior information. The loss function however only captures the consequences of making a single specific choice given a true state.\\
+
+Again, we would like to somehow pick a \textit{winner} $y_{\mathrm{guess}}$ that minimizes our loss. Without knowing $y_{\mathrm{true}}$, our best choice is to minimize the expected loss, averaging with respect to our model:
+
+\begin{equation}
+\mathcal{R}_{\mathcal{L}}(y_{\mathrm{guess}}|\boldsymbol{x}_*) = \int \mathcal{L}(y_{*}, y_{\mathrm{guess}})p(y_*|\boldsymbol{x}_*, \mathcal{D})dy
+\end{equation}
+
+Our optimal value is the one that minimizes this expected loss:
+
+\begin{equation}
+\label{risk}
+y_{\mathrm{optimal}}|\boldsymbol{x}_* = \argmin_{y_{\mathrm{guess}}}\mathcal{R}_{\mathcal{L}}(y_{\mathrm{guess}}|\boldsymbol{x}_*)
+\end{equation}
+
+It can be proven that the value $y_{\mathrm{guess}}$ that minimizes Equation \ref{risk} for the absolute loss function is the median of $p(y_*|\boldsymbol{x}_*,\mathcal{D})$. For the squared loss function, it is the mean of the same distribution. Since in our case we are dealing with the Gaussian distribution, median and mean coincide, and the most reasonable \textit{winner} will therefore be the specific value of the posterior mean. 
 
 \section{On covariance functions}
 
@@ -963,7 +983,7 @@ and then we try to maximize over the candidates provided by the $k$ based acquis
 
 In other words, this method chooses the candidate that is expected to reduce the most the entropy about the minimizer $\boldsymbol{x}_*$. 
 
-\subsection{Example: visualizing the behaviour of an acquisition function}
+\subsection{Visualizing the behaviour of an acquisition function}
 
 To demonstrate the behaviour of different acquisition functions on a step of Bayesian optimization, we will create a small script with our sine function example. This will help us understand visually the trade-off between exploration and exploitation in each case. The code provided below produces Figure \ref{fig:acqzoo}.
 
@@ -1030,12 +1050,13 @@ if __name__ == '__main__':
 
 
 \begin{figure}
+\centering
 \caption{Acquisition function behaviour for Expected Improvement, Probability of Improvement, GP-UCB ($\beta = .5$) and GP-UCB($\beta = 1.5$) in the sine function example.}
 \label{fig:acqzoo}
-\includegraphics[width=\textwidth]{figures/chapter3/acqzoo}
+\includegraphics[scale=.6]{figures/chapter3/acqzoo}
 \end{figure}
 
-\subsection{Example: why does Bayesian Optimization work?}
+\subsection{Why does Bayesian Optimization work?}
 
 In this small section, we will consider very briefly why the Bayesian Optimization procedure is efficiently making use of the information provided by the mean and variance posterior distribution of the GP. The explanation is mostly visual by means of Figure \ref{fig:explanation}. The plot shows a Gaussian Process regression model, as well as its confidence interval, comprised from a lower confidence bound $L = \mu(\boldsymbol{x}) - q\sigma(\boldsymbol{x})$ and an upper confidence bound $U = \mu(\boldsymbol{x}) + q\sigma(\boldsymbol{x})$ for a quantile $q>0$.\\
 
@@ -1088,21 +1109,70 @@ Maximizing $\alpha$, however, is not an easy task. The acquisition function is o
 
 Other methods have been proposed as alternatives to Bayesian Optimization in this aspect. [ref], sequentially building space-partitioning trees by splitting leaves with high function values or upper confidence bounds. This is called \textit{Simultaneous Optimistic Optimization} (SOO) [ref]. Though these algorithms do not require any auxiliary information (smoothness) or optimization, it has been shown that they do not perform quite as competitively as the Bayesian optimization framework, especially when prior knowledge is available. 
 
-\section{A complete 1D example: optimizing the sine function}
-\section{A step by step example: optimizing the Rossenbrock function}
+\section{Step-by-step examples}
 
-We have explored the basics of Gaussian Process regression and Bayesian Optimization by now. To provide a more thorough understanding on the logic behind Algorithm \ref{bayesopt}, we will try to optimize the two-dimensional Rossenbrock function. A biplot of this function can be checked in Figure \ref{fig:rosen}. This particular version of the Rossenbrock function has four different local optima, therefore it is multimodal. We would expect our GPGO algorithm to converge to one of these optima, while still exploring the space at earlier stages of optimization.\\
+We have explored the basics of Gaussian Process regression and Bayesian Optimization by now. To provide a more thorough understanding on the logic behind Algorithm \ref{bayesopt}, we will provide two different examples in this section. While not very complex, they serve illustrative purposes on how the optimization framework works. We hope this section will clear any practical consideration on how the procedure selects the next point to sample, graphically.
+
+\subsection{Optimizing (yet-again) the sine function}
+
+Again, it is no surprise for the reader that we choose the sine function as our first example to provide an intuition on how the Bayesian Optimization framework works step-by-step. We will be optimizing our function within the boundaries $x \in [0, 2\pi]$, where we know an optima is exactly at $x = \pi/2$. This example is particularly interesting to see how the next point is chosen balancing exploration and exploitation of the acquisition function. Now, as in most practical cases throughout this thesis, we will use the Expected Improvement acquisition function. The step-by-step optimization procedure for 6 complete epochs can be checked in Figure \ref{fig:1dstep}.\\
+
+It can be appreciated that the chosen acquisition function leverages achieves a very reasonable compromise between mean and variance in the first stages of optimization, but exploits heavily in steps 3 and 4. It tries to explore again in step 5, and comes back to exploit at the end of the procedure.
+
 
 \begin{figure}
 	\centering
-	\caption{A 2D representation of the Rossenbrock function.}
+	\caption{Six complete optimization epochs in the Bayesian Optimization framework for the target sine function in $x\in [0, 2\pi]$.}
+	\label{fig:1dstep}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 1}
+		\includegraphics[width=\textwidth]{figures/chapter3/sine/0}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 2}
+		\includegraphics[width=\textwidth]{figures/chapter3/sine/1}
+	\end{subfigure}
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 3}
+		\includegraphics[width=\textwidth]{figures/chapter3/sine/2}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 4}
+		\includegraphics[width=\textwidth]{figures/chapter3/sine/3}
+	\end{subfigure}
+	
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 5}
+		\includegraphics[width=\textwidth]{figures/chapter3/sine/4}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\caption{Step 6}
+		\includegraphics[width=\textwidth]{figures/chapter3/sine/5}
+	\end{subfigure}
+\end{figure}
+
+
+\subsection{Optimizing the Rossenbrock function}
+
+In this example, we will try to optimize the two-dimensional Rossenbrock function:
+
+\begin{equation}
+f(x, y| a, b) = (a - x)^2 + b(y - x^2)^2
+\end{equation}
+
+For given hyperparameters $a=1,\, b=100$ and in a bounding box defined by $x,y \in [-1, 1]$. A biplot of this function can be checked in Figure \ref{fig:rosen}. This particular version of the Rossenbrock function has four different local optima, therefore it is multimodal. We would expect our GPGO algorithm to converge to one of these optima, while still exploring the space at earlier stages of optimization.\\
+
+\begin{figure}
+	\centering
+	\caption{A 2D representation of the Rossenbrock function for $x, y \in [-1, 1]$.}
 	\label{fig:rosen}
 	\includegraphics[scale=0.5]{figures/chapter3/rosen/rosen}
 \end{figure}
 
-Given the low-dimensional space we are optimizing, we will plot the posterior mean and variance of the Gaussian Process, as well as the acquisition function. In this case, as in most cases throughout this thesis, we will use the Expected Improvement acquisition function. The complete step-by-step optimization procedure can be seen in Figure \ref{fig:2dstep}. For a more visually appealing explanation of the same procedure, there is a video in the linked GitHub repository of this thesis.\\
+Given the low-dimensional space we are optimizing, we will plot the posterior mean and variance of the Gaussian Process, as well as the acquisition function. Again, the Expected Improvement acquisition function is used. The complete step-by-step optimization procedure for 6 epochs can be seen in Figure \ref{fig:2dstep}. For a more visually appealing explanation of the same procedure, there is a video in the linked GitHub repository of this thesis.\\
 
-It can be seen that during the previous steps before fitting a Gaussian Process, that a random evaluation is reasonably close to one of the optima. This causes the acquisition function to exploit that area in the first step. In the second step, however, it starts exploring the area that is close to a second local optima, mostly because it is a large-variance area. It exploits in the third step, and keeps exploring the rest of the space during the following stages, therefore efficiently balancing exploitation and exploration in this optimization stage.
+It can be seen that during the previous steps before fitting a Gaussian Process, that a random evaluation is reasonably close to one of the optima. This causes the acquisition function to exploit that area in the first step. In the second step, however, it starts exploring the area that is close to a second local optima, mostly because it is a large-variance area. It exploits in the third step, and keeps exploring the rest of the space during the following stages, therefore efficiently balancing exploitation and exploration as intended in the optimization procedure.
 
 \begin{figure}
 	\centering

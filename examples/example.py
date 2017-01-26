@@ -41,6 +41,6 @@ if __name__ == '__main__':
 	gpgo = GPGO(gp, acq, f, param)
 	gpgo._firstRun()
     
-	for i in range(5):
+	for i in range(6):
 		plotGPGO(gpgo, param)
 		gpgo.updateGP() 
