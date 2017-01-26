@@ -688,6 +688,7 @@ if __name__ == '__main__':
 \end{figure}
 
 \section{Hyperparameter optimization}
+\label{hyper}
 
 As seen in the previous sections, different covariance functions have different \textit{hyperparameters}. These control how the kernel measures similarity among different instances of $\boldsymbol{x}$. So far, we have chosen these hyperparameters according to those set default in pyGPGO, but one may want to optimize these according to the data they have at hand. Depending on the situation, this optimization may lead to better models, either in terms of accuracy or interpretability. There are several ways to select these hyperparameters, one more analytical, by optimizing the marginal log-likelihood, and simpler ones based on cross-validation.
 
@@ -943,6 +944,24 @@ where $H$ notes the differential entropy function of the posterior distribution.
 
 The expectation is approximated in the original paper by Monte Carlo with Thompson samples, with simplifying assumptions. This is arguably the state of the art in acquisition functions, according to the results reported in [ref].\\
 
+\subsection{Acquisition function portfolios}
+
+In a \textit{no free lunch} fashion, it can be shown that no acquisition function will outperform the others in every single problem. In fact, it has been proven [ref] that the acquisition function to provide optimal performance can change even in different points of the optimization procedure. It is natural, therefore, to consider an ensemble of acquisition functions and act upon it. In general, this implies optimizing all of these functions at each optimization step and then choosing among candidate points using a meta-criteria. This higher order criteria can be seen as a second level acquisition function.\\
+
+Earlier approaches rely on modifications of the Hedge algorithm [ref], again inspired by the multi-armed bandit problem. It is basically based on measuring past performance of points proposed by the different acquisition functions to predict future performance (or gain), via another objective function. However, this strategy tends to undervalue exploration, which also provides valuable information on the target. Another more recent approach [ref] is called \textit{Entropy Search Portfolio}, that considers candidates by weighing the gain of information towards the optimum. Formally it is defined as:
+
+\begin{equation}
+\alpha_{\mathrm{ESP}}(\boldsymbol{x}, \mathcal{D}_n) = - \mathbb{E}_{y|\mathcal{D}_n, \boldsymbol{x}}\left[ H \left[\boldsymbol{x}_* |\mathcal{D}_n \cup \left\lbrace  (\boldsymbol{x},y)\right\rbrace \right] \right]
+\end{equation} 
+
+and then we try to maximize over the candidates provided by the $k$ based acquisition functions $\boldsymbol{x}_{1:K, n}$.
+
+\begin{equation}
+\boldsymbol{x}_n = \argmax_{\boldsymbol{x}_{1:K, n}} \alpha_{\mathrm{ESP}}(\boldsymbol{x}|\mathcal{D}_n)
+\end{equation}
+
+In other words, this method chooses the candidate that is expected to reduce the most the entropy about the minimizer $\boldsymbol{x}_*$. 
+
 \subsection{Example: visualizing the behaviour of an acquisition function}
 
 To demonstrate the behaviour of different acquisition functions on a step of Bayesian optimization, we will create a small script with our sine function example. This will help us understand visually the trade-off between exploration and exploitation in each case. The code provided below produces Figure \ref{fig:acqzoo}.
@@ -1015,6 +1034,47 @@ if __name__ == '__main__':
 \includegraphics[width=\textwidth]{figures/chapter3/acqzoo}
 \end{figure}
 
+\subsection{Example: why does Bayesian Optimization work?}
+
+In this small section, we will consider very briefly why the Bayesian Optimization procedure is efficiently making use of the information provided by the mean and variance posterior distribution of the GP. The explanation is mostly visual by means of Figure .
+
+\section{Role of GP hyperparameters in optimization}
+
+We already considered the role of hyperparameters in Gaussian Process regression in section \ref{hyper}. However, one may wonder how the estimation of this parameters, one way or another may affect the optimization procedure. So far, we have assumed that during the optimization procedure, parameters $\theta$ were given. Here we will consider two ways of handling hyperparameters during the optimization procedure, the one we presented, type II maximum likelihood estimation and approximate marginalization. For the moment, consider a generic acquisition function $\alpha:\mathcal{X} \times \Theta \rightarrow \mathbb{R}$, where $\theta \in \Theta$ are our Gaussian Process hyperparameters. Naturally, one wishes to marginalize the uncertainty caused by $\theta$ with the following expression:
+
+\begin{equation}
+\alpha(\boldsymbol{x}) = \mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x}, \theta) \right] = \int_{\Theta} \alpha(\boldsymbol{x}|\theta)p(\theta|\mathcal{D}_n)d\theta.
+\end{equation}
+
+The simplest way to do this is what we saw in \ref{posteriorhyper}, to optimize the marginal log-likelihood to obtain MAP estimates $\hat{\theta}_{\mathrm{MAP}}$. Then, in each step of the optimization procedure, we simply maximize:
+
+\begin{equation}
+\hat{\alpha}(\boldsymbol{x}) = \alpha(\boldsymbol{x}, \hat{\theta})
+\end{equation}
+
+That is, we optimize the acquisition function defined by the \textit{optimal} hyperparameters for the Gaussian Process determined in each step. Again, optimizing the marginal log-likelihood is a problem of its own, but it is common to use quasi-Newton methods such as L-BFGS-B methods.\\
+
+A more Bayesian approach is to incorporate the uncertainty of $\theta$ into our model, since it may have an important role in guiding exploration. Point estimates are in a sense \textit{winners} that may not capture the complexity of the response surface. The second approach we will be considering here, will be therefore to marginalize out hyperparameters using Markov Chain Monte Carlo (MCMC) sampling techniques. In practice, we will need to average $M$ samples $\left\lbrace\theta_n^{(i)}\right\rbrace ^{M}_{i=1}$ from the posterior distribution $p(\theta|\mathcal{D}_n)$.
+
+\begin{equation}
+\mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x},\theta )\right] \approx \sum_{i=1}^M \alpha(\boldsymbol{x},\theta_n^{(i)})
+\end{equation}
+
+Since it is not possible to have an analytical expression for the posterior distribution $p(\theta|\mathcal{D}_n)$, it is common to use MCMC techniques like Hamiltonian Monte Carlo [ref] to produce a sequence of samples whose stationary distribution is the posterior we are looking for. Once $M$ valid samples are obtained, they are evaluated in the acquisition function and averaged. Quadrature methods can be used instead of MCMC techniques, yielding a weighted mixture:
+
+\begin{equation}
+\mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x},\theta )\right] \approx \sum_{i=1}^M \omega_i \alpha(\boldsymbol{x},\theta_n^{(i)})
+\end{equation}
+
+However, and to finish this section, in the problems that we will tackle in the experiments, it is usually a bad idea to estimate kernel hyperparameters. Estimating these hyperparameters with few function evaluations is a very challenging task, and can lead to disastrous results, as proven in [ref]. The marginal log-likelihood surface can easily fall into traps or be very flat, as seen by the (not cherry-picked) example in Figure \ref{fig:logmarginal}. Even the more advanced MCMC or quadrature methods still suffer from this problem.
+
+\section{Optimizing the acquisition function}
+
+We have presented many acquisition functions in this chapter and provided a simple example to demonstrate basic functionality. However, so far, we have assumed that the acquisition function can be easily optimized. This is however, a problem of its own. The reader may be thinking that we have, in fact, changed one optimization problem (the one where we are interested in optimizing $f$) for another! (in which we now have to optimize $\alpha$). This is technically true, but bear in mind that while $f$ is very expensive to evaluate, $\alpha$ is very cheap, and it is reasonable to spend a bit more computational effort in evaluating $\alpha$ if it implies having to evaluate $f$ less.\\
+
+Maximizing $\alpha$, however, is not an easy task. The acquisition function is often multi-modal and therefore non-convex, as it can be see again in Figure \ref{fig:acqzoo}. Theoretical convergence, furthermore, is only guaranteed when the optimal point $\boldsymbol{x}^*$ in the acquisition function is found [ref]. At the end of the day, we encounter yet another global optimization problem that needs to be solved. From a practical point of view, there are many approaches the community has taken to solve this problem, from discretization [ref], adaptive-grids [ref]. If gradient information is available (rarely the case), a multi-start gradient ascent approach can be taken [ref]. Evolutionary approaches like CMA-ES can also be used [ref]. pyGPGO, in the \texttt{GPGO} module uses by default a multi-start quasi-Newton method in the (L-BFGS-B) to optimize the acquisition function, which in practice seems to work reasonably well. A CMA-ES optimizer interface is also available for the user.\\
+
+Other methods have been proposed as alternatives to Bayesian Optimization in this aspect. [ref], sequentially building space-partitioning trees by splitting leaves with high function values or upper confidence bounds. This is called \textit{Simultaneous Optimistic Optimization} (SOO) [ref]. Though these algorithms do not require any auxiliary information (smoothness) or optimization, it has been shown that they do not perform quite as competitively as the Bayesian optimization framework, especially when prior knowledge is available. 
 
 \chapter{Experiments}
 \chapter{pyGPGO: A simple Python Package for Bayesian Optimization}

@@ -20,6 +20,9 @@
 \BOOKMARK [2][-]{subsection.3.3.1}{Improvement-based policies}{section.3.3}% 20
 \BOOKMARK [2][-]{subsection.3.3.2}{Optimistic policies}{section.3.3}% 21
 \BOOKMARK [2][-]{subsection.3.3.3}{Information-based policies}{section.3.3}% 22
-\BOOKMARK [2][-]{subsection.3.3.4}{Example: visualizing the behaviour of an acquisition function}{section.3.3}% 23
-\BOOKMARK [0][-]{chapter.4}{Experiments}{}% 24
-\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 25
+\BOOKMARK [2][-]{subsection.3.3.4}{Acquisition function portfolios}{section.3.3}% 23
+\BOOKMARK [2][-]{subsection.3.3.5}{Example: visualizing the behaviour of an acquisition function}{section.3.3}% 24
+\BOOKMARK [1][-]{section.3.4}{Role of GP hyperparameters in optimization}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.5}{Optimizing the acquisition function}{chapter.3}% 26
+\BOOKMARK [0][-]{chapter.4}{Experiments}{}% 27
+\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 28
