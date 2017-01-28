@@ -73,32 +73,6 @@ def build(csv_path, target_index, header=None):
     X = np.delete(data, obj=np.array([target_index]), axis=1)
     return X, y
 
-
-# def evaluateDataset(csv_path, target_index, method='holdout', seed=230, max_iter=50):
-#     print('Now evaluating {}...'.format(csv_path))
-#     X, y = build(csv_path, target_index)
-#
-#     clf = SVM()
-#     wrapper = loss(clf, X, y, method=method)
-#
-#     np.random.seed(seed)
-#     sexp = squaredExponential()
-#     gp = GPRegressor(sexp)
-#     acq = Acquisition(mode='ExpectedImprovement')
-#     parameter_dict = {'C': ('cont', (0.001, 20)), 'gamma': ('cont', (0.001, 20))}
-#     gpgo = GPGO(gp, acq, wrapper.evaluateLoss, parameter_dict)
-#     gpgo.run(max_iter=max_iter)
-#
-#     np.random.seed(seed)
-#     r = evaluateRandom(gpgo, wrapper, n_eval=max_iter + 1)
-#     r = cumMax(r)
-#
-#     np.random.seed(seed)
-#     sa = evaluateSA(gpgo, wrapper, n_eval=max_iter + 1)
-#     sa = cumMax(sa)
-#
-#     return np.array(gpgo.history), r, sa
-
 def evaluateDataset(csv_path, target_index, model, parameter_dict, method='holdout', seed=230, max_iter=50):
     print('Now evaluating {}...'.format(csv_path))
     X, y = build(csv_path, target_index)
@@ -123,7 +97,7 @@ def evaluateDataset(csv_path, target_index, model, parameter_dict, method='holdo
     return np.array(gpgo.history), r, sa
 
 
-def plotRes(gpgo_history, random, sa, datasetname):
+def plotRes(gpgo_history, random, sa, datasetname, model):
     import matplotlib.pyplot as plt
     x = np.arange(1, len(random) + 1)
     plt.figure()
@@ -136,7 +110,7 @@ def plotRes(gpgo_history, random, sa, datasetname):
     plt.ylabel('Best log-loss found')
     datasetname = datasetname.split('.')[0]
     plt.title(datasetname)
-    plt.savefig(os.path.join(os.path.abspath('.'), 'testing/results/{}.pdf'.format(datasetname)))
+    plt.savefig(os.path.join(os.path.abspath('.'), 'testing/results/{}/{}.pdf'.format(model.name, datasetname)))
     plt.show()
     return None
 
@@ -151,7 +125,6 @@ def evaluateRandom(gpgo, loss, n_eval=20):
 
 
 def evaluateSA(gpgo, loss, T=100, cooling=0.9, n_eval=50):
-    res = []
     sa = SimulatedAnnealing(gpgo._sampleParam, loss.evaluateLoss, T=T, cooling=cooling)
     sa.run(n_eval)
     return (sa.history)
@@ -179,4 +152,4 @@ if __name__ == '__main__':
         g, r, sa = evaluateDataset(os.path.join(path, dataset), target_index = target, model = model,
                                    parameter_dict = parameter_dict, method = '5fold', seed = 20,
                                    max_iter = 50)
-        plotRes(g, r, sa, dataset)
+        plotRes(g, r, sa, dataset, model)

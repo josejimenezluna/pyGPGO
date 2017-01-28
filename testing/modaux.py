@@ -41,6 +41,7 @@ class SVM:
         self.problem = problem
         self.C = C
         self.gamma = gamma
+        self.name = 'SVM'
     def eval(self):
         if self.problem == 'binary':
             mod = SVC(C = self.C, gamma = self.gamma, probability = True)
@@ -57,6 +58,7 @@ class RF:
         self.max_features = max_features
         self.min_samples_split = min_samples_split
         self.min_samples_leaf = min_samples_leaf
+        self.name = 'RF'
     def eval(self):
         if self.problem == 'binary':
             mod = RandomForestClassifier(n_estimators = self.n_estimators,
@@ -78,6 +80,7 @@ class KNN:
         self.problem = problem
         self.n_neighbors = int(n_neighbors)
         self.leaf_size = int(leaf_size)
+        self.name = 'KNN'
     def eval(self):
         if self.problem == 'binary':
             mod = KNeighborsClassifier(n_neighbors = self.n_neighbors,
@@ -96,6 +99,7 @@ class MLP:
         self.learning_rate_init = learning_rate_init
         self.beta_1 = beta_1
         self.beta_2 = beta_2
+        self.name = 'MLP'
     def eval(self):
         if self.problem == 'binary':
             mod = MLPClassifier(hidden_layer_sizes = self.hidden_layer_sizes, alpha = self.alpha,
