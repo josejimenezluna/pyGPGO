@@ -41,4 +41,4 @@ if __name__ == '__main__':
             g, r, sa = evaluateDataset(os.path.join(path, dataset), target_index = target, model = model,
                                        parameter_dict = parameter_dict, method = '5fold', seed = 20,
                                        max_iter = 50, problem=problem)
-            plotRes(g, r, sa, dataset, model)
+            plotRes(g, r, sa, dataset, model, problem=problem)

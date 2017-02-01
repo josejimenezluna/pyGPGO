@@ -1,13 +1,15 @@
 import os
+
 import numpy as np
+import pandas as pd
+from sklearn.metrics import log_loss, mean_squared_error
+from sklearn.model_selection import train_test_split, KFold
+from sklearn.preprocessing import StandardScaler
+
 from GPGO import GPGO
 from GPRegressor import GPRegressor
 from acquisition import Acquisition
 from covfunc import squaredExponential
-from sklearn.model_selection import train_test_split, KFold
-from sklearn.metrics import log_loss, mean_squared_error
-from sklearn.preprocessing import StandardScaler
-import pandas as pd
 from testing.other_go import SimulatedAnnealing
 
 
@@ -96,7 +98,7 @@ def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, meth
     return np.array(gpgo.history), r, sa
 
 
-def plotRes(gpgo_history, random, sa, datasetname, model):
+def plotRes(gpgo_history, random, sa, datasetname, model, problem):
     import matplotlib.pyplot as plt
     x = np.arange(1, len(random) + 1)
     plt.figure()
@@ -106,7 +108,10 @@ def plotRes(gpgo_history, random, sa, datasetname, model):
     plt.grid()
     plt.legend(loc=0)
     plt.xlabel('Number of evaluations')
-    plt.ylabel('Best log-loss found')
+    if problem == 'binary':
+        plt.ylabel('Best log-loss found')
+    else:
+        plt.ylabel('Best MSE found')
     datasetname = datasetname.split('.')[0]
     plt.title(datasetname)
     plt.savefig(os.path.join(os.path.abspath('.'), 'testing/results/{}/{}.pdf'.format(model.name, datasetname)))
