@@ -9,7 +9,6 @@ from sklearn.metrics import log_loss, mean_squared_error
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from testing.other_go import SimulatedAnnealing
-from testing.modaux import SVM, RF, KNN, MLP
 
 
 class loss:
@@ -73,11 +72,11 @@ def build(csv_path, target_index, header=None):
     X = np.delete(data, obj=np.array([target_index]), axis=1)
     return X, y
 
-def evaluateDataset(csv_path, target_index, model, parameter_dict, method='holdout', seed=230, max_iter=50):
+def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, method='holdout', seed=230, max_iter=50):
     print('Now evaluating {}...'.format(csv_path))
     X, y = build(csv_path, target_index)
 
-    wrapper = loss(model, X, y, method=method)
+    wrapper = loss(model, X, y, method=method, problem=problem)
 
     np.random.seed(seed)
     sexp = squaredExponential()
@@ -128,28 +127,3 @@ def evaluateSA(gpgo, loss, T=100, cooling=0.9, n_eval=50):
     sa = SimulatedAnnealing(gpgo._sampleParam, loss.evaluateLoss, T=T, cooling=cooling)
     sa.run(n_eval)
     return (sa.history)
-
-
-if __name__ == '__main__':
-    #parameter_dict = {'C': ('cont', (0.001, 20)), 'gamma': ('cont', (0.001, 20))}
-    #mod = SVM()
-    #parameter_dict = {'n_neighbors': ('int', (1, 100)),
-    #                  'leaf_size': ('int', (15, 50))}
-    #model = KNN()
-    parameter_dict = {
-    'n_estimators': ('int', (3, 500)),
-    'max_features': ('cont', (0.01, 1)),
-    'min_samples_split': ('cont', (0.01, 1)),
-    'min_samples_leaf': ('cont', (0.01, 0.5))
-    }
-    model = RF()
-
-
-    path = os.path.join(os.getcwd(), 'datasets')
-    datasets = ['breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv', 'lsvt.csv', 'pima-indians-diabetes.csv']
-    targets = [0, 10, 16, 0, 8]
-    for dataset, target in zip(datasets, targets):
-        g, r, sa = evaluateDataset(os.path.join(path, dataset), target_index = target, model = model,
-                                   parameter_dict = parameter_dict, method = '5fold', seed = 20,
-                                   max_iter = 50)
-        plotRes(g, r, sa, dataset, model)

@@ -32,12 +32,13 @@ if __name__ == '__main__':
 
     path = os.path.join(os.getcwd(), 'datasets')
     datasets = ['breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv', 'lsvt.csv', 'pima-indians-diabetes.csv']
+    problems = ['binary', 'binary', 'binary', 'binary', 'binary']
     targets = [0, 10, 16, 0, 8]
 
 
     for model, parameter_dict in zip(models, params):
-        for dataset, target in zip(datasets, targets):
+        for dataset, target, problem in zip(datasets, targets, problems):
             g, r, sa = evaluateDataset(os.path.join(path, dataset), target_index = target, model = model,
                                        parameter_dict = parameter_dict, method = '5fold', seed = 20,
-                                       max_iter = 50)
+                                       max_iter = 50, problem=problem)
             plotRes(g, r, sa, dataset, model)

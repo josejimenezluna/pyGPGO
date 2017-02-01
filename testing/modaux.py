@@ -93,7 +93,7 @@ class KNN:
 class MLP:
     def __init__(self, problem='binary', hidden_layer_size=100, alpha=10e-4,
                 learning_rate_init=10e-4, beta_1=0.9, beta_2=0.999):
-        self.problem = 'binary'
+        self.problem = problem
         self.hidden_layer_sizes = (int(hidden_layer_size),)
         self.alpha = alpha
         self.learning_rate_init = learning_rate_init
