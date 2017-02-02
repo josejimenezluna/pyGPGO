@@ -1211,6 +1211,27 @@ One of the first solutions is the \textit{Sparse pseudo-input Gaussian Process} 
 p\left(\boldsymbol{f}_*, \boldsymbol{f}\right) = \int p(\boldsymbol{f}_*, \boldsymbol{f}, \boldsymbol{u})\; d\boldsymbol{u} \approx \int q(\boldsymbol{f}_*|\boldsymbol{u})q(\boldsymbol{f}|\boldsymbol{u})p(\boldsymbol{u})\; d\boldsymbol{u} = q(\boldsymbol{f}, \boldsymbol{f}_*) 
 \end{equation}
 
+where $\boldsymbol{u}$ is a vector representing the function values at the pseudo-inputs. Different pseudo-input Gaussian Process pseudo-input approximations specify their own form of $q(\boldsymbol{f}|\boldsymbol{u})$ and $q(\boldsymbol{f_*|u})$ training and test conditionals. [ref]. How to choose the locations of these pseudo-inputs is another problem, is is usually done by maximizing the marginal log-likelihood of the SPGP [ref]. Another approach uses variational inference [ref] to marginalize the pseudo-inputs to maximize the fidelity to the original Gaussian Process. It has been noted, however, that the computational savings of the pseudo-input methods impact heavily variance estimates. In the Bayesian optimization framework, this variance of the posterior predictive distribution is heavily used to guide exploration, so this behavior is undesirable.\\
+
+Another approach is named \textit{Sparse spectrum Gaussian processes} (SSGP). Using the ideas of pseudo-input methods, these methods apply the same concept in kernel spectral space. [ref]. From basic spectral analysis, Bochner's theorem states that a stationary kernel $k(\boldsymbol{x}, \boldsymbol{x}_*)$ defines a positive finite Fourier spectrum $s(\boldsymbol{\omega})$:
+
+\begin{equation}
+k(\boldsymbol{x}) = \dfrac{1}{(2\pi)^d}\int e^{-i\boldsymbol{\omega}\boldsymbol{x}}s(\boldsymbol{\omega}) d\boldsymbol{\omega}
+\end{equation}
+
+We can normalize this spectrum to make it a valid probability density function, such as $p(\boldsymbol{\omega}) = \dfrac{s(\boldsymbol{\omega})}{\nu}$. Now evaluating the kernel is the same as the expectation of the Fourier basis with respect to $p(\boldsymbol{\omega})$:
+
+\begin{equation}
+k(\boldsymbol{x}, \boldsymbol{x_*}) = \nu \mathbb{E}_{\boldsymbol{\omega}}\left[ e^{-i\boldsymbol{w}^T(\boldsymbol{x} - \boldsymbol{x}_*)}   \right]
+\end{equation}
+
+Monte Carlo techniques can be used to approximate this expectation using $m$ samples from the spectral density, so that:
+
+\begin{equation}
+k(\boldsymbol{x}, \boldsymbol{x_*}) \approx \dfrac{\nu}{m}\sum_{i=1}^m e^{-i\boldsymbol{\omega}_{(i)}^T\boldsymbol{x}} e^{-i\boldsymbol{\omega}_{(i)}^T\boldsymbol{x_*}} 
+\end{equation}
+
+where $\boldsymbol{\omega}_{(i)} \sim s(\boldsymbol{\omega})/\nu$. The computational cost in this approach can be reduced to $O(nm^2 + m^3)$. It has been noted [ref] for this approximation method that whereas the uncertainty estimates are smoother than with the pseudo-input methods, observations away from the observed values exhibit irregular variance estimates. This again is undesirable behavior in the Bayesian Optimization framework.
 \section{Step-by-step examples}
 
 We have explored the basics of Gaussian Process regression and Bayesian Optimization by now. To provide a more thorough understanding on the logic behind Algorithm \ref{bayesopt}, we will provide two different examples in this section. While not very complex, they serve illustrative purposes on how the optimization framework works. We hope this section will clear any practical consideration on how the procedure selects the next point to sample, graphically.
