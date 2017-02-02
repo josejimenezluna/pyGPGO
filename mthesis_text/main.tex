@@ -501,6 +501,7 @@ y_{\mathrm{optimal}}|\boldsymbol{x}_* = \argmin_{y_{\mathrm{guess}}}\mathcal{R}_
 It can be proven that the value $y_{\mathrm{guess}}$ that minimizes Equation \ref{risk} for the absolute loss function is the median of $p(y_*|\boldsymbol{x}_*,\mathcal{D})$. For the squared loss function, it is the mean of the same distribution. Since in our case we are dealing with the Gaussian distribution, median and mean coincide, and the most reasonable \textit{winner} will therefore be the specific value of the posterior mean. 
 
 \section{On covariance functions}
+\label{covariancefunc}
 
 A covariance function, like the squared exponential kernel that we have been using as a example throughout the chapter encodes our assumptions of similarity between inputs from $\boldsymbol{x}$. We assume \textit{similar} items in input space to have similar values of the target value $y$. Not any function of $\boldsymbol{x}$ and $\boldsymbol{x'}$ can be considered a covariance function, in general should fulfil properties like the following:
 
@@ -849,6 +850,97 @@ To evaluate the performance of hyperparameters $\boldsymbol{\theta}$, in $D=\lef
 \item \textbf{$k$-fold cross validation}. Instead of considering a single test set $D_V$, partition $D={D_1,\dots, D_k}$. Train your model iteratively on $k-1$ sets and test on the remaining one. Consider an average of losses for each hyperparameter to test.  
 \end{itemize}
 
+\section{Further theoretical aspects}
+
+In this section, we will briefly mention other theoretical aspects of Gaussian Processes. This includes for example, how Gaussian Process can be seen as \textit{linear smoothers}, by means of a spectral analysis or how to incorporate explicit basis functions into the model. Readers can safely skip this section if not particularly interested, as it will not be mentioned any other time throughout the text.
+
+\subsection{Gaussian processes as linear smoothers}
+
+As many machine learning algorithms, the main objective of a Gaussian Process regressor is to reconstruct the underlying signal $f$ by removing noise $\epsilon$. It does this by computing a weighted average of the values $\boldsymbol{y}$. In particular, as seen in \ref{pred}, it can be written as:
+
+\begin{equation}
+\overline{f}(\boldsymbol{x}_*) = \boldsymbol{k}(\boldsymbol{x}_*)^T(K + \sigma_n^2 I)^{-1}\boldsymbol{y}
+\end{equation}
+
+Therefore, one can see a Gaussian Process regressor as a linear smoother [ref]. We can study this smoothing in terms of spectral analysis. Again, for training points, predicted training points $\overline{\boldsymbol{f}}$ are:
+
+\begin{equation}
+\overline{\boldsymbol{f}} = K(K + \sigma_n^2 I)^{-1}\boldsymbol{y}
+\end{equation}
+
+Write $K$ using its eigenvalue decomposition $K = \sum_{i=1}^n \lambda_i \boldsymbol{u}_i\boldsymbol{u}_i^T$, with $\lambda_i$ and $\boldsymbol{u}_i$ its $i$-th eigenvalue and eigenvector respectively. Since $K$ is a covariance matrix, its is symmetric positive semidefinite, and therefore has positive eigenvalues. If we note $\gamma_i = \boldsymbol{u}_i^T\boldsymbol{y}$, then:
+
+\begin{equation}
+\overline{\boldsymbol{f}} = \sum_{i=1}^n \dfrac{\gamma_i \lambda_i}{\lambda_i + \sigma^2_n}\boldsymbol{u}_i
+\end{equation}
+
+For the covariance functions we have studied in section \ref{covariancefunc}, the eigenvalues are larger for slowly varying eigenvectors, so the more frequent items in $\boldsymbol{y}$ get smoothed-out. The effective number of degrees of freedom in a Gaussian Process model can be defined as the number of used eigenvectors:
+
+\begin{equation}
+\mathrm{df}(K) = \mathrm{tr}(K(K + \sigma_n^2 I)^{-1}) = \sum_{i=1}^n\dfrac{\lambda_i}{\lambda_i + \sigma_n^2}
+\end{equation}
+
+To make the explanation clearer, let us define $\boldsymbol{h}(\boldsymbol{x}_*) = (K + \sigma_n^2 I)^{-1}\boldsymbol{k}(\boldsymbol{x}_*)$. So for a new given point, prediction is defined as $\overline{f}(\boldsymbol{x}_*)^T \boldsymbol{y}$, that is, a linear combination of $\boldsymbol{y}$, with weights $\boldsymbol{h}(\boldsymbol{x}_*)$. A Gaussian Process regressor is a linear smoother, since the weight function $\boldsymbol{h}$ does not depend directly on $\boldsymbol{y}$. While a regular linear model defines a linear combination of the inputs, a linear smoother defines a linear combination of the targets. This weight function depends directly on the specific location of the $n$ training points, by means of the matrix inversion of $K + \sigma_n^2 I$, therefore observations close in input space are smoothed out.
+
+\subsection{Explicit basis functions}
+
+Notice that during the entire chapter, we have consider a Gaussian Process prior with mean $m(\boldsymbol) = 0$ for simplicity reasons. We do not have to impose such a limitation, and one may want to define a different mean value for the prior. Notice that imposing $m(\boldsymbol{x}) = 0$ is not a strong assumption, since the posterior is not constrained to be zero as well. With an explicit mean function $m(\boldsymbol{x}) \neq 0$, the prior becomes:
+
+\begin{equation}
+f(\boldsymbol{x}) \sim \mathcal{G}\mathcal{P}\left(m(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x^*})\right)
+\end{equation}
+
+and the mean of the posterior predictive distribution then becomes, very naturally:
+
+\begin{equation}
+\boldsymbol{f}_* = \boldsymbol{m}(X_*) + k(X_*, X)K^{-1}\left(\boldsymbol{y} - \boldsymbol{m}(X)\right) 
+\end{equation}
+
+The variance of the posterior predictive distribution remains the same as in Equation \ref{pred}. In practice, however, it may not be clear how to specify a prior mean function for the process. In some cases it may be useful to define a few parametric basis function, whose parameters $\boldsymbol{\beta}$ we have to estimate from training data. Formally:
+
+\begin{equation}
+\label{gbasis}
+g(\boldsymbol{x}) = f(\boldsymbol{x}) + \boldsymbol{h}(\boldsymbol{x})^T\boldsymbol{\beta}
+\end{equation}
+
+where $f(\boldsymbol{x})$ is a regular zero-mean Gaussian Process prior, $\boldsymbol{h}(\boldsymbol{x})$ are our chosen basis functions, and $\beta$ are our parameters. For example, if we are interested in polynomial regression, then $\boldsymbol{h}(x) = (1, x, x^2, \dots)$. One could think to optimize $\boldsymbol{\beta}$ the same way as with our kernel hyperparameters, but if we assume a Gaussian prior $\boldsymbol{\beta} \sim \mathcal{N}(\boldsymbol{b}, B)$, we can solve analytically to obtain another Gaussian Process:
+
+\begin{equation}
+g(\boldsymbol{x}) \sim \mathcal{G}\mathcal{P}\left(\boldsymbol{h}(\boldsymbol{x}^T\boldsymbol{b}, k(\boldsymbol{x}, \boldsymbol{x}^*) + \boldsymbol{h}(\boldsymbol{x})^T B \boldsymbol{h}(\boldsymbol{x}^*)\right)
+\end{equation} 
+
+Notice that now we have an extra term in the covariance function. This is caused by the uncertainty in the parameters of the mean. Now predictions are made by substituting these parameters into Equation \ref{gbasis}. An explicit version for the mean and covariance is given by:
+
+\begin{align}
+&\overline{\boldsymbol{g}}(X_*) = H^T_* \hat{\boldsymbol{\beta}} + K_*^T K^{-1}(\boldsymbol{y} - H^T\hat{\boldsymbol{\beta}}) = \overline{\boldsymbol{f}}(X_*) + R^T\hat{\boldsymbol{\beta}}\\
+&\mathrm{Cov}(\boldsymbol{g_*}) = K_{**} + R^T(B^{-1} + HK^{-1}H^T)^{-1}R
+\end{align}
+
+where $H$ and $H_*$ are matrices containing the evaluation of the chosen basis functions over training and testing points respectively, $\hat{\boldsymbol{\beta}} = (B^{-1} + H K^{-1} H^T)^{-1}(H K^{-1}\boldsymbol{y} + B^{-1}\boldsymbol{b})$ and $R = H_* - HK^{-1}K_{*}$. The posterior process parameters can be interpreted as such: $\hat{\boldsymbol{\beta}}$ is a mean of the model linear parameters, a compromise between the prior and the likelihood provided by the data. The mean of the process is simply $\hat{\boldsymbol{\beta}}$ plus our typical Gaussian Process prediction of the residuals. The covariance matrix is just the addition of our regular expression and a non-negative term.\\
+
+Consider the limit of $B^{-1}$ as it approaches $O$ ($O$ being a zero-filled matrix), that is when the prior is vague. We then get a predictive distribution independent of $\boldsymbol{b}$:
+
+\begin{align}
+&\overline{\boldsymbol{g}}(X_*) = \overline{\boldsymbol{f}}(X_*) + R^T\hat{\boldsymbol{\beta}}\\
+&\mathrm{Cov}(\boldsymbol{g_*}) = K_{**} + R^T\left(HK^{-1}H^T\right)^{-1}R
+\end{align}
+
+where now $\hat{\boldsymbol{\beta}} = \left(HK^{-1}H^T\right)^{-1}HK^{-1}\boldsymbol{y}$.\\
+
+We explore now the behaviour of the marginal log-likelihood under this model where we assume a Gaussian prior $\boldsymbol{\beta} \sim \mathrm{N}(\boldsymbol{b}, B)$. Formally:
+
+\begin{equation}
+\log p(\boldsymbol{y}|X, \boldsymbol{b}, B) = -\dfrac{1}{2}\log |K + H^T B H| - \dfrac{n}{2}\log 2\pi
+\end{equation}
+
+In the same way as before, exploring the limit $B^{-1} \rightarrow O$, the prior becomes irrelevant, so we can safely assume that $\boldsymbol{b} = 0$, yielding:
+
+\begin{align}
+\log p(\boldsymbol{y}|X, \boldsymbol{b} =& \boldsymbol{0}, B) = -\dfrac{1}{2}\boldsymbol{y}^T K^{-1}\boldsymbol{y} + \dfrac{1}{2}\boldsymbol{y}^T C \boldsymbol{y}\\
+&- \dfrac{1}{2}\left(\log |K| + \log |B| + \log |A| + n\log 2\pi \right)
+\end{align}
+
+where $A = B^{-1} + HK^{-1}H^T$ and $C = K^{-1}H^T A^{-1}HK^{-1}$.
 
 \chapter{Bayesian optimization}
 
@@ -1108,6 +1200,16 @@ We have presented many acquisition functions in this chapter and provided a simp
 Maximizing $\alpha$, however, is not an easy task. The acquisition function is often multi-modal and therefore non-convex, as it can be see again in Figure \ref{fig:acqzoo}. Theoretical convergence, furthermore, is only guaranteed when the optimal point $\boldsymbol{x}^*$ in the acquisition function is found [ref]. At the end of the day, we encounter yet another global optimization problem that needs to be solved. From a practical point of view, there are many approaches the community has taken to solve this problem, from discretization [ref], adaptive-grids [ref]. If gradient information is available (rarely the case), a multi-start gradient ascent approach can be taken [ref]. Evolutionary approaches like CMA-ES can also be used [ref]. pyGPGO, in the \texttt{GPGO} module uses by default a multi-start quasi-Newton method (L-BFGS-B) to optimize the acquisition function, which in practice seems to work reasonably well. A CMA-ES optimizer interface is also available for the user.\\
 
 Other methods have been proposed as alternatives to Bayesian Optimization in this aspect. [ref], sequentially building space-partitioning trees by splitting leaves with high function values or upper confidence bounds. This is called \textit{Simultaneous Optimistic Optimization} (SOO) [ref]. Though these algorithms do not require any auxiliary information (smoothness) or optimization, it has been shown that they do not perform quite as competitively as the Bayesian optimization framework, especially when prior knowledge is available. 
+
+\section{Computational costs}
+
+Remember from chapter 2 that Gaussian Process regression has analytical expressions for the mean and variance of the posterior process. However, this exact inference is $O(n^3)$, where $n$ is the number of training samples. This is caused by the inversion of $K$. pyGPGO uses a Cholesky decomposition that once computed, can reduce the cost of predicting to $O(n^2)$. If during the search procedure, however, we change $K$, for example, due to hyperparameter optimization, this $O(n^3)$ order is unavoidable for the traditional framework. Several approaches have been explored in the literature for approximating the output of the analytical solution. Mainly, there are two types of solutions, those that try to sparsify the process and those that use another type of surrogate model, such as Random Forests.\\
+
+One of the first solutions is the \textit{Sparse pseudo-input Gaussian Process} (SPGP) [ref]. This is a straightforward approach to model large $n$ using $m < n$ pseudo-inputs to reduce the rank of the covariance matrix to $m$. This method forces the interaction between the $\boldsymbol{x}_{1:n}$ data points and test points $\boldsymbol{x}_*$ inducing $m$ pseudo-inputs, achieving an approximate posterior in $O(nm^2 + m^3)$. Let $\boldsymbol{f}$ and $\boldsymbol{f}_*$ denote two sets of latent function (them being our training and testing points respectively). The assumption is that $\boldsymbol{f} and \boldsymbol{f}_*$ are independent given a third set of variables $\boldsymbol{u}$, that is:
+
+\begin{equation}
+p\left(\boldsymbol{f}_*, \boldsymbol{f}\right) = \int p(\boldsymbol{f}_*, \boldsymbol{f}, \boldsymbol{u})\; d\boldsymbol{u} \approx \int q(\boldsymbol{f}_*|\boldsymbol{u})q(\boldsymbol{f}|\boldsymbol{u})p(\boldsymbol{u})\; d\boldsymbol{u} = q(\boldsymbol{f}, \boldsymbol{f}_*) 
+\end{equation}
 
 \section{Step-by-step examples}
 

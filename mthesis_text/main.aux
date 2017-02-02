@@ -49,6 +49,7 @@
 \newlabel{fig:GPsine}{{2.2}{15}{A fitted Gaussian Process regressor to samples of the sine function.\relax }{figure.caption.3}{}}
 \newlabel{risk}{{2.32}{16}{Picking a winner}{equation.2.3.32}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}On covariance functions}{16}{section.2.4}}
+\newlabel{covariancefunc}{{2.4}{16}{On covariance functions}{section.2.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}A zoo of covariance functions}{18}{subsection.2.4.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Behaviour of different stationary covariance functions with the default parameters in pyGPGO.\relax }}{19}{figure.caption.4}}
 \newlabel{fig:zoo}{{2.3}{19}{Behaviour of different stationary covariance functions with the default parameters in pyGPGO.\relax }{figure.caption.4}{}}
@@ -59,8 +60,12 @@
 \newlabel{posteriorhyper}{{2.39}{20}{Type II Maximum Likelihood}{equation.2.5.39}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Another toy example: Optimizing the characteristic length-scale}{21}{section*.5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.5.2}Cross validation}{22}{subsection.2.5.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}Further theoretical aspects}{22}{section.2.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.1}Gaussian processes as linear smoothers}{22}{subsection.2.6.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Log-marginal likelihood and its gradient w.r.t to the characteristic length-scale. Notice there seems to be an optimal point at around $l = 1.4$.\relax }}{23}{figure.caption.6}}
 \newlabel{fig:logmarginal}{{2.4}{23}{Log-marginal likelihood and its gradient w.r.t to the characteristic length-scale. Notice there seems to be an optimal point at around $l = 1.4$.\relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6.2}Explicit basis functions}{23}{subsection.2.6.2}}
+\newlabel{gbasis}{{2.48}{24}{Explicit basis functions}{equation.2.6.48}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Bayesian optimization}{25}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -82,16 +87,17 @@
 \newlabel{fig:explanation}{{3.2}{31}{A visual explanation on why Bayesian optimization is efficient at exploring the space. It ignores all the input space where the UPB is lower than the point with maximum LCB.\relax }{figure.caption.8}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Role of GP hyperparameters in optimization}{32}{section.3.4}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}Optimizing the acquisition function}{32}{section.3.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Step-by-step examples}{33}{section.3.6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Optimizing (yet-again) the sine function}{33}{subsection.3.6.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Optimizing the Rossenbrock function}{33}{subsection.3.6.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Six complete optimization epochs in the Bayesian Optimization framework for the target sine function in $x\in [0, 2\pi ]$.\relax }}{34}{figure.caption.9}}
-\newlabel{fig:1dstep}{{3.3}{34}{Six complete optimization epochs in the Bayesian Optimization framework for the target sine function in $x\in [0, 2\pi ]$.\relax }{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces A 2D representation of the Rossenbrock function for $x, y \in [-1, 1]$.\relax }}{35}{figure.caption.10}}
-\newlabel{fig:rosen}{{3.4}{35}{A 2D representation of the Rossenbrock function for $x, y \in [-1, 1]$.\relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Six complete optimization epochs in the Bayesian Optimization framework for the target Rossenbrock 2D function.\relax }}{36}{figure.caption.11}}
-\newlabel{fig:2dstep}{{3.5}{36}{Six complete optimization epochs in the Bayesian Optimization framework for the target Rossenbrock 2D function.\relax }{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Experiments}{37}{chapter.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Computational costs}{33}{section.3.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Step-by-step examples}{33}{section.3.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.1}Optimizing (yet-again) the sine function}{33}{subsection.3.7.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.2}Optimizing the Rossenbrock function}{34}{subsection.3.7.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Six complete optimization epochs in the Bayesian Optimization framework for the target sine function in $x\in [0, 2\pi ]$.\relax }}{35}{figure.caption.9}}
+\newlabel{fig:1dstep}{{3.3}{35}{Six complete optimization epochs in the Bayesian Optimization framework for the target sine function in $x\in [0, 2\pi ]$.\relax }{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces A 2D representation of the Rossenbrock function for $x, y \in [-1, 1]$.\relax }}{36}{figure.caption.10}}
+\newlabel{fig:rosen}{{3.4}{36}{A 2D representation of the Rossenbrock function for $x, y \in [-1, 1]$.\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Six complete optimization epochs in the Bayesian Optimization framework for the target Rossenbrock 2D function.\relax }}{37}{figure.caption.11}}
+\newlabel{fig:2dstep}{{3.5}{37}{Six complete optimization epochs in the Bayesian Optimization framework for the target Rossenbrock 2D function.\relax }{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Experiments}{39}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \gdef\minted@oldcachelist{,
@@ -109,6 +115,6 @@
   778010B1D483D75C07C76F2DA0721C6B9D188FF14B5B5A34504F2B9625FD44DE.pygtex,
   69039E575068EBA51D5DDA94862D7B089D188FF14B5B5A34504F2B9625FD44DE.pygtex,
   C3FEF1F24A4C8C42E29EB147312F79BA9D188FF14B5B5A34504F2B9625FD44DE.pygtex}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{39}{chapter.5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{41}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}

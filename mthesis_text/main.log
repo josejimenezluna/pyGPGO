@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  26 JAN 2017 19:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  2 FEB 2017 14:48
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -948,7 +948,7 @@ E.pygtex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
  [9])
-<figures/chapter2/drawPrior.pdf, id=256, 812.1341pt x 573.64313pt>
+<figures/chapter2/drawPrior.pdf, id=276, 812.1341pt x 573.64313pt>
 File: figures/chapter2/drawPrior.pdf Graphic file (type pdf)
 
 <use figures/chapter2/drawPrior.pdf>
@@ -984,7 +984,7 @@ E.pygtex [12]) [13]
 
 
 (./_minted-main/CBAFD97C67C91ADDAEA34D3DAF0D40079D188FF14B5B5A34504F2B9625FD44D
-E.pygtex) <figures/chapter2/GPsine.pdf, id=340, 760.64174pt x 514.92375pt>
+E.pygtex) <figures/chapter2/GPsine.pdf, id=360, 760.64174pt x 514.92375pt>
 File: figures/chapter2/GPsine.pdf Graphic file (type pdf)
 
 <use figures/chapter2/GPsine.pdf>
@@ -996,7 +996,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 486--487
  []
 
 [14] [15 <./figures/chapter2/GPsine.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+Underfull \hbox (badness 10000) in paragraph at lines 514--515
 
  []
 
@@ -1029,17 +1029,17 @@ E.pygtex)
 
 
 (./_minted-main/01846CE0AB08FBB5370F551BDD8700E49D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [18]) <figures/chapter2/zoo.pdf, id=406, 995.51924pt x 720.89326pt>
+E.pygtex [18]) <figures/chapter2/zoo.pdf, id=426, 995.51924pt x 720.89326pt>
 File: figures/chapter2/zoo.pdf Graphic file (type pdf)
 
 <use figures/chapter2/zoo.pdf>
-Package pdftex.def Info: figures/chapter2/zoo.pdf used on input line 708.
+Package pdftex.def Info: figures/chapter2/zoo.pdf used on input line 709.
 (pdftex.def)             Requested size: 455.24411pt x 329.65694pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [19 <./figures/chapter2/zoo.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 725--726
+Underfull \hbox (badness 10000) in paragraph at lines 726--727
 
  []
 
@@ -1053,44 +1053,54 @@ E.pygtex [20])
 
 (./_minted-main/69039E575068EBA51D5DDA94862D7B089D188FF14B5B5A34504F2B9625FD44D
 E.pygtex [21])
-<figures/chapter2/logmarginal.pdf, id=452, 710.95612pt x 282.7564pt>
+<figures/chapter2/logmarginal.pdf, id=472, 710.95612pt x 282.7564pt>
 File: figures/chapter2/logmarginal.pdf Graphic file (type pdf)
 
 <use figures/chapter2/logmarginal.pdf>
 Package pdftex.def Info: figures/chapter2/logmarginal.pdf used on input line 83
-8.
+9.
 (pdftex.def)             Requested size: 455.24411pt x 181.05838pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 843--844
+Underfull \hbox (badness 10000) in paragraph at lines 844--845
 
  []
 
-[22] [23 <./figures/chapter2/logmarginal.pdf>] [24
+[22] [23 <./figures/chapter2/logmarginal.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 919--920
 
-]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 928--929
+
+ []
+
+[24]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 875--876
+Underfull \hbox (badness 10000) in paragraph at lines 967--968
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 882--883
+Underfull \hbox (badness 10000) in paragraph at lines 974--975
 
  []
 
-[25]
-Underfull \hbox (badness 10000) in paragraph at lines 913--914
+[25
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1005--1006
 
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 966--967
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1059
 
  []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 970--971
+Underfull \hbox (badness 10000) in paragraph at lines 1062--1063
 
  []
 
@@ -1098,181 +1108,186 @@ Underfull \hbox (badness 10000) in paragraph at lines 970--971
 
 
 (./_minted-main/C3FEF1F24A4C8C42E29EB147312F79BA9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [28]) <figures/chapter3/acqzoo.pdf, id=540, 578.16pt x 868.1434pt>
+E.pygtex [28]) <figures/chapter3/acqzoo.pdf, id=579, 578.16pt x 868.1434pt>
 File: figures/chapter3/acqzoo.pdf Graphic file (type pdf)
 
 <use figures/chapter3/acqzoo.pdf>
-Package pdftex.def Info: figures/chapter3/acqzoo.pdf used on input line 1056.
+Package pdftex.def Info: figures/chapter3/acqzoo.pdf used on input line 1148.
 (pdftex.def)             Requested size: 346.89867pt x 520.89006pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1061--1062
+Underfull \hbox (badness 10000) in paragraph at lines 1153--1154
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1063--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1156
 
  []
 
-<figures/chapter3/explanation.pdf, id=542, 832.91174pt x 545.63847pt>
+<figures/chapter3/explanation.pdf, id=581, 832.91174pt x 545.63847pt>
 File: figures/chapter3/explanation.pdf Graphic file (type pdf)
 
 <use figures/chapter3/explanation.pdf>
-Package pdftex.def Info: figures/chapter3/explanation.pdf used on input line 10
-70.
+Package pdftex.def Info: figures/chapter3/explanation.pdf used on input line 11
+62.
 (pdftex.def)             Requested size: 455.24411pt x 298.22879pt.
  [29] [30 <./figures/chapter3/acqzoo.pdf>] [31 <./figures/chapter3/explanation.
 pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1088--1089
+Underfull \hbox (badness 10000) in paragraph at lines 1180--1181
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1106--1107
+Underfull \hbox (badness 10000) in paragraph at lines 1198--1199
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1108--1109
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1201
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1118--1119
+Underfull \hbox (badness 10000) in paragraph at lines 1206--1207
 
  []
 
-<figures/chapter3/sine/0.png, id=668, 1204.5pt x 903.375pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1220--1221
+
+ []
+
+[33] <figures/chapter3/sine/0.png, id=713, 1204.5pt x 903.375pt>
 File: figures/chapter3/sine/0.png Graphic file (type png)
 
 <use figures/chapter3/sine/0.png>
-Package pdftex.def Info: figures/chapter3/sine/0.png used on input line 1129.
+Package pdftex.def Info: figures/chapter3/sine/0.png used on input line 1231.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/sine/1.png, id=669, 1204.5pt x 903.375pt>
+<figures/chapter3/sine/1.png, id=714, 1204.5pt x 903.375pt>
 File: figures/chapter3/sine/1.png Graphic file (type png)
 
 <use figures/chapter3/sine/1.png>
-Package pdftex.def Info: figures/chapter3/sine/1.png used on input line 1133.
+Package pdftex.def Info: figures/chapter3/sine/1.png used on input line 1235.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/sine/2.png, id=670, 1204.5pt x 903.375pt>
+<figures/chapter3/sine/2.png, id=715, 1204.5pt x 903.375pt>
 File: figures/chapter3/sine/2.png Graphic file (type png)
 
 <use figures/chapter3/sine/2.png>
-Package pdftex.def Info: figures/chapter3/sine/2.png used on input line 1138.
+Package pdftex.def Info: figures/chapter3/sine/2.png used on input line 1240.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/sine/3.png, id=671, 1204.5pt x 903.375pt>
+<figures/chapter3/sine/3.png, id=716, 1204.5pt x 903.375pt>
 File: figures/chapter3/sine/3.png Graphic file (type png)
 
 <use figures/chapter3/sine/3.png>
-Package pdftex.def Info: figures/chapter3/sine/3.png used on input line 1142.
+Package pdftex.def Info: figures/chapter3/sine/3.png used on input line 1244.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/sine/4.png, id=672, 1204.5pt x 903.375pt>
+<figures/chapter3/sine/4.png, id=717, 1204.5pt x 903.375pt>
 File: figures/chapter3/sine/4.png Graphic file (type png)
 
 <use figures/chapter3/sine/4.png>
-Package pdftex.def Info: figures/chapter3/sine/4.png used on input line 1147.
+Package pdftex.def Info: figures/chapter3/sine/4.png used on input line 1249.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/sine/5.pdf, id=673, 578.16pt x 433.62pt>
+<figures/chapter3/sine/5.pdf, id=718, 578.16pt x 433.62pt>
 File: figures/chapter3/sine/5.pdf Graphic file (type pdf)
 
 <use figures/chapter3/sine/5.pdf>
-Package pdftex.def Info: figures/chapter3/sine/5.pdf used on input line 1151.
+Package pdftex.def Info: figures/chapter3/sine/5.pdf used on input line 1253.
 (pdftex.def)             Requested size: 204.85846pt x 153.64174pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1164--1165
+Underfull \hbox (badness 10000) in paragraph at lines 1266--1267
 
  []
 
-<figures/chapter3/rosen/rosen.pdf, id=675, 578.16pt x 433.62pt>
+<figures/chapter3/rosen/rosen.pdf, id=720, 578.16pt x 433.62pt>
 File: figures/chapter3/rosen/rosen.pdf Graphic file (type pdf)
 
 <use figures/chapter3/rosen/rosen.pdf>
-Package pdftex.def Info: figures/chapter3/rosen/rosen.pdf used on input line 11
-70.
+Package pdftex.def Info: figures/chapter3/rosen/rosen.pdf used on input line 12
+72.
 (pdftex.def)             Requested size: 289.07928pt x 216.80946pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
+Underfull \hbox (badness 10000) in paragraph at lines 1275--1276
 
  []
 
-[33] [34 <./figures/chapter3/sine/0.png> <./figures/chapter3/sine/1.png> <./fig
-ures/chapter3/sine/2.png> <./figures/chapter3/sine/3.png> <./figures/chapter3/s
-ine/4.png> <./figures/chapter3/sine/5.pdf>]
-<figures/chapter3/rosen/0.png, id=732, 1204.5pt x 903.375pt>
+<figures/chapter3/rosen/0.png, id=722, 1204.5pt x 903.375pt>
 File: figures/chapter3/rosen/0.png Graphic file (type png)
 
 <use figures/chapter3/rosen/0.png>
-Package pdftex.def Info: figures/chapter3/rosen/0.png used on input line 1183.
+Package pdftex.def Info: figures/chapter3/rosen/0.png used on input line 1285.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/rosen/1.png, id=734, 1204.5pt x 903.375pt>
+<figures/chapter3/rosen/1.png, id=724, 1204.5pt x 903.375pt>
 File: figures/chapter3/rosen/1.png Graphic file (type png)
 
 <use figures/chapter3/rosen/1.png>
-Package pdftex.def Info: figures/chapter3/rosen/1.png used on input line 1187.
+Package pdftex.def Info: figures/chapter3/rosen/1.png used on input line 1289.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/rosen/2.png, id=735, 1204.5pt x 903.375pt>
+<figures/chapter3/rosen/2.png, id=725, 1204.5pt x 903.375pt>
 File: figures/chapter3/rosen/2.png Graphic file (type png)
 
 <use figures/chapter3/rosen/2.png>
-Package pdftex.def Info: figures/chapter3/rosen/2.png used on input line 1192.
+Package pdftex.def Info: figures/chapter3/rosen/2.png used on input line 1294.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/rosen/3.png, id=736, 1204.5pt x 903.375pt>
+<figures/chapter3/rosen/3.png, id=726, 1204.5pt x 903.375pt>
 File: figures/chapter3/rosen/3.png Graphic file (type png)
 
 <use figures/chapter3/rosen/3.png>
-Package pdftex.def Info: figures/chapter3/rosen/3.png used on input line 1196.
+Package pdftex.def Info: figures/chapter3/rosen/3.png used on input line 1298.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/rosen/4.png, id=737, 1204.5pt x 903.375pt>
+<figures/chapter3/rosen/4.png, id=727, 1204.5pt x 903.375pt>
 File: figures/chapter3/rosen/4.png Graphic file (type png)
 
 <use figures/chapter3/rosen/4.png>
-Package pdftex.def Info: figures/chapter3/rosen/4.png used on input line 1201.
+Package pdftex.def Info: figures/chapter3/rosen/4.png used on input line 1303.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
 
-<figures/chapter3/rosen/5.png, id=738, 1204.5pt x 903.375pt>
+<figures/chapter3/rosen/5.png, id=728, 1204.5pt x 903.375pt>
 File: figures/chapter3/rosen/5.png Graphic file (type png)
 
 <use figures/chapter3/rosen/5.png>
-Package pdftex.def Info: figures/chapter3/rosen/5.png used on input line 1205.
+Package pdftex.def Info: figures/chapter3/rosen/5.png used on input line 1307.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
- [35 <./figures/chapter3/rosen/rosen.pdf>]
-[36 <./figures/chapter3/rosen/0.png> <./figures/chapter3/rosen/1.png> <./figure
-s/chapter3/rosen/2.png> <./figures/chapter3/rosen/3.png> <./figures/chapter3/ro
-sen/4.png> <./figures/chapter3/rosen/5.png>]
-Chapter 4.
-[37
+ [34] [35 <./figures/chapter3/sine/0.png> <./figures/chapter3/sine/1.png> <./fi
+gures/chapter3/sine/2.png> <./figures/chapter3/sine/3.png> <./figures/chapter3/
+sine/4.png> <./figures/chapter3/sine/5.pdf>]
+[36 <./figures/chapter3/rosen/rosen.pdf>] [37 <./figures/chapter3/rosen/0.png> 
+<./figures/chapter3/rosen/1.png> <./figures/chapter3/rosen/2.png> <./figures/ch
+apter3/rosen/3.png> <./figures/chapter3/rosen/4.png> <./figures/chapter3/rosen/
+5.png>] [38
 
-] [38
+]
+Chapter 4.
+[39] [40
 
 ]
 Chapter 5.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1212.
-[39]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1212.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1314.
+[41]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1314.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1212.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1212.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1314.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1314.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 288CE7E414A04B317406247FD1348B8E;2577.
+(rerunfilecheck)             Checksum: E1CE3EEF541CBC33B39D617E18FC0DEE;2887.
 runsystem(rm main.pyg)...executed.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1212.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1314.
  ) 
 Here is how much of TeX's memory you used:
- 11751 strings out of 493013
- 186174 string characters out of 6135623
- 318219 words of memory out of 5000000
- 14909 multiletter control sequences out of 15000+600000
+ 11779 strings out of 493013
+ 186568 string characters out of 6135623
+ 318330 words of memory out of 5000000
+ 14915 multiletter control sequences out of 15000+600000
  16799 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,13n,40p,1165b,567s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1302,10 +1317,10 @@ s/cm/cmsy7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 ti10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
 fb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
 b></home/jose/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (39 pages, 2128610 bytes).
+Output written on main.pdf (41 pages, 2143668 bytes).
 PDF statistics:
- 903 PDF objects out of 1000 (max. 8388607)
- 587 compressed objects within 6 object streams
- 149 named destinations out of 1000 (max. 500000)
- 360 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 956 PDF objects out of 1000 (max. 8388607)
+ 637 compressed objects within 7 object streams
+ 171 named destinations out of 1000 (max. 500000)
+ 392 words of extra memory for PDF output out of 10000 (max. 10000000)
 
