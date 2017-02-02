@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 if __name__ == '__main__':
 	np.random.seed(93)
 	# Equally spaced values of Xstar
-	Xstar = np.arange(0, 2 * np.pi, step = np.pi/16)
+	Xstar = np.arange(0, 2 * np.pi, step = np.pi/24)
 	Xstar = np.array([np.atleast_2d(x) for x in Xstar])[:, 0]
 	sexp = squaredExponential()
 	# By default assume mean 0

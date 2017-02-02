@@ -31,8 +31,10 @@
 \contentsline {section}{\numberline {3.4}Role of GP hyperparameters in optimization}{32}{section.3.4}
 \contentsline {section}{\numberline {3.5}Optimizing the acquisition function}{32}{section.3.5}
 \contentsline {section}{\numberline {3.6}Computational costs}{33}{section.3.6}
-\contentsline {section}{\numberline {3.7}Step-by-step examples}{34}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}Optimizing (yet-again) the sine function}{34}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}Optimizing the Rossenbrock function}{34}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.6.1}Approximations to the analytical GP. Alternative surrogates.}{33}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Parallelization}{34}{subsection.3.6.2}
+\contentsline {section}{\numberline {3.7}Step-by-step examples}{35}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Optimizing (yet-again) the sine function}{35}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Optimizing the Rossenbrock function}{35}{subsection.3.7.2}
 \contentsline {chapter}{\numberline {4}Experiments}{39}{chapter.4}
 \contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{41}{chapter.5}

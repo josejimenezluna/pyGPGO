@@ -30,8 +30,10 @@
 \BOOKMARK [1][-]{section.3.4}{Role of GP hyperparameters in optimization}{chapter.3}% 30
 \BOOKMARK [1][-]{section.3.5}{Optimizing the acquisition function}{chapter.3}% 31
 \BOOKMARK [1][-]{section.3.6}{Computational costs}{chapter.3}% 32
-\BOOKMARK [1][-]{section.3.7}{Step-by-step examples}{chapter.3}% 33
-\BOOKMARK [2][-]{subsection.3.7.1}{Optimizing \(yet-again\) the sine function}{section.3.7}% 34
-\BOOKMARK [2][-]{subsection.3.7.2}{Optimizing the Rossenbrock function}{section.3.7}% 35
-\BOOKMARK [0][-]{chapter.4}{Experiments}{}% 36
-\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 37
+\BOOKMARK [2][-]{subsection.3.6.1}{Approximations to the analytical GP. Alternative surrogates.}{section.3.6}% 33
+\BOOKMARK [2][-]{subsection.3.6.2}{Parallelization}{section.3.6}% 34
+\BOOKMARK [1][-]{section.3.7}{Step-by-step examples}{chapter.3}% 35
+\BOOKMARK [2][-]{subsection.3.7.1}{Optimizing \(yet-again\) the sine function}{section.3.7}% 36
+\BOOKMARK [2][-]{subsection.3.7.2}{Optimizing the Rossenbrock function}{section.3.7}% 37
+\BOOKMARK [0][-]{chapter.4}{Experiments}{}% 38
+\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 39
