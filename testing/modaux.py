@@ -37,17 +37,18 @@ MLP:
 
 
 class SVM:
-    def __init__(self, problem='binary', C=1.0, gamma=1.0):
+    def __init__(self, problem='binary', C=1.0, gamma=1.0, kernel = 'rbf'):
         self.problem = problem
         self.C = C
         self.gamma = gamma
+        self.kernel = kernel
         self.name = 'SVM'
 
     def eval(self):
         if self.problem == 'binary':
-            mod = SVC(C=self.C, gamma=self.gamma, probability=True)
+            mod = SVC(kernel=self.kernel, C=self.C, gamma=self.gamma, probability=True)
         else:
-            mod = SVR(C=self.C, gamma=self.gamma)
+            mod = SVR(kernel=self.kernel, C=self.C, gamma=self.gamma)
         return mod
 
 
