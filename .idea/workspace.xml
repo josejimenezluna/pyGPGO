@@ -4,18 +4,8 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4faf3ad0-f85b-47b4-a4a1-cbb76926333d" name="Default" comment="Reformat code.&#10;&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/KNN/breast_cancer.pdf" afterPath="$PROJECT_DIR$/testing/results/KNN/breast_cancer.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/breast_cancer.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/breast_cancer.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/indian_liver.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/indian_liver.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/lsvt.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/lsvt.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/parkinsons.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/parkinsons.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/pima-indians-diabetes.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/pima-indians-diabetes.pdf" />
+    <list default="true" id="4faf3ad0-f85b-47b4-a4a1-cbb76926333d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/datasets/aff.csv" afterPath="$PROJECT_DIR$/datasets/aff.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/modaux.py" afterPath="$PROJECT_DIR$/testing/modaux.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/testing.py" afterPath="$PROJECT_DIR$/testing/testing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/utils.py" afterPath="$PROJECT_DIR$/testing/utils.py" />
     </list>
     <ignored path="pyGPGO.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -492,12 +482,19 @@
       <option name="project" value="LOCAL" />
       <updated>1485986351580</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Nothing really new.&#10;">
+      <created>1486321220115</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1486321220115</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14285715" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -534,7 +531,8 @@
     <MESSAGE value="Generalized testing.&#10;" />
     <MESSAGE value="Generalized problem evaluation.&#10;&#10;" />
     <MESSAGE value="Reformat code.&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformat code.&#10;&#10;" />
+    <MESSAGE value="Nothing really new.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nothing really new.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
