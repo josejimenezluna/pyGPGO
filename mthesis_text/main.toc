@@ -11,7 +11,7 @@
 \contentsline {subsection}{\numberline {2.3.2}Picking a winner}{14}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}On covariance functions}{16}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}A zoo of covariance functions}{18}{subsection.2.4.1}
-\contentsline {section}{\numberline {2.5}Hyperparameter optimization}{20}{section.2.5}
+\contentsline {section}{\numberline {2.5}Hyperparameter optimization}{19}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}Type II Maximum Likelihood}{20}{subsection.2.5.1}
 \contentsline {subsubsection}{Another toy example: Optimizing the characteristic length-scale}{21}{section*.5}
 \contentsline {subsection}{\numberline {2.5.2}Cross validation}{22}{subsection.2.5.2}
