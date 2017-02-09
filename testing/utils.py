@@ -32,7 +32,7 @@ class loss:
     def evaluateLoss(self, **param):
         if self.method == 'holdout':
             X_train, X_test, y_train, y_test = train_test_split(self.X, self.y, random_state=93)
-            clf = self.model.__class__(**param).eval()
+            clf = self.model.__class__(**param, problem = self.problem).eval()
             clf.fit(X_train, y_train)
             if self.problem == 'binary':
                 yhat = clf.predict_proba(X_test)[:, 1]
@@ -47,7 +47,7 @@ class loss:
             for train_index, test_index in kf.split(self.X):
                 X_train, X_test = self.X[train_index], self.X[test_index]
                 y_train, y_test = self.y[train_index], self.y[test_index]
-                clf = self.model.__class__(**param).eval()
+                clf = self.model.__class__(**param, problem = self.problem).eval()
                 clf.fit(X_train, y_train)
                 if self.problem == 'binary':
                     yhat = clf.predict_proba(X_test)[:, 1]

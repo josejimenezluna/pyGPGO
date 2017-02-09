@@ -10,7 +10,7 @@ if __name__ == '__main__':
     }
 
     d_knn = {
-        'n_neighbors': ('int', (1, 100)),
+        'n_neighbors': ('int', (1, 50)),
         'leaf_size': ('int', (15, 50))
     }
 
@@ -30,14 +30,19 @@ if __name__ == '__main__':
     models = [RF(), KNN(), MLP(), SVM()]
     params = [d_rf, d_knn, d_mlp, d_svm]
 
+
     path = os.path.join(os.getcwd(), 'datasets')
-    datasets = ['breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv', 'lsvt.csv', 'pima-indians-diabetes.csv']
-    problems = ['binary', 'binary', 'binary', 'binary', 'binary']
-    targets = [0, 10, 16, 0, 8]
+    datasets = ['aff.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv', 'lsvt.csv', 'pima-indians-diabetes.csv']
+    problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
+    targets = [0, 0, 10, 16, 0, 8]
 
 
     for model, parameter_dict in zip(models, params):
         for dataset, target, problem in zip(datasets, targets, problems):
+            if problem == 'cont':
+                model = model.__class__(problem='cont')
+            else:
+                model = model.__class__(problem='binary')
             g, r, sa = evaluateDataset(os.path.join(path, dataset), target_index = target, model = model,
                                        parameter_dict = parameter_dict, method = '5fold', seed = 20,
                                        max_iter = 50, problem=problem)
