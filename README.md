@@ -1,6 +1,6 @@
 # pyGPGO
 
-![sine](http://imgur.com/KI7i3mI)
+![sine](http://imgur.com/FWPNjNu)
 
 pyGPGO is a simple Python (>3.5) package for Bayesian Optimization using Gaussian Process as surrogate model.
 
