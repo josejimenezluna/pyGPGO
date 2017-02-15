@@ -32,9 +32,10 @@ if __name__ == '__main__':
 
 
     path = os.path.join(os.getcwd(), 'datasets')
-    datasets = ['aff.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv', 'lsvt.csv', 'pima-indians-diabetes.csv']
-    problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
-    targets = [0, 0, 10, 16, 0, 8]
+    datasets = ['pocket.csv','aff.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
+                'lsvt.csv', 'pima-indians-diabetes.csv']
+    problems = ['binary', 'cont', 'binary', 'binary', 'binary', 'binary', 'binary']
+    targets = [0, 0, 0, 10, 16, 0, 8]
 
 
     for model, parameter_dict in zip(models, params):

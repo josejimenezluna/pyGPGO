@@ -31,8 +31,8 @@ def plot2dgpgo(gpgo, param):
     tested_X = gpgo.GP.X
     n = 100
     r_x, r_y = gpgo.parameter_range[0], gpgo.parameter_range[1]
-    x_test = np.linspace(r_x[0], r_x[1], 100)
-    y_test = np.linspace(r_y[0], r_y[1], 100)
+    x_test = np.linspace(r_x[0], r_x[1], n)
+    y_test = np.linspace(r_y[0], r_y[1], n)
     z_hat = np.empty((len(x_test), len(y_test)))
     z_var = np.empty((len(x_test), len(y_test)))
     ac = np.empty((len(x_test), len(y_test)))
