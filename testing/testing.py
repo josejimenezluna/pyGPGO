@@ -27,8 +27,8 @@ if __name__ == '__main__':
     'gamma': ('cont', (0.001, 20))
     }
 
-    models = [RF(), KNN(), MLP(), SVM()]
-    params = [d_rf, d_knn, d_mlp, d_svm]
+    models = [MLP(), SVM(), KNN()]
+    params = [d_mlp, d_svm, d_knn]
 
 
     path = os.path.join(os.getcwd(), 'datasets')

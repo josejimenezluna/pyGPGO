@@ -1,8 +1,8 @@
-import numpy as np
-from GPRegressor import GPRegressor
-from scipy.optimize import minimize
-from cma import fmin
 from collections import OrderedDict
+
+import numpy as np
+from cma import fmin
+from scipy.optimize import minimize
 
 
 class GPGO:
