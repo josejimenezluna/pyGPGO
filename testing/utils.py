@@ -84,7 +84,7 @@ def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, meth
     sexp = squaredExponential()
     gp = GPRegressor(sexp)
     acq = Acquisition(mode='ExpectedImprovement')
-    gpgo = GPGO(gp, acq, wrapper.evaluateLoss, parameter_dict)
+    gpgo = GPGO(gp, acq, wrapper.evaluateLoss, parameter_dict, n_jobs=-1)
     gpgo.run(max_iter=max_iter)
 
     np.random.seed(seed)

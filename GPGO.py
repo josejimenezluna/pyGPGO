@@ -3,14 +3,16 @@ from collections import OrderedDict
 import numpy as np
 from cma import fmin
 from scipy.optimize import minimize
+from joblib import Parallel, delayed
 
 
 class GPGO:
-    def __init__(self, GPRegressor, Acquisition, f, parameter_dict):
+    def __init__(self, GPRegressor, Acquisition, f, parameter_dict, n_jobs = 1):
         self.GP = GPRegressor
         self.A = Acquisition
         self.f = f
         self.parameters = parameter_dict
+        self.n_jobs = n_jobs
 
         self.parameter_key = list(parameter_dict.keys())
         self.parameter_value = list(parameter_dict.values())
@@ -53,10 +55,18 @@ class GPGO:
         x_best = np.empty((n_start, len(self.parameter_key)))
         f_best = np.empty((n_start,))
         if method == 'L-BFGS-B':
-            for index, start_point in enumerate(start_points_arr):
-                res = minimize(self._acqWrapper, x0=start_point, method=method,
-                               bounds=self.parameter_range)
-                x_best[index], f_best[index] = res.x, res.fun[0]
+            if self.n_jobs == 1:
+                for index, start_point in enumerate(start_points_arr):
+                    res = minimize(self._acqWrapper, x0=start_point, method=method,
+                                   bounds=self.parameter_range)
+                    x_best[index], f_best[index] = res.x, res.fun[0]
+            else:
+                opt = Parallel(n_jobs=self.n_jobs)(delayed(minimize)(self._acqWrapper,
+                                                                     x0 = start_point,
+                                                                     method = 'L-BFGS-B',
+                                                                     bounds = self.parameter_range) for start_point in start_points_arr)
+                x_best = np.array([res.x for res in opt])
+                f_best = np.array([res.fun[0] for res in opt])
 
         elif method == 'CMA-ES':  # This can be parallelized
             for index, start_point in enumerate(start_points_arr):

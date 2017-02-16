@@ -44,7 +44,7 @@ if __name__ == '__main__':
     acq = Acquisition(mode='ExpectedImprovement')
     param = {'x': ('cont', [0, 2 * np.pi])}
 
-    gpgo = GPGO(gp, acq, f, param)
+    gpgo = GPGO(gp, acq, f, param, n_jobs=-1)
     gpgo._firstRun()
 
     for i in range(6):

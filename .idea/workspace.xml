@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4faf3ad0-f85b-47b4-a4a1-cbb76926333d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/0.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/0.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/1.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/1.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/2.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/2.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/3.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/3.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/4.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/4.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/5.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/5.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/6.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/6.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/rosen.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/rosen.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/0.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/0.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/1.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/1.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/2.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/2.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/3.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/3.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/4.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/4.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/5.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/sine/5.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/acqzoo.py" afterPath="$PROJECT_DIR$/examples/acqzoo.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/bayoptwork.py" afterPath="$PROJECT_DIR$/examples/bayoptwork.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/covzoo.py" afterPath="$PROJECT_DIR$/examples/covzoo.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/drawGP.py" afterPath="$PROJECT_DIR$/examples/drawGP.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GPGO.py" afterPath="$PROJECT_DIR$/GPGO.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/example.py" afterPath="$PROJECT_DIR$/examples/example.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/example2d.py" afterPath="$PROJECT_DIR$/examples/example2d.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/hyperopt.py" afterPath="$PROJECT_DIR$/examples/hyperopt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/sineGP.py" afterPath="$PROJECT_DIR$/examples/sineGP.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/utils.py" afterPath="$PROJECT_DIR$/testing/utils.py" />
     </list>
     <ignored path="pyGPGO.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,6 +38,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/pyGPGO$utils.coverage" NAME="utils Coverage Results" MODIFIED="1485627413534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testing" />
     <SUITE FILE_PATH="coverage/pyGPGO$testing.coverage" NAME="testing Coverage Results" MODIFIED="1485984773301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testing" />
+    <SUITE FILE_PATH="coverage/pyGPGO$example.coverage" NAME="example Coverage Results" MODIFIED="1487277724407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -37,35 +49,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="other_go.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing/other_go.py">
+      <file leaf-file-name="modaux.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testing/modaux.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+            <state relative-caret-position="480">
+              <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sineGP.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/sineGP.py">
+      <file leaf-file-name="GPGO.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GPGO.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="159">
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hyperopt.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/hyperopt.py">
+      <file leaf-file-name="example.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/example.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="444">
+              <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testing.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testing/testing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/testing/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="86" column="72" selection-start-line="86" selection-start-column="72" selection-end-line="86" selection-end-column="72" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,58 +110,10 @@
       <file leaf-file-name="example2d.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/example2d.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-148">
-              <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+            <state relative-caret-position="444">
+              <caret line="75" column="51" selection-start-line="75" selection-start-column="51" selection-end-line="75" selection-end-column="51" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="drawGP.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/drawGP.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="covzoo.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/covzoo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bayoptwork.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/bayoptwork.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="acqzoo.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/examples/acqzoo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,22 +135,22 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/testing/other_go.py" />
-        <option value="$PROJECT_DIR$/testing/utils.py" />
         <option value="$PROJECT_DIR$/testing/modaux.py" />
-        <option value="$PROJECT_DIR$/examples/example.py" />
         <option value="$PROJECT_DIR$/covfunc.py" />
         <option value="$PROJECT_DIR$/GPRegressor.py" />
         <option value="$PROJECT_DIR$/acquisition.py" />
         <option value="$PROJECT_DIR$/datasets/buildpocket.py" />
-        <option value="$PROJECT_DIR$/GPGO.py" />
         <option value="$PROJECT_DIR$/testing/testing.py" />
         <option value="$PROJECT_DIR$/examples/sineGP.py" />
         <option value="$PROJECT_DIR$/examples/hyperopt.py" />
-        <option value="$PROJECT_DIR$/examples/example2d.py" />
         <option value="$PROJECT_DIR$/examples/drawGP.py" />
         <option value="$PROJECT_DIR$/examples/covzoo.py" />
         <option value="$PROJECT_DIR$/examples/bayoptwork.py" />
         <option value="$PROJECT_DIR$/examples/acqzoo.py" />
+        <option value="$PROJECT_DIR$/GPGO.py" />
+        <option value="$PROJECT_DIR$/examples/example2d.py" />
+        <option value="$PROJECT_DIR$/examples/example.py" />
+        <option value="$PROJECT_DIR$/testing/utils.py" />
       </list>
     </option>
   </component>
@@ -203,6 +191,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,7 +255,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -275,7 +263,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python.testing">
+  <component name="RunManager" selected="Python.example">
     <configuration default="false" name="utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -314,6 +302,27 @@
         <option name="PyVmMonitorInitialProfileMode" value="INHERIT_GLOBAL" />
       </EXTENSION>
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/testing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="pyGPGO" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <EXTENSION ID="com.brainwy.pyvmmonitor.PyVmMonitorRunExtension">
+        <option name="PyVmMonitorInitialProfileMode" value="INHERIT_GLOBAL" />
+      </EXTENSION>
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/example.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -556,14 +565,16 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.utils" />
       <item index="1" class="java.lang.String" itemvalue="Python.testing" />
+      <item index="2" class="java.lang.String" itemvalue="Python.example" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.testing" />
-        <item index="1" class="java.lang.String" itemvalue="Python.utils" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.example" />
+        <item index="1" class="java.lang.String" itemvalue="Python.testing" />
+        <item index="2" class="java.lang.String" itemvalue="Python.utils" />
       </list>
     </recent_temporary>
   </component>
@@ -637,7 +648,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487271006683</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Code refactor.&#10;">
+      <created>1487274395897</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1487274395897</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -649,8 +667,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="1110" y="182" width="585" height="422" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="1328" y="249" width="585" height="615" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -690,6 +708,16 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/examples/acqzoo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/testing/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
@@ -734,7 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -752,9 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -812,7 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -830,9 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -989,49 +1009,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing/modaux.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datasets/buildpocket.py" />
     <entry file="file://$PROJECT_DIR$/covfunc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GPGO.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="63" column="61" selection-start-line="63" selection-start-column="61" selection-end-line="63" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/example.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1049,19 +1031,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1089,16 +1058,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/example2d.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-148">
-          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1139,6 +1098,64 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/modaux.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GPGO.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/example2d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="75" column="51" selection-start-line="75" selection-start-column="51" selection-end-line="75" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="86" column="72" selection-start-line="86" selection-start-column="72" selection-end-line="86" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

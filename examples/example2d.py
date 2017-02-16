@@ -73,7 +73,7 @@ if __name__ == '__main__':
     param['x'] = ('cont', [-1, 1])
     param['y'] = ('cont', [-1, 1])
 
-    gpgo = GPGO(gp, acq, rastrigin, param)
+    gpgo = GPGO(gp, acq, rastrigin, param, n_jobs=-1)
     gpgo._firstRun()
 
     for item in range(7):
