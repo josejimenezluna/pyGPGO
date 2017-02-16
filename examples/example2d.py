@@ -1,15 +1,10 @@
 import os
-import numpy as np
 from covfunc import *
 from GPRegressor import GPRegressor
 from acquisition import Acquisition
 from GPGO import GPGO
 from collections import OrderedDict
 import matplotlib.pyplot as plt
-
-
-def rosen(x, y, a=1, b=100):
-    return ((a - x) ** 2 + b * (y - x ** 2) ** 2)
 
 
 def rastrigin(x, y, A=10):
