@@ -68,7 +68,7 @@ class GPGO:
                 x_best = np.array([res.x for res in opt])
                 f_best = np.array([res.fun[0] for res in opt])
 
-        elif method == 'CMA-ES':  # This can be parallelized
+        elif method == 'CMA-ES':
             for index, start_point in enumerate(start_points_arr):
                 res = fmin(self._acqWrapper, x0=start_point, sigma0=0.1)
                 x_best[index], f_best[index] = res[0], res[1]

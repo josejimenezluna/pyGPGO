@@ -1,10 +1,11 @@
 import os
-import numpy as np
+
 import matplotlib.pyplot as plt
+
+from GPGO import GPGO
 from GPRegressor import GPRegressor
 from acquisition import Acquisition
 from covfunc import *
-from GPGO import GPGO
 
 
 def plotGPGO(gpgo, param):

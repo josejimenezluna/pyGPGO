@@ -1,10 +1,12 @@
 import os
-from covfunc import *
+from collections import OrderedDict
+
+import matplotlib.pyplot as plt
+
+from GPGO import GPGO
 from GPRegressor import GPRegressor
 from acquisition import Acquisition
-from GPGO import GPGO
-from collections import OrderedDict
-import matplotlib.pyplot as plt
+from covfunc import *
 
 
 def rastrigin(x, y, A=10):
