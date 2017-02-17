@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4faf3ad0-f85b-47b4-a4a1-cbb76926333d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/0.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/0.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/1.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/1.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/2.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/2.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/3.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/3.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/4.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/4.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/5.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/5.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/6.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/6.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/rosen.pdf" afterPath="$PROJECT_DIR$/mthesis_text/figures/chapter3/rosen/rosen.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GPGO.py" afterPath="$PROJECT_DIR$/GPGO.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GPRegressor.py" afterPath="$PROJECT_DIR$/GPRegressor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/covfunc.py" afterPath="$PROJECT_DIR$/covfunc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/example.py" afterPath="$PROJECT_DIR$/examples/example.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/example2d.py" afterPath="$PROJECT_DIR$/examples/example2d.py" />
     </list>
     <ignored path="pyGPGO.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -623,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487279280955</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Correct hyperparameter opt.">
+      <created>1487327263041</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1487327263041</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -668,7 +662,8 @@
     <MESSAGE value="Nothing really new.&#10;" />
     <MESSAGE value="Code refactor.&#10;" />
     <MESSAGE value="Parallel GPGO." />
-    <option name="LAST_COMMIT_MESSAGE" value="Parallel GPGO." />
+    <MESSAGE value="Correct hyperparameter opt." />
+    <option name="LAST_COMMIT_MESSAGE" value="Correct hyperparameter opt." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
