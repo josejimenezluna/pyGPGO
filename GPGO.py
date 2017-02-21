@@ -81,8 +81,9 @@ class GPGO:
         self.tau = np.max(self.GP.y)
         self.history.append(self.tau)
 
-    def run(self, max_iter=10):
-        self._firstRun()
+    def run(self, max_iter=10, init_evals = 3):
+        self.init_evals = init_evals
+        self._firstRun(self.init_evals)
         for iteration in range(max_iter):
             self._optimizeAcq()
             self.updateGP()
