@@ -27,8 +27,14 @@ if __name__ == '__main__':
     'gamma': ('cont', (0.001, 20))
     }
 
-    models = [MLP(), SVM(), KNN()]
-    params = [d_mlp, d_svm, d_knn]
+    d_tree = {
+        'max_features': ('cont', (0.01, 0.99)),
+        'max_depth': ('int', (2, 50)),
+        'min_samples_split': ('cont', (0.01, 0.99))
+    }
+
+    models = [Tree()]
+    params = [d_tree]
 
 
     path = os.path.join(os.getcwd(), 'datasets')

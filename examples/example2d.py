@@ -24,7 +24,7 @@ def plot_f(x_values, y_values, f):
     plt.savefig(os.path.join(os.getcwd(), 'mthesis_text/figures/chapter3/rosen/rosen.pdf'))
 
 
-def plot2dgpgo(gpgo, param):
+def plot2dgpgo(gpgo):
     tested_X = gpgo.GP.X
     n = 100
     r_x, r_y = gpgo.parameter_range[0], gpgo.parameter_range[1]
@@ -79,5 +79,5 @@ if __name__ == '__main__':
     gpgo._firstRun()
 
     for item in range(7):
-        plot2dgpgo(gpgo, param)
+        plot2dgpgo(gpgo)
         gpgo.updateGP()

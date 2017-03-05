@@ -1,6 +1,7 @@
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 from sklearn.neural_network import MLPClassifier, MLPRegressor
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.svm import SVC, SVR
 
 """
@@ -33,8 +34,31 @@ MLP:
     'beta_1': ('cont', (0.01, 0.99)),
     'beta_2': ('cont', (0.01, 0.99))
     }
+
+Tree:
+    D_tree = {
+        'max_features': ('cont', (0.01, 0.99)),
+        'max_depth': ('int', (2, 20)),
+        'min_samples_split': ('cont', (0.01, 0.99))
+    }
 """
 
+class Tree:
+    def __init__(self, problem='binary', max_features = 0.5, max_depth = 1, min_samples_split = 2):
+        self.problem = problem
+        self.max_features = max_features
+        self.max_depth = int(max_depth)
+        self.min_samples_split = min_samples_split
+        self.name = 'Tree'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = DecisionTreeClassifier(max_features=self.max_features, max_depth=self.max_depth,
+                                         min_samples_split=self.min_samples_split)
+        else:
+            mod = DecisionTreeRegressor(max_features=self.max_features, max_depth=self.max_depth,
+                                        min_samples_split=self.min_samples_split)
+        return mod
 
 class SVM:
     def __init__(self, problem='binary', C=1.0, gamma=1.0, kernel = 'rbf'):

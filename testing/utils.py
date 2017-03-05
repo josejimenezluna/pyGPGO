@@ -100,7 +100,6 @@ def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, meth
 
 def plotRes(gpgo_history, random, sa, datasetname, model, problem):
     import matplotlib
-    matplotlib.use('no-show')
     import matplotlib.pyplot as plt
     x = np.arange(1, len(random) + 1)
     plt.figure()
