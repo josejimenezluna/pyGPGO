@@ -42,11 +42,11 @@ if __name__ == '__main__':
     'learning_rate': ('cont', (10e-5, 10)),
     'n_estimators': ('int', (10, 200)),
     'max_depth': ('int', (2, 20)),
-    'min_samples_split': ('int', (2, 10)),
-    'min_samples_leaf': ('int', (2, 10)),
-    'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
-    'subsample': ('cont', (0.01, 0.99)),
-    'max_features': ('cont', (0.01, 0.99))
+    #'min_samples_split': ('int', (2, 10)),
+    #'min_samples_leaf': ('int', (2, 10)),
+    #'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
+    #'subsample': ('cont', (0.01, 0.99)),
+    #'max_features': ('cont', (0.01, 0.99))
     }
 
     models = [GBM()]

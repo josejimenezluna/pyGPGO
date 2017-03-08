@@ -5,42 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4faf3ad0-f85b-47b4-a4a1-cbb76926333d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/KNN/aff.pdf" afterPath="$PROJECT_DIR$/testing/results/KNN/aff.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/KNN/breast_cancer.pdf" afterPath="$PROJECT_DIR$/testing/results/KNN/breast_cancer.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/KNN/indian_liver.pdf" afterPath="$PROJECT_DIR$/testing/results/KNN/indian_liver.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/KNN/lsvt.pdf" afterPath="$PROJECT_DIR$/testing/results/KNN/lsvt.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/KNN/parkinsons.pdf" afterPath="$PROJECT_DIR$/testing/results/KNN/parkinsons.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/KNN/pima-indians-diabetes.pdf" afterPath="$PROJECT_DIR$/testing/results/KNN/pima-indians-diabetes.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/MLP/aff.pdf" afterPath="$PROJECT_DIR$/testing/results/MLP/aff.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/MLP/breast_cancer.pdf" afterPath="$PROJECT_DIR$/testing/results/MLP/breast_cancer.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/MLP/indian_liver.pdf" afterPath="$PROJECT_DIR$/testing/results/MLP/indian_liver.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/MLP/lsvt.pdf" afterPath="$PROJECT_DIR$/testing/results/MLP/lsvt.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/MLP/parkinsons.pdf" afterPath="$PROJECT_DIR$/testing/results/MLP/parkinsons.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/MLP/pima-indians-diabetes.pdf" afterPath="$PROJECT_DIR$/testing/results/MLP/pima-indians-diabetes.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/MLP/pocket.pdf" afterPath="$PROJECT_DIR$/testing/results/MLP/pocket.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/aff.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/aff.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/breast_cancer.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/breast_cancer.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/indian_liver.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/indian_liver.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/lsvt.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/lsvt.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/parkinsons.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/parkinsons.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/pima-indians-diabetes.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/pima-indians-diabetes.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/RF/pocket.pdf" afterPath="$PROJECT_DIR$/testing/results/RF/pocket.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/SVM/aff.pdf" afterPath="$PROJECT_DIR$/testing/results/SVM/aff.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/SVM/breast_cancer.pdf" afterPath="$PROJECT_DIR$/testing/results/SVM/breast_cancer.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/SVM/indian_liver.pdf" afterPath="$PROJECT_DIR$/testing/results/SVM/indian_liver.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/SVM/lsvt.pdf" afterPath="$PROJECT_DIR$/testing/results/SVM/lsvt.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/SVM/parkinsons.pdf" afterPath="$PROJECT_DIR$/testing/results/SVM/parkinsons.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/SVM/pima-indians-diabetes.pdf" afterPath="$PROJECT_DIR$/testing/results/SVM/pima-indians-diabetes.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/Tree/aff.pdf" afterPath="$PROJECT_DIR$/testing/results/Tree/aff.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/Tree/breast_cancer.pdf" afterPath="$PROJECT_DIR$/testing/results/Tree/breast_cancer.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/Tree/indian_liver.pdf" afterPath="$PROJECT_DIR$/testing/results/Tree/indian_liver.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/Tree/lsvt.pdf" afterPath="$PROJECT_DIR$/testing/results/Tree/lsvt.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/Tree/parkinsons.pdf" afterPath="$PROJECT_DIR$/testing/results/Tree/parkinsons.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/Tree/pima-indians-diabetes.pdf" afterPath="$PROJECT_DIR$/testing/results/Tree/pima-indians-diabetes.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/modaux.py" afterPath="$PROJECT_DIR$/testing/modaux.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/testing.py" afterPath="$PROJECT_DIR$/testing/testing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/utils.py" afterPath="$PROJECT_DIR$/testing/utils.py" />
     </list>
     <ignored path="pyGPGO.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,8 +60,8 @@
       <file leaf-file-name="testing.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testing/testing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+            <state relative-caret-position="315">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -715,11 +681,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487712379212</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added GBM.">
+      <created>1488978262270</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1488978262270</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="26" width="1922" height="1055" extended-state="6" />
+    <frame x="-1" y="26" width="1922" height="1055" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -762,7 +735,8 @@
     <MESSAGE value="Parallel GPGO." />
     <MESSAGE value="Correct hyperparameter opt." />
     <MESSAGE value="More general 2d example." />
-    <option name="LAST_COMMIT_MESSAGE" value="More general 2d example." />
+    <MESSAGE value="Added GBM." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GBM." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1150,8 +1124,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testing/testing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+        <state relative-caret-position="315">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
