@@ -1,6 +1,6 @@
 \contentsline {chapter}{\numberline {1}Organization of this work}{5}{chapter.1}
 \contentsline {section}{\numberline {1.1}Introduction}{5}{section.1.1}
-\contentsline {section}{\numberline {1.2}How do I read this?}{6}{section.1.2}
+\contentsline {section}{\numberline {1.2}Organization of the thesis}{6}{section.1.2}
 \contentsline {chapter}{\numberline {2}Gaussian Process regression}{7}{chapter.2}
 \contentsline {section}{\numberline {2.1}A weight space view for Gaussian Processes}{7}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Standard Bayesian linear regression}{7}{subsection.2.1.1}
@@ -10,7 +10,7 @@
 \contentsline {subsection}{\numberline {2.3.1}A toy example of Gaussian Process regression}{13}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Picking a winner}{14}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}On covariance functions}{16}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}A zoo of covariance functions}{18}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.1}Visualizing different covariance functions}{18}{subsection.2.4.1}
 \contentsline {section}{\numberline {2.5}Hyperparameter optimization}{19}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}Type II Maximum Likelihood}{20}{subsection.2.5.1}
 \contentsline {subsubsection}{Another toy example: Optimizing the characteristic length-scale}{21}{section*.5}
@@ -28,7 +28,7 @@
 \contentsline {subsection}{\numberline {3.3.4}Acquisition function portfolios}{28}{subsection.3.3.4}
 \contentsline {subsection}{\numberline {3.3.5}Visualizing the behaviour of an acquisition function}{28}{subsection.3.3.5}
 \contentsline {subsection}{\numberline {3.3.6}Why does Bayesian Optimization work?}{29}{subsection.3.3.6}
-\contentsline {section}{\numberline {3.4}Role of GP hyperparameters in optimization}{32}{section.3.4}
+\contentsline {section}{\numberline {3.4}Role of GP hyperparameters in optimization}{31}{section.3.4}
 \contentsline {section}{\numberline {3.5}Optimizing the acquisition function}{32}{section.3.5}
 \contentsline {section}{\numberline {3.6}Computational costs}{33}{section.3.6}
 \contentsline {subsection}{\numberline {3.6.1}Approximations to the analytical GP. Alternative surrogates.}{33}{subsection.3.6.1}

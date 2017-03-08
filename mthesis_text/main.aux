@@ -20,7 +20,7 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Introduction}{5}{section.1.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.2}How do I read this?}{6}{section.1.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Organization of the thesis}{6}{section.1.2}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Gaussian Process regression}{7}{chapter.2}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -39,8 +39,8 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Prediction using a Gaussian Process prior}{11}{section.2.3}}
 \newlabel{pred}{{2.3}{11}{Prediction using a Gaussian Process prior}{section.2.3}{}}
 \newlabel{conditioning}{{1}{11}{Prediction using a Gaussian Process prior}{mydef.1}{}}
-\newlabel{hierarchical}{{2.27}{12}{Prediction using a Gaussian Process prior}{equation.2.3.27}{}}
-\newlabel{hierarchical2}{{2.28}{12}{Prediction using a Gaussian Process prior}{equation.2.3.28}{}}
+\newlabel{hierarchical}{{2.27}{11}{Prediction using a Gaussian Process prior}{equation.2.3.27}{}}
+\newlabel{hierarchical2}{{2.28}{11}{Prediction using a Gaussian Process prior}{equation.2.3.28}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Gaussian regressor pseudo-code.\relax }}{12}{algorithm.1}}
 \newlabel{alg}{{1}{12}{Gaussian regressor pseudo-code.\relax }{algorithm.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}A toy example of Gaussian Process regression}{13}{subsection.2.3.1}}
@@ -50,7 +50,7 @@
 \newlabel{risk}{{2.32}{16}{Picking a winner}{equation.2.3.32}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}On covariance functions}{16}{section.2.4}}
 \newlabel{covariancefunc}{{2.4}{16}{On covariance functions}{section.2.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}A zoo of covariance functions}{18}{subsection.2.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}Visualizing different covariance functions}{18}{subsection.2.4.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Behaviour of different stationary covariance functions with the default parameters in pyGPGO.\relax }}{19}{figure.caption.4}}
 \newlabel{fig:zoo}{{2.3}{19}{Behaviour of different stationary covariance functions with the default parameters in pyGPGO.\relax }{figure.caption.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.5}Hyperparameter optimization}{19}{section.2.5}}
@@ -77,7 +77,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Improvement-based policies}{26}{subsection.3.3.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Optimistic policies}{27}{subsection.3.3.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Information-based policies}{27}{subsection.3.3.3}}
-\newlabel{acqes}{{3.10}{27}{Information-based policies}{equation.3.3.10}{}}
+\newlabel{acqes}{{3.11}{27}{Information-based policies}{equation.3.3.11}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Acquisition function portfolios}{28}{subsection.3.3.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Visualizing the behaviour of an acquisition function}{28}{subsection.3.3.5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.6}Why does Bayesian Optimization work?}{29}{subsection.3.3.6}}
@@ -85,7 +85,7 @@
 \newlabel{fig:acqzoo}{{3.1}{30}{Acquisition function behaviour for Expected Improvement, Probability of Improvement, GP-UCB ($\beta = .5$) and GP-UCB($\beta = 1.5$) in the sine function example.\relax }{figure.caption.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces A visual explanation on why Bayesian optimization is efficient at exploring the space. It ignores all the input space where the UPB is lower than the point with maximum LCB.\relax }}{31}{figure.caption.8}}
 \newlabel{fig:explanation}{{3.2}{31}{A visual explanation on why Bayesian optimization is efficient at exploring the space. It ignores all the input space where the UPB is lower than the point with maximum LCB.\relax }{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Role of GP hyperparameters in optimization}{32}{section.3.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Role of GP hyperparameters in optimization}{31}{section.3.4}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}Optimizing the acquisition function}{32}{section.3.5}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.6}Computational costs}{33}{section.3.6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Approximations to the analytical GP. Alternative surrogates.}{33}{subsection.3.6.1}}
@@ -103,20 +103,20 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \gdef\minted@oldcachelist{,
-  4BC65608FD2763E7C231A03E58CF90C99D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  default-pyg-prefix.pygstyle,
   default.pygstyle,
-  85B43FECD3A9742F76E3BCC90D3C48A79D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  CBAFD97C67C91ADDAEA34D3DAF0D40079D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  990BF002D0D2280EAC881D74A601ABB29D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  71F3DE110298F09031B3F38D0484E76D9D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  1E29121FDD465C160E40FEBB4C5ACF719D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  21283FDE4A89D22A1CC5774B4CB55E0F9D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  4114330659FF80695AA0581023CABCDE9D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  01846CE0AB08FBB5370F551BDD8700E49D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  778010B1D483D75C07C76F2DA0721C6B9D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  69039E575068EBA51D5DDA94862D7B089D188FF14B5B5A34504F2B9625FD44DE.pygtex,
-  C3FEF1F24A4C8C42E29EB147312F79BA9D188FF14B5B5A34504F2B9625FD44DE.pygtex}
+  default-pyg-prefix.pygstyle,
+  4BC65608FD2763E7C231A03E58CF90C9F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  85B43FECD3A9742F76E3BCC90D3C48A7F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  CBAFD97C67C91ADDAEA34D3DAF0D4007F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  990BF002D0D2280EAC881D74A601ABB2F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  71F3DE110298F09031B3F38D0484E76DF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  1E29121FDD465C160E40FEBB4C5ACF71F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  21283FDE4A89D22A1CC5774B4CB55E0FF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  4114330659FF80695AA0581023CABCDEF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  01846CE0AB08FBB5370F551BDD8700E4F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  778010B1D483D75C07C76F2DA0721C6BF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  69039E575068EBA51D5DDA94862D7B08F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex,
+  C3FEF1F24A4C8C42E29EB147312F79BAF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex}
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{41}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
