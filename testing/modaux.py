@@ -1,4 +1,5 @@
-from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor, AdaBoostClassifier, AdaBoostRegressor,\
+    GradientBoostingClassifier, GradientBoostingRegressor
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 from sklearn.neural_network import MLPClassifier, MLPRegressor
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
@@ -7,13 +8,13 @@ from sklearn.svm import SVC, SVR
 """
 Parameter suggestion __
 SVM:
-    D_svm = {
+    d_svm = {
     'C': ('cont', (0.001, 20))
     'gamma': ('cont', (0.001, 20))
     }
 
 RF:
-    D_rf = {
+    d_rf = {
     'n_estimators': ('int', (3, 500)),
     'max_features': ('cont', (0.01, 1)),
     'min_samples_split': ('cont', (0.01, 1)),
@@ -21,13 +22,13 @@ RF:
     }
 
 KNN:
-    D_knn = {
+    d_knn = {
     'n_neighbors': ('int', (1, 100)),
     'leaf_size': ('int', (15, 50))
 }
 
 MLP:
-    D_mlp = {
+    d_mlp = {
     'hidden_layer_size': ('int', (5, 200)),
     'alpha': ('cont', (10e-5, 10e-3)),
     'learning_rate_init': ('cont', (10e-5, 10e-3)),
@@ -36,10 +37,29 @@ MLP:
     }
 
 Tree:
-    D_tree = {
+    d_tree = {
         'max_features': ('cont', (0.01, 0.99)),
         'max_depth': ('int', (2, 20)),
         'min_samples_split': ('cont', (0.01, 0.99))
+    }
+
+Ada:
+    d_ada = {
+        'n_estimators': ('int', (5, 200)),
+        'learning_rate': ('cont', (0.01, 10))
+    }
+
+GBM:
+
+    d_gbm = {
+    'learning_rate': ('cont', (10e-5, 10)),
+    'n_estimators': ('int', (10, 200)),
+    'max_depth': ('int', (2, 20)),
+    'min_samples_split: ('int', (2, 10)),
+    'min_samples_leaf': ('int', (2, 10)),
+    'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
+    'subsample': ('cont', (0.01, 0.99)),
+    'max_features': ('cont', (0.01, 0.99))
     }
 """
 
@@ -59,6 +79,52 @@ class Tree:
             mod = DecisionTreeRegressor(max_features=self.max_features, max_depth=self.max_depth,
                                         min_samples_split=self.min_samples_split)
         return mod
+
+class Ada:
+    def __init__(self, problem = 'binary', n_estimators = 50, learning_rate = 1):
+        self.problem = problem
+        self.n_estimators = int(n_estimators)
+        self.learning_rate = learning_rate
+        self.name = 'Ada'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = AdaBoostClassifier(n_estimators = self.n_estimators, learning_rate = self.learning_rate)
+        else:
+            mod = AdaBoostRegressor(n_estimators = self.n_estimators, learning_rate = self.learning_rate)
+        return mod
+
+class GBM:
+    def __init__(self, problem = 'binary', learning_rate = 0.1, n_estimators = 100, max_depth = 3, min_samples_split = 2,
+                 min_samples_leaf = 1, min_weight_fraction_leaf = 0.0, subsample = 1.0, max_features = 1.0):
+        self.problem = problem
+        self.learning_rate = learning_rate
+        self.n_estimators = int(n_estimators)
+        self.max_depth = int(max_depth)
+        self.min_samples_split = int(min_samples_split)
+        self.min_samples_leaf = int(min_samples_leaf)
+        self.min_weight_fraction_leaf = min_weight_fraction_leaf
+        self.subsample = subsample
+        self.max_features = max_features
+        self.name = 'GBM'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = GradientBoostingClassifier(learning_rate = self.learning_rate, n_estimators = self.n_estimators,
+                                          max_depth = self.max_depth, min_samples_split = self.min_samples_split,
+                                          min_samples_leaf = self.min_samples_leaf,
+                                          min_weight_fraction_leaf = self.min_weight_fraction_leaf,
+                                          subsample = self.subsample,
+                                          max_features = self.max_features)
+        else:
+            mod = GradientBoostingRegressor(learning_rate = self.learning_rate, n_estimators = self.n_estimators,
+                                          max_depth = self.max_depth, min_samples_split = self.min_samples_split,
+                                          min_samples_leaf = self.min_samples_leaf,
+                                          min_weight_fraction_leaf = self.min_weight_fraction_leaf,
+                                          subsample = self.subsample,
+                                          max_features = self.max_features)
+        return mod
+
 
 class SVM:
     def __init__(self, problem='binary', C=1.0, gamma=1.0, kernel = 'rbf'):

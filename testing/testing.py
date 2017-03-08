@@ -10,7 +10,7 @@ if __name__ == '__main__':
     }
 
     d_knn = {
-        'n_neighbors': ('int', (1, 50)),
+        'n_neighbors': ('int', (1, 8)),
         'leaf_size': ('int', (15, 50))
     }
 
@@ -33,24 +33,45 @@ if __name__ == '__main__':
         'min_samples_split': ('cont', (0.01, 0.99))
     }
 
-    models = [Tree()]
-    params = [d_tree]
+    d_ada = {
+        'n_estimators': ('int', (5, 200)),
+        'learning_rate': ('cont', (0.01, 10))
+    }
+
+    d_gbm = {
+    'learning_rate': ('cont', (10e-5, 10)),
+    'n_estimators': ('int', (10, 200)),
+    'max_depth': ('int', (2, 20)),
+    'min_samples_split': ('int', (2, 10)),
+    'min_samples_leaf': ('int', (2, 10)),
+    'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
+    'subsample': ('cont', (0.01, 0.99)),
+    'max_features': ('cont', (0.01, 0.99))
+    }
+
+    models = [GBM()]
+    params = [d_gbm]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
-    datasets = ['pocket.csv','aff.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
+    datasets = ['aff.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
                 'lsvt.csv', 'pima-indians-diabetes.csv']
-    problems = ['binary', 'cont', 'binary', 'binary', 'binary', 'binary', 'binary']
-    targets = [0, 0, 0, 10, 16, 0, 8]
+    problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
+    targets = [0, 0, 10, 16, 0, 8]
 
 
     for model, parameter_dict in zip(models, params):
+        print('Evaluating model {}'.format(model.name))
         for dataset, target, problem in zip(datasets, targets, problems):
             if problem == 'cont':
                 model = model.__class__(problem='cont')
             else:
                 model = model.__class__(problem='binary')
-            g, r, sa = evaluateDataset(os.path.join(path, dataset), target_index = target, model = model,
-                                       parameter_dict = parameter_dict, method = '5fold', seed = 20,
-                                       max_iter = 50, problem=problem)
-            plotRes(g, r, sa, dataset, model, problem=problem)
+            try:
+                g, g2, g3, r, sa = evaluateDataset(os.path.join(path, dataset), target_index = target, model = model,
+                                           parameter_dict = parameter_dict, method = '5fold', seed = 20,
+                                           max_iter = 50, problem=problem)
+                plotRes(g, g2, g3, r, sa, dataset, model, problem=problem)
+            except Exception as e:
+                print(e)
+                continue

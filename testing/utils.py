@@ -80,30 +80,50 @@ def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, meth
 
     wrapper = loss(model, X, y, method=method, problem=problem)
 
+    print('Evaluating EI')
     np.random.seed(seed)
     sexp = squaredExponential()
     gp = GPRegressor(sexp)
-    acq = Acquisition(mode='ExpectedImprovement')
-    gpgo = GPGO(gp, acq, wrapper.evaluateLoss, parameter_dict, n_jobs=-1)
-    gpgo.run(max_iter=max_iter)
+    acq_ei = Acquisition(mode='ExpectedImprovement')
+    gpgo_ei = GPGO(gp, acq_ei, wrapper.evaluateLoss, parameter_dict, n_jobs=-1)
+    gpgo_ei.run(max_iter=max_iter)
 
+    # Also add UCB, beta = 0.5, beta = 1.5
+    print('Evaluating UCB beta = 0.5')
     np.random.seed(seed)
-    r = evaluateRandom(gpgo, wrapper, n_eval=max_iter + 1)
+    gp = GPRegressor(sexp)
+    acq_ucb = Acquisition(mode='UCB', beta = 0.5)
+    gpgo_ucb = GPGO(gp, acq_ucb, wrapper.evaluateLoss, parameter_dict, n_jobs=-1)
+    gpgo_ucb.run(max_iter=max_iter)
+
+    print('Evaluating UCB beta = 1.5')
+    np.random.seed(seed)
+    gp = GPRegressor(sexp)
+    acq_ucb2 = Acquisition(mode='UCB', beta = 1.5)
+    gpgo_ucb2 = GPGO(gp, acq_ucb2, wrapper.evaluateLoss, parameter_dict, n_jobs=-1)
+    gpgo_ucb2.run(max_iter=max_iter)
+
+    print('Evaluating random')
+    np.random.seed(seed)
+    r = evaluateRandom(gpgo_ei, wrapper, n_eval=max_iter + 1)
     r = cumMax(r)
 
+    print('Evaluating simulated annealing')
     np.random.seed(seed)
-    sa = evaluateSA(gpgo, wrapper, n_eval=max_iter + 1)
+    sa = evaluateSA(gpgo_ei, wrapper, n_eval=max_iter + 1)
     sa = cumMax(sa)
 
-    return np.array(gpgo.history), r, sa
+    return np.array(gpgo_ei.history), np.array(gpgo_ucb.history), np.array(gpgo_ucb2.history), r, sa
 
 
-def plotRes(gpgo_history, random, sa, datasetname, model, problem):
+def plotRes(gpgoei_history, gpgoucb_history, gpgoucb2_history, random, sa, datasetname, model, problem):
     import matplotlib
     import matplotlib.pyplot as plt
     x = np.arange(1, len(random) + 1)
     plt.figure()
-    plt.plot(x, -gpgo_history, label='pyGPGO')
+    plt.plot(x, -gpgoei_history, label='GPGO (EI)')
+    plt.plot(x, -gpgoucb_history, label = r'GPGO (UCB) $\beta=.5$')
+    plt.plot(x, -gpgoucb2_history, label = r'GPGO (UCB) $\beta=1.5$')
     plt.plot(x, -random, label='Random search')
     plt.plot(x, -sa, label='Simulated annealing')
     plt.grid()
