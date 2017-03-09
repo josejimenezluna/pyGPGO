@@ -838,6 +838,16 @@ if __name__ == '__main__':
 \includegraphics[width=\textwidth]{figures/chapter2/logmarginal}
 \end{figure}
 
+\subsection{Full Bayesian perspective}
+
+The approach described in the previous subsection optimizes a marginal log-likelihood and therefore is not truly Bayesian. The full Bayesian treatment of hyper-parameters $\theta$, we would marginalize over these and compute $\textit{integrated}$ acquisition functions of the type:
+
+\begin{equation}
+\hat{\alpha}(\boldsymbol{x}; \left\lbrace \boldsymbol{x}_n, y_n \right\rbrace ) = \int \alpha(\boldsymbol{x}; \left\lbrace \boldsymbol{x}_n, y_n \right\rbrace, \theta) p(\theta |\left\lbrace \boldsymbol{x}_n, y_n\right\rbrace) d\theta
+\end{equation}
+
+It can be shown [ref] that for both probability of improvement and expected improvement acquisition functions, this integral is the correct generalization to account for uncertainty in hyper-parameters. The calculations to compute such integrations however, are not analytically tractable, and one must resort to approximations, relying on MCMC or slice sampling, as described in [ref].
+
 \subsection{Cross validation}
 
 There is a very extensive analytical evaluation of cross validation using Gaussian Process in Rasmussen's book. Here, we will only lay down some very basic ideas related to model selection from a very basic machine learning perspective. The concepts presented here are more useful if one plans to use Gaussian Processes only as a regression model, not as a surrogate one towards another objective, as we will do in the following chapter. \\
@@ -1356,6 +1366,76 @@ It can be seen that during the previous steps before fitting a Gaussian Process,
 \end{figure}
 
 \chapter{Experiments}
+
+In this chapter we will expose all the results using all implemented code for Gaussian Process regression and Bayesian Optimization in pyGPGO. First, we start by providing some benchmarking rules, how performance shall be evaluated across different models and datasets. In general, the models presented here hopefully span enough diversity: support vector machines , neural networks and bagging/boosting methods are among these candidates. Datasets come from very different research areas, spanning from biophysics to medicine. 
+
+
+\section{Benchmarking rules}
+\subsection{Other strategies for hyper-parameter optimization}
+
+Hyper-parameter optimization is usually the most tedious part in fitting a machine-learning algorithm. In practice, we are interested in models whose loss, evaluated on an independent part of data is as low as possible. Different hyper-parameter choices lead to different losses, therefore finding the optimal set is of importance. In reality, we will never know that the point found is the global optimum, but from a practical point of view, we are only interested in finding the model that works best in a production setting.\\
+
+In the machine-learning community, hyper-parameter optimization is often overlooked, and in fact, some of the most famous models (e.g. Random Forests) have been shown to be somewhat insensitive to hyper-parameter optimization [ref]. Four common strategies for finding \textit{better} hyper-parameters are presented here: grid search, random search, simulated annealing and gradient-based methods. Only random search and simulated annealing will be compared against our Bayesian Optimization algorithm, as implemented in pyGPGO. Details on how these work are laid down below:
+
+\begin{itemize}
+	\item \textbf{Grid search}. Also known as parameter sweep. This is simply an exhaustive search in a user specified subset of parameter space. Search bounds have to be set manually. When multiple hyper-parameters have to be optimized over their sets, grid search considers the Cartesian product of all of them. This poses a problem when the number of hyper-parameters to optimize grows, also known as the curse of dimensionality. While suffering from this problem, grid search is still widely used for small to mid-sized problems, where function evaluations are not very expensive. Also, it is embarrassingly parallel: function evaluations can be distributed over in a simple way.
+	\item \textbf{Random search}. Grid search is exhaustive since it considers all possible evaluations over a Cartesian product over parameter sets. Randomized search in hyper-parameter space is also a very popular method for the task at hand. In particular, this method has been shown to work considerably better in high-dimensional spaces than grid search [ref]. There is also evidence that often sometimes some hyper-parameters do not affect the loss significantly.
+	\item \textbf{Simulated annealing}. While the other methods are search based, simulated annealing is a proper global optimization algorithm. This technique itself is a meta-heuristic to approximate the global minimum of a function $f$ in a large search space. Its origins comes from physics, and it is in fact, an adaptation of the Metropolis-Hastings algorithm [ref], a method to generate samples from a given thermodynamic system. Assume that our system is at a state $s$. Simulated annealing works by proposing a neighbouring candidate to evaluate $s'$, and decides whether to move towards it or not depending on a probabilistic criterion that is function of both $s$, $s'$, and an annealing temperature $T$. The initial annealing temperature $T$ is cooled down according to some schema after each iteration of the algorithm. This also lowers the acceptance probability after each iteration.\\
+	
+	In practice, how to choose to propose neighbouring candidates $s'$ of $s$, the probabilistic criterion to accept the candidate and the temperature annealing scheme is left for the user to define. For all the experiments performed here the procedure was programmed as follows: the initial temperature $T$ is set to $100$. Neighbouring candidate points $s'$ are randomly and uniformly sampled within hyper-parameter bounds, the acceptance probability is the standard Metropolis-Hastings acceptance criteria:
+	
+	\begin{equation}
+	\label{sametro}
+	P(s, s', T) = \exp\left( - \dfrac{f(s') - f(s)}{T} \right)
+	\end{equation}
+	
+	For new states $s'$ where $f(s') > f(s)$, $P(s, s', T)$ is automatically set to 1. This in practice means that if we find a state with a better value, we move to it, and if it is worse, we move to it with a certain probability given by Equation \ref{sametro}. We cool the temperature $T$ in each iteration by a factor of $0.9$. In particular, during the experiments, I tried different cooling schemas and found this one to yield the best results.
+\end{itemize}
+
+\subsection{Evaluation metrics}
+
+Throughout all the experiments, we will be minimizing loss functions, in some form or the other. Every problem presented here is formulated either as a regression or classification task, therefore it is of importance to define early on what type of loss to use in each problem. For binary classification problems, we will use the logarithmic loss, also known as binary cross-entropy, defined by:
+
+\begin{equation}
+\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = -\dfrac{1}{n} = \sum_i \left(y_i \log(\hat{y_i}) + (1 - y_i)\log(1-\hat{y_i})\right)
+\end{equation}
+
+The log-loss is very popular among the deep learning folks [ref]. This particular metric does not only take into account whether a classifier makes the right decision given a threshold $c$, (like the 0/1 loss would), but also the confidence in predictions $\boldsymbol{\hat{y}}$. It is also very natural since it is just the negative log-likelihood of a Bernoulli random variable. The use of the logarithm both punishes erroneous extremely confident positive or negative predictions.\\
+
+We generalize the previous metric for multi-class classification problems. The following expression is typically called categorical cross-entropy:
+
+\begin{equation}
+\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{p}}) = - \dfrac{1}{n} \sum_{i=1}^n\sum_{j=1}^m y_{ij}\log(\hat{p}_{ij})
+\end{equation}
+
+where $\hat{p}_{ij}$ is the predicted probability of a sample $i$ belonging to class $j$, and $m$ is the number of classes considered. For continuous regression problems, the loss that we use is the typical mean squared error, defined by:
+
+\begin{equation}
+\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = \dfrac{1}{n} \sum_i \left(y_i - \hat{y_i}\right)^2
+\end{equation}
+
+We believe that the losses proposed here are very natural choices in both classification and regression problems.\\
+
+While we have discussed the metrics to evaluate in each predictive problem, we still need to define how these losses will be evaluated in each step. To evaluate the performance of a given hyper-parameter optimization procedure, we have to balance both the performance in terms of loss and the number of evaluations necessary in order to get to a satisfactory solution. In practice, this is exactly how we will benchmark the different strategies, through a plot where the $x$-axis represent the number of function evaluations, and the $y$-axis the best log-loss found.\\
+
+Evaluating the loss function itself can lead to multiple different values depending on the test values. One could choose an approach where this loss is evaluated on a single holdout test. This would lead to noisy estimates, however. We choose the more stable approach of performing a $k=5$ cross-validation scheme to obtain a more reliable loss estimate. In practice, this means that we fit $5$ models with the same architecture to different train/test splits and average the loss results in each.
+
+\subsection{Bayesian optimization setup}
+
+For all the tests performed with the Bayesian Optimization scheme, we choose the standard squared exponential kernel with a default characteristic length-scale $l=1$. Different acquisition functions will be tested in each problem: Expected Improvement, GP-UCB ($\beta= .5$) and GP-UCB ($\beta = 1.5$).
+
+\subsection{Machine-learning models used}
+
+Since the shape of our objective function depends on both the dataset and the predictor, we try to span as many different types of machine-learning models as possible to provide the most extensive evaluation as possible. Except for rare occasions where we could not fit a model to a particular dataset for numerical conditions, all models are evaluated in all datasets with the same number of parameters and bounds to optimize over.
+
+\section{The binding affinity dataset}
+
+
 \chapter{pyGPGO: A simple Python Package for Bayesian Optimization}
+\subsection{Installation}
+\subsection{Usage}
+\subsection{Examples}
+\subsection{Features}
+\subsection{Future work}
 
 \end{document}
