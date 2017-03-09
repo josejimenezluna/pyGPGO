@@ -5,17 +5,19 @@ from scipy.optimize import minimize
 
 
 class GPRegressor:
-    def __init__(self, covfunc, sigma=0):
+    def __init__(self, covfunc, sigma=0, optimize = False, usegrads = False):
         self.covfunc = covfunc
         self.sigma = sigma
+        self.optimize = optimize
+        self.usegrads = usegrads
 
-    def fit(self, X, y, optimize = False, usegrads = False):
+    def fit(self, X, y):
         self.X = X
         self.y = y
         self.nsamples = self.X.shape[0]
-        if optimize:
+        if self.optimize:
             grads = None
-            if usegrads:
+            if self.usegrads:
                 grads = self._grad
             self.optHyp(param_key=self.covfunc.parameters, param_bounds=self.covfunc.bounds, grads=grads)
 
@@ -45,7 +47,17 @@ class GPRegressor:
         for k, v in zip(param_key, param_vector):
             k_param[k] = v
         self.covfunc = self.covfunc.__class__(**k_param)
+
+        # This fixes recursion
+        original_opt = self.optimize
+        original_grad = self.usegrads
+        self.optimize = False
+        self.usegrads = False
+
         self.fit(self.X, self.y)
+
+        self.optimize = original_opt
+        self.usegrads = original_grad
         return (- self.logp)
 
     def _grad(self, param_vector, param_key):

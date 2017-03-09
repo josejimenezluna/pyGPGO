@@ -23,7 +23,7 @@ if __name__ == '__main__':
     }
 
     d_svm = {
-    'C': ('cont', (0.001, 20)),
+    'C': ('cont', (0.001, 100)),
     'gamma': ('cont', (0.001, 20))
     }
 
@@ -49,12 +49,12 @@ if __name__ == '__main__':
     #'max_features': ('cont', (0.01, 0.99))
     }
 
-    models = [GBM()]
-    params = [d_gbm]
+    models = [SVM()]
+    params = [d_svm]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
-    datasets = ['aff.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
+    datasets = ['aff.csv','breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
                 'lsvt.csv', 'pima-indians-diabetes.csv']
     problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
     targets = [0, 0, 10, 16, 0, 8]
