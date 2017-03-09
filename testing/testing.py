@@ -23,8 +23,8 @@ if __name__ == '__main__':
     }
 
     d_svm = {
-    'C': ('cont', (0.001, 100)),
-    'gamma': ('cont', (0.001, 20))
+    'C': ('cont', (0.01, 200)),
+    'gamma': ('cont', (0.001, 10))
     }
 
     d_tree = {
@@ -49,8 +49,8 @@ if __name__ == '__main__':
     #'max_features': ('cont', (0.01, 0.99))
     }
 
-    models = [SVM()]
-    params = [d_svm]
+    models = [Ada()]
+    params = [d_ada]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
