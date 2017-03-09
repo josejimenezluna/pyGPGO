@@ -13,27 +13,39 @@
 \BOOKMARK [2][-]{subsection.2.4.1}{Visualizing different covariance functions}{section.2.4}% 13
 \BOOKMARK [1][-]{section.2.5}{Hyperparameter optimization}{chapter.2}% 14
 \BOOKMARK [2][-]{subsection.2.5.1}{Type II Maximum Likelihood}{section.2.5}% 15
-\BOOKMARK [2][-]{subsection.2.5.2}{Cross validation}{section.2.5}% 16
-\BOOKMARK [1][-]{section.2.6}{Further theoretical aspects}{chapter.2}% 17
-\BOOKMARK [2][-]{subsection.2.6.1}{Gaussian processes as linear smoothers}{section.2.6}% 18
-\BOOKMARK [2][-]{subsection.2.6.2}{Explicit basis functions}{section.2.6}% 19
-\BOOKMARK [0][-]{chapter.3}{Bayesian optimization}{}% 20
-\BOOKMARK [1][-]{section.3.1}{Preliminaries}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.2}{The bayesian optimization framework}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.3}{On acquisition functions}{chapter.3}% 23
-\BOOKMARK [2][-]{subsection.3.3.1}{Improvement-based policies}{section.3.3}% 24
-\BOOKMARK [2][-]{subsection.3.3.2}{Optimistic policies}{section.3.3}% 25
-\BOOKMARK [2][-]{subsection.3.3.3}{Information-based policies}{section.3.3}% 26
-\BOOKMARK [2][-]{subsection.3.3.4}{Acquisition function portfolios}{section.3.3}% 27
-\BOOKMARK [2][-]{subsection.3.3.5}{Visualizing the behaviour of an acquisition function}{section.3.3}% 28
-\BOOKMARK [2][-]{subsection.3.3.6}{Why does Bayesian Optimization work?}{section.3.3}% 29
-\BOOKMARK [1][-]{section.3.4}{Role of GP hyperparameters in optimization}{chapter.3}% 30
-\BOOKMARK [1][-]{section.3.5}{Optimizing the acquisition function}{chapter.3}% 31
-\BOOKMARK [1][-]{section.3.6}{Computational costs}{chapter.3}% 32
-\BOOKMARK [2][-]{subsection.3.6.1}{Approximations to the analytical GP. Alternative surrogates.}{section.3.6}% 33
-\BOOKMARK [2][-]{subsection.3.6.2}{Parallelization}{section.3.6}% 34
-\BOOKMARK [1][-]{section.3.7}{Step-by-step examples}{chapter.3}% 35
-\BOOKMARK [2][-]{subsection.3.7.1}{Optimizing \(yet-again\) the sine function}{section.3.7}% 36
-\BOOKMARK [2][-]{subsection.3.7.2}{Optimizing the Rossenbrock function}{section.3.7}% 37
-\BOOKMARK [0][-]{chapter.4}{Experiments}{}% 38
-\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 39
+\BOOKMARK [2][-]{subsection.2.5.2}{Full Bayesian perspective}{section.2.5}% 16
+\BOOKMARK [2][-]{subsection.2.5.3}{Cross validation}{section.2.5}% 17
+\BOOKMARK [1][-]{section.2.6}{Further theoretical aspects}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.6.1}{Gaussian processes as linear smoothers}{section.2.6}% 19
+\BOOKMARK [2][-]{subsection.2.6.2}{Explicit basis functions}{section.2.6}% 20
+\BOOKMARK [0][-]{chapter.3}{Bayesian optimization}{}% 21
+\BOOKMARK [1][-]{section.3.1}{Preliminaries}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.2}{The bayesian optimization framework}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.3}{On acquisition functions}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.3.1}{Improvement-based policies}{section.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.2}{Optimistic policies}{section.3.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.3}{Information-based policies}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.4}{Acquisition function portfolios}{section.3.3}% 28
+\BOOKMARK [2][-]{subsection.3.3.5}{Visualizing the behaviour of an acquisition function}{section.3.3}% 29
+\BOOKMARK [2][-]{subsection.3.3.6}{Why does Bayesian Optimization work?}{section.3.3}% 30
+\BOOKMARK [1][-]{section.3.4}{Role of GP hyperparameters in optimization}{chapter.3}% 31
+\BOOKMARK [1][-]{section.3.5}{Optimizing the acquisition function}{chapter.3}% 32
+\BOOKMARK [1][-]{section.3.6}{Computational costs}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.3.6.1}{Approximations to the analytical GP. Alternative surrogates.}{section.3.6}% 34
+\BOOKMARK [2][-]{subsection.3.6.2}{Parallelization}{section.3.6}% 35
+\BOOKMARK [1][-]{section.3.7}{Step-by-step examples}{chapter.3}% 36
+\BOOKMARK [2][-]{subsection.3.7.1}{Optimizing \(yet-again\) the sine function}{section.3.7}% 37
+\BOOKMARK [2][-]{subsection.3.7.2}{Optimizing the Rossenbrock function}{section.3.7}% 38
+\BOOKMARK [0][-]{chapter.4}{Experiments}{}% 39
+\BOOKMARK [1][-]{section.4.1}{Benchmarking rules}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.1.1}{Other strategies for hyper-parameter optimization}{section.4.1}% 41
+\BOOKMARK [2][-]{subsection.4.1.2}{Evaluation metrics}{section.4.1}% 42
+\BOOKMARK [2][-]{subsection.4.1.3}{Bayesian optimization setup}{section.4.1}% 43
+\BOOKMARK [2][-]{subsection.4.1.4}{Machine-learning models used}{section.4.1}% 44
+\BOOKMARK [1][-]{section.4.2}{The binding affinity dataset}{chapter.4}% 45
+\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 46
+\BOOKMARK [1][-]{subsection.5.0.1}{Installation}{chapter.5}% 47
+\BOOKMARK [2][-]{subsection.5.0.2}{Usage}{subsection.5.0.1}% 48
+\BOOKMARK [2][-]{subsection.5.0.3}{Examples}{subsection.5.0.1}% 49
+\BOOKMARK [2][-]{subsection.5.0.4}{Features}{subsection.5.0.1}% 50
+\BOOKMARK [2][-]{subsection.5.0.5}{Future work}{subsection.5.0.1}% 51
