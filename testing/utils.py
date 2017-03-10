@@ -108,24 +108,24 @@ def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, meth
     r = evaluateRandom(gpgo_ei, wrapper, n_eval=max_iter + 1)
     r = cumMax(r)
 
-    print('Evaluating simulated annealing')
-    np.random.seed(seed)
-    sa = evaluateSA(gpgo_ei, wrapper, n_eval=max_iter + 1)
-    sa = cumMax(sa)
+    # print('Evaluating simulated annealing')
+    # np.random.seed(seed)
+    # sa = evaluateSA(gpgo_ei, wrapper, n_eval=max_iter + 1)
+    # sa = cumMax(sa)
 
-    return np.array(gpgo_ei.history), np.array(gpgo_ucb.history), np.array(gpgo_ucb2.history), r, sa
+    return np.array(gpgo_ei.history), np.array(gpgo_ucb.history), np.array(gpgo_ucb2.history), r
 
 
-def plotRes(gpgoei_history, gpgoucb_history, gpgoucb2_history, random, sa, datasetname, model, problem):
+def plotRes(gpgoei_history, gpgoucb_history, gpgoucb2_history, random, datasetname, model, problem):
     import matplotlib
     import matplotlib.pyplot as plt
     x = np.arange(1, len(random) + 1)
-    plt.figure()
+    fig = plt.figure()
     plt.plot(x, -gpgoei_history, label='GPGO (EI)')
     plt.plot(x, -gpgoucb_history, label = r'GPGO (UCB) $\beta=.5$')
     plt.plot(x, -gpgoucb2_history, label = r'GPGO (UCB) $\beta=1.5$')
     plt.plot(x, -random, label='Random search')
-    plt.plot(x, -sa, label='Simulated annealing')
+    # plt.plot(x, -sa, label='Simulated annealing')
     plt.grid()
     plt.legend(loc=0)
     plt.xlabel('Number of evaluations')
@@ -134,9 +134,8 @@ def plotRes(gpgoei_history, gpgoucb_history, gpgoucb2_history, random, sa, datas
     else:
         plt.ylabel('Best MSE found')
     datasetname = datasetname.split('.')[0]
-    plt.title(datasetname)
     plt.savefig(os.path.join(os.path.abspath('.'), 'testing/results/{}/{}.pdf'.format(model.name, datasetname)))
-    #plt.show()
+    plt.close(fig)
     return None
 
 

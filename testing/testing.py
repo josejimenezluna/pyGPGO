@@ -1,10 +1,12 @@
+import numpy as np
 from testing.utils import *
 from testing.modaux import *
 
 if __name__ == '__main__':
     d_rf = {
-    'n_estimators': ('int', (3, 500)),
+    'n_estimators': ('int', (10, 200)),
     'max_features': ('cont', (0.01, 1)),
+    'max_depth': ('int', (2, 20)),
     #'min_samples_split': ('cont', (0.01, 1)),
     'min_samples_leaf': ('cont', (0.01, 0.5))
     }
@@ -16,10 +18,10 @@ if __name__ == '__main__':
 
     d_mlp = {
     'hidden_layer_size': ('int', (5, 200)),
-    'alpha': ('cont', (10e-5, 10e-3)),
-    'learning_rate_init': ('cont', (10e-5, 10e-3)),
-    'beta_1': ('cont', (0.01, 0.99)),
-    'beta_2': ('cont', (0.01, 0.99))
+    'alpha': ('cont', (10e-5, 10e-2)),
+    'learning_rate_init': ('cont', (10e-5, 10e-2)),
+    'beta_1': ('cont', (0.001, 0.999)),
+    'beta_2': ('cont', (0.001, 0.999))
     }
 
     d_svm = {
@@ -28,9 +30,9 @@ if __name__ == '__main__':
     }
 
     d_tree = {
-        'max_features': ('cont', (0.01, 0.99)),
-        'max_depth': ('int', (2, 50)),
-        'min_samples_split': ('cont', (0.01, 0.99))
+        'max_features': ('cont', (0.1, 0.99)),
+        'max_depth': ('int', (4, 30)),
+        'min_samples_split': ('cont', (0.1, 0.99))
     }
 
     d_ada = {
@@ -39,18 +41,18 @@ if __name__ == '__main__':
     }
 
     d_gbm = {
-    'learning_rate': ('cont', (10e-5, 10)),
+    'learning_rate': ('cont', (10e-5, 1)),
     'n_estimators': ('int', (10, 200)),
     'max_depth': ('int', (2, 20)),
     #'min_samples_split': ('int', (2, 10)),
     #'min_samples_leaf': ('int', (2, 10)),
     #'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
-    #'subsample': ('cont', (0.01, 0.99)),
-    #'max_features': ('cont', (0.01, 0.99))
+    'subsample': ('cont', (0.01, 0.99)),
+    'max_features': ('cont', (0.01, 0.99))
     }
 
-    models = [Ada()]
-    params = [d_ada]
+    models = [SVM()]
+    params = [d_svm]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
@@ -59,7 +61,7 @@ if __name__ == '__main__':
     problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
     targets = [0, 0, 10, 16, 0, 8]
 
-
+    np.random.seed(20)
     for model, parameter_dict in zip(models, params):
         print('Evaluating model {}'.format(model.name))
         for dataset, target, problem in zip(datasets, targets, problems):
@@ -68,10 +70,10 @@ if __name__ == '__main__':
             else:
                 model = model.__class__(problem='binary')
             try:
-                g, g2, g3, r, sa = evaluateDataset(os.path.join(path, dataset), target_index = target, model = model,
+                g, g2, g3, r= evaluateDataset(os.path.join(path, dataset), target_index = target, model = model,
                                            parameter_dict = parameter_dict, method = '5fold', seed = 20,
                                            max_iter = 50, problem=problem)
-                plotRes(g, g2, g3, r, sa, dataset, model, problem=problem)
+                plotRes(g, g2, g3, r, dataset, model, problem=problem)
             except Exception as e:
                 print(e)
                 continue

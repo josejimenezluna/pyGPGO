@@ -2,8 +2,6 @@ import numpy as np
 from scipy.special import gamma, kv
 from scipy.spatial.distance import cdist
 
-##TODO implement bounds method for each class
-
 
 def l2norm(x, xstar):
     return (np.sqrt(np.sum((x - xstar) ** 2, axis=1)))
