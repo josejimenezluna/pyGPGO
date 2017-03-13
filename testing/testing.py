@@ -4,11 +4,9 @@ from testing.modaux import *
 
 if __name__ == '__main__':
     d_rf = {
-    'n_estimators': ('int', (10, 200)),
-    'max_depth': ('int', (2, 20)),
-    'min_samples_split': ('cont', (0.01, 1)),
-    #'min_samples_leaf': ('cont', (0.01, 0.5)),
-    'subsample': ('cont', (0.01, 0.99)),
+    'n_estimators': ('int', (10, 300)),
+    'min_samples_split': ('cont', (0.1, 1)),
+    'min_samples_leaf': ('cont', (0.1, 0.49)),
     'max_features': ('cont', (0.01, 1))
     }
 
@@ -52,8 +50,8 @@ if __name__ == '__main__':
     'max_features': ('cont', (0.01, 0.99))
     }
 
-    models = [GBM()]
-    params = [d_gbm]
+    models = [RF()]
+    params = [d_rf]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
