@@ -5,10 +5,11 @@ from testing.modaux import *
 if __name__ == '__main__':
     d_rf = {
     'n_estimators': ('int', (10, 200)),
-    'max_features': ('cont', (0.01, 1)),
     'max_depth': ('int', (2, 20)),
-    #'min_samples_split': ('cont', (0.01, 1)),
-    'min_samples_leaf': ('cont', (0.01, 0.5))
+    'min_samples_split': ('cont', (0.01, 1)),
+    #'min_samples_leaf': ('cont', (0.01, 0.5)),
+    'subsample': ('cont', (0.01, 0.99)),
+    'max_features': ('cont', (0.01, 1))
     }
 
     d_knn = {
@@ -42,17 +43,17 @@ if __name__ == '__main__':
 
     d_gbm = {
     'learning_rate': ('cont', (10e-5, 1)),
-    'n_estimators': ('int', (10, 200)),
-    'max_depth': ('int', (2, 20)),
-    #'min_samples_split': ('int', (2, 10)),
-    #'min_samples_leaf': ('int', (2, 10)),
+    'n_estimators': ('int', (10, 300)),
+    'max_depth': ('int', (2, 25)),
+    'min_samples_split': ('int', (2, 25)),
+    'min_samples_leaf': ('int', (2, 25)),
     #'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
     'subsample': ('cont', (0.01, 0.99)),
     'max_features': ('cont', (0.01, 0.99))
     }
 
-    models = [SVM()]
-    params = [d_svm]
+    models = [GBM()]
+    params = [d_gbm]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
