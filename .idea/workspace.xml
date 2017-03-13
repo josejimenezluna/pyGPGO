@@ -5,33 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4faf3ad0-f85b-47b4-a4a1-cbb76926333d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/01846CE0AB08FBB5370F551BDD8700E4F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/1E29121FDD465C160E40FEBB4C5ACF71F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/21283FDE4A89D22A1CC5774B4CB55E0FF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/4114330659FF80695AA0581023CABCDEF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/4BC65608FD2763E7C231A03E58CF90C9F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/69039E575068EBA51D5DDA94862D7B08F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/71F3DE110298F09031B3F38D0484E76DF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/778010B1D483D75C07C76F2DA0721C6BF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/85B43FECD3A9742F76E3BCC90D3C48A7F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/990BF002D0D2280EAC881D74A601ABB2F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/C3FEF1F24A4C8C42E29EB147312F79BAF25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/_minted-main/CBAFD97C67C91ADDAEA34D3DAF0D4007F25D47A0ADF8F08BC84ACD63E58FD4EA.pygtex" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mthesis_text/main.synctex.gz" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/main.pdf" afterPath="$PROJECT_DIR$/mthesis_text/main.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/GBM/aff.pdf" afterPath="$PROJECT_DIR$/testing/results/GBM/aff.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/GBM/breast_cancer.pdf" afterPath="$PROJECT_DIR$/testing/results/GBM/breast_cancer.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/GBM/indian_liver.pdf" afterPath="$PROJECT_DIR$/testing/results/GBM/indian_liver.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/GBM/lsvt.pdf" afterPath="$PROJECT_DIR$/testing/results/GBM/lsvt.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/GBM/parkinsons.pdf" afterPath="$PROJECT_DIR$/testing/results/GBM/parkinsons.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/results/GBM/pima-indians-diabetes.pdf" afterPath="$PROJECT_DIR$/testing/results/GBM/pima-indians-diabetes.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/main.aux" afterPath="$PROJECT_DIR$/mthesis_text/main.aux" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/main.log" afterPath="$PROJECT_DIR$/mthesis_text/main.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/main.out" afterPath="$PROJECT_DIR$/mthesis_text/main.out" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/main.tex" afterPath="$PROJECT_DIR$/mthesis_text/main.tex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mthesis_text/main.toc" afterPath="$PROJECT_DIR$/mthesis_text/main.toc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/testing.py" afterPath="$PROJECT_DIR$/testing/testing.py" />
     </list>
     <ignored path="pyGPGO.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,8 +59,8 @@
       <file leaf-file-name="testing.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testing/testing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+            <state relative-caret-position="195">
+              <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -695,11 +669,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489085983641</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Changing minor stuff.">
+      <created>1489424914784</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1489424914784</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="26" width="1922" height="1055" extended-state="7" />
+    <frame x="-1" y="26" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -745,7 +726,8 @@
     <MESSAGE value="Added GBM." />
     <MESSAGE value="Fixed hyperparameter optimization in GPGO." />
     <MESSAGE value="SVM and Ada are FIXED." />
-    <option name="LAST_COMMIT_MESSAGE" value="SVM and Ada are FIXED." />
+    <MESSAGE value="Changing minor stuff." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing minor stuff." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1140,8 +1122,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testing/testing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+        <state relative-caret-position="195">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
