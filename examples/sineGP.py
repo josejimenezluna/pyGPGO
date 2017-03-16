@@ -1,6 +1,6 @@
 import numpy as np
-from GPRegressor import GPRegressor
-from covfunc import squaredExponential
+from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.covfunc import squaredExponential
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     plt.figure()
     plt.plot(xstar, ymean, label='Posterior mean')
     plt.plot(xstar, np.sin(xstar), label='True function')
-    plt.fill_between(xstar, lower, upper, alpha=0.4, label='95% confidence band')
+    plt.fill_between(xstar, lower, upper, alpha=0.4, label=r'95\% confidence band')
     plt.grid()
     plt.legend(loc=0)
     plt.show()

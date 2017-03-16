@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from GPRegressor import GPRegressor
-from acquisition import Acquisition
-from covfunc import squaredExponential
-from GPGO import GPGO
+from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
+from pyGPGO.GPGO import GPGO
 
 
 def plotGPGO(gpgo, param, index, new=True):

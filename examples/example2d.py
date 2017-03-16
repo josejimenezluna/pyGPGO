@@ -3,10 +3,10 @@ from collections import OrderedDict
 
 import matplotlib.pyplot as plt
 
-from GPGO import GPGO
-from GPRegressor import GPRegressor
-from acquisition import Acquisition
-from covfunc import *
+from pyGPGO.GPGO import GPGO
+from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
 
 
 def rastrigin(x, y, A=10):

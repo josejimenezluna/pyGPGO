@@ -1,6 +1,6 @@
 import numpy as np
 from numpy.random import multivariate_normal
-from covfunc import squaredExponential
+from pyGPGO.covfunc import squaredExponential
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':

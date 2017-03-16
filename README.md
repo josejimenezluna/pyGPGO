@@ -4,31 +4,39 @@
 
 pyGPGO is a simple Python (>3.5) package for Bayesian Optimization using Gaussian Process as surrogate model.
 
+### Installation
+
+Available in PyPI
+
+```bash
+pip install pyGPGO
+```
+
 ### Dependencies
 
-At the moment, the only dependency is `numpy`. The Anaconda Intel MKL is recommended.
+At the moment, the only dependency is `numpy` and `joblib`.
 
 ### Usage
-
-_Under construction_
 
 The user only has to define a function and a dictionary.
 
 ```python
-from covfunc import squaredExponential
-from acquisition import Acquisition
-from GPRegressor import GPRegressor
-from GPGO import GPGO
+import numpy as np
+from pyGPGO.covfunc import squaredExponential
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.GPGO import GPGO
 
 def f(x):
-	return (np.sin(x))
+    return (np.sin(x))
 
 
 sexp = squaredExponential()
-gp = GPRegressor(sexp)
+gp = GPRegressor(sexp, sigma = 1e-8)
 acq = Acquisition(mode='ExpectedImprovement')
 param = {'x': ('cont', [0, 2 * np.pi])}
 
+np.random.seed(23)
 gpgo = GPGO(gp, acq, f, param)
 gpgo.run(max_iter=20)
 

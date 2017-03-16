@@ -1,5 +1,5 @@
-from covfunc import *
-from GPRegressor import GPRegressor
+from pyGPGO.covfunc import *
+from pyGPGO.GPRegressor import GPRegressor
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':

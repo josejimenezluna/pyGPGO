@@ -1,6 +1,6 @@
 import numpy as np
-from GPRegressor import GPRegressor
-from covfunc import squaredExponential
+from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.covfunc import squaredExponential
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':

@@ -2,10 +2,10 @@ import os
 
 import matplotlib.pyplot as plt
 
-from GPGO import GPGO
-from GPRegressor import GPRegressor
-from acquisition import Acquisition
-from covfunc import *
+from pyGPGO.GPGO import GPGO
+from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
 
 
 def plotGPGO(gpgo, param):
@@ -35,10 +35,8 @@ def plotGPGO(gpgo, param):
 if __name__ == '__main__':
     np.random.seed(321)
 
-
     def f(x):
         return (np.sin(x))
-
 
     sexp = squaredExponential()
     gp = GPRegressor(sexp)
