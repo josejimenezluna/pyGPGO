@@ -5,63 +5,52 @@ from sklearn.neural_network import MLPClassifier, MLPRegressor
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.svm import SVC, SVR
 
-"""
-Parameter suggestion __
-SVM:
-    d_svm = {
-    'C': ('cont', (0.001, 20))
-    'gamma': ('cont', (0.001, 20))
-    }
+d_rf = {
+    'n_estimators': ('int', (10, 300)),
+    'min_samples_split': ('cont', (0.1, 1)),
+    'min_samples_leaf': ('cont', (0.1, 0.49)),
+    'max_features': ('cont', (0.01, 1))
+}
 
-RF:
-    d_rf = {
-    'n_estimators': ('int', (3, 500)),
-    'max_features': ('cont', (0.01, 1)),
-    'min_samples_split': ('cont', (0.01, 1)),
-    'min_samples_leaf': ('cont', (0.01, 1))
-    }
-
-KNN:
-    d_knn = {
-    'n_neighbors': ('int', (1, 100)),
+d_knn = {
+    'n_neighbors': ('int', (1, 8)),
     'leaf_size': ('int', (15, 50))
 }
 
-MLP:
-    d_mlp = {
+d_mlp = {
     'hidden_layer_size': ('int', (5, 200)),
-    'alpha': ('cont', (10e-5, 10e-3)),
-    'learning_rate_init': ('cont', (10e-5, 10e-3)),
-    'beta_1': ('cont', (0.01, 0.99)),
-    'beta_2': ('cont', (0.01, 0.99))
-    }
+    'alpha': ('cont', (10e-5, 10e-2)),
+    'learning_rate_init': ('cont', (10e-5, 10e-2)),
+    'beta_1': ('cont', (0.001, 0.999)),
+    'beta_2': ('cont', (0.001, 0.999))
+}
 
-Tree:
-    d_tree = {
-        'max_features': ('cont', (0.01, 0.99)),
-        'max_depth': ('int', (2, 20)),
-        'min_samples_split': ('cont', (0.01, 0.99))
-    }
+d_svm = {
+    'C': ('cont', (0.01, 200)),
+    'gamma': ('cont', (0.001, 10))
+}
 
-Ada:
-    d_ada = {
-        'n_estimators': ('int', (5, 200)),
-        'learning_rate': ('cont', (0.01, 10))
-    }
+d_tree = {
+    'max_features': ('cont', (0.1, 0.99)),
+    'max_depth': ('int', (4, 30)),
+    'min_samples_split': ('cont', (0.1, 0.99))
+}
 
-GBM:
+d_ada = {
+    'n_estimators': ('int', (5, 200)),
+    'learning_rate': ('cont', (0.01, 10))
+}
 
-    d_gbm = {
-    'learning_rate': ('cont', (10e-5, 10)),
-    'n_estimators': ('int', (10, 200)),
-    'max_depth': ('int', (2, 20)),
-    'min_samples_split: ('int', (2, 10)),
-    'min_samples_leaf': ('int', (2, 10)),
-    'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
+d_gbm = {
+    'learning_rate': ('cont', (10e-5, 1)),
+    'n_estimators': ('int', (10, 300)),
+    'max_depth': ('int', (2, 25)),
+    'min_samples_split': ('int', (2, 25)),
+    'min_samples_leaf': ('int', (2, 25)),
+    # 'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
     'subsample': ('cont', (0.01, 0.99)),
     'max_features': ('cont', (0.01, 0.99))
-    }
-"""
+}
 
 class Tree:
     def __init__(self, problem='binary', max_features = 0.5, max_depth = 1, min_samples_split = 2):

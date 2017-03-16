@@ -6,11 +6,11 @@ from sklearn.metrics import log_loss, mean_squared_error
 from sklearn.model_selection import train_test_split, KFold
 from sklearn.preprocessing import StandardScaler
 
-from GPGO import GPGO
-from GPRegressor import GPRegressor
-from acquisition import Acquisition
-from covfunc import squaredExponential
-from testing.other_go import SimulatedAnnealing
+from pyGPGO.GPGO import GPGO
+from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
+# from testing.other_go import SimulatedAnnealing
 
 
 class loss:
@@ -148,7 +148,7 @@ def evaluateRandom(gpgo, loss, n_eval=20):
     return (res)
 
 
-def evaluateSA(gpgo, loss, T=100, cooling=0.9, n_eval=50):
-    sa = SimulatedAnnealing(gpgo._sampleParam, loss.evaluateLoss, T=T, cooling=cooling)
-    sa.run(n_eval)
-    return (sa.history)
+# def evaluateSA(gpgo, loss, T=100, cooling=0.9, n_eval=50):
+#     sa = SimulatedAnnealing(gpgo._sampleParam, loss.evaluateLoss, T=T, cooling=cooling)
+#     sa.run(n_eval)
+#     return (sa.history)
