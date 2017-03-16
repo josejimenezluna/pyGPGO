@@ -5,7 +5,7 @@ from scipy.optimize import minimize
 
 
 class GPRegressor:
-    def __init__(self, covfunc, sigma=0, optimize = False, usegrads = False):
+    def __init__(self, covfunc, sigma=1e-8, optimize = False, usegrads = False):
         self.covfunc = covfunc
         self.sigma = sigma
         self.optimize = optimize
