@@ -3,10 +3,6 @@ from scipy.special import gamma, kv
 from scipy.spatial.distance import cdist
 
 
-def l2norm(x, xstar):
-    return (np.sqrt(np.sum((x - xstar) ** 2, axis=1)))
-
-
 def l2norm_(X, Xstar):
     return cdist(X, Xstar)
 
