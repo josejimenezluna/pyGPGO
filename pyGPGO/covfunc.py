@@ -12,14 +12,15 @@ def l2norm_(X, Xstar):
 
 
 class squaredExponential:
-    def __init__(self, l=1, bounds = [10e-4, 10e3]):
+    def __init__(self, l=1, sigmaf=1.0, bounds=[[10e-4, 10e3], [10e-4, 10e3]]):
         self.l = l
-        self.parameters = ['l']
+        self.sigmaf = sigmaf
+        self.parameters = ['l', 'sigmaf']
         self.bounds = bounds
 
     def K(self, X, Xstar):
         r = l2norm_(X, Xstar)
-        return (np.exp(-.5 * r ** 2 / self.l ** 2))
+        return self.sigmaf * (np.exp(-.5 * r ** 2 / self.l ** 2))
 
     def gradK(self, X, Xstar, param='l'):
         if param == 'l':
@@ -28,14 +29,20 @@ class squaredExponential:
             den = self.l ** 3
             l_grad = num / den
             return (l_grad)
+        if param == 'sigmaf':
+            r = l2norm_(X, Xstar)
+            sigmaf_grad = (np.exp(-.5 * r ** 2 / self.l ** 2))
+            return (sigmaf_grad)
         else:
             raise ValueError('Param not found')
 
 
 class matern:
-    def __init__(self, v=1, l=1, bounds = [[10e-4, 10e3], [10e-4, 10e3]]):
+    def __init__(self, v=1, l=1, sigmaf=1, bounds=[[10e-4, 10e3], [10e-4, 10e3],
+                                                   [10e-4, 10e3]]):
         self.v, self.l = v, l
-        self.parameters = ['v', 'l']
+        self.sigmaf = sigmaf
+        self.parameters = ['v', 'l', 'sigmaf']
         self.bounds = bounds
 
     def K(self, X, Xstar):
@@ -44,19 +51,22 @@ class matern:
         f = 2 ** (1 - self.v) / gamma(self.v) * (np.sqrt(2 * self.v) * r / self.l) ** self.v
         res = f * bessel
         res[np.isnan(res)] = 1
+        res = self.sigmaf * res
         return (res)
 
 
 class gammaExponential:
-    def __init__(self, gamma=1, l=1, bounds = [[10e-4, 1.99], [10e-4, 10e3]]):
+    def __init__(self, gamma=1, l=1, sigmaf=1, bounds=[[10e-4, 1.99], [10e-4, 10e3],
+                                                       [10e-4, 10e3]]):
         self.gamma = gamma
         self.l = l
-        self.parameters = ['gamma', 'l']
+        self.sigmaf = sigmaf
+        self.parameters = ['gamma', 'l', 'sigmaf']
         self.bounds = bounds
 
     def K(self, X, Xstar):
         r = l2norm_(X, Xstar)
-        return (np.exp(-(r / self.l) ** self.gamma))
+        return self.sigmaf * (np.exp(-(r / self.l) ** self.gamma))
 
     def gradK(self, X, Xstar, param):
         if param == 'gamma':
@@ -71,18 +81,24 @@ class gammaExponential:
             num = self.gamma * np.exp(-(r / self.l) ** self.gamma) * (r / self.l) ** self.gamma
             l_grad = num / self.l
             return (l_grad)
+        if param == 'sigmaf':
+            r = l2norm_(X, Xstar)
+            sigmaf_grad = (np.exp(-(r / self.l) ** self.gamma))
+            return (sigmaf_grad)
 
 
 class rationalQuadratic:
-    def __init__(self, alpha=1, l=1, bounds = [[10e-4, 10e3], [10e-4, 10e3]]):
+    def __init__(self, alpha=1, l=1, sigmaf=1, bounds=[[10e-4, 10e3], [10e-4, 10e3],
+                                                       [10e-4, 10e3]]):
         self.alpha = alpha
         self.l = l
-        self.parameters = ['alpha', 'l']
+        self.sigmaf = sigmaf
+        self.parameters = ['alpha', 'l', 'sigmaf']
         self.bounds = bounds
 
     def K(self, X, Xstar):
         r = l2norm_(X, Xstar)
-        return ((1 + r ** 2 / (2 * self.alpha * self.l ** 2)) ** (-self.alpha))
+        return self.sigmaf * ((1 + r ** 2 / (2 * self.alpha * self.l ** 2)) ** (-self.alpha))
 
     def gradK(self, X, Xstar, param):
         if param == 'alpha':
@@ -97,6 +113,9 @@ class rationalQuadratic:
             num = r ** 2 * (r ** 2 / (2 * self.alpha * self.l ** 2) + 1) ** (-self.alpha - 1)
             l_grad = num / self.l ** 3
             return (l_grad)
+        if param == 'sigmaf':
+            r = l2norm_(X, Xstar)
+            return ((1 + r ** 2 / (2 * self.alpha * self.l ** 2)) ** (-self.alpha))
 
 
 class arcSin:

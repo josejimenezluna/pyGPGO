@@ -34,10 +34,10 @@ class GPRegressor:
         K = covfunc.K(self.X, self.X)
         L = cholesky(K + self.sigma * np.eye(n)).T
         alpha = solve(L.T, solve(L, self.y))
+        inner = np.dot(np.atleast_2d(alpha).T, np.atleast_2d(alpha)) - np.linalg.inv(K)
         grads = []
         for param in k_param_key:
             gradK = covfunc.gradK(self.X, self.X, param=param)
-            inner = np.dot(np.atleast_2d(alpha).T, np.atleast_2d(alpha)) - np.linalg.inv(K)
             gradK = .5 * np.trace(np.dot(inner, gradK))
             grads.append(gradK)
         return np.array(grads)
@@ -69,9 +69,9 @@ class GPRegressor:
     def optHyp(self, param_key, param_bounds, grads = None):
         x0 = np.repeat(1, len(param_key))
         if grads is None:
-            res = minimize(self._lmlik, x0=x0, args=(param_key), method='L-BFGS-B', bounds=[param_bounds])
+            res = minimize(self._lmlik, x0=x0, args=(param_key), method='L-BFGS-B', bounds=param_bounds)
         else:
-            res = minimize(self._lmlik, x0=x0, args=(param_key), method='L-BFGS-B', bounds=[param_bounds], jac=grads)
+            res = minimize(self._lmlik, x0=x0, args=(param_key), method='L-BFGS-B', bounds=param_bounds, jac=grads)
         opt_param = res.x
         k_param = OrderedDict()
         for k, x in zip(param_key, opt_param):
