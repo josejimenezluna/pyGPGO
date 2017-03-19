@@ -63,10 +63,10 @@ class Tree:
     def eval(self):
         if self.problem == 'binary':
             mod = DecisionTreeClassifier(max_features=self.max_features, max_depth=self.max_depth,
-                                         min_samples_split=self.min_samples_split)
+                                         min_samples_split=self.min_samples_split, random_state=20)
         else:
             mod = DecisionTreeRegressor(max_features=self.max_features, max_depth=self.max_depth,
-                                        min_samples_split=self.min_samples_split)
+                                        min_samples_split=self.min_samples_split, random_state=20)
         return mod
 
 class Ada:
@@ -78,9 +78,11 @@ class Ada:
 
     def eval(self):
         if self.problem == 'binary':
-            mod = AdaBoostClassifier(n_estimators = self.n_estimators, learning_rate = self.learning_rate)
+            mod = AdaBoostClassifier(n_estimators = self.n_estimators, learning_rate = self.learning_rate,
+                                     random_state=20)
         else:
-            mod = AdaBoostRegressor(n_estimators = self.n_estimators, learning_rate = self.learning_rate)
+            mod = AdaBoostRegressor(n_estimators = self.n_estimators, learning_rate = self.learning_rate,
+                                    random_state=20)
         return mod
 
 class GBM:
@@ -104,14 +106,16 @@ class GBM:
                                           min_samples_leaf = self.min_samples_leaf,
                                           min_weight_fraction_leaf = self.min_weight_fraction_leaf,
                                           subsample = self.subsample,
-                                          max_features = self.max_features)
+                                          max_features = self.max_features,
+                                             random_state=20)
         else:
             mod = GradientBoostingRegressor(learning_rate = self.learning_rate, n_estimators = self.n_estimators,
                                           max_depth = self.max_depth, min_samples_split = self.min_samples_split,
                                           min_samples_leaf = self.min_samples_leaf,
                                           min_weight_fraction_leaf = self.min_weight_fraction_leaf,
                                           subsample = self.subsample,
-                                          max_features = self.max_features)
+                                          max_features = self.max_features,
+                                            random_state=20)
         return mod
 
 
@@ -125,7 +129,7 @@ class SVM:
 
     def eval(self):
         if self.problem == 'binary':
-            mod = SVC(kernel=self.kernel, C=self.C, gamma=self.gamma, probability=True)
+            mod = SVC(kernel=self.kernel, C=self.C, gamma=self.gamma, probability=True, random_state=20)
         else:
             mod = SVR(kernel=self.kernel, C=self.C, gamma=self.gamma)
         return mod
@@ -147,13 +151,15 @@ class RF:
                                          max_features=self.max_features,
                                          min_samples_split=self.min_samples_split,
                                          min_samples_leaf=self.min_samples_leaf,
-                                         n_jobs=-1)
+                                         n_jobs=-1,
+                                         random_state=20)
         else:
             mod = RandomForestRegressor(n_estimators=self.n_estimators,
                                         max_features=self.max_features,
                                         min_samples_split=self.min_samples_split,
                                         min_samples_leaf=self.min_samples_leaf,
-                                        n_jobs=-1)
+                                        n_jobs=-1,
+                                        random_state=20)
         return mod
 
 
@@ -167,10 +173,12 @@ class KNN:
     def eval(self):
         if self.problem == 'binary':
             mod = KNeighborsClassifier(n_neighbors=self.n_neighbors,
-                                       leaf_size=self.leaf_size)
+                                       leaf_size=self.leaf_size,
+                                       random_state=20)
         else:
             mod = KNeighborsRegressor(n_neighbors=self.n_neighbors,
-                                      leaf_size=self.leaf_size)
+                                      leaf_size=self.leaf_size,
+                                      random_state=20)
         return mod
 
 
@@ -188,8 +196,10 @@ class MLP:
     def eval(self):
         if self.problem == 'binary':
             mod = MLPClassifier(hidden_layer_sizes=self.hidden_layer_sizes, alpha=self.alpha,
-                                learning_rate_init=self.learning_rate_init, beta_1=self.beta_1, beta_2=self.beta_2)
+                                learning_rate_init=self.learning_rate_init, beta_1=self.beta_1, beta_2=self.beta_2,
+                                random_state=20)
         else:
             mod = MLPRegressor(hidden_layer_sizes=self.hidden_layer_sizes, alpha=self.alpha,
-                               learning_rate_init=self.learning_rate_init, beta_1=self.beta_1, beta_2=self.beta_2)
+                               learning_rate_init=self.learning_rate_init, beta_1=self.beta_1, beta_2=self.beta_2,
+                               random_state=20)
         return mod

@@ -3,8 +3,8 @@ from testing.modaux import *
 
 if __name__ == '__main__':
 
-    models = [GBM()]
-    params = [d_gbm]
+    models = [SVM()]
+    params = [d_svm]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
@@ -12,14 +12,14 @@ if __name__ == '__main__':
     #            'lsvt.csv', 'pima-indians-diabetes.csv']
     #problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
     #targets = [0, 0, 10, 16, 0, 8]
-    datasets = ['pocket_little.csv']
-    problems = ['binary']
-    targets = [0]
+    datasets = ['indian_liver.csv','lsvt.csv']
+    problems = ['binary', 'binary']
+    targets = [10, 0]
 
-    np.random.seed(20)
     for model, parameter_dict in zip(models, params):
         print('Evaluating model {}'.format(model.name))
         for dataset, target, problem in zip(datasets, targets, problems):
+            np.random.seed(20)
             if problem == 'cont':
                 model = model.__class__(problem='cont')
             else:
