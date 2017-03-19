@@ -3,8 +3,8 @@ from testing.modaux import *
 
 if __name__ == '__main__':
 
-    models = [SVM()]
-    params = [d_svm]
+    models = [SVM(), MLP(), Ada(), GBM()]
+    params = [d_svm, d_mlp, d_ada, d_gbm]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
@@ -12,9 +12,9 @@ if __name__ == '__main__':
     #            'lsvt.csv', 'pima-indians-diabetes.csv']
     #problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
     #targets = [0, 0, 10, 16, 0, 8]
-    datasets = ['indian_liver.csv','lsvt.csv']
-    problems = ['binary', 'binary']
-    targets = [10, 0]
+    datasets = ['aff.csv']
+    problems = ['cont']
+    targets = [0]
 
     for model, parameter_dict in zip(models, params):
         print('Evaluating model {}'.format(model.name))
