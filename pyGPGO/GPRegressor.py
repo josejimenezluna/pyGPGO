@@ -5,9 +5,8 @@ from scipy.optimize import minimize
 
 
 class GPRegressor:
-    def __init__(self, covfunc, sigma=1e-8, optimize = False, usegrads = False):
+    def __init__(self, covfunc, optimize = False, usegrads = False):
         self.covfunc = covfunc
-        self.sigma = sigma
         self.optimize = optimize
         self.usegrads = usegrads
 
@@ -22,7 +21,7 @@ class GPRegressor:
             self.optHyp(param_key=self.covfunc.parameters, param_bounds=self.covfunc.bounds, grads=grads)
 
         self.K = self.covfunc.K(self.X, self.X)
-        self.L = cholesky(self.K + self.sigma * np.eye(self.nsamples)).T
+        self.L = cholesky(self.K).T
         self.alpha = solve(self.L.T, solve(self.L, y))
         self.logp = -.5 * np.dot(self.y, self.alpha) - np.sum(np.log(np.diag(self.L))) - self.nsamples / 2 * np.log(
             2 * np.pi)
@@ -32,7 +31,7 @@ class GPRegressor:
         covfunc = self.covfunc.__class__(**k_param)
         n = self.X.shape[0]
         K = covfunc.K(self.X, self.X)
-        L = cholesky(K + self.sigma * np.eye(n)).T
+        L = cholesky(K).T
         alpha = solve(L.T, solve(L, self.y))
         inner = np.dot(np.atleast_2d(alpha).T, np.atleast_2d(alpha)) - np.linalg.inv(K)
         grads = []

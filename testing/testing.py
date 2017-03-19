@@ -1,18 +1,20 @@
-import numpy as np
 from testing.utils import *
 from testing.modaux import *
 
 if __name__ == '__main__':
 
-    models = [RF()]
-    params = [d_rf]
+    models = [GBM()]
+    params = [d_gbm]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
-    datasets = ['aff.csv','breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
-                'lsvt.csv', 'pima-indians-diabetes.csv']
-    problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
-    targets = [0, 0, 10, 16, 0, 8]
+    #datasets = ['aff.csv','breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
+    #            'lsvt.csv', 'pima-indians-diabetes.csv']
+    #problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
+    #targets = [0, 0, 10, 16, 0, 8]
+    datasets = ['pocket_little.csv']
+    problems = ['binary']
+    targets = [0]
 
     np.random.seed(20)
     for model, parameter_dict in zip(models, params):
