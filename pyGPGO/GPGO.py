@@ -46,7 +46,7 @@ class GPGO:
 
     def _acqWrapper(self, xnew):  # Returns minimum for optimization purposes
         new_mean, new_var = self.GP.predict(xnew, return_std=True)
-        new_std = np.sqrt(new_var)
+        new_std = np.sqrt(new_var + 1e-6)
         return -self.A.eval(self.tau, new_mean, new_std)
 
     def _optimizeAcq(self, method='L-BFGS-B', n_start=100):
