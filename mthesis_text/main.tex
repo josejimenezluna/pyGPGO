@@ -855,7 +855,7 @@ and $\hat{\mathcal{D}}_p^{(s)} \sim P(\hat{y}_{1:J}, \mathcal{D}_n)$. [ref] has 
 
 We have explored the basics of Gaussian Process regression and Bayesian Optimization by now. To provide a more thorough understanding on the logic behind Algorithm \ref{bayesopt}, we will provide two different examples in this section. While not very complex, they serve illustrative purposes on how the optimization framework works. We hope this section will clear any practical consideration on how the procedure selects the next point to sample, graphically.
 
-\subsection{Optimizing (yet-again) the sine function}
+\subsection{Optimizing the sine function}
 
 Again, it is no surprise for the reader that we choose the sine function as our first example to provide an intuition on how the Bayesian Optimization framework works step-by-step. We will be optimizing our function within the boundaries $x \in [0, 2\pi]$, where we know an optima is exactly at $x^* = \pi/2$. This example is particularly interesting to see how the next point is chosen balancing exploration and exploitation of the acquisition function. Now, as in most practical cases throughout this thesis, we will use the Expected Improvement acquisition function. The step-by-step optimization procedure for 6 complete epochs can be checked in Figure \ref{fig:1dstep}. The code to produce these Figures can be checked in Appendix \ref{sineopt}.\\
 
@@ -895,9 +895,9 @@ It can be appreciated that the chosen acquisition function leverages achieves a 
 \end{figure}
 
 
-\subsection{Optimizing the Rossenbrock function}
+\subsection{Optimizing the Rastrigin function}
 
-In this example, we will try to optimize the two-dimensional Rossenbrock function:
+In this example, we will try to optimize the two-dimensional Rastrigin function:
 
 \begin{equation}
 f(x, y| a, b) = (a - x)^2 + b(y - x^2)^2

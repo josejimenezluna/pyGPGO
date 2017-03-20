@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  15 MAR 2017 11:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  16 MAR 2017 15:47
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1307,7 +1307,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1019--1020
 
  []
 
-<figures/chapter4/docking.png, id=1385, 667.293pt x 442.7742pt>
+<figures/chapter4/docking.png, id=1154, 667.293pt x 442.7742pt>
 File: figures/chapter4/docking.png Graphic file (type png)
 
 <use figures/chapter4/docking.png>
@@ -1329,28 +1329,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 1037--1038
  []
 
 [38 <./figures/chapter4/docking.png>]
-<figures/chapter4/aff/svm.pdf, id=1401, 462.52798pt x 346.89601pt>
+<figures/chapter4/aff/svm.pdf, id=1170, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/svm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/svm.pdf>
 Package pdftex.def Info: figures/chapter4/aff/svm.pdf used on input line 1061.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/aff/mlp.pdf, id=1402, 462.52798pt x 346.89601pt>
+<figures/chapter4/aff/mlp.pdf, id=1171, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/mlp.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/mlp.pdf>
 Package pdftex.def Info: figures/chapter4/aff/mlp.pdf used on input line 1068.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/aff/ada.pdf, id=1403, 462.52798pt x 346.89601pt>
+<figures/chapter4/aff/ada.pdf, id=1172, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/ada.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/ada.pdf>
 Package pdftex.def Info: figures/chapter4/aff/ada.pdf used on input line 1075.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/aff/gbm.pdf, id=1404, 462.52798pt x 346.89601pt>
+<figures/chapter4/aff/gbm.pdf, id=1173, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/gbm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/gbm.pdf>
@@ -1428,7 +1428,7 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1567.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1567.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A02B662FEA0E96F330791D516B3AEA0F;4304.
+(rerunfilecheck)             Checksum: AE27D8E9301473548E36BE7DB4E27AA0;4288.
 
 
 LaTeX Warning: There were undefined references.
@@ -1474,10 +1474,10 @@ b></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></ho
 me/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></home/jos
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/jose
 /texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (52 pages, 1594011 bytes).
+Output written on main.pdf (52 pages, 1512306 bytes).
 PDF statistics:
- 1826 PDF objects out of 2073 (max. 8388607)
- 971 compressed objects within 10 object streams
+ 1595 PDF objects out of 1728 (max. 8388607)
+ 1090 compressed objects within 11 object streams
  229 named destinations out of 1000 (max. 500000)
  569 words of extra memory for PDF output out of 10000 (max. 10000000)
 

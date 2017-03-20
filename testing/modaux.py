@@ -19,8 +19,8 @@ d_knn = {
 
 d_mlp = {
     'hidden_layer_size': ('int', (5, 200)),
-    'alpha': ('cont', (10e-5, 10e-2)),
-    'learning_rate_init': ('cont', (10e-5, 10e-2)),
+    'alpha': ('cont', (1e-5, 1e-1)),
+    'learning_rate_init': ('cont', (1e-5, 1e-1)),
     'beta_1': ('cont', (0.001, 0.999)),
     'beta_2': ('cont', (0.001, 0.999))
 }
@@ -38,15 +38,15 @@ d_tree = {
 
 d_ada = {
     'n_estimators': ('int', (5, 200)),
-    'learning_rate': ('cont', (0.01, 10))
+    'learning_rate': ('cont', (1e-5, 1))
 }
 
 d_gbm = {
     'learning_rate': ('cont', (10e-5, 1)),
     'n_estimators': ('int', (10, 300)),
-    'max_depth': ('int', (2, 25)),
-    'min_samples_split': ('int', (2, 25)),
-    'min_samples_leaf': ('int', (2, 25)),
+    'max_depth': ('int', (2, 20)),
+    'min_samples_split': ('int', (2, 20)),
+    'min_samples_leaf': ('int', (2, 20)),
     # 'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
     'subsample': ('cont', (0.01, 0.99)),
     'max_features': ('cont', (0.01, 0.99))

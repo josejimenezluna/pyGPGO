@@ -35,8 +35,8 @@
 \contentsline {subsection}{\numberline {3.6.1}Approximations to the analytical GP. Alternative surrogates.}{28}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}Parallelization}{29}{subsection.3.6.2}
 \contentsline {section}{\numberline {3.7}Step-by-step examples}{30}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}Optimizing (yet-again) the sine function}{30}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}Optimizing the Rossenbrock function}{30}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.1}Optimizing the sine function}{30}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Optimizing the Rastrigin function}{30}{subsection.3.7.2}
 \contentsline {chapter}{\numberline {4}Experiments}{35}{chapter.4}
 \contentsline {section}{\numberline {4.1}Benchmarking rules}{35}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Other strategies for hyper-parameter optimization}{35}{subsection.4.1.1}
