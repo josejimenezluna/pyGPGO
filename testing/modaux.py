@@ -26,8 +26,8 @@ d_mlp = {
 }
 
 d_svm = {
-    'C': ('cont', (0.01, 200)),
-    'gamma': ('cont', (0.001, 10))
+    'C': ('cont', (1e-4, 1e4)),
+    'gamma': ('cont', (1e-4, 1e4))
 }
 
 d_tree = {
