@@ -3,8 +3,8 @@ from testing.modaux import *
 
 if __name__ == '__main__':
 
-    models = [SVM(), GBM (), Ada(), MLP()]
-    params = [d_svm, d_gbm, d_ada, d_mlp]
+    models = [SVM()]
+    params = [d_svm]
 
 
     path = os.path.join(os.getcwd(), 'datasets')

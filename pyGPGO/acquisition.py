@@ -2,8 +2,6 @@ import numpy as np
 from scipy.stats import norm
 
 
-# TODO Reimplement fs to accept GP, not mean/std
-
 class Acquisition:
     def __init__(self, mode, eps=1e-06, **params):
         self.params = params
