@@ -6,10 +6,10 @@ from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.svm import SVC, SVR
 
 d_rf = {
-    'n_estimators': ('int', (10, 300)),
-    'min_samples_split': ('cont', (0.1, 1)),
-    'min_samples_leaf': ('cont', (0.1, 0.49)),
-    'max_features': ('cont', (0.01, 1))
+    'n_estimators': ('int', (10, 50)),
+    'min_samples_split': ('cont', (0.1, 0.99)),
+    #'min_samples_leaf': ('cont', (0.01, 0.49)),
+    'max_features': ('cont', (0.1, 0.99))
 }
 
 d_knn = {

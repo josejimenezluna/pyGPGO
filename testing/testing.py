@@ -3,20 +3,18 @@ from testing.modaux import *
 
 if __name__ == '__main__':
 
-    models = [SVM()]
-    params = [d_svm]
+    models = [GBM()]
+    params = [d_gbm]
 
 
     path = os.path.join(os.getcwd(), 'datasets')
-    #datasets = ['aff.csv','breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
-    #            'lsvt.csv', 'pima-indians-diabetes.csv']
-    #problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary']
-    #targets = [0, 0, 10, 16, 0, 8]
-    datasets = ['pinter.csv', 'aff.csv']
-    problems = ['binary', 'cont']
-    targets = [0, 0]
+    datasets = ['aff.csv', 'pinter.csv','breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
+                'lsvt.csv', 'pima-indians-diabetes.csv']
+    problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary', 'binary']
+    targets = [0, 0, 0, 10, 16, 0, 8]
 
     for model, parameter_dict in zip(models, params):
+        np.random.seed(93)
         print('Evaluating model {}'.format(model.name))
         for dataset, target, problem in zip(datasets, targets, problems):
             np.random.seed(93)
