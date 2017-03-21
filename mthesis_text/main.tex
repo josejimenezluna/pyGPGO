@@ -380,7 +380,7 @@ A covariance function, like the squared exponential kernel that we have been usi
 \item Dot-product. Some covariance functions are functionals of the dot-product $|\boldsymbol{x}^T \boldsymbol{x'}|$. These kernels, while invariant to rotations are not invariant to translations.
 \end{itemize}
 
-There is an excellent theoretical analysis of covariance functions in Chapter 4 of Carl E. Rasmussen's book \textit{Gaussian Processes for Machine Learning}. We will not cover this here since it falls beyond the scope of this thesis. However, we will start providing examples of the most common covariance functions. All covariance functions described here are implemented in the software developed alongside this thesis, pyGPGO, in the \texttt{covfunc} module. We will describe their functionality in Section \ref{features}.
+There is an excellent theoretical analysis of covariance functions in Chapter 4 of Carl E. Rasmussen's book \textit{Gaussian Processes for Machine Learning}. We will not cover this here since it falls beyond the scope of this thesis. However, we will start providing examples of the most common covariance functions. All covariance functions described here are implemented in the software developed alongside this thesis, pyGPGO, in the \texttt{covfunc} module. We will describe their functionality in Section \ref{features}.\\
 
 The \textit{Squared Exponential} covariance function is the one that we have been using so far. It is also arguably the most used in practice. It takes the general form:
 
@@ -388,7 +388,7 @@ The \textit{Squared Exponential} covariance function is the one that we have bee
 k_{SE}(r) = \exp\left(-\dfrac{r^2}{2l^2} \right)
 \end{equation}
 
-where $l$ is the parameter controlling its characteristic length-scale. It is useful to define these functions in terms of $r$ since we can abstract this calculation to another function. 
+where $l$ is the parameter controlling its characteristic length-scale. It is useful to define these functions in terms of $r$ since we can abstract this calculation to another function. \\
 
 The \textit{Matern class} of covariance functions takes the form:
 
@@ -396,7 +396,7 @@ The \textit{Matern class} of covariance functions takes the form:
 k_{\textrm{Matern}}(r) = \dfrac{2^{1-\nu}}{\Gamma(\nu)}\left(\dfrac{\sqrt{2\nu} r}{l}    \right)^\nu K_\nu\left( \dfrac{\sqrt{2\nu}r}{l} \right)
 \end{equation}
 
-with $\nu, l > 0$ and $K_\nu$ is a modified Bessel function of the second kind. Notice that if we take limit $\nu \rightarrow \infty$ we obtain our beloved squared exponential covariance function.
+with $\nu, l > 0$ and $K_\nu$ is a modified Bessel function of the second kind. Notice that if we take limit $\nu \rightarrow \infty$ we obtain our beloved squared exponential covariance function.\\
 
 
 The $\gamma$-exponential covariance function, of which the squared exponential is a special case. It takes the general form:
@@ -405,7 +405,7 @@ The $\gamma$-exponential covariance function, of which the squared exponential i
 k(r) = \exp\left( - \left(\dfrac{r}{l}\right)^\gamma  \right)
 \end{equation}
 
-for $0 < \gamma \leq 2$. 
+for $0 < \gamma \leq 2$. \\
 
 The \textit{Rational Quadratic} covariance function takes the form:
 
@@ -413,14 +413,23 @@ The \textit{Rational Quadratic} covariance function takes the form:
 k_{RQ}(r) = \left( 1 + \dfrac{r^2}{2\alpha l^2} \right)^{-\alpha}
 \end{equation}
 
-with $\alpha, l > 0$. And again its implementation:
+with $\alpha, l > 0$. \\
 
 
 The \textit{arcSin} kernel is an example of a dot product covariance function, therefore non-stationary:
 
 \begin{equation}
 k_{\textrm{arcSin}}(\boldsymbol{x}, \boldsymbol{x'}) = \dfrac{2}{\pi}\sin^{-1}\left(\dfrac{2\boldsymbol{x}\Sigma\boldsymbol{x'}}{\sqrt{(1 + 2\boldsymbol{x}^T\Sigma\boldsymbol{x})(1 + 2\boldsymbol{x'}^T\Sigma\boldsymbol{x})}}   \right)
+\end{equation}\\
+
+Normally, these are the covariance functions that are used for the noiseless case of observation, that is, we know precisely that $f(\boldsymbol{x}_i) = y_i, \;\; i=1\dots n$. In general, our covariance functions will take the form:
+
+\begin{equation}
+k^y(\boldsymbol{x}_p, \boldsymbol{x}_q) = \sigma^2_f k(\boldsymbol{x}_p, \boldsymbol{x}_q) + \sigma^2_n \delta_{pq} \,
 \end{equation}
+
+where $\sigma^2_f$ is the signal variance, and controls the overall scale of our covariance matrix, $\sigma^2_n$ is the noise variance and $\delta_{pq}$ is a Kronecker delta function. Notice we note now $k^y$ instead of $k$ to account for noisy observations. In practice, all covariance function internal parameters plus $\left\lbrace\sigma_n^2, \sigma^2_f\right\rbrace$ can be considered hyperparameters. One can consider them fixed or can try to estimate it from data. We will treat this problem in Section \ref{hyper}.
+
 
 \subsection{Visualizing different covariance functions}
 

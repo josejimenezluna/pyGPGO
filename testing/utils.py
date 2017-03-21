@@ -42,7 +42,7 @@ class loss:
                 yhat = clf.predict_proba(X_test)
             return (- self.loss(y_test, yhat))
         elif self.method == '5fold':
-            kf = KFold(n_splits=5, shuffle=True, random_state=93)
+            kf = KFold(n_splits=5, shuffle=False)
             losses = []
             for train_index, test_index in kf.split(self.X):
                 X_train, X_test = self.X[train_index], self.X[test_index]
@@ -74,38 +74,40 @@ def build(csv_path, target_index, header=None):
     X = np.delete(data, obj=np.array([target_index]), axis=1)
     return X, y
 
-def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, method='holdout', seed=230, max_iter=50):
+def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, method='holdout', seed=20, max_iter=50):
     print('Now evaluating {}...'.format(csv_path))
     X, y = build(csv_path, target_index)
 
     wrapper = loss(model, X, y, method=method, problem=problem)
 
-    print('Evaluating EI')
-    np.random.seed(seed)
+    # print('Evaluating EI')
+    # np.random.seed(seed)
     sexp = squaredExponential()
     gp = GPRegressor(sexp, optimize=True, usegrads=True)
     acq_ei = Acquisition(mode='ExpectedImprovement')
-    gpgo_ei = GPGO(gp, acq_ei, wrapper.evaluateLoss, parameter_dict, n_jobs=-1)
+    gpgo_ei = GPGO(gp, acq_ei, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
     gpgo_ei.run(max_iter=max_iter)
 
     # Also add UCB, beta = 0.5, beta = 1.5
     print('Evaluating UCB beta = 0.5')
     np.random.seed(seed)
+    sexp = squaredExponential()
     gp = GPRegressor(sexp, optimize=True, usegrads=True)
     acq_ucb = Acquisition(mode='UCB', beta = 0.5)
-    gpgo_ucb = GPGO(gp, acq_ucb, wrapper.evaluateLoss, parameter_dict, n_jobs=-1)
+    gpgo_ucb = GPGO(gp, acq_ucb, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
     gpgo_ucb.run(max_iter=max_iter)
 
     print('Evaluating UCB beta = 1.5')
     np.random.seed(seed)
+    sexp = squaredExponential()
     gp = GPRegressor(sexp, optimize=True, usegrads=True)
     acq_ucb2 = Acquisition(mode='UCB', beta = 1.5)
-    gpgo_ucb2 = GPGO(gp, acq_ucb2, wrapper.evaluateLoss, parameter_dict, n_jobs=-1)
+    gpgo_ucb2 = GPGO(gp, acq_ucb2, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
     gpgo_ucb2.run(max_iter=max_iter)
 
     print('Evaluating random')
     np.random.seed(seed)
-    r = evaluateRandom(gpgo_ei, wrapper, n_eval=max_iter + 1)
+    r = evaluateRandom(gpgo_ei, wrapper.evaluateLoss, n_eval=max_iter + 1)
     r = cumMax(r)
 
     # print('Evaluating simulated annealing')
@@ -143,8 +145,9 @@ def evaluateRandom(gpgo, loss, n_eval=20):
     res = []
     for i in range(n_eval):
         param = dict(gpgo._sampleParam())
-        l = loss.evaluateLoss(**param)
+        l = loss(**param)
         res.append(l)
+        print('Param {}, loss: {}'.format(param, l))
     return (res)
 
 

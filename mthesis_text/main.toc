@@ -11,13 +11,13 @@
 \contentsline {subsection}{\numberline {2.3.2}Picking a winner}{12}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}On covariance functions}{14}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Visualizing different covariance functions}{15}{subsection.2.4.1}
-\contentsline {section}{\numberline {2.5}Hyperparameter optimization}{15}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Type II Maximum Likelihood}{15}{subsection.2.5.1}
+\contentsline {section}{\numberline {2.5}Hyperparameter optimization}{16}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Type II Maximum Likelihood}{16}{subsection.2.5.1}
 \contentsline {subsubsection}{Another toy example: Optimizing the characteristic length-scale}{16}{section*.5}
-\contentsline {subsection}{\numberline {2.5.2}Full Bayesian perspective}{16}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.2}Full Bayesian perspective}{17}{subsection.2.5.2}
 \contentsline {subsection}{\numberline {2.5.3}Cross validation}{17}{subsection.2.5.3}
-\contentsline {section}{\numberline {2.6}Further theoretical aspects}{17}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}Gaussian processes as linear smoothers}{17}{subsection.2.6.1}
+\contentsline {section}{\numberline {2.6}Further theoretical aspects}{18}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Gaussian processes as linear smoothers}{18}{subsection.2.6.1}
 \contentsline {subsection}{\numberline {2.6.2}Explicit basis functions}{18}{subsection.2.6.2}
 \contentsline {chapter}{\numberline {3}Bayesian optimization}{21}{chapter.3}
 \contentsline {section}{\numberline {3.1}Preliminaries}{21}{section.3.1}

@@ -4,53 +4,92 @@ from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 from sklearn.neural_network import MLPClassifier, MLPRegressor
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.svm import SVC, SVR
+from collections import OrderedDict
 
-d_rf = {
-    'n_estimators': ('int', (10, 50)),
-    'min_samples_split': ('cont', (0.1, 0.99)),
-    #'min_samples_leaf': ('cont', (0.01, 0.49)),
-    'max_features': ('cont', (0.1, 0.99))
-}
+# d_rf = {
+#     'n_estimators': ('int', (10, 50)),
+#     'min_samples_split': ('cont', (0.1, 0.99)),
+#     #'min_samples_leaf': ('cont', (0.01, 0.49)),
+#     'max_features': ('cont', (0.1, 0.99))
+# }
 
-d_knn = {
-    'n_neighbors': ('int', (1, 8)),
-    'leaf_size': ('int', (15, 50))
-}
+d_rf = OrderedDict()
+d_rf['n_estimators'] = ('int', (10, 50))
+d_rf['min_samples_split'] = ('cont', (0.1, 0.99))
+d_rf['max_features'] = ('cont', (0.1, 0.99))
 
-d_mlp = {
-    'hidden_layer_size': ('int', (5, 200)),
-    'alpha': ('cont', (1e-5, 1e-1)),
-    'learning_rate_init': ('cont', (1e-5, 1e-1)),
-    'beta_1': ('cont', (0.001, 0.999)),
-    'beta_2': ('cont', (0.001, 0.999))
-}
+# d_knn = {
+#     'n_neighbors': ('int', (1, 8)),
+#     'leaf_size': ('int', (15, 50))
+# }
 
-d_svm = {
-    'C': ('cont', (1e-4, 100)),
-    'gamma': ('cont', (1e-4, 100))
-}
+d_knn = OrderedDict()
+d_knn['n_neighbors'] = ('int', (10, 50))
+d_knn['leaf_size'] = ('cont', (0.1, 0.99))
 
-d_tree = {
-    'max_features': ('cont', (0.1, 0.99)),
-    'max_depth': ('int', (4, 30)),
-    'min_samples_split': ('cont', (0.1, 0.99))
-}
+# d_mlp = {
+#     'hidden_layer_size': ('int', (5, 200)),
+#     'alpha': ('cont', (1e-5, 1e-1)),
+#     'learning_rate_init': ('cont', (1e-5, 1e-1)),
+#     'beta_1': ('cont', (0.001, 0.999)),
+#     'beta_2': ('cont', (0.001, 0.999))
+# }
 
-d_ada = {
-    'n_estimators': ('int', (5, 200)),
-    'learning_rate': ('cont', (1e-5, 1))
-}
+d_mlp = OrderedDict()
+d_mlp['hidden_layer_size'] = ('int', (5, 200))
+d_mlp['alpha'] = ('cont', (1e-5, 1e-1))
+d_mlp['learning_rate_init'] = ('cont', (1e-5, 1e-1))
+d_mlp['beta_1'] = ('cont', (0.001, 0.999))
+d_mlp['beta_2'] = ('cont', (0.001, 0.999))
 
-d_gbm = {
-    'learning_rate': ('cont', (10e-5, 1)),
-    'n_estimators': ('int', (10, 50)),
-    'max_depth': ('int', (2, 50)),
-    'min_samples_split': ('int', (2, 50)),
-    'min_samples_leaf': ('int', (2, 50)),
-    #'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
-    'subsample': ('cont', (0.01, 0.99)),
-    'max_features': ('cont', (0.01, 0.99))
-}
+# d_svm = {
+#     'C': ('cont', (1e-4, 100)),
+#     'gamma': ('cont', (1e-4, 100))
+# }
+
+d_svm = OrderedDict()
+d_svm['C'] = ('cont', (1e-4, 100))
+d_svm['gamma'] = ('cont', (1e-4, 100))
+
+# d_tree = {
+#     'max_features': ('cont', (0.1, 0.99)),
+#     'max_depth': ('int', (4, 30)),
+#     'min_samples_split': ('cont', (0.1, 0.99))
+# }
+
+d_tree = OrderedDict()
+d_tree['max_features'] = ('cont', (0.1, 0.99))
+d_tree['max_depth'] = ('int', (4, 30))
+d_tree['min_samples_split'] = ('cont', (0.1, 0.99))
+
+# d_ada = {
+#     'n_estimators': ('int', (5, 200)),
+#     'learning_rate': ('cont', (1se-5, 1))
+# }
+
+d_ada = OrderedDict()
+d_ada['n_estimators'] = ('int', (5, 200))
+d_ada['learning_rate'] = ('cont', (1e-5, 1))
+
+# d_gbm = {
+#     'learning_rate': ('cont', (10e-5, 1)),
+#     'n_estimators': ('int', (10, 50)),
+#     'max_depth': ('int', (2, 50)),
+#     'min_samples_split': ('int', (2, 50)),
+#     'min_samples_leaf': ('int', (2, 50)),
+#     #'min_weight_fraction_leaf': ('cont', (0.01, 0.49)),
+#     'subsample': ('cont', (0.01, 0.99)),
+#     'max_features': ('cont', (0.01, 0.99))
+# }
+
+d_gbm = OrderedDict()
+d_gbm['learning_rate'] = ('cont', (10e-5, 1))
+d_gbm['n_estimators'] = ('int', (10, 50))
+d_gbm['max_depth'] = ('int', (2, 50))
+d_gbm['min_samples_split'] = ('int', (2, 50))
+d_gbm['min_samples_leaf'] = ('int', (2, 50))
+d_gbm['subsample'] = ('cont', (0.01, 0.99))
+d_gbm['max_features'] = ('cont', (0.01, 0.99))
 
 class Tree:
     def __init__(self, problem='binary', max_features = 0.5, max_depth = 1, min_samples_split = 2):
@@ -107,7 +146,7 @@ class GBM:
                                           min_weight_fraction_leaf = self.min_weight_fraction_leaf,
                                           subsample = self.subsample,
                                           max_features = self.max_features,
-                                             random_state=20)
+                                          random_state=20)
         else:
             mod = GradientBoostingRegressor(learning_rate = self.learning_rate, n_estimators = self.n_estimators,
                                           max_depth = self.max_depth, min_samples_split = self.min_samples_split,
@@ -115,7 +154,7 @@ class GBM:
                                           min_weight_fraction_leaf = self.min_weight_fraction_leaf,
                                           subsample = self.subsample,
                                           max_features = self.max_features,
-                                            random_state=20)
+                                          random_state=20)
         return mod
 
 
