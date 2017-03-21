@@ -80,8 +80,8 @@ def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, meth
 
     wrapper = loss(model, X, y, method=method, problem=problem)
 
-    # print('Evaluating EI')
-    # np.random.seed(seed)
+    print('Evaluating EI')
+    np.random.seed(seed)
     sexp = squaredExponential()
     gp = GPRegressor(sexp, optimize=True, usegrads=True)
     acq_ei = Acquisition(mode='ExpectedImprovement')

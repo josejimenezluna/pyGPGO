@@ -491,15 +491,6 @@ To illustrate the previous point, it may be a good idea to see the behaviour of 
 \includegraphics[width=\textwidth]{figures/chapter2/logmarginal}
 \end{figure}
 
-\subsection{Full Bayesian perspective}
-
-The approach described in the previous subsection optimizes a marginal log-likelihood and therefore is not truly Bayesian. The full Bayesian treatment of hyper-parameters $\theta$, we would marginalize over these and compute $\textit{integrated}$ acquisition functions of the type:
-
-\begin{equation}
-\hat{\alpha}(\boldsymbol{x}; \left\lbrace \boldsymbol{x}_n, y_n \right\rbrace ) = \int \alpha(\boldsymbol{x}; \left\lbrace \boldsymbol{x}_n, y_n \right\rbrace, \theta) p(\theta |\left\lbrace \boldsymbol{x}_n, y_n\right\rbrace) d\theta
-\end{equation}
-
-It can be shown [ref] that for both probability of improvement and expected improvement acquisition functions, this integral is the correct generalization to account for uncertainty in hyper-parameters. The calculations to compute such integrations however, are not analytically tractable, and one must resort to approximations, relying on MCMC or slice sampling, as described in [ref].
 
 \subsection{Cross validation}
 
