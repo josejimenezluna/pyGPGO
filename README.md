@@ -1,4 +1,4 @@
-# pyGPGO
+# pyGPGO: A simple Python package for Bayesian Optimization
 
 ![sine](http://i.giphy.com/l3q2s3MQ4bPb5RogU.gif)
 
@@ -10,6 +10,12 @@ Available in PyPI
 
 ```bash
 pip install pyGPGO
+```
+
+For the development version
+
+```bash
+pip install git+https://github.com/hawk31
 ```
 
 ### Dependencies
@@ -32,7 +38,7 @@ def f(x):
 
 
 sexp = squaredExponential()
-gp = GPRegressor(sexp, sigma = 1e-8)
+gp = GPRegressor(sexp)
 acq = Acquisition(mode='ExpectedImprovement')
 param = {'x': ('cont', [0, 2 * np.pi])}
 
