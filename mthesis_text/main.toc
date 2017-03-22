@@ -2,19 +2,19 @@
 \contentsline {section}{\numberline {1.1}Introduction}{5}{section.1.1}
 \contentsline {section}{\numberline {1.2}Organization of the thesis}{6}{section.1.2}
 \contentsline {chapter}{\numberline {2}Gaussian Process regression}{7}{chapter.2}
-\contentsline {section}{\numberline {2.1}A weight space view for Gaussian Processes}{7}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Standard Bayesian linear regression}{7}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Kernel functions in feature space}{8}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}A function space view for Gaussian Processes}{8}{section.2.2}
-\contentsline {section}{\numberline {2.3}Prediction using a Gaussian Process prior}{9}{section.2.3}
+\contentsline {section}{\numberline {2.1}A function space view for Gaussian Processes}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}A weight space view for Gaussian Processes}{9}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Standard Bayesian linear regression}{9}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Kernel functions in feature space}{9}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Prediction using a Gaussian Process prior}{10}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}A toy example of Gaussian Process regression}{12}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Picking a winner}{12}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}On covariance functions}{14}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Visualizing different covariance functions}{15}{subsection.2.4.1}
-\contentsline {section}{\numberline {2.5}Hyperparameter optimization}{16}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Type II Maximum Likelihood}{16}{subsection.2.5.1}
+\contentsline {section}{\numberline {2.4}On covariance functions}{13}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Visualizing different covariance functions}{14}{subsection.2.4.1}
+\contentsline {section}{\numberline {2.5}Hyperparameter optimization}{14}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Type II Maximum Likelihood}{14}{subsection.2.5.1}
 \contentsline {subsubsection}{Another toy example: Optimizing the characteristic length-scale}{16}{section*.5}
-\contentsline {subsection}{\numberline {2.5.2}Cross validation}{17}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.2}Cross validation}{16}{subsection.2.5.2}
 \contentsline {section}{\numberline {2.6}Further theoretical aspects}{17}{section.2.6}
 \contentsline {subsection}{\numberline {2.6.1}Gaussian processes as linear smoothers}{17}{subsection.2.6.1}
 \contentsline {subsection}{\numberline {2.6.2}Explicit basis functions}{18}{subsection.2.6.2}
@@ -46,11 +46,12 @@
 \contentsline {subsection}{\numberline {4.2.1}Description of the problem}{37}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Description of the dataset}{38}{subsection.4.2.2}
 \contentsline {subsection}{\numberline {4.2.3}Experiments}{39}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}The LSVT companion dataset}{42}{section.4.3}
+\contentsline {section}{\numberline {4.3}The protein-protein interface prediction dataset}{42}{section.4.3}
 \contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{43}{chapter.5}
 \contentsline {section}{\numberline {5.1}Installation}{43}{section.5.1}
-\contentsline {section}{\numberline {5.2}Usage}{43}{section.5.2}
-\contentsline {section}{\numberline {5.3}Examples}{43}{section.5.3}
-\contentsline {section}{\numberline {5.4}Features}{43}{section.5.4}
-\contentsline {section}{\numberline {5.5}Comparison with existing software}{43}{section.5.5}
-\contentsline {section}{\numberline {5.6}Future work}{43}{section.5.6}
+\contentsline {section}{\numberline {5.2}Usage}{44}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}A minimal example}{44}{subsection.5.2.1}
+\contentsline {section}{\numberline {5.3}Examples}{44}{section.5.3}
+\contentsline {section}{\numberline {5.4}Features}{44}{section.5.4}
+\contentsline {section}{\numberline {5.5}Comparison with existing software}{44}{section.5.5}
+\contentsline {section}{\numberline {5.6}Future work}{44}{section.5.6}

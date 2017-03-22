@@ -83,11 +83,11 @@ d_ada['learning_rate'] = ('cont', (1e-5, 1))
 # }
 
 d_gbm = OrderedDict()
-d_gbm['learning_rate'] = ('cont', (10e-5, 1))
-d_gbm['n_estimators'] = ('int', (10, 50))
-d_gbm['max_depth'] = ('int', (2, 50))
-d_gbm['min_samples_split'] = ('int', (2, 50))
-d_gbm['min_samples_leaf'] = ('int', (2, 50))
+d_gbm['learning_rate'] = ('cont', (10e-5, 1e-1))
+d_gbm['n_estimators'] = ('int', (10, 100))
+d_gbm['max_depth'] = ('int', (2, 100))
+d_gbm['min_samples_split'] = ('int', (2, 100))
+d_gbm['min_samples_leaf'] = ('int', (2, 100))
 d_gbm['subsample'] = ('cont', (0.01, 0.99))
 d_gbm['max_features'] = ('cont', (0.01, 0.99))
 

@@ -1,17 +1,15 @@
 from testing.utils import evaluateDataset, plotRes
 from testing.modaux import *
-import random
 import os
 import numpy as np
 
 if __name__ == '__main__':
-    random.seed(93)
-    models = [SVM(), GBM(), MLP()]
-    params = [d_svm, d_gbm, d_mlp]
+    models = [GBM(), RF()]
+    params = [d_gbm, d_rf]
 
     path = os.path.join(os.getcwd(), 'datasets')
-    datasets = ['aff.csv', 'pinter.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
-               'lsvt.csv', 'pima-indians-diabetes.csv']
+    datasets = ['aff.csv', 'pinter.csv','breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
+                'lsvt.csv', 'pima-indians-diabetes.csv']
     problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary', 'binary']
     targets = [0, 0, 0, 10, 16, 0, 8]
 

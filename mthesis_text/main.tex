@@ -14,6 +14,8 @@
 \newtheorem{mydef}{Theorem}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+\newtheorem{defini}{Definition}
+
 
 
 \makeindex
@@ -75,11 +77,78 @@ Before we dive directly into the topic at hand, it is mandatory to explain how t
 
  In this chapter we will focus on regression problems. Assume we have some labelled data $D = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$, where $\boldsymbol{x}$ is a vector of covariates and $y$ denotes a continuous objective variable. We wish to learn a predictive distribution over new values of $\boldsymbol{x}$, so that we can make predictions and inference over these. In practice, for simplicity we write that $D = \left(X, \boldsymbol{y}\right)$, where $X$ is our predictor matrix.\\
 
-One can interpret a Gaussian Process in several ways. The most widely known is the function space view, which is the one we will cover second here and the one we will assume for the rest for the thesis. In this view, we consider a Gaussian Process to be a stochastic process, hence, a distribution over functions, instead of over values. Inference takes place directly in this space. For completeness, we will also provide a weight-space view first, that might be more appealing to readers familiar with Bayesian linear regression.\\
+One can interpret a Gaussian Process in several ways. The most widely known is the function space view, which is the one we will cover first here and the one we will assume for the rest for the thesis. In this view, we consider a Gaussian Process to be a stochastic process, hence, a distribution over functions, instead of over values. Inference takes place directly in this space. For completeness, we will also provide a weight-space view second, that might be more appealing to readers familiar with Bayesian linear regression.\\
+
+
+
+\section{A function space view for Gaussian Processes}
+
+We start by formally defining a Gaussian Process:
+
+\begin{defini}
+A Gaussian Process as a collection of random variables, any finite number of which have a joint Gaussian distribution. This process is totally defined by two functions. Its \textit{mean function}:
+
+\begin{equation}
+m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
+\end{equation} 
+
+and its \textit{covariance function}:
+
+\begin{equation}
+k(\boldsymbol{x}, \boldsymbol{x'}) = \mathbb{E}\left[\left( f(\boldsymbol{x}) - m(\boldsymbol{x}) \right)\left( f(\boldsymbol{x}') - m(\boldsymbol{x}')\right)\right]
+\end{equation}
+
+
+We say that $f$ is a Gaussian Process with mean $m(\boldsymbol{x})$ and covariance function $k(x, x')$ and write:
+
+\begin{equation}
+f(\boldsymbol{x}) \sim \mathrm{GP}\left(m(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x'}) \right)
+\end{equation}
+\end{defini}
+
+In practice, for simplicity we will take $m(\boldsymbol{x}) = 0$, but this can be specified otherwise. As stated before, a Gaussian Process fulfils the marginalization property, that is to say that if the the GP specifies $(y_1, y_2) \sim N(\boldsymbol{\mu}, \Sigma)$ then this implies that $y_1 \sim N(\mu_1, \Sigma_{11})$. A Gaussian multivariate distribution is just a finite index set of a Gaussian process. 
+
+As seen in the previous section, a Gaussian Process can be viewed as a Bayesian regression model using a particular kernel, that is, the model $f(\boldsymbol{x}) = \phi(\boldsymbol{x})^T \boldsymbol{w}$ with the same prior as in equation \ref{wprior} has mean and covariance functions:
+
+\begin{align}
+\mathbb{E}\left[f(\boldsymbol{x})\right] = \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\right] = 0\\
+\mathbb{E}\left[f(\boldsymbol{x})f(\boldsymbol{x'})\right] = \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\boldsymbol{w}^T\right]
+\phi(\boldsymbol{x'}) = \phi(\boldsymbol{x})^T\Sigma_p\phi(\boldsymbol{x'})
+\end{align}
+
+It is now a good time to start specifying several covariance functions, the \textit{squared exponential} kernel, defined as:
+
+\begin{equation}
+k(x, x') = \exp\left(-\dfrac{1}{2}|x - x'|^2\right)
+\end{equation}
+
+where $|.|$ denotes the standard $L_2$ norm. Most of the covariance functions that we will see here are a function of this norm, therefore it is much more comfortable to write $r = |x - x'|$ and therefore the squared exponential kernel becomes:
+
+\begin{equation}
+\label{sqexp}
+k(r) = \exp\left(-\dfrac{1}{2}r^2\right)
+\end{equation}
+
+It is straightforward to draw samples from a Gaussian Process. In particular, since we work with a finite number of points, choose an arbitrary number of them $X_*$ and compute the squared exponential kernel. Then the procedure is simplified to just samplimg from the following multivariate Gaussian:
+
+\begin{equation}
+\label{fprior}
+\boldsymbol{f_*} \sim N\left(\boldsymbol{0}, K(X_*, X_*)\right)
+\end{equation}
+
+To illustrate this point, we will write a very simple Python script to draw samples from this function. For the moment, consider evenly spaced samples with a step of $\dfrac{\pi}{16}$. All code produced here and in other examples uses pyGPGO, the developed software alongside this thesis. In particular, the code available in Appendix \ref{drawGP} produces Figure \ref{fig:drawPrior}.\\
+
+\begin{figure}
+\caption{Three sampled Gaussian Process priors using the Squared Exponential kernel.}
+\label{fig:drawPrior}
+\includegraphics[width=\textwidth]{figures/chapter2/drawPrior}
+\end{figure}
+
+There's one important concept to explain before we move on. Notice in Figure \ref{fig:drawPrior} that the drawn functions seem to have a characteristic length-scale. This can be interpreted as the distance you have to move in input space before the function value changes significantly. By default, the squared exponential kernel uses a characteristic length-scale of 1 ($l = 1$). To change this behaviour to another, it is sufficient to consider $r/l$ instead of $r$ in Equation \ref{sqexp}. This can be thought as an hyperparameter to optimize, but we will return to this in another section.
 
 \section{A weight space view for Gaussian Processes}
 
-In this section we will try to draw connections between Bayesian linear regression and our introduction to Gaussian Processes, through the use of kernel functions. 
+In this section we will try to draw connections between Bayesian linear regression and  Gaussian Processes, through the use of kernel functions. 
 
 \subsection{Standard Bayesian linear regression}
 
@@ -150,72 +219,12 @@ where we have again simplified notation by $\boldsymbol{\phi_*} = \phi(\boldsymb
 k(\boldsymbol{x}, \boldsymbol{x'}) = \psi(\boldsymbol{x})^T\psi(\boldsymbol{x'})
 \end{equation}
 
-where $\Sigma_p^{1/2}$ can be defined by means of a singular value decomposition. Typically, we will replace the original feature vectors by these dot products, \textit{lifting} to a higher space. This will make more sense in the following section.
-
-\section{A function space view for Gaussian Processes}
-
-We formally define a Gaussian Process as a collection of random variables, any finite number of which have a joint Gaussian distribution. This process is totally defined by two functions. The first one is its \textit{mean function}:
-
-\begin{equation}
-m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
-\end{equation} 
-
-The second one is its \textit{covariance function}:
-
-\begin{equation}
-k(\boldsymbol{x}, \boldsymbol{x'}) = \mathbb{E}\left[\left( f(\boldsymbol{x}) - m(\boldsymbol{x}) \right)\left( f(\boldsymbol{x}') - m(\boldsymbol{x}')\right)\right]
-\end{equation}
-
-We say that $f$ is a Gaussian Process with mean $m(\boldsymbol{x})$ and covariance function $k(x, x')$ and write:
-
-\begin{equation}
-f(\boldsymbol{x}) \sim \mathrm{GP}\left(m(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x'}) \right)
-\end{equation}
-
-In practice, for simplicity we will take $m(\boldsymbol{x}) = 0$, but this can be specified otherwise. As stated before, a Gaussian Process fulfils the marginalization property, that is to say that if the the GP specifies $(y_1, y_2) \sim N(\boldsymbol{\mu}, \Sigma)$ then this implies that $y_1 \sim N(\mu_1, \Sigma_{11})$. A Gaussian multivariate distribution is just a finite index set of a Gaussian process. 
-
-As seen in the previous section, a Gaussian Process can be viewed as a Bayesian regression model using a particular kernel, that is, the model $f(\boldsymbol{x}) = \phi(\boldsymbol{x})^T \boldsymbol{w}$ with the same prior as in equation \ref{wprior} has mean and covariance functions:
-
-\begin{align}
-\mathbb{E}\left[f(\boldsymbol{x})\right] = \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\right] = 0\\
-\mathbb{E}\left[f(\boldsymbol{x})f(\boldsymbol{x'})\right] = \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\boldsymbol{w}^T\right]
-\phi(\boldsymbol{x'}) = \phi(\boldsymbol{x})^T\Sigma_p\phi(\boldsymbol{x'})
-\end{align}
-
-It is now a good time to start specifying several covariance functions, the \textit{squared exponential} kernel, defined as:
-
-\begin{equation}
-k(x, x') = \exp\left(-\dfrac{1}{2}|x - x'|^2\right)
-\end{equation}
-
-where $|.|$ denotes the standard $L_2$ norm. Most of the covariance functions that we will see here are a function of this norm, therefore it is much more comfortable to write $r = |x - x'|$ and therefore the squared exponential kernel becomes:
-
-\begin{equation}
-\label{sqexp}
-k(x, x') = \exp\left(-\dfrac{1}{2}r^2\right)
-\end{equation}
-
-It is straightforward to draw samples from a Gaussian Process. In particular, since we work with a finite number of points, choose an arbitrary number of them $X_*$ and compute the squared exponential kernel. Then the procedure is simplified to just samplimg from the following multivariate Gaussian:
-
-\begin{equation}
-\label{fprior}
-\boldsymbol{f_*} \sim N\left(\boldsymbol{0}, K(X_*, X_*)\right)
-\end{equation}
-
-To illustrate this point, we will write a very simple Python script to draw samples from this function. For the moment, consider evenly spaced samples with a step of $\dfrac{\pi}{16}$. All code produced here and in other examples uses pyGPGO, the developed software alongside this thesis. In particular, the code available in Appendix \ref{drawGP} produces Figure \ref{fig:drawPrior}.\\
-
-\begin{figure}
-\caption{Three sampled Gaussian Process priors using the Squared Exponential kernel.}
-\label{fig:drawPrior}
-\includegraphics[width=\textwidth]{figures/chapter2/drawPrior}
-\end{figure}
-
-There's one important concept to explain before we move on. Notice in Figure \ref{fig:drawPrior} that the drawn functions seem to have a characteristic length-scale. This can be interpreted as the distance you have to move in input space before the function value changes significantly. By default, the squared exponential kernel uses a characteristic length-scale of 1 ($l = 1$). To change this behaviour to another, it is sufficient to consider $r/l$ instead of $r$ in Equation \ref{sqexp}. This can be thought as an hyperparameter to optimize, but we will return to this in another section.
+where $\Sigma_p^{1/2}$ can be defined by means of a singular value decomposition. We then replace the original feature vectors by these dot products, \textit{lifting} to a higher space.
 
 \section{Prediction using a Gaussian Process prior}
 \label{pred}
 
-In this particular section, arguably the most important one, we will learn how to incorporate the knowledge of training data $D = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$ into our Gaussian Process to obtain a posterior predictive distribution. We will start considering the case that we have a noiseless function, that is to say, when $\sigma^2_n = 0$. Let us define $K(X, X_{*})$, the covariance function evaluated on train and test points, $K(X, X)$ the covariance function evaluated at only the training points, $K(X_{*}, X_{*})$ equivalently defined for the test values. Notice the last two have to be square matrices by definition.\\
+In this particular section, arguably the most important one in the chapter, we will learn how to incorporate the knowledge of training data $D = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$ into our Gaussian Process to obtain a posterior predictive distribution. We will start considering the case that we have a noiseless function, that is to say, when $\sigma^2_n = 0$. Let us define $K(X, X_{*})$, the covariance function evaluated on train and test points, $K(X, X)$ the covariance function evaluated at only the training points, $K(X_{*}, X_{*})$ equivalently defined for the test values. Notice the last two have to be square matrices by definition.\\
 
 Let us also use the following theorem:
 
@@ -396,7 +405,7 @@ The \textit{Matern class} of covariance functions takes the form:
 k_{\textrm{Matern}}(r) = \dfrac{2^{1-\nu}}{\Gamma(\nu)}\left(\dfrac{\sqrt{2\nu} r}{l}    \right)^\nu K_\nu\left( \dfrac{\sqrt{2\nu}r}{l} \right)
 \end{equation}
 
-with $\nu, l > 0$ and $K_\nu$ is a modified Bessel function of the second kind. Notice that if we take limit $\nu \rightarrow \infty$ we obtain our beloved squared exponential covariance function.\\
+with $\nu, l > 0$ and $K_\nu$ is a modified Bessel function of the second kind.  Simple functional forms can be obtained when $\nu$ is half integer, that is $\nu = p + 1/2$ for $p$ non-negative integer. In particular, if $\nu=1/2$, we obtain the a simple exponential kernel and if we take limit $\nu \rightarrow \infty$ we obtain the squared exponential covariance function. Popular values are $\nu=3/2,\; 5/2$.\\
 
 
 The $\gamma$-exponential covariance function, of which the squared exponential is a special case. It takes the general form:
@@ -413,7 +422,7 @@ The \textit{Rational Quadratic} covariance function takes the form:
 k_{RQ}(r) = \left( 1 + \dfrac{r^2}{2\alpha l^2} \right)^{-\alpha}
 \end{equation}
 
-with $\alpha, l > 0$. \\
+with $\alpha, l > 0$. This covariance function can be seen as a scale mixture of squared exponential kernels with different length scales.\\
 
 
 The \textit{arcSin} kernel is an example of a dot product covariance function, therefore non-stationary:
@@ -950,7 +959,7 @@ It can be seen that during the previous steps before fitting a Gaussian Process,
 
 \chapter{Experiments}
 
-In this chapter we will expose all the results using all implemented code for Gaussian Process regression and Bayesian Optimization in pyGPGO. First, we start by providing some benchmarking rules, how performance shall be evaluated across different models and datasets. In general, the models presented here hopefully span enough diversity: support vector machines , neural networks and bagging/boosting methods are among these candidates. Datasets come from very different research areas, spanning from biophysics to medicine. 
+In this chapter we will expose all the results using all implemented code for Gaussian Process regression and Bayesian Optimization in pyGPGO. First, we start by providing some benchmarking rules, how performance shall be evaluated across different models and datasets. In general, the models presented here hopefully span enough diversity: support vector machines , neural networks and bagging/boosting methods are among these candidates. Datasets come from very different research areas, spanning from biophysics to medicine. Some datasets will span an entire section, explaining the rationale behind the problem, while results for others will be briefly discussed. We hope to show here that Bayesian Optimization works reasonably well for hyperparameter optimization of machine-learning models, and can outperform other well known strategies in the majority of cases.
 
 
 \section{Benchmarking rules}
@@ -1002,11 +1011,11 @@ We believe that the losses proposed here are very natural choices in both classi
 
 While we have discussed the metrics to evaluate in each predictive problem, we still need to define how these losses will be evaluated in each step. To evaluate the performance of a given hyper-parameter optimization procedure, we have to balance both the performance in terms of loss and the number of evaluations necessary in order to get to a satisfactory solution. In practice, this is exactly how we will benchmark the different strategies, through a plot where the $x$-axis represent the number of function evaluations, and the $y$-axis the best log-loss found.\\
 
-Evaluating the loss function itself can lead to multiple different values depending on the test values. One could choose an approach where this loss is evaluated on a single holdout test. This would lead to noisy estimates, however. We choose the more stable approach of performing a $k=5$ cross-validation scheme to obtain a more reliable loss estimate. In practice, this means that we fit $5$ models with the same architecture to different train/test splits and average the loss results in each. A total of $n=53$ functions evaluations will be allowed for each strategy in all datasets. This accounts for the fact that the Bayesian Optimization needs at least $3$ function evaluations to fit a surrogate Gaussian Process regressor.
+Evaluating the loss function itself can lead to multiple different values depending on the test values. One could choose an approach where this loss is evaluated on a single holdout test. This would lead to noisy estimates, however. We choose the more stable approach of performing a shuffled $k=5$ cross-validation scheme to obtain a more reliable loss estimate. In practice, this means that we fit $5$ models with the same architecture to different train/test splits and average the loss results in each. A total of $n=53$ functions evaluations will be allowed for each strategy in all datasets. This accounts for the fact that the Bayesian Optimization needs at least $3$ function evaluations to fit a surrogate Gaussian Process regressor in the beggining.
 
 \subsection{Bayesian optimization setup}
 
-For all the tests performed with the Bayesian Optimization scheme, we choose the standard squared exponential kernel with a starting default characteristic length-scale $l=1$. This parameter will be continuously adapted using a Type-II Maximum Likelihood approach using gradients during the optimization process, as detailed in Section \ref{empbayes}. Different acquisition functions will be tested in each problem: Expected Improvement, GP-UCB ($\beta= .5$) and GP-UCB ($\beta = 1.5$). All features in all datasets are scaled by default to have zero mean and unit variance.
+For all the tests performed with the Bayesian Optimization scheme, we choose the standard squared exponential kernel with a starting default characteristic length-scale $l=1$, signal variance $\sigma_f^2=1$ and noise variance $\sigma_n^2 = 0$. These three hyper-parameters will be continuously adapted using a Type-II Maximum Likelihood approach using gradients during the optimization process, as detailed in Section \ref{empbayes}. Different acquisition functions will be tested in each problem: Expected Improvement, GP-UCB ($\beta= .5$) and GP-UCB ($\beta = 1.5$). All features in all datasets are scaled by default to have zero mean and unit variance.
 
 \subsection{Machine-learning models used}
 
@@ -1040,7 +1049,7 @@ Regarding descriptor computations, we recreate the ones used by RF-Score. They a
 
 \begin{align*}
 \left\lbrace P_j \right\rbrace_{j=1}^9 = \left\lbrace C, N, O, F, P, S, Cl, Br, I \right\rbrace \\
-\left\lbrace L_j \right\rbrace_{j=1}^9 = \left\lbrace C, N, O, F, P, S, Cl, Br, I \right\rbrace
+\left\lbrace L_i \right\rbrace_{i=1}^9 = \left\lbrace C, N, O, F, P, S, Cl, Br, I \right\rbrace
 \end{align*}
 
 And the descriptors computed can be expressed as:
@@ -1085,11 +1094,96 @@ We detail here results for all the models and parameter ranges considered in the
 
 \newpage
 
-\section{The LSVT companion dataset}
+\section{The protein-protein interface prediction dataset}
 
 \chapter{pyGPGO: A simple Python Package for Bayesian Optimization}
+
+In this chapter, we will explain the functionalities behind pyGPGO, the Bayesian Optimization software developed during this Master's thesis. pyGPGO aims to be minimalistic, modular, complete in functionality and up-to-date with latest research. pyGPGO is under the MIT License, which means it can be used for both academic and commercial purposes, while providing no warranty for the user. For more information about the MIT License, please check [ref].\\
+
+In summary, pyGPGO is a Python package to perform Bayesian Optimization with minimal effort from the user. First we will discuss installation details, followed by a detailed description of its functionality. Then several examples of usage will be shown, which will hopefully be useful for end users or machine-learning practitioners. Later, we will compare pyGPGO to other existing Bayesian Optimization software in terms of features. In the end, future improvements on pyGPGO will be discussed.
+
 \section{Installation}
+
+pyGPGO comes in the form of a Python package. Only Python versions equal or higher than 3.5 are currently supported. In principle, pyGPGO should work with Windows, OSX and Linux, though only the latter has been tested. Most Unix based systems already come with Python distribution installed. To check whether it on a bash/cmd terminal:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{bash}
+python --version   
+\end{minted}
+
+If Python is not installed on the system, we highly recommend installing the Python distribution Anaconda [ref]. Along with the distribution, they also provide most common packages for numeric/scientific operations. In particular, should the user choose to install the Anaconda distribution all dependencies needed by pyGPGO are covered. After downloading the executable corresponding to your particular system configuration from their web page, it suffices to do (for UNIX-based systems):
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{bash}
+bash Anaconda3-x.x.x-Linux-x86_64.sh
+\end{minted}
+
+Follow the instructions to install it on a local path in your system. In particular, the Anaconda installer will ask if the user wants to prepend to the system \texttt{PATH} the route to the Python binaries. Windows users have a graphical installer available in the Anaconda website.\\
+
+If the user has a working Python environment in the system and does not want to use the one provided by Anaconda, some dependencies must be fulfilled in order for pyGPGO to work. In particular, both \texttt{numpy} and \texttt{joblib} need to be installed. Typically, one should use the packages available in the Python Package Index (PyPI) and install them using the Python Package manager \texttt{pip}. From a bash terminal:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{bash}
+pip install --upgrade numpy joblib            
+\end{minted}
+
+pyGPGO is available as well in PyPI, to install the latest \textit{stable} version it suffices to execute:
+ 
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{bash}
+pip install pyGPGO           
+\end{minted}
+
+To get the bleeding-edge version of pyGPGO, one can also retrieve it from the associated GitHub repository:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{bash}
+pip install git+https://github.com/hawk31/pyGPGO          
+\end{minted}
+
 \section{Usage}
+
+pyGPGO aims to be an easy to use package to perform Bayesian Optimization. All functionality is divided in different modules, each performing a very specific task. We go briefly over the different modules here, but they will be discussed in detail in Section \ref{features}.
+
+\begin{itemize}
+\item The \texttt{covfunc} module contains all the code related to covariance function calculations. 
+\item The \texttt{GPRegressor} module implements regular Gaussian Process regression.
+\item The \texttt{Acquisition} module lets the user specify different acquisition function strategies.
+\item The \texttt{GPGO} module implements Bayesian Optimization procedures. 
+\end{itemize}
+
+Apart from this functionality, there is plenty of material in the GitHub repository of this package:
+
+\begin{itemize}
+\item A folder named \texttt{examples}, with all the coding examples laid down throughout the course of this master's thesis.
+\item A folder named \texttt{testing} with all the code used regarding benchmarking and testing of the datasets used in Chapter 4 of this work.
+\item A folder named \texttt{datasets} with all the datasets tested in Chapter 4, in .csv format. 
+\end{itemize}
+
+\subsection{A minimal example}
+
+Here we go through a minimal example to show how to use pyGPGO in its most simple form. We comment line by line. 
+
 \section{Examples}
 \section{Features}\label{features}
 \section{Comparison with existing software}

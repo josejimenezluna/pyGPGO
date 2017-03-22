@@ -81,6 +81,14 @@ class GPGO:
         self.tau = np.max(self.GP.y)
         self.history.append(self.tau)
 
+    def getResult(self):
+        argtau = np.argmax(self.GP.y)
+        opt_x = self.GP.X[argtau]
+        res_d = OrderedDict()
+        for i, key in enumerate(self.parameter_key):
+            res_d[key] = opt_x[i]
+        return res_d, self.tau
+
     def run(self, max_iter=10, init_evals = 3):
         self.init_evals = init_evals
         self._firstRun(self.init_evals)

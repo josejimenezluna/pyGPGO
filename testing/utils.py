@@ -144,7 +144,7 @@ def plotRes(gpgoei_history, gpgoucb_history, gpgoucb2_history, random, datasetna
 def evaluateRandom(gpgo, loss, n_eval=20):
     res = []
     for i in range(n_eval):
-        param = dict(gpgo._sampleParam())
+        param = gpgo._sampleParam()
         l = loss(**param)
         res.append(l)
         print('Param {}, loss: {}'.format(param, l))

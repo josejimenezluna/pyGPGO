@@ -2,10 +2,10 @@
 \BOOKMARK [1][-]{section.1.1}{Introduction}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Organization of the thesis}{chapter.1}% 3
 \BOOKMARK [0][-]{chapter.2}{Gaussian Process regression}{}% 4
-\BOOKMARK [1][-]{section.2.1}{A weight space view for Gaussian Processes}{chapter.2}% 5
-\BOOKMARK [2][-]{subsection.2.1.1}{Standard Bayesian linear regression}{section.2.1}% 6
-\BOOKMARK [2][-]{subsection.2.1.2}{Kernel functions in feature space}{section.2.1}% 7
-\BOOKMARK [1][-]{section.2.2}{A function space view for Gaussian Processes}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.1}{A function space view for Gaussian Processes}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.2}{A weight space view for Gaussian Processes}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.1}{Standard Bayesian linear regression}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.2}{Kernel functions in feature space}{section.2.2}% 8
 \BOOKMARK [1][-]{section.2.3}{Prediction using a Gaussian Process prior}{chapter.2}% 9
 \BOOKMARK [2][-]{subsection.2.3.1}{A toy example of Gaussian Process regression}{section.2.3}% 10
 \BOOKMARK [2][-]{subsection.2.3.2}{Picking a winner}{section.2.3}% 11
@@ -45,11 +45,12 @@
 \BOOKMARK [2][-]{subsection.4.2.1}{Description of the problem}{section.4.2}% 45
 \BOOKMARK [2][-]{subsection.4.2.2}{Description of the dataset}{section.4.2}% 46
 \BOOKMARK [2][-]{subsection.4.2.3}{Experiments}{section.4.2}% 47
-\BOOKMARK [1][-]{section.4.3}{The LSVT companion dataset}{chapter.4}% 48
+\BOOKMARK [1][-]{section.4.3}{The protein-protein interface prediction dataset}{chapter.4}% 48
 \BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 49
 \BOOKMARK [1][-]{section.5.1}{Installation}{chapter.5}% 50
 \BOOKMARK [1][-]{section.5.2}{Usage}{chapter.5}% 51
-\BOOKMARK [1][-]{section.5.3}{Examples}{chapter.5}% 52
-\BOOKMARK [1][-]{section.5.4}{Features}{chapter.5}% 53
-\BOOKMARK [1][-]{section.5.5}{Comparison with existing software}{chapter.5}% 54
-\BOOKMARK [1][-]{section.5.6}{Future work}{chapter.5}% 55
+\BOOKMARK [2][-]{subsection.5.2.1}{A minimal example}{section.5.2}% 52
+\BOOKMARK [1][-]{section.5.3}{Examples}{chapter.5}% 53
+\BOOKMARK [1][-]{section.5.4}{Features}{chapter.5}% 54
+\BOOKMARK [1][-]{section.5.5}{Comparison with existing software}{chapter.5}% 55
+\BOOKMARK [1][-]{section.5.6}{Future work}{chapter.5}% 56
