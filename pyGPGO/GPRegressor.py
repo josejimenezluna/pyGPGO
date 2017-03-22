@@ -10,6 +10,12 @@ class GPRegressor:
         self.optimize = optimize
         self.usegrads = usegrads
 
+    def getcovparams(self):
+        d = {}
+        for param in self.covfunc.parameters:
+            d[param] = self.covfunc.__dict__[param]
+        return d
+
     def fit(self, X, y):
         self.X = X
         self.y = y
@@ -65,13 +71,22 @@ class GPRegressor:
             k_param[k] = v
         return - self.param_grad(k_param)
 
-    def optHyp(self, param_key, param_bounds, grads = None):
-        x0 = np.repeat(1, len(param_key))
-        if grads is None:
-            res = minimize(self._lmlik, x0=x0, args=(param_key), method='L-BFGS-B', bounds=param_bounds)
-        else:
-            res = minimize(self._lmlik, x0=x0, args=(param_key), method='L-BFGS-B', bounds=param_bounds, jac=grads)
-        opt_param = res.x
+    def optHyp(self, param_key, param_bounds, grads=None, n_trials=5):
+        xs = [[1, 1, 1]]
+        fs = [self._lmlik(xs[0], param_key)]
+        for trial in range(n_trials):
+            x0 = []
+            for param, bound in zip(param_key, param_bounds):
+                x0.append(np.random.uniform(bound[0], bound[1], 1)[0])
+            if grads is None:
+                res = minimize(self._lmlik, x0=x0, args=(param_key), method='L-BFGS-B', bounds=param_bounds)
+            else:
+                res = minimize(self._lmlik, x0=x0, args=(param_key), method='L-BFGS-B', bounds=param_bounds, jac=grads)
+            xs.append(res.x)
+            fs.append(res.fun)
+
+        argmin = np.argmin(fs)
+        opt_param = xs[argmin]
         k_param = OrderedDict()
         for k, x in zip(param_key, opt_param):
             k_param[k] = x

@@ -1182,9 +1182,178 @@ Apart from this functionality, there is plenty of material in the GitHub reposit
 
 \subsection{A minimal example}
 
-Here we go through a minimal example to show how to use pyGPGO in its most simple form. We comment line by line. 
+Here we go through a minimal example to show how to use pyGPGO in its most simple form. We comment line by line using the IPython console.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+In [1]: import numpy as np
+   ...: import matplotlib.pyplot as plt
+   ...: from pyGPGO.covfunc import squaredExponential
+   ...: from pyGPGO.GPRegressor import GPRegressor
+   ...: from pyGPGO.acquisition import Acquisition
+   ...: from pyGPGO.GPGO import GPGO               
+\end{minted}
+
+After loading \texttt{numpy} and \texttt{matplotlib}, we start loading all the needed modules for our example: we will use the \texttt{squaredExponential} covariance function, a Gaussian Process regressor \texttt{GPRegressor}, an \texttt{Acquisition} function and \texttt{GPGO}, the class for Bayesian Optimization. We fix a random seed, and define the function we are about to optimize, a plot of which is available in Figure \ref{fig:exfun}.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+In [2]:     np.random.seed(20)
+   ...:     def f(x):
+   ...:         return -((6*x-2)**2*np.sin(12*x-4))
+\end{minted}
+
+\begin{figure}
+\centering
+\caption{Example function for optimization with pyGPGO.}
+\includegraphics[width=0.75\textwidth]{figures/chapter5/exfun}
+\label{fig:exfun}
+\end{figure}
+
+
+We now instantiate our covariance function, our regressor and our acquisition:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+In [3]:     sexp = squaredExponential()
+   ...:     gp = GPRegressor(sexp)
+   ...:     acq = Acquisition(mode = 'ExpectedImprovement')
+\end{minted}
+
+We define our the parameters to optimize over now, as a dictionary. Note that function \texttt{f} takes as parameter \texttt{x}. It is a continuous variable, where $x\in \left[0, 1\right]$. If we had other variables, we simply add them to the dictionary with its type and bounds.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+In [4]:     params = {'x': ('cont', (0, 1))}
+\end{minted}
+
+We now instantiate our \texttt{GPGO} class, passing all previous created objects:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+In [5]:	gpgo = GPGO(gp, acq, f, params)
+\end{minted}
+
+We finally optimize for a number of iterations:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+In [6]: gpgo.run(max_iter = 10)               
+\end{minted}
+
+Check the result just by calling:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+In [7]: gpgo.getResult()
+Out [8]:	 (OrderedDict([('x', 0.76321944301549549)]), 6.0013872547078249)
+\end{minted}
+
+After 10 iterations, the best value for \texttt{x} our optimizer has found is $0.7632$, with a function value of $6.001$.
 
 \section{Examples}
+
+In this section, we will detail several examples on how to use pyGPGO for real world tasks. They will provide extra details on how much functionality the package exposes to the end user and may serve as a blueprint for other tasks.
+
+\subsection{Gaussian Process regression using the \texttt{GPRegressor} module.}
+
+While pyGPGO is mainly a Bayesian Optimization package, it also exposes a very competent class for performing Gaussian Process regression. While the main features of this class are discussed in Section \ref{features}, we provide a simple example on how to perform GP Regression on noisy synthetic data. The script below produces Figure \ref{fig:noiseopt}.
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from pyGPGO.GPGO import GPGO
+from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
+
+
+if __name__ == '__main__':
+    rng = np.random.RandomState(0)
+    X = rng.uniform(0, 5, 20)[:, np.newaxis]
+    y = 0.5 * np.sin(3 * X[:, 0]) + rng.normal(0, 0.5, X.shape[0])
+
+    sexp = squaredExponential()
+    gp = GPRegressor(sexp, optimize = True, usegrads = True)
+    gp.fit(X, y)
+
+    X_ = np.linspace(0, 5, 100)
+    y_mean, y_var = gp.predict(X_[:, np.newaxis], return_std=True)
+    y_std = np.sqrt(y_var)
+    plt.plot(X_, y_mean, 'k', lw=2, zorder=9, label = 'Posterior mean')
+    plt.fill_between(X_, y_mean - 1.64 * y_std,
+                     y_mean + 1.64 * y_std,
+                     alpha=0.4, color='blue')
+    plt.plot(X_, 0.5*np.sin(3*X_), 'r', lw=2, zorder=9, label = 'Original function')
+    plt.scatter(X[:, 0], y, c='r', s=50, zorder=10)
+    plt.legend(loc = 0)
+    params = gp.getcovparams()
+    plt.title('Optimal params | \$l\$={}, \$\sigma_n^2\$
+    ={},\sigma_f^2={}'.format(np.round(params['l'],3),
+    	  np.round(params['sigmaf'], 3), np.round(params['sigman'], 3)))
+    plt.tight_layout()
+    plt.show()
+\end{minted}
+
+
+A few notes on the code, notice that we add two extra parameters to the \texttt{GPRegressor} module: \texttt{optimize=True, usegrads=True} indicates to the instance that it should perform Type II maximum likelihood estimation of the \texttt{squaredExponential} instance hyper-parameters using gradient information if available. By default all hyper-parameters are optimized, in this case, $\left\lbrace l, \sigma_n^2, \sigma_f^2 \right\rbrace$ are optimized. If we want only a subset of them to be optimized or none at all, we can specify so in the corresponding covariance function instance. 
+
+\subsection{Optimizing parameters of a machine-learning model using the \texttt{GPGO} module.}
+
+
+\newpage
+
+
+\begin{figure}
+\centering
+\caption{Gaussian Process regression of noisy inputs with pyGPGO.}
+\includegraphics[width=0.75\textwidth]{figures/chapter5/noiseopt}
+\label{fig:noiseopt}
+\end{figure}
+
+
+
 \section{Features}\label{features}
 \section{Comparison with existing software}
 \section{Future work}

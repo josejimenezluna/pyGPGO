@@ -51,6 +51,8 @@
 \BOOKMARK [1][-]{section.5.2}{Usage}{chapter.5}% 51
 \BOOKMARK [2][-]{subsection.5.2.1}{A minimal example}{section.5.2}% 52
 \BOOKMARK [1][-]{section.5.3}{Examples}{chapter.5}% 53
-\BOOKMARK [1][-]{section.5.4}{Features}{chapter.5}% 54
-\BOOKMARK [1][-]{section.5.5}{Comparison with existing software}{chapter.5}% 55
-\BOOKMARK [1][-]{section.5.6}{Future work}{chapter.5}% 56
+\BOOKMARK [2][-]{subsection.5.3.1}{Gaussian Process regression using the GPRegressor module.}{section.5.3}% 54
+\BOOKMARK [2][-]{subsection.5.3.2}{Optimizing parameters of a machine-learning model using the GPGO module.}{section.5.3}% 55
+\BOOKMARK [1][-]{section.5.4}{Features}{chapter.5}% 56
+\BOOKMARK [1][-]{section.5.5}{Comparison with existing software}{chapter.5}% 57
+\BOOKMARK [1][-]{section.5.6}{Future work}{chapter.5}% 58
