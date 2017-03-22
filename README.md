@@ -15,7 +15,7 @@ pip install pyGPGO
 For the development version
 
 ```bash
-pip install git+https://github.com/hawk31
+pip install git+https://github.com/hawk31/pyGPGO
 ```
 
 ### Dependencies
