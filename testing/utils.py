@@ -10,6 +10,8 @@ from pyGPGO.GPGO import GPGO
 from pyGPGO.GPRegressor import GPRegressor
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
+
+
 # from testing.other_go import SimulatedAnnealing
 
 
@@ -32,7 +34,7 @@ class loss:
     def evaluateLoss(self, **param):
         if self.method == 'holdout':
             X_train, X_test, y_train, y_test = train_test_split(self.X, self.y, random_state=93)
-            clf = self.model.__class__(**param, problem = self.problem).eval()
+            clf = self.model.__class__(**param, problem=self.problem).eval()
             clf.fit(X_train, y_train)
             if self.problem == 'binary':
                 yhat = clf.predict_proba(X_test)[:, 1]
@@ -47,7 +49,7 @@ class loss:
             for train_index, test_index in kf.split(self.X):
                 X_train, X_test = self.X[train_index], self.X[test_index]
                 y_train, y_test = self.y[train_index], self.y[test_index]
-                clf = self.model.__class__(**param, problem = self.problem).eval()
+                clf = self.model.__class__(**param, problem=self.problem).eval()
                 clf.fit(X_train, y_train)
                 if self.problem == 'binary':
                     yhat = clf.predict_proba(X_test)[:, 1]
@@ -74,7 +76,8 @@ def build(csv_path, target_index, header=None):
     X = np.delete(data, obj=np.array([target_index]), axis=1)
     return X, y
 
-def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, method='holdout', seed=20, max_iter=50):
+
+def evaluateDataset(csv_path, target_index, problem, model, parameter_dict, method='holdout', seed=20, max_iter=50):
     print('Now evaluating {}...'.format(csv_path))
     X, y = build(csv_path, target_index)
 
@@ -93,7 +96,7 @@ def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, meth
     np.random.seed(seed)
     sexp = squaredExponential()
     gp = GPRegressor(sexp, optimize=True, usegrads=True)
-    acq_ucb = Acquisition(mode='UCB', beta = 0.5)
+    acq_ucb = Acquisition(mode='UCB', beta=0.5)
     gpgo_ucb = GPGO(gp, acq_ucb, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
     gpgo_ucb.run(max_iter=max_iter)
 
@@ -101,7 +104,7 @@ def evaluateDataset(csv_path, target_index, problem ,model, parameter_dict, meth
     np.random.seed(seed)
     sexp = squaredExponential()
     gp = GPRegressor(sexp, optimize=True, usegrads=True)
-    acq_ucb2 = Acquisition(mode='UCB', beta = 1.5)
+    acq_ucb2 = Acquisition(mode='UCB', beta=1.5)
     gpgo_ucb2 = GPGO(gp, acq_ucb2, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
     gpgo_ucb2.run(max_iter=max_iter)
 
@@ -123,10 +126,10 @@ def plotRes(gpgoei_history, gpgoucb_history, gpgoucb2_history, random, datasetna
     import matplotlib.pyplot as plt
     x = np.arange(1, len(random) + 1)
     fig = plt.figure()
-    plt.plot(x, -random, label='Random search', color = 'red')
-    plt.plot(x, -gpgoei_history, label='GPGO (EI)', color = 'blue')
-    plt.plot(x, -gpgoucb_history, label = r'GPGO (UCB) $\beta=.5$', color = 'yellow')
-    plt.plot(x, -gpgoucb2_history, label = r'GPGO (UCB) $\beta=1.5$', color = 'green')
+    plt.plot(x, -random, label='Random search', color='red')
+    plt.plot(x, -gpgoei_history, label='GPGO (EI)', color='blue')
+    plt.plot(x, -gpgoucb_history, label=r'GPGO (UCB) $\beta=.5$', color='yellow')
+    plt.plot(x, -gpgoucb2_history, label=r'GPGO (UCB) $\beta=1.5$', color='green')
     # plt.plot(x, -sa, label='Simulated annealing')
     plt.grid()
     plt.legend(loc=0)
@@ -149,7 +152,6 @@ def evaluateRandom(gpgo, loss, n_eval=20):
         res.append(l)
         print('Param {}, loss: {}'.format(param, l))
     return (res)
-
 
 # def evaluateSA(gpgo, loss, T=100, cooling=0.9, n_eval=50):
 #     sa = SimulatedAnnealing(gpgo._sampleParam, loss.evaluateLoss, T=T, cooling=cooling)

@@ -8,7 +8,7 @@ if __name__ == '__main__':
     params = [d_svm, d_mlp]
 
     path = os.path.join(os.getcwd(), 'datasets')
-    datasets = ['aff.csv', 'pinter.csv','breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
+    datasets = ['aff.csv', 'pinter.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
                 'lsvt.csv', 'pima-indians-diabetes.csv']
     problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary', 'binary']
     targets = [0, 0, 0, 10, 16, 0, 8]

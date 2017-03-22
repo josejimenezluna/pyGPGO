@@ -138,10 +138,10 @@ class gammaExponential:
 
 
 class rationalQuadratic:
-    def __init__(self, alpha=1, l=1, sigmaf=1, sigman=1e-6, bounds=None, parameters = ['alpha',
-                                                                                       'l',
-                                                                                       'sigmaf',
-                                                                                       'sigman']):
+    def __init__(self, alpha=1, l=1, sigmaf=1, sigman=1e-6, bounds=None, parameters=['alpha',
+                                                                                     'l',
+                                                                                     'sigmaf',
+                                                                                     'sigman']):
         self.alpha = alpha
         self.l = l
         self.sigmaf = sigmaf
@@ -156,7 +156,7 @@ class rationalQuadratic:
 
     def K(self, X, Xstar):
         r = l2norm_(X, Xstar)
-        return self.sigmaf * ((1 + r ** 2 / (2 * self.alpha * self.l ** 2)) ** (-self.alpha))\
+        return self.sigmaf * ((1 + r ** 2 / (2 * self.alpha * self.l ** 2)) ** (-self.alpha)) \
                + self.sigman * kronDelta(X, Xstar)
 
     def gradK(self, X, Xstar, param):
