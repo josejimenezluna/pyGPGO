@@ -2,7 +2,6 @@ import numpy as np
 from scipy.special import gamma, kv
 from scipy.spatial.distance import cdist
 
-
 default_bounds = {
     'l': [1e-4, 1],
     'sigmaf': [1e-4, 2],
@@ -19,14 +18,14 @@ def l2norm_(X, Xstar):
 
     Parameters
     ----------
-    * `X` [np.ndarray, shape=((n, nfeatures))]:
+    X: np.ndarray, shape=((n, nfeatures))
         Instances.
-    * `Xstar` [np.ndarray, shape=((m, nfeatures))]:
+    Xstar: np.ndarray, shape=((m, nfeatures))
         Instances
 
     Returns
     -------
-    * `cdist` [np.ndarray, shape=((n, m))]:
+    cdist: np.ndarray, shape=((n, m))
         Pairwise euclidian distance between row pairs of `X` and `Xstar`.
     """
     return cdist(X, Xstar)
@@ -38,14 +37,14 @@ def kronDelta(X, Xstar):
 
     Parameters
     ----------
-    * `X` [np.ndarray, shape=((n, nfeatures))]:
+    X: np.ndarray, shape=((n, nfeatures))
         Instances.
-    * `Xstar` [np.ndarray, shape((m, nfeatures))]:
+    Xstar: np.ndarray, shape((m, nfeatures))
         Instances.
 
     Returns
     -------
-    * `kron` [np.ndarray, shape=((n, m))]:
+    kron: np.ndarray, shape=((n, m))
         Kronecker delta between row pairs of `X` and `Xstar`.
     """
     n, m = X.shape[0], Xstar.shape[0]
@@ -56,6 +55,7 @@ def kronDelta(X, Xstar):
                 mat[i, j] = 1
     return mat
 
+
 class squaredExponential:
     def __init__(self, l=1, sigmaf=1.0, sigman=1e-6, bounds=None, parameters=['l', 'sigmaf',
                                                                               'sigman']):
@@ -64,13 +64,17 @@ class squaredExponential:
 
         Parameters
         ----------
-        * `l` [float]:
+        l: float
             Characteristic length-scale. Units in input space in which posterior GP values do not
             change significantly.
-        * `sigmaf` [float]:
+        sigmaf: float
             Signal variance. Controls the overall scale of the covariance function.
-        * `sigman` [float]:
+        sigman: float
             Noise variance. Additive noise in output space.
+        bounds: list
+            List of tuples specifying hyperparameter range in optimization procedure.
+        parameters: list
+            List of strings specifying which hyperparameters should be optimized.
         """
         self.l = l
         self.sigmaf = sigmaf
@@ -89,14 +93,14 @@ class squaredExponential:
 
         Parameters
         ----------
-        `X` [np.ndarray, shape=((n, nfeatures))]:
+        X: np.ndarray, shape=((n, nfeatures))
             Instances
-        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+        Xstar: np.ndarray, shape=((n, nfeatures))
             Instances
 
         Returns
         -------
-        `cov` [np.ndarray, shape=((n, m))]:
+        cov: np.ndarray, shape=((n, m))
             Computed covariance matrix.
         """
         r = l2norm_(X, Xstar)
@@ -108,16 +112,16 @@ class squaredExponential:
 
         Parameters
         ----------
-        `X` [np.ndarray, shape=((n, nfeatures))]:
+        X: np.ndarray, shape=((n, nfeatures))
             Instances
-        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+        Xstar: np.ndarray, shape=((n, nfeatures))
             Instances
-        `param` [str]:
+        param: str
             Parameter to compute gradient matrix for.
 
         Returns
         -------
-        `param_grad` [np.ndarray, shape=((n, m))]:
+        param_grad: np.ndarray, shape=((n, m))
             Gradient matrix for parameter `param`.
         """
         if param == 'l':
@@ -149,15 +153,19 @@ class matern:
 
         Parameters
         ----------
-        * `v` [float]:
+        v: float
             Scale-mixture hyperparameter of the Matern covariance function.
-        * `l` [float]:
+        l: float
             Characteristic length-scale. Units in input space in which posterior GP values do not
             change significantly.
-        * `sigmaf` [float]:
+        sigmaf: float
             Signal variance. Controls the overall scale of the covariance function.
-        * `sigman` [float]:
+        sigman: float
             Noise variance. Additive noise in output space.
+        bounds: list
+            List of tuples specifying hyperparameter range in optimization procedure.
+        parameters: list
+            List of strings specifying which hyperparameters should be optimized.
         """
         self.v, self.l = v, l
         self.sigmaf = sigmaf
@@ -176,14 +184,14 @@ class matern:
 
         Parameters
         ----------
-        `X` [np.ndarray, shape=((n, nfeatures))]:
+        X: np.ndarray, shape=((n, nfeatures))
             Instances
-        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+        Xstar: np.ndarray, shape=((n, nfeatures))
             Instances
 
         Returns
         -------
-        `cov` [np.ndarray, shape=((n, m))]:
+        cov: np.ndarray, shape=((n, m))
             Computed covariance matrix.
         """
         r = l2norm_(X, Xstar)
@@ -205,15 +213,19 @@ class gammaExponential:
 
         Parameters
         ----------
-        * `gamma` [float]:
+        gamma: float
             Hyperparameter of the Gamma-exponential covariance function.
-        * `l` [float]:
+        l: float
             Characteristic length-scale. Units in input space in which posterior GP values do not
             change significantly.
-        * `sigmaf` [float]:
+        sigmaf: float
             Signal variance. Controls the overall scale of the covariance function.
-        * `sigman` [float]:
+        sigman: float
             Noise variance. Additive noise in output space.
+        bounds: list
+            List of tuples specifying hyperparameter range in optimization procedure.
+        parameters: list
+            List of strings specifying which hyperparameters should be optimized.
         """
         self.gamma = gamma
         self.l = l
@@ -233,14 +245,14 @@ class gammaExponential:
 
         Parameters
         ----------
-        `X` [np.ndarray, shape=((n, nfeatures))]:
+        X: np.ndarray, shape=((n, nfeatures))
             Instances
-        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+        Xstar: np.ndarray, shape=((n, nfeatures))
             Instances
 
         Returns
         -------
-        `cov` [np.ndarray, shape=((n, m))]:
+        cov: np.ndarray, shape=((n, m))
             Computed covariance matrix.
         """
         r = l2norm_(X, Xstar)
@@ -253,16 +265,16 @@ class gammaExponential:
 
         Parameters
         ----------
-        `X` [np.ndarray, shape=((n, nfeatures))]:
+        X: np.ndarray, shape=((n, nfeatures))
             Instances
-        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+        Xstar: np.ndarray, shape=((n, nfeatures))
             Instances
-        `param` [str]:
+        param: str
             Parameter to compute gradient matrix for.
 
         Returns
         -------
-        `param_grad` [np.ndarray, shape=((n, m))]:
+        param_grad: np.ndarray, shape=((n, m))
             Gradient matrix for parameter `param`.
         """
         if param == 'gamma':
@@ -298,15 +310,19 @@ class rationalQuadratic:
 
         Parameters
         ----------
-        * `alpha` [float]:
+        alpha: float
             Hyperparameter of the rational-quadratic covariance function.
-        * `l` [float]:
+        l: float
             Characteristic length-scale. Units in input space in which posterior GP values do not
             change significantly.
-        * `sigmaf` [float]:
+        sigmaf: float
             Signal variance. Controls the overall scale of the covariance function.
-        * `sigman` [float]:
+        sigman: float
             Noise variance. Additive noise in output space.
+        bounds: list
+            List of tuples specifying hyperparameter range in optimization procedure.
+        parameters: list
+            List of strings specifying which hyperparameters should be optimized.
         """
         self.alpha = alpha
         self.l = l
@@ -326,14 +342,14 @@ class rationalQuadratic:
 
         Parameters
         ----------
-        `X` [np.ndarray, shape=((n, nfeatures))]:
+        X: np.ndarray, shape=((n, nfeatures))
             Instances
-        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+        Xstar: np.ndarray, shape=((n, nfeatures))
             Instances
 
         Returns
         -------
-        `cov` [np.ndarray, shape=((n, m))]:
+        cov: np.ndarray, shape=((n, m))
             Computed covariance matrix.
         """
         r = l2norm_(X, Xstar)
@@ -346,16 +362,16 @@ class rationalQuadratic:
 
         Parameters
         ----------
-        `X` [np.ndarray, shape=((n, nfeatures))]:
+        X: np.ndarray, shape=((n, nfeatures))
             Instances
-        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+        Xstar: np.ndarray, shape=((n, nfeatures))
             Instances
-        `param` [str]:
+        param: str
             Parameter to compute gradient matrix for.
 
         Returns
         -------
-        `param_grad` [np.ndarray, shape=((n, m))]:
+        param_grad: np.ndarray, shape=((n, m))
             Gradient matrix for parameter `param`.
         """
         if param == 'alpha':

@@ -7,20 +7,22 @@ from joblib import Parallel, delayed
 
 
 class GPGO:
-    def __init__(self, GPRegressor, Acquisition, f, parameter_dict, n_jobs = 1):
+    def __init__(self, GPRegressor, Acquisition, f, parameter_dict, n_jobs=1):
         """
         Bayesian Optimization class.
 
         Parameters
         ----------
-        * `GPRegressor` [GP]:
+        GPRegressor: GPRegressor instance
             Gaussian Process surrogate model instance.
-        * `Acquisition` [acq]:
+        Acquisition: Acquisition instance
             Acquisition instance.
-        * `f` [fun]:
+        f: fun
             Function to maximize over parameters specified by `parameter_dict`.
-        * `parameter_dict` [dict]:
+        parameter_dict: dict
             Dictionary specifying parameter, their type and bounds.
+        n_jobs: int. Default 1
+            Parallel threads to use during acquisition optimization.
         """
         self.GP = GPRegressor
         self.A = Acquisition
@@ -41,7 +43,7 @@ class GPGO:
 
         Returns
         -------
-        * `param_sample` [dict]:
+        param_sample: dict
             A random sample of specified parameters.
         """
         d = OrderedDict()
@@ -60,7 +62,7 @@ class GPGO:
 
         Parameters
         ----------
-        * `n_eval` [float]:
+        n_eval: int. Default 3
             Number of initial evaluations to perform.
 
         """
@@ -81,12 +83,12 @@ class GPGO:
 
         Parameters
         ----------
-        * `xnew` [np.ndarray, shape=((len(self.parameter_key),))]:
+        xnew: np.ndarray, shape=((len(self.parameter_key),))
             Point to evaluate the acquisition function on.
 
         Returns
         -------
-        * `acq` [float]:
+        acq: float
             Acquisition function value for `xnew`.
 
         """
@@ -100,9 +102,9 @@ class GPGO:
 
         Parameters
         ----------
-        * `method` [str]:
+        method: str. Default 'L-BFGS-B'.
             Any `scipy.optimize` method that admits bounds and gradients. Default is 'L-BFGS-B'.
-        * `n_start` [int]:
+        n_start: int. Default 100.
             Number of starting points for the optimization procedure.
 
         """
@@ -118,9 +120,10 @@ class GPGO:
                     x_best[index], f_best[index] = res.x, res.fun[0]
             else:
                 opt = Parallel(n_jobs=self.n_jobs)(delayed(minimize)(self._acqWrapper,
-                                                                     x0 = start_point,
-                                                                     method = 'L-BFGS-B',
-                                                                     bounds = self.parameter_range) for start_point in start_points_arr)
+                                                                     x0=start_point,
+                                                                     method='L-BFGS-B',
+                                                                     bounds=self.parameter_range) for start_point in
+                                                   start_points_arr)
                 x_best = np.array([res.x for res in opt])
                 f_best = np.array([res.fun[0] for res in opt])
 
@@ -146,9 +149,9 @@ class GPGO:
 
         Returns
         -------
-        * `best_x` [OrderedDict]:
+        best_x: OrderedDict
             Point yielding best evaluation in the procedure.
-        * `tau` [float]:
+        tau: float
             Best function evaluation.
 
         """
@@ -159,17 +162,17 @@ class GPGO:
             res_d[key] = opt_x[i]
         return res_d, self.tau
 
-    def run(self, max_iter=10, init_evals = 3, resume = False):
+    def run(self, max_iter=10, init_evals=3, resume=False):
         """
         Runs the Bayesian Optimization procedure.
 
         Parameters
         ----------
-        * `max_iter` [int]:
+        max_iter: int. Default 10.
             Number of iterations to run.
-        * `init_evals` [init]:
+        init_evals: int. Default 3.
             Initial function evaluations before fitting a GP.
-        * `resume` [bool]:
+        resume: bool. Default False.
             Whether to resume the optimization procedure from the last evaluation.
         """
         if not resume:

@@ -11,11 +11,11 @@ class GPRegressor:
 
         Parameters
         ----------
-        * `covfunc` [covfunc]:
-            An instance from the `covfunc` module.
-        * `optimize` [bool]:
+        covfunc: instance from a class of covfunc module
+            An instance from a class from the `covfunc` module.
+        optimize: bool:
             Whether to perform covariance function hyperparameter optimization.
-        * `usegrads` [bool]:
+        usegrads: bool
             Whether to use gradient information on hyperparameter optimization. Only used
             if `optimize=True`.
         """
@@ -29,7 +29,7 @@ class GPRegressor:
 
         Returns
         -------
-        * `d` [dict]:
+        covparams: dict
             Dictionary containing covariance function hyperparameters
         """
         d = {}
@@ -43,9 +43,9 @@ class GPRegressor:
 
         Parameters
         ----------
-        * `X` [np.ndarray, shape=(nsamples, nfeatures)]:
+        X: np.ndarray, shape=(nsamples, nfeatures)
             Training instances to fit the GP.
-        * `y` [np.ndarray, shape=(nsamples,)]:
+        y: np.ndarray, shape=(nsamples,)
             Corresponding continuous target values to X.
 
         """
@@ -70,12 +70,12 @@ class GPRegressor:
 
         Parameters
         ----------
-        * `k_param` [dict]:
+        k_param: dict
             Dictionary with keys being hyperparameters and values their queried values.
 
         Returns
         -------
-        * `grads` [np.ndarray, shape=((n_hyperparam,))]:
+        grads: np.ndarray, shape=((n_hyperparam,)):
             Gradient corresponding to each hyperparameters. Order given by `k_param.keys()`
         """
         k_param_key = list(k_param.keys())
@@ -98,14 +98,14 @@ class GPRegressor:
 
         Parameters
         ----------
-        * `param_vector` [list]:
+        param_vector: list
             List of values corresponding to hyperparameters to query.
-        * `param_key` [list]:
+        param_key: list
             List of hyperparameter strings corresponding to `param_vector`.
 
         Returns
         -------
-        * `lmlik` [float]:
+        lmlik: float
             -log-marginal likelihood for chosen hyperparameters
 
         """
@@ -132,14 +132,14 @@ class GPRegressor:
 
         Parameters
         ----------
-        * `param_vector` [list]:
+        param_vector: list
             List of values corresponding to hyperparameters to query.
-        * `param_key` [list]:
+        param_key: list
             List of hyperparameter strings corresponding to `param_vector`.
 
         Returns
         -------
-        * `grads` [np.ndarray, shape=((n_hyperparams,))]:
+        grads: np.ndarray, shape=((n_hyperparams,))
             Gradient for each evaluated hyperparameter.
 
         """
@@ -155,9 +155,9 @@ class GPRegressor:
 
         Parameters
         ----------
-        * `param_key` [list]:
+        param_key: list
             List of hyperparameters to optimize.
-        * `param_bounds` [list]:
+        param_bounds: list
             List containing tuples defining bounds for each hyperparameter to optimize over.
 
         """
@@ -187,17 +187,17 @@ class GPRegressor:
 
         Parameters
         ----------
-        * `Xstar` [np.ndarray, shape=((nsamples, nfeatures))]:
+        Xstar: np.ndarray, shape=((nsamples, nfeatures))
             Testing instances to predict.
-        * `return_std` [bool]:
+        return_std: bool
             Whether to return the standard deviation of the posterior process. Otherwise,
             it returns the whole covariance matrix of the posterior process.
 
         Returns
         -------
-        * `fmean` [np.ndarray, shape=((nsamples,)):
+        fmean: np.ndarray, shape=((nsamples,)
             Mean of the posterior process for testing instances.
-        * `fcov` [np.ndarray, shape=((nsamples, nsamples))]:
+        fcov: np.ndarray, shape=((nsamples, nsamples))
             Covariance of the posterior process for testing instances.
         """
         Xstar = np.atleast_2d(Xstar)
@@ -215,9 +215,9 @@ class GPRegressor:
 
         Parameters
         ----------
-        * `xnew` [np.ndarray, shape=((m, nfeatures)):
+        xnew: np.ndarray, shape=((m, nfeatures))
             New training instances to update the model with.
-        * `ynew`: [np.ndarray, shape=((m,)):
+        ynew: np.ndarray, shape=((m,))
             New training targets to update the model with.
         """
         y = np.concatenate((self.y, ynew), axis=0)

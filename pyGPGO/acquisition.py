@@ -9,12 +9,12 @@ class Acquisition:
 
         Parameters
         ----------
-        * `mode` [str]:
+        mode: str
             Either `ExpectedImprovement`, `ProbabilityImprovement` or `UCB`. Defines the
             behaviour of the acquisition strategy.
-        * `eps` [float]:
+        eps: float
             Small floating value to avoid `np.sqrt` or zero-division warnings.
-        * `params` [float]:
+        params: float
             Extra parameters needed for certain acquisition functions, e.g. UCB needs
             to be supplied with `beta`.
         """
@@ -35,16 +35,16 @@ class Acquisition:
 
         Parameters
         ----------
-        * `tau` [float]:
+        tau: float
             Best observed function evaluation.
-        * `mean` [float]:
+        mean: float
             Point mean of the posterior process.
-        * `std` [float]:
+        std: float
             Point std of the posterior process.
 
         Returns
         -------
-        * `pi` [float]:
+        pi: float
             Probability of improvement.
         """
         z = (mean - tau - self.eps) / (std + self.eps)
@@ -56,16 +56,16 @@ class Acquisition:
 
         Parameters
         ----------
-        * `tau` [float]:
+        tau: float
             Best observed function evaluation.
-        * `mean` [float]:
+        mean: float
             Point mean of the posterior process.
-        * `std` [float]:
+        std: float
             Point std of the posterior process.
 
         Returns
         -------
-        * `ei` [float]:
+        ei: float
             Expected improvement.
         """
         z = (mean - tau - self.eps) / (std + self.eps)
@@ -77,18 +77,18 @@ class Acquisition:
 
         Parameters
         ----------
-        * `tau` [float]:
+        tau: float
             Best observed function evaluation.
-        * `mean` [float]:
+        mean: float
             Point mean of the posterior process.
-        * `std` [float]:
+        std: float
             Point std of the posterior process.
-        * `beta` [float]:
+        beta: float
             Hyperparameter controlling exploitation/exploration ratio.
 
         Returns
         -------
-        * `ucb` [float]:
+        ucb: float
             Upper confidence bound.
         """
         return mean + beta * std
@@ -99,16 +99,16 @@ class Acquisition:
 
         Parameters
         ----------
-        * `tau` [float]:
+        tau: float
             Best observed function evaluation.
-        * `mean` [float]:
+        mean: float
             Point mean of the posterior process.
-        * `std` [float]:
+        std: float
             Point std of the posterior process.
 
         Returns
         -------
-        * `af` [float]:
+        af: float
             Acqusition function value.
 
         """
