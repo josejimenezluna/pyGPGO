@@ -3,20 +3,6 @@ from scipy.special import gamma, kv
 from scipy.spatial.distance import cdist
 
 
-def l2norm_(X, Xstar):
-    return cdist(X, Xstar)
-
-
-def kronDelta(X, Xstar):
-    n, m = X.shape[0], Xstar.shape[0]
-    mat = np.zeros((n, m), dtype=np.int)
-    for i in range(n):
-        for j in range(m):
-            if np.array_equal(X[i], Xstar[j]):
-                mat[i, j] = 1
-    return mat
-
-
 default_bounds = {
     'l': [1e-4, 1],
     'sigmaf': [1e-4, 2],
@@ -27,9 +13,65 @@ default_bounds = {
 }
 
 
+def l2norm_(X, Xstar):
+    """
+    Wrapper function to compute the L2 norm
+
+    Parameters
+    ----------
+    * `X` [np.ndarray, shape=((n, nfeatures))]:
+        Instances.
+    * `Xstar` [np.ndarray, shape=((m, nfeatures))]:
+        Instances
+
+    Returns
+    -------
+    * `cdist` [np.ndarray, shape=((n, m))]:
+        Pairwise euclidian distance between row pairs of `X` and `Xstar`.
+    """
+    return cdist(X, Xstar)
+
+
+def kronDelta(X, Xstar):
+    """
+    Computes Kronecker delta for rows in X and Xstar.
+
+    Parameters
+    ----------
+    * `X` [np.ndarray, shape=((n, nfeatures))]:
+        Instances.
+    * `Xstar` [np.ndarray, shape((m, nfeatures))]:
+        Instances.
+
+    Returns
+    -------
+    * `kron` [np.ndarray, shape=((n, m))]:
+        Kronecker delta between row pairs of `X` and `Xstar`.
+    """
+    n, m = X.shape[0], Xstar.shape[0]
+    mat = np.zeros((n, m), dtype=np.int)
+    for i in range(n):
+        for j in range(m):
+            if np.array_equal(X[i], Xstar[j]):
+                mat[i, j] = 1
+    return mat
+
 class squaredExponential:
     def __init__(self, l=1, sigmaf=1.0, sigman=1e-6, bounds=None, parameters=['l', 'sigmaf',
                                                                               'sigman']):
+        """
+        Squared exponential kernel class.
+
+        Parameters
+        ----------
+        * `l` [float]:
+            Characteristic length-scale. Units in input space in which posterior GP values do not
+            change significantly.
+        * `sigmaf` [float]:
+            Signal variance. Controls the overall scale of the covariance function.
+        * `sigman` [float]:
+            Noise variance. Additive noise in output space.
+        """
         self.l = l
         self.sigmaf = sigmaf
         self.sigman = sigman
@@ -42,10 +84,42 @@ class squaredExponential:
                 self.bounds.append(default_bounds[param])
 
     def K(self, X, Xstar):
+        """
+        Computes covariance function values over `X` and `Xstar`.
+
+        Parameters
+        ----------
+        `X` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+
+        Returns
+        -------
+        `cov` [np.ndarray, shape=((n, m))]:
+            Computed covariance matrix.
+        """
         r = l2norm_(X, Xstar)
         return self.sigmaf * (np.exp(-.5 * r ** 2 / self.l ** 2)) + self.sigman * kronDelta(X, Xstar)
 
     def gradK(self, X, Xstar, param='l'):
+        """
+        Computes gradient matrix for instances `X`, `Xstar` and hyperparameter `param`.
+
+        Parameters
+        ----------
+        `X` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `param` [str]:
+            Parameter to compute gradient matrix for.
+
+        Returns
+        -------
+        `param_grad` [np.ndarray, shape=((n, m))]:
+            Gradient matrix for parameter `param`.
+        """
         if param == 'l':
             r = l2norm_(X, Xstar)
             num = r ** 2 * np.exp(-r ** 2 / (2 * self.l ** 2))
@@ -70,6 +144,21 @@ class matern:
                                                                                  'l',
                                                                                  'sigmaf',
                                                                                  'sigman']):
+        """
+        Matern kernel class.
+
+        Parameters
+        ----------
+        * `v` [float]:
+            Scale-mixture hyperparameter of the Matern covariance function.
+        * `l` [float]:
+            Characteristic length-scale. Units in input space in which posterior GP values do not
+            change significantly.
+        * `sigmaf` [float]:
+            Signal variance. Controls the overall scale of the covariance function.
+        * `sigman` [float]:
+            Noise variance. Additive noise in output space.
+        """
         self.v, self.l = v, l
         self.sigmaf = sigmaf
         self.sigman = sigman
@@ -82,6 +171,21 @@ class matern:
                 self.bounds.append(default_bounds[param])
 
     def K(self, X, Xstar):
+        """
+        Computes covariance function values over `X` and `Xstar`.
+
+        Parameters
+        ----------
+        `X` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+
+        Returns
+        -------
+        `cov` [np.ndarray, shape=((n, m))]:
+            Computed covariance matrix.
+        """
         r = l2norm_(X, Xstar)
         bessel = kv(self.v, np.sqrt(2 * self.v) * r / self.l)
         f = 2 ** (1 - self.v) / gamma(self.v) * (np.sqrt(2 * self.v) * r / self.l) ** self.v
@@ -96,6 +200,21 @@ class gammaExponential:
                                                                                      'l',
                                                                                      'sigmaf',
                                                                                      'sigman']):
+        """
+        Gamma-exponential kernel class.
+
+        Parameters
+        ----------
+        * `gamma` [float]:
+            Hyperparameter of the Gamma-exponential covariance function.
+        * `l` [float]:
+            Characteristic length-scale. Units in input space in which posterior GP values do not
+            change significantly.
+        * `sigmaf` [float]:
+            Signal variance. Controls the overall scale of the covariance function.
+        * `sigman` [float]:
+            Noise variance. Additive noise in output space.
+        """
         self.gamma = gamma
         self.l = l
         self.sigmaf = sigmaf
@@ -109,11 +228,43 @@ class gammaExponential:
                 self.bounds.append(default_bounds[param])
 
     def K(self, X, Xstar):
+        """
+        Computes covariance function values over `X` and `Xstar`.
+
+        Parameters
+        ----------
+        `X` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+
+        Returns
+        -------
+        `cov` [np.ndarray, shape=((n, m))]:
+            Computed covariance matrix.
+        """
         r = l2norm_(X, Xstar)
         return self.sigmaf * (np.exp(-(r / self.l) ** self.gamma)) + \
                self.sigman * kronDelta(X, Xstar)
 
     def gradK(self, X, Xstar, param):
+        """
+        Computes gradient matrix for instances `X`, `Xstar` and hyperparameter `param`.
+
+        Parameters
+        ----------
+        `X` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `param` [str]:
+            Parameter to compute gradient matrix for.
+
+        Returns
+        -------
+        `param_grad` [np.ndarray, shape=((n, m))]:
+            Gradient matrix for parameter `param`.
+        """
         if param == 'gamma':
             eps = 10e-6
             r = l2norm_(X, Xstar) + eps
@@ -142,6 +293,21 @@ class rationalQuadratic:
                                                                                      'l',
                                                                                      'sigmaf',
                                                                                      'sigman']):
+        """
+        Rational-quadratic kernel class.
+
+        Parameters
+        ----------
+        * `alpha` [float]:
+            Hyperparameter of the rational-quadratic covariance function.
+        * `l` [float]:
+            Characteristic length-scale. Units in input space in which posterior GP values do not
+            change significantly.
+        * `sigmaf` [float]:
+            Signal variance. Controls the overall scale of the covariance function.
+        * `sigman` [float]:
+            Noise variance. Additive noise in output space.
+        """
         self.alpha = alpha
         self.l = l
         self.sigmaf = sigmaf
@@ -155,11 +321,43 @@ class rationalQuadratic:
                 self.bounds.append(default_bounds[param])
 
     def K(self, X, Xstar):
+        """
+        Computes covariance function values over `X` and `Xstar`.
+
+        Parameters
+        ----------
+        `X` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+
+        Returns
+        -------
+        `cov` [np.ndarray, shape=((n, m))]:
+            Computed covariance matrix.
+        """
         r = l2norm_(X, Xstar)
         return self.sigmaf * ((1 + r ** 2 / (2 * self.alpha * self.l ** 2)) ** (-self.alpha)) \
                + self.sigman * kronDelta(X, Xstar)
 
     def gradK(self, X, Xstar, param):
+        """
+        Computes gradient matrix for instances `X`, `Xstar` and hyperparameter `param`.
+
+        Parameters
+        ----------
+        `X` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `Xstar` [np.ndarray, shape=((n, nfeatures))]:
+            Instances
+        `param` [str]:
+            Parameter to compute gradient matrix for.
+
+        Returns
+        -------
+        `param_grad` [np.ndarray, shape=((n, m))]:
+            Gradient matrix for parameter `param`.
+        """
         if param == 'alpha':
             r = l2norm_(X, Xstar)
             one = (r ** 2 / (2 * self.alpha * self.l ** 2) + 1) ** (-self.alpha)
@@ -182,17 +380,17 @@ class rationalQuadratic:
         else:
             raise ValueError('Param not found')
 
-
-class arcSin:
-    def __init__(self, n, sigma=None):
-        if sigma == None:
-            self.sigma = np.eye(n)
-        else:
-            self.sigma = sigma
-
-    def k(self, x, xstar):
-        num = 2 * np.dot(np.dot(x[np.newaxis, :], self.sigma), xstar)
-        a = 1 + 2 * np.dot(np.dot(x[np.newaxis, :], self.sigma), x)
-        b = 1 + 2 * np.dot(np.dot(xstar[np.newaxis, :], self.sigma), xstar)
-        res = num / np.sqrt(a * b)
-        return (res)
+# DEPRECATED
+# class arcSin:
+#     def __init__(self, n, sigma=None):
+#         if sigma == None:
+#             self.sigma = np.eye(n)
+#         else:
+#             self.sigma = sigma
+#
+#     def k(self, x, xstar):
+#         num = 2 * np.dot(np.dot(x[np.newaxis, :], self.sigma), xstar)
+#         a = 1 + 2 * np.dot(np.dot(x[np.newaxis, :], self.sigma), x)
+#         b = 1 + 2 * np.dot(np.dot(xstar[np.newaxis, :], self.sigma), xstar)
+#         res = num / np.sqrt(a * b)
+#         return (res)

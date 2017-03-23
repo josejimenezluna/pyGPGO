@@ -972,16 +972,6 @@ In the machine-learning community, hyper-parameter optimization is often overloo
 \begin{itemize}
 	\item \textbf{Grid search}. Also known as parameter sweep. This is simply an exhaustive search in a user specified subset of parameter space. Search bounds have to be set manually. When multiple hyper-parameters have to be optimized over their sets, grid search considers the Cartesian product of all of them. This poses a problem when the number of hyper-parameters to optimize grows, also known as the curse of dimensionality. While suffering from this problem, grid search is still widely used for small to mid-sized problems, where function evaluations are not very expensive. Also, it is embarrassingly parallel: function evaluations can be distributed over in a simple way.
 	\item \textbf{Random search}. Grid search is exhaustive since it considers all possible evaluations over a Cartesian product over parameter sets. Randomized search in hyper-parameter space is also a very popular method for the task at hand. In particular, this method has been shown to work considerably better in high-dimensional spaces than grid search [ref]. There is also evidence that often sometimes some hyper-parameters do not affect the loss significantly.
-	\item \textbf{Simulated annealing}. While the other methods are search based, simulated annealing is a proper global optimization algorithm. This technique itself is a meta-heuristic to approximate the global minimum of a function $f$ in a large search space. Its origins comes from physics, and it is in fact, an adaptation of the Metropolis-Hastings algorithm [ref], a method to generate samples from a given thermodynamic system. Assume that our system is at a state $s$. Simulated annealing works by proposing a neighbouring candidate to evaluate $s'$, and decides whether to move towards it or not depending on a probabilistic criterion that is function of both $s$, $s'$, and an annealing temperature $T$. The initial annealing temperature $T$ is cooled down according to some schema after each iteration of the algorithm. This also lowers the acceptance probability after each iteration.\\
-	
-	In practice, how to choose to propose neighbouring candidates $s'$ of $s$, the probabilistic criterion to accept the candidate and the temperature annealing scheme is left for the user to define. For all the experiments performed here the procedure was programmed as follows: the initial temperature $T$ is set to $100$. Neighbouring candidate points $s'$ are randomly and uniformly sampled within hyper-parameter bounds, the acceptance probability is the standard Metropolis-Hastings acceptance criteria:
-	
-	\begin{equation}
-	\label{sametro}
-	P(s, s', T) = \exp\left( - \dfrac{f(s') - f(s)}{T} \right)
-	\end{equation}
-	
-	For new states $s'$ where $f(s') > f(s)$, $P(s, s', T)$ is automatically set to 1. This in practice means that if we find a state with a better value, we move to it, and if it is worse, we move to it with a certain probability given by Equation \ref{sametro}. We cool the temperature $T$ in each iteration by a factor of $0.9$. In particular, during the experiments, I tried different cooling schemas and found this one to yield the best results.
 \end{itemize}
 
 \subsection{Evaluation metrics}
@@ -1339,18 +1329,76 @@ if __name__ == '__main__':
 
 A few notes on the code, notice that we add two extra parameters to the \texttt{GPRegressor} module: \texttt{optimize=True, usegrads=True} indicates to the instance that it should perform Type II maximum likelihood estimation of the \texttt{squaredExponential} instance hyper-parameters using gradient information if available. By default all hyper-parameters are optimized, in this case, $\left\lbrace l, \sigma_n^2, \sigma_f^2 \right\rbrace$ are optimized. If we want only a subset of them to be optimized or none at all, we can specify so in the corresponding covariance function instance. 
 
+
+
 \subsection{Optimizing parameters of a machine-learning model using the \texttt{GPGO} module.}
 
+While pyGPGO can optimize any function the user specifies, the main topic of this main thesis was the application of these algorithms to optimize the hyperparameters of machine-learning algorithms. We provide a very simple way of how to do so using \texttt{scikit-learn}, arguably the most complete machine-learning package for Python. The example generates synthetic data and tries to optimize a Support Vector Machine classifier parameters ($C, \gamma$), using cross-validation. A plot of the generated data can be checked in Figure \ref{fig:makemoons}.\\
 
-\newpage
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+from sklearn.datasets import make_moons
+from sklearn.svm import SVC
+from sklearn.model_selection import cross_val_score
 
 
+from pyGPGO.GPGO import GPGO
+from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
+
+
+def evaluateModel(C, gamma):
+    clf = SVC(C=C, gamma=gamma)
+    return np.average(cross_val_score(clf, X, y))
+    
+
+if __name__ == '__main__':
+    np.random.seed(20)
+    X, y = make_moons(n_samples = 200, noise = 0.3)
+
+    cm_bright = ListedColormap(['#fc4349', '#6dbcdb'])
+    
+    fig = plt.figure()
+    plt.scatter(X[:, 0], X[:, 1], c = y, cmap = cm_bright)
+    plt.show()
+    
+    sexp = squaredExponential()
+    gp = GPRegressor(sexp, optimize = True, usegrads = True)
+    acq = Acquisition(mode = 'UCB', beta = 1.5)
+
+    params = {'C':      ('cont', (1e-4, 1e4)),
+              'gamma':  ('cont', (1e-4, 10))
+             }
+
+    gpgo = GPGO(gp, acq, evaluateModel, params)
+    gpgo.run(max_iter = 50)
+    gpgo.getResult()               
+\end{minted}
+
+\FloatBarrier
 \begin{figure}
 \centering
 \caption{Gaussian Process regression of noisy inputs with pyGPGO.}
 \includegraphics[width=0.75\textwidth]{figures/chapter5/noiseopt}
 \label{fig:noiseopt}
 \end{figure}
+
+\begin{figure}
+\centering
+\caption{Synthetic data generated for our \texttt{sklearn} optimization example.}
+\includegraphics[width=0.75\textwidth]{figures/chapter5/makemoons}
+\label{fig:makemoons}
+\end{figure}
+
 
 
 

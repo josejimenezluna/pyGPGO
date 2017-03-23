@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='pyGPGO',
-    version='0.1.0.dev1',
+    version='__version__',
     description='Bayesian Optimization tools in Python',
     classifiers=[
     'Development Status :: 2 - Pre-Alpha',

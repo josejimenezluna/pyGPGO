@@ -13,12 +13,11 @@ d_rf['max_features'] = ('cont', (0.1, 0.5))
 
 d_knn = OrderedDict()
 d_knn['n_neighbors'] = ('int', (10, 50))
-d_knn['leaf_size'] = ('cont', (0.1, 0.99))
 
 d_mlp = OrderedDict()
-d_mlp['hidden_layer_size'] = ('int', (5, 200))
+d_mlp['hidden_layer_size'] = ('int', (2, 100))
 d_mlp['alpha'] = ('cont', (1e-5, 1e-1))
-d_mlp['learning_rate_init'] = ('cont', (1e-5, 1e-1))
+d_mlp['learning_rate_init'] = ('cont', (1e-6, 1e-1))
 d_mlp['beta_1'] = ('cont', (0.001, 0.999))
 d_mlp['beta_2'] = ('cont', (0.001, 0.999))
 
@@ -169,12 +168,10 @@ class KNN:
     def eval(self):
         if self.problem == 'binary':
             mod = KNeighborsClassifier(n_neighbors=self.n_neighbors,
-                                       leaf_size=self.leaf_size,
-                                       random_state=20)
+                                       leaf_size=self.leaf_size)
         else:
             mod = KNeighborsRegressor(n_neighbors=self.n_neighbors,
-                                      leaf_size=self.leaf_size,
-                                      random_state=20)
+                                      leaf_size=self.leaf_size)
         return mod
 
 

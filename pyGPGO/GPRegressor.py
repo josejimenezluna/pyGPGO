@@ -6,17 +6,49 @@ from scipy.optimize import minimize
 
 class GPRegressor:
     def __init__(self, covfunc, optimize=False, usegrads=False):
+        """
+        Gaussian Process regressor class.
+
+        Parameters
+        ----------
+        * `covfunc` [covfunc]:
+            An instance from the `covfunc` module.
+        * `optimize` [bool]:
+            Whether to perform covariance function hyperparameter optimization.
+        * `usegrads` [bool]:
+            Whether to use gradient information on hyperparameter optimization. Only used
+            if `optimize=True`.
+        """
         self.covfunc = covfunc
         self.optimize = optimize
         self.usegrads = usegrads
 
     def getcovparams(self):
+        """
+        Returns current covariance function hyperparameters
+
+        Returns
+        -------
+        * `d` [dict]:
+            Dictionary containing covariance function hyperparameters
+        """
         d = {}
         for param in self.covfunc.parameters:
             d[param] = self.covfunc.__dict__[param]
         return d
 
     def fit(self, X, y):
+        """
+        Fits a Gaussian Process regressor
+
+        Parameters
+        ----------
+        * `X` [np.ndarray, shape=(nsamples, nfeatures)]:
+            Training instances to fit the GP.
+        * `y` [np.ndarray, shape=(nsamples,)]:
+            Corresponding continuous target values to X.
+
+        """
         self.X = X
         self.y = y
         self.nsamples = self.X.shape[0]
@@ -33,6 +65,19 @@ class GPRegressor:
             2 * np.pi)
 
     def param_grad(self, k_param):
+        """
+        Returns gradient over hyperparameters. It is recommended to use `self._grad` instead.
+
+        Parameters
+        ----------
+        * `k_param` [dict]:
+            Dictionary with keys being hyperparameters and values their queried values.
+
+        Returns
+        -------
+        * `grads` [np.ndarray, shape=((n_hyperparam,))]:
+            Gradient corresponding to each hyperparameters. Order given by `k_param.keys()`
+        """
         k_param_key = list(k_param.keys())
         covfunc = self.covfunc.__class__(**k_param)
         n = self.X.shape[0]
@@ -48,6 +93,22 @@ class GPRegressor:
         return np.array(grads)
 
     def _lmlik(self, param_vector, param_key):
+        """
+        Returns marginal negative log-likelihood for given covariance hyperparameters.
+
+        Parameters
+        ----------
+        * `param_vector` [list]:
+            List of values corresponding to hyperparameters to query.
+        * `param_key` [list]:
+            List of hyperparameter strings corresponding to `param_vector`.
+
+        Returns
+        -------
+        * `lmlik` [float]:
+            -log-marginal likelihood for chosen hyperparameters
+
+        """
         k_param = OrderedDict()
         for k, v in zip(param_key, param_vector):
             k_param[k] = v
@@ -66,12 +127,40 @@ class GPRegressor:
         return (- self.logp)
 
     def _grad(self, param_vector, param_key):
+        """
+        Returns gradient for each hyperparameter, evaluated at a given point.
+
+        Parameters
+        ----------
+        * `param_vector` [list]:
+            List of values corresponding to hyperparameters to query.
+        * `param_key` [list]:
+            List of hyperparameter strings corresponding to `param_vector`.
+
+        Returns
+        -------
+        * `grads` [np.ndarray, shape=((n_hyperparams,))]:
+            Gradient for each evaluated hyperparameter.
+
+        """
         k_param = OrderedDict()
         for k, v in zip(param_key, param_vector):
             k_param[k] = v
         return - self.param_grad(k_param)
 
     def optHyp(self, param_key, param_bounds, grads=None, n_trials=5):
+        """
+        Optimizes the negative marginal log-likelihood for given hyperparameters and bounds.
+        This is an empirical Bayes approach (or Type II maximum-likelihood).
+
+        Parameters
+        ----------
+        * `param_key` [list]:
+            List of hyperparameters to optimize.
+        * `param_bounds` [list]:
+            List containing tuples defining bounds for each hyperparameter to optimize over.
+
+        """
         xs = [[1, 1, 1]]
         fs = [self._lmlik(xs[0], param_key)]
         for trial in range(n_trials):
@@ -93,6 +182,24 @@ class GPRegressor:
         self.covfunc = self.covfunc.__class__(**k_param)
 
     def predict(self, Xstar, return_std=False):
+        """
+        Returns mean and covariances for the posterior Gaussian Process.
+
+        Parameters
+        ----------
+        * `Xstar` [np.ndarray, shape=((nsamples, nfeatures))]:
+            Testing instances to predict.
+        * `return_std` [bool]:
+            Whether to return the standard deviation of the posterior process. Otherwise,
+            it returns the whole covariance matrix of the posterior process.
+
+        Returns
+        -------
+        * `fmean` [np.ndarray, shape=((nsamples,)):
+            Mean of the posterior process for testing instances.
+        * `fcov` [np.ndarray, shape=((nsamples, nsamples))]:
+            Covariance of the posterior process for testing instances.
+        """
         Xstar = np.atleast_2d(Xstar)
         kstar = self.covfunc.K(self.X, Xstar).T
         fmean = np.dot(kstar, self.alpha)
@@ -103,6 +210,16 @@ class GPRegressor:
         return fmean, fcov
 
     def update(self, xnew, ynew):
+        """
+        Updates the internal model with `xnew` and `ynew` instances.
+
+        Parameters
+        ----------
+        * `xnew` [np.ndarray, shape=((m, nfeatures)):
+            New training instances to update the model with.
+        * `ynew`: [np.ndarray, shape=((m,)):
+            New training targets to update the model with.
+        """
         y = np.concatenate((self.y, ynew), axis=0)
         X = np.concatenate((self.X, xnew), axis=0)
         self.fit(X, y)

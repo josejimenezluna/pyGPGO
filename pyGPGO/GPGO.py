@@ -8,6 +8,20 @@ from joblib import Parallel, delayed
 
 class GPGO:
     def __init__(self, GPRegressor, Acquisition, f, parameter_dict, n_jobs = 1):
+        """
+        Bayesian Optimization class.
+
+        Parameters
+        ----------
+        * `GPRegressor` [GP]:
+            Gaussian Process surrogate model instance.
+        * `Acquisition` [acq]:
+            Acquisition instance.
+        * `f` [fun]:
+            Function to maximize over parameters specified by `parameter_dict`.
+        * `parameter_dict` [dict]:
+            Dictionary specifying parameter, their type and bounds.
+        """
         self.GP = GPRegressor
         self.A = Acquisition
         self.f = f
@@ -22,6 +36,14 @@ class GPGO:
         self.history = []
 
     def _sampleParam(self):
+        """
+        Randomly samples parameters over bounds.
+
+        Returns
+        -------
+        * `param_sample` [dict]:
+            A random sample of specified parameters.
+        """
         d = OrderedDict()
         for index, param in enumerate(self.parameter_key):
             if self.parameter_type[index] == 'int':
@@ -33,6 +55,15 @@ class GPGO:
         return d
 
     def _firstRun(self, n_eval=3):
+        """
+        Performs initial evaluations before fitting GP.
+
+        Parameters
+        ----------
+        * `n_eval` [float]:
+            Number of initial evaluations to perform.
+
+        """
         self.X = np.empty((n_eval, len(self.parameter_key)))
         self.y = np.empty((n_eval,))
         for i in range(n_eval):
@@ -44,12 +75,37 @@ class GPGO:
         self.tau = np.max(self.y)
         self.history.append(self.tau)
 
-    def _acqWrapper(self, xnew):  # Returns minimum for optimization purposes
+    def _acqWrapper(self, xnew):
+        """
+        Evaluates the acquisition function on a point.
+
+        Parameters
+        ----------
+        * `xnew` [np.ndarray, shape=((len(self.parameter_key),))]:
+            Point to evaluate the acquisition function on.
+
+        Returns
+        -------
+        * `acq` [float]:
+            Acquisition function value for `xnew`.
+
+        """
         new_mean, new_var = self.GP.predict(xnew, return_std=True)
         new_std = np.sqrt(new_var + 1e-6)
         return -self.A.eval(self.tau, new_mean, new_std)
 
     def _optimizeAcq(self, method='L-BFGS-B', n_start=100):
+        """
+        Optimizes the acquisition function using a multistart approach.
+
+        Parameters
+        ----------
+        * `method` [str]:
+            Any `scipy.optimize` method that admits bounds and gradients. Default is 'L-BFGS-B'.
+        * `n_start` [int]:
+            Number of starting points for the optimization procedure.
+
+        """
         start_points_dict = [self._sampleParam() for i in range(n_start)]
         start_points_arr = np.array([list(s.values()) for s in start_points_dict])
         x_best = np.empty((n_start, len(self.parameter_key)))
@@ -75,6 +131,9 @@ class GPGO:
         self.best = x_best[np.argmin(f_best)]
 
     def updateGP(self):
+        """
+        Updates the internal model with the next acquired point and its evaluation.
+        """
         kw = {param: self.best[i] for i, param in enumerate(self.parameter_key)}
         f_new = self.f(**kw)
         self.GP.update(np.atleast_2d(self.best), np.atleast_1d(f_new))
@@ -82,6 +141,17 @@ class GPGO:
         self.history.append(self.tau)
 
     def getResult(self):
+        """
+        Prints best result in the Bayesian Optimization procedure.
+
+        Returns
+        -------
+        * `best_x` [OrderedDict]:
+            Point yielding best evaluation in the procedure.
+        * `tau` [float]:
+            Best function evaluation.
+
+        """
         argtau = np.argmax(self.GP.y)
         opt_x = self.GP.X[argtau]
         res_d = OrderedDict()
@@ -89,9 +159,22 @@ class GPGO:
             res_d[key] = opt_x[i]
         return res_d, self.tau
 
-    def run(self, max_iter=10, init_evals = 3):
-        self.init_evals = init_evals
-        self._firstRun(self.init_evals)
+    def run(self, max_iter=10, init_evals = 3, resume = False):
+        """
+        Runs the Bayesian Optimization procedure.
+
+        Parameters
+        ----------
+        * `max_iter` [int]:
+            Number of iterations to run.
+        * `init_evals` [init]:
+            Initial function evaluations before fitting a GP.
+        * `resume` [bool]:
+            Whether to resume the optimization procedure from the last evaluation.
+        """
+        if not resume:
+            self.init_evals = init_evals
+            self._firstRun(self.init_evals)
         for iteration in range(max_iter):
             self._optimizeAcq()
             self.updateGP()
