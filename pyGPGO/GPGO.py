@@ -1,7 +1,6 @@
 from collections import OrderedDict
 
 import numpy as np
-from cma import fmin
 from scipy.optimize import minimize
 from joblib import Parallel, delayed
 
@@ -112,25 +111,20 @@ class GPGO:
         start_points_arr = np.array([list(s.values()) for s in start_points_dict])
         x_best = np.empty((n_start, len(self.parameter_key)))
         f_best = np.empty((n_start,))
-        if method == 'L-BFGS-B':
-            if self.n_jobs == 1:
-                for index, start_point in enumerate(start_points_arr):
-                    res = minimize(self._acqWrapper, x0=start_point, method=method,
-                                   bounds=self.parameter_range)
-                    x_best[index], f_best[index] = res.x, res.fun[0]
-            else:
-                opt = Parallel(n_jobs=self.n_jobs)(delayed(minimize)(self._acqWrapper,
-                                                                     x0=start_point,
-                                                                     method='L-BFGS-B',
-                                                                     bounds=self.parameter_range) for start_point in
-                                                   start_points_arr)
-                x_best = np.array([res.x for res in opt])
-                f_best = np.array([res.fun[0] for res in opt])
-
-        elif method == 'CMA-ES':
+        if self.n_jobs == 1:
             for index, start_point in enumerate(start_points_arr):
-                res = fmin(self._acqWrapper, x0=start_point, sigma0=0.1)
-                x_best[index], f_best[index] = res[0], res[1]
+                res = minimize(self._acqWrapper, x0=start_point, method=method,
+                               bounds=self.parameter_range)
+                x_best[index], f_best[index] = res.x, res.fun[0]
+        else:
+            opt = Parallel(n_jobs=self.n_jobs)(delayed(minimize)(self._acqWrapper,
+                                                                 x0=start_point,
+                                                                 method='L-BFGS-B',
+                                                                 bounds=self.parameter_range) for start_point in
+                                               start_points_arr)
+            x_best = np.array([res.x for res in opt])
+            f_best = np.array([res.fun[0] for res in opt])
+
         self.best = x_best[np.argmin(f_best)]
 
     def updateGP(self):

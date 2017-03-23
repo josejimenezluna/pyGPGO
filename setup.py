@@ -22,7 +22,6 @@ setup(name='pyGPGO',
     install_requires=[
         'numpy',
         'scipy',
-        'joblib',
-        'cma'
+        'joblib'
     ],
     zip_safe=False)
