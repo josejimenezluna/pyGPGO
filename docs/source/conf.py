@@ -32,7 +32,6 @@
 # ones.
 import sphinx_rtd_theme
 
-napoleon_include_special_with_doc = True
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
@@ -40,7 +39,10 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    'sphinx.ext.napoleon'
 ]
+
+napoleon_include_special_with_doc = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
