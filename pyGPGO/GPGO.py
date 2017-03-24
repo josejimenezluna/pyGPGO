@@ -22,6 +22,17 @@ class GPGO:
             Dictionary specifying parameter, their type and bounds.
         n_jobs: int. Default 1
             Parallel threads to use during acquisition optimization.
+
+        Attributes
+        ----------
+        parameter_key: list
+            Parameters to consider in optimization
+        parameter_type: list
+            Parameter types.
+        parameter_range: list
+            Parameter bounds during optimization
+        history: list
+            Target values evaluated along the procedure.
         """
         self.GP = GPRegressor
         self.A = Acquisition
@@ -42,7 +53,7 @@ class GPGO:
 
         Returns
         -------
-        param_sample: dict
+        dict:
             A random sample of specified parameters.
         """
         d = OrderedDict()
@@ -61,8 +72,8 @@ class GPGO:
 
         Parameters
         ----------
-        n_eval: int. Default 3
-            Number of initial evaluations to perform.
+        n_eval: int
+            Number of initial evaluations to perform. Default is 3.
 
         """
         self.X = np.empty((n_eval, len(self.parameter_key)))
@@ -87,7 +98,7 @@ class GPGO:
 
         Returns
         -------
-        acq: float
+        float:
             Acquisition function value for `xnew`.
 
         """
@@ -103,8 +114,8 @@ class GPGO:
         ----------
         method: str. Default 'L-BFGS-B'.
             Any `scipy.optimize` method that admits bounds and gradients. Default is 'L-BFGS-B'.
-        n_start: int. Default 100.
-            Number of starting points for the optimization procedure.
+        n_start: int.
+            Number of starting points for the optimization procedure. Default is 100.
 
         """
         start_points_dict = [self._sampleParam() for i in range(n_start)]
@@ -143,9 +154,9 @@ class GPGO:
 
         Returns
         -------
-        best_x: OrderedDict
+        OrderedDict:
             Point yielding best evaluation in the procedure.
-        tau: float
+        float:
             Best function evaluation.
 
         """
@@ -162,12 +173,12 @@ class GPGO:
 
         Parameters
         ----------
-        max_iter: int. Default 10.
-            Number of iterations to run.
-        init_evals: int. Default 3.
-            Initial function evaluations before fitting a GP.
-        resume: bool. Default False.
-            Whether to resume the optimization procedure from the last evaluation.
+        max_iter: int
+            Number of iterations to run. Default is 10.
+        init_evals: int
+            Initial function evaluations before fitting a GP. Default is 3.
+        resume: bool
+            Whether to resume the optimization procedure from the last evaluation. Default is `False`.
         """
         if not resume:
             self.init_evals = init_evals

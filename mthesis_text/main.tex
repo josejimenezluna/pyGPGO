@@ -11,6 +11,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{placeins}
+\usepackage{booktabs}
 \newtheorem{mydef}{Theorem}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -1005,17 +1006,154 @@ Evaluating the loss function itself can lead to multiple different values depend
 
 \subsection{Bayesian optimization setup}
 
-For all the tests performed with the Bayesian Optimization scheme, we choose the standard squared exponential kernel with a starting default characteristic length-scale $l=1$, signal variance $\sigma_f^2=1$ and noise variance $\sigma_n^2 = 0$. These three hyper-parameters will be continuously adapted using a Type-II Maximum Likelihood approach using gradients during the optimization process, as detailed in Section \ref{empbayes}. Different acquisition functions will be tested in each problem: Expected Improvement, GP-UCB ($\beta= .5$) and GP-UCB ($\beta = 1.5$). All features in all datasets are scaled by default to have zero mean and unit variance.
+For all the tests performed with the Bayesian Optimization scheme, we choose the standard squared exponential kernel with a starting default characteristic length-scale $l=1$, signal variance $\sigma_f^2=1$ and noise variance $\sigma_n^2 = 0$. These three hyper-parameters will be continuously adapted using a Type-II Maximum Likelihood approach using gradients during the optimization process, as detailed in Section \ref{empbayes}. Different acquisition functions will be tested in each problem: Expected Improvement, GP-UCB ($\beta= .5$) and GP-UCB ($\beta = 1.5$). All features in all datasets are scaled by default to have zero mean and unit variance. The random seed is fixed for all experiments for reproducibility.
 
 \subsection{Machine-learning models used}
 
-Since the shape of our objective function depends on both the dataset and the predictor, we try to span as many different types of machine-learning models as possible to provide the most extensive evaluation as possible. Except for rare occasions where we could not fit a model to a particular dataset for numerical conditions, all models are evaluated in all datasets with the same number of parameters and bounds to optimize over.
+Since the shape of our objective function depends on both the dataset and the predictor, we try to span as many different types of machine-learning models as possible to provide the most extensive evaluation as possible. Except for rare occasions where we could not fit a model to a particular dataset for numerical conditions, all models are evaluated in all datasets with the same number of parameters and bounds to optimize over. We consider the following models: Support Vector Machines (SVM) with radial basis function kernel, K-nearest neighbors (KNN), Neural Networks with a single hidden layer (MLP) and Gradient Boosting Machines (GBM). We briefly detail how these work now.
+
+\subsubsection{Support Vector Machines}
+
+A SVM model [ref] uses the concept of hyperplanes in high or infinite dimensional space in order for classification or regression purposes. In particular, a good classification model is the one that places an hyperplane that achieves maximum distance to training points of any class. Intuitively, the larger this margin, the lower the generalization error of the model. For classification, the model can be defined via optimization. Assume $\boldsymbol{x}_i \in \mathbb{R}^p$, and $y_i \in \left\lbrace 0, 1 \right\rbrace$, then the problem is to minimize:
+
+\begin{align}
+\begin{split}
+\min_{\boldsymbol{w}, b, \boldsymbol{\epsilon}}\;\; &\dfrac{1}{2}\boldsymbol{w}^T \boldsymbol{w} + C \sum_{i=1}^n \epsilon_i \\
+ s.t.\;\; & y_i(\boldsymbol{w}^T\phi(\boldsymbol{x}_i) + b) \geq 1 - \epsilon_i\\
+\;&\epsilon_i \geq 0,\;\; i=1,\dots,n
+\end{split}
+\end{align}
+
+In practice it makes more sense to minimize its dual:
+
+\begin{align}\label{svc}
+\begin{split}
+\min_{\boldsymbol{\alpha}}\;\; &\dfrac{1}{2} \boldsymbol{\alpha}^T Q \boldsymbol{\alpha} - \boldsymbol{e}^T\boldsymbol{\alpha}\\
+s.t. \;\; & \boldsymbol{y}^T\boldsymbol{\alpha} = 0 \\
+\;& 0 \leq \alpha_i \leq C, \;\;, i=1,\dots,n
+\end{split}
+\end{align}
+
+where $\boldsymbol{e}$ is the unit vector, $C$ is an hyperparameter controlling an upper bound, $Q$ is a $n\times n$ semidefinite positive matrix defined by $Q_{ij} = y_i y_j K(\boldsymbol{x}_i, \boldsymbol{x}_j)$ and $K$ is our defined kernel function. Finally, the decision function is defined as:
+
+\begin{equation}
+d(\boldsymbol{x}) = \mathrm{sgn}\left(\sum_{i=1}^n y_i \alpha_i K(\boldsymbol{x_i}, \boldsymbol{x}) + \rho \right)
+\end{equation}
+
+For regression problems we now consider $y_i \in \mathbb{R}$ and we try to minimize:
+
+\begin{align}
+\begin{split}
+\min_{\boldsymbol{w}, b, \gamma, \gamma^*}\;\; & \dfrac{1}{2}\boldsymbol{w}^T\boldsymbol{w} + C \sum_{i=1}^n(\gamma_i + \gamma_i^*)\\
+s.t. \;\; & y_i - \boldsymbol{w}^T \phi(\boldsymbol{x}_i) - b \leq \epsilon + \gamma_i\\
+\;\;& \boldsymbol{w}^T\phi(\boldsymbol{x}_i) + b - y_i \leq \epsilon + \gamma_i^*\\
+\;\;& \gamma_i, \gamma_i^* \geq 0 \;\; i=1,\dots,n 
+\end{split}
+\end{align}
+
+Likewise, we normally minimize its dual:
+
+\begin{align}\label{svr}
+\begin{split}
+\min_{\boldsymbol{\alpha}, \boldsymbol{\alpha}^*}\;\;& \dfrac{1}{2}(\boldsymbol{\alpha} - \boldsymbol{\alpha}^*) Q(\boldsymbol{\alpha} - \boldsymbol{\alpha}^*) + \epsilon \boldsymbol{e}^T(\boldsymbol{\alpha} + \boldsymbol{\alpha}^*) - \boldsymbol{y}^T(\boldsymbol{\alpha} - \boldsymbol{\alpha}^*)\\
+s.t. \;\; & \boldsymbol{e}^T(\boldsymbol{\alpha} - \boldsymbol{\alpha}^*) = 0\\
+\;\; & 0 \leq \alpha_i, \alpha_i^* \leq C, \;\; i=1,\dots,n
+\end{split}
+\end{align}
+
+Our decision function now becomes:
+
+\begin{equation}
+g(\boldsymbol{x}) = \sum_{i=1}^n (\alpha_i - \alpha_i^*) K(\boldsymbol{x_i}, \boldsymbol{x}) + \rho
+\end{equation}
+
+For all the testing involved in the following sections, we will use \texttt{scikit-learn} implementation of Support Vector Machines, which is in turn based on \texttt{LibSVM} [ref]. We will optimize over two hyperparameters, $C$, the penalty parameter in the error term of Equations \ref{svc} and \ref{svr}, and $\gamma$, an radial basis function hyperparameter controlling the smoothness of the decision function. They will be optimized on the range defined by Table \ref{svmparam}.
+
+
+\begin{table}[]
+\centering
+\caption{Parameters to be optimized for all SVM models in the benchmark.}
+\label{svmparam}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Type}                      & \textbf{Bounds}               \\ \midrule
+$C$                & $\mathbb{R}^+$ & $\left[ 10^{-5}, 100 \right]$ \\
+$\gamma$           & $\mathbb{R}^+$ & $\left[10^{-5}, 100 \right]$  \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsubsection{K-nearest neighbors}
+
+In contrast to other strategies presented here, K-nearest neighbors does not approach learning by constructing a generalizable internal model, but simply stores training instances. Classification for an example is then performed using a majority vote of its closest points in distance. For the case of regression, we take the average of mentioned points target instead. Since computing a whole distance matrix for all examples is computationally expensive ($\mathcal{O}(dn^2)$ for $n$ samples and $d$ dimensions), several alternatives have been proposed. KDTree [ref] is arguably one of the most popular ones. Intuitively, it works the following way: if we know points $\boldsymbol{x}_i$ and $\boldsymbol{x}_j$ are far in space, and we know point $\boldsymbol{x}_k$ is close to $\boldsymbol{x}_j$, then we know $\boldsymbol{x}_i$ and $\boldsymbol{x}_k$ must be far in space without \textit{explicitly} having to compute their distance. It can be proven that this can reduce the computational complexity to $\mathcal{O}(dn\log n)$. For all benchmarking run in this work, we optimize only parameter $k$, the number of neighbors to consider, over a range specified in Table \ref{knnparams}.
+
+\begin{table}[]
+\centering
+\caption{Parameters to be optimized for all KNN models in the benchmark.}
+\label{knnparams}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Type} & \textbf{Bounds}                           \\ \midrule
+$k$                & Integer       & $\left\lbrace 10, \dots,50 \right\rbrace$
+\end{tabular}
+\end{table}
+
+\subsubsection{Gradient Boosting Machines}
+
+Boosting [ref] is a machine-learning technique for simultaneously reducing the bias and variance of a classifier or regressor. It is based on the concept of ensembles, that is, a set of weak models, such as trees that are combined in a smart way to produce a strong model. In particular, Gradient Boosting Machines [ref] are a particular instance of models using this boosting principle. It builds its internal model considering tree models in a stage-wise fashion and generalizes them by optimizing a given differentiable loss function. Assuming training data $\left\lbrace \boldsymbol{x}_i, y_i\right\rbrace\;\; i=1,\dots,n$, the algorithm works by approximating a function $\hat{F}(\boldsymbol{x})$ to an original $F(\boldsymbol{x})$, which minimizes the expected value of some loss function $\mathcal{L}\left(\boldsymbol{y}, F(\boldsymbol{x})\right)$, that is:
+
+\begin{equation}
+\hat{F}(\boldsymbol{x}) = \argmin_{F}\mathbb{E}_{\boldsymbol{x}, y}\left[ \mathcal{L}(\boldsymbol{y}, F(\boldsymbol{x})\right]
+\end{equation} 
+
+Gradient boosting machine defines $F$ to be a weighted sum of weak learners $h_i$ from some class $\mathcal{H}$:
+
+\begin{equation}
+F(\boldsymbol{x}) = \sum_{i=1}^n \gamma_i h_i(\boldsymbol{x}) + c
+\end{equation}
+
+We start by some constant approximation $F_0$ and expand it iteratively:
+
+\begin{align}
+\begin{split}
+F_0(\boldsymbol{x}) &= \argmin_{\gamma} \sum_{i=1}^n \mathcal{L}(y_i, \gamma)\\
+F_m(\boldsymbol{x}) &= F_{m-1}(\boldsymbol{x}) + \argmin_{f \in \mathcal{H}} \sum_{i=1}^n \mathcal{L}(y_i, F_{m-1} + f(\boldsymbol{x}_i))
+\end{split}
+\end{align}
+
+The problem comes when trying to optimize and arbitrary $f$ for any loss $\mathcal{L}$, so instead, we use gradient descent to minimize:
+
+\begin{align}
+\begin{split}
+F_m(\boldsymbol{x}) &= F_{m-1}(x) - \gamma_m \sum_{i=1}^n \nabla_{F_{m-1}} \mathcal{L}(y_i, F_{m-1}(x_i))\\
+\gamma_m &= \argmin_{\gamma} \sum_{i=1}^n \mathcal{L}\left( y_i, F_{m-1}(\boldsymbol{x}_i) - \gamma \dfrac{\partial \mathcal{L}\left(y_i, F_{m-1}(\boldsymbol{x}_i)\right)}{\partial F_{m-1}(\boldsymbol{x}_i)} \right)
+\end{split}
+\end{align}
+
+$\gamma$ is then chosen by some univariate optimization algorithm, such as line search. The most popular variant of Gradient Boosting Machines is Gradient Boosting Trees, where we choose $f$ to be some tree classifier/regressor, such as CART 4.5 [ref]. For the benchmarks considered in this work, we use \texttt{scikit-learn}'s GBM implementation, and try to optimize the hyperparameters defined by Table \ref{gbmparam}. The \texttt{learning\_rate} parameter shrinks the contribution of each tree, \texttt{n\_estimators} is the number of weak trees to fit, \texttt{max\_depth} is the maximum depth of each weak tree, and \texttt{min\_samples\_split} is the minimum required number of samples to split a node in each tree.
+
+
+\begin{table}[]
+\centering
+\caption{Parameters to be optimized for all GBM models in the benchmark.}
+\label{gbmparam}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Parameter}             & \textbf{Type}  & \textbf{Bounds}                          \\ \midrule
+\texttt{learning\_rate}      & $\mathbb{R}^+$ & $\left[10^{-5}, 10^{-2}\right]$                         \\
+\texttt{n\_estimators}       & Integer        & $\left\lbrace 10,\dots, 100 \right\rbrace$ \\
+\texttt{max\_depth}          & Integer        & $\left\lbrace 2, \dots, 100 \right\rbrace$ \\
+\texttt{min\_samples\_split}  & Integer        & $\left\lbrace 2, \dots, 100 \right\rbrace$
+\end{tabular}
+\end{table}
+
+\subsection{Multilayer perceptron}
 
 \section{The binding affinity dataset}
 
 \subsection{Description of the problem}
 
-We will address one of the most popular problems in computational chemistry in this section: protein-ligand binding affinity prediction. The docking procedures (see Figure \ref{fig:docking}) in structural biology typically work as follows: first, by generating a large number of poses of the ligand (a small drug-like molecule compared to the host protein). A pose encompasses position, orientation and conformation of the ligand. Once enough poses are generated, a \textit{scoring function} is in charge of reranking these, that is, its job is to find the correct pose amongst the generated. Correct poses have more \textit{strength} to the binding site of the target than incorrect ones, and this is typically quantified by means of dissociation ($K_d$), inhibition constant ($K_i$) or free energy. These quantities are real valued, and can normally range from $10^{-9}$ to $10^4$ kcal/mol in studies. To account for this very large range of affinities, one typically defines a target variable as $y=-\log_{10}K_{d,i}$ and considers it as a classical regression problem.\\
+We will address one of the most popular problems in computational chemistry in this section: protein-ligand binding affinity prediction. The docking procedures (see Figure \ref{fig:docking}) in structural biology typically work as follows: first, by generating a large number of poses of the ligand (a small drug-like molecule compared to the host protein). A pose encompasses position, orientation and conformation of the ligand. Once enough poses are generated, a \textit{scoring function} is in charge of reranking these, that is, its job is to find the correct pose amongst the generated. Correct poses have more \textit{strength} to the binding site of the target than incorrect ones, and this is typically quantified by means of dissociation ($K_d$), inhibition constant ($K_i$) or free energy. These quantities are real valued, and can normally range from $10^{-9}$ to $10^6$ kcal/mol in studies. To account for this very large range of affinities, one typically defines a target variable as $y=-\log_{10}K_{d,i}$ and considers it as a classical regression problem.\\
 
 \begin{figure}
 \centering
@@ -1063,16 +1201,9 @@ We detail here results for all the models and parameter ranges considered in the
 
 \begin{figure}
 \centering
-\caption{MLP results for the binding affinity dataset.}
-\includegraphics[scale=0.75]{figures/chapter4/aff/mlp}
-\label{fig:affmlp}
-\end{figure}
-
-\begin{figure}
-\centering
-\caption{AdaBoost results for the binding affinity dataset.}
-\includegraphics[scale=0.75]{figures/chapter4/aff/ada}
-\label{fig:affada}
+\caption{K-nearest neighbors results for the binding affinity dataset.}
+\includegraphics[scale=0.75]{figures/chapter4/aff/knn}
+\label{fig:affknn}
 \end{figure}
 
 \begin{figure}
@@ -1082,9 +1213,48 @@ We detail here results for all the models and parameter ranges considered in the
 \label{fig:affgbm}
 \end{figure}
 
+\begin{figure}
+\centering
+\caption{MLP results for the binding affinity dataset.}
+\includegraphics[scale=0.75]{figures/chapter4/aff/mlp}
+\label{fig:affmlp}
+\end{figure}
+
 \newpage
 
 \section{The protein-protein interface prediction dataset}
+\subsection{Description of the problem}
+\subsection{Description of the dataset}
+\subsection{Experiments}
+
+
+\begin{figure}
+\centering
+\caption{SVM results for the protein interface dataset.}
+\includegraphics[scale=0.75]{figures/chapter4/pinter/svm}
+\label{fig:affsvm}
+\end{figure}
+
+\begin{figure}
+\centering
+\caption{K-nearest neighbors results for the protein interface dataset.}
+\includegraphics[scale=0.75]{figures/chapter4/pinter/knn}
+\label{fig:affknn}
+\end{figure}
+
+\begin{figure}
+\centering
+\caption{Gradient Boosting Machine results for the protein interface dataset.}
+\includegraphics[scale=0.75]{figures/chapter4/pinter/gbm}
+\label{fig:affgbm}
+\end{figure}
+
+\begin{figure}
+\centering
+\caption{MLP results for the protein interface dataset.}
+\includegraphics[scale=0.75]{figures/chapter4/pinter/mlp}
+\label{fig:affmlp}
+\end{figure}
 
 \chapter{pyGPGO: A simple Python Package for Bayesian Optimization}
 

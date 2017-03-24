@@ -7,7 +7,10 @@ from scipy.optimize import minimize
 class GPRegressor:
     def __init__(self, covfunc, optimize=False, usegrads=False):
         """
-        Gaussian Process regressor class.
+        Gaussian Process regressor class. Based on Rasmussen & Williams [RW2006]_ algorithm 2.1.
+
+        [RW2006] Rasmussen, C. E., & Williams, C. K. I. (2004). Gaussian processes for machine learning.
+        International journal of neural systems (Vol. 14). http://doi.org/10.1142/S0129065704001899
 
         Parameters
         ----------
@@ -18,6 +21,16 @@ class GPRegressor:
         usegrads: bool
             Whether to use gradient information on hyperparameter optimization. Only used
             if `optimize=True`.
+
+        Attributes
+        ----------
+        covfunc: object
+            Internal covariance function.
+        optimize: bool
+            User chosen optimization configuration.
+        usegrads: bool
+            Gradient behavior
+
         """
         self.covfunc = covfunc
         self.optimize = optimize
@@ -29,7 +42,7 @@ class GPRegressor:
 
         Returns
         -------
-        covparams: dict
+        dict:
             Dictionary containing covariance function hyperparameters
         """
         d = {}
@@ -75,7 +88,7 @@ class GPRegressor:
 
         Returns
         -------
-        grads: np.ndarray, shape=((n_hyperparam,)):
+        np.ndarray:
             Gradient corresponding to each hyperparameters. Order given by `k_param.keys()`
         """
         k_param_key = list(k_param.keys())
@@ -105,8 +118,8 @@ class GPRegressor:
 
         Returns
         -------
-        lmlik: float
-            -log-marginal likelihood for chosen hyperparameters
+        float:
+            Negative log-marginal likelihood for chosen hyperparameters.
 
         """
         k_param = OrderedDict()
@@ -139,7 +152,7 @@ class GPRegressor:
 
         Returns
         -------
-        grads: np.ndarray, shape=((n_hyperparams,))
+        np.ndarray:
             Gradient for each evaluated hyperparameter.
 
         """
@@ -195,9 +208,9 @@ class GPRegressor:
 
         Returns
         -------
-        fmean: np.ndarray, shape=((nsamples,)
+        np.ndarray:
             Mean of the posterior process for testing instances.
-        fcov: np.ndarray, shape=((nsamples, nsamples))
+        np.ndarray:
             Covariance of the posterior process for testing instances.
         """
         Xstar = np.atleast_2d(Xstar)
