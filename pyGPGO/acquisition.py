@@ -44,7 +44,7 @@ class Acquisition:
 
         Returns
         -------
-        float:
+        float
             Probability of improvement.
         """
         z = (mean - tau - self.eps) / (std + self.eps)
@@ -65,7 +65,7 @@ class Acquisition:
 
         Returns
         -------
-        float:
+        float
             Expected improvement.
         """
         z = (mean - tau - self.eps) / (std + self.eps)
@@ -88,7 +88,7 @@ class Acquisition:
 
         Returns
         -------
-        float:
+        float
             Upper confidence bound.
         """
         return mean + beta * std
@@ -108,7 +108,7 @@ class Acquisition:
 
         Returns
         -------
-        float:
+        float
             Acqusition function value.
 
         """

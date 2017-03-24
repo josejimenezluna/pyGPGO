@@ -25,7 +25,7 @@ def l2norm_(X, Xstar):
 
     Returns
     -------
-    np.ndarray:
+    np.ndarray
         Pairwise euclidian distance between row pairs of `X` and `Xstar`.
     """
     return cdist(X, Xstar)
@@ -44,7 +44,7 @@ def kronDelta(X, Xstar):
 
     Returns
     -------
-    np.ndarray:
+    np.ndarray
         Kronecker delta between row pairs of `X` and `Xstar`.
     """
     n, m = X.shape[0], Xstar.shape[0]
@@ -100,7 +100,7 @@ class squaredExponential:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Computed covariance matrix.
         """
         r = l2norm_(X, Xstar)
@@ -121,7 +121,7 @@ class squaredExponential:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Gradient matrix for parameter `param`.
         """
         if param == 'l':
@@ -191,7 +191,7 @@ class matern:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Computed covariance matrix.
         """
         r = l2norm_(X, Xstar)
@@ -252,7 +252,7 @@ class gammaExponential:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Computed covariance matrix.
         """
         r = l2norm_(X, Xstar)
@@ -274,7 +274,7 @@ class gammaExponential:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Gradient matrix for parameter `param`.
         """
         if param == 'gamma':
@@ -349,7 +349,7 @@ class rationalQuadratic:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Computed covariance matrix.
         """
         r = l2norm_(X, Xstar)
@@ -371,7 +371,7 @@ class rationalQuadratic:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Gradient matrix for parameter `param`.
         """
         if param == 'alpha':

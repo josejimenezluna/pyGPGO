@@ -5,12 +5,14 @@ from scipy.optimize import minimize
 
 
 class GPRegressor:
+    """
+    Gaussian Process regressor class. Based on Rasmussen & Williams [RW2006]_ algorithm 2.1.
+
+    [RW2006] Rasmussen, C. E., & Williams, C. K. I. (2004). Gaussian processes for machine learning.
+    International journal of neural systems (Vol. 14). http://doi.org/10.1142/S0129065704001899
+    """
     def __init__(self, covfunc, optimize=False, usegrads=False):
         """
-        Gaussian Process regressor class. Based on Rasmussen & Williams [RW2006]_ algorithm 2.1.
-
-        [RW2006] Rasmussen, C. E., & Williams, C. K. I. (2004). Gaussian processes for machine learning.
-        International journal of neural systems (Vol. 14). http://doi.org/10.1142/S0129065704001899
 
         Parameters
         ----------
@@ -42,7 +44,7 @@ class GPRegressor:
 
         Returns
         -------
-        dict:
+        dict
             Dictionary containing covariance function hyperparameters
         """
         d = {}
@@ -88,7 +90,7 @@ class GPRegressor:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Gradient corresponding to each hyperparameters. Order given by `k_param.keys()`
         """
         k_param_key = list(k_param.keys())
@@ -118,7 +120,7 @@ class GPRegressor:
 
         Returns
         -------
-        float:
+        float
             Negative log-marginal likelihood for chosen hyperparameters.
 
         """
@@ -152,7 +154,7 @@ class GPRegressor:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Gradient for each evaluated hyperparameter.
 
         """
@@ -208,9 +210,9 @@ class GPRegressor:
 
         Returns
         -------
-        np.ndarray:
+        np.ndarray
             Mean of the posterior process for testing instances.
-        np.ndarray:
+        np.ndarray
             Covariance of the posterior process for testing instances.
         """
         Xstar = np.atleast_2d(Xstar)

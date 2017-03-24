@@ -98,7 +98,7 @@ class GPGO:
 
         Returns
         -------
-        float:
+        float
             Acquisition function value for `xnew`.
 
         """
@@ -154,9 +154,9 @@ class GPGO:
 
         Returns
         -------
-        OrderedDict:
+        OrderedDict
             Point yielding best evaluation in the procedure.
-        float:
+        float
             Best function evaluation.
 
         """

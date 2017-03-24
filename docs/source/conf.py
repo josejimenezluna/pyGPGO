@@ -32,6 +32,7 @@
 # ones.
 import sphinx_rtd_theme
 
+napoleon_include_special_with_doc = True
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
