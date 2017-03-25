@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -42,7 +40,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -83,10 +80,7 @@
           
             
             
-              
-            
-            
-              <ul>
+                <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">pyGPGO documentation</a></li>
 </ul>
 
@@ -100,10 +94,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">pyGPGO</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">pyGPGO</a>
       </nav>
 
 
@@ -116,36 +108,19 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
           <li><a href="../index.html">Module code</a> &raquo;</li>
-        
-      <li>pyGPGO.GPRegressor</li>
-    
-    
+      
+    <li>pyGPGO.GPRegressor</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -159,9 +134,14 @@
 
 
 <div class="viewcode-block" id="GPRegressor"><a class="viewcode-back" href="../../pyGPGO.GPRegressor.html#pyGPGO.GPRegressor.GPRegressor">[docs]</a><span class="k">class</span> <span class="nc">GPRegressor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gaussian Process regressor class. Based on Rasmussen &amp; Williams [RW2006]_ algorithm 2.1.</span>
+
+<span class="sd">    [RW2006] Rasmussen, C. E., &amp; Williams, C. K. I. (2004). Gaussian processes for machine learning.</span>
+<span class="sd">    International journal of neural systems (Vol. 14). http://doi.org/10.1142/S0129065704001899</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">covfunc</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">usegrads</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Gaussian Process regressor class.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -172,6 +152,16 @@
 <span class="sd">        usegrads: bool</span>
 <span class="sd">            Whether to use gradient information on hyperparameter optimization. Only used</span>
 <span class="sd">            if `optimize=True`.</span>
+
+<span class="sd">        Attributes</span>
+<span class="sd">        ----------</span>
+<span class="sd">        covfunc: object</span>
+<span class="sd">            Internal covariance function.</span>
+<span class="sd">        optimize: bool</span>
+<span class="sd">            User chosen optimization configuration.</span>
+<span class="sd">        usegrads: bool</span>
+<span class="sd">            Gradient behavior</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span> <span class="o">=</span> <span class="n">covfunc</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">optimize</span> <span class="o">=</span> <span class="n">optimize</span>
@@ -183,7 +173,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        covparams: dict</span>
+<span class="sd">        dict</span>
 <span class="sd">            Dictionary containing covariance function hyperparameters</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
@@ -229,7 +219,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        grads: np.ndarray, shape=((n_hyperparam,)):</span>
+<span class="sd">        np.ndarray</span>
 <span class="sd">            Gradient corresponding to each hyperparameters. Order given by `k_param.keys()`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">k_param_key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">k_param</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -259,8 +249,8 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        lmlik: float</span>
-<span class="sd">            -log-marginal likelihood for chosen hyperparameters</span>
+<span class="sd">        float</span>
+<span class="sd">            Negative log-marginal likelihood for chosen hyperparameters.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">k_param</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
@@ -293,7 +283,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        grads: np.ndarray, shape=((n_hyperparams,))</span>
+<span class="sd">        np.ndarray</span>
 <span class="sd">            Gradient for each evaluated hyperparameter.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -349,9 +339,9 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        fmean: np.ndarray, shape=((nsamples,)</span>
+<span class="sd">        np.ndarray</span>
 <span class="sd">            Mean of the posterior process for testing instances.</span>
-<span class="sd">        fcov: np.ndarray, shape=((nsamples, nsamples))</span>
+<span class="sd">        np.ndarray</span>
 <span class="sd">            Covariance of the posterior process for testing instances.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">Xstar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">Xstar</span><span class="p">)</span>
@@ -379,9 +369,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div></div>
 </pre></div>
 
-           </div>
-           <div class="articleComments">
-            
            </div>
           </div>
           <footer>
@@ -416,8 +403,7 @@
             VERSION:'0.1.0.dev1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

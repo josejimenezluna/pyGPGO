@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -42,7 +40,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -83,10 +80,7 @@
           
             
             
-              
-            
-            
-              <ul>
+                <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">pyGPGO documentation</a></li>
 </ul>
 
@@ -100,10 +94,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">pyGPGO</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">pyGPGO</a>
       </nav>
 
 
@@ -116,36 +108,19 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
           <li><a href="../index.html">Module code</a> &raquo;</li>
-        
-      <li>pyGPGO.GPGO</li>
-    
-    
+      
+    <li>pyGPGO.GPGO</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -155,7 +130,6 @@
 <span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">cma</span> <span class="k">import</span> <span class="n">fmin</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">minimize</span>
 <span class="kn">from</span> <span class="nn">joblib</span> <span class="k">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
 
@@ -177,6 +151,17 @@
 <span class="sd">            Dictionary specifying parameter, their type and bounds.</span>
 <span class="sd">        n_jobs: int. Default 1</span>
 <span class="sd">            Parallel threads to use during acquisition optimization.</span>
+
+<span class="sd">        Attributes</span>
+<span class="sd">        ----------</span>
+<span class="sd">        parameter_key: list</span>
+<span class="sd">            Parameters to consider in optimization</span>
+<span class="sd">        parameter_type: list</span>
+<span class="sd">            Parameter types.</span>
+<span class="sd">        parameter_range: list</span>
+<span class="sd">            Parameter bounds during optimization</span>
+<span class="sd">        history: list</span>
+<span class="sd">            Target values evaluated along the procedure.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">GP</span> <span class="o">=</span> <span class="n">GPRegressor</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">Acquisition</span>
@@ -197,7 +182,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        param_sample: dict</span>
+<span class="sd">        dict:</span>
 <span class="sd">            A random sample of specified parameters.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">d</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
@@ -216,8 +201,8 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        n_eval: int. Default 3</span>
-<span class="sd">            Number of initial evaluations to perform.</span>
+<span class="sd">        n_eval: int</span>
+<span class="sd">            Number of initial evaluations to perform. Default is 3.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_eval</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_key</span><span class="p">)))</span>
@@ -242,7 +227,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        acq: float</span>
+<span class="sd">        float</span>
 <span class="sd">            Acquisition function value for `xnew`.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -258,33 +243,28 @@
 <span class="sd">        ----------</span>
 <span class="sd">        method: str. Default &#39;L-BFGS-B&#39;.</span>
 <span class="sd">            Any `scipy.optimize` method that admits bounds and gradients. Default is &#39;L-BFGS-B&#39;.</span>
-<span class="sd">        n_start: int. Default 100.</span>
-<span class="sd">            Number of starting points for the optimization procedure.</span>
+<span class="sd">        n_start: int.</span>
+<span class="sd">            Number of starting points for the optimization procedure. Default is 100.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">start_points_dict</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_sampleParam</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_start</span><span class="p">)]</span>
         <span class="n">start_points_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">start_points_dict</span><span class="p">])</span>
         <span class="n">x_best</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_start</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_key</span><span class="p">)))</span>
         <span class="n">f_best</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n_start</span><span class="p">,))</span>
-        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;L-BFGS-B&#39;</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">start_point</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">start_points_arr</span><span class="p">):</span>
-                    <span class="n">res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_acqWrapper</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">start_point</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
-                                   <span class="n">bounds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_range</span><span class="p">)</span>
-                    <span class="n">x_best</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">f_best</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">fun</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">opt</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">minimize</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_acqWrapper</span><span class="p">,</span>
-                                                                     <span class="n">x0</span><span class="o">=</span><span class="n">start_point</span><span class="p">,</span>
-                                                                     <span class="n">method</span><span class="o">=</span><span class="s1">&#39;L-BFGS-B&#39;</span><span class="p">,</span>
-                                                                     <span class="n">bounds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_range</span><span class="p">)</span> <span class="k">for</span> <span class="n">start_point</span> <span class="ow">in</span>
-                                                   <span class="n">start_points_arr</span><span class="p">)</span>
-                <span class="n">x_best</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">res</span><span class="o">.</span><span class="n">x</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">opt</span><span class="p">])</span>
-                <span class="n">f_best</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">res</span><span class="o">.</span><span class="n">fun</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">opt</span><span class="p">])</span>
-
-        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;CMA-ES&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">start_point</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">start_points_arr</span><span class="p">):</span>
-                <span class="n">res</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_acqWrapper</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">start_point</span><span class="p">,</span> <span class="n">sigma0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-                <span class="n">x_best</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">f_best</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_acqWrapper</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">start_point</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+                               <span class="n">bounds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_range</span><span class="p">)</span>
+                <span class="n">x_best</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">f_best</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">fun</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">opt</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">minimize</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">_acqWrapper</span><span class="p">,</span>
+                                                                 <span class="n">x0</span><span class="o">=</span><span class="n">start_point</span><span class="p">,</span>
+                                                                 <span class="n">method</span><span class="o">=</span><span class="s1">&#39;L-BFGS-B&#39;</span><span class="p">,</span>
+                                                                 <span class="n">bounds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_range</span><span class="p">)</span> <span class="k">for</span> <span class="n">start_point</span> <span class="ow">in</span>
+                                               <span class="n">start_points_arr</span><span class="p">)</span>
+            <span class="n">x_best</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">res</span><span class="o">.</span><span class="n">x</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">opt</span><span class="p">])</span>
+            <span class="n">f_best</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">res</span><span class="o">.</span><span class="n">fun</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">opt</span><span class="p">])</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="n">x_best</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">f_best</span><span class="p">)]</span>
 
 <div class="viewcode-block" id="GPGO.updateGP"><a class="viewcode-back" href="../../pyGPGO.GPGO.html#pyGPGO.GPGO.GPGO.updateGP">[docs]</a>    <span class="k">def</span> <span class="nf">updateGP</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -303,9 +283,9 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        best_x: OrderedDict</span>
+<span class="sd">        OrderedDict</span>
 <span class="sd">            Point yielding best evaluation in the procedure.</span>
-<span class="sd">        tau: float</span>
+<span class="sd">        float</span>
 <span class="sd">            Best function evaluation.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -322,12 +302,12 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        max_iter: int. Default 10.</span>
-<span class="sd">            Number of iterations to run.</span>
-<span class="sd">        init_evals: int. Default 3.</span>
-<span class="sd">            Initial function evaluations before fitting a GP.</span>
-<span class="sd">        resume: bool. Default False.</span>
-<span class="sd">            Whether to resume the optimization procedure from the last evaluation.</span>
+<span class="sd">        max_iter: int</span>
+<span class="sd">            Number of iterations to run. Default is 10.</span>
+<span class="sd">        init_evals: int</span>
+<span class="sd">            Initial function evaluations before fitting a GP. Default is 3.</span>
+<span class="sd">        resume: bool</span>
+<span class="sd">            Whether to resume the optimization procedure from the last evaluation. Default is `False`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">resume</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">init_evals</span> <span class="o">=</span> <span class="n">init_evals</span>
@@ -337,9 +317,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">updateGP</span><span class="p">()</span></div></div>
 </pre></div>
 
-           </div>
-           <div class="articleComments">
-            
            </div>
           </div>
           <footer>
@@ -374,8 +351,7 @@
             VERSION:'0.1.0.dev1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

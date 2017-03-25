@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -44,7 +42,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -85,17 +82,8 @@
           
             
             
-              
-            
-            
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="api.html">pyGPGO documentation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="pyGPGO.GPGO.html">Bayesian Optimization module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Gaussian Process regression module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyGPGO.covfunc.html">Covariance function module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyGPGO.acquisition.html">Acquisition function module</a></li>
-</ul>
-</li>
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">pyGPGO documentation</a></li>
 </ul>
 
             
@@ -108,10 +96,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">pyGPGO</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">pyGPGO</a>
       </nav>
 
 
@@ -120,42 +106,25 @@
         <div class="rst-content">
           
 
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
           <li><a href="api.html">pyGPGO documentation</a> &raquo;</li>
-        
-      <li>pyGPGO.GPRegressor module</li>
-    
-    
+      
+    <li>pyGPGO.GPRegressor module</li>
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/pyGPGO.GPRegressor.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -167,26 +136,41 @@
 <dt id="pyGPGO.GPRegressor.GPRegressor">
 <em class="property">class </em><code class="descclassname">pyGPGO.GPRegressor.</code><code class="descname">GPRegressor</code><span class="sig-paren">(</span><em>covfunc</em>, <em>optimize=False</em>, <em>usegrads=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPRegressor.html#GPRegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPRegressor.GPRegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Gaussian Process regressor class. Based on Rasmussen &amp; Williams [RW2006] algorithm 2.1.</p>
+<p>[RW2006] Rasmussen, C. E., &amp; Williams, C. K. I. (2004). Gaussian processes for machine learning.
+International journal of neural systems (Vol. 14). <a class="reference external" href="http://doi.org/10.1142/S0129065704001899">http://doi.org/10.1142/S0129065704001899</a></p>
 <dl class="method">
 <dt id="pyGPGO.GPRegressor.GPRegressor.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPRegressor.html#GPRegressor.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPRegressor.GPRegressor.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fits a Gaussian Process regressor</p>
-<dl class="docutils">
-<dt>X: np.ndarray, shape=(nsamples, nfeatures)</dt>
-<dd>Training instances to fit the GP.</dd>
-<dt>y: np.ndarray, shape=(nsamples,)</dt>
-<dd>Corresponding continuous target values to X.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>np.ndarray, shape=(nsamples, nfeatures)</em>) &#8211; Training instances to fit the GP.</li>
+<li><strong>y</strong> (<em>np.ndarray, shape=(nsamples,)</em>) &#8211; Corresponding continuous target values to X.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pyGPGO.GPRegressor.GPRegressor.getcovparams">
 <code class="descname">getcovparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPRegressor.html#GPRegressor.getcovparams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPRegressor.GPRegressor.getcovparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns current covariance function hyperparameters</p>
-<dl class="docutils">
-<dt>covparams: dict</dt>
-<dd>Dictionary containing covariance function hyperparameters</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dictionary containing covariance function hyperparameters</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -194,57 +178,80 @@
 <code class="descname">optHyp</code><span class="sig-paren">(</span><em>param_key</em>, <em>param_bounds</em>, <em>grads=None</em>, <em>n_trials=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPRegressor.html#GPRegressor.optHyp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPRegressor.GPRegressor.optHyp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Optimizes the negative marginal log-likelihood for given hyperparameters and bounds.
 This is an empirical Bayes approach (or Type II maximum-likelihood).</p>
-<dl class="docutils">
-<dt>param_key: list</dt>
-<dd>List of hyperparameters to optimize.</dd>
-<dt>param_bounds: list</dt>
-<dd>List containing tuples defining bounds for each hyperparameter to optimize over.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameters to optimize.</li>
+<li><strong>param_bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List containing tuples defining bounds for each hyperparameter to optimize over.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pyGPGO.GPRegressor.GPRegressor.param_grad">
 <code class="descname">param_grad</code><span class="sig-paren">(</span><em>k_param</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPRegressor.html#GPRegressor.param_grad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPRegressor.GPRegressor.param_grad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns gradient over hyperparameters. It is recommended to use <cite>self._grad</cite> instead.</p>
-<dl class="docutils">
-<dt>k_param: dict</dt>
-<dd>Dictionary with keys being hyperparameters and values their queried values.</dd>
-</dl>
-<dl class="docutils">
-<dt>grads: np.ndarray, shape=((n_hyperparam,)):</dt>
-<dd>Gradient corresponding to each hyperparameters. Order given by <cite>k_param.keys()</cite></dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>k_param</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Dictionary with keys being hyperparameters and values their queried values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Gradient corresponding to each hyperparameters. Order given by <cite>k_param.keys()</cite></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">np.ndarray</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pyGPGO.GPRegressor.GPRegressor.predict">
 <code class="descname">predict</code><span class="sig-paren">(</span><em>Xstar</em>, <em>return_std=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPRegressor.html#GPRegressor.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPRegressor.GPRegressor.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns mean and covariances for the posterior Gaussian Process.</p>
-<dl class="docutils">
-<dt>Xstar: np.ndarray, shape=((nsamples, nfeatures))</dt>
-<dd>Testing instances to predict.</dd>
-<dt>return_std: bool</dt>
-<dd>Whether to return the standard deviation of the posterior process. Otherwise,
-it returns the whole covariance matrix of the posterior process.</dd>
-</dl>
-<dl class="docutils">
-<dt>fmean: np.ndarray, shape=((nsamples,)</dt>
-<dd>Mean of the posterior process for testing instances.</dd>
-<dt>fcov: np.ndarray, shape=((nsamples, nsamples))</dt>
-<dd>Covariance of the posterior process for testing instances.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Xstar</strong> (<em>np.ndarray, shape=((nsamples, nfeatures))</em>) &#8211; Testing instances to predict.</li>
+<li><strong>return_std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Whether to return the standard deviation of the posterior process. Otherwise,
+it returns the whole covariance matrix of the posterior process.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>np.ndarray</em> &#8211; Mean of the posterior process for testing instances.</li>
+<li><em>np.ndarray</em> &#8211; Covariance of the posterior process for testing instances.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="pyGPGO.GPRegressor.GPRegressor.update">
 <code class="descname">update</code><span class="sig-paren">(</span><em>xnew</em>, <em>ynew</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPRegressor.html#GPRegressor.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPRegressor.GPRegressor.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the internal model with <cite>xnew</cite> and <cite>ynew</cite> instances.</p>
-<dl class="docutils">
-<dt>xnew: np.ndarray, shape=((m, nfeatures))</dt>
-<dd>New training instances to update the model with.</dd>
-<dt>ynew: np.ndarray, shape=((m,))</dt>
-<dd>New training targets to update the model with.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xnew</strong> (<em>np.ndarray, shape=((m, nfeatures))</em>) &#8211; New training instances to update the model with.</li>
+<li><strong>ynew</strong> (<em>np.ndarray, shape=((m,))</em>) &#8211; New training targets to update the model with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -253,18 +260,15 @@ it returns the whole covariance matrix of the posterior process.</dd>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pyGPGO.covfunc.html" class="btn btn-neutral float-right" title="pyGPGO.covfunc module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pyGPGO.covfunc.html" class="btn btn-neutral float-right" title="pyGPGO.covfunc module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pyGPGO.GPGO.html" class="btn btn-neutral" title="pyGPGO.GPGO module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pyGPGO.GPGO.html" class="btn btn-neutral" title="pyGPGO.GPGO module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -298,8 +302,7 @@ it returns the whole covariance matrix of the posterior process.</dd>
             VERSION:'0.1.0.dev1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
