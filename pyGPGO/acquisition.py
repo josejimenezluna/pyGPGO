@@ -26,6 +26,8 @@ class Acquisition:
             self.f = self.ProbabilityImprovement
         elif mode == 'UCB':
             self.f = self.UCB
+        elif mode == 'Entropy':
+            self.f = self.Entropy
         else:
             raise NotImplementedError('Not recognised acquisition function')
 
@@ -92,6 +94,29 @@ class Acquisition:
             Upper confidence bound.
         """
         return mean + beta * std
+
+    def Entropy(self, tau, mean, std, sigman):
+        """
+        Predictive entropy acquisition function
+
+        Parameters
+        ----------
+        tau: float
+            Best observed function evaluation.
+        mean: float
+            Point mean of the posterior process.
+        std: float
+            Point std of the posterior process.
+        sigman: float
+            Noise variance
+
+        Returns
+        -------
+        float:
+            Predictive entropy..
+        """
+        sp2 = std **2 + sigman
+        return 0.5 * np.log(2 * np.pi * np.e * sp2)
 
     def eval(self, tau, mean, std):
         """
