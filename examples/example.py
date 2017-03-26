@@ -2,6 +2,7 @@ import os
 
 import matplotlib.pyplot as plt
 
+import numpy as np
 from pyGPGO.GPGO import GPGO
 from pyGPGO.GPRegressor import GPRegressor
 from pyGPGO.acquisition import Acquisition

@@ -50,17 +50,17 @@
 \contentsline {subsection}{\numberline {4.2.1}Description of the problem}{39}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Description of the dataset}{40}{subsection.4.2.2}
 \contentsline {subsection}{\numberline {4.2.3}Experiments}{41}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}The protein-protein interface prediction dataset}{44}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Description of the problem}{44}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Description of the dataset}{44}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Experiments}{44}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.3}The protein-protein interface prediction dataset}{43}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Description of the problem}{43}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Description of the dataset}{43}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Experiments}{43}{subsection.4.3.3}
 \contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{47}{chapter.5}
 \contentsline {section}{\numberline {5.1}Installation}{47}{section.5.1}
 \contentsline {section}{\numberline {5.2}Usage}{48}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}A minimal example}{48}{subsection.5.2.1}
-\contentsline {section}{\numberline {5.3}Examples}{50}{section.5.3}
+\contentsline {section}{\numberline {5.3}Examples}{49}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Gaussian Process regression using the \texttt {GPRegressor} module.}{50}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Optimizing parameters of a machine-learning model using the \texttt {GPGO} module.}{51}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.2}Optimizing parameters of a machine-learning model using the \texttt {GPGO} module.}{50}{subsection.5.3.2}
 \contentsline {section}{\numberline {5.4}Features}{52}{section.5.4}
 \contentsline {section}{\numberline {5.5}Comparison with existing software}{52}{section.5.5}
 \contentsline {section}{\numberline {5.6}Future work}{52}{section.5.6}

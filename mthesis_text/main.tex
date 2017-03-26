@@ -12,6 +12,7 @@
 \usepackage{algpseudocode}
 \usepackage{placeins}
 \usepackage{booktabs}
+\usepackage{lscape}
 \newtheorem{mydef}{Theorem}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -1574,6 +1575,29 @@ if __name__ == '__main__':
 
 \section{Features}\label{features}
 \section{Comparison with existing software}
+
+
+\begin{table}[]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{@{}llllllll@{}}
+		\toprule
+		& \multicolumn{1}{c}{\textbf{pyGPGO}} & \multicolumn{1}{c}{fmfn/BayesianOptimization} & \multicolumn{1}{c}{MOE} & \multicolumn{1}{c}{GPyOpt} & \multicolumn{1}{c}{Spearmint} & \multicolumn{1}{c}{pyBO}  & \multicolumn{1}{c}{scikit-optimize} \\ \midrule
+		GP Implementation                  & Native                              & scikit-learn                                  & Native                  & GPy                        & Native                        & Native                    & scikit-learn                        \\
+		Covariance Functions               & \{SE, Matern, RQ, GE\}              & \{Matern\}                                    & \{SE, Matern\}          & GPy.kern                   & \{Matern\}                    & \{SE, Matern\}            & \{Matern\}                          \\
+		Covariance Gradients               & \{SE, Matern, RQ, GE\}              & No                                            & \{SE, Matern\}          & -                          & No                            & No                        & \{Matern\}                          \\
+		Type II ML Hyperparameters support & Yes                                 & No                                            & Yes                     & Yes                        & No                            & No                        & Yes                                 \\
+		Parallel optimization support      & Yes                                 & No                                            & No                      & No                         & No                            & No                        & No                                  \\
+		Acquisition functions              & \{PI, EI, UCB, PE\}                 & \{PI, EI, UCB\}                               & \{EI\}                  & \{PI, EI, UCB\}            & \{EI\}                        & \{PI, EI, UCB, Thompson\} & \{PI, EI, UCB\}                     \\
+		Integrated acquisition function    & Planned                             & No                                            & No                      & Yes                        & Yes                           & Yes                       & No                                  \\
+		Other surrogates                   & Planned                             & No                                            & No                      & \{RF, WGP\}                & No                            & No                        & \{RF, GBM\}                         \\ \midrule
+		License                            & MIT                                 & MIT                                           & Non-commercial          & MIT                        & Non-commercial                & BSD-2                     & BSD                                 \\ \midrule
+		Last update                        &                                     &                                               &                         &                            &                               &                           &                                    
+	\end{tabular}
+\end{table}
+
+
 \section{Future work}
 
 \chapter*{Appendix}

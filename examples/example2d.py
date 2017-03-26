@@ -1,6 +1,7 @@
 import os
 from collections import OrderedDict
 
+import numpy as np
 import matplotlib.pyplot as plt
 
 from pyGPGO.GPGO import GPGO

@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  24 MAR 2017 14:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.9)  25 MAR 2017 16:40
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-LaTeX2e <2016/03/31> patch level 2
-Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
-(/home/jose/texlive/texmf-dist/tex/latex/base/book.cls
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
-(/home/jose/texlive/texmf-dist/tex/latex/base/bk10.clo
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo
 File: bk10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -24,20 +24,20 @@ File: bk10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/home/jose/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-(/home/jose/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2016/02/28 v1.1s UTF-8 support for inputenc
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/home/jose/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -249,15 +249,11 @@ File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+0219 (decimal 537)
    defining Unicode char U+021A (decimal 538)
    defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+1E02 (decimal 7682)
-   defining Unicode char U+1E03 (decimal 7683)
+   defining Unicode char U+01E02 (decimal 7682)
+   defining Unicode char U+01E03 (decimal 7683)
    defining Unicode char U+200C (decimal 8204)
-   defining Unicode char U+2010 (decimal 8208)
-   defining Unicode char U+2011 (decimal 8209)
-   defining Unicode char U+2012 (decimal 8210)
    defining Unicode char U+2013 (decimal 8211)
    defining Unicode char U+2014 (decimal 8212)
-   defining Unicode char U+2015 (decimal 8213)
    defining Unicode char U+2018 (decimal 8216)
    defining Unicode char U+2019 (decimal 8217)
    defining Unicode char U+201A (decimal 8218)
@@ -273,8 +269,8 @@ File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/home/jose/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -314,8 +310,8 @@ File: ot1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/home/jose/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -338,25 +334,25 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/home/jose/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/10 v2.15b AMS math features
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/03 v2.15a AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-(/home/jose/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/home/jose/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen103
 ))
-(/home/jose/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen104
 )
-(/home/jose/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count88
 LaTeX Info: Redefining \frac on input line 199.
@@ -371,8 +367,8 @@ LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen105
-LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \macc@depth=\count93
 \c@MaxMatrixCols=\count94
 \dotsspace@=\muskip10
@@ -393,148 +389,149 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2739.
-LaTeX Info: Redefining \] on input line 2740.
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
 )
-(/home/jose/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/home/jose/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(/home/jose/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/home/jose/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks21
 )
-(/home/jose/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/06/02 v1.0s Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
 
-(/home/jose/texlive/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/home/jose/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 95.
 
-(/home/jose/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2016/06/17 v0.06h Graphics/color for pdfTeX
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/home/jose/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(/home/jose/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count100
 ))
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
 )
-(/home/jose/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2016/06/24 v6.83q Hypertext links for LaTeX
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-(/home/jose/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 
 
-(/home/jose/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
-Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
 Package hobsub Info: Skipping package `ltxcmds' (already loaded).
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
-Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
 )
-Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
-Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
 )
 Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
-Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
-Package: xcolor-patch 2016/05/16 xcolor patch
-Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
-Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
-Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-(/home/jose/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-(/home/jose/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
-Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-(/home/jose/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen114
 \Hy@linkcounter=\count101
 \Hy@pagecounter=\count102
 
-(/home/jose/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count103
 
-(/home/jose/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Hyper figures OFF on input line 4486.
-Package hyperref Info: Link nesting OFF on input line 4491.
-Package hyperref Info: Hyper index ON on input line 4494.
-Package hyperref Info: Plain pages OFF on input line 4501.
-Package hyperref Info: Backreferencing OFF on input line 4506.
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4735.
+Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count104
 
-(/home/jose/texlive/texmf-dist/tex/latex/url/url.sty
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5088.
+LaTeX Info: Redefining \url on input line 5041.
 \XeTeXLinkMargin=\dimen115
 \Fld@menulength=\count105
 \Field@Width=\dimen116
 \Fld@charsize=\dimen117
-Package hyperref Info: Hyper figures OFF on input line 6342.
-Package hyperref Info: Link nesting OFF on input line 6347.
-Package hyperref Info: Hyper index ON on input line 6350.
-Package hyperref Info: backreferencing OFF on input line 6357.
-Package hyperref Info: Link coloring OFF on input line 6362.
-Package hyperref Info: Link coloring with OCG OFF on input line 6367.
-Package hyperref Info: PDF/A mode OFF on input line 6372.
-LaTeX Info: Redefining \ref on input line 6412.
-LaTeX Info: Redefining \pageref on input line 6416.
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
 \Hy@abspage=\count106
 \c@Item=\count107
 \c@Hfootnote=\count108
@@ -542,26 +539,26 @@ LaTeX Info: Redefining \pageref on input line 6416.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/home/jose/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count109
 \c@bookmark@seq@number=\count110
 
-(/home/jose/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip46
 )
-(/home/jose/texlive/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
 
-(/home/jose/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-(/home/jose/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen118
 \captionmargin@=\dimen119
@@ -577,10 +574,10 @@ Package caption Info: hyperref package is loaded.
 \c@subfigure=\count112
 \c@subtable=\count113
 )
-(/home/jose/texlive/texmf-dist/tex/latex/minted/minted.sty
-Package: minted 2016/06/21 v2.2.2 Yet another Pygments shim for LaTeX
+(/usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2015/09/09 v2.1 Yet another Pygments shim for LaTeX
 
-(/home/jose/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2008/02/07
 
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
@@ -591,7 +588,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 \c@FancyVerbLine=\count115
 \FV@StepNumber=\count116
 \FV@OutFile=\write3
-) (/home/jose/texlive/texmf-dist/tex/latex/float/float.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count117
 \float@exts=\toks22
@@ -599,10 +596,10 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks23
 \@floatcapt=\box30
 )
-(/home/jose/texlive/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/home/jose/texlive/texmf-dist/tex/latex/tools/calc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count118
 \calc@Bcount=\count119
@@ -615,34 +612,30 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count120
 \calc@Cskip=\skip49
 )
-(/home/jose/texlive/texmf-dist/tex/latex/tools/shellesc.sty
-Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
-Package shellesc Info: Unrestricted shell escape enabled on input line 67.
-)
-(/home/jose/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
 
-(/home/jose/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
-Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2011/03/01 v1.6 Catch the contents of a file (HO)
 )
 runsystem(uname -s > "main.w18")...executed.
 
  (./main.w18)
 runsystem(rm -- "main.w18")...executed.
 
-) (/home/jose/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count121
 )
-(/home/jose/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-(/home/jose/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
 \@xs@message=\write4
 \integerpart=\count122
 \decimalpart=\count123
 )
 Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 )
-(/home/jose/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \linenopenalty=\count124
 \output=\toks24
@@ -660,106 +653,101 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \bframebox=\box31
 LaTeX Info: Redefining \\ on input line 3056.
 )
-(/home/jose/texlive/texmf-dist/tex/latex/framed/framed.sty
-Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip50
-\fb@frw=\dimen132
-\fb@frh=\dimen133
-\FrameRule=\dimen134
-\FrameSep=\dimen135
-)
 \minted@appexistsfile=\read2
-\FV@BreakIndent=\dimen136
-\FV@BreakSymbolSepLeft=\dimen137
-\FV@BreakSymbolSepRight=\dimen138
-\FV@BreakSymbolIndentLeft=\dimen139
-\FV@BreakSymbolIndentRight=\dimen140
+\FV@BreakIndent=\dimen132
+\FV@BreakSymbolSepLeft=\dimen133
+\FV@BreakSymbolSepRight=\dimen134
+\FV@BreakSymbolIndentLeft=\dimen135
+\FV@BreakSymbolIndentRight=\dimen136
 \c@FancyVerbLineBreakLast=\count131
 \FV@LineBox=\box32
 \FV@LineIndentBox=\box33
 \minted@bgbox=\box34
 \minted@code=\write5
 \c@minted@FancyVerbLineTemp=\count132
-\c@minted@pygmentizecounter=\count133
 \@float@every@listing=\toks25
-\c@listing=\count134
+\c@listing=\count133
 )
-runsystem(mkdir -p _minted-main)...executed.
+runsystem(mkdir -p "_minted-main")...executed.
 
 
-(/home/jose/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(./_minted-main/default.pygstyle)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-\Gm@cnth=\count135
-\Gm@cntv=\count136
-\c@Gm@tempcnt=\count137
-\Gm@bindingoffset=\dimen141
-\Gm@wd@mp=\dimen142
-\Gm@odd@mp=\dimen143
-\Gm@even@mp=\dimen144
-\Gm@layoutwidth=\dimen145
-\Gm@layoutheight=\dimen146
-\Gm@layouthoffset=\dimen147
-\Gm@layoutvoffset=\dimen148
+\Gm@cnth=\count134
+\Gm@cntv=\count135
+\c@Gm@tempcnt=\count136
+\Gm@bindingoffset=\dimen137
+\Gm@wd@mp=\dimen138
+\Gm@odd@mp=\dimen139
+\Gm@even@mp=\dimen140
+\Gm@layoutwidth=\dimen141
+\Gm@layoutheight=\dimen142
+\Gm@layouthoffset=\dimen143
+\Gm@layoutvoffset=\dimen144
 \Gm@dimlist=\toks26
 )
-(/home/jose/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 \@float@every@algorithm=\toks27
-\c@algorithm=\count138
+\c@algorithm=\count137
 )
-(/home/jose/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
 
-(/home/jose/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count139
-\c@ALG@rem=\count140
-\c@ALG@nested=\count141
-\ALG@tlm=\skip51
-\ALG@thistlm=\skip52
-\c@ALG@Lnr=\count142
-\c@ALG@blocknr=\count143
-\c@ALG@storecount=\count144
-\c@ALG@tmpcounter=\count145
-\ALG@tmplength=\skip53
+\c@ALG@line=\count138
+\c@ALG@rem=\count139
+\c@ALG@nested=\count140
+\ALG@tlm=\skip50
+\ALG@thistlm=\skip51
+\c@ALG@Lnr=\count141
+\c@ALG@blocknr=\count142
+\c@ALG@storecount=\count143
+\c@ALG@tmpcounter=\count144
+\ALG@tmplength=\skip52
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (/home/jose/texlive/texmf-dist/tex/latex/placeins/placeins.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
-(/home/jose/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2016/04/27 v1.618033 publication quality tables
-\heavyrulewidth=\dimen149
-\lightrulewidth=\dimen150
-\cmidrulewidth=\dimen151
-\belowrulesep=\dimen152
-\belowbottomsep=\dimen153
-\aboverulesep=\dimen154
-\abovetopsep=\dimen155
-\cmidrulesep=\dimen156
-\cmidrulekern=\dimen157
-\defaultaddspace=\dimen158
-\@cmidla=\count146
-\@cmidlb=\count147
-\@aboverulesep=\dimen159
-\@belowrulesep=\dimen160
-\@thisruleclass=\count148
-\@lastruleclass=\count149
-\@thisrulewidth=\dimen161
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen145
+\lightrulewidth=\dimen146
+\cmidrulewidth=\dimen147
+\belowrulesep=\dimen148
+\belowbottomsep=\dimen149
+\aboverulesep=\dimen150
+\abovetopsep=\dimen151
+\cmidrulesep=\dimen152
+\cmidrulekern=\dimen153
+\defaultaddspace=\dimen154
+\@cmidla=\count145
+\@cmidlb=\count146
+\@aboverulesep=\dimen155
+\@belowrulesep=\dimen156
+\@thisruleclass=\count147
+\@lastruleclass=\count148
+\@thisrulewidth=\dimen157
 )
-\c@mydef=\count150
-\c@defini=\count151
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+\c@mydef=\count149
+\c@defini=\count150
 \@indexfile=\write6
 \openout6 = `main.idx'.
 
 
 Writing index file main.idx
-runsystem(which pygmentize && touch main.aex)...executed.
+runsystem(which "pygmentize" && touch "main.aex")...executed.
 
-runsystem(rm main.aex)...executed.
+runsystem(rm "main.aex")...executed.
 
 (./main.aux
 
@@ -777,64 +765,62 @@ LaTeX Warning: Label `fig:affmlp' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
- (/home/jose/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count152
-\scratchdimen=\dimen162
+\scratchcounter=\count151
+\scratchdimen=\dimen158
 \scratchbox=\box35
-\nofMPsegments=\count153
-\nofMParguments=\count154
+\nofMPsegments=\count152
+\nofMParguments=\count153
 \everyMPshowfont=\toks28
-\MPscratchCnt=\count155
-\MPscratchDim=\dimen163
-\MPnumerator=\count156
-\makeMPintoPDFobject=\count157
+\MPscratchCnt=\count154
+\MPscratchDim=\dimen159
+\MPnumerator=\count155
+\makeMPintoPDFobject=\count156
 \everyMPtoPDFconversion=\toks29
-) (/home/jose/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-(/home/jose/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+(grfext)             \AppendGraphicsExtensions on input line 452.
 
-(/home/jose/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring OFF on input line 24.
+Package hyperref Info: Link coloring OFF on input line 25.
 
-(/home/jose/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-(/home/jose/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count158
+\c@section@level=\count157
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
-LaTeX Info: Redefining \nameref on input line 24.
+LaTeX Info: Redefining \ref on input line 25.
+LaTeX Info: Redefining \pageref on input line 25.
+LaTeX Info: Redefining \nameref on input line 25.
 
 (./main.out) (./main.out)
 \@outlinefile=\write7
@@ -844,23 +830,24 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
-(/home/jose/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-(/home/jose/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
+(./_minted-main/default-pyg-prefix.pygstyle)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -895,18 +882,18 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 28.
-(/home/jose/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 
-(/home/jose/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 
-{/home/jose/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ] (./main.toc [3])
 \tf@toc=\write8
@@ -914,61 +901,61 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [4]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 38.
-(/home/jose/texlive/texmf-dist/tex/latex/base/omscmr.fd
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 39.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 38.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 39.
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--50
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
 
  []
 
 [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--70
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
 [6]
 Chapter 2.
 
-Overfull \hbox (42.37546pt too wide) in paragraph at lines 79--80
+Overfull \hbox (42.37546pt too wide) in paragraph at lines 80--81
 \OT1/cmr/m/n/10 In this chap-ter we will fo-cus on re-gres-sion prob-lems. As-s
 ume we have some la-belled data $\OML/cmm/m/it/10 D \OT1/cmr/m/n/10 = []$,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 [7
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
  []
 
@@ -976,33 +963,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 140--141
 File: figures/chapter2/drawPrior.pdf Graphic file (type pdf)
 
 <use figures/chapter2/drawPrior.pdf>
-Package pdftex.def Info: figures/chapter2/drawPrior.pdf used on input line 145.
+Package pdftex.def Info: figures/chapter2/drawPrior.pdf used on input line 146.
 
 (pdftex.def)             Requested size: 455.24411pt x 330.09088pt.
  [8 <./figures/chapter2/drawPrior.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 228--229
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
 
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 336.
+put line 337.
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 
  []
 
@@ -1010,45 +997,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 354--355
 File: figures/chapter2/GPsine.pdf Graphic file (type pdf)
 
 <use figures/chapter2/GPsine.pdf>
-Package pdftex.def Info: figures/chapter2/GPsine.pdf used on input line 360.
+Package pdftex.def Info: figures/chapter2/GPsine.pdf used on input line 361.
 (pdftex.def)             Requested size: 455.24411pt x 330.13454pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--366
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
 
  []
 
 [12 <./figures/chapter2/GPsine.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 393--394
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 401--402
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--410
+Underfull \hbox (badness 10000) in paragraph at lines 410--411
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 419--420
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 426--427
+Underfull \hbox (badness 10000) in paragraph at lines 427--428
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 433--434
+Underfull \hbox (badness 10000) in paragraph at lines 434--435
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 446--447
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
 
  []
 
@@ -1056,10 +1043,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 446--447
 File: figures/chapter2/zoo.pdf Graphic file (type pdf)
 
 <use figures/chapter2/zoo.pdf>
-Package pdftex.def Info: figures/chapter2/zoo.pdf used on input line 452.
+Package pdftex.def Info: figures/chapter2/zoo.pdf used on input line 453.
 (pdftex.def)             Requested size: 455.24411pt x 316.30954pt.
  [14] [15 <./figures/chapter2/zoo.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 470--471
+Underfull \hbox (badness 10000) in paragraph at lines 471--472
 
  []
 
@@ -1068,20 +1055,20 @@ File: figures/chapter2/logmarginal.pdf Graphic file (type pdf)
 
 <use figures/chapter2/logmarginal.pdf>
 Package pdftex.def Info: figures/chapter2/logmarginal.pdf used on input line 50
-1.
+2.
 (pdftex.def)             Requested size: 455.24411pt x 209.59317pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 507--508
+Underfull \hbox (badness 10000) in paragraph at lines 508--509
 
  []
 
 [16] [17 <./figures/chapter2/logmarginal.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 582--583
+Underfull \hbox (badness 10000) in paragraph at lines 583--584
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 591--592
+Underfull \hbox (badness 10000) in paragraph at lines 592--593
 
  []
 
@@ -1090,46 +1077,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 591--592
 ]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 630--631
+Underfull \hbox (badness 10000) in paragraph at lines 631--632
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 643--644
+Underfull \hbox (badness 10000) in paragraph at lines 644--645
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 674--675
+Underfull \hbox (badness 10000) in paragraph at lines 675--676
 
  []
 
 [22] [23]
-Underfull \hbox (badness 10000) in paragraph at lines 727--728
+Underfull \hbox (badness 10000) in paragraph at lines 728--729
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 731--732
+Underfull \hbox (badness 10000) in paragraph at lines 732--733
 
  []
 
 
-LaTeX Warning: Reference `acqzoo' on page 24 undefined on input line 749.
+LaTeX Warning: Reference `acqzoo' on page 24 undefined on input line 750.
 
 <figures/chapter3/acqzoo.pdf, id=706, 537.6888pt x 680.78339pt>
 File: figures/chapter3/acqzoo.pdf Graphic file (type pdf)
 
 <use figures/chapter3/acqzoo.pdf>
-Package pdftex.def Info: figures/chapter3/acqzoo.pdf used on input line 756.
+Package pdftex.def Info: figures/chapter3/acqzoo.pdf used on input line 757.
 (pdftex.def)             Requested size: 322.61577pt x 408.47318pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 761--762
+Underfull \hbox (badness 10000) in paragraph at lines 762--763
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 763--764
+Underfull \hbox (badness 10000) in paragraph at lines 764--765
 
  []
 
@@ -1139,50 +1126,50 @@ File: figures/chapter3/explanation.pdf Graphic file (type pdf)
 
 <use figures/chapter3/explanation.pdf>
 Package pdftex.def Info: figures/chapter3/explanation.pdf used on input line 77
-0.
+1.
 (pdftex.def)             Requested size: 455.24411pt x 316.59302pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 788--789
+Underfull \hbox (badness 10000) in paragraph at lines 789--790
 
  []
 
 [26 <./figures/chapter3/explanation.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 806--807
+Underfull \hbox (badness 10000) in paragraph at lines 807--808
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 808--809
+Underfull \hbox (badness 10000) in paragraph at lines 809--810
 
  []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 814--815
+Underfull \hbox (badness 10000) in paragraph at lines 815--816
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 824--825
+Underfull \hbox (badness 10000) in paragraph at lines 825--826
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 844--845
+Underfull \hbox (badness 10000) in paragraph at lines 845--846
 
  []
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 846--847
+Underfull \hbox (badness 10000) in paragraph at lines 847--848
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 852--853
+Underfull \hbox (badness 10000) in paragraph at lines 853--854
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 870--871
+Underfull \hbox (badness 10000) in paragraph at lines 871--872
 
  []
 
@@ -1190,45 +1177,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 870--871
 File: figures/chapter3/sine/0.pdf Graphic file (type pdf)
 
 <use figures/chapter3/sine/0.pdf>
-Package pdftex.def Info: figures/chapter3/sine/0.pdf used on input line 881.
+Package pdftex.def Info: figures/chapter3/sine/0.pdf used on input line 882.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/sine/1.pdf, id=851, 462.52798pt x 346.89601pt>
 File: figures/chapter3/sine/1.pdf Graphic file (type pdf)
 
 <use figures/chapter3/sine/1.pdf>
-Package pdftex.def Info: figures/chapter3/sine/1.pdf used on input line 885.
+Package pdftex.def Info: figures/chapter3/sine/1.pdf used on input line 886.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/sine/2.pdf, id=852, 462.52798pt x 346.89601pt>
 File: figures/chapter3/sine/2.pdf Graphic file (type pdf)
 
 <use figures/chapter3/sine/2.pdf>
-Package pdftex.def Info: figures/chapter3/sine/2.pdf used on input line 890.
+Package pdftex.def Info: figures/chapter3/sine/2.pdf used on input line 891.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/sine/3.pdf, id=853, 462.52798pt x 346.89601pt>
 File: figures/chapter3/sine/3.pdf Graphic file (type pdf)
 
 <use figures/chapter3/sine/3.pdf>
-Package pdftex.def Info: figures/chapter3/sine/3.pdf used on input line 894.
+Package pdftex.def Info: figures/chapter3/sine/3.pdf used on input line 895.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/sine/4.pdf, id=854, 462.52798pt x 346.89601pt>
 File: figures/chapter3/sine/4.pdf Graphic file (type pdf)
 
 <use figures/chapter3/sine/4.pdf>
-Package pdftex.def Info: figures/chapter3/sine/4.pdf used on input line 899.
+Package pdftex.def Info: figures/chapter3/sine/4.pdf used on input line 900.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/sine/5.pdf, id=855, 462.52798pt x 346.89601pt>
 File: figures/chapter3/sine/5.pdf Graphic file (type pdf)
 
 <use figures/chapter3/sine/5.pdf>
-Package pdftex.def Info: figures/chapter3/sine/5.pdf used on input line 903.
+Package pdftex.def Info: figures/chapter3/sine/5.pdf used on input line 904.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 916--917
+Underfull \hbox (badness 10000) in paragraph at lines 917--918
 
  []
 
@@ -1237,10 +1224,10 @@ File: figures/chapter3/rosen/rosen.pdf Graphic file (type pdf)
 
 <use figures/chapter3/rosen/rosen.pdf>
 Package pdftex.def Info: figures/chapter3/rosen/rosen.pdf used on input line 92
-2.
+3.
 (pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 925--926
+Underfull \hbox (badness 10000) in paragraph at lines 926--927
 
  []
 
@@ -1248,134 +1235,124 @@ Underfull \hbox (badness 10000) in paragraph at lines 925--926
 File: figures/chapter3/rosen/0.pdf Graphic file (type pdf)
 
 <use figures/chapter3/rosen/0.pdf>
-Package pdftex.def Info: figures/chapter3/rosen/0.pdf used on input line 935.
+Package pdftex.def Info: figures/chapter3/rosen/0.pdf used on input line 936.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/rosen/1.pdf, id=861, 462.52798pt x 346.89601pt>
 File: figures/chapter3/rosen/1.pdf Graphic file (type pdf)
 
 <use figures/chapter3/rosen/1.pdf>
-Package pdftex.def Info: figures/chapter3/rosen/1.pdf used on input line 939.
+Package pdftex.def Info: figures/chapter3/rosen/1.pdf used on input line 940.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/rosen/2.pdf, id=862, 462.52798pt x 346.89601pt>
 File: figures/chapter3/rosen/2.pdf Graphic file (type pdf)
 
 <use figures/chapter3/rosen/2.pdf>
-Package pdftex.def Info: figures/chapter3/rosen/2.pdf used on input line 944.
+Package pdftex.def Info: figures/chapter3/rosen/2.pdf used on input line 945.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/rosen/3.pdf, id=863, 462.52798pt x 346.89601pt>
 File: figures/chapter3/rosen/3.pdf Graphic file (type pdf)
 
 <use figures/chapter3/rosen/3.pdf>
-Package pdftex.def Info: figures/chapter3/rosen/3.pdf used on input line 948.
+Package pdftex.def Info: figures/chapter3/rosen/3.pdf used on input line 949.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/rosen/4.pdf, id=864, 462.52798pt x 346.89601pt>
 File: figures/chapter3/rosen/4.pdf Graphic file (type pdf)
 
 <use figures/chapter3/rosen/4.pdf>
-Package pdftex.def Info: figures/chapter3/rosen/4.pdf used on input line 953.
+Package pdftex.def Info: figures/chapter3/rosen/4.pdf used on input line 954.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
 
 <figures/chapter3/rosen/5.pdf, id=865, 462.52798pt x 346.89601pt>
 File: figures/chapter3/rosen/5.pdf Graphic file (type pdf)
 
 <use figures/chapter3/rosen/5.pdf>
-Package pdftex.def Info: figures/chapter3/rosen/5.pdf used on input line 957.
+Package pdftex.def Info: figures/chapter3/rosen/5.pdf used on input line 958.
 (pdftex.def)             Requested size: 204.85846pt x 153.6457pt.
  [30] [31 <./figures/chapter3/sine/0.pdf> <./figures/chapter3/sine/1.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/sine/1.pdf): PDF inclusion: multiple pdfs with page group included in a 
-single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/sine/1.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
 > <./figures/chapter3/sine/2.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/sine/2.pdf): PDF inclusion: multiple pdfs with page group included in a 
-single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/sine/2.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
 > <./figures/chapter3/sine/3.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/sine/3.pdf): PDF inclusion: multiple pdfs with page group included in a 
-single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/sine/3.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
 > <./figures/chapter3/sine/4.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/sine/4.pdf): PDF inclusion: multiple pdfs with page group included in a 
-single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/sine/4.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
 > <./figures/chapter3/sine/5.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/sine/5.pdf): PDF inclusion: multiple pdfs with page group included in a 
-single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/sine/5.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
 >] [32 <./figures/chapter3/rosen/rosen.pdf>] [33 <./figures/chapter3/rosen/0.pd
 f> <./figures/chapter3/rosen/1.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/rosen/1.pdf): PDF inclusion: multiple pdfs with page group included in a
- single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/rosen/1.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
 > <./figures/chapter3/rosen/2.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/rosen/2.pdf): PDF inclusion: multiple pdfs with page group included in a
- single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/rosen/2.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
 > <./figures/chapter3/rosen/3.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/rosen/3.pdf): PDF inclusion: multiple pdfs with page group included in a
- single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/rosen/3.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
 > <./figures/chapter3/rosen/4.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/rosen/4.pdf): PDF inclusion: multiple pdfs with page group included in a
- single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/rosen/4.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
 > <./figures/chapter3/rosen/5.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter3/rosen/5.pdf): PDF inclusion: multiple pdfs with page group included in a
- single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter3/rosen/5.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
 >] [34
 
 ]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 969--970
+Underfull \hbox (badness 10000) in paragraph at lines 970--971
 
  []
 
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 987--988
+Underfull \hbox (badness 10000) in paragraph at lines 988--989
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1001--1002
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1003
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1003--1004
+Underfull \hbox (badness 10000) in paragraph at lines 1004--1005
 
  []
 
 [36] [37]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1073.
+               Default added (so using `tbp') on input line 1074.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1090.
+               Default added (so using `tbp') on input line 1091.
 
 [38]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 1136.
+               Default added (so using `tbp') on input line 1137.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1156--1157
+Underfull \hbox (badness 10000) in paragraph at lines 1157--1158
 
  []
 
@@ -1383,20 +1360,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 1156--1157
 File: figures/chapter4/docking.png Graphic file (type png)
 
 <use figures/chapter4/docking.png>
-Package pdftex.def Info: figures/chapter4/docking.png used on input line 1161.
+Package pdftex.def Info: figures/chapter4/docking.png used on input line 1162.
 (pdftex.def)             Requested size: 300.27907pt x 199.24654pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1165--1166
+Underfull \hbox (badness 10000) in paragraph at lines 1166--1167
 
  []
 
 [39]
-Underfull \hbox (badness 10000) in paragraph at lines 1172--1173
+Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
 
  []
 
 [40 <./figures/chapter4/docking.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1174--1175
+Underfull \hbox (badness 10000) in paragraph at lines 1175--1176
 
  []
 
@@ -1404,247 +1381,286 @@ Underfull \hbox (badness 10000) in paragraph at lines 1174--1175
 File: figures/chapter4/aff/svm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/svm.pdf>
-Package pdftex.def Info: figures/chapter4/aff/svm.pdf used on input line 1198.
+Package pdftex.def Info: figures/chapter4/aff/svm.pdf used on input line 1199.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/aff/knn.pdf, id=1231, 462.52798pt x 346.89601pt>
-File: figures/chapter4/aff/knn.pdf Graphic file (type pdf)
 
-<use figures/chapter4/aff/knn.pdf>
-Package pdftex.def Info: figures/chapter4/aff/knn.pdf used on input line 1205.
-(pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
+! LaTeX Error: File `figures/chapter4/aff/knn' not found.
 
-<figures/chapter4/aff/gbm.pdf, id=1232, 462.52798pt x 346.89601pt>
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1206 ...cs[scale=0.75]{figures/chapter4/aff/knn}
+                                                  
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<figures/chapter4/aff/gbm.pdf, id=1231, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/gbm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/gbm.pdf>
-Package pdftex.def Info: figures/chapter4/aff/gbm.pdf used on input line 1212.
+Package pdftex.def Info: figures/chapter4/aff/gbm.pdf used on input line 1213.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/aff/mlp.pdf, id=1233, 462.52798pt x 346.89601pt>
+<figures/chapter4/aff/mlp.pdf, id=1232, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/mlp.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/mlp.pdf>
-Package pdftex.def Info: figures/chapter4/aff/mlp.pdf used on input line 1219.
+Package pdftex.def Info: figures/chapter4/aff/mlp.pdf used on input line 1220.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
- [41] [42 <./figures/chapter4/aff/svm.pdf> <./figures/chapter4/aff/knn.pdf
+ [41] [42 <./figures/chapter4/aff/svm.pdf> <./figures/chapter4/aff/gbm.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter4/aff/knn.pdf): PDF inclusion: multiple pdfs with page group included in a
- single page
->] [43 <./figures/chapter4/aff/gbm.pdf> <./figures/chapter4/aff/mlp.pdf
-
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter4/aff/mlp.pdf): PDF inclusion: multiple pdfs with page group included in a
- single page
->] <figures/chapter4/pinter/svm.pdf, id=1463, 462.52798pt x 346.89601pt>
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter4/aff/gbm.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
+>] <figures/chapter4/pinter/svm.pdf, id=1351, 462.52798pt x 346.89601pt>
 File: figures/chapter4/pinter/svm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/pinter/svm.pdf>
 Package pdftex.def Info: figures/chapter4/pinter/svm.pdf used on input line 123
-4.
+5.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/pinter/knn.pdf, id=1464, 462.52798pt x 346.89601pt>
-File: figures/chapter4/pinter/knn.pdf Graphic file (type pdf)
 
-<use figures/chapter4/pinter/knn.pdf>
-Package pdftex.def Info: figures/chapter4/pinter/knn.pdf used on input line 124
-1.
-(pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
+! LaTeX Error: File `figures/chapter4/pinter/knn' not found.
 
-<figures/chapter4/pinter/gbm.pdf, id=1465, 462.52798pt x 346.89601pt>
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1242 ...scale=0.75]{figures/chapter4/pinter/knn}
+                                                  
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<figures/chapter4/pinter/gbm.pdf, id=1352, 462.52798pt x 346.89601pt>
 File: figures/chapter4/pinter/gbm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/pinter/gbm.pdf>
 Package pdftex.def Info: figures/chapter4/pinter/gbm.pdf used on input line 124
-8.
+9.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/pinter/mlp.pdf, id=1466, 462.52798pt x 346.89601pt>
+<figures/chapter4/pinter/mlp.pdf, id=1353, 462.52798pt x 346.89601pt>
 File: figures/chapter4/pinter/mlp.pdf Graphic file (type pdf)
 
 <use figures/chapter4/pinter/mlp.pdf>
 Package pdftex.def Info: figures/chapter4/pinter/mlp.pdf used on input line 125
-5.
+6.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
- [44 <./figures/chapter4/pinter/svm.pdf>]
-[45 <./figures/chapter4/pinter/knn.pdf> <./figures/chapter4/pinter/gbm.pdf
+ [43 <./figures/chapter4/aff/mlp.pdf>]
+[44 <./figures/chapter4/pinter/svm.pdf> <./figures/chapter4/pinter/gbm.pdf
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter4/pinter/gbm.pdf): PDF inclusion: multiple pdfs with page group included i
-n a single page
->] [46 <./figures/chapter4/pinter/mlp.pdf>]
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/chapter4/pinter/gbm.pdf): PDF
+ inclusion: multiple pdfs with page group included in a single page
+>] [45 <./figures/chapter4/pinter/mlp.pdf>] [46
+
+]
 Chapter 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1262
-
- []
-
-\openout3 = `main.pyg'.
-
-(./_minted-main/default-pyg-prefix.pygstyle) (./_minted-main/default.pygstyle)
-(./_minted-main/50E2C9D9C6FD8E2C1FDD25A7C02B653D01DD4D4EE87B3F8A46459B7F7EF7A56
-4.pygtex)
-\openout3 = `main.pyg'.
-
-
-(./_minted-main/E97CD4D400FFACABA7ED80C952F0273C01DD4D4EE87B3F8A46459B7F7EF7A56
-4.pygtex)
-Underfull \hbox (badness 10000) in paragraph at lines 1289--1290
+Underfull \hbox (badness 10000) in paragraph at lines 1262--1263
 
  []
 
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/DC8147A0F7388FDE9EE93D0E2CA221FC01DD4D4EE87B3F8A46459B7F7EF7A56
-4.pygtex [47
-
-])
+(./_minted-main/50E2C9D9C6FD8E2C1FDD25A7C02B653DD84036C1A66AE747DC26347EA9B2B8E
+3.pygtex)
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/8FB93F8D9B4F50DD321AF36A869F4EB501DD4D4EE87B3F8A46459B7F7EF7A56
-4.pygtex)
+(./_minted-main/E97CD4D400FFACABA7ED80C952F0273CD84036C1A66AE747DC26347EA9B2B8E
+3.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 1290--1291
+
+ []
+
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/C428A7AE8F92DF21DDDB516B0493F6F401DD4D4EE87B3F8A46459B7F7EF7A56
-4.pygtex)
+(./_minted-main/DC8147A0F7388FDE9EE93D0E2CA221FCD84036C1A66AE747DC26347EA9B2B8E
+3.pygtex [47])
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/155B2A0D213BD83C638FBA238A17A5909D188FF14B5B5A34504F2B9625FD44D
-E.pygtex
+(./_minted-main/8FB93F8D9B4F50DD321AF36A869F4EB5D84036C1A66AE747DC26347EA9B2B8E
+3.pygtex)
+\openout3 = `main.pyg'.
+
+
+(./_minted-main/C428A7AE8F92DF21DDDB516B0493F6F4D84036C1A66AE747DC26347EA9B2B8E
+3.pygtex)
+\openout3 = `main.pyg'.
+
+
+(./_minted-main/155B2A0D213BD83C638FBA238A17A590F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
 )
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/90CC783EF02E2B6511021850047ABC389D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [48])
-<figures/chapter5/exfun.pdf, id=1705, 462.52798pt x 346.89601pt>
-File: figures/chapter5/exfun.pdf Graphic file (type pdf)
+(./_minted-main/90CC783EF02E2B6511021850047ABC38F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex [48])
 
-<use figures/chapter5/exfun.pdf>
-Package pdftex.def Info: figures/chapter5/exfun.pdf used on input line 1379.
-(pdftex.def)             Requested size: 341.43307pt x 256.085pt.
+! LaTeX Error: File `figures/chapter5/exfun' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1380 ...=0.75\textwidth]{figures/chapter5/exfun}
+                                                  
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/ECCD6F90EAA084022E8C322495374AEE9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex)
+(./_minted-main/ECCD6F90EAA084022E8C322495374AEEF25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex)
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/17F047EA161D5BC4D27BC11C8C08ECAE9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex)
+(./_minted-main/17F047EA161D5BC4D27BC11C8C08ECAEF25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex)
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/3217A1DBD4E45432DA126F4AF4037C239D188FF14B5B5A34504F2B9625FD44D
-E.pygtex)
+(./_minted-main/3217A1DBD4E45432DA126F4AF4037C23F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex)
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/63FC52957C7D80F9A6C0D35AF3CF8F099D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [49 <./figures/chapter5/exfun.pdf>])
+(./_minted-main/63FC52957C7D80F9A6C0D35AF3CF8F09F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex)
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/DD390A7E4AB7F1351C36C238C0B2FCAA9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex)
+(./_minted-main/DD390A7E4AB7F1351C36C238C0B2FCAAF25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex)
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1453.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1454.
 
+ [49]
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/A12ECB1F792E934EA3D22C7D903D3EE49D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [50])
-Underfull \hbox (badness 10000) in paragraph at lines 1506--1507
+(./_minted-main/A12ECB1F792E934EA3D22C7D903D3EE4F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 1507--1508
 
  []
 
+[50]
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/7B797CCFDA720CDE549714D1AE9EEEB89D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [51])
-<figures/chapter5/noiseopt.pdf, id=1741, 462.52798pt x 346.89601pt>
-File: figures/chapter5/noiseopt.pdf Graphic file (type pdf)
+(./_minted-main/7B797CCFDA720CDE549714D1AE9EEEB8F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex)
 
-<use figures/chapter5/noiseopt.pdf>
-Package pdftex.def Info: figures/chapter5/noiseopt.pdf used on input line 1561.
+! LaTeX Error: File `figures/chapter5/noiseopt' not found.
 
-(pdftex.def)             Requested size: 341.43307pt x 256.085pt.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1562 ...75\textwidth]{figures/chapter5/noiseopt}
+                                                  
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<figures/chapter5/makemoons.pdf, id=1742, 462.52798pt x 346.89601pt>
-File: figures/chapter5/makemoons.pdf Graphic file (type pdf)
 
-<use figures/chapter5/makemoons.pdf>
-Package pdftex.def Info: figures/chapter5/makemoons.pdf used on input line 1568
-.
-(pdftex.def)             Requested size: 341.43307pt x 256.085pt.
- [52] [53 <./figures/chapter5/noiseopt.pdf> <./figures/chapter5/makemoons.pdf
+! LaTeX Error: File `figures/chapter5/makemoons' not found.
 
-pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ./figures/ch
-apter5/makemoons.pdf): PDF inclusion: multiple pdfs with page group included in
- a single page
->] [54
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1569 ...5\textwidth]{figures/chapter5/makemoons}
+                                                  
+I could not locate the file with any of these extensions:
+.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1580.
+
+
+Overfull \hbox (413.49371pt too wide) in paragraph at lines 1584--1598
+ [][] 
+ []
+
+
+Underfull \vbox (badness 8189) has occurred while \output is active []
+
+ [51]
+[52]
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/4BC65608FD2763E7C231A03E58CF90C99D188FF14B5B5A34504F2B9625FD44D
-E.pygtex)
+(./_minted-main/4BC65608FD2763E7C231A03E58CF90C9F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex)
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/9F893418F765481B17A6CE89FA4C45BB9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [55])
+(./_minted-main/9F893418F765481B17A6CE89FA4C45BBF25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex [53
+
+])
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/01846CE0AB08FBB5370F551BDD8700E49D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [56])
+(./_minted-main/01846CE0AB08FBB5370F551BDD8700E4F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex [54])
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/69039E575068EBA51D5DDA94862D7B089D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [57])
+(./_minted-main/69039E575068EBA51D5DDA94862D7B08F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex [55])
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/C3FEF1F24A4C8C42E29EB147312F79BA9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [58])
+(./_minted-main/C3FEF1F24A4C8C42E29EB147312F79BAF25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex [56])
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/B5A79309824013F4C4719760E078636C9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex)
+(./_minted-main/B5A79309824013F4C4719760E078636CF25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex)
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/FB8DA0D5E2C7281D9638DECE993988EC9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [59]
+(./_minted-main/FB8DA0D5E2C7281D9638DECE993988ECF25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex [57]
 Underfull \vbox (badness 7796) has occurred while \output is active []
 
- [60])
+ [58])
 \openout3 = `main.pyg'.
 
 
-(./_minted-main/E3BFAF37CEF84C55BFC527FF6725FA999D188FF14B5B5A34504F2B9625FD44D
-E.pygtex [61])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2048.
- [62]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2048.
+(./_minted-main/E3BFAF37CEF84C55BFC527FF6725FA99F25D47A0ADF8F08BC84ACD63E58FD4E
+A.pygtex [59])
+runsystem(rm "main.pyg")...executed.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2072.
+ [60]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2072.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2048.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2048.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2072.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2072.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 4BC48EDBFB49694F72C2066383B23C14;4839.
@@ -1655,52 +1671,50 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-runsystem(rm main.pyg)...executed.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2048.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2072.
  ) 
 Here is how much of TeX's memory you used:
- 12098 strings out of 493013
- 194421 string characters out of 6135623
- 324402 words of memory out of 5000000
- 15090 multiletter control sequences out of 15000+600000
+ 11947 strings out of 494953
+ 190494 string characters out of 6180978
+ 314176 words of memory out of 5000000
+ 14674 multiletter control sequences out of 15000+600000
  16968 words of font info for 64 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 42i,22n,40p,1239b,561s stack positions out of 5000i,500n,10000p,200000b,80000s
-</home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></h
-ome/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy5.pfb></ho
-me/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></hom
-e/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/jose
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/jose/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></home/jose/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/jose/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmitt10.pfb></home/jose/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi10.pfb></home/jose/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi12.pfb></home/jose/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi5.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmib10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cmext
-ra/cmmib7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-</home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></home/
-jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></home/jose/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/jose/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/jose/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr9.pfb></home/jose/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsl10.pfb></home/jose/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmss10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmss12.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy5.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></ho
-me/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></home/jos
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></home/jose/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/jose/texli
+ 14 hyphenation exceptions out of 8191
+ 42i,22n,40p,1239b,558s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy5.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmext
+ra/cmmib7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (62 pages, 1629696 bytes).
+Output written on main.pdf (60 pages, 1573490 bytes).
 PDF statistics:
- 2004 PDF objects out of 2073 (max. 8388607)
- 1255 compressed objects within 13 object streams
- 268 named destinations out of 1000 (max. 500000)
- 652 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1814 PDF objects out of 2073 (max. 8388607)
+ 1209 compressed objects within 13 object streams
+ 267 named destinations out of 1000 (max. 500000)
+ 627 words of extra memory for PDF output out of 10000 (max. 10000000)
 
