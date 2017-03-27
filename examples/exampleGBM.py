@@ -1,20 +1,20 @@
 import numpy as np
-from pyGPGO.surrogates.RandomForest import RandomForest
+from pyGPGO.surrogates.BoostedTrees import BoostedTrees
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     # Build synthetic data (sine function)
-    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 8)
+    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 16)
     y = np.sin(x)
     X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 
-    rf = RandomForest(n_estimators = 20)
+    gbm = BoostedTrees()
     # Fit the model to the data
-    rf.fit(X, y)
+    gbm.fit(X, y)
     # Predict on new data
     xstar = np.arange(0, 2 * np.pi, step=0.01)
     Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]
-    ymean, ystd = rf.predict(Xstar, return_std=True)
+    ymean, ystd = gbm.predict(Xstar, return_std=True)
 
     # Confidence interval bounds
     lower, upper = ymean - 1.96 * ystd, ymean + 1.96 * ystd
