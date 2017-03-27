@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{]:} \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{getResult}\PYG{p}{()}
+\PYG{n}{Out} \PYG{p}{[}\PYG{l+m+mi}{8}\PYG{p}{]:}	 \PYG{p}{(}\PYG{n}{OrderedDict}\PYG{p}{([(}\PYG{l+s+s1}{\PYGZsq{}x\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mf}{0.76321944301549549}\PYG{p}{)]),} \PYG{l+m+mf}{6.0013872547078249}\PYG{p}{)}
+\end{Verbatim}

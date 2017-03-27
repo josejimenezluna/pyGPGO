@@ -1,0 +1,2370 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.7 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{3}
+  \sortlist[entry]{nty/global/}
+    \entry{Auer1995}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=125b7a022e61e5532195c023fa81e409}{%
+           family={Auer},
+           family_i={A\bibinitperiod},
+           given={P.},
+           given_i={P\bibinitperiod}}}%
+        {{hash=8404303a9224fea700bdceffa0d8a43b}{%
+           family={Cesa-Bianchi},
+           family_i={C\bibinithyphendelim B\bibinitperiod},
+           given={N.},
+           given_i={N\bibinitperiod}}}%
+        {{hash=7652bc7c7334cc235c609273f6dabeab}{%
+           family={Freund},
+           family_i={F\bibinitperiod},
+           given={Y.},
+           given_i={Y\bibinitperiod}}}%
+        {{hash=515952b3a83c813f8d33f1e04505a605}{%
+           family={Schapire},
+           family_i={S\bibinitperiod},
+           given={R.E.},
+           given_i={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{d091c2bfe9300141259dcaa8148f87e8}
+      \strng{fullhash}{5088f66942cda487fb319b495c6a869c}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In the multi-armed bandit problem, a gambler must decide which arm$\backslash$nof K non-identical slot machines to play in a sequence of trials so as$\backslash$nto maximize his reward. This classical problem has received much$\backslash$nattention because of the simple model it provides of the trade-off$\backslash$nbetween exploration (trying out each arm to find the best one) and$\backslash$nexploitation (playing the arm believed to give the best payoff). Past$\backslash$nsolutions for the bandit problem have almost always relied on$\backslash$nassumptions about the statistics of the slot machines. In this work, we$\backslash$nmake no statistical assumptions whatsoever about the nature of the$\backslash$nprocess generating the payoffs of the slot machines. We give a solution$\backslash$nto the bandit problem in which an adversary, rather than a well-behaved$\backslash$nstochastic process, has complete control over the payoffs. In a sequence$\backslash$nof T plays, we prove that the expected per-round payoff of our algorithm$\backslash$napproaches that of the best arm at the rate O(T-1/3), and we$\backslash$ngive an improved rate of convergence when the best arm has fairly low$\backslash$npayoff. We also consider a setting in which the player has a team of$\backslash$n{\&}ldquo;experts{\&}rdquo; advising him on which arm to play; here, we give a$\backslash$nstrategy that will guarantee expected payoff close to that of the best$\backslash$nexpert. Finally, we apply our result to the problem of learning to play$\backslash$nan unknown repeated matrix game against an all-powerful adversary}
+      \field{booktitle}{Proceedings of IEEE 36th Annual Foundations of Computer Science}
+      \field{isbn}{0-8186-7183-1}
+      \field{issn}{0272-5428}
+      \field{number}{68}
+      \field{title}{{Gambling in a rigged casino: The adversarial multi-armed bandit problem}}
+      \field{volume}{68}
+      \field{year}{1995}
+      \field{pages}{322\bibrangedash 331}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/SFCS.1995.492488
+      \endverb
+    \endentry
+    \entry{Bardenet2010}{article}{}
+      \name{author}{2}{}{%
+        {{hash=54e0102029117aca9809348036388cf9}{%
+           family={Bardenet},
+           family_i={B\bibinitperiod},
+           given={Rémi},
+           given_i={R\bibinitperiod}}}%
+        {{hash=8c0b75b51fab44f860838ecaa76c3ce1}{%
+           family={Kégl},
+           family_i={K\bibinitperiod},
+           given={Balázs},
+           given_i={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{83c507e0eacf6fdcc3d744af326ef014}
+      \strng{fullhash}{83c507e0eacf6fdcc3d744af326ef014}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In global optimization, when the evaluation of the target function is costly, the usual strategy is to learn a surrogate model for the target function and replace the initial opti-mization by the optimization of the model. Gaussian processes have been widely used since they provide an elegant way to model the fitness and to deal with the exploration-exploitation trade-off in a principled way. Several empirical criteria have been proposed to drive the model optimization, among which is the well-known Expected Improve-ment criterion. The major computational bottleneck of these algorithms is the exhaus-tive grid search used to optimize the highly multimodal merit function. In this paper, we propose a competitive " adaptive grid " ap-proach, based on a properly derived cross-entropy optimization algorithm with mix-ture proposals. Experiments suggest that 1) we outperform the classical single-Gaussian cross-entropy method when the fitness func-tion is highly multimodal, and 2) we improve on standard exhaustive search in GP-based surrogate optimization.}
+      \field{isbn}{9781605589077}
+      \field{journaltitle}{Proceedings of the 27th International Conference on Machine Learning}
+      \field{title}{{Surrogating the surrogate: accelerating Gaussian-process-based global optimization with a mixture cross-entropy algorithm}}
+      \field{year}{2010}
+      \field{pages}{55\bibrangedash 62}
+      \range{pages}{8}
+      \keyw{active learning,cross-entropy method,gaussian processes,optimization,surrogate models for global}
+    \endentry
+    \entry{Benassi2011}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=3ecd875ebdb192914c2968e9ab74d3a0}{%
+           family={Benassi},
+           family_i={B\bibinitperiod},
+           given={Romain},
+           given_i={R\bibinitperiod}}}%
+        {{hash=9885a0f1efdd25d75a2cbc193983b305}{%
+           family={Bect},
+           family_i={B\bibinitperiod},
+           given={Julien},
+           given_i={J\bibinitperiod}}}%
+        {{hash=1c19e5e0eb8c41cd9b10d99d34883008}{%
+           family={Vazquez},
+           family_i={V\bibinitperiod},
+           given={Emmanuel},
+           given_i={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{4494044bf3eb8d9ea66d3b60176a4b62}
+      \strng{fullhash}{4494044bf3eb8d9ea66d3b60176a4b62}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We consider the problem of optimizing a real-valued continuous function f, which is supposed to be expensive to evaluate and, consequently, can only be evaluated a limited number of times. This article focuses on the Bayesian approach to this}
+      \field{booktitle}{Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)}
+      \field{isbn}{9783642255656}
+      \field{issn}{03029743}
+      \field{title}{{Robust Gaussian process-based global optimization using a fully Bayesian expected improvement criterion}}
+      \field{volume}{6683 LNCS}
+      \field{year}{2011}
+      \field{pages}{176\bibrangedash 190}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1007/978-3-642-25566-3_13
+      \endverb
+    \endentry
+    \entry{Bergstra2012}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5ed349d7d3c7883110b8220af8cda41b}{%
+           family={{Bergstra JAMESBERGSTRA}},
+           family_i={B\bibinitperiod},
+           given={James},
+           given_i={J\bibinitperiod}}}%
+        {{hash=3c4bd16cdf1921d4a7de08fdb03aa5d6}{%
+           family={{Yoshua Bengio YOSHUABENGIO}},
+           family_i={Y\bibinitperiod},
+           given={Umontrealca},
+           given_i={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{bb87c262fd893072c75759bf31c15ad4}
+      \strng{fullhash}{bb87c262fd893072c75759bf31c15ad4}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Grid search and manual search are the most widely used strategies for hyper-parameter optimiza-tion. This paper shows empirically and theoretically that randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid. Empirical evidence comes from a compar-ison with a large previous study that used grid search and manual search to configure neural net-works and deep belief networks. Compared with neural networks configured by a pure grid search, we find that random search over the same domain is able to find models that are as good or better within a small fraction of the computation time. Granting random search the same computational budget, random search finds better models by effectively searching a larger, less promising con-figuration space. Compared with deep belief networks configured by a thoughtful combination of manual search and grid search, purely random search over the same 32-dimensional configuration space found statistically equal performance on four of seven data sets, and superior performance on one of seven. A Gaussian process analysis of the function from hyper-parameters to validation set performance reveals that for most data sets only a few of the hyper-parameters really matter, but that different hyper-parameters are important on different data sets. This phenomenon makes grid search a poor choice for configuring algorithms for new data sets. Our analysis casts some light on why recent " High Throughput " methods achieve surprising success—they appear to search through a large number of hyper-parameters because most hyper-parameters do not matter much. We anticipate that growing interest in large hierarchical models will place an increasing burden on techniques for hyper-parameter optimization; this work shows that random search is a natural base-line against which to judge progress in the development of adaptive (sequential) hyper-parameter optimization algorithms.}
+      \field{isbn}{1532-4435}
+      \field{issn}{1532-4435}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{{Random Search for Hyper-Parameter Optimization}}
+      \field{volume}{13}
+      \field{year}{2012}
+      \field{pages}{281\bibrangedash 305}
+      \range{pages}{25}
+      \keyw{deep learning,global optimization,model selection,neural networks,response surface modeling}
+    \endentry
+    \entry{Breiman2001}{article}{}
+      \name{author}{1}{}{%
+        {{hash=132b7100417675d55d5d4d8b244f7a34}{%
+           family={Breiman},
+           family_i={B\bibinitperiod},
+           given={Leo},
+           given_i={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{fullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Random forests are a combination of tree predictors such that each tree depends on the values of a random vector sampled independently and with the same distribution for all trees in the forest. The generalization error for forests converges a.s. to a limit as the number of trees in the forest becomes large. The generalization error of a forest of tree classifiers depends on the strength of the individual trees in the forest and the corre-lation between them. Using a random selection of features to split each node yields error rates that compare favorably to Adaboost (Y. Freund {\&} R. Schapire, Machine Learning: Proceedings of the Thirteenth Interna-tional conference, * * * , 148–156), but are more robust with respect to noise. Internal estimates monitor error, strength, and correlation and these are used to show the response to increasing the number of features used in the splitting. Internal estimates are also used to measure variable importance. These ideas are also applicable to regression.}
+      \field{eprintclass}{http:}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0885-6125}
+      \field{issn}{08856125}
+      \field{journaltitle}{Machine Learning}
+      \field{number}{1}
+      \field{title}{{Random forests}}
+      \field{volume}{45}
+      \field{year}{2001}
+      \field{pages}{5\bibrangedash 32}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1023/A:1010933404324
+      \endverb
+      \verb{eprint}
+      \verb /dx.doi.org/10.1023{\%}2FA{\%}3A1010933404324
+      \endverb
+      \keyw{Classification,Ensemble,Regression}
+    \endentry
+    \entry{Brochu2010}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0df337e57bbac1169e87cc9fe524a3b3}{%
+           family={Brochu},
+           family_i={B\bibinitperiod},
+           given={E},
+           given_i={E\bibinitperiod}}}%
+        {{hash=bc5930d8cb269ccec3947697c701bb00}{%
+           family={Cora},
+           family_i={C\bibinitperiod},
+           given={V\bibnamedelima M},
+           given_i={V\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=83a0429b51bd59ac2f3faa5304102a90}{%
+           family={{De Freitas}},
+           family_i={D\bibinitperiod},
+           given={N},
+           given_i={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{47ee1d5a45767548237c1349f87ca598}
+      \strng{fullhash}{47ee1d5a45767548237c1349f87ca598}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present a tutorial on Bayesian optimization, a method of finding the maximum of expensive cost functions. Bayesian optimization employs the Bayesian technique of setting a prior over the objective function and combining it with evidence to get a posterior function. This permits a utility-based selection of the next observation to make on the objective function, which must take into account both exploration (sampling from areas of high uncertainty) and exploitation (sampling areas likely to offer improvement over the current best observation). We also present two detailed extensions of Bayesian optimization, with experiments---active user modelling with preferences, and hierarchical reinforcement learning---and a discussion of the pros and cons of Bayesian optimization based on our experiences.}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{ArXiv}
+      \field{title}{{A tutorial on Bayesian optimization of expensive cost functions, with application to active user modeling and hierarchical reinforcement learning}}
+      \field{year}{2010}
+      \field{pages}{49}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 1012.2599
+      \endverb
+      \verb{eprint}
+      \verb 1012.2599
+      \endverb
+    \endentry
+    \entry{Bubeck2010}{article}{}
+      \name{author}{4}{}{%
+        {{hash=3d51ee91b7d20d2f26b221a8a3b8b72c}{%
+           family={Bubeck},
+           family_i={B\bibinitperiod},
+           given={Sébastien},
+           given_i={S\bibinitperiod}}}%
+        {{hash=917c474efd533d609fdcfc3625182555}{%
+           family={Munos},
+           family_i={M\bibinitperiod},
+           given={R},
+           given_i={R\bibinitperiod}}}%
+        {{hash=12b23e6255d36870a56e6c2d3df48d65}{%
+           family={Stoltz},
+           family_i={S\bibinitperiod},
+           given={Gilles},
+           given_i={G\bibinitperiod}}}%
+        {{hash=aadd8f883fc72d95820fd3b51e722290}{%
+           family={Szepesvári},
+           family_i={S\bibinitperiod},
+           given={C},
+           given_i={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{02379f308be3e2798c283124bed4b783}
+      \strng{fullhash}{ef138a0111c00a6c93d3fe9415bb6bac}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We consider a generalization of stochastic bandits where the set of arms, X, is allowed to be a generic measurable space and the mean-payoff function is “locally Lipschitz” with respect to a dissimilarity function that is known to the decision maker. Under this condition we construct an arm selection policy, called HOO (hierarchical optimistic optimization), with improved regret bounds compared to previous results for a large class of problems. In particular, our results imply that if X is the unit hypercube in a Euclidean space and the mean-payoff function has a finite number of global maxima around which the behavior of the function is locally continuous with a known smoothness degree, then the expected regret of HOO is bounded up to a logarithmic factor by √n, i.e., the rate of growth of the regret is independent of the dimension of the space. We also prove the minimax optimality of our algorithm when the dissimilarity is a metric. Our basic strategy has quadratic computational complexity as a function of the number of time steps and does not rely on the doubling trick. We also introduce a modified strategy, which relies on the doubling trick but runs in linearithmic time. Both results are improvements with respect to previous approaches.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1532-4435}
+      \field{issn}{15324435}
+      \field{journaltitle}{Multi-Armed Bandits}
+      \field{title}{{X-armed bandits}}
+      \field{year}{2010}
+      \field{pages}{1\bibrangedash 38}
+      \range{pages}{38}
+      \verb{eprint}
+      \verb arXiv:1001.4475v2
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1001.4475
+      \endverb
+    \endentry
+    \entry{Bull2011}{article}{}
+      \name{author}{1}{}{%
+        {{hash=30fd84e4974b058b20d5b218c29f999a}{%
+           family={Bull},
+           family_i={B\bibinitperiod},
+           given={Adam\bibnamedelima D},
+           given_i={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{30fd84e4974b058b20d5b218c29f999a}
+      \strng{fullhash}{30fd84e4974b058b20d5b218c29f999a}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In the efficient global optimization problem, we minimize an unknown function f, using as fewobservations f(x) as possible. It can be considered a continuum-armed-bandit problem, with noiseless data, and simple regret. Expected-improvement algorithms are perhaps the most popular methods for solving the problem; in this paper, we provide theoretical results on their asymptotic behaviour. Implementing these algorithms requires a choice of Gaussian-process prior, which determines an associated space of functions, its reproducing-kernel Hilbert space (RKHS). When the prior is fixed, expected improvement is known to converge on the minimum of any function in its RKHS. We provide convergence rates for this procedure, optimal for functions of low smoothness, and describe a modified algorithm attaining optimal rates for smoother functions. In practice, however, priors are typically estimated sequentially from the data. For standard estimators, we show this procedure may never find the minimum of f. We then propose alternative estimators, chosen to minimize the constants in the rate of convergence, and show these estimators retain the convergence rates of a fixed prior.$\backslash$n}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1532-4435}
+      \field{issn}{1532-4435}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{{Convergence Rates of Efficient Global Optimization Algorithms}}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{2879\bibrangedash 2904}
+      \range{pages}{26}
+      \verb{eprint}
+      \verb arXiv:1101.3501v3
+      \endverb
+      \keyw{Bayesian optimization,convergence rate,expected improvement,global optimization}
+    \endentry
+    \entry{Desautels2012}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0d20d983d88dbf2b66a97ecb07a946aa}{%
+           family={Desautels},
+           family_i={D\bibinitperiod},
+           given={Thomas},
+           given_i={T\bibinitperiod}}}%
+        {{hash=112eb0b147c4a7f674d015a86e5dea70}{%
+           family={Krause},
+           family_i={K\bibinitperiod},
+           given={Andreas},
+           given_i={A\bibinitperiod}}}%
+        {{hash=0161338499d5ee0649028b46aeb5d203}{%
+           family={Burdick},
+           family_i={B\bibinitperiod},
+           given={Joel},
+           given_i={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{cd78392979bf96d933e7d0132cfa27a7}
+      \strng{fullhash}{cd78392979bf96d933e7d0132cfa27a7}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Can one parallelize complex exploration– exploitation tradeoffs? As an example, consider the problem of optimal high- throughput experimental design, where we wish to sequentially design batches of experiments in order to simultaneously learn a surrogate function mapping stimulus to response and identify the maximum of the function. We formalize the task as a multi- armed bandit problem, where the unknown payoff function is sampled from a Gaussian process (GP), and instead of a single arm, in each round we pull a batch of several arms in parallel. We develop GP-BUCB, a principled algorithm for choosing batches, based on the GP-UCB algorithm for sequential GP optimization. We prove a surprising result; as compared to the sequential approach, the cumulative regret of the parallel algorithm only increases by a constant factor indepen- dent of the batch size B. Our results provide rigorous theoretical support for exploiting parallelism in Bayesian global optimization. We demonstrate the effectiveness of our approach on two real-world applications. 1.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{978-1-4503-1285-1}
+      \field{journaltitle}{Active Learning}
+      \field{title}{{Parallelizing exploration-exploitation tradeoffs with gaussian process bandit optimization}}
+      \field{volume}{15}
+      \field{year}{2012}
+      \field{pages}{3873\bibrangedash 3923}
+      \range{pages}{51}
+      \verb{eprint}
+      \verb 1206.6402
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1206.6402
+      \endverb
+    \endentry
+    \entry{Hansen2001}{article}{}
+      \name{author}{2}{}{%
+        {{hash=71bc70e7c119a2151bf105823920cf83}{%
+           family={Hansen},
+           family_i={H\bibinitperiod},
+           given={Nikolaus},
+           given_i={N\bibinitperiod}}}%
+        {{hash=baad0a55a3d382a5b55ac169579ee0c8}{%
+           family={Ostermeier},
+           family_i={O\bibinitperiod},
+           given={Andreas},
+           given_i={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{3db568fd306c52341edbb9bdc81edc55}
+      \strng{fullhash}{3db568fd306c52341edbb9bdc81edc55}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper puts forward two useful methods for self-adaptation of the mutation distribution - the concepts of derandomization and cumulation. Principle shortcomings of the concept of mutative strategy parameter control and two levels of derandomization are reviewed. Basic demands on the self-adaptation of arbitrary (normal) mutation distributions are developed. Applying arbitrary, normal mutation distributions is equivalent to applying a general, linear problem encoding. The underlying objective of mutative strategy parameter control is roughly to favor previously selected mutation steps in the future. If this objective is pursued rigorously, a completely derandomized self-adaptation scheme results, which adapts arbitrary normal mutation distributions. This scheme, called covariance matrix adaptation (CMA), meets the previously stated demands. It can still be considerably improved by cumulation - utilizing an evolution path rather than single search steps. Simulations on various test functions reveal local and global search properties of the evolution strategy with and without covariance matrix adaptation. Their performances are comparable only on perfectly scaled functions. On badly scaled, non-separable functions usually a speed up factor of several orders of magnitude is observed. On moderately mis-scaled functions a speed up factor of three to ten can be expected.}
+      \field{isbn}{1063-6560}
+      \field{issn}{1063-6560}
+      \field{journaltitle}{Evolutionary Computation}
+      \field{number}{2}
+      \field{title}{{Completely Derandomized Self-Adaptation in Evolution Strategies}}
+      \field{volume}{9}
+      \field{year}{2001}
+      \field{pages}{159\bibrangedash 195}
+      \range{pages}{37}
+      \verb{doi}
+      \verb 10.1162/106365601750190398
+      \endverb
+      \verb{url}
+      \verb http://www.mitpressjournals.org/doi/abs/10.1162/106365601750190398
+      \endverb
+      \keyw{covariance matrix adaptation,cumulation,cumulative path length control,de-,derandomized self-adaptation,evolu-,evolution strategy,randomization,self-adaptation,step size control,strategy parameter control,tion path}
+    \endentry
+    \entry{Hennig2012}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8148d10afae9c69214c04234191cedbe}{%
+           family={Hennig},
+           family_i={H\bibinitperiod},
+           given={Phillipp},
+           given_i={P\bibinitperiod}}}%
+        {{hash=f6d5cee0c31635b794b4ae90e6816670}{%
+           family={Schuler},
+           family_i={S\bibinitperiod},
+           given={Christian\bibnamedelima J},
+           given_i={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{2ebc3a74ba1a77f049c54684df10a29e}
+      \strng{fullhash}{2ebc3a74ba1a77f049c54684df10a29e}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Contemporary global optimization algorithms are based on local measures of utility, rather than a probability measure over location and value of the optimum. They thus attempt to collect low function values, not to learn about the optimum. The reason for the absence of probabilistic global optimizers is that the corresponding inference problem is intractable in several ways. This paper develops desiderata for probabilistic optimization algorithms, then presents a concrete algorithm which addresses each of the computational intractabilities with a sequence of approximations and explicitly addresses the decision problem of maximizing information gain from each evaluation.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1532-4435}
+      \field{issn}{15324435}
+      \field{journaltitle}{Machine Learning Research}
+      \field{number}{1999}
+      \field{title}{{Entropy Search for Information-Efficient Global Optimization}}
+      \field{volume}{13}
+      \field{year}{2012}
+      \field{pages}{1809\bibrangedash 1837}
+      \range{pages}{29}
+      \verb{doi}
+      \verb http://dx.doi.org/10.1063/1.1699114
+      \endverb
+      \verb{eprint}
+      \verb 1112.1217
+      \endverb
+      \keyw{expectation propagation,gaussian processes,information,optimization,probability}
+    \endentry
+    \entry{Hernandez-Lobato2014}{article}{}
+      \name{author}{3}{}{%
+        {{hash=d2f1f51344407f919f33e97b3b15c672}{%
+           family={Hernández-Lobato},
+           family_i={H\bibinithyphendelim L\bibinitperiod},
+           given={José\bibnamedelima Miguel},
+           given_i={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=0c7b60eeb17be55b419858788d185d69}{%
+           family={Hoffman},
+           family_i={H\bibinitperiod},
+           given={Matthew\bibnamedelima W},
+           given_i={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=bf5cf30deddddad00a6341ad7a414445}{%
+           family={Ghahramani},
+           family_i={G\bibinitperiod},
+           given={Zoubin},
+           given_i={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{390eec3cda0810a8b68fad12d2194a0f}
+      \strng{fullhash}{390eec3cda0810a8b68fad12d2194a0f}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We propose a novel information-theoretic approach$\backslash$nfor Bayesian optimization called Predictive Entropy$\backslash$nSearch (PES). At each iteration, PES selects the$\backslash$nnext evaluation point that maximizes the expected$\backslash$ninformation gained with respect to the global$\backslash$nmaximum. PES codifies this intractable acquisition$\backslash$nfunction in terms of the expected reduction in the$\backslash$ndifferential entropy of the predictive distribution.$\backslash$nThis reformulation allows PES to obtain$\backslash$napproximations that are both more accurate and$\backslash$nefficient than other alternatives such as Entropy$\backslash$nSearch (ES). Furthermore, PES can easily perform a$\backslash$nfully Bayesian treatment of the model$\backslash$nhyperparameters while ES cannot. We evaluate PES in$\backslash$nboth synthetic and realworld applications, including$\backslash$noptimization problems in machine learning, finance,$\backslash$nbiotechnology, and robotics. We show that the$\backslash$nincreased accuracy of PES leads to significant gains$\backslash$nin optimization performance.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{10495258}
+      \field{journaltitle}{Advances in Neural Information Processing Systems 28}
+      \field{title}{{Predictive Entropy Search for Efficient Global Optimization of Black-box Functions}}
+      \field{year}{2014}
+      \field{pages}{1\bibrangedash 9}
+      \range{pages}{9}
+      \verb{eprint}
+      \verb arXiv:1406.2541v1
+      \endverb
+      \verb{url}
+      \verb https://jmhldotorg.files.wordpress.com/2014/10/pes-final.pdf
+      \endverb
+    \endentry
+    \entry{Hoffman2011}{article}{}
+      \name{author}{3}{}{%
+        {{hash=1ae5610884b2c4a6066ea29d027a23df}{%
+           family={Hoffman},
+           family_i={H\bibinitperiod},
+           given={Matthew},
+           given_i={M\bibinitperiod}}}%
+        {{hash=69ca5a2f1c1dc2d3ee07734e8ac8fcc8}{%
+           family={Brochu},
+           family_i={B\bibinitperiod},
+           given={Eric},
+           given_i={E\bibinitperiod}}}%
+        {{hash=8ab4bc7425a52b7c173874eb8ce81f91}{%
+           family={Freitas},
+           family_i={F\bibinitperiod},
+           given={Nando\bibnamedelima De},
+           given_i={N\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{7d2a9abdb129b33903b226b1afb88d9c}
+      \strng{fullhash}{7d2a9abdb129b33903b226b1afb88d9c}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Bayesian optimization with Gaussian pro- cesses has become an increasingly popular tool in the machine learning community. It is efficient and can be used when very little is known about the objective function, mak- ing it popular in expensive black-box optimization scenarios. It uses Bayesian methods to sample the objective efficiently using an acquisition function which incorporates the posterior estimate of the objective. However, there are several different parameterized acquisition functions in the literature, and it is often unclear which one to use. Instead of using a single acquisition function, we adopt a portfolio of acquisition functions governed by an online multi-armed bandit strategy. We propose several portfolio strategies, the best of which we call GP-Hedge, and show that this method outperforms the best individ- ual acquisition function. We also provide a theoretical bound on the algorithm's performance.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{978-0-9749039-7-2}
+      \field{journaltitle}{Conference on Uncertainty in Artificial Intelligence}
+      \field{title}{{Portfolio Allocation for Bayesian Optimization}}
+      \field{year}{2011}
+      \field{pages}{327\bibrangedash 336}
+      \range{pages}{10}
+      \verb{eprint}
+      \verb arXiv:1009.5419v1
+      \endverb
+    \endentry
+    \entry{Hutter2011}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=528d4af87fd2ecf5fb8a22db913ce088}{%
+           family={Hutter},
+           family_i={H\bibinitperiod},
+           given={Frank},
+           given_i={F\bibinitperiod}}}%
+        {{hash=c91dd51578c1d6d1adb0e2fcafe0d7c4}{%
+           family={Hoos},
+           family_i={H\bibinitperiod},
+           given={Holger\bibnamedelima H.},
+           given_i={H\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=91d47c0d6ebf96d50082140932162381}{%
+           family={Leyton-Brown},
+           family_i={L\bibinithyphendelim B\bibinitperiod},
+           given={Kevin},
+           given_i={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{2adee201cb411f3d90fc40f4f56ac368}
+      \strng{fullhash}{2adee201cb411f3d90fc40f4f56ac368}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{State-of-the-art algorithms for hard computational problems often expose many parameters that can be modified to improve empirical performance. However, manually exploring the resulting combinatorial space of parameter settings is tedious and tends to lead to unsatisfactory outcomes. Recently, automated approaches for solving this algorithm configuration problem have led to substantial improvements in the state of the art for solving various problems. One promising approach constructs explicit regression models to describe the dependence of target algorithm performance on parameter settings; however, this approach has so far been limited to the optimization of few numerical algorithm parameters on single instances. In this paper, we extend this paradigm for the first time to general algorithm configuration problems, allowing many categorical parameters and optimization for sets of instances. We experimentally validate our new algorithm configuration procedure by optimizing a local search and a tree search solver for the propositional satisfiability problem (SAT), as well as the commercial mixed integer programming (MIP) solver CPLEX. In these experiments, our procedure yielded state-of-the-art performance, and in many cases outperformed the previous best configuration approach.}
+      \field{booktitle}{Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)}
+      \field{isbn}{9783642255656}
+      \field{issn}{03029743}
+      \field{title}{{Sequential model-based optimization for general algorithm configuration}}
+      \field{volume}{6683 LNCS}
+      \field{year}{2011}
+      \field{pages}{507\bibrangedash 523}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1007/978-3-642-25566-3_40
+      \endverb
+    \endentry
+    \entry{Jones2001}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9a94ff21888a040f9acff5f54fb90dff}{%
+           family={Jones},
+           family_i={J\bibinitperiod},
+           given={D.\bibnamedelimi R.},
+           given_i={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{9a94ff21888a040f9acff5f54fb90dff}
+      \strng{fullhash}{9a94ff21888a040f9acff5f54fb90dff}
+      \field{sortinit}{J}
+      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper presents a taxonomy of existing approaches for using response surfaces for global optimization. Each method is illustrated with a simple numerical example that brings out its advantages and disadvantages. The central theme is that methods that seem quite reasonable often have non-obvious failure modes. Understanding these failure modes is essential for the development of practical algorithms that fulfill the intuitive promise of the response surface approach.}
+      \field{isbn}{0925-5001}
+      \field{issn}{09255001}
+      \field{journaltitle}{Journal of Global Optimization}
+      \field{title}{{A Taxonomy of Global Optimization Methods Based on Response Surfaces}}
+      \field{volume}{21}
+      \field{year}{2001}
+      \field{pages}{345\bibrangedash 383}
+      \range{pages}{39}
+      \verb{doi}
+      \verb 10.1023/A:1012771025575
+      \endverb
+      \verb{url}
+      \verb http://www.ingentaconnect.com/content/klu/jogo/2001/00000021/00000004/00360694
+      \endverb
+      \keyw{global optimization,kriging,response surface,splines}
+    \endentry
+    \entry{Kaufmann2012}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=683862f7c5a46983931337e8f299a0fd}{%
+           family={Kaufmann},
+           family_i={K\bibinitperiod},
+           given={Emilie},
+           given_i={E\bibinitperiod}}}%
+        {{hash=af5c84f179321a0764845f3501aa0448}{%
+           family={Korda},
+           family_i={K\bibinitperiod},
+           given={Nathaniel},
+           given_i={N\bibinitperiod}}}%
+        {{hash=5d8fa91764a27bf97b87fdcac885745d}{%
+           family={Munos},
+           family_i={M\bibinitperiod},
+           given={Rémi},
+           given_i={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{2097dd7358d5bc2d0a2989f6c269a9ce}
+      \strng{fullhash}{2097dd7358d5bc2d0a2989f6c269a9ce}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The question of the optimality of Thompson Sampling for solving the stochastic multi-armed bandit problem had been open since 1933. In this paper we answer it positively for the case of Bernoulli rewards by providing the first finite-time analysis that matches the asymptotic rate given in the Lai and Robbins lower bound for the cumulative regret. The proof is accompanied by a numerical comparison with other optimal policies, experiments that have been lacking in the literature until now for the Bernoulli case.}
+      \field{booktitle}{Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{9783642341052}
+      \field{issn}{03029743}
+      \field{title}{{Thompson sampling: An asymptotically optimal finite-time analysis}}
+      \field{volume}{7568 LNAI}
+      \field{year}{2012}
+      \field{pages}{199\bibrangedash 213}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1007/978-3-642-34106-9_18
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1205.4217v2
+      \endverb
+    \endentry
+    \entry{Kocsis2006}{article}{}
+      \name{author}{2}{}{%
+        {{hash=38e4d8f3816645f33342266d60a42d10}{%
+           family={Kocsis},
+           family_i={K\bibinitperiod},
+           given={Levente},
+           given_i={L\bibinitperiod}}}%
+        {{hash=98b0d29966f947460b3eb25590bfa7b5}{%
+           family={Szepesvári},
+           family_i={S\bibinitperiod},
+           given={Csaba},
+           given_i={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d2a501acf3375269bdf09c94a3f59cae}
+      \strng{fullhash}{d2a501acf3375269bdf09c94a3f59cae}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{For large state-space Markovian Decision Problems Monte-Carlo planning is one of the few viable approaches to find near-optimal solutions. In this paper we introduce a new algorithm, UCT, that applies bandit ideas to guide Monte-Carlo planning. In finite-horizon or discounted MDPs the algorithm is shown to be consistent and finite sample bounds are derived on the estimation error due to sampling. Experimental results show that in several domains, UCT is significantly more efficient than its alternatives.}
+      \field{isbn}{978-3-540-45375-8}
+      \field{issn}{03029743}
+      \field{journaltitle}{Proceedings of ECML}
+      \field{title}{{Bandit based monte-carlo planning}}
+      \field{year}{2006}
+      \field{pages}{282\bibrangedash 203}
+      \range{pages}{2}
+      \verb{doi}
+      \verb 10.1007/11871842
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/chapter/10.1007/11871842%7B%5C_%7D29
+      \endverb
+    \endentry
+    \entry{Lai1985}{article}{}
+      \name{author}{2}{}{%
+        {{hash=6337b4fdaeba3f7472e156829c76541b}{%
+           family={Lai},
+           family_i={L\bibinitperiod},
+           given={T.\bibnamedelimi L.},
+           given_i={T\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=163566b92b332258782e61e3d217a2bb}{%
+           family={Robbins},
+           family_i={R\bibinitperiod},
+           given={Herbert},
+           given_i={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{d4d49629ef47f0a3f6ecbbad8107921c}
+      \strng{fullhash}{d4d49629ef47f0a3f6ecbbad8107921c}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The authors consider multiarmed bandit problems with switching cost, define uniformly good allocation rules, and restrict attention to such rules. They present a lower bound on the asymptotic performance of uniformly good allocation rules and construct an allocation scheme that achieves the bound. It is found that despite the inclusion of a switching cost the proposed allocation scheme achieves the same asymptotic performance as the optimal rule for the bandit problem without switching cost. This is made possible by grouping together samples into blocks of increasing sizes, thereby reducing the number of switches to O(log {<}e1{>}n{<}/e1{>}). Finally, an optimal allocation scheme for a large class of distributions which includes members of the exponential family is illustrated}
+      \field{isbn}{0196-8858}
+      \field{issn}{10902074}
+      \field{journaltitle}{Advances in Applied Mathematics}
+      \field{number}{1}
+      \field{title}{{Asymptotically efficient adaptive allocation rules}}
+      \field{volume}{6}
+      \field{year}{1985}
+      \field{pages}{4\bibrangedash 22}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1016/0196-8858(85)90002-8
+      \endverb
+    \endentry
+    \entry{Lazaro-Gredilla2010}{article}{}
+      \name{author}{4}{}{%
+        {{hash=775f20376e35685ea173ef8ed9c5f7eb}{%
+           family={Lázaro-Gredilla},
+           family_i={L\bibinithyphendelim G\bibinitperiod},
+           given={M},
+           given_i={M\bibinitperiod}}}%
+        {{hash=4a253e96d421a7f8e7e6f168fbd9a544}{%
+           family={Quinonero-Candela},
+           family_i={Q\bibinithyphendelim C\bibinitperiod},
+           given={J},
+           given_i={J\bibinitperiod}}}%
+        {{hash=516c1bf67129b99afcdde7202e2f9f8a}{%
+           family={Rasmussen},
+           family_i={R\bibinitperiod},
+           given={C\bibnamedelima E},
+           given_i={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=385e80318aab134fda78433fa6fc14b8}{%
+           family={Figueiras-Vidal},
+           family_i={F\bibinithyphendelim V\bibinitperiod},
+           given={A\bibnamedelima R},
+           given_i={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{f4dadaf4d9b9f5122842fbe62808f18c}
+      \strng{fullhash}{c2cdc4b7289593a2196e77e566ee4fab}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present a new sparse Gaussian Process (GP) model for regression. The key novel idea is to sparsify the spectral representation of the GP. This leads to a simple, practical algorithm for regression tasks. We compare the achievable trade-offs between predictive accuracy and computational requirements, and show that these are typically superior to existing state-of-the-art sparse approximations. We discuss both the weight space and function space representations, and note that the new construction implies priors over functions which are always stationary, and can approximate any covariance function in this class.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1532-4435}
+      \field{issn}{1532-4435}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{{Sparse Spectrum Gaussian Process Regression}}
+      \field{volume}{11}
+      \field{year}{2010}
+      \field{pages}{1865\bibrangedash 1881}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1137/10080991X
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1304.6949v1
+      \endverb
+      \verb{url}
+      \verb http://www.jmlr.org/papers/volume11/lazaro-gredilla10a/lazaro-gredilla10a.pdf
+      \endverb
+      \keyw{gp}
+    \endentry
+    \entry{Lizotte2012}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0f3820674a5f4713715e0c3292ba507e}{%
+           family={Lizotte},
+           family_i={L\bibinitperiod},
+           given={Daniel\bibnamedelima James},
+           given_i={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=4a770d3fea9e460171ec3bbb23b8fceb}{%
+           family={Greiner},
+           family_i={G\bibinitperiod},
+           given={Russell},
+           given_i={R\bibinitperiod}}}%
+        {{hash=fc76f5fb256da4d423554f8e629b4321}{%
+           family={Schuurmans},
+           family_i={S\bibinitperiod},
+           given={Dale},
+           given_i={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{29263114581577b4b54fef699fb128f9}
+      \strng{fullhash}{29263114581577b4b54fef699fb128f9}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Response surface methods, and global optimization techniques in general, are typically evaluated using a small number of standard synthetic test problems, in the hope that these are a good surrogate for real-world problems. We introduce a new, more rigor- ous methodology for evaluating global optimization techniques that is based on generating thousands of test functions and then evaluating algorithm performance on each one. The test functions are generated by sampling from a Gaussian process, which allows us to create a set of test functions that are interesting and diverse. They will have different numbers of modes, different maxima, etc., and yet they will be similar to each other in overall structure and level of difficulty. This approach allows for a much richer empirical evaluation of methods that is capable of revealing insights that would not be gained using a small set of test functions. To facilitate the development of large empirical studies for evaluating response surface methods, we introduce a dimension-independent measure of average test problem difficulty, and we introduce acquisition criteria that are invariant to vertical shifting and scaling of the objective function. We also use our experimental methodology to conduct a large empirical study of response surface methods.We investigate the influence of three properties—parameter esti- mation, exploration level, and gradient information—on the performance of response surface methods.}
+      \field{issn}{09255001}
+      \field{journaltitle}{Journal of Global Optimization}
+      \field{number}{4}
+      \field{title}{{An experimental methodology for response surface optimization methods}}
+      \field{volume}{53}
+      \field{year}{2012}
+      \field{pages}{699\bibrangedash 736}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.1007/s10898-011-9732-z
+      \endverb
+      \keyw{Global optimization,Response surface,Surrogate model}
+    \endentry
+    \entry{Neal2011}{article}{}
+      \name{author}{1}{}{%
+        {{hash=65d7fa5657a0bb6a58702171f1d98cf0}{%
+           family={Neal},
+           family_i={N\bibinitperiod},
+           given={Radford\bibnamedelima M.},
+           given_i={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{65d7fa5657a0bb6a58702171f1d98cf0}
+      \strng{fullhash}{65d7fa5657a0bb6a58702171f1d98cf0}
+      \field{sortinit}{N}
+      \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Hamiltonian dynamics can be used to produce distant proposals for the Metropolis algorithm, thereby avoiding the slow exploration of the state space that results from the diffusive behaviour of simple random-walk proposals. Though originating in physics, Hamiltonian dynamics can be applied to most problems with continuous state spaces by simply introducing fictitious "momentum" variables. A key to its usefulness is that Hamiltonian dynamics preserves volume, and its trajectories can thus be used to define complex mappings without the need to account for a hard to compute Jacobian factor - a property that can be exactly maintained even when the dynamics is approximated by discretizing time. In this review, discuss theoretical and practical aspects of Hamiltonian Monte Carlo, and present some of its variations, including using windows of states for approximations, tempering during the course of a trajectory to handle isolated modes, and short-cut methods that prevent useless trajectories form taking much computation time.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{9781420079418}
+      \field{issn}{{<}null{>}}
+      \field{journaltitle}{Handbook of Markov Chain Monte Carlo}
+      \field{title}{{MCMC using Hamiltonian dynamics}}
+      \field{year}{2011}
+      \field{pages}{113\bibrangedash 162}
+      \range{pages}{50}
+      \verb{doi}
+      \verb doi:10.1201/b10905-6
+      \endverb
+      \verb{eprint}
+      \verb 1206.1901
+      \endverb
+      \keyw{hamiltonian dynamics,mcmc}
+    \endentry
+    \entry{Quinonero-candela2005}{article}{}
+      \name{author}{3}{}{%
+        {{hash=5ea6cbdbbbe2c8403ce612298c1c51fc}{%
+           family={Quiñonero-candela},
+           family_i={Q\bibinithyphendelim c\bibinitperiod},
+           given={Joaquin},
+           given_i={J\bibinitperiod}}}%
+        {{hash=d4a4e699c24e75fc39a3a354584c6dbf}{%
+           family={Rasmussen},
+           family_i={R\bibinitperiod},
+           given={Carl\bibnamedelima Edward},
+           given_i={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=9b0a3696222e14841b39c605ee99e24b}{%
+           family={Herbrich},
+           family_i={H\bibinitperiod},
+           given={Ralf},
+           given_i={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{bac8364a155279686d4bfb1e3067c7d7}
+      \strng{fullhash}{bac8364a155279686d4bfb1e3067c7d7}
+      \field{sortinit}{Q}
+      \field{sortinithash}{15867262911a166ca2270ec58a0e3fe9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We provide a new unifying view, including all existing proper probabilistic sparse approximations for Gaussian process regression. Our approach relies on expressing the effective prior which the methods are using. This allows new insights to be gained, and highlights the relationship between existing methods. It also allows for a clear theoretically justified ranking of the closeness of the known approximations to the corresponding full GPs. Finally we point directly to designs of new better sparse approximations, combining the best of the existing strategies, within attractive computational constraints.}
+      \field{isbn}{1532-4435}
+      \field{issn}{1533-7928}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{{A unifying view of sparse approximate Gaussian process regression}}
+      \field{volume}{6}
+      \field{year}{2005}
+      \field{pages}{1935\bibrangedash 1959}
+      \range{pages}{25}
+      \verb{url}
+      \verb http://jmlr.org/papers/volume6/quinonero-candela05a/quinonero-candela05a.pdf
+      \endverb
+      \keyw{Bayesian committee,Gaussian process,machine,probabilistic regression,sparse approximation}
+    \endentry
+    \entry{Rahimi2007}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b2a647ccd84fe455f793167cbe4e9c81}{%
+           family={Rahimi},
+           family_i={R\bibinitperiod},
+           given={Ali},
+           given_i={A\bibinitperiod}}}%
+        {{hash=ffa081e7e59a2c82fd714ab7ea81fe97}{%
+           family={Recht},
+           family_i={R\bibinitperiod},
+           given={Ben},
+           given_i={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{a4fb8303a050c0679cbd74f36dd90875}
+      \strng{fullhash}{a4fb8303a050c0679cbd74f36dd90875}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{To accelerate the training of kernel machines, we propose to map the input data to a randomized low-dimensional feature space and then apply existing fast linear methods. Our randomized features are designed so that the inner products of the transformed data are approximately equal to those in the feature space of a user specified shift-invariant kernel. We explore two sets of random features, provide convergence bounds on their ability to approximate various radial basis kernels, and show that in large-scale classification and regression tasks linear machine learning algorithms that use these features outperform state-of-the-art large-scale kernel machines.}
+      \field{isbn}{160560352X}
+      \field{issn}{0033-6599}
+      \field{journaltitle}{Advances in neural information {\ldots}}
+      \field{number}{1}
+      \field{title}{{Random features for large-scale kernel machines}}
+      \field{year}{2007}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1.1.145.8736
+      \endverb
+      \verb{url}
+      \verb http://machinelearning.wustl.edu/mlpapers/paper%7B%5C_%7Dfiles/NIPS2007%7B%5C_%7D833.pdf
+      \endverb
+    \endentry
+    \entry{Seeger2003}{article}{}
+      \name{author}{3}{}{%
+        {{hash=394f17bfeb51fa0a26dce4627c7eb984}{%
+           family={Seeger},
+           family_i={S\bibinitperiod},
+           given={M},
+           given_i={M\bibinitperiod}}}%
+        {{hash=ab3a68d47bcba6c852952492dadd8f1b}{%
+           family={Williams},
+           family_i={W\bibinitperiod},
+           given={Cki},
+           given_i={C\bibinitperiod}}}%
+        {{hash=7b208f1b3208bae79eb8e0c369c841af}{%
+           family={Lawrence},
+           family_i={L\bibinitperiod},
+           given={Nd},
+           given_i={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{5610c42a599f7d9efcc6c88fe14c5565}
+      \strng{fullhash}{5610c42a599f7d9efcc6c88fe14c5565}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present a method for the sparse greedy approximation of Bayesian Gaussian process regression, featuring a novel heuristic for very fast forward selection. Our method is essentially as fast as an equivalent one which selects the "support" patterns at random, yet it can outperform random selection on hard curve fitting tasks. More importantly, it leads to a suciently stable approximation of the log marginal likelihood of the training data, which can be optimised to adjust a large number of hyperparameters automatically.}
+      \field{journaltitle}{Workshop on AI and Statistics}
+      \field{title}{{Fast forward selection to speed up sparse Gaussian process regression}}
+      \field{volume}{9}
+      \field{year}{2003}
+      \field{pages}{2003}
+      \range{pages}{1}
+      \verb{url}
+      \verb http://ipg.epfl.ch/%7B~%7Dseeger/lapmalmainweb/papers/aistats03-final.pdf
+      \endverb
+    \endentry
+    \entry{Shahriari2014}{article}{}
+      \name{author}{5}{}{%
+        {{hash=4b01bc2ebef2b134ce8110e0431af923}{%
+           family={Shahriari},
+           family_i={S\bibinitperiod},
+           given={Bobak},
+           given_i={B\bibinitperiod}}}%
+        {{hash=05bc8d503a2c310ef0976ace7f9d2734}{%
+           family={Wang},
+           family_i={W\bibinitperiod},
+           given={Ziyu},
+           given_i={Z\bibinitperiod}}}%
+        {{hash=e4d4ea1346e245450db49bff15d33efb}{%
+           family={Hoffman},
+           family_i={H\bibinitperiod},
+           given={Matthew\bibnamedelima W.},
+           given_i={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=82e12f056f0be42550ecbb024e035f13}{%
+           family={Bouchard-Côté},
+           family_i={B\bibinithyphendelim C\bibinitperiod},
+           given={Alexandre},
+           given_i={A\bibinitperiod}}}%
+        {{hash=f0c607e07790eb5b3996d607725bf370}{%
+           prefix={de},
+           prefix_i={d\bibinitperiod},
+           family={Freitas},
+           family_i={F\bibinitperiod},
+           given={Nando},
+           given_i={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{e93053cadf8e1ed30669480ff76591f7}
+      \strng{fullhash}{22f14723255a73ec48951c72263a4ee0}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Bayesian optimization is a sample-efficient method for black-box global optimization. How- ever, the performance of a Bayesian optimization method very much depends on its exploration strategy, i.e. the choice of acquisition function, and it is not clear a priori which choice will result in superior performance. While portfolio methods provide an effective, principled way of combining a collection of acquisition functions, they are often based on measures of past performance which can be misleading. To address this issue, we introduce the Entropy Search Portfolio (ESP): a novel approach to portfolio construction which is motivated by information theoretic considerations. We show that ESP outperforms existing portfolio methods on several real and synthetic problems, including geostatistical datasets and simulated control tasks. We not only show that ESP is able to offer performance as good as the best, but unknown, acquisition function, but surprisingly it often gives better performance. Finally, over a wide range of conditions we find that ESP is robust to the inclusion of poor acquisition functions.}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{arXiv preprint arXiv:1406.4625}
+      \field{title}{{An Entropy Search Portfolio for Bayesian Optimization}}
+      \field{year}{2014}
+      \field{pages}{10}
+      \range{pages}{1}
+      \verb{eprint}
+      \verb 1406.4625
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1406.4625
+      \endverb
+    \endentry
+    \entry{Shahriari2016}{misc}{}
+      \name{author}{5}{}{%
+        {{hash=4b01bc2ebef2b134ce8110e0431af923}{%
+           family={Shahriari},
+           family_i={S\bibinitperiod},
+           given={Bobak},
+           given_i={B\bibinitperiod}}}%
+        {{hash=fe49ec9b6f902b79d166c1f25405c088}{%
+           family={Swersky},
+           family_i={S\bibinitperiod},
+           given={Kevin},
+           given_i={K\bibinitperiod}}}%
+        {{hash=05bc8d503a2c310ef0976ace7f9d2734}{%
+           family={Wang},
+           family_i={W\bibinitperiod},
+           given={Ziyu},
+           given_i={Z\bibinitperiod}}}%
+        {{hash=3f7a7c267067d422325f3c27e20fbf93}{%
+           family={Adams},
+           family_i={A\bibinitperiod},
+           given={Ryan\bibnamedelima P.},
+           given_i={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=8b0b5184c6a166ae079dd8f266cb6840}{%
+           family={{De Freitas}},
+           family_i={D\bibinitperiod},
+           given={Nando},
+           given_i={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{e93053cadf8e1ed30669480ff76591f7}
+      \strng{fullhash}{aebd40b09ee482fa7881e160b3e55727}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{—Big data applications are typically associated with systems involving large numbers of users, massive complex software systems, and large-scale heterogeneous computing and storage architectures. The construction of such systems involves many distributed design choices. The end products (e.g., rec-ommendation systems, medical analysis tools, real-time game engines, speech recognizers) thus involves many tunable config-uration parameters. These parameters are often specified and hard-coded into the software by various developers or teams. If optimized jointly, these parameters can result in significant improvements. Bayesian optimization is a powerful tool for the joint optimization of design choices that is gaining great popularity in recent years. It promises greater automation so as to increase both product quality and human productivity. This review paper introduces Bayesian optimization, highlights some of its methodological aspects, and showcases a wide range of applications.}
+      \field{booktitle}{Proceedings of the IEEE}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0018-9219}
+      \field{issn}{00189219}
+      \field{number}{1}
+      \field{title}{{Taking the human out of the loop: A review of Bayesian optimization}}
+      \field{volume}{104}
+      \field{year}{2016}
+      \field{pages}{148\bibrangedash 175}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1109/JPROC.2015.2494218
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1011.1669v3
+      \endverb
+      \keyw{decision making,design of experiments,genomic medicine,optimization,response surface methodology,statistical learning}
+    \endentry
+    \entry{Snelson2006}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c126647ce6dd6d895d26fdf637d62b58}{%
+           family={Snelson},
+           family_i={S\bibinitperiod},
+           given={Edward},
+           given_i={E\bibinitperiod}}}%
+        {{hash=bf5cf30deddddad00a6341ad7a414445}{%
+           family={Ghahramani},
+           family_i={G\bibinitperiod},
+           given={Zoubin},
+           given_i={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{49915fb8953f75f61a3db38245012e5f}
+      \strng{fullhash}{49915fb8953f75f61a3db38245012e5f}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present a new Gaussian process (GP) regression model whose covariance is parameterized by the the locations of M pseudo-input points, which we learn by a gradient based optimization. We take M N, where N is the number of real data points, and hence obtain a sparse regression method which has O(M2N) training cost and O(M2 ) prediction cost per test case. We also find hyperparameters of the covariance function in the same joint optimization. The method can be viewed as a Bayesian regression model with particular input dependent noise. The method turns out to be closely related to several other sparse GP approaches, and we discuss the relation in detail. We finally demonstrate its performance on some large data sets, and make a direct comparison to other sparse GP methods. We show that our method can match full GP performance with small M, i.e. very sparse solutions, and it significantly outperforms other approaches in this regime.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{9780262232531}
+      \field{issn}{1049-5258}
+      \field{journaltitle}{Advances in Neural Information Processing Systems 18}
+      \field{title}{{Sparse Gaussian Processes using Pseudo-inputs}}
+      \field{year}{2006}
+      \field{pages}{1257\bibrangedash 1264}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1.1.60.2209
+      \endverb
+      \verb{eprint}
+      \verb 1402.1389
+      \endverb
+      \verb{url}
+      \verb http://papers.nips.cc/paper/2857-sparse-gaussian-processes-using-pseudo-inputs.pdf
+      \endverb
+    \endentry
+    \entry{Snoek2012}{article}{}
+      \name{author}{3}{}{%
+        {{hash=b9d827c94405733235f3f953a0691fd5}{%
+           family={Snoek},
+           family_i={S\bibinitperiod},
+           given={Jasper},
+           given_i={J\bibinitperiod}}}%
+        {{hash=42a970b0a0f1ed24b23064370cc9392f}{%
+           family={Larochelle},
+           family_i={L\bibinitperiod},
+           given={Hugo},
+           given_i={H\bibinitperiod}}}%
+        {{hash=0d7f3607c0972d955d28f65d08139baa}{%
+           family={Adams},
+           family_i={A\bibinitperiod},
+           given={Ryan\bibnamedelima P},
+           given_i={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{237f7d781dd59a67215a0ec91d8c678a}
+      \strng{fullhash}{237f7d781dd59a67215a0ec91d8c678a}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The use of machine learning algorithms frequently involves careful tuning of learning parameters and model hyperparameters. Unfortunately, this tuning is often a {\{}$\backslash$textquoteleft{\}}{\{}$\backslash$textquoteleft{\}}black art{\{}$\backslash$textquoteright{\}}{\{}$\backslash$textquoteright{\}} requiring expert experience, rules of thumb, or sometimes brute-force search. There is therefore great appeal for automatic approaches that can optimize the performance of any given learning algorithm to the problem at hand. In this work, we consider this problem through the framework of Bayesian optimization, in which a learning algorithm{\{}$\backslash$textquoteright{\}}s generalization performance is modeled as a sample from a Gaussian process (GP). We show that certain choices for the nature of the GP, such as the type of kernel and the treatment of its hyperparameters, can play a crucial role in obtaining a good optimizer that can achieve expert-level performance. We describe new algorithms that take into account the variable cost (duration) of learning algorithm experiments and that can leverage the presence of multiple cores for parallel experimentation. We show that these proposed algorithms improve on previous automatic procedures and can reach or surpass human expert-level optimization for many algorithms including latent Dirichlet allocation, structured SVMs and convolutional neural networks.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{9781627480031}
+      \field{issn}{10495258}
+      \field{journaltitle}{Adv. Neural Inf. Process. Syst. 25}
+      \field{title}{{Practical Bayesian Optimization of Machine Learning Algorithms}}
+      \field{year}{2012}
+      \field{pages}{1\bibrangedash 9}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 2012arXiv1206.2944S
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1206.2944v2
+      \endverb
+      \keyw{bayesian optimization,deep learning,gaussian process}
+    \endentry
+    \entry{Srinivas2010}{article}{}
+      \name{author}{4}{}{%
+        {{hash=bba8edc4dfbbc8fe73390e4b562c9cc3}{%
+           family={Srinivas},
+           family_i={S\bibinitperiod},
+           given={Niranjan},
+           given_i={N\bibinitperiod}}}%
+        {{hash=112eb0b147c4a7f674d015a86e5dea70}{%
+           family={Krause},
+           family_i={K\bibinitperiod},
+           given={Andreas},
+           given_i={A\bibinitperiod}}}%
+        {{hash=3d8be282574094d06ae37fbddf13078f}{%
+           family={Kakade},
+           family_i={K\bibinitperiod},
+           given={Sham\bibnamedelima M.},
+           given_i={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=9f881b2bdd82b01b43c0b7a6f9dd3208}{%
+           family={Seeger},
+           family_i={S\bibinitperiod},
+           given={Matthias},
+           given_i={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{461f4ef76fbf2abe225b67377bac9403}
+      \strng{fullhash}{0e42de1a4217889346ff0fdce6a4001e}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Many applications require optimizing an unknown, noisy function that is expensive to evaluate. We formalize this task as a multi-armed bandit problem, where the payoff function is either sampled from a Gaussian process (GP) or has low RKHS norm. We resolve the important open problem of deriving regret bounds for this setting, which imply novel convergence rates for GP optimization. We analyze GP-UCB, an intuitive upper-confidence based algorithm, and bound its cumulative regret in terms of maximal information gain, establishing a novel connection between GP optimization and experimental design. Moreover, by bounding the latter in terms of operator spectra, we obtain explicit sublinear regret bounds for many commonly used covariance functions. In some important cases, our bounds have surprisingly weak dependence on the dimensionality. In our experiments on real sensor data, GP-UCB compares favorably with other heuristical GP optimization approaches.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{9781605589077}
+      \field{issn}{00189448}
+      \field{journaltitle}{Proceedings of the 27th International Conference on Machine Learning (ICML 2010)}
+      \field{title}{{Gaussian Process Optimization in the Bandit Setting: No Regret and Experimental Design}}
+      \field{year}{2010}
+      \field{pages}{1015\bibrangedash 1022}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/TIT.2011.2182033
+      \endverb
+      \verb{eprint}
+      \verb 0912.3995
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/0912.3995
+      \endverb
+      \keyw{Gaussian Process Bandits,Experimental Design,Ban}
+    \endentry
+    \entry{Titsias2009}{article}{}
+      \name{author}{1}{}{%
+        {{hash=81ef8fd5b7b50d8f80ae8da790ccba73}{%
+           family={Titsias},
+           family_i={T\bibinitperiod},
+           given={Michalis},
+           given_i={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{81ef8fd5b7b50d8f80ae8da790ccba73}
+      \strng{fullhash}{81ef8fd5b7b50d8f80ae8da790ccba73}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Sparse Gaussian process methods that use inducing variables require the selection of the inducing inputs and the kernel hyperparameters. We introduce a variational formulation for sparse approximations that jointly infers the inducing inputs and the kernel hyperparameters by maximizing a lower bound of the true log marginal likelihood. The key property of this formulation is that the inducing inputs are defined to be variational parameters which are selected by minimizing the Kullback-Leibler divergence between the variational distribution and the exact posterior distribution over the latent function values. We apply this technique to regression and we compare it with other approaches in the literature.}
+      \field{issn}{15324435}
+      \field{journaltitle}{Aistats}
+      \field{title}{{Variational Learning of Inducing Variables in Sparse Gaussian Processes}}
+      \field{volume}{5}
+      \field{year}{2009}
+      \field{pages}{567\bibrangedash 574}
+      \range{pages}{8}
+      \verb{url}
+      \verb http://eprints.pascal-network.org/archive/00006353/
+      \endverb
+      \keyw{Learning/Statistics {\&} Optimisation,Theory {\&} Algorithms}
+    \endentry
+    \entry{Vazquez2010}{article}{}
+      \name{author}{2}{}{%
+        {{hash=1c19e5e0eb8c41cd9b10d99d34883008}{%
+           family={Vazquez},
+           family_i={V\bibinitperiod},
+           given={Emmanuel},
+           given_i={E\bibinitperiod}}}%
+        {{hash=9885a0f1efdd25d75a2cbc193983b305}{%
+           family={Bect},
+           family_i={B\bibinitperiod},
+           given={Julien},
+           given_i={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{5decd0adf5aa8199532c1300bc3c1b02}
+      \strng{fullhash}{5decd0adf5aa8199532c1300bc3c1b02}
+      \field{sortinit}{V}
+      \field{sortinithash}{d18f5ce25ce0b5ca7f924e3f6c04870e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper deals with the convergence of the expected improvement algorithm, a popular global optimization algorithm based on a Gaussian process model of the function to be optimized. The first result is that under some mild hypotheses on the covariance function k of the Gaussian process, the expected improvement algorithm produces a dense sequence of evaluation points in the search domain, when the function to be optimized is in the reproducing kernel Hilbert space generated by k. The second result states that the density property also holds for P-almost all continuous functions, where P is the (prior) probability distribution induced by the Gaussian process. ?? 2010 Elsevier B.V.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0378-3758}
+      \field{issn}{03783758}
+      \field{journaltitle}{Journal of Statistical Planning and Inference}
+      \field{number}{11}
+      \field{title}{{Convergence properties of the expected improvement algorithm with fixed mean and covariance functions}}
+      \field{volume}{140}
+      \field{year}{2010}
+      \field{pages}{3088\bibrangedash 3095}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/j.jspi.2010.04.018
+      \endverb
+      \verb{eprint}
+      \verb 0712.3744
+      \endverb
+      \keyw{Bayesian optimization,Computer experiments,Gaussian process,Global optimization,RKHS,Sequential esign}
+    \endentry
+    \entry{Villemonteix2009}{article}{}
+      \name{author}{3}{}{%
+        {{hash=16e5756c07d3d8bed3baa4fe9933462f}{%
+           family={Villemonteix},
+           family_i={V\bibinitperiod},
+           given={Julien},
+           given_i={J\bibinitperiod}}}%
+        {{hash=1c19e5e0eb8c41cd9b10d99d34883008}{%
+           family={Vazquez},
+           family_i={V\bibinitperiod},
+           given={Emmanuel},
+           given_i={E\bibinitperiod}}}%
+        {{hash=07f8bc8c4858de75064e664ad99039c2}{%
+           family={Walter},
+           family_i={W\bibinitperiod},
+           given={Eric},
+           given_i={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{525477c64ee0b595c452a0d98d9209b8}
+      \strng{fullhash}{525477c64ee0b595c452a0d98d9209b8}
+      \field{sortinit}{V}
+      \field{sortinithash}{d18f5ce25ce0b5ca7f924e3f6c04870e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In many global optimization problems motivated by engineering applications, the number of function evaluations is severely limited by time or cost. To ensure that each evaluation contributes to the localization of good candidates for the role of global minimizer, a sequential choice of evaluation points is usually carried out. In particular, when Kriging is used to interpolate past evaluations, the uncertainty associated with the lack of information on the function can be expressed and used to compute a number of criteria accounting for the interest of an additional evaluation at any given point. This paper introduces minimizer entropy as a new Kriging-based criterion for the sequential choice of points at which the function should be evaluated. Based on $\backslash$emph{\{}stepwise uncertainty reduction{\}}, it accounts for the informational gain on the minimizer expected from a new evaluation. The criterion is approximated using conditional simulations of the Gaussian process model behind Kriging, and then inserted into an algorithm similar in spirit to the $\backslash$emph{\{}Efficient Global Optimization{\}} (EGO) algorithm. An empirical comparison is carried out between our criterion and $\backslash$emph{\{}expected improvement{\}}, one of the reference criteria in the literature. Experimental results indicate major evaluation savings over EGO. Finally, the method, which we call IAGO (for Informational Approach to Global Optimization) is extended to robust optimization problems, where both the factors to be tuned and the function evaluations are corrupted by noise.}
+      \field{eprintclass}{cs}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0925-5001}
+      \field{issn}{09255001}
+      \field{journaltitle}{Journal of Global Optimization}
+      \field{number}{4}
+      \field{title}{{An informational approach to the global optimization of expensive-to-evaluate functions}}
+      \field{volume}{44}
+      \field{year}{2009}
+      \field{pages}{509\bibrangedash 534}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1007/s10898-008-9354-2
+      \endverb
+      \verb{eprint}
+      \verb 0611143
+      \endverb
+      \keyw{Gaussian process,Global optimization,Kriging,Robust optimization,Stepwise uncertainty reduction}
+    \endentry
+    \entry{Wang2014}{article}{}
+      \name{author}{4}{}{%
+        {{hash=05bc8d503a2c310ef0976ace7f9d2734}{%
+           family={Wang},
+           family_i={W\bibinitperiod},
+           given={Ziyu},
+           given_i={Z\bibinitperiod}}}%
+        {{hash=79ec7cefc2c31bc4fcf5a0c52aec6694}{%
+           family={Shakibi},
+           family_i={S\bibinitperiod},
+           given={Babak},
+           given_i={B\bibinitperiod}}}%
+        {{hash=f67a7c77f7e4bdb95e797ab0e901a59a}{%
+           family={Jin},
+           family_i={J\bibinitperiod},
+           given={Lin},
+           given_i={L\bibinitperiod}}}%
+        {{hash=f0c607e07790eb5b3996d607725bf370}{%
+           prefix={de},
+           prefix_i={d\bibinitperiod},
+           family={Freitas},
+           family_i={F\bibinitperiod},
+           given={Nando},
+           given_i={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{ce0f3d71b18ee7367558a7b6d6e6973e}
+      \strng{fullhash}{18ee30ae63ac61523c2411d539ca8af6}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Bayesian optimization is a powerful global optimization technique for expensive black-box functions. One of its shortcomings is that it requires auxiliary optimization of an acquisition function at each iteration. This auxiliary optimization can be costly and very hard to carry out in practice. Moreover, it creates serious theoretical concerns, as most of the convergence results assume that the exact optimum of the acquisition function can be found. In this paper, we introduce a new technique for efficient global optimization that combines Gaussian process confidence bounds and treed simultaneous optimistic optimization to eliminate the need for auxiliary optimization of acquisition functions. The experiments with global optimization benchmarks and a novel application to automatic information extraction demonstrate that the resulting technique is more efficient than the two approaches from which it draws inspiration. Unlike most theoretical analyses of Bayesian optimization with Gaussian processes, our finite-time convergence rate proofs do not require exact optimization of an acquisition function. That is, our approach eliminates the unsatisfactory assumption that a difficult, potentially NP-hard, problem has to be solved in order to obtain vanishing regret rates.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{15337928}
+      \field{journaltitle}{AISTATS}
+      \field{title}{{Bayesian Multi-Scale Optimistic Optimization}}
+      \field{volume}{33}
+      \field{year}{2014}
+      \field{pages}{15}
+      \range{pages}{1}
+      \verb{eprint}
+      \verb 1402.7005
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1402.7005
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+
+\refsection{4}
+  \sortlist[entry]{nty/global/}
+    \entry{Abdi2003}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=c580255ca139872e5f15d7fe98f8fcfc}{%
+           family={Abdi},
+           family_i={A\bibinitperiod},
+           given={Hervé},
+           given_i={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{c580255ca139872e5f15d7fe98f8fcfc}
+      \strng{fullhash}{c580255ca139872e5f15d7fe98f8fcfc}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{PLS regression is a recent technique that generalizes and combines features from principal component analysis and multiple regression. Its goal is to predict or analyze a set of dependent variables from a set of independent variables or predictors. This prediction is achieved by extracting from the predictors a set of orthogonal factors called latent variables which have the best predictive power.}
+      \field{booktitle}{Encyclopedia for research methods for the social sciences}
+      \field{isbn}{9781412950589}
+      \field{issn}{15315487}
+      \field{title}{{Partial Least Squares (PLS) Regression}}
+      \field{year}{2003}
+      \field{pages}{792\bibrangedash 795}
+      \range{pages}{4}
+      \verb{doi}
+      \verb http://dx.doi.org/10.4135/9781412950589.n690
+      \endverb
+    \endentry
+    \entry{Ballester2010}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c7b3efceed476aa17a7fa9bb6263ab30}{%
+           family={Ballester},
+           family_i={B\bibinitperiod},
+           given={Pedro\bibnamedelima J.},
+           given_i={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=8e9ffaec04e7f1b49b8197a2ed1941ed}{%
+           family={Mitchell},
+           family_i={M\bibinitperiod},
+           given={John\bibnamedelimb B\bibnamedelima O},
+           given_i={J\bibinitperiod\bibinitdelim B\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \strng{namehash}{b954dcdf0b1992de73ac511a647bc975}
+      \strng{fullhash}{b954dcdf0b1992de73ac511a647bc975}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Motivation: Accurately predicting the binding affinities of large sets of diverse protein–ligand complexes is an extremely challenging task. The scoring functions that attempt such computational prediction are essential for analysing the outputs of molecular docking, which in turn is an important technique for drug discovery, chemical biology and structural biology. Each scoring function assumes a predetermined theory-inspired functional form for the relationship between the variables that characterize the complex, which also include parameters fitted to experimental or simulation data and its predicted binding affinity. The inherent problem of this rigid approach is that it leads to poor predictivity for those complexes that do not conform to the modelling assumptions. Moreover, resampling strategies, such as cross-validation or bootstrapping, are still not systematically used to guard against the overfitting of calibration data in parameter estimation for scoring functions.Results: We propose a novel scoring function (RF-Score) that circumvents the need for problematic modelling assumptions via non-parametric machine learning. In particular, Random Forest was used to implicitly capture binding effects that are hard to model explicitly. RF-Score is compared with the state of the art on the demanding PDBbind benchmark. Results show that RF-Score is a very competitive scoring function. Importantly, RF-Score's performance was shown to improve dramatically with training set size and hence the future availability of more high-quality structural and interaction data is expected to lead to improved versions of RF-Score.Contact: pedro.ballester@ebi.ac.uk; jbom@st-andrews.ac.ukSupplementary information: Supplementary data are available at Bioinformatics online.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0070428077}
+      \field{issn}{13674803}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{9}
+      \field{title}{{A machine learning approach to predicting protein-ligand binding affinity with applications to molecular docking}}
+      \field{volume}{26}
+      \field{year}{2010}
+      \field{pages}{1169\bibrangedash 1175}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1093/bioinformatics/btq112
+      \endverb
+      \verb{eprint}
+      \verb 0-387-31073-8
+      \endverb
+    \endentry
+    \entry{Ballester2014}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c7b3efceed476aa17a7fa9bb6263ab30}{%
+           family={Ballester},
+           family_i={B\bibinitperiod},
+           given={Pedro\bibnamedelima J.},
+           given_i={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=ae72275792723b35a2f209e12b224e39}{%
+           family={Schreyer},
+           family_i={S\bibinitperiod},
+           given={Adrian},
+           given_i={A\bibinitperiod}}}%
+        {{hash=7120ccecb3c06a0b0690949151ced86d}{%
+           family={Blundell},
+           family_i={B\bibinitperiod},
+           given={Tom\bibnamedelima L.},
+           given_i={T\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{f577fa59b64d8daceecba52ff507b047}
+      \strng{fullhash}{f577fa59b64d8daceecba52ff507b047}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Predicting the binding affinities of large sets of diverse molecules against a range of macromolecular targets is an extremely challenging task. The scoring functions that attempt such computational prediction are essential for exploiting and analyzing the outputs of docking, which is in turn an important tool in problems such as structure-based drug design. Classical scoring functions assume a predetermined theory-inspired functional form for the relationship between the variables that describe an experimentally determined or modeled structure of a protein?ligand complex and its binding affinity. The inherent problem of this approach is in the difficulty of explicitly modeling the various contributions of intermolecular interactions to binding affinity. New scoring functions based on machine-learning regression models, which are able to exploit effectively much larger amounts of experimental data and circumvent the need for a predetermined functional form, have already been shown to outperform a broad range of state-of-the-art scoring functions in a widely used benchmark. Here, we investigate the impact of the chemical description of the complex on the predictive power of the resulting scoring function using a systematic battery of numerical experiments. The latter resulted in the most accurate scoring function to date on the benchmark. Strikingly, we also found that a more precise chemical description of the protein?ligand complex does not generally lead to a more accurate prediction of binding affinity. We discuss four factors that may contribute to this result: modeling assumptions, codependence of representation and regression, data restricted to the bound state, and conformational heterogeneity in data.}
+      \field{issn}{15205142}
+      \field{journaltitle}{Journal of Chemical Information and Modeling}
+      \field{number}{3}
+      \field{title}{{Does a more precise chemical description of protein-ligand complexes lead to more accurate prediction of binding affinity?}}
+      \field{volume}{54}
+      \field{year}{2014}
+      \field{pages}{944\bibrangedash 955}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1021/ci500091r
+      \endverb
+    \endentry
+    \entry{Baum2010}{article}{}
+      \name{author}{6}{}{%
+        {{hash=8d83541fcecf2825a14b4f70af0dc2cd}{%
+           family={Baum},
+           family_i={B\bibinitperiod},
+           given={Bernhard},
+           given_i={B\bibinitperiod}}}%
+        {{hash=64ccb6982e7deca73fde47a448243467}{%
+           family={Muley},
+           family_i={M\bibinitperiod},
+           given={Laveena},
+           given_i={L\bibinitperiod}}}%
+        {{hash=55ec45244633481d8c18d1ab42aa0fa8}{%
+           family={Smolinski},
+           family_i={S\bibinitperiod},
+           given={Michael},
+           given_i={M\bibinitperiod}}}%
+        {{hash=895af6d59c78893c156049a96cd939a7}{%
+           family={Heine},
+           family_i={H\bibinitperiod},
+           given={Andreas},
+           given_i={A\bibinitperiod}}}%
+        {{hash=8fa64bd33c304cdefcc416dfb8479713}{%
+           family={Hangauer},
+           family_i={H\bibinitperiod},
+           given={David},
+           given_i={D\bibinitperiod}}}%
+        {{hash=93001fe15285ce67c1470749a34acf5c}{%
+           family={Klebe},
+           family_i={K\bibinitperiod},
+           given={Gerhard},
+           given_i={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{c1d89768e1aebe03bacb2e7f6687f2d9}
+      \strng{fullhash}{c552792fa036e213c8037f6af10d3fc7}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Additivity of functional group contributions to protein-ligand binding is a very popular concept in medicinal chemistry as the basis of rational design and optimized lead structures. Most of the currently applied scoring functions for docking build on such additivity models. Even though the limitation of this concept is well known, case studies examining in detail why additivity fails at the molecular level are still very scarce. The present study shows, by use of crystal structure analysis and isothermal titration calorimetry for a congeneric series of thrombin inhibitors, that extensive cooperative effects between hydrophobic contacts and hydrogen bond formation are intimately coupled via dynamic properties of the formed complexes. The formation of optimal lipophilic contacts with the surface of the thrombin S3 pocket and the full desolvation of this pocket can conflict with the formation of an optimal hydrogen bond between ligand and protein. The mutual contributions of the competing interactions depend on the size of the ligand hydrophobic substituent and influence the residual mobility of ligand portions at the binding site. Analysis of the individual crystal structures and factorizing the free energy into enthalpy and entropy demonstrates that binding affinity of the ligands results from a mixture of enthalpic contributions from hydrogen bonding and hydrophobic contacts, and entropic considerations involving an increasing loss of residual mobility of the bound ligands. This complex picture of mutually competing and partially compensating enthalpic and entropic effects determines the non-additivity of free energy contributions to ligand binding at the molecular level. ?? 2010 Elsevier Ltd.}
+      \field{isbn}{1089-8638}
+      \field{issn}{00222836}
+      \field{journaltitle}{Journal of Molecular Biology}
+      \field{number}{4}
+      \field{title}{{Non-additivity of functional group contributions in protein-ligand binding: A comprehensive study by crystallography and isothermal titration calorimetry}}
+      \field{volume}{397}
+      \field{year}{2010}
+      \field{pages}{1042\bibrangedash 1054}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1016/j.jmb.2010.02.007
+      \endverb
+      \keyw{Crystal structure analysis,Isothermal titration calorimetry,Ligand-protein interactions,Non-additivity of functional group contributions,Thrombin}
+    \endentry
+    \entry{Bergstra2012}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5ed349d7d3c7883110b8220af8cda41b}{%
+           family={{Bergstra JAMESBERGSTRA}},
+           family_i={B\bibinitperiod},
+           given={James},
+           given_i={J\bibinitperiod}}}%
+        {{hash=3c4bd16cdf1921d4a7de08fdb03aa5d6}{%
+           family={{Yoshua Bengio YOSHUABENGIO}},
+           family_i={Y\bibinitperiod},
+           given={Umontrealca},
+           given_i={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{bb87c262fd893072c75759bf31c15ad4}
+      \strng{fullhash}{bb87c262fd893072c75759bf31c15ad4}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Grid search and manual search are the most widely used strategies for hyper-parameter optimiza-tion. This paper shows empirically and theoretically that randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid. Empirical evidence comes from a compar-ison with a large previous study that used grid search and manual search to configure neural net-works and deep belief networks. Compared with neural networks configured by a pure grid search, we find that random search over the same domain is able to find models that are as good or better within a small fraction of the computation time. Granting random search the same computational budget, random search finds better models by effectively searching a larger, less promising con-figuration space. Compared with deep belief networks configured by a thoughtful combination of manual search and grid search, purely random search over the same 32-dimensional configuration space found statistically equal performance on four of seven data sets, and superior performance on one of seven. A Gaussian process analysis of the function from hyper-parameters to validation set performance reveals that for most data sets only a few of the hyper-parameters really matter, but that different hyper-parameters are important on different data sets. This phenomenon makes grid search a poor choice for configuring algorithms for new data sets. Our analysis casts some light on why recent " High Throughput " methods achieve surprising success—they appear to search through a large number of hyper-parameters because most hyper-parameters do not matter much. We anticipate that growing interest in large hierarchical models will place an increasing burden on techniques for hyper-parameter optimization; this work shows that random search is a natural base-line against which to judge progress in the development of adaptive (sequential) hyper-parameter optimization algorithms.}
+      \field{isbn}{1532-4435}
+      \field{issn}{1532-4435}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{{Random Search for Hyper-Parameter Optimization}}
+      \field{volume}{13}
+      \field{year}{2012}
+      \field{pages}{281\bibrangedash 305}
+      \range{pages}{25}
+      \keyw{deep learning,global optimization,model selection,neural networks,response surface modeling}
+    \endentry
+    \entry{Bishop2006}{book}{}
+      \name{author}{1}{}{%
+        {{hash=7952b575a987ace852cfb8965a4da182}{%
+           family={Bishop},
+           family_i={B\bibinitperiod},
+           given={Christopher\bibnamedelima M},
+           given_i={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7952b575a987ace852cfb8965a4da182}
+      \strng{fullhash}{7952b575a987ace852cfb8965a4da182}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The dramatic growth in practical applications for machine learning over the last ten years has been accompanied by many important developments in the underlying algorithms and techniques. For example, Bayesian methods have grown from a specialist niche to become mainstream, while graphical models have emerged as a general framework for describing and applying probabilistic techniques. The practical applicability of Bayesian methods has been greatly enhanced by the development of a range of approximate inference algorithms such as variational Bayes and expectation propagation, while new models based on kernels have had a significant impact on both algorithms and applications. This completely new textbook reflects these recent developments while providing a comprehensive introduction to the fields of pattern recognition and machine learning. It is aimed at advanced undergraduates or first-year PhD students, as well as researchers and practitioners. No previous knowledge of pattern recognition or machine learning concepts is assumed. Familiarity with multivariate calculus and basic linear algebra is required, and some experience in the use of probabilities would be helpful though not essential as the book includes a self-contained introduction to basic probability theory. The book is suitable for courses on machine learning, statistics, computer science, signal processing, computer vision, data mining, and bioinformatics. Extensive support is provided for course instructors, including more than 400 exercises, graded according to difficulty. Example solutions for a subset of the exercises are available from the book web site, while solutions for the remainder can be obtained by instructors from the publisher. The book is supported by a great deal of additional material, and the reader is encouraged to visit the book web site for the latest information. A forthcoming companion volume will deal with practical aspects of pattern recognition and machine learning, and will include free software implementations of the key algorithms along with example data sets and demonstration programs. Christopher Bishop is Assistant Director at Microsoft Research Cambridge, and also holds a Chair in Computer Science at the University of Edinburgh. He is a Fellow of Darwin College Cambridge, and was recently elected Fellow of the Royal Academy of Engineering. The author's previous textbook "Neural Networks for Pattern Recognition" has been widely adopted.}
+      \field{booktitle}{Pattern Recognition}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{9780387310732}
+      \field{issn}{10179909}
+      \field{number}{4}
+      \field{title}{{Pattern Recognition and Machine Learning}}
+      \field{volume}{4}
+      \field{year}{2006}
+      \field{pages}{738}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1117/1.2819119
+      \endverb
+      \verb{eprint}
+      \verb 0-387-31073-8
+      \endverb
+      \verb{url}
+      \verb http://www.library.wisc.edu/selectedtocs/bg0137.pdf
+      \endverb
+    \endentry
+    \entry{Chang2011}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0d5f4e2b63c9a6b72a1383ef04f60df2}{%
+           family={Chang},
+           family_i={C\bibinitperiod},
+           given={Chih-chung},
+           given_i={C\bibinithyphendelim c\bibinitperiod}}}%
+        {{hash=44fd77a0ce220b5ddb18daacdf7329be}{%
+           family={Lin},
+           family_i={L\bibinitperiod},
+           given={Chih-jen},
+           given_i={C\bibinithyphendelim j\bibinitperiod}}}%
+      }
+      \strng{namehash}{0deb414659daa1e23df66763ff8d0b3b}
+      \strng{fullhash}{0deb414659daa1e23df66763ff8d0b3b}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{LIBSVM is a library for Support Vector Machines (SVMs). We have been actively developing this package since the year 2000. The goal is to help users to easily apply SVM to their applications. LIBSVM has gained wide popularity in machine learning and many other areas. In this article, we present all implementation details of LIBSVM. Issues such as solving SVM optimization problems, theoretical convergence, multi-class classification, probability estimates, and parameter selection are discussed in detail}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{2157-6904}
+      \field{issn}{21576904}
+      \field{journaltitle}{ACM Transactions on Intelligent Systems and Technology (TIST)}
+      \field{title}{{LIBSVM : A Library for Support Vector Machines}}
+      \field{volume}{2}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 39}
+      \range{pages}{39}
+      \verb{doi}
+      \verb 10.1145/1961189.1961199
+      \endverb
+      \verb{eprint}
+      \verb 0-387-31073-8
+      \endverb
+      \keyw{classification,libsvm,optimization,regression,support vector ma-}
+    \endentry
+    \entry{Cortes1995}{article}{}
+      \name{author}{2}{}{%
+        {{hash=17acda211a651e90e228f1776ee07818}{%
+           family={Cortes},
+           family_i={C\bibinitperiod},
+           given={Corinna},
+           given_i={C\bibinitperiod}}}%
+        {{hash=c2b3e05872463585b4be6aab10d10d63}{%
+           family={Vapnik},
+           family_i={V\bibinitperiod},
+           given={Vladimir},
+           given_i={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{4c67d5268f413e83454c8adc14ab43c3}
+      \strng{fullhash}{4c67d5268f413e83454c8adc14ab43c3}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Oil/water partition coefficient (log P) is one of the key points for lead compound to be drug. In silico log P models based solely on chemical structures have become an important part of modern drug discovery. Here, we report support vector machines, radial basis function neural networks, and multiple linear regression methods to investigate the correlation between partition coefficient and physico-chemical descriptors for a large data set of compounds. The correlation coefficient r (2) between experimental and predicted log P for training and test sets by support vector machines, radial basis function neural networks, and multiple linear regression is 0.92, 0.90, and 0.88, respectively. The results show that non-linear support vector machines derives statistical models that have better prediction ability than those of radial basis function neural networks and multiple linear regression methods. This indicates that support vector machines can be used as an alternative modeling tool for quantitative structure-property/activity relationships studies.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0885-6125}
+      \field{issn}{15730565}
+      \field{journaltitle}{Machine Learning}
+      \field{number}{3}
+      \field{title}{{Support-Vector Networks}}
+      \field{volume}{20}
+      \field{year}{1995}
+      \field{pages}{273\bibrangedash 297}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1023/A:1022627411411
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1011.1669v3
+      \endverb
+      \keyw{efficient learning algorithms,neural networks,pattern recognition,polynomial classifiers,radial basis function classifiers}
+    \endentry
+    \entry{Doerr2016}{article}{}
+      \name{author}{4}{}{%
+        {{hash=5598952782dec203e9c3bd0d9cc0a64e}{%
+           family={Doerr},
+           family_i={D\bibinitperiod},
+           given={S.},
+           given_i={S\bibinitperiod}}}%
+        {{hash=3cce1a13f889d2a1822d123b9b20907f}{%
+           family={Harvey},
+           family_i={H\bibinitperiod},
+           given={M.\bibnamedelimi J.},
+           given_i={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=5857f5ccdcf3ecbd7dd77ba4c725a093}{%
+           family={Noé},
+           family_i={N\bibinitperiod},
+           given={Frank},
+           given_i={F\bibinitperiod}}}%
+        {{hash=9e256b5343df9f7bf7470f29bae6ecbc}{%
+           family={{De Fabritiis}},
+           family_i={D\bibinitperiod},
+           given={G.},
+           given_i={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{16acbad2bc1f6b6fffdd4a682bc31942}
+      \strng{fullhash}{240fdfacd6ccf7d5140f8f0646e4b394}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Recent advances in molecular simulations have allowed scientists to investigate slower biological processes than ever before. Together with these advances came an explosion of data that has transformed a traditionally computing-bound into a data-bound problem. Here, we present HTMD, a programmable, extensible platform written in Python that aims to solve the data generation and analysis problem as well as increase reproducibility by providing a complete workspace for simulation-based discovery. So far, HTMD includes system building for CHARMM and AMBER force fields, projection methods, clustering, molecular simulation production, adaptive sampling, an Amazon cloud interface, Markov state models, and visualization. As a result, a single, short HTMD script can lead from a PDB structure to useful quantities such as relaxation time scales, equilibrium populations, metastable conformations, and kinetic rates. In this paper, we focus on the adaptive sampling and Markov state modeling features.}
+      \field{isbn}{1549-9626 (Electronic)$\backslash$r1549-9618 (Linking)}
+      \field{issn}{15499626}
+      \field{journaltitle}{Journal of Chemical Theory and Computation}
+      \field{number}{4}
+      \field{title}{{HTMD: High-Throughput Molecular Dynamics for Molecular Discovery}}
+      \field{volume}{12}
+      \field{year}{2016}
+      \field{pages}{1845\bibrangedash 1852}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1021/acs.jctc.6b00049
+      \endverb
+    \endentry
+    \entry{Dunbar2013}{article}{}
+      \name{author}{12}{}{%
+        {{hash=3b9497219b0998a5813c5013e0c80a16}{%
+           family={Dunbar},
+           family_i={D\bibinitperiod},
+           given={James\bibnamedelima B.},
+           given_i={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=03418656423c346e916eb69c62f95a96}{%
+           family={Smith},
+           family_i={S\bibinitperiod},
+           given={Richard\bibnamedelima D.},
+           given_i={R\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=082b995b1b89caa28229648961b5bc97}{%
+           family={Damm-Ganamet},
+           family_i={D\bibinithyphendelim G\bibinitperiod},
+           given={Kelly\bibnamedelima L.},
+           given_i={K\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=f83122bf850d07521be5602f796437e7}{%
+           family={Ahmed},
+           family_i={A\bibinitperiod},
+           given={Aqeel},
+           given_i={A\bibinitperiod}}}%
+        {{hash=419d377b2a6c7a7aa5f74361cfbe02c0}{%
+           family={Esposito},
+           family_i={E\bibinitperiod},
+           given={Emilio\bibnamedelima Xavier},
+           given_i={E\bibinitperiod\bibinitdelim X\bibinitperiod}}}%
+        {{hash=f20c93af39702639da957c670c861d99}{%
+           family={Delproposto},
+           family_i={D\bibinitperiod},
+           given={James},
+           given_i={J\bibinitperiod}}}%
+        {{hash=4512f016905984091927d4d1ea1e260d}{%
+           family={Chinnaswamy},
+           family_i={C\bibinitperiod},
+           given={Krishnapriya},
+           given_i={K\bibinitperiod}}}%
+        {{hash=edaa35bccb400074e8f4fc3a33c2c98b}{%
+           family={Kang},
+           family_i={K\bibinitperiod},
+           given={You\bibnamedelima Na},
+           given_i={Y\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=38d06bd7da075ac9b3f0f5755b4524cc}{%
+           family={Kubish},
+           family_i={K\bibinitperiod},
+           given={Ginger},
+           given_i={G\bibinitperiod}}}%
+        {{hash=85dcfb88c049c0eb32db73de8c9b62c0}{%
+           family={Gestwicki},
+           family_i={G\bibinitperiod},
+           given={Jason\bibnamedelima E.},
+           given_i={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=6be5dc1c333eb558b06f9cc913cbe122}{%
+           family={Stuckey},
+           family_i={S\bibinitperiod},
+           given={Jeanne\bibnamedelima A.},
+           given_i={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=637330cb1decf7da66e86e0eb3e47e46}{%
+           family={Carlson},
+           family_i={C\bibinitperiod},
+           given={Heather\bibnamedelima A.},
+           given_i={H\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{beae8bf3175e6c4968e51a387e8c781a}
+      \strng{fullhash}{a96a3c7c90dff22d37abeb2227b8739a}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A major goal in drug design is the improvement of computational methods for docking and scoring. The Community Structure Activity Resource (CSAR) has collected several data sets from industry and added in-house data sets that may be used for this purpose ( www.csardock.org). CSAR has currently obtained data from Abbott, GlaxoSmithKline, and Vertex and is working on obtaining data from several others. Combined with our in-house projects, we are providing a data set consisting of 6 protein targets, 647 compounds with biological affinities, and 82 crystal structures. Multiple congeneric series are available for several targets with a few representative crystal structures of each of the series. These series generally contain a few inactive compounds, usually not available in the literature, to provide an upper bound to the affinity range. The affinity ranges are typically 3-4 orders of magnitude per series. For our in-house projects, we have had compounds synthesized for biological testing. Affinities were measured by Thermofluor, Octet RED, and isothermal titration calorimetry for the most soluble. This allows the direct comparison of the biological affinities for those compounds, providing a measure of the variance in the experimental affinity. It appears that there can be considerable variance in the absolute value of the affinity, making the prediction of the absolute value ill-defined. However, the relative rankings within the methods are much better, and this fits with the observation that predicting relative ranking is a more tractable problem computationally. For those in-house compounds, we also have measured the following physical properties: logD, logP, thermodynamic solubility, and pK(a). This data set also provides a substantial decoy set for each target consisting of diverse conformations covering the entire active site for all of the 58 CSAR-quality crystal structures. The CSAR data sets (CSAR-NRC HiQ and the 2012 release) provide substantial, publically available, curated data sets for use in parametrizing and validating docking and scoring methods.}
+      \field{isbn}{1549-9596}
+      \field{issn}{15499596}
+      \field{journaltitle}{Journal of Chemical Information and Modeling}
+      \field{number}{8}
+      \field{title}{{CSAR data set release 2012: Ligands, affinities, complexes, and docking decoys}}
+      \field{volume}{53}
+      \field{year}{2013}
+      \field{pages}{1842\bibrangedash 1852}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1021/ci4000486
+      \endverb
+    \endentry
+    \entry{Durrant2011}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b7b3e60cda252bdbcb2fa723b4ca4ea7}{%
+           family={Durrant},
+           family_i={D\bibinitperiod},
+           given={Jacob\bibnamedelima D.},
+           given_i={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=37a9822fdbf01e9179df0f545335a613}{%
+           family={McCammon},
+           family_i={M\bibinitperiod},
+           given={J.\bibnamedelimi Andrew},
+           given_i={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a8d61c1a87bbdf297c521896229b0f2e}
+      \strng{fullhash}{a8d61c1a87bbdf297c521896229b0f2e}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{NNScore is a neural-network-based scoring function designed to aid the computational identification of small-molecule ligands. While the test cases included in the original NNScore article demonstrated the utility of the program, the application examples were limited. The purpose of the current work is to further confirm that neural-network scoring functions are effective, even when compared to the scoring functions of state-of-the-art docking programs, such as AutoDock, the most commonly cited program, and AutoDock Vina, thought to be two orders of magnitude faster. Aside from providing additional validation of the original NNScore function, we here present a second neural-network scoring function, NNScore 2.0. NNScore 2.0 considers many more binding characteristics when predicting affinity than does the original NNScore. The network output of NNScore 2.0 also differs from that of NNScore 1.0; rather than a binary classification of ligand potency, NNScore 2.0 provides a single estimate of the pK(d). To facilitate use, NNScore 2.0 has been implemented as an open-source python script. A copy can be obtained from http://www.nbcr.net/software/nnscore/ .}
+      \field{isbn}{1549-9596}
+      \field{issn}{15499596}
+      \field{journaltitle}{Journal of Chemical Information and Modeling}
+      \field{number}{11}
+      \field{title}{{NNScore 2.0: A neural-network receptor-ligand scoring function}}
+      \field{volume}{51}
+      \field{year}{2011}
+      \field{pages}{2897\bibrangedash 2903}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1021/ci2003889
+      \endverb
+      \verb{file}
+      \verb :home/jose/Downloads/ci2003889.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Friedman2001}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6df955e00dece4d624abb0b61029f4e0}{%
+           family={Friedman},
+           family_i={F\bibinitperiod},
+           given={Jerome\bibnamedelima H.},
+           given_i={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{6df955e00dece4d624abb0b61029f4e0}
+      \strng{fullhash}{6df955e00dece4d624abb0b61029f4e0}
+      \field{sortinit}{F}
+      \field{sortinithash}{c6a7d9913bbd7b20ea954441c0460b78}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Function estimation/approximation is viewed from the perspective of numerical optimization in function space, rather than parameter space. A connection is made between stagewise additive expansions and steepest-descent minimization. A general gradient descent "boosting" paradigm is developed for additive expansions based on any fitting criterion. Specific algorithms are presented for least-squares, least absolute deviation, and Huber-M loss functions for regression, and multiclass logistic likelihood for classification. Special enhancements are derived for the particular case where the individual additive components are regression trees, and tools for interpreting such "TreeBoost" models are presented. Gradient boosting of regression trees produces competitive, highly robust, interpretable procedures for both regression and classification, especially appropriate for ruining less than clean data. Connections between this approach and the boosting methods of Freund and Shapire and Friedman, Hastie and Tibshirani are discussed.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0090-5364}
+      \field{issn}{00905364}
+      \field{journaltitle}{Annals of Statistics}
+      \field{number}{5}
+      \field{title}{{Greedy function approximation: A gradient boosting machine}}
+      \field{volume}{29}
+      \field{year}{2001}
+      \field{pages}{1189\bibrangedash 1232}
+      \range{pages}{44}
+      \verb{doi}
+      \verb DOI 10.1214/aos/1013203451
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1011.1669v3
+      \endverb
+      \keyw{Boosting,Decision trees,Function estimation,Robust nonparametric regression}
+    \endentry
+    \entry{Friesner2004}{article}{}
+      \name{author}{13}{}{%
+        {{hash=d1293cea8ffd0a3608d02a91d7819106}{%
+           family={Friesner},
+           family_i={F\bibinitperiod},
+           given={Richard\bibnamedelima A.},
+           given_i={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=b7210133fdb29b7248e1b762a3d4e9a6}{%
+           family={Banks},
+           family_i={B\bibinitperiod},
+           given={Jay\bibnamedelima L.},
+           given_i={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=93227c851ae44852868eb9785c256d4d}{%
+           family={Murphy},
+           family_i={M\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           given_i={R\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=8de40fc87416f72bcef748b942f8e50a}{%
+           family={Halgren},
+           family_i={H\bibinitperiod},
+           given={Thomas\bibnamedelima A.},
+           given_i={T\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=fa269921f9343f9b11a9772f83c66efa}{%
+           family={Klicic},
+           family_i={K\bibinitperiod},
+           given={Jasna\bibnamedelima J.},
+           given_i={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=76bb5d98594a0c8563d7e9aec9c640d6}{%
+           family={Mainz},
+           family_i={M\bibinitperiod},
+           given={Daniel\bibnamedelima T.},
+           given_i={D\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=5249e50dc29069a18e2fdb7e293707d0}{%
+           family={Repasky},
+           family_i={R\bibinitperiod},
+           given={Matthew\bibnamedelima P.},
+           given_i={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=b1b245f78dd9ca0acbfa6f6c82e5db90}{%
+           family={Knoll},
+           family_i={K\bibinitperiod},
+           given={Eric\bibnamedelima H.},
+           given_i={E\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=eb40ad6d772a89176a112def5f30c030}{%
+           family={Shelley},
+           family_i={S\bibinitperiod},
+           given={Mee},
+           given_i={M\bibinitperiod}}}%
+        {{hash=ae625a89c24572d1d2aa86b4a4ce7c94}{%
+           family={Perry},
+           family_i={P\bibinitperiod},
+           given={Jason\bibnamedelima K.},
+           given_i={J\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=d14c2080ec5f9fa3e2c7dad904c9cc89}{%
+           family={Shaw},
+           family_i={S\bibinitperiod},
+           given={David\bibnamedelima E.},
+           given_i={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=a4a4610ec2e43b70aa3a990de22060ce}{%
+           family={Francis},
+           family_i={F\bibinitperiod},
+           given={Perry},
+           given_i={P\bibinitperiod}}}%
+        {{hash=aef3da4748b2d9801d1eff8cc30670c4}{%
+           family={Shenkin},
+           family_i={S\bibinitperiod},
+           given={Peter\bibnamedelima S.},
+           given_i={P\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{958b6cb56862ed1d8fb3b4b415e9d4ad}
+      \strng{fullhash}{7d4703db8320284ee13fd8f26daedb07}
+      \field{sortinit}{F}
+      \field{sortinithash}{c6a7d9913bbd7b20ea954441c0460b78}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Unlike other methods for docking ligands to the rigid 3D structure of a known protein receptor, Glide approximates a complete systematic search of the conformational, orientational, and positional space of the docked ligand. In this search, an initial rough positioning and scoring phase that dramatically narrows the search space is followed by torsionally flexible energy optimization on an OPLS-AA nonbonded potential grid for a few hundred surviving candidate poses. The very best candidates are further refined via a Monte Carlo sampling of pose conformation; in some cases, this is crucial to obtaining an accurate docked pose. Selection of the best docked pose uses a model energy function that combines empirical and force-field-based terms. Docking accuracy is assessed by redocking ligands from 282 cocrystallized PDB complexes starting from conformationally optimized ligand geometries that bear no memory of the correctly docked pose. Errors in geometry for the top-ranked pose are less than 1 A in nearly half of the cases and are greater than 2 A in only about one-third of them. Comparisons to published data on rms deviations show that Glide is nearly twice as accurate as GOLD and more than twice as accurate as FlexX for ligands having up to 20 rotatable bonds. Glide is also found to be more accurate than the recently described Surflex method.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0022-2623}
+      \field{issn}{00222623}
+      \field{journaltitle}{Journal of Medicinal Chemistry}
+      \field{number}{7}
+      \field{title}{{Glide: A New Approach for Rapid, Accurate Docking and Scoring. 1. Method and Assessment of Docking Accuracy}}
+      \field{volume}{47}
+      \field{year}{2004}
+      \field{pages}{1739\bibrangedash 1749}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1021/jm0306430
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1011.1669v3
+      \endverb
+    \endentry
+    \entry{Gohlke2000}{article}{}
+      \name{author}{3}{}{%
+        {{hash=f67046f6ddaa5de38cada5481ad15e34}{%
+           family={Gohlke},
+           family_i={G\bibinitperiod},
+           given={H},
+           given_i={H\bibinitperiod}}}%
+        {{hash=c2a601e5b131d502d92fb404e07104d6}{%
+           family={Hendlich},
+           family_i={H\bibinitperiod},
+           given={M},
+           given_i={M\bibinitperiod}}}%
+        {{hash=299a4023741a936d1d81182d51f22311}{%
+           family={Klebe},
+           family_i={K\bibinitperiod},
+           given={G},
+           given_i={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{39fc49ffb80c6909e4b799595adc25c2}
+      \strng{fullhash}{39fc49ffb80c6909e4b799595adc25c2}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The development and validation of a new knowledge-based scoring function (DrugScore) to describe the binding geometry of ligands in proteins is presented. It discriminates efficiently between well-docked ligand binding modes (root-mean-square deviation {<}2.0 A with respect to a crystallographically determined reference complex) and those largely deviating from the native structure, e.g. generated by computer docking programs. Structural information is extracted from crystallographically determined protein-ligand complexes using ReLiBase and converted into distance-dependent pair-preferences and solvent-accessible surface (SAS) dependent singlet preferences for protein and ligand atoms. Definition of an appropriate reference state and accounting for inaccuracies inherently present in experimental data is required to achieve good predictive power. The sum of the pair preferences and the singlet preferences is calculated based on the 3D structure of protein-ligand binding modes generated by docking tools. For two test sets of 91 and 68 protein-ligand complexes, taken from the Protein Data Bank (PDB), the calculated score recognizes poses generated by FlexX deviating {<}2 A from the crystal structure on rank 1 in three quarters of all possible cases. Compared to FlexX, this is a substantial improvement. For ligand geometries generated by DOCK, DrugScore is superior to the "chemical scoring" implemented into this tool, while comparable results are obtained using the "energy scoring" in DOCK. None of the presently known scoring functions achieves comparable power to extract binding modes in agreement with experiment. It is fast to compute, regards implicitly solvation and entropy contributions and produces correctly the geometry of directional interactions. Small deviations in the 3D structure are tolerated and, since only contacts to non-hydrogen atoms are regarded, it is independent from assumptions of protonation states.}
+      \field{isbn}{0022-2836 (Print)$\backslash$r0022-2836 (Linking)}
+      \field{issn}{0022-2836}
+      \field{journaltitle}{Journal of Molecular Biology}
+      \field{number}{2}
+      \field{title}{{Knowledge-based scoring function to predict protein-ligand interactions}}
+      \field{volume}{295}
+      \field{year}{2000}
+      \field{pages}{337\bibrangedash 356}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1006/jmbi.1999.3371\rS0022-2836(99)93371-5 [pii]
+      \endverb
+      \verb{url}
+      \verb http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve%7B%5C&%7Ddb=PubMed%7B%5C&%7Ddopt=Citation%7B%5C&%7Dlist%7B%5C_%7Duids=10623530$%5Cbackslash$nhttp://ac.els-cdn.com/S0022283699933715/1-s2.0-S0022283699933715-main.pdf?%7B%5C_%7Dtid=eb8d0952-38c8-11e2-b722-00000aab0f6b%7B%5C&%7Dacdnat=1354044817%7B%5C_%7D5649d11c7214e293a2
+      \endverb
+      \keyw{*Artificial Intelligence,*Protein Binding,Ligands,Protein Conformation,Surface Properties,Thermodynamics}
+    \endentry
+    \entry{Huang2006}{article}{}
+      \name{author}{4}{}{%
+        {{hash=0a9a32742c1401bd22f83df3a2fa10ab}{%
+           family={Huang},
+           family_i={H\bibinitperiod},
+           given={Niu},
+           given_i={N\bibinitperiod}}}%
+        {{hash=aaecaed088ff60e6b0dd9f1afc2a328b}{%
+           family={Kalyanaraman},
+           family_i={K\bibinitperiod},
+           given={Chakrapani},
+           given_i={C\bibinitperiod}}}%
+        {{hash=31ad8ab00add93dd96d42c6ed8fedd85}{%
+           family={Bernacki},
+           family_i={B\bibinitperiod},
+           given={Katarzyna},
+           given_i={K\bibinitperiod}}}%
+        {{hash=e7d85764765b3ac9ebcdfb57086bcf5b}{%
+           family={Jacobson},
+           family_i={J\bibinitperiod},
+           given={Matthew\bibnamedelima P},
+           given_i={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{295c3730c06bfa749e45a2e1dae0e194}
+      \strng{fullhash}{a6299c3dbcd017764d95855e2d8f57e0}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Ligand binding affinity prediction is one of the most important applications of computational chemistry. However, accurately ranking compounds with respect to their estimated binding affinities to a biomolecular target remains highly challenging. We provide an overview of recent work using molecular mechanics energy functions to address this challenge. We briefly review methods that use molecular dynamics and Monte Carlo simulations to predict absolute and relative ligand binding free energies, as well as our own work in which we have developed a physics-based scoring method that can be applied to hundreds of thousands of compounds by invoking a number of simplifying approximations. In our previous studies, we have demonstrated that our scoring method is a promising approach for improving the discrimination between ligands that are known to bind and those that are presumed not to, in virtual screening of large compound databases. In new results presented here, we explore several improvements to our computational method including modifying the dielectric constant used for the protein and ligand interiors, and empirically scaling energy terms to compensate for deficiencies in the energy model. Future directions for further improving our physics-based scoring method are also discussed.}
+      \field{issn}{1463-9076}
+      \field{journaltitle}{Physical chemistry chemical physics : PCCP}
+      \field{number}{44}
+      \field{title}{{Molecular mechanics methods for predicting protein-ligand binding.}}
+      \field{volume}{8}
+      \field{year}{2006}
+      \field{pages}{5166\bibrangedash 5177}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1039/b608269f
+      \endverb
+    \endentry
+    \entry{Kennel2004}{article}{}
+      \name{author}{1}{}{%
+        {{hash=c43c0df3cfcf6fef3de9b786f0d898d8}{%
+           family={Kennel},
+           family_i={K\bibinitperiod},
+           given={Matthew\bibnamedelima B.},
+           given_i={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{c43c0df3cfcf6fef3de9b786f0d898d8}
+      \strng{fullhash}{c43c0df3cfcf6fef3de9b786f0d898d8}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Many data-based statistical algorithms require that one find $\backslash$textit{\{}near or nearest neighbors{\}} to a given vector among a set of points in that vector space, usually with Euclidean topology. The k-d data structure and search algorithms are the generalization of classical binary search trees to higher dimensional spaces, so that one may locate near neighbors to an example vector in {\$}O(\backslashlog N){\$} time instead of the brute-force O(N) time, with {\$}N{\$} being the size of the data base. KDTREE2 is a Fortran 95 module, and a parallel set of C++ classes which implement tree construction and search routines to find either a set of {\$}m{\$} nearest neighbors to an example, or all the neighbors within some Euclidean distance {\$}r.{\$} The two versions are independent and function fully on their own. Considerable care has been taken in the implementation of the search methods, resulting in substantially higher computational efficiency (up to an order of magnitude faster) than the author's previous Internet-distributed version. Architectural improvements include rearrangement for memory cache-friendly performance, heap-based priority queues for large {\$}m{\$}searches, and more effective pruning of search paths by geometrical constraints to avoid wasted effort. The improvements are the most potent in the more difficult and slowest cases: larger data base sizes, higher dimensionality manifolds containing the data set, and larger numbers of neighbors to search for. The C++ implementation requires the Standard Template Library as well as the BOOST C++ library be installed.}
+      \field{eprintclass}{physics}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{arXiv preprint arXiv:0408067}
+      \field{title}{{KDTREE 2: Fortran 95 and C++ software to efficiently search for near neighbors in a multi-dimensional Euclidean space}}
+      \field{year}{2004}
+      \verb{eprint}
+      \verb 0408067
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/physics/0408067
+      \endverb
+    \endentry
+    \entry{Krammer2005}{article}{}
+      \name{author}{5}{}{%
+        {{hash=f76bd163749d19a3889430d23b4710b1}{%
+           family={Krammer},
+           family_i={K\bibinitperiod},
+           given={André},
+           given_i={A\bibinitperiod}}}%
+        {{hash=132710f0b61cefbe95158c8e65467892}{%
+           family={Kirchhoff},
+           family_i={K\bibinitperiod},
+           given={Paul\bibnamedelima D.},
+           given_i={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=e8e49f483879f73f5efb9bdf49a81bdf}{%
+           family={Jiang},
+           family_i={J\bibinitperiod},
+           given={X.},
+           given_i={X\bibinitperiod}}}%
+        {{hash=243c479fac499ecbca7e27e0a3047df4}{%
+           family={Venkatachalam},
+           family_i={V\bibinitperiod},
+           given={C.\bibnamedelimi M.},
+           given_i={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=87e79d42dfded19d4a41a66a10240b58}{%
+           family={Waldman},
+           family_i={W\bibinitperiod},
+           given={Marvin},
+           given_i={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{602df556d7b370617630665244fa3713}
+      \strng{fullhash}{67ce9521895a257bc3ff1bc35dda51ce}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present two new empirical scoring functions, LigScore1 and LigScore2, that attempt to accurately predict the binding affinity between ligand molecules and their protein receptors. The LigScore functions consist of three distinct terms that describe the van der Waals interaction, the polar attraction between the ligand and protein, and the desolvation penalty attributed to the binding of the polar ligand atoms to the protein and vice versa. Utilizing a regression approach on a data set of 118 protein-ligand complexes we have obtained a linear equation, LigScore2, using these three descriptors. LigScore2 has good predictability with regard to experimental pKi values yielding a correlation coefficient, r2, of 0.75 and a standard deviation of 1.04 over the training data set, which consists of a diverse set of proteins that span more than seven protein families. ?? 2004 Elsevier Inc. All rights reserved.}
+      \field{isbn}{1093-3263 (Print)}
+      \field{issn}{10933263}
+      \field{journaltitle}{Journal of Molecular Graphics and Modelling}
+      \field{number}{5}
+      \field{title}{{LigScore: A novel scoring function for predicting binding affinities}}
+      \field{volume}{23}
+      \field{year}{2005}
+      \field{pages}{395\bibrangedash 407}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1016/j.jmgm.2004.11.007
+      \endverb
+      \keyw{Binding affinity,Desolvation penalty,LigScore}
+    \endentry
+    \entry{Labute2000}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3218fe704bb9ba2d08da10fd9ee15f28}{%
+           family={Labute},
+           family_i={L\bibinitperiod},
+           given={Paul},
+           given_i={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{3218fe704bb9ba2d08da10fd9ee15f28}
+      \strng{fullhash}{3218fe704bb9ba2d08da10fd9ee15f28}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Three sets of molecular descriptors computable from connection table information are defined. These descriptors are based on atomic contributions to van der Waals surface area, log P (octanol/water), molar refractivity, and partial charge. The descriptors are applied to the construction of QSAR/QSPR models for boiling point, vapor pressure, free energy of solvation in water, solubility in water, thrombin/trypsin/factor Xa activity, blood-brain barrier permeability, and compound classification. The wide applicability of these descriptors suggests uses in QSAR/QSPR, combinatorial library design, and molecular diversity work.}
+      \field{isbn}{1093-3263}
+      \field{issn}{10933263}
+      \field{journaltitle}{Journal of Molecular Graphics and Modelling}
+      \field{number}{4-5}
+      \field{title}{{A widely applicable set of descriptors}}
+      \field{volume}{18}
+      \field{year}{2000}
+      \field{pages}{464\bibrangedash 477}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1016/S1093-3263(00)00068-1
+      \endverb
+      \keyw{Molecular descriptors,Molecular diversity,QSAR}
+    \endentry
+    \entry{Leach2006}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=e2a3db0f11cbf3fae39d5443160c4f1d}{%
+           family={Leach},
+           family_i={L\bibinitperiod},
+           given={Andrew\bibnamedelima R.},
+           given_i={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=99945f035cfe7b0839d84cd96b6f3549}{%
+           family={Shoichet},
+           family_i={S\bibinitperiod},
+           given={Brian\bibnamedelima K.},
+           given_i={B\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=88001c90a5afae5bcd71abaeadf2a3bc}{%
+           family={Peishoff},
+           family_i={P\bibinitperiod},
+           given={Catherine\bibnamedelima E.},
+           given_i={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{20be0befa899cee756c20674f4134898}
+      \strng{fullhash}{20be0befa899cee756c20674f4134898}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{ChemInform is a weekly Abstracting Service, delivering concise information at a glance that was extracted from about 200 leading journals. To access a ChemInform Abstract, please click on HTML or PDF.}
+      \field{booktitle}{Journal of Medicinal Chemistry}
+      \field{isbn}{0022-2623}
+      \field{issn}{00222623}
+      \field{number}{20}
+      \field{title}{{Prediction of protein-ligand interactions. Docking and scoring: Successes and gaps}}
+      \field{volume}{49}
+      \field{year}{2006}
+      \field{pages}{5851\bibrangedash 5855}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1021/jm060999m
+      \endverb
+    \endentry
+    \entry{Lewis2000}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0cf8357de9cee86a4b6f5ad09b34b617}{%
+           family={Lewis},
+           family_i={L\bibinitperiod},
+           given={Roger\bibnamedelima J},
+           given_i={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=8f5b93af58650960022a3a70cd6e2929}{%
+           family={Ph},
+           family_i={P\bibinitperiod},
+           given={D},
+           given_i={D\bibinitperiod}}}%
+        {{hash=e1dc901b78b03af025791512a29e2aeb}{%
+           family={Street},
+           family_i={S\bibinitperiod},
+           given={West\bibnamedelima Carson},
+           given_i={W\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{2bbe818d5f3610f68ad3e8f32f58de2e}
+      \strng{fullhash}{2bbe818d5f3610f68ad3e8f32f58de2e}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A common goal of many clinical research studies is the development of a reliable clinical decision rule, which can be used to classify new patients into clinically-important categories. Examples of such clinical decision rules include triage rules, whether used in the out-of-hospital setting or in the emergency department, and rules used to classify patients into various risk categories so that appropriate decisions can be made regarding treatment or hospitalization. Traditional statistical methods are cumbersome to use, or of limited utility, in addressing these types of classification problems. There are a number of reasons for these difficulties. First, there are generally many possible predictor variables which makes the task of variable selection difficult. Traditional statistical methods are poorly suited for this sort of multiple comparison. Second, the predictor variables are rarely nicely distributed. Many clinical variables are not normally distributed and different groups of patients may have markedly different degrees of variation or variance. Third, complex interactions or patterns may exist in the data. For example, the value of one variable (e.g., age) may substantially affect the importance of another variable (e.g., weight). These types of interactions are generally difficult to model, and virtually impossible to model when the number of interactions and variables becomes substantial. Fourth, the results of traditional methods may be difficult to use. For example, a multivariate logistic regression model yields a probability of disease, which can be calculated using the regression coefficients and the characteristics of the patient, yet such models are rarely utilized in clinical practice. Clinicians generally do not think in terms of probability but, rather in terms of categories, such as low risk versus high risk. Regardless of the statistical methodology being used, the creation of a clinical decision rule requires a relatively large dataset. For each patient in the dataset, one variable (the dependent variable), records whether or not that patient had the condition which we hope to predict accurately in future patients. Examples might include significant injury after trauma, myocardial infarction, or subarachnoid hemorrhage in the setting of headache. In addition, other variables record the values of patient characteristics which we believe might help us to predict the value of the dependent variable. For example, if one hopes to predict the presence of subarachnoid hemorrhage, a possible predictor variable might be whether or not the patient's headache was sudden in onset; another possible predictor would be whether or not the patient has a history of similar headaches in the past. In many clinically-important settings, the number of possible predictor variables is quite large. Within the last 10 years, there has been increasing interest in the use of classification and regression tree (CART) analysis. CART analysis is a tree-building technique which is unlike traditional data analysis methods. It is ideally suited to the generation of clinical decision rules. Because CART analysis is unlike other analysis methods it has been accepted relatively slowly. Furthermore, the vast majority of statisticians have little or no experience with the technique. Other factors which limit CART's general acceptability are the complexity of the analysis and, until recently, the software required to perform CART analysis was difficult to use. Luckily, it is now possible to perform a CART analysis without a deep understanding of each of the multiple steps being completed by the software. In a number of studies, I have found CART to be quite effective for creating clinical decision rules which perform as well or better than rules developed using more traditional methods. In addition, CART is often able to uncover complex interactions between predictors which may be difficult or impossible to uncover using traditional multivariate techniques. The purpose of this lecture is to provide an overview of CART methodology, emphasizing practical use rather than the underlying statistical theory.}
+      \field{journaltitle}{2000 Annual Meeting of the Society for Academic Emergency Medicine}
+      \field{number}{310}
+      \field{title}{{An Introduction to Classification and Regression Tree ( CART ) Analysis}}
+      \field{year}{2000}
+      \field{pages}{14p}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1.1.95.4103
+      \endverb
+      \verb{url}
+      \verb http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.95.4103%7B%5C&%7Drep=rep1%7B%5C&%7Dtype=pdf
+      \endverb
+    \endentry
+    \entry{Li2013}{article}{}
+      \name{author}{5}{}{%
+        {{hash=3c0fd5dea93caade17843512d05515b3}{%
+           family={Li},
+           family_i={L\bibinitperiod},
+           given={Guo\bibnamedelima Bo},
+           given_i={G\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=60be362e905f6959b2cfb66b21e6de57}{%
+           family={Yang},
+           family_i={Y\bibinitperiod},
+           given={Ling\bibnamedelima Ling},
+           given_i={L\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=0f48cda213951f6f996ff0146dd4baef}{%
+           family={Wang},
+           family_i={W\bibinitperiod},
+           given={Wen\bibnamedelima Jing},
+           given_i={W\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=0110e4ab2959d8a00f864201baf0924c}{%
+           family={Li},
+           family_i={L\bibinitperiod},
+           given={Lin\bibnamedelima Li},
+           given_i={L\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=547b63dd263e5f4477c4211b0ac77cc2}{%
+           family={Yang},
+           family_i={Y\bibinitperiod},
+           given={Sheng\bibnamedelima Yong},
+           given_i={S\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{855573181887024984f6e33fc8b0c6d4}
+      \strng{fullhash}{c524ccd7992a2d4e8def9b86fcc78954}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Scoring functions have been widely used to assess protein?ligand binding affinity in structure-based drug discovery. However, currently commonly used scoring functions face some challenges including poor correlation between calculated scores and experimental binding affinities, target-dependent performance, and low sensitivity to analogues. In this account, we propose a new empirical scoring function termed ID-Score. ID-Score was established based on a comprehensive set of descriptors related to protein?ligand interactions; these descriptors cover nine categories: van der Waals interaction, hydrogen-bonding interaction, electrostatic interaction, $\pi$-system interaction, metal?ligand bonding interaction, desolvation effect, entropic loss effect, shape matching, and surface property matching. A total of 2278 complexes were used as the training set, and a modified support vector regression (SVR) algorithm was used to fit the experimental binding affinities. Evaluation results showed that ID-Score outperformed other selected commonly used scoring functions on a benchmark test set and showed considerable performance on a large independent test set. ID-Score also showed a consistent higher performance across different biological targets. Besides, it could correctly differentiate structurally similar ligands, indicating higher sensitivity to analogues. Collectively, the better performance of ID-Score enables it as a useful tool in assessing protein?ligand binding affinity in structure-based drug discovery as well as in lead optimization.}
+      \field{isbn}{1549-9596}
+      \field{issn}{15499596}
+      \field{journaltitle}{Journal of Chemical Information and Modeling}
+      \field{number}{3}
+      \field{title}{{ID-score: A new empirical scoring function based on a comprehensive set of descriptors related to protein-ligand interactions}}
+      \field{volume}{53}
+      \field{year}{2013}
+      \field{pages}{592\bibrangedash 600}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1021/ci300493w
+      \endverb
+    \endentry
+    \entry{Mooij2005}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c7c008e6fa0e4952b5280098d146ddeb}{%
+           family={Mooij},
+           family_i={M\bibinitperiod},
+           given={W.\bibnamedelimi T\bibnamedelima M},
+           given_i={W\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=82a4965be724737ce66b81e3e1db1c99}{%
+           family={Verdonk},
+           family_i={V\bibinitperiod},
+           given={Marcel\bibnamedelima L.},
+           given_i={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{a87a1cb9455ed21a4cd8bb6b30d1dc0d}
+      \strng{fullhash}{a87a1cb9455ed21a4cd8bb6b30d1dc0d}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We present a novel atom-atom potential derived from a database of protein-ligand complexes. First, we clarify the similarities and differences between two statistical potentials described in the literature, PMF and Drugscore. We highlight shortcomings caused by an important factor unaccounted for in their reference states, and describe a new potential, which we name the Astex Statistical Potential (ASP). ASP's reference state considers the difference in exposure of protein atom types towards ligand binding sites. We show that this new potential predicts binding affinities with an accuracy similar to that of Goldscore and Chemscore. We investigate the influence of the choice of reference state by constructing two additional statistical potentials that differ from ASP only in this respect. The reference states in these two potentials are defined along the lines of Drugscore and PMF. In docking experiments, the potential using the new reference state proposed for ASP gives better success rates than when these literature reference states were used; a success rate similar to the established scoring functions Goldscore and Chemscore is achieved with ASP. This is the case both for a large, general validation set of protein-ligand structures and for small test sets of actives against four pharmaceutically relevant targets. Virtual screening experiments for these targets show less discrimination between the different reference states in terms of enrichment. In addition, we describe how statistical potentials can be used in the construction of targeted scoring functions. Examples are given for cdk2, using four different targeted scoring functions, biased towards increasingly large target-specific databases. Using these targeted scoring functions, docking success rates as well as enrichments are significantly better than for the general ASP scoring function. Results improve with the number of structures used in the construction of the target scoring functions, thus illustrating that these targeted ASP potentials can be continuously improved as new structural data become available.}
+      \field{isbn}{0887-3585}
+      \field{issn}{08873585}
+      \field{journaltitle}{Proteins: Structure, Function and Genetics}
+      \field{number}{2}
+      \field{title}{{General and targeted statistical potentials for protein-ligand interactions}}
+      \field{volume}{61}
+      \field{year}{2005}
+      \field{pages}{272\bibrangedash 287}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1002/prot.20588
+      \endverb
+      \keyw{Docking,Protein-ligand interactions,Statistical potentials,Targeted scoring functions,Virtual screening}
+    \endentry
+    \entry{Schapire1999}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=8112f3ade8b9d0f5e71791274d4e05f0}{%
+           family={Schapire},
+           family_i={S\bibinitperiod},
+           given={Robert\bibnamedelima E.},
+           given_i={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{8112f3ade8b9d0f5e71791274d4e05f0}
+      \strng{fullhash}{8112f3ade8b9d0f5e71791274d4e05f0}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Boosting is a general method for improving the accuracy of any given learning algorithm. This short overview paper introduces the boosting algorithm AdaBoost, and explains the underlying theory of boosting, including an explanation of why boosting often does not suffer from overfitting as well as boosting's relationship to support-vector machines. Some examples of recent applications of boosting are also described.}
+      \field{booktitle}{IJCAI International Joint Conference on Artificial Intelligence}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{3540440119}
+      \field{issn}{10450823}
+      \field{title}{{A brief introduction to boosting}}
+      \field{volume}{2}
+      \field{year}{1999}
+      \field{pages}{1401\bibrangedash 1406}
+      \range{pages}{6}
+      \verb{doi}
+      \verb citeulike-article-id:765005
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1508.01136v1
+      \endverb
+    \endentry
+    \entry{Verikas2011}{article}{}
+      \name{author}{3}{}{%
+        {{hash=cb91bedec25f6abc594ad52f2dff38db}{%
+           family={Verikas},
+           family_i={V\bibinitperiod},
+           given={A.},
+           given_i={A\bibinitperiod}}}%
+        {{hash=e583929c469b6de7062b37845bf4eea4}{%
+           family={Gelzinis},
+           family_i={G\bibinitperiod},
+           given={A.},
+           given_i={A\bibinitperiod}}}%
+        {{hash=b837042322e2917538f6c57391184ddc}{%
+           family={Bacauskiene},
+           family_i={B\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4bfd836c2478f80fc55bbb9c9eadf00f}
+      \strng{fullhash}{4bfd836c2478f80fc55bbb9c9eadf00f}
+      \field{sortinit}{V}
+      \field{sortinithash}{d18f5ce25ce0b5ca7f924e3f6c04870e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Random forests (RF) has become a popular technique for classification, prediction, studying variable importance, variable selection, and outlier detection. There are numerous application examples of RF in a variety of fields. Several large scale comparisons including RF have been performed. There are numerous articles, where variable importance evaluations based on the variable importance measures available from RF are used for data exploration and understanding. Apart from the literature survey in RF area, this paper also presents results of new tests regarding variable rankings based on RF variable importance measures. We studied experimentally the consistency and generality of such rankings. Results of the studies indicate that there is no evidence supporting the belief in generality of such rankings. A high variance of variable importance evaluations was observed in the case of small number of trees and small data sets. ?? 2010 Elsevier Ltd. All rights reserved.}
+      \field{isbn}{0031-3203}
+      \field{issn}{00313203}
+      \field{journaltitle}{Pattern Recognition}
+      \field{number}{2}
+      \field{title}{{Mining data with random forests: A survey and results of new tests}}
+      \field{volume}{44}
+      \field{year}{2011}
+      \field{pages}{330\bibrangedash 349}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1016/j.patcog.2010.08.011
+      \endverb
+      \keyw{Classifier,Data proximity,Random forests,Variable importance,Variable selection}
+    \endentry
+    \entry{Wang2004}{article}{}
+      \name{author}{4}{}{%
+        {{hash=4ab84d11d93fb5236a319ffca24e31ad}{%
+           family={Wang},
+           family_i={W\bibinitperiod},
+           given={Renxiao},
+           given_i={R\bibinitperiod}}}%
+        {{hash=4a46a959fe0957e7b7c4ddececda3678}{%
+           family={Fang},
+           family_i={F\bibinitperiod},
+           given={Xueliang},
+           given_i={X\bibinitperiod}}}%
+        {{hash=7af7df921c83cc455a4c4de1e072c4ac}{%
+           family={Lu},
+           family_i={L\bibinitperiod},
+           given={Yipin},
+           given_i={Y\bibinitperiod}}}%
+        {{hash=c5c6a61f0a352dfd208ab4e65ed64df7}{%
+           family={Wang},
+           family_i={W\bibinitperiod},
+           given={Shaomeng},
+           given_i={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{3aa0677f900a39c36c769522cdd3db9a}
+      \strng{fullhash}{8ec4694293f883d9b0f9f07d54241b4d}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We have screened the entire Protein Data Bank (Release No. 103, January 2003) and identified 5671 protein-ligand complexes out of 19 621 experimental structures. A systematic examination of the primary references of these entries has led to a collection of binding affinity data (K(d), K(i), and IC(50)) for a total of 1359 complexes. The outcomes of this project have been organized into a Web-accessible database named the PDBbind database.}
+      \field{isbn}{0022-2623}
+      \field{issn}{00222623}
+      \field{journaltitle}{Journal of Medicinal Chemistry}
+      \field{number}{12}
+      \field{title}{{The PDBbind database: Collection of binding affinities for protein-ligand complexes with known three-dimensional structures}}
+      \field{volume}{47}
+      \field{year}{2004}
+      \field{pages}{2977\bibrangedash 2980}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1021/jm030580l
+      \endverb
+    \endentry
+    \entry{Zilian2013}{article}{}
+      \name{author}{2}{}{%
+        {{hash=05da4e67df9f9753e490fbdaf68fd17f}{%
+           family={Zilian},
+           family_i={Z\bibinitperiod},
+           given={David},
+           given_i={D\bibinitperiod}}}%
+        {{hash=c48d562ba1c8a9e7251c12fef645208a}{%
+           family={Sotri},
+           family_i={S\bibinitperiod},
+           given={Christoph\bibnamedelima a},
+           given_i={C\bibinitperiod\bibinitdelim a\bibinitperiod}}}%
+      }
+      \strng{namehash}{f25b5c2729b45e4b6516b6a94e528824}
+      \strng{fullhash}{f25b5c2729b45e4b6516b6a94e528824}
+      \field{sortinit}{Z}
+      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A major shortcoming of empirical scoring functions for protein-ligand complexes is the low degree of correlation between predicted and experimental binding affinities, as frequently observed not only for large and diverse data sets but also for SAR series of individual targets. Improvements can be envisaged by developing new descriptors, employing larger training sets of higher quality, and resorting to more sophisticated regression methods. Herein, we describe the use of SFCscore descriptors to develop an improved scoring function by means of a PDBbind training set of 1005 complexes in combination with random forest for regression. This provided SFCscoreRF as a new scoring function with significantly improved performance on the PDBbind and CSAR-NRC HiQ benchmarks in comparison to previously developed SFCscore functions. A leave-cluster-out cross-validation and performance in the CSAR 2012 scoring exercise point out remaining limitations but also directions for further improvements of SFCscoreRF and empirical scoring functions in general.}
+      \field{isbn}{1549-9596}
+      \field{issn}{1549-960X}
+      \field{journaltitle}{Journal of chemical information and modeling}
+      \field{title}{{SFCscoreRF: A Random Forest-Based Scoring Function for Improved A ffi nity Prediction of Protein - Ligand Complexes}}
+      \field{volume}{53}
+      \field{year}{2013}
+      \field{pages}{1923\bibrangedash 1933}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1021/ci400120b
+      \endverb
+      \verb{file}
+      \verb :home/jose/Downloads/ci400120b.pdf:pdf
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

@@ -1,0 +1,42 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k+kn}{as} \PYG{n+nn}{plt}
+\PYG{k+kn}{from} \PYG{n+nn}{matplotlib.colors} \PYG{k+kn}{import} \PYG{n}{ListedColormap}
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn.datasets} \PYG{k+kn}{import} \PYG{n}{make\PYGZus{}moons}
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn.svm} \PYG{k+kn}{import} \PYG{n}{SVC}
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn.model\PYGZus{}selection} \PYG{k+kn}{import} \PYG{n}{cross\PYGZus{}val\PYGZus{}score}
+
+
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.GPGO} \PYG{k+kn}{import} \PYG{n}{GPGO}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.GPRegressor} \PYG{k+kn}{import} \PYG{n}{GPRegressor}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.acquisition} \PYG{k+kn}{import} \PYG{n}{Acquisition}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.covfunc} \PYG{k+kn}{import} \PYG{n}{squaredExponential}
+
+
+\PYG{k}{def} \PYG{n+nf}{evaluateModel}\PYG{p}{(}\PYG{n}{C}\PYG{p}{,} \PYG{n}{gamma}\PYG{p}{):}
+    \PYG{n}{clf} \PYG{o}{=} \PYG{n}{SVC}\PYG{p}{(}\PYG{n}{C}\PYG{o}{=}\PYG{n}{C}\PYG{p}{,} \PYG{n}{gamma}\PYG{o}{=}\PYG{n}{gamma}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{average}\PYG{p}{(}\PYG{n}{cross\PYGZus{}val\PYGZus{}score}\PYG{p}{(}\PYG{n}{clf}\PYG{p}{,} \PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{))}
+
+
+\PYG{k}{if} \PYG{n}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+    \PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{seed}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{)}
+    \PYG{n}{X}\PYG{p}{,} \PYG{n}{y} \PYG{o}{=} \PYG{n}{make\PYGZus{}moons}\PYG{p}{(}\PYG{n}{n\PYGZus{}samples} \PYG{o}{=} \PYG{l+m+mi}{200}\PYG{p}{,} \PYG{n}{noise} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{)}
+
+    \PYG{n}{cm\PYGZus{}bright} \PYG{o}{=} \PYG{n}{ListedColormap}\PYG{p}{([}\PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}fc4349\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZsh{}6dbcdb\PYGZsq{}}\PYG{p}{])}
+
+    \PYG{n}{fig} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{scatter}\PYG{p}{(}\PYG{n}{X}\PYG{p}{[:,} \PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{X}\PYG{p}{[:,} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{c} \PYG{o}{=} \PYG{n}{y}\PYG{p}{,} \PYG{n}{cmap} \PYG{o}{=} \PYG{n}{cm\PYGZus{}bright}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+    \PYG{n}{sexp} \PYG{o}{=} \PYG{n}{squaredExponential}\PYG{p}{()}
+    \PYG{n}{gp} \PYG{o}{=} \PYG{n}{GPRegressor}\PYG{p}{(}\PYG{n}{sexp}\PYG{p}{,} \PYG{n}{optimize} \PYG{o}{=} \PYG{n+nb+bp}{True}\PYG{p}{,} \PYG{n}{usegrads} \PYG{o}{=} \PYG{n+nb+bp}{True}\PYG{p}{)}
+    \PYG{n}{acq} \PYG{o}{=} \PYG{n}{Acquisition}\PYG{p}{(}\PYG{n}{mode} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}UCB\PYGZsq{}}\PYG{p}{,} \PYG{n}{beta} \PYG{o}{=} \PYG{l+m+mf}{1.5}\PYG{p}{)}
+
+    \PYG{n}{params} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}C\PYGZsq{}}\PYG{p}{:}      \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}cont\PYGZsq{}}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mf}{1e\PYGZhy{}4}\PYG{p}{,} \PYG{l+m+mf}{1e4}\PYG{p}{)),}
+              \PYG{l+s+s1}{\PYGZsq{}gamma\PYGZsq{}}\PYG{p}{:}  \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}cont\PYGZsq{}}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mf}{1e\PYGZhy{}4}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{))}
+             \PYG{p}{\PYGZcb{}}
+
+    \PYG{n}{gpgo} \PYG{o}{=} \PYG{n}{GPGO}\PYG{p}{(}\PYG{n}{gp}\PYG{p}{,} \PYG{n}{acq}\PYG{p}{,} \PYG{n}{evaluateModel}\PYG{p}{,} \PYG{n}{params}\PYG{p}{)}
+    \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{max\PYGZus{}iter} \PYG{o}{=} \PYG{l+m+mi}{50}\PYG{p}{)}
+    \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{getResult}\PYG{p}{()}
+\end{Verbatim}

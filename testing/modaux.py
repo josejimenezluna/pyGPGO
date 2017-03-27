@@ -22,8 +22,10 @@ d_mlp['alpha'] = ('cont', (1e-5, 0.9))
 #d_mlp['beta_2'] = ('cont', (0.001, 0.999))
 
 d_svm = OrderedDict()
-d_svm['C'] = ('cont', (1e-4, 100))
-d_svm['gamma'] = ('cont', (1e-4, 100))
+#d_svm['C'] = ('cont', (1e-4, 100))
+#d_svm['gamma'] = ('cont', (1e-4, 100))
+d_svm['C'] = ('cont', (-4, 5))
+d_svm['gamma'] = ('cont', (-4, 5))
 
 d_tree = OrderedDict()
 d_tree['max_features'] = ('cont', (0.1, 0.99))
@@ -115,10 +117,10 @@ class GBM:
 
 
 class SVM:
-    def __init__(self, problem='binary', C=1.0, gamma=1.0, kernel='rbf'):
+    def __init__(self, problem='binary', C=0, gamma=0, kernel='rbf'):
         self.problem = problem
-        self.C = C
-        self.gamma = gamma
+        self.C = 10**C
+        self.gamma = 10**gamma
         self.kernel = kernel
         self.name = 'SVM'
 

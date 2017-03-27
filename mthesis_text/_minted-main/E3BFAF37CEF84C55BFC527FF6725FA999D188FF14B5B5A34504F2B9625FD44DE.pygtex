@@ -1,0 +1,85 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{import} \PYG{n+nn}{os}
+\PYG{k+kn}{from} \PYG{n+nn}{collections} \PYG{k+kn}{import} \PYG{n}{OrderedDict}
+
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k+kn}{as} \PYG{n+nn}{plt}
+
+\PYG{k+kn}{from} \PYG{n+nn}{GPGO} \PYG{k+kn}{import} \PYG{n}{GPGO}
+\PYG{k+kn}{from} \PYG{n+nn}{GPRegressor} \PYG{k+kn}{import} \PYG{n}{GPRegressor}
+\PYG{k+kn}{from} \PYG{n+nn}{acquisition} \PYG{k+kn}{import} \PYG{n}{Acquisition}
+\PYG{k+kn}{from} \PYG{n+nn}{covfunc} \PYG{k+kn}{import} \PYG{o}{*}
+
+
+\PYG{k}{def} \PYG{n+nf}{rastrigin}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{A}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{):}
+    \PYG{k}{return} \PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{A} \PYG{o}{+} \PYG{p}{(}\PYG{n}{x} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{n}{A} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pi} \PYG{o}{*} \PYG{n}{x}\PYG{p}{))} \PYG{o}{+} \PYG{p}{(}\PYG{n}{y} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{n}{A} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pi} \PYG{o}{*} \PYG{n}{y}\PYG{p}{)))}
+
+
+\PYG{k}{def} \PYG{n+nf}{plot\PYGZus{}f}\PYG{p}{(}\PYG{n}{x\PYGZus{}values}\PYG{p}{,} \PYG{n}{y\PYGZus{}values}\PYG{p}{,} \PYG{n}{f}\PYG{p}{):}
+    \PYG{n}{z} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{((}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{x\PYGZus{}values}\PYG{p}{),} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{y\PYGZus{}values}\PYG{p}{)))}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{x\PYGZus{}values}\PYG{p}{)):}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{y\PYGZus{}values}\PYG{p}{)):}
+            \PYG{n}{z}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{f}\PYG{p}{(}\PYG{n}{x\PYGZus{}values}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{y\PYGZus{}values}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{imshow}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{T}\PYG{p}{,} \PYG{n}{origin}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}lower\PYGZsq{}}\PYG{p}{,} \PYG{n}{extent}\PYG{o}{=}\PYG{p}{[}\PYG{n}{np}\PYG{o}{.}\PYG{n}{min}\PYG{p}{(}\PYG{n}{x\PYGZus{}values}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{x\PYGZus{}values}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{min}\PYG{p}{(}\PYG{n}{y\PYGZus{}values}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{y\PYGZus{}values}\PYG{p}{)])}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{os}\PYG{o}{.}\PYG{n}{getcwd}\PYG{p}{(),} \PYG{l+s+s1}{\PYGZsq{}mthesis\PYGZus{}text/figures/chapter3/rosen/rosen.pdf\PYGZsq{}}\PYG{p}{))}
+
+
+\PYG{k}{def} \PYG{n+nf}{plot2dgpgo}\PYG{p}{(}\PYG{n}{gpgo}\PYG{p}{):}
+    \PYG{n}{tested\PYGZus{}X} \PYG{o}{=} \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{GP}\PYG{o}{.}\PYG{n}{X}
+    \PYG{n}{n} \PYG{o}{=} \PYG{l+m+mi}{100}
+    \PYG{n}{r\PYGZus{}x}\PYG{p}{,} \PYG{n}{r\PYGZus{}y} \PYG{o}{=} \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{parameter\PYGZus{}range}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{parameter\PYGZus{}range}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}
+    \PYG{n}{x\PYGZus{}test} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{n}{r\PYGZus{}x}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{r\PYGZus{}x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{n}\PYG{p}{)}
+    \PYG{n}{y\PYGZus{}test} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{n}{r\PYGZus{}y}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{r\PYGZus{}y}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{n}\PYG{p}{)}
+    \PYG{n}{z\PYGZus{}hat} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{empty}\PYG{p}{((}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{x\PYGZus{}test}\PYG{p}{),} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{y\PYGZus{}test}\PYG{p}{)))}
+    \PYG{n}{z\PYGZus{}var} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{empty}\PYG{p}{((}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{x\PYGZus{}test}\PYG{p}{),} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{y\PYGZus{}test}\PYG{p}{)))}
+    \PYG{n}{ac} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{empty}\PYG{p}{((}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{x\PYGZus{}test}\PYG{p}{),} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{y\PYGZus{}test}\PYG{p}{)))}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{x\PYGZus{}test}\PYG{p}{)):}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{y\PYGZus{}test}\PYG{p}{)):}
+            \PYG{n}{res} \PYG{o}{=} \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{GP}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{([}\PYG{n}{x\PYGZus{}test}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{y\PYGZus{}test}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]])}
+            \PYG{n}{z\PYGZus{}hat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{res}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+            \PYG{n}{z\PYGZus{}var}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{res}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]}
+            \PYG{n}{ac}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{\PYGZus{}acqWrapper}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{atleast\PYGZus{}1d}\PYG{p}{([}\PYG{n}{x\PYGZus{}test}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{y\PYGZus{}test}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]]))}
+    \PYG{n}{fig} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+    \PYG{n}{a} \PYG{o}{=} \PYG{n}{fig}\PYG{o}{.}\PYG{n}{add\PYGZus{}subplot}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{n}{a}\PYG{o}{.}\PYG{n}{set\PYGZus{}title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Posterior mean\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{imshow}\PYG{p}{(}\PYG{n}{z\PYGZus{}hat}\PYG{o}{.}\PYG{n}{T}\PYG{p}{,} \PYG{n}{origin}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}lower\PYGZsq{}}\PYG{p}{,} \PYG{n}{extent}\PYG{o}{=}\PYG{p}{[}\PYG{n}{r\PYGZus{}x}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{r\PYGZus{}x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{r\PYGZus{}y}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{r\PYGZus{}y}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]])}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{tested\PYGZus{}X}\PYG{p}{[:,} \PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{tested\PYGZus{}X}\PYG{p}{[:,} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}wx\PYGZsq{}}\PYG{p}{,} \PYG{n}{markersize}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{a} \PYG{o}{=} \PYG{n}{fig}\PYG{o}{.}\PYG{n}{add\PYGZus{}subplot}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{)}
+    \PYG{n}{a}\PYG{o}{.}\PYG{n}{set\PYGZus{}title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Posterior variance\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{imshow}\PYG{p}{(}\PYG{n}{z\PYGZus{}var}\PYG{o}{.}\PYG{n}{T}\PYG{p}{,} \PYG{n}{origin}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}lower\PYGZsq{}}\PYG{p}{,} \PYG{n}{extent}\PYG{o}{=}\PYG{p}{[}\PYG{n}{r\PYGZus{}x}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{r\PYGZus{}x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{r\PYGZus{}y}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{r\PYGZus{}y}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]])}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{tested\PYGZus{}X}\PYG{p}{[:,} \PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{tested\PYGZus{}X}\PYG{p}{[:,} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}wx\PYGZsq{}}\PYG{p}{,} \PYG{n}{markersize}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{()}
+    \PYG{n}{a} \PYG{o}{=} \PYG{n}{fig}\PYG{o}{.}\PYG{n}{add\PYGZus{}subplot}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{)}
+    \PYG{n}{a}\PYG{o}{.}\PYG{n}{set\PYGZus{}title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Acquisition function\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{imshow}\PYG{p}{(}\PYG{n}{ac}\PYG{o}{.}\PYG{n}{T}\PYG{p}{,} \PYG{n}{origin}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}lower\PYGZsq{}}\PYG{p}{,} \PYG{n}{extent}\PYG{o}{=}\PYG{p}{[}\PYG{n}{r\PYGZus{}x}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{r\PYGZus{}x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{r\PYGZus{}y}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{r\PYGZus{}y}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]])}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{()}
+    \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{\PYGZus{}optimizeAcq}\PYG{p}{(}\PYG{n}{method}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}L\PYGZhy{}BFGS\PYGZhy{}B\PYGZsq{}}\PYG{p}{,} \PYG{n}{n\PYGZus{}start}\PYG{o}{=}\PYG{l+m+mi}{500}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{best}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{best}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{l+s+s1}{\PYGZsq{}gx\PYGZsq{}}\PYG{p}{,} \PYG{n}{markersize}\PYG{o}{=}\PYG{l+m+mi}{15}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{tight\PYGZus{}layout}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{savefig}\PYG{p}{(}\PYG{n}{os}\PYG{o}{.}\PYG{n}{path}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{os}\PYG{o}{.}\PYG{n}{getcwd}\PYG{p}{(),} \PYG{l+s+s1}{\PYGZsq{}mthesis\PYGZus{}text/figures/chapter3/rosen/\PYGZob{}\PYGZcb{}.pdf\PYGZsq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{item}\PYG{p}{)))}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+
+\PYG{k}{if} \PYG{n}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+    \PYG{n}{x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1000}\PYG{p}{)}
+    \PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1000}\PYG{p}{)}
+    \PYG{n}{plot\PYGZus{}f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{rastrigin}\PYG{p}{)}
+
+    \PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{seed}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{)}
+    \PYG{n}{sexp} \PYG{o}{=} \PYG{n}{squaredExponential}\PYG{p}{()}
+    \PYG{n}{gp} \PYG{o}{=} \PYG{n}{GPRegressor}\PYG{p}{(}\PYG{n}{sexp}\PYG{p}{)}
+    \PYG{n}{acq} \PYG{o}{=} \PYG{n}{Acquisition}\PYG{p}{(}\PYG{n}{mode}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}ExpectedImprovement\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n}{param} \PYG{o}{=} \PYG{n}{OrderedDict}\PYG{p}{()}
+    \PYG{n}{param}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}x\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}cont\PYGZsq{}}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])}
+    \PYG{n}{param}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}y\PYGZsq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}cont\PYGZsq{}}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])}
+
+    \PYG{n}{gpgo} \PYG{o}{=} \PYG{n}{GPGO}\PYG{p}{(}\PYG{n}{gp}\PYG{p}{,} \PYG{n}{acq}\PYG{p}{,} \PYG{n}{rastrigin}\PYG{p}{,} \PYG{n}{param}\PYG{p}{,} \PYG{n}{n\PYGZus{}jobs}\PYG{o}{=\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{\PYGZus{}firstRun}\PYG{p}{()}
+
+    \PYG{k}{for} \PYG{n}{item} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{p}{):}
+        \PYG{n}{plot2dgpgo}\PYG{p}{(}\PYG{n}{gpgo}\PYG{p}{)}
+        \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{updateGP}\PYG{p}{()}
+\end{Verbatim}
