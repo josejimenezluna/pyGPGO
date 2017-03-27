@@ -8,7 +8,8 @@ default_bounds = {
     'sigman': [1e-6, 2],
     'v': [1e-3, 10],
     'gamma': [1e-3, 1.99],
-    'alpha': [1e-3, 1e4]
+    'alpha': [1e-3, 1e4],
+    'period': [1e-3, 10]
 }
 
 
@@ -421,7 +422,7 @@ class dotProd:
                 self.bounds.append(default_bounds[param])
 
     def K(self, X, Xstar):
-        return self.sigmaf * np.dot(X.T, Xstar) + self.sigman * kronDelta(X, Xstar)
+        return self.sigmaf * np.dot(X, Xstar.T) + self.sigman * kronDelta(X, Xstar)
 
 
 # DEPRECATED
