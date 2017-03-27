@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     # Build synthetic data (sine function)
-    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 2.1)
+    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 2)
     y = np.sin(x)
     X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 

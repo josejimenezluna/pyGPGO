@@ -47,13 +47,7 @@ def kronDelta(X, Xstar):
     np.ndarray
         Kronecker delta between row pairs of `X` and `Xstar`.
     """
-    n, m = X.shape[0], Xstar.shape[0]
-    mat = np.zeros((n, m), dtype=np.int)
-    for i in range(n):
-        for j in range(m):
-            if np.array_equal(X[i], Xstar[j]):
-                mat[i, j] = 1
-    return mat
+    return cdist(X, Xstar) < np.finfo(np.float32).eps
 
 
 class squaredExponential:
