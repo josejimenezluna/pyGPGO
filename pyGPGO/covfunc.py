@@ -390,6 +390,40 @@ class rationalQuadratic:
         else:
             raise ValueError('Param not found')
 
+
+class expSine:
+    def __init__(self, l = 1.0, period = 1.0, bounds = None, parameters = ['l', 'period']):
+        self.period = period
+        self.l = l
+        self.parameters = parameters
+        if bounds is not None:
+            self.bounds = bounds
+        else:
+            self.bounds = []
+            for param in self.parameters:
+                self.bounds.append(default_bounds[param])
+
+    def K(self, X, Xstar):
+        r = l2norm_(X, Xstar)
+        num = - 2 * np.sin(np.pi * r / self.period)
+        return np.exp(num / self.l) ** 2
+
+class dotProd:
+    def __init__(self, sigmaf = 1.0, sigman = 1e-6, bounds = None, parameters = ['sigmaf', 'sigman']):
+        self.sigmaf = sigmaf
+        self.sigman = sigman
+        self.parameters = parameters
+        if bounds is not None:
+            self.bounds = bounds
+        else:
+            self.bounds = []
+            for param in self.parameters:
+                self.bounds.append(default_bounds[param])
+
+    def K(self, X, Xstar):
+        return self.sigmaf * np.dot(X.T, Xstar) + self.sigman * kronDelta(X, Xstar)
+
+
 # DEPRECATED
 # class arcSin:
 #     def __init__(self, n, sigma=None):
