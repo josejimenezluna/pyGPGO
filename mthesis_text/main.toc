@@ -40,94 +40,96 @@
 \defcounter {refsection}{2}\relax 
 \contentsline {subsection}{\numberline {2.6.2}Explicit basis functions}{18}{subsection.2.6.2}
 \defcounter {refsection}{2}\relax 
-\contentsline {chapter}{\numberline {3}Bayesian optimization}{21}{chapter.3}
+\contentsline {subsection}{\numberline {2.6.3}Marginalizing over hyperparameters}{19}{subsection.2.6.3}
+\defcounter {refsection}{2}\relax 
+\contentsline {chapter}{\numberline {3}Bayesian optimization}{23}{chapter.3}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.1}Preliminaries}{21}{section.3.1}
+\contentsline {section}{\numberline {3.1}Preliminaries}{23}{section.3.1}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.2}The bayesian optimization framework}{21}{section.3.2}
+\contentsline {section}{\numberline {3.2}The bayesian optimization framework}{23}{section.3.2}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.3}On acquisition functions}{22}{section.3.3}
+\contentsline {section}{\numberline {3.3}On acquisition functions}{24}{section.3.3}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Improvement-based policies}{22}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}Improvement-based policies}{24}{subsection.3.3.1}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Optimistic policies}{23}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.2}Optimistic policies}{25}{subsection.3.3.2}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.3.3}Information-based policies}{23}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.3}Information-based policies}{25}{subsection.3.3.3}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.3.4}Acquisition function portfolios}{24}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.4}Acquisition function portfolios}{26}{subsection.3.3.4}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.3.5}Visualizing the behaviour of an acquisition function}{24}{subsection.3.3.5}
+\contentsline {subsection}{\numberline {3.3.5}Visualizing the behaviour of an acquisition function}{26}{subsection.3.3.5}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.3.6}Why does Bayesian Optimization work?}{24}{subsection.3.3.6}
+\contentsline {subsection}{\numberline {3.3.6}Why does Bayesian Optimization work?}{26}{subsection.3.3.6}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.4}Role of GP hyperparameters in optimization}{26}{section.3.4}
+\contentsline {section}{\numberline {3.4}Role of GP hyperparameters in optimization}{28}{section.3.4}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.5}Optimizing the acquisition function}{27}{section.3.5}
+\contentsline {section}{\numberline {3.5}Optimizing the acquisition function}{29}{section.3.5}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.6}Computational costs}{28}{section.3.6}
+\contentsline {section}{\numberline {3.6}Computational costs}{30}{section.3.6}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.6.1}Approximations to the analytical GP. Alternative surrogates.}{28}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.1}Approximations to the analytical GP. Alternative surrogates.}{30}{subsection.3.6.1}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.6.2}Parallelization}{29}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.2}Parallelization}{31}{subsection.3.6.2}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.7}Step-by-step examples}{29}{section.3.7}
+\contentsline {section}{\numberline {3.7}Step-by-step examples}{31}{section.3.7}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.7.1}Optimizing the sine function}{30}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.1}Optimizing the sine function}{32}{subsection.3.7.1}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.7.2}Optimizing the Rastrigin function}{30}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.2}Optimizing the Rastrigin function}{32}{subsection.3.7.2}
 \defcounter {refsection}{3}\relax 
-\contentsline {chapter}{\numberline {4}Experiments}{39}{chapter.4}
+\contentsline {chapter}{\numberline {4}Experiments}{41}{chapter.4}
 \defcounter {refsection}{4}\relax 
-\contentsline {section}{\numberline {4.1}Benchmarking rules}{39}{section.4.1}
+\contentsline {section}{\numberline {4.1}Benchmarking rules}{41}{section.4.1}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Other strategies for hyper-parameter optimization}{39}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.1}Other strategies for hyper-parameter optimization}{41}{subsection.4.1.1}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Evaluation metrics}{40}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.2}Evaluation metrics}{42}{subsection.4.1.2}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Bayesian optimization setup}{40}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.3}Bayesian optimization setup}{42}{subsection.4.1.3}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.1.4}Machine-learning models used}{41}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.4}Machine-learning models used}{43}{subsection.4.1.4}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsubsection}{Support Vector Machines}{41}{section*.13}
+\contentsline {subsubsection}{Support Vector Machines}{43}{section*.13}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsubsection}{K-nearest neighbors}{42}{section*.15}
+\contentsline {subsubsection}{K-nearest neighbors}{44}{section*.15}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsubsection}{Gradient Boosting Machines}{42}{section*.17}
+\contentsline {subsubsection}{Gradient Boosting Machines}{44}{section*.17}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.1.5}Multilayer perceptron}{43}{subsection.4.1.5}
+\contentsline {subsubsection}{Multilayer perceptron}{45}{section*.19}
 \defcounter {refsection}{4}\relax 
-\contentsline {section}{\numberline {4.2}The binding affinity dataset}{43}{section.4.2}
+\contentsline {section}{\numberline {4.2}The binding affinity dataset}{46}{section.4.2}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Description of the problem}{43}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.1}Description of the problem}{46}{subsection.4.2.1}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Description of the dataset}{44}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.2}Description of the dataset}{47}{subsection.4.2.2}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Experiments}{45}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.3}Experiments}{48}{subsection.4.2.3}
 \defcounter {refsection}{4}\relax 
-\contentsline {section}{\numberline {4.3}The protein-protein interface prediction dataset}{48}{section.4.3}
+\contentsline {section}{\numberline {4.3}The protein-protein interface prediction dataset}{50}{section.4.3}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Description of the problem}{48}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.1}Description of the problem}{50}{subsection.4.3.1}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.3.2}Description of the dataset}{48}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.2}Description of the dataset}{50}{subsection.4.3.2}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.3.3}Experiments}{48}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.3}Experiments}{50}{subsection.4.3.3}
 \defcounter {refsection}{4}\relax 
-\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{53}{chapter.5}
+\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{55}{chapter.5}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.1}Installation}{53}{section.5.1}
+\contentsline {section}{\numberline {5.1}Installation}{55}{section.5.1}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.2}Usage}{54}{section.5.2}
+\contentsline {section}{\numberline {5.2}Usage}{56}{section.5.2}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.2.1}A minimal example}{54}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.1}A minimal example}{56}{subsection.5.2.1}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.3}Examples}{56}{section.5.3}
+\contentsline {section}{\numberline {5.3}Examples}{58}{section.5.3}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.3.1}Gaussian Process regression using the \texttt {GPRegressor} module.}{56}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.1}Gaussian Process regression using the \texttt {GPRegressor} module.}{58}{subsection.5.3.1}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.3.2}Optimizing parameters of a machine-learning model using the \texttt {GPGO} module.}{57}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.2}Optimizing parameters of a machine-learning model using the \texttt {GPGO} module.}{59}{subsection.5.3.2}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.4}Features}{58}{section.5.4}
+\contentsline {section}{\numberline {5.4}Features}{60}{section.5.4}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.5}Comparison with existing software}{58}{section.5.5}
+\contentsline {section}{\numberline {5.5}Comparison with existing software}{60}{section.5.5}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.6}Future work}{58}{section.5.6}
+\contentsline {section}{\numberline {5.6}Future work}{60}{section.5.6}
