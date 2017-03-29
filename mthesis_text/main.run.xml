@@ -79,6 +79,7 @@
       <file>main.bcf</file>
     </requires>
     <requires type="editable">
+      <file>bib/chapter2.bib</file>
       <file>bib/chapter3.bib</file>
       <file>bib/chapter4.bib</file>
     </requires>

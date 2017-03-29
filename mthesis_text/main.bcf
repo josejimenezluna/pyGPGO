@@ -2093,6 +2093,7 @@
   <!-- CITATION DATA -->
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter2.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter3.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter4.bib</bcf:datasource>
   </bcf:bibdata>
@@ -2100,6 +2101,7 @@
   </bcf:section>
   <!-- SECTION 1 -->
   <bcf:bibdata section="1">
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter2.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter3.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter4.bib</bcf:datasource>
   </bcf:bibdata>
@@ -2110,16 +2112,30 @@
   </bcf:section>
   <!-- SECTION 2 -->
   <bcf:bibdata section="2">
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter2.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter3.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter4.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="2">
+    <bcf:citekey order="1">Bolstad2007</bcf:citekey>
+    <bcf:citekey order="2">Hofmann2008</bcf:citekey>
+    <bcf:citekey order="3">Wackernagel1995</bcf:citekey>
+    <bcf:citekey order="4">Rasmussen2004</bcf:citekey>
+    <bcf:citekey order="5">Minasny2005</bcf:citekey>
+    <bcf:citekey order="6">Arfken2005</bcf:citekey>
+    <bcf:citekey order="7">Rossi2006</bcf:citekey>
+    <bcf:citekey order="8">BUJA1989</bcf:citekey>
+    <bcf:citekey order="9">Murray2010</bcf:citekey>
+    <bcf:citekey order="10">Murray2009</bcf:citekey>
+    <bcf:citekey order="10">Murray2010</bcf:citekey>
+    <bcf:citekey order="11">Neal2003</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
   </bcf:section>
   <!-- SECTION 3 -->
   <bcf:bibdata section="3">
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter2.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter3.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter4.bib</bcf:datasource>
   </bcf:bibdata>
@@ -2135,42 +2151,44 @@
     <bcf:citekey order="8">Srinivas2010</bcf:citekey>
     <bcf:citekey order="9">Kaufmann2012</bcf:citekey>
     <bcf:citekey order="10">Rahimi2007</bcf:citekey>
-    <bcf:citekey order="11">Villemonteix2009</bcf:citekey>
+    <bcf:citekey order="11">Hennig2012</bcf:citekey>
     <bcf:citekey order="12">Villemonteix2009</bcf:citekey>
-    <bcf:citekey order="13">Hennig2012</bcf:citekey>
-    <bcf:citekey order="14">Hernandez-Lobato2014</bcf:citekey>
+    <bcf:citekey order="13">Villemonteix2009</bcf:citekey>
+    <bcf:citekey order="14">Hennig2012</bcf:citekey>
     <bcf:citekey order="15">Hernandez-Lobato2014</bcf:citekey>
-    <bcf:citekey order="16">Hoffman2011</bcf:citekey>
-    <bcf:citekey order="17">Auer1995</bcf:citekey>
-    <bcf:citekey order="18">Shahriari2014</bcf:citekey>
-    <bcf:citekey order="19">Neal2011</bcf:citekey>
-    <bcf:citekey order="20">Benassi2011</bcf:citekey>
-    <bcf:citekey order="20">Bull2011</bcf:citekey>
-    <bcf:citekey order="21">Wang2014</bcf:citekey>
-    <bcf:citekey order="22">Vazquez2010</bcf:citekey>
-    <bcf:citekey order="23">Snoek2012</bcf:citekey>
-    <bcf:citekey order="24">Bardenet2010</bcf:citekey>
-    <bcf:citekey order="25">Lizotte2012</bcf:citekey>
-    <bcf:citekey order="26">Hansen2001</bcf:citekey>
-    <bcf:citekey order="27">Kocsis2006</bcf:citekey>
-    <bcf:citekey order="27">Bubeck2010</bcf:citekey>
-    <bcf:citekey order="28">Wang2014</bcf:citekey>
-    <bcf:citekey order="29">Snelson2006</bcf:citekey>
-    <bcf:citekey order="30">Quinonero-candela2005</bcf:citekey>
-    <bcf:citekey order="31">Seeger2003</bcf:citekey>
-    <bcf:citekey order="32">Titsias2009</bcf:citekey>
-    <bcf:citekey order="33">Lazaro-Gredilla2010</bcf:citekey>
-    <bcf:citekey order="34">Hutter2011</bcf:citekey>
-    <bcf:citekey order="35">Breiman2001</bcf:citekey>
-    <bcf:citekey order="36">Hutter2011</bcf:citekey>
-    <bcf:citekey order="37">Snoek2012</bcf:citekey>
-    <bcf:citekey order="38">Desautels2012</bcf:citekey>
+    <bcf:citekey order="16">Hernandez-Lobato2014</bcf:citekey>
+    <bcf:citekey order="17">Hoffman2011</bcf:citekey>
+    <bcf:citekey order="18">Auer1995</bcf:citekey>
+    <bcf:citekey order="19">Shahriari2014</bcf:citekey>
+    <bcf:citekey order="20">Neal2011</bcf:citekey>
+    <bcf:citekey order="21">Benassi2011</bcf:citekey>
+    <bcf:citekey order="21">Bull2011</bcf:citekey>
+    <bcf:citekey order="22">Wang2014</bcf:citekey>
+    <bcf:citekey order="23">Vazquez2010</bcf:citekey>
+    <bcf:citekey order="24">Snoek2012</bcf:citekey>
+    <bcf:citekey order="25">Bardenet2010</bcf:citekey>
+    <bcf:citekey order="26">Lizotte2012</bcf:citekey>
+    <bcf:citekey order="27">Hansen2001</bcf:citekey>
+    <bcf:citekey order="28">Kocsis2006</bcf:citekey>
+    <bcf:citekey order="28">Bubeck2010</bcf:citekey>
+    <bcf:citekey order="29">Wang2014</bcf:citekey>
+    <bcf:citekey order="30">Snelson2006</bcf:citekey>
+    <bcf:citekey order="31">Quinonero-candela2005</bcf:citekey>
+    <bcf:citekey order="32">Seeger2003</bcf:citekey>
+    <bcf:citekey order="33">Titsias2009</bcf:citekey>
+    <bcf:citekey order="34">Lazaro-Gredilla2010</bcf:citekey>
+    <bcf:citekey order="35">Hutter2011</bcf:citekey>
+    <bcf:citekey order="36">Breiman2001</bcf:citekey>
+    <bcf:citekey order="37">Hutter2011</bcf:citekey>
+    <bcf:citekey order="38">Snoek2012</bcf:citekey>
+    <bcf:citekey order="39">Desautels2012</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
   </bcf:section>
   <!-- SECTION 4 -->
   <bcf:bibdata section="4">
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter2.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter3.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter4.bib</bcf:datasource>
   </bcf:bibdata>
@@ -2184,29 +2202,33 @@
     <bcf:citekey order="7">Schapire1999</bcf:citekey>
     <bcf:citekey order="8">Friedman2001</bcf:citekey>
     <bcf:citekey order="9">Lewis2000</bcf:citekey>
-    <bcf:citekey order="10">Leach2006</bcf:citekey>
-    <bcf:citekey order="11">Friesner2004</bcf:citekey>
-    <bcf:citekey order="11">Krammer2005</bcf:citekey>
-    <bcf:citekey order="12">Huang2006</bcf:citekey>
-    <bcf:citekey order="13">Mooij2005</bcf:citekey>
-    <bcf:citekey order="13">Gohlke2000</bcf:citekey>
-    <bcf:citekey order="14">Abdi2003</bcf:citekey>
-    <bcf:citekey order="15">Baum2010</bcf:citekey>
-    <bcf:citekey order="16">Ballester2010</bcf:citekey>
-    <bcf:citekey order="17">Li2013</bcf:citekey>
-    <bcf:citekey order="18">Durrant2011</bcf:citekey>
-    <bcf:citekey order="19">Zilian2013</bcf:citekey>
-    <bcf:citekey order="20">Labute2000</bcf:citekey>
-    <bcf:citekey order="21">Ballester2014</bcf:citekey>
-    <bcf:citekey order="22">Dunbar2013</bcf:citekey>
-    <bcf:citekey order="23">Wang2004</bcf:citekey>
-    <bcf:citekey order="24">Doerr2016</bcf:citekey>
+    <bcf:citekey order="10">LeCun2015</bcf:citekey>
+    <bcf:citekey order="11">Rumelhart1986</bcf:citekey>
+    <bcf:citekey order="12">Bottou2003</bcf:citekey>
+    <bcf:citekey order="13">Leach2006</bcf:citekey>
+    <bcf:citekey order="14">Friesner2004</bcf:citekey>
+    <bcf:citekey order="14">Krammer2005</bcf:citekey>
+    <bcf:citekey order="15">Huang2006</bcf:citekey>
+    <bcf:citekey order="16">Mooij2005</bcf:citekey>
+    <bcf:citekey order="16">Gohlke2000</bcf:citekey>
+    <bcf:citekey order="17">Abdi2003</bcf:citekey>
+    <bcf:citekey order="18">Baum2010</bcf:citekey>
+    <bcf:citekey order="19">Ballester2010</bcf:citekey>
+    <bcf:citekey order="20">Li2013</bcf:citekey>
+    <bcf:citekey order="21">Durrant2011</bcf:citekey>
+    <bcf:citekey order="22">Zilian2013</bcf:citekey>
+    <bcf:citekey order="23">Labute2000</bcf:citekey>
+    <bcf:citekey order="24">Ballester2014</bcf:citekey>
+    <bcf:citekey order="25">Dunbar2013</bcf:citekey>
+    <bcf:citekey order="26">Wang2004</bcf:citekey>
+    <bcf:citekey order="27">Doerr2016</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
   </bcf:section>
   <!-- SECTION 5 -->
   <bcf:bibdata section="5">
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter2.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter3.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">bib/chapter4.bib</bcf:datasource>
   </bcf:bibdata>
@@ -2215,6 +2237,36 @@
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
   </bcf:section>
+  <bcf:sortlist section="2" name="nty/global/" type="entry" sortscheme="nty" sortnamekeyscheme="global" labelprefix="">
+  <bcf:sorting>
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">presort</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2" final="1">
+      <bcf:sortitem order="1">sortkey</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="3">
+      <bcf:sortitem order="1">sortname</bcf:sortitem>
+      <bcf:sortitem order="2">author</bcf:sortitem>
+      <bcf:sortitem order="3">editor</bcf:sortitem>
+      <bcf:sortitem order="4">translator</bcf:sortitem>
+      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="6">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="4">
+      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="2">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="5">
+      <bcf:sortitem order="1">sortyear</bcf:sortitem>
+      <bcf:sortitem order="2">year</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="6">
+      <bcf:sortitem order="1" pad_side="left" pad_width="4" pad_char="0">volume</bcf:sortitem>
+      <bcf:sortitem order="2">0000</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sorting>
+  </bcf:sortlist>
   <bcf:sortlist section="3" name="nty/global/" type="entry" sortscheme="nty" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>
     <bcf:sort order="1">

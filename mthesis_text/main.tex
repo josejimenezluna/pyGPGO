@@ -13,6 +13,7 @@
 \usepackage{placeins}
 \usepackage{booktabs}
 \usepackage[style=numeric, refsection=chapter]{biblatex}
+\addbibresource{bib/chapter2.bib}
 \addbibresource{bib/chapter3.bib}
 \addbibresource{bib/chapter4.bib}
 
@@ -36,12 +37,12 @@
 
 \section{Introduction}
 
-This Master's Thesis provides an introduction to both Gaussian Processes and Bayesian Optimization. This work aims to be a multi-objective optimization task:
+This Master's thesis aims to be a multi-objective optimization task:
 
 \begin{itemize}
-\item The first objective of the thesis is to provide the reader with an introduction to Gaussian Process regression and Bayesian optimization. The work is written in such a way that it alternates very often between theoretical and practical (in terms of programming) background. This master's thesis resembles a programming book or a manual. All the examples seen through this work were coded from scratch.
-\item To show the Bayesian Optimization framework works in several real-world machine learning tasks. I do so by selecting several datasets (most of them from medical, biological or physical phenomena), applying such methodology and comparing to other common strategies applied for the same problem. 
-\item Finally, to write a complete software package for users to apply Bayesian Optimization in their research. This comes in the form of a Python ($>$3.5) package named pyGPGO. The code can be accessed through \url{https://github.com/hawk31/pyGPGO}. The entire software package is MIT licensed. All the examples and code snippets throughout this manual are based on this software. While certainly there are a couple implementations of Global Optimization software in Python, the software described here is modular, very minimalistic and requires minimal dependencies, while still maintaining most of the other's functionality
+\item The first objective of the thesis is to provide the reader with an introduction to Gaussian Process regression and Bayesian optimization. While there are vast pieces of work for both Gaussian Processes and Bayesian Optimization, this work aims to bridge the gap between them. I try to cover as much literature as needed to provide the reader with enough background to understand and implement the theoretical work presented here. Explanations are accompanied by comprehensive coding implementations and examples that help understand the material.
+\item To show the Bayesian Optimization framework works in several real-world machine learning tasks. This is done by selecting several datasets related to open computational chemistry problems, following said methodology and finally comparing its performance to other already existing strategies. 
+\item Finally, to write a complete software package for users to apply Bayesian Optimization in their research. This comes in the form of a Python ($>$3.5) package named pyGPGO. The code can either be obtained through its GitHub repository \url{https://github.com/hawk31/pyGPGO} or the Python Package Index (PyPI). The entire software package is MIT licensed. All the examples and code snippets throughout this manual are based on this software. While certainly there are a couple implementations of Global Optimization software in Python, the software described here is modular, very minimalistic and requires minimal dependencies, while still being feature-wise competitive.
 \end{itemize}
 
 We begin by describing the title of this thesis. Bayesian Optimization focuses on the global optimization of a function $f:\mathbb{R}^n \rightarrow \mathbb{R}$ over a compact set $A$. The problem can be formalized as:
@@ -50,9 +51,9 @@ We begin by describing the title of this thesis. Bayesian Optimization focuses o
 \max_{\boldsymbol{x}\in A} f(x)
 \end{equation}
 
-Most optimization procedures (local based ones such as gradient ascent, for example) assume that the function $f$ is closed-form, that is, it has an analytical expression, that it is convex, with known first or second order derivatives or cheap to evaluate. Bayesian optimization focuses on all these problems proposing a very elegant solution. By the use of a surrogate model, a Gaussian Process, a Bayesian optimization procedure can help find the global minimum of non-necessarily convex, expensive functions that are expensive to evaluate. These methods shine also where there is no closed-form expression to evaluate and does not need any function derivatives.\\
+Most optimization procedures (local based ones such as gradient ascent, for example) assume that the function $f$ is closed-form, that is, it has an analytical expression, that it is convex, with known first or second order derivatives or cheap to evaluate. Bayesian optimization focuses on all these problems proposing a very elegant solution. By the use of a surrogate model, a Gaussian Process, a Bayesian optimization procedure can help find the global minimum of non-necessarily convex, expensive functions that are expensive to evaluate. These methods shine also where there is no closed-form expression to evaluate or derivatives.\\
 
-Now is when the machine learning part of the title comes into play. In machine learning (also known as statistical learning), we are usually interested in minimizing a loss function $\mathcal{L}$. These losses can take many forms. For instance, when doing regression, a typical loss might be the mean squared error between predictions and observed values on a holdout test set.
+Now the machine learning part of the title comes into play, in machine learning (or statistical learning), we are usually interested in minimizing a loss function $\mathcal{L}$ over a subset of data. These losses can take many forms. For instance, when doing regression, a typical loss might be the mean squared error between predictions and observed values on a holdout test set.
 
 \begin{equation}
 \mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = \dfrac{1}{n} \sum_i \left(y_i - \hat{y_i}\right)^2
@@ -64,17 +65,17 @@ In binary classification, for example, a very popular choice is the logarithmic 
 \mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = -\dfrac{1}{n} = \sum_i \left(y_i \log(\hat{y_i}) + (1 - y_i)\log(1-\hat{y_i})\right)
 \end{equation}
 
-Notice in any case, that these losses are typically defined in a subset of $\mathbb{R}$. We focus on the supervised setting of machine learning, and more specifically regression. Depending on the problem at hand, even evaluating these losses can be very expensive from a computational point of view. This may have to do with the machine learning algorithm used or the size of the dataset at hand. These machine learning algorithms typically have \textit{hyperparameters}, that is, parameters that have to be tuned in a sensible way to get the best performance possible out of these models. In the machine learning community it is common for practitioners to do an hyperparameter grid search or even randomize it. Since the training of a single model can already take substantial resources in terms of CPU cycles or memory, we would like to have a more efficient and cheap way to optimize these hyperparameters. Bayesian optimization will let us do that by proposing the next candidate point $\boldsymbol{x}$ to evaluate according to several criteria.
+Notice in any case, that these losses are typically defined in a subset of $\mathbb{R}$. We focus on the supervised setting of machine learning, and more specifically regression. Depending on the problem at hand, even evaluating these losses can be very expensive from a computational point of view. This may have to do with the machine learning algorithm used or the size of the dataset at hand. These machine learning algorithms typically have \textit{hyperparameters} that have to be tuned in a sensible way to get the best performance possible out of these models. In the machine learning community it is common for practitioners to perform hyperparameter grid lookups or randomized searches to reach reasonable solutions. However, with the advent of big-data and more computationally hungry strategies, the training of a single model could already take substantial resources in terms of CPU cycles or memory, that is translated in higher wall-clock waiting times. Therefore we would like to have a more efficient and cheap way to optimize these hyperparameters. Bayesian optimization will let us do that by proposing the next candidate point $\boldsymbol{x}$ to evaluate according to several criteria.
 
 \section{Organization of the thesis}
 
-Before we dive directly into the topic at hand, it is mandatory to explain how this manual is intended to be read. Different chapters will cover different material, so if the reader is familiar with a topic in a chapter, for example, the chapter on Gaussian Processes, he can skip directly to the chapter on Bayesian Optimization or to the implementation if he wishes. \\
+The whole thesis is organized in 5 self-contained chapters. First, all the theoretical work is presented, for both Gaussian Processes and Bayesian optimization, then benchmarking of the method is presented, and finally we describe the developed piece of software. I briefly describe the content of each chapter here: \\
 
-\textbf{Chapter 2} focuses on a swift but thorough introduction to regression problems using Gaussian Processes. These are the surrogate models we will use for Bayesian Optimization in Chapter 3. We will cover the theory behind them both from a weight space point of view and from a functional point of view. We will also explain different covariance functions and their role in these models, as well as methods for optimizing their hyperparameters. Finally we will provide the reader with usable code to fit a Gaussian Process in a regression problem. This chapter is heavily based on Carl E. Rasmussen excellent book \textit{Gaussian Processes for Machine Learning}[ref], an more specially in chapters 2, 4 and 5. In fact, if the reader is interested in a more advanced, wider, slowly-paced introduction to Gaussian Processes, this is by far the best resource to go to. \\
+\textbf{Chapter 2} focuses on a swift but thorough introduction to regression problems using Gaussian Processes. These are the surrogate models we will use for Bayesian Optimization in Chapter 3. We will cover the theory behind them both from a weight space point of view and from a functional point of view. We will also explain different covariance functions and their role in these models, as well as methods for optimizing their hyperparameters. Further theoretical aspects are also discussed.\\
 
-\textbf{Chapter 3} is about the main topic in this work, Bayesian Optimization. Once we have laid down all the foundations of Gaussian Processes, we can start explaining the theory of Bayesian optimization using these as surrogate models. The algorithms, while simple, are very powerful. The role of several acquisition functions, that is to say, the functions that will propose the next point to evaluate will be discussed, as well as their advantages or disadvantages. The references on this chapter will be more diverse than on the previous chapter, as I will try to summarize several publications. Readers already familiar with Gaussian Processes should jump directly into this chapter.\\
+\textbf{Chapter 3} is about the main topic in this work, Bayesian Optimization. Once we have laid down all the foundations of Gaussian Processes, we can start explaining the theory of Bayesian optimization using these as surrogate models. The role of several acquisition functions, i.e. functions that will propose the next point to evaluate will be thoroughly discussed, as well as their advantages or disadvantages. References on this chapter will be very diverse, as I will try to summarize several recent publications. Readers already familiar with Gaussian Processes can jump directly into this chapter.\\
 
-\textbf{Chapter 4} covers experiments using the software provided alongside this manual. These are mostly mid-sized regression or classification problems where we will compare the performance of Bayesian Optimization of hyperparameters with several regressors/classifiers with other strategies, such as random search or simulated annealing. Most of these datasets are related to experimental sciences, and some of them were used for other benchmarking purposes in other studies. \\
+\textbf{Chapter 4} covers experiments using the software provided alongside this manual. These are mostly mid-sized regression or classification problems where we will compare the performance of Bayesian Optimization of hyperparameters with several regressors/classifiers with other strategies, such as random search. Most of these datasets are related to experimental sciences, and some of them were used for other benchmarking purposes in other studies. \\
 
 \textbf{Chapter 5} has no theoretical content nor testing content. It will cover technical explanations of pyGPGO, the software developed alongside this manual. Software usage examples are also provided. 
 
@@ -153,7 +154,7 @@ There's one important concept to explain before we move on. Notice in Figure \re
 
 \section{A weight space view for Gaussian Processes}
 
-In this section we will try to draw connections between Bayesian linear regression and  Gaussian Processes, through the use of kernel functions. 
+In this section we will try to draw connections between Bayesian linear regression \cite{Bolstad2007} and  Gaussian Processes, through the use of kernel functions. 
 
 \subsection{Standard Bayesian linear regression}
 
@@ -197,7 +198,7 @@ f_{*}|x_{*}, X, \boldsymbol{y} \sim N\left(\dfrac{1}{\sigma_n^2}\boldsymbol{x_{*
 
 \subsection{Kernel functions in feature space}
 
-We have presented a very simple Bayesian approach to linear regression in the previous section. While useful, it lacks expressiveness due to its linearity. A very simple idea is to project this data into a higher dimension, where it may be more easily separated by a linear model of this sort. This is called using the kernel trick. We can do this through a covariance (or kernel) function $\phi(\boldsymbol{x})$. Note by $\Phi(X)$ the aggregation of columns after computing this kernel function in the entire dataset at hand.\\
+We have presented a very simple Bayesian approach to linear regression in the previous section. While useful, it lacks expressiveness due to its linearity. A very simple idea is to project this data into a higher dimension, where it may be more easily separated by a linear model of this sort. This is called using the kernel trick \cite{Hofmann2008}. We can do this through a covariance (or kernel) function $\phi(\boldsymbol{x})$. Note by $\Phi(X)$ the aggregation of columns after computing this kernel function in the entire dataset at hand.\\
 
 The model becomes now:
 
@@ -386,7 +387,7 @@ It can be proven that the value $y_{\mathrm{guess}}$ that minimizes Equation \re
 \section{On covariance functions}
 \label{covariancefunc}
 
-A covariance function, like the squared exponential kernel that we have been using as a example throughout the chapter encodes our assumptions of similarity between inputs from $\boldsymbol{x}$. We assume \textit{similar} items in input space to have similar values of the target value $y$. Not all functions of $\boldsymbol{x}$ and $\boldsymbol{x'}$ can be defined as covariance function. Covariance functions (though not all) tend to satisfy different properties:
+A covariance function \cite{Wackernagel1995}, like the squared exponential kernel that we have been using as a example throughout the chapter encodes our assumptions of similarity between inputs from $\boldsymbol{x}$. We assume \textit{similar} items in input space to have similar values of the target value $y$. Not all functions of $\boldsymbol{x}$ and $\boldsymbol{x'}$ can be defined as covariance function. Covariance functions (though not all) tend to satisfy different properties:
 
 \begin{itemize}
 \item \textit{Weak stationarity}. A covariance function is said to be weakly stationary if it is a function of $\boldsymbol{x} - \boldsymbol{x'}$. That is to say that it is invariant to translations in the input space. Most of the covariance functions we will see fall into this category.
@@ -394,7 +395,7 @@ A covariance function, like the squared exponential kernel that we have been usi
 \item Dot-product. Some covariance functions are functionals of the dot-product $|\boldsymbol{x}^T \boldsymbol{x'}|$. These kernels, while invariant to rotations are not invariant to translations.
 \end{itemize}
 
-There is an excellent theoretical analysis of covariance functions in Chapter 4 of Carl E. Rasmussen's book \textit{Gaussian Processes for Machine Learning}. We will not cover this here since it falls beyond the scope of this thesis. However, we will start providing examples of the most common covariance functions. All covariance functions described here are implemented in the software developed alongside this thesis, pyGPGO, in the \texttt{covfunc} module. We will describe their functionality in Section \ref{features}.\\
+There is an excellent theoretical analysis of covariance functions in \cite{Rasmussen2004}. We will not cover this here since it falls beyond the scope of this thesis. However, we will start providing examples of the most common covariance functions. All covariance functions described here are implemented in the software developed alongside this thesis, pyGPGO, in the \texttt{covfunc} module. We will describe their functionality in Section \ref{features}.\\
 
 The \textit{Squared Exponential} covariance function is the one that we have been using so far. It is also arguably the most used in practice. It takes the general form:
 
@@ -404,13 +405,13 @@ k_{SE}(r) = \exp\left(-\dfrac{r^2}{2l^2} \right)
 
 where $l$ is the parameter controlling its characteristic length-scale. It is useful to define these functions in terms of $r$ since we can abstract this calculation to another function. \\
 
-The \textit{Matern class} of covariance functions takes the form:
+The \textit{Matern class} of covariance functions \cite{Minasny2005} takes the form:
 
 \begin{equation}
 k_{\textrm{Matern}}(r) = \dfrac{2^{1-\nu}}{\Gamma(\nu)}\left(\dfrac{\sqrt{2\nu} r}{l}    \right)^\nu K_\nu\left( \dfrac{\sqrt{2\nu}r}{l} \right)
 \end{equation}
 
-with $\nu, l > 0$ and $K_\nu$ is a modified Bessel function of the second kind.  Simple functional forms can be obtained when $\nu$ is half integer, that is $\nu = p + 1/2$ for $p$ non-negative integer. In particular, if $\nu=1/2$, we obtain the a simple exponential kernel and if we take limit $\nu \rightarrow \infty$ we obtain the squared exponential covariance function. Popular values are $\nu=3/2,\; 5/2$.\\
+with $\nu, l > 0$ and $K_\nu$ is a modified Bessel function of the second kind \cite{Arfken2005}.  Simple functional forms can be obtained when $\nu$ is half integer, that is $\nu = p + 1/2$ for $p$ non-negative integer. In particular, if $\nu=1/2$, we obtain the a simple exponential kernel and if we take limit $\nu \rightarrow \infty$ we obtain the squared exponential covariance function. Popular values are $\nu=3/2,\; 5/2$.\\
 
 
 The $\gamma$-exponential covariance function, of which the squared exponential is a special case. It takes the general form:
@@ -464,7 +465,7 @@ As seen in the previous sections, different covariance functions have different 
 \subsection{Type II Maximum Likelihood}
 \label{empbayes}
 
-This is the empirical Bayes analytical approach to optimizing hyperparameters. One may quickly notice that Gaussian Processes are non-parametric models, in the sense that apart from the quantities set in the covariance functions, there is nothing else to optimize for. First we will provide a small background on Bayesian model selection. Assume that we have a model  $\mathcal{H}_i$ with \textit{parameters} $\boldsymbol{w}$, \textit{hyperparameters} $\boldsymbol{\theta}$, and we have some training data $X, \boldsymbol{y}$. The posterior over the parameters is easily given by:
+This is the empirical Bayes \cite{Rossi2006} analytical approach to optimizing hyperparameters. One may quickly notice that Gaussian Processes are non-parametric models, in the sense that apart from the quantities set in the covariance functions, there is nothing else to optimize for. First we will provide a small background on Bayesian model selection. Assume that we have a model  $\mathcal{H}_i$ with \textit{parameters} $\boldsymbol{w}$, \textit{hyperparameters} $\boldsymbol{\theta}$, and we have some training data $X, \boldsymbol{y}$. The posterior over the parameters is easily given by:
 
 \begin{equation}
 \label{posteriorparam}
@@ -529,7 +530,7 @@ As many machine learning algorithms, the main objective of a Gaussian Process re
 \overline{f}(\boldsymbol{x}_*) = \boldsymbol{k}(\boldsymbol{x}_*)^T(K + \sigma_n^2 I)^{-1}\boldsymbol{y}
 \end{equation}
 
-Therefore, one can see a Gaussian Process regressor as a linear smoother [ref]. We can study this smoothing in terms of spectral analysis [ref]. Again, for training points, predicted training points $\overline{\boldsymbol{f}}$ are:
+Therefore, one can see a Gaussian Process regressor as a linear smoother \cite{BUJA1989}. We can study this smoothing in terms of spectral analysis. Again, for training points, predicted training points $\overline{\boldsymbol{f}}$ are:
 
 \begin{equation}
 \overline{\boldsymbol{f}} = K(K + \sigma_n^2 I)^{-1}\boldsymbol{y}
@@ -611,7 +612,7 @@ where $A = B^{-1} + HK^{-1}H^T$ and $C = K^{-1}H^T A^{-1}HK^{-1}$.
 
 \subsection{Marginalizing over hyperparameters}
 
-In the full Bayesian framework, the covariance matrix $\Sigma_{\theta}$ can be defined without explicitly specifying hyperparameters. Integrating out these considers different possible explanations of the data when making predictions, which is typically done using MCMC techniques. Here we present a slice sampling technique proposed in [ref] that requires little tuning. We first assume a prior distribution on hyperparameters:
+In the full Bayesian framework, the covariance matrix $\Sigma_{\theta}$ can be defined without explicitly specifying hyperparameters. Integrating out these considers different possible explanations of the data when making predictions. This is typically done using MCMC techniques. Here we present several techniques for capturing this uncertainty, based on the Metropolis-Hastings criterion and slice sampling \cite{Murray2010}. We first assume a prior distribution on hyperparameters:
 
 \begin{equation}
 \theta \sim p_{h}(\theta)
@@ -703,7 +704,7 @@ where $S_\theta$ is an arbitrary parameter that can be either set manually or de
 \boldsymbol{g}|\theta \sim \mathcal{N}(0, \Sigma_\theta + S_\theta)
 \end{equation}
 
-Equivalently, conditioning on $\boldsymbol{g}$ from Equation \ref{tointegrate} yields:
+The original latent model on $\boldsymbol{f}$ implies a joint auxiliary distribution $p(\boldsymbol{f}, \boldsymbol{g}|\theta)$, conditioning on $\boldsymbol{g}$ we obtain:
 
 \begin{equation}
 \boldsymbol{f}|\boldsymbol{g}, \theta \sim \mathcal{N}(\boldsymbol{m}_{\theta, \boldsymbol{g}}, R_{\theta})
@@ -718,7 +719,7 @@ R_{\theta} &= S_{\theta} - S_{\theta}(S_{\theta} + \Sigma_{\theta})^{-1} S_\thet
 \end{split}
 \end{align}
 
-Under this surrogate modelling, the latent variables are drawn from their posterior given $\boldsymbol{g}$. The sampling procedure is very similar then to our previous MH sampler. It is detailed in Algorithm .
+Under this surrogate modelling, the latent variables are drawn from their posterior given $\boldsymbol{g}$. The sampling procedure is very similar then to our previous MH sampler. It is detailed in Algorithm \ref{mh3alg}.
 
 \begin{algorithm}
 	\caption{Surrogate model Metropolis-Hastings.}
@@ -730,13 +731,42 @@ Under this surrogate modelling, the latent variables are drawn from their poster
 		\State Draw $\theta^{'} \sim q(\theta^{'}, \theta)$
 		\State Compute $\boldsymbol{f}^{'} = L_{R_{\theta^{'}}}\boldsymbol{\nu}  +  \boldsymbol{m}_{\theta^{'}, \boldsymbol{g}}$
 		\State Draw $u\sim \mathrm{Uniform}(0, 1)$
-		\If {$u < \dfrac{\mathcal{L}(\boldsymbol{f})p_{\boldsymbol{g}|\theta}(\theta^{'})p_h(\theta^{'})q(\theta, \theta^{'})}{\mathcal{L}(\boldsymbol{f})p_{\boldsymbol{g}|\theta}(\theta)p_h(\theta)q(\theta^{'}, \theta)}$}
+		\If {$u < \dfrac{\mathcal{L}(\boldsymbol{f})p_{\boldsymbol{g}|\theta^{'}}(\boldsymbol{g})p_h(\theta^{'})q(\theta, \theta^{'})}{\mathcal{L}(\boldsymbol{f})p_{\boldsymbol{g}|\theta}(\boldsymbol{g})p_h(\theta)q(\theta^{'}, \theta)}$}
 		\Return $\theta^{'}, \boldsymbol{f}^{'}$
 		\Else\;
 		\Return $\theta, \boldsymbol{f}$
 		\EndIf
 		\end{algorithmic}
 \end{algorithm}
+
+Our discussed Metropolis-Hastings algorithms, while efficient, require selecting a proposal distribution $q$ that also has to be tuned. Instead, some authors \cite{Murray2009, Murray2010} have proposed slice sampling as an alternative. Slice sampling \cite{Neal2003} is an adaptive procedure that are more robust to the choice of scale in our proposal distribution. A procedure from this family is detailed in Algorithm \ref{mh4alg}.
+
+\begin{algorithm}
+	\caption{Surrogate model slice sampling.}
+		\label{mh4alg}
+		\begin{algorithmic}[1]
+		\Require Current $\boldsymbol{f}$ and $\theta$, scale $\sigma$, covariance function $\Sigma_\theta$ 
+		\State Draw surrogate $\boldsymbol{g} \sim \mathcal{N}(\boldsymbol{f}, S_\theta)$
+		\State Compute $\boldsymbol{\nu} = L_{R_\theta}^{-1}(\boldsymbol{f} - \boldsymbol{m}_{\theta, \boldsymbol{g}})$
+		\State Center bracket $v \sim \mathrm{Uniform}(0, 1)$
+		\State $\theta_{\mathrm{min}} = \theta - v$
+		\State $\theta_{\mathrm{max}} = \theta_{\mathrm{min}} + \sigma$
+		\State Draw $u \sim \mathrm{Uniform}(0, 1)$
+		\State Compute threshold $y = \mathcal{L}(\boldsymbol{f})p_{\boldsymbol{g}|\theta}(\boldsymbol{g})p_h(\theta)$
+		\State Draw $\theta^{'} \sim \mathrm{Uniform}(\theta_{\mathrm{min}}, \theta_{\mathrm{max}})$
+		\State Compute $\boldsymbol{f}^{'} = L_{R_{\theta}}\boldsymbol{\nu} + \boldsymbol{m}_{\theta^{'}, \boldsymbol{g}}$
+		\If { $\mathcal{L}(\boldsymbol{f}^{'})p_{\boldsymbol{g}|\theta^{'}}(\boldsymbol{g})p_h(\theta) > y$}
+		\Return $\boldsymbol{f'}, \theta^{'}$
+		\ElsIf {$\theta^{'} < \theta$}
+		\State Shrink bracket min. $\theta_{\mathrm{min}} = \theta^{'}$
+		\Else
+		\State Shrink bracket max. $\theta_{\mathrm{max}} = \theta^{'}$
+		\EndIf
+		\State \textbf{goto} 8.
+		\end{algorithmic}
+\end{algorithm}
+
+\printbibliography
 
 \chapter{Bayesian optimization}
 
@@ -844,7 +874,7 @@ This method, however, is not as simple to implement as the previously discussed 
 \alpha_{\mathrm{TS}}(\boldsymbol{x}, \mathcal{D}_n) = f^{(n)}(\boldsymbol{x})
 \end{equation}
 
-where $f^{(n)} \sim GP\left(\mu(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x'})\right)$ by spectral sampling. It has been shown, however, that this method tends to perform greedily on high-dimensional spaces[ref]. Another new approach is entropy-based \cite{Villemonteix2009}. They aim to reduce the uncertainty in location $\boldsymbol{x}^{*}$ by choosing points likely to reduce the entropy in $p(\boldsymbol{x}|\mathcal{D}_n)$. The acquisition function can be defined as:
+where $f^{(n)} \sim GP\left(\mu(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x'})\right)$ by spectral sampling. It has been shown, however, that this method tends to perform greedily on high-dimensional spaces \cite{Hennig2012}. Another new approach is entropy-based \cite{Villemonteix2009}. They aim to reduce the uncertainty in location $\boldsymbol{x}^{*}$ by choosing points likely to reduce the entropy in $p(\boldsymbol{x}|\mathcal{D}_n)$. The acquisition function can be defined as:
 
 \begin{equation}
 \label{acqes}
@@ -978,7 +1008,14 @@ where $\boldsymbol{\omega}_{(i)} \sim s(\boldsymbol{\omega})/\nu$. The computati
 
 As an alternative, several authors \cite{Hutter2011} have suggested using different surrogate models in the Bayesian Optimization framework. Special attention has been drawn towards the Random Forest regression model, in the context of sequential model-based algorithm configuration. Random Forests \cite{Breiman2001} are a very popular choice in the machine-learning community with very successful results in practice. They are an ensemble bagging tree-based method. Random Forests allow for training using sub-samples of data, giving it the ability to scale to large evaluation budgets, where exact analytical Gaussian Process regression would be infeasible in practice. The exploration strategy requires an uncertainty estimation for prediction at test points to apply the Bayesian optimization framework. The empirical variance in the predictions across trees was proposed as a substitute. This heuristic has been shown to work in practice \cite{Hutter2011}.\\
 
-Random Forests are known to provide very good estimates when doing \textit{interpolation} of seen data (or in its neighbourhood), they are very poor \textit{extrapolators}. On points far from training data, the predictions across all trees in the model are very similar, providing poor predictions and more importantly, providing extremely confident (but erroneous) variance estimates. While Gaussian Processes are also terrible extrapolators, they produce reliable variance estimations far from training data, yielding better estimates for exploration and exploitation in the framework.
+Random Forests are known to provide very good estimates when doing \textit{interpolation} of seen data (or in its neighbourhood), they are very poor \textit{extrapolators}. On points far from training data, the predictions across all trees in the model are very similar, providing poor predictions and more importantly, providing extremely confident (but erroneous) variance estimates. While Gaussian Processes are also terrible extrapolators, they produce reliable variance estimations far from training data, yielding sometimes better estimates for exploration and exploitation in the framework. An example of a Random Forest with variance estimates on the sine data is provided in Figure \ref{fig:RFsine}.
+
+\begin{figure}
+\centering
+\caption{A Random Forest with variance estimates over trees trained on the sine function}
+\includegraphics[width=0.7\textwidth]{figures/chapter3/RFsine}
+\label{fig:RFsine}
+\end{figure}
 
 \subsection{Parallelization}
 
@@ -1284,7 +1321,7 @@ $\gamma$ is then chosen by some univariate optimization algorithm, such as line 
 
 \subsubsection{Multilayer perceptron}
 
-Neural networks are a popular model now, specially with the rise of Deep Learning [ref] over the last years. In this work, we will only consider neural network models with a single hidden layer, or Multilayer Perceptron (MLP) models. The output of one layer, given some input $\boldsymbol{x}\in \mathbb{R}^p$ is a function $f:\mathbb{R}^p \rightarrow \mathbb{R}^q$. Since a MLP contains only one hidden layer, the output of the whole model for either regression or binary classification can be written as:
+Neural networks are a popular model now, specially with the rise of Deep Learning \cite{LeCun2015} over the last years. In this work, we will only consider neural network models with a single hidden layer, or Multilayer Perceptron (MLP) models. The output of one layer, given some input $\boldsymbol{x}\in \mathbb{R}^p$ is a function $f:\mathbb{R}^p \rightarrow \mathbb{R}^q$. Since a MLP contains only one hidden layer, the output of the whole model for either regression or binary classification can be written as:
 
 \begin{equation}
 f(\boldsymbol{x}) = G\left(b^{(2)} + W^{(2)}\left(s \left( b^{(1)} + W^{(1)}\boldsymbol{x}\right)\right)\right),
@@ -1308,7 +1345,7 @@ For regression, no non-linearity is applied. For $c$ multiple classes, $W^{(2)}$
 G(\boldsymbol{x})_j = \dfrac{\exp(\boldsymbol{x}_j)}{\sum_{i=1}^c \exp(\boldsymbol{x}_i)}, \;\; j=1,\dots,c
 \end{equation}
 
-Matrices $W^{(1)}$, $W^{(2)}$ and biases $b^{(1)}$, $b^{(2)}$ are trained using backpropagation [ref] through the use of stochastic gradient descent (SGD) [ref]. For this particular piece of work, we use the Multilayer Perceptron implementation of \texttt{scikit-learn}, and optimize over hyperparameters detailed in Table \ref{mlpparam}. In particular, we consider the number of hidden units in the hidden layer and $\alpha$, a parameter controlling $L_2$ regularization on the learned weights.
+Matrices $W^{(1)}$, $W^{(2)}$ and biases $b^{(1)}$, $b^{(2)}$ are trained using backpropagation \cite{Rumelhart1986} through the use of stochastic gradient descent (SGD) \cite{Bottou2003}. For this particular piece of work, we use the Multilayer Perceptron implementation of \texttt{scikit-learn}, and optimize over hyperparameters detailed in Table \ref{mlpparam}. In particular, we consider the number of hidden units in the hidden layer and $\alpha$, a parameter controlling $L_2$ regularization on the learned weights.
 
 \begin{table}[]
 \centering
@@ -1434,7 +1471,7 @@ We detail here results for all the models and parameter ranges considered in the
 
 \chapter{pyGPGO: A simple Python Package for Bayesian Optimization}
 
-In this chapter, we will explain the functionalities behind pyGPGO, the Bayesian Optimization software developed during this Master's thesis. pyGPGO aims to be minimalistic, modular, complete in functionality and up-to-date with latest research. pyGPGO is under the MIT License, which means it can be used for both academic and commercial purposes, while providing no warranty for the user. For more information about the MIT License, please check [ref].\\
+In this chapter, we will explain the functionalities behind pyGPGO, the Bayesian Optimization software developed during this Master's thesis. pyGPGO aims to be minimalistic, modular, complete in functionality and up-to-date with latest research. pyGPGO is under the MIT License, which means it can be used for both academic and commercial purposes, while providing no warranty for the user.\\
 
 In summary, pyGPGO is a Python package to perform Bayesian Optimization with minimal effort from the user. First we will discuss installation details, followed by a detailed description of its functionality. Then several examples of usage will be shown, which will hopefully be useful for end users or machine-learning practitioners. Later, we will compare pyGPGO to other existing Bayesian Optimization software in terms of features. In the end, future improvements on pyGPGO will be discussed.
 

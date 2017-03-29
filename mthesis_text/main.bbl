@@ -17,6 +17,404 @@
 \endgroup
 
 
+\refsection{2}
+  \sortlist[entry]{nty/global/}
+    \entry{Arfken2005}{book}{}
+      \name{author}{1}{}{%
+        {{hash=2293566f1ce7ad92f8dccbcb5342b996}{%
+           family={Arfken},
+           family_i={A\bibinitperiod},
+           given={George},
+           given_i={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{2293566f1ce7ad92f8dccbcb5342b996}
+      \strng{fullhash}{2293566f1ce7ad92f8dccbcb5342b996}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Through six editions now, Mathematical Methods for Physicists has provided all the mathematical methods that aspirings scientists and engineers are likely to encounter as students and beginning researchers. More than enough material is included for a two-semester undergraduate or graduate course. The book is advanced in the sense that mathematical relations are almost always proven, in addition to being illustrated in terms of examples. These proofs are not what a mathematician would regard as rigorous, but sketch the ideas and emphasize the relations that are essential to the study of physics and related fields. This approach incorporates theorems that are usually not cited under the most general assumptions, but are tailored to the more restricted applications required by physics. For example, Stokes' theorem is usually applied by a physicist to a surface with the tacit understanding that it be simply connected. Such assumptions have been made more explicit.}
+      \field{booktitle}{American Journal of Physics}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0120598760}
+      \field{issn}{00029505}
+      \field{number}{4}
+      \field{title}{{Mathematical Methods for Physicists 6th}}
+      \field{volume}{40}
+      \field{year}{2005}
+      \field{pages}{642}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1119/1.1988084
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1011.1669v3
+      \endverb
+    \endentry
+    \entry{Bolstad2007}{article}{}
+      \name{author}{1}{}{%
+        {{hash=aeccd2ce6b72bf1d14efb534739474e2}{%
+           family={Bolstad},
+           family_i={B\bibinitperiod},
+           given={William\bibnamedelima M},
+           given_i={W\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{aeccd2ce6b72bf1d14efb534739474e2}
+      \strng{fullhash}{aeccd2ce6b72bf1d14efb534739474e2}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This chapter contains sections titled:$\backslash$n$\backslash$n* Least Squares Regression * Exponential Growth Model * Simple Linear$\backslash$nRegression Assumptions * Bayes' Theorem for the Regression Model$\backslash$n* Predictive Distribution for Future Observation * Exercises * Computer$\backslash$nExercises}
+      \field{isbn}{9780470181188}
+      \field{journaltitle}{Introduction to Bayesian Statistics}
+      \field{title}{{Bayesian Inference for Simple Linear Regression}}
+      \field{year}{2007}
+      \field{pages}{267\bibrangedash 295}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1002/9780470181188.ch14
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1002/9780470181188.ch14
+      \endverb
+      \keyw{Bayesian inference,exponential growth model,joint prior,least squares regression,simple linear regression}
+    \endentry
+    \entry{BUJA1989}{article}{}
+      \name{author}{3}{}{%
+        {{hash=bb06d37a21734d022f8bdc1838968b4b}{%
+           family={Buja},
+           family_i={B\bibinitperiod},
+           given={A.},
+           given_i={A\bibinitperiod}}}%
+        {{hash=f62ba077cb7ab155bad8c8547d164b4e}{%
+           family={Hastie},
+           family_i={H\bibinitperiod},
+           given={T.},
+           given_i={T\bibinitperiod}}}%
+        {{hash=4117945339081933eb914268a132be74}{%
+           family={Tibshirani},
+           family_i={T\bibinitperiod},
+           given={R.},
+           given_i={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{06b7d730537dd2fef75980dda38b8d34}
+      \strng{fullhash}{06b7d730537dd2fef75980dda38b8d34}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We study linear smoothers and their use in building nonparametric regression models. In the first part of this paper we examine certain aspects of linear smoothers for scatterplots; examples of these are the running-mean and running-line, kernel and cubic spline smoothers. The eigenvalue and singular value decompositions of the corresponding smoother matrix are used to describe qualitatively a smoother, and several other topics such as the number of degrees of freedom of a smoother are discussed. In the second part of the paper we describe how linear smoothers can be used to estimate the additive model, a powerful nonparametric regression model, using the " back- fitting algorithm." We show that backfitting is the Gauss-Seidel iterative method for solving a set of normal equations associated with the additive model. We provide conditions for consistency and nondegeneracy and prove convergence for the backfitting and related algorithms for a class of smoothers that includes cubic spline smoothers}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{9788578110796}
+      \field{issn}{1098-6596}
+      \field{journaltitle}{The Annals of Statistic}
+      \field{number}{2}
+      \field{title}{{Linear smoothers and additive models}}
+      \field{volume}{17}
+      \field{year}{1989}
+      \field{pages}{453\bibrangedash 555}
+      \range{pages}{103}
+      \verb{doi}
+      \verb 10.1017/CBO9781107415324.004
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1011.1669v3
+      \endverb
+      \keyw{icle}
+    \endentry
+    \entry{Hofmann2008}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=ee42cfed2ff3020233d2de97c356eaee}{%
+           family={Hofmann},
+           family_i={H\bibinitperiod},
+           given={Thomas},
+           given_i={T\bibinitperiod}}}%
+        {{hash=ca31cc11ec9370460148c3a9c48fce45}{%
+           family={Schölkopf},
+           family_i={S\bibinitperiod},
+           given={Bernhard},
+           given_i={B\bibinitperiod}}}%
+        {{hash=2df107c3366eadfba1b6ade0345e7fd2}{%
+           family={Smola},
+           family_i={S\bibinitperiod},
+           given={Alexander\bibnamedelima J.},
+           given_i={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7ff35407b2d493b66df4556ebbd8301}
+      \strng{fullhash}{c7ff35407b2d493b66df4556ebbd8301}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We review machine learning methods employing positive definite kernels. These methods formulate learning and estimation problems in a reproducing kernel Hilbert space (RKHS) of functions defined on the data domain, expanded in terms of a kernel. Working in linear spaces of function has the benefit of facilitating the construction and analysis of learning algorithms while at the same time allowing large classes of functions. The latter include nonlinear functions as well as functions defined on nonvectorial data.}
+      \field{booktitle}{Annals of Statistics}
+      \field{eprintclass}{arXiv:math}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0090-5364}
+      \field{issn}{00905364}
+      \field{number}{3}
+      \field{title}{{Kernel methods in machine learning}}
+      \field{volume}{36}
+      \field{year}{2008}
+      \field{pages}{1171\bibrangedash 1220}
+      \range{pages}{50}
+      \verb{doi}
+      \verb 10.1214/009053607000000677
+      \endverb
+      \verb{eprint}
+      \verb 0701907v3
+      \endverb
+      \keyw{Graphical models,Machine learning,Reproducing kernels,Support vector machines}
+    \endentry
+    \entry{Minasny2005}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3873c179ef929ccb0d5b1fb49c4244bf}{%
+           family={Minasny},
+           family_i={M\bibinitperiod},
+           given={Budiman},
+           given_i={B\bibinitperiod}}}%
+        {{hash=8370c988ddc5e4e0f32030864c1b16b4}{%
+           family={McBratney},
+           family_i={M\bibinitperiod},
+           given={Alex\bibnamedelima B.},
+           given_i={A\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6cc5dd21915db7d3e43a2a00dbc6db8}
+      \strng{fullhash}{b6cc5dd21915db7d3e43a2a00dbc6db8}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The variogram is important in pedometrics for describing and quantifying soil spatial variability. Therefore, it is essential to have a model that can describe various spatial processes and to use appropriate techniques for estimating its parameters. The Matérn model is a generalization of several theoretical variogram models that incorporates a smoothness parameter. We show the flexibility of the Matérn model using simulation and apply the Matérn model to some soil data in Australia. Parameters of the Matérn model were determined by restricted maximum likelihood (REML), and weighted nonlinear least-squares (WNLS) on the empirical variogram. The Matérn model is shown to be flexible and can be used to describe many isotropic spatial soil processes. The REML method fits the local spatial process correctly, however the drawback is the lengthy computation. Meanwhile WNLS fits only the shape of the calculated empirical variogram, and parameters estimated from WNLS can be misleading. From this study, the smoothness parameter of soil data from point measurement appears to be in the range of 0.25-0.50 and can be considered to be a rough spatial process. {©} 2005 Elsevier B.V. All rights reserved.}
+      \field{isbn}{00167061}
+      \field{issn}{00167061}
+      \field{journaltitle}{Geoderma}
+      \field{title}{{The matern function as a general model for soil variograms}}
+      \field{volume}{128}
+      \field{year}{2005}
+      \field{pages}{192\bibrangedash 207}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1016/j.geoderma.2005.04.003
+      \endverb
+    \endentry
+    \entry{Murray2010}{article}{}
+      \name{author}{2}{}{%
+        {{hash=237c383069f29d1d1ffe672359e89d38}{%
+           family={Murray},
+           family_i={M\bibinitperiod},
+           given={Iain},
+           given_i={I\bibinitperiod}}}%
+        {{hash=ae8a793626536e37ddaaeafe1608aa52}{%
+           family={Adams},
+           family_i={A\bibinitperiod},
+           given={Ryan\bibnamedelima Prescott},
+           given_i={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc106b54b6651e80452c0908b43ec35a}
+      \strng{fullhash}{dc106b54b6651e80452c0908b43ec35a}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Gaussian process (GP) is a popular way to specify dependencies between random variables in a probabilistic model. In the Bayesian framework the covariance structure can be specified using unknown hyperparameters. Integrating over these hyperparameters considers different possible explanations for the data when making predictions. This integration is often performed using Markov chain Monte Carlo (MCMC) sampling. However, with non-Gaussian observations standard hyperparameter sampling approaches require careful tuning and may converge slowly. In this paper we present a slice sampling approach that requires little tuning while mixing well in both strong- and weak-data regimes.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{9781617823800}
+      \field{journaltitle}{Advances in Neural Information Processing {\ldots}}
+      \field{number}{1}
+      \field{title}{{Slice sampling covariance hyperparameters of latent Gaussian models}}
+      \field{volume}{2}
+      \field{year}{2010}
+      \field{pages}{9}
+      \range{pages}{1}
+      \verb{eprint}
+      \verb 1006.0868
+      \endverb
+      \verb{url}
+      \verb http://papers.nips.cc/paper/4114-slice-sampling-covariance-hyperparameters-of-latent-gaussian-models%7B%5C%%7D5Cnhttp://arxiv.org/abs/1006.0868
+      \endverb
+    \endentry
+    \entry{Murray2009}{article}{}
+      \name{author}{3}{}{%
+        {{hash=237c383069f29d1d1ffe672359e89d38}{%
+           family={Murray},
+           family_i={M\bibinitperiod},
+           given={Iain},
+           given_i={I\bibinitperiod}}}%
+        {{hash=42f9bc72435a81c10357cb700a528b80}{%
+           family={Adams},
+           family_i={A\bibinitperiod},
+           given={Ryan\bibnamedelimb Prescott\bibnamedelima RP},
+           given_i={R\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=91dfc41b8f1a782654069a396a99ed61}{%
+           family={MacKay},
+           family_i={M\bibinitperiod},
+           given={DJC\bibnamedelimb David\bibnamedelimb J.\bibnamedelimi C.},
+           given_i={D\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{ab054b31c3a1b9a66268be3f0181b24a}
+      \strng{fullhash}{ab054b31c3a1b9a66268be3f0181b24a}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Many probabilistic models introduce strong dependencies between variables using a latent multivariate Gaussian distribution or a Gaussian process. We present a new Markov chain Monte Carlo algorithm for performing inference in models with multivariate Gaussian priors. Its key properties are: 1) it has simple, generic code applicable to many models, 2) it has no free parameters, 3) it works well for a variety of Gaussian process based models. These properties make our method ideal for use while model building, removing the need to spend time deriving and tuning updates for more complex algorithms.}
+      \field{eprinttype}{arXiv}
+      \field{issn}{15324435}
+      \field{journaltitle}{arXiv preprint arXiv:1001.0175}
+      \field{number}{2}
+      \field{title}{{Elliptical slice sampling}}
+      \field{year}{2009}
+      \field{pages}{8}
+      \range{pages}{1}
+      \verb{eprint}
+      \verb 1001.0175
+      \endverb
+      \verb{url}
+      \verb http://www.jmlr.org/proceedings/papers/v9/murray10a/murray10a.pdf$%5Cbackslash$nhttp://arxiv.org/abs/1001.0175
+      \endverb
+    \endentry
+    \entry{Neal2003}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=65d7fa5657a0bb6a58702171f1d98cf0}{%
+           family={Neal},
+           family_i={N\bibinitperiod},
+           given={Radford\bibnamedelima M.},
+           given_i={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{65d7fa5657a0bb6a58702171f1d98cf0}
+      \strng{fullhash}{65d7fa5657a0bb6a58702171f1d98cf0}
+      \field{sortinit}{N}
+      \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Markov chain sampling methods that adapt to characteristics of the distribution being sampled can be constructed using the principle that one can sample from a distribution by sampling uniformly from the region under the plot of its density function. A Markov chain that converges to this uniform distribution can be constructed by alternating uniform sampling in the vertical direction with uniform sampling from the horizontal " slice " defined by the current vertical position, or more generally, with some update that leaves the uniform distribution over this slice invariant. Such " slice sampling " methods are easily implemented for univariate distributions, and can be used to sample from a multivariate distribution by updating each variable in turn. This approach is often easier to implement than Gibbs sampling and more efficient than simple Metropolis updates, due to the ability of slice sampling to adaptively choose the magnitude of changes made. It is therefore attractive for routine and automated use. Slice sampling methods that update all variables simultaneously are also possible. These methods can adaptively choose the magnitudes of changes made to each variable, based on the local properties of the density function. More ambitiously, such methods could potentially adapt to the dependencies between variables by constructing local quadratic approximations. Another approach is to improve sampling efficiency by suppressing random walks. This can be done for univariate slice sampling by " overrelaxation, " and for multivariate slice sampling by " reflection " from the edges of the slice.}
+      \field{booktitle}{Annals of Statistics}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{00905364}
+      \field{issn}{00905364}
+      \field{number}{3}
+      \field{title}{{Slice sampling: Rejoinder}}
+      \field{volume}{31}
+      \field{year}{2003}
+      \field{pages}{758\bibrangedash 767}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1214/aos/1056562461
+      \endverb
+      \verb{eprint}
+      \verb 1003.3201v1
+      \endverb
+    \endentry
+    \entry{Rasmussen2004}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ecbb63f6a7a483323bc372a5203d4d03}{%
+           family={Rasmussen},
+           family_i={R\bibinitperiod},
+           given={Carl\bibnamedelima E.},
+           given_i={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=18d5a61e673f86e548c1ea8a7f124c00}{%
+           family={Williams},
+           family_i={W\bibinitperiod},
+           given={Christopher\bibnamedelimb K.\bibnamedelimi I.},
+           given_i={C\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \strng{namehash}{d4cf8793aed147155151e91de5633db0}
+      \strng{fullhash}{d4cf8793aed147155151e91de5633db0}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Gaussian processes (GPs) are natural generalisations of multivariate Gaussian random variables to infinite (countably or continuous) index sets. GPs have been applied in a large number of fields to a diverse range of ends, and very many deep theoretical analyses of various properties are available. This paper gives an introduction to Gaussian processes on a fairly elementary level with special emphasis on characteristics relevant in machine learning. It draws explicit connections to branches such as spline smoothing models and support vector machines in which similar ideas have been investigated. Gaussian process models are routinely used to solve hard machine learning problems. They are attractive because of their flexible non-parametric nature and computational simplicity. Treated within a Bayesian framework, very powerful statistical methods can be implemented which offer valid estimates of uncertainties in our predictions and generic model selection procedures cast as nonlinear optimization problems. Their main drawback of heavy computational scaling has recently been alleviated by the introduction of generic sparse approximations.13,78,31 The mathematical literature on GPs is large and often uses deep concepts which are not required to fully understand most machine learning applications. In this tutorial paper, we aim to present characteristics of GPs relevant to machine learning and to show up precise connections to other "kernel machines" popular in the community. Our focus is on a simple presentation, but references to more detailed sources are provided.}
+      \field{booktitle}{International journal of neural systems}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{026218253X}
+      \field{issn}{0129-0657}
+      \field{number}{2}
+      \field{title}{{Gaussian processes for machine learning.}}
+      \field{volume}{14}
+      \field{year}{2004}
+      \field{pages}{69\bibrangedash 106}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.1142/S0129065704001899
+      \endverb
+      \verb{eprint}
+      \verb 026218253X
+      \endverb
+      \verb{url}
+      \verb http://www.gaussianprocess.org/gpml/chapters/RW.pdf
+      \endverb
+      \keyw{2006,c,c 2006 massachusetts institute,e,gaussian processes for machine,gaussianprocess,gpml,i,isbn 026218253x,k,learning,of technology,org,rasmussen,the mit press,williams,www}
+    \endentry
+    \entry{Rossi2006}{book}{}
+      \name{author}{3}{}{%
+        {{hash=34775cbf2fb6674704ea5c99631d1165}{%
+           family={Rossi},
+           family_i={R\bibinitperiod},
+           given={Peter\bibnamedelima E.},
+           given_i={P\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=866e7ec2216b43cdbadc93493842212c}{%
+           family={Allenby},
+           family_i={A\bibinitperiod},
+           given={Greg\bibnamedelima M.},
+           given_i={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=c134ba472efacdbe0325f6b6752eeccd}{%
+           family={McCulloch},
+           family_i={M\bibinitperiod},
+           given={Robert},
+           given_i={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{8c7ba8874656c1f10baa909e795e35d9}
+      \strng{fullhash}{8c7ba8874656c1f10baa909e795e35d9}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Bayesian methods have become widespread in marketing literature. We review the essence of the Bayesian approach and explain why it is particularly useful for marketing problems. While the appeal of the Bayesian approach has long been noted by researchers, recent ... $\backslash$n}
+      \field{booktitle}{Bayesian Statistics and Marketing}
+      \field{isbn}{9780470863695}
+      \field{issn}{0732-2399}
+      \field{title}{{Bayesian Statistics and Marketing}}
+      \field{year}{2006}
+      \field{pages}{1\bibrangedash 348}
+      \range{pages}{348}
+      \verb{doi}
+      \verb 10.1002/0470863692
+      \endverb
+    \endentry
+    \entry{Wackernagel1995}{article}{}
+      \name{author}{1}{}{%
+        {{hash=26005fe1892a575278d0124c0f9b178e}{%
+           family={Wackernagel},
+           family_i={W\bibinitperiod},
+           given={H.},
+           given_i={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{26005fe1892a575278d0124c0f9b178e}
+      \strng{fullhash}{26005fe1892a575278d0124c0f9b178e}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Geostatistics offers a variety of models, methods and techniques for the analysis, estimation and display of multivariate data distributed in space or time. The book presents a brief review of statistical concepts, a detailed introduction to linear geostatistics, and an account of three basic methods of multivariate analysis. It contains an advanced presentation of linear models for multivariate spatial or temporal data, including the bilinear model of coregionalization, and an introduction to non-stationary geostatistics with a special focus on the external drift method. The 30 chapters are presented in five parts: preliminaries, geostatistics, multivariate analysis, multivariate geostatistics, non-stationary geostatistics. -from Publisher}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{3540441425}
+      \field{issn}{3540601279 (ISBN)}
+      \field{journaltitle}{Multivariate geostatistics: an introduction with applications}
+      \field{title}{{Multivariate geostatistics: an introduction with applications}}
+      \field{year}{1995}
+      \verb{doi}
+      \verb 10.1016/S0098-3004(97)87526-7
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1011.1669v3
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+
 \refsection{3}
   \sortlist[entry]{nty/global/}
     \entry{Auer1995}{inproceedings}{}
@@ -1507,6 +1905,36 @@
       \verb http://www.library.wisc.edu/selectedtocs/bg0137.pdf
       \endverb
     \endentry
+    \entry{Bottou2003}{article}{}
+      \name{author}{1}{}{%
+        {{hash=179581647e37c19b9a3deb51a1cfc5b0}{%
+           family={Bottou},
+           family_i={B\bibinitperiod},
+           given={Leon},
+           given_i={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{179581647e37c19b9a3deb51a1cfc5b0}
+      \strng{fullhash}{179581647e37c19b9a3deb51a1cfc5b0}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This contribution presents an overview of the theoretical and practical aspects of the broad family of learning algorithms based on Stochastic Gradient Descent, including Perceptrons, Adalines, K-Means, LVQ, Multi-Layer Networks, and Graph Transformer Networks.}
+      \field{isbn}{978-3-540-23122-6}
+      \field{issn}{00335533}
+      \field{journaltitle}{Learning}
+      \field{title}{{Stochastic Learning}}
+      \field{year}{2003}
+      \field{pages}{22}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1007/978-3-540-28650-9_7
+      \endverb
+      \verb{url}
+      \verb http://www.cs.nyu.edu/courses/fall10/G22.2965-001/stocgraddescent.pdf
+      \endverb
+      \keyw{stochastic gradient descent,stochastic learning}
+    \endentry
     \entry{Chang2011}{article}{}
       \name{author}{2}{}{%
         {{hash=0d5f4e2b63c9a6b72a1383ef04f60df2}{%
@@ -2096,6 +2524,51 @@
       \verb 10.1021/jm060999m
       \endverb
     \endentry
+    \entry{LeCun2015}{article}{}
+      \name{author}{3}{}{%
+        {{hash=6a1aa6b7eab12b931ca7c7e3f927231d}{%
+           family={LeCun},
+           family_i={L\bibinitperiod},
+           given={Yann},
+           given_i={Y\bibinitperiod}}}%
+        {{hash=40a8e4774982146adc2688546f54efb2}{%
+           family={Bengio},
+           family_i={B\bibinitperiod},
+           given={Yoshua},
+           given_i={Y\bibinitperiod}}}%
+        {{hash=9a8750ccdb2a4cf14d2655face1ce016}{%
+           family={Hinton},
+           family_i={H\bibinitperiod},
+           given={Geoffrey},
+           given_i={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{c6c75bd00ce5a488e91a749d8383b3df}
+      \strng{fullhash}{c6c75bd00ce5a488e91a749d8383b3df}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction. These methods have dramatically improved the state-of-the-art in speech recognition, visual object recognition, object detection and many other domains such as drug discovery and genomics. Deep learning discovers intricate structure in large data sets by using the backpropagation algorithm to indicate how a machine should change its internal parameters that are used to compute the representation in each layer from the representation in the previous layer. Deep convolutional nets have brought about breakthroughs in processing images, video, speech and audio, whereas recurrent nets have shone light on sequential data such as text and speech.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{3135786504}
+      \field{issn}{0028-0836}
+      \field{journaltitle}{Nature}
+      \field{number}{7553}
+      \field{title}{{Deep learning}}
+      \field{volume}{521}
+      \field{year}{2015}
+      \field{pages}{436\bibrangedash 444}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1038/nature14539
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1312.6184v5
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1038/nature14539
+      \endverb
+    \endentry
     \entry{Lewis2000}{article}{}
       \name{author}{3}{}{%
         {{hash=0cf8357de9cee86a4b6f5ad09b34b617}{%
@@ -2215,6 +2688,51 @@
       \verb 10.1002/prot.20588
       \endverb
       \keyw{Docking,Protein-ligand interactions,Statistical potentials,Targeted scoring functions,Virtual screening}
+    \endentry
+    \entry{Rumelhart1986}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c84f9d607e83d071830e9667dc3cb31f}{%
+           family={Rumelhart},
+           family_i={R\bibinitperiod},
+           given={David\bibnamedelima E.},
+           given_i={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=881b7655f3886f90a9400902a521acdb}{%
+           family={Hinton},
+           family_i={H\bibinitperiod},
+           given={Geoffrey\bibnamedelima E.},
+           given_i={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=68500db67576d4d0a65080bb1c0f9b9b}{%
+           family={Williams},
+           family_i={W\bibinitperiod},
+           given={Ronald\bibnamedelima J.},
+           given_i={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ba1d15d4121bba06b3a9707e415adefc}
+      \strng{fullhash}{ba1d15d4121bba06b3a9707e415adefc}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We describe a new learning procedure, back-propagation, for networks of neurone-like units. The procedure repeatedly adjusts the weights of the connections in the network so as to minimize a measure of the difference between the actual output vecotr of the net and the desired output vector. As a result of the weight adjustments, internal 'hidden' units wich are not part of the input or output come to represent important features of the task domain, and the regularities in the task are captured by the interactions of these units. The ability to create useful new features distinguishes back-propagation from earlier, simpoler methods such as the perceptron-convergence procedure.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{0262661160}
+      \field{issn}{0028-0836}
+      \field{journaltitle}{Nature}
+      \field{number}{6088}
+      \field{title}{{Learning representations by back-propagating errors}}
+      \field{volume}{323}
+      \field{year}{1986}
+      \field{pages}{533\bibrangedash 536}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1038/323533a0
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1011.1669v3
+      \endverb
+      \verb{url}
+      \verb http://books.google.com/books?hl=en%7B%5C&%7Dlr=%7B%5C&%7Did=FJblV%7B%5C_%7DiOPjIC%7B%5C&%7Doi=fnd%7B%5C&%7Dpg=PA213%7B%5C&%7Ddq=Learning+representations+by+back-propagating+errors%7B%5C&%7Dots=zZDj2mGYVQ%7B%5C&%7Dsig=mcyEACaE%7B%5C_%7DZB4FB4xsoTgXgcbE2g$%5Cbackslash$nhttp://books.google.com/books?hl=en%7B%5C&%7Dlr=%7B%5C&%7Did=FJblV%7B%5C_%7DiOPjIC%7B%5C&%7Doi=fnd%7B%5C&%7Dpg=PA213%7B%5C&%7Ddq=Learn
+      \endverb
     \endentry
     \entry{Schapire1999}{inproceedings}{}
       \name{author}{1}{}{%
