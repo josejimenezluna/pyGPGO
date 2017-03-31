@@ -32,7 +32,7 @@ The user only has to define a function and a dictionary.
 import numpy as np
 from pyGPGO.covfunc import squaredExponential
 from pyGPGO.acquisition import Acquisition
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.GPGO import GPGO
 
 def f(x):
@@ -40,7 +40,7 @@ def f(x):
 
 
 sexp = squaredExponential()
-gp = GPRegressor(sexp)
+gp = GaussianProcess(sexp)
 acq = Acquisition(mode='ExpectedImprovement')
 param = {'x': ('cont', [0, 2 * np.pi])}
 

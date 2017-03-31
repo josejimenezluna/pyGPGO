@@ -1083,11 +1083,11 @@ In this example, we will try to optimize the two-dimensional Rastrigin function:
 f(x, y| a, b) = (a - x)^2 + b(y - x^2)^2
 \end{equation}
 
-For given hyperparameters $a=1,\, b=100$ and in a bounding box defined by $x,y \in [-1, 1]$. A biplot of this function can be checked in Figure \ref{fig:rosen}. This particular version of the Rossenbrock function has four different local optima, therefore it is multimodal. We would expect our GPGO algorithm to converge to one of these optima, while still exploring the space at earlier stages of optimization.\\
+For given hyperparameters $a=1,\, b=100$ and in a bounding box defined by $x,y \in [-1, 1]$. A biplot of this function can be checked in Figure \ref{fig:rosen}. This particular version of the Rastrigin function has four different local optima, therefore it is multimodal. We would expect our GPGO algorithm to converge to one of these optima, while still exploring the space at earlier stages of optimization.\\
 
 \begin{figure}
 	\centering
-	\caption{A 2D representation of the Rossenbrock function for $x, y \in [-1, 1]$.}
+	\caption{A 2D representation of the Rastrigin function for $x, y \in [-1, 1]$.}
 	\label{fig:rosen}
 	\includegraphics[scale=0.5]{figures/chapter3/rosen/rosen}
 \end{figure}
@@ -1098,7 +1098,7 @@ It can be seen that during the previous steps before fitting a Gaussian Process,
 
 \begin{figure}
 	\centering
-	\caption{Six complete optimization epochs in the Bayesian Optimization framework for the target Rossenbrock 2D function.}
+	\caption{Six complete optimization epochs in the Bayesian Optimization framework for the target Rastrigin 2D function.}
 	\label{fig:2dstep}
 	\begin{subfigure}[b]{0.45\textwidth}
 		\caption{Step 1}
@@ -1373,7 +1373,7 @@ We will address one of the most popular problems in computational chemistry in t
 \label{fig:docking}
 \end{figure}
 
-While many accurate and reliable algorithms exist for pose generation, the main drawback in docking studies continues to be the scoring function itself \cite{Leach2006}. This, therefore still is one of the main open problems in computational chemistry. Over the years, plenty of scoring functions have been developed, for which the most common be classified into empirical \cite{Friesner2004, Krammer2005}, force-field based \cite{Huang2006} or knowledge-based \cite{Mooij2005, Gohlke2000}. These \textit{classical} scoring functions do not fully account for certain physical processes that are important for molecular recognition, therefore limiting their ability to rank for some particular protein-ligand binding pairs. Furthermore, each scoring function assumes a particular functional relationship between some variables characterizing the protein-ligand binding complex and their corresponding binding affinity. For example, typical scoring functions can take the form of a weighted sum of physico-chemical properties (as in the case of a Linear Regression (LR) or Partial Least Squares (PLS) \cite{Abdi2003}). In general, these scoring functions are evaluated from a regression perspective, reporting metrics such as mean squared error (MSE) or Pearson's Correlation Coefficient. \\
+While many accurate and reliable algorithms exist for pose generation, the main drawback in docking studies continues to be the scoring function itself \cite{Leach2006}. This, therefore continues to be an important open problem in computational chemistry. Over the years, plenty of scoring functions have been developed, for which the most common be classified into empirical \cite{Friesner2004, Krammer2005}, force-field based \cite{Huang2006} or knowledge-based \cite{Mooij2005, Gohlke2000}. These \textit{classical} scoring functions do not fully account for certain physical processes that are important for molecular recognition, therefore limiting their ability to rank for some particular protein-ligand binding pairs. Furthermore, each scoring function assumes a particular functional relationship between some variables characterizing the protein-ligand binding complex and their corresponding binding affinity. For example, typical scoring functions can take the form of a weighted sum of physico-chemical properties (as in the case of a Linear Regression (LR) or Partial Least Squares (PLS) \cite{Abdi2003}). In general, these scoring functions are evaluated from a regression perspective, reporting metrics such as mean squared error (MSE) or Pearson's Correlation Coefficient. \\
 
 
 There is, however, an inherent drawback to these classical approaches: assuming a rigid functional between complex descriptors and its affinity clearly limits a predictor's accuracy. It is also known that this restriction for a scoring function constitutes an additional source of error \cite{Baum2010}. As an alternative, non-parametric machine-learning scoring functions have been proposed. These machine learning functions, by not assuming a given structure between the complex and its affinity can capture implicit, hard to model directly relationships between them. This fact has sprung several machine-learning based scoring functions, such as the case of RF-Score \cite{Ballester2010}, ID-score \cite{Li2013}, NN-score \cite{Durrant2011}, SFC-Score \cite{Zilian2013} among many others. Protein-ligand descriptors are computed for these, and examples of those are paired atom-type atom counts, one-dimensional fingerprints computed by RDKit \cite{Labute2000}, ionic interactions or hydrogen-bonds. Interestingly, it has been shown that in general, more specific/complex descriptors do not necessarily lead to lower errors \cite{Ballester2014}.
@@ -1397,11 +1397,12 @@ And the descriptors computed can be expressed as:
 \boldsymbol{x}\left(Z(P_j), Z(L_i)\right) = \sum_{k=1}^{K_j}\sum_{l=1}^{L_i}\Theta (d_{\mathrm{cutoff}} - d_{kl})
 \end{equation}
 
-where $d_{jk}$ is the distance between protein atom $k$ of type $j$ and ligand atom $l$ of type $i$. $Kj$ is the total number of atoms of type $j$ from the protein and $L_i$ the total number of atoms of type $i$ in the ligand. $Z$ is a function returning the atomic number of an element and $\Theta$ is a heavystep function returning $1$ for distances below $d_{\mathrm{cutoff}}$ and $0$ otherwise. This computation would result on a Cartesian product of $81$ different features, $39$ of which resulted in redundant zeroes across the entire dataset, so they were removed for a final set of $42$ features. All molecular computations detailed here were performed using the HTMD Python package \cite{Doerr2016} for atomic manipulation. A script with explicit descriptor computation is available in Appendix [script].
+where $d_{jk}$ is the distance between protein atom $k$ of type $j$ and ligand atom $l$ of type $i$. $Kj$ is the total number of atoms of type $j$ from the protein and $L_i$ the total number of atoms of type $i$ in the ligand. $Z$ is a function returning the atomic number of an element and $\Theta$ is a heavystep function returning $1$ for distances below $d_{\mathrm{cutoff}}$ and $0$ otherwise. This computation would result on a Cartesian product of $81$ different features, $39$ of which resulted in redundant zeroes across the entire dataset, so they were removed for a final set of $42$ features. All molecular computations detailed here were performed using the HTMD Python package \cite{Doerr2016} for atomic manipulation. The complete dataset is available in the GitHub repository of this thesis.
+
 
 \subsection{Experiments}
 
-We detail here results for all the models and parameter ranges considered in the protocol. Figures \ref{fig:affsvm} - \ref{fig:affgbm} show protocol evaluations for the binding affinity dataset. It can be seen that all models benefit from the hyper-parameter optimization procedure detailed in this master's thesis, since all Bayesian Optimization strategies achieve a better mean squared error in much fewer function evaluations.
+We detail here results for all the models and parameter ranges considered in the protocol. Figures \ref{fig:affsvm} - \ref{fig:affgbm} show protocol evaluations for the binding affinity dataset. It can be seen that all models benefit from the hyper-parameter optimization procedure detailed in this master's thesis, since all Bayesian Optimization strategies achieve a better mean squared error in much fewer function evaluations. Interestingly, the Bayesian Optimization approach tends to perform similarly regardless of the chosen acquisition function. In fact, for both K-nearest neighbors and the Gradient Boosting Machine, no difference can be observed between them.
 
 \begin{figure}
 \centering
@@ -1434,7 +1435,24 @@ We detail here results for all the models and parameter ranges considered in the
 \newpage
 
 \section{The protein-protein interface prediction dataset}
+
 \subsection{Description of the problem}
+
+Proteins are the main catalytic agents, transporters, signal transmitters on cells. In practice, proteins do not function on their own, they interact with other molecules to carry out their role. Particularly, proteins can interact with other proteins, and for instance, alterations on the interface (see Figure \ref{fig:interface}) can lead to disease. Hence, over the last years, protein-protein interfaces have become targets for rational drug-design [ref]. But a previous step for structural based drug design is identifying the interface itself. Many biochemical or biophysical experimental techniques are able to identify protein-protein interfaces, such as X-ray crystallography [ref] or nuclear magnetic resonance [ref]. However, while these methods are extremely accurate, carrying them out in practice is expensive, labor-intensive and very time-consuming. This is the main reason why computational approaches arose, they provide inexpensive ways of predicting these interfaces.\\
+
+\begin{figure}
+\centering
+\caption{An interface between two proteins. Residues drawn in blue are defined as interficial according to heavy-atom distance.}
+\includegraphics[width=0.6\textwidth]{figures/chapter4/interface}
+\label{fig:interface}
+\end{figure}
+
+Computational methods for predicting protein-protein interfaces can be mainly classified in three different groups: (1) data-driven or knowledge-based methods, where the quality of the predictions heavily relies on existing experimental data, either by the use of homology models [ref] or statistical models; (2) methods that rely on protein-protein docking [ref], that is, methods using physical and geometrical properties to search putative conformations with low free energy or (3), co-evolution based methods that work with the assumption that interface residues are preserved during co-evolution, typically identifying these using multiple sequence alignments [ref]. In the work presented here, we focus on (1). All methods have strength and weaknesses, and can be combined in different ways to make more reliable predictions.\\
+
+Among the data-driven approaches, we can either distinguish among sequence based methods, those that require only the one-dimensional sequence of a target protein, and structural based methods, which use the full three-dimensional structure of a protein. The latter methods, while typically do not dispose as much data compared to the former, offer several advantages: rather than identifying every single residue on a protein, they can filter their search to the ones on the surface using quantities such as the Relative Solvent Accessible Area [ref].\\
+
+In practice, machine-learning models are applied to structure-based methods. The problem of predicting interfaces is defined as a binary classification task, where we classify each residue on the surface as either interficial or not. Typically a neighbourhood around each residue is considered, which is typically called a \textit{surface patch}, from which some properties $\boldsymbol{x}$ (descriptors) are extracted. Some recent structure-based machine learning methods are SPPIDER [ref], PINUP [ref], ProMate [ref] or PIER [ref]. There is also the problem of defining what an interface is, specially when benchmarking different methods: the most common one defines a residue as interficial if any heavy-atom is within $k$ \AA\ distance of any heavy-atom of the interacting protein [ref]. Other definitions consider van der Waals surface distance [ref] or delta accessible surface area change upn complexation [ref].
+
 \subsection{Description of the dataset}
 \subsection{Experiments}
 

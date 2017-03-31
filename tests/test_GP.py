@@ -1,5 +1,5 @@
 import numpy as np
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.covfunc import squaredExponential
 
 def test_GP():
@@ -8,7 +8,7 @@ def test_GP():
     y = 0.5 * np.sin(3 * X[:, 0]) + rng.normal(0, 0.5, X.shape[0])
 
     sexp = squaredExponential()
-    gp = GPRegressor(sexp, optimize=True, usegrads=True)
+    gp = GaussianProcess(sexp, optimize=True, usegrads=True)
     gp.fit(X, y)
 
     params = gp.getcovparams()

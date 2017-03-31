@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
 from pyGPGO.GPGO import GPGO
@@ -29,7 +29,6 @@ if __name__ == '__main__':
     def f(x):
         return (np.sin(x))
 
-
     acq_1 = Acquisition(mode='ExpectedImprovement')
     acq_2 = Acquisition(mode='ProbabilityImprovement')
     acq_3 = Acquisition(mode='UCB', beta=0.5)
@@ -44,7 +43,7 @@ if __name__ == '__main__':
 
     for index, acq in enumerate(acq_list):
         np.random.seed(200)
-        gp = GPRegressor(sexp)
+        gp = GaussianProcess(sexp)
         gpgo = GPGO(gp, acq, f, param)
         gpgo._firstRun(n_eval=3)
         plotGPGO(gpgo, param, index=index + 2, new=new)

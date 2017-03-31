@@ -7,12 +7,9 @@ from sklearn.model_selection import train_test_split, KFold
 from sklearn.preprocessing import StandardScaler
 
 from pyGPGO.GPGO import GPGO
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
-
-
-# from testing.other_go import SimulatedAnnealing
 
 
 class loss:
@@ -86,7 +83,7 @@ def evaluateDataset(csv_path, target_index, problem, model, parameter_dict, meth
     print('Evaluating EI')
     np.random.seed(seed)
     sexp = squaredExponential()
-    gp = GPRegressor(sexp, optimize=True, usegrads=True)
+    gp = GaussianProcess(sexp, optimize=True, usegrads=True)
     acq_ei = Acquisition(mode='ExpectedImprovement')
     gpgo_ei = GPGO(gp, acq_ei, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
     gpgo_ei.run(max_iter=max_iter)
@@ -95,7 +92,7 @@ def evaluateDataset(csv_path, target_index, problem, model, parameter_dict, meth
     print('Evaluating UCB beta = 0.5')
     np.random.seed(seed)
     sexp = squaredExponential()
-    gp = GPRegressor(sexp, optimize=True, usegrads=True)
+    gp = GaussianProcess(sexp, optimize=True, usegrads=True)
     acq_ucb = Acquisition(mode='UCB', beta=0.5)
     gpgo_ucb = GPGO(gp, acq_ucb, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
     gpgo_ucb.run(max_iter=max_iter)
@@ -103,7 +100,7 @@ def evaluateDataset(csv_path, target_index, problem, model, parameter_dict, meth
     print('Evaluating UCB beta = 1.5')
     np.random.seed(seed)
     sexp = squaredExponential()
-    gp = GPRegressor(sexp, optimize=True, usegrads=True)
+    gp = GaussianProcess(sexp, optimize=True, usegrads=True)
     acq_ucb2 = Acquisition(mode='UCB', beta=1.5)
     gpgo_ucb2 = GPGO(gp, acq_ucb2, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
     gpgo_ucb2.run(max_iter=max_iter)

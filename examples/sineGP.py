@@ -1,5 +1,5 @@
 import numpy as np
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.covfunc import squaredExponential
 import matplotlib.pyplot as plt
 
@@ -12,7 +12,7 @@ if __name__ == '__main__':
     # Specify covariance function
     sexp = squaredExponential()
     # Instantiate GPRegressor class
-    gp = GPRegressor(sexp)
+    gp = GaussianProcess(sexp)
     # Fit the model to the data
     gp.fit(X, y)
 

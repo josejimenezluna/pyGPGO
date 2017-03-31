@@ -3,8 +3,7 @@ from scipy.linalg import cholesky, solve
 from collections import OrderedDict
 from scipy.optimize import minimize
 
-
-class GPRegressor:
+class GaussianProcess:
     def __init__(self, covfunc, optimize=False, usegrads=False):
         """
         Gaussian Process regressor class. Based on Rasmussen & Williams [1]_ algorithm 2.1.

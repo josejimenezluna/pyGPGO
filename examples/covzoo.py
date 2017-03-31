@@ -1,5 +1,5 @@
 from pyGPGO.covfunc import *
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
@@ -15,7 +15,7 @@ if __name__ == '__main__':
     plt.figure()
     #plt.rc('text', usetex=True)
     for i, cov in enumerate(covfuncs):
-        gp = GPRegressor(cov, optimize=True, usegrads=False)
+        gp = GaussianProcess(cov, optimize=True, usegrads=False)
         gp.fit(X, y)
         xstar = np.arange(0, 2 * np.pi, step=0.01)
         Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]

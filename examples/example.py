@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 import numpy as np
 from pyGPGO.GPGO import GPGO
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
 
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         return (np.sin(x))
 
     sexp = squaredExponential()
-    gp = GPRegressor(sexp)
+    gp = GaussianProcess(sexp)
     acq = Acquisition(mode='ExpectedImprovement')
     param = {'x': ('cont', [0, 2 * np.pi])}
 

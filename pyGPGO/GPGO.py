@@ -12,7 +12,7 @@ class GPGO:
 
         Parameters
         ----------
-        GPRegressor: GPRegressor instance
+        GPRegressor: GaussianProcess instance
             Gaussian Process surrogate model instance.
         Acquisition: Acquisition instance
             Acquisition instance.

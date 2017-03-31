@@ -1,5 +1,5 @@
 import numpy as np
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.covfunc import squaredExponential
 import matplotlib.pyplot as plt
 
@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     for l in length_scales:
         sexp = squaredExponential(l=l)
-        gp = GPRegressor(sexp)
+        gp = GaussianProcess(sexp)
         gp.fit(X, y)
         logp.append(gp.logp)
         grad.append(gradient(gp, sexp))

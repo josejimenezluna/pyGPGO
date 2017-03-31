@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from pyGPGO.GPGO import GPGO
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
 
@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
     np.random.seed(20)
     sexp = squaredExponential()
-    gp = GPRegressor(sexp)
+    gp = GaussianProcess(sexp)
     acq = Acquisition(mode='ExpectedImprovement')
 
     param = OrderedDict()
