@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 def readme():
     with open('README.md') as f:
@@ -18,7 +18,7 @@ setup(name='pyGPGO',
     author='Jose Jimenez',
     author_email='jose.jimenez@upf.edu',
     license='MIT',
-    packages=['pyGPGO'],
+    packages=find_packages(),
     install_requires=[
         'numpy',
         'scipy',
