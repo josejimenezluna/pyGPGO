@@ -112,24 +112,26 @@
 \defcounter {refsection}{4}\relax 
 \contentsline {subsection}{\numberline {4.3.2}Description of the dataset}{53}{subsection.4.3.2}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsection}{\numberline {4.3.3}Experiments}{53}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.3}Experiments}{54}{subsection.4.3.3}
 \defcounter {refsection}{4}\relax 
-\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{61}{chapter.5}
+\contentsline {section}{\numberline {4.4}Other datasets}{54}{section.4.4}
+\defcounter {refsection}{4}\relax 
+\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{63}{chapter.5}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.1}Installation}{61}{section.5.1}
+\contentsline {section}{\numberline {5.1}Installation}{63}{section.5.1}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.2}Usage}{62}{section.5.2}
+\contentsline {section}{\numberline {5.2}Usage}{64}{section.5.2}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.2.1}A minimal example}{62}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.1}A minimal example}{64}{subsection.5.2.1}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.3}Examples}{64}{section.5.3}
+\contentsline {section}{\numberline {5.3}Examples}{66}{section.5.3}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.3.1}Gaussian Process regression using the \texttt {GPRegressor} module.}{64}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.1}Gaussian Process regression using the \texttt {GPRegressor} module.}{66}{subsection.5.3.1}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.3.2}Optimizing parameters of a machine-learning model using the \texttt {GPGO} module.}{65}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.2}Optimizing parameters of a machine-learning model using the \texttt {GPGO} module.}{67}{subsection.5.3.2}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.4}Features}{66}{section.5.4}
+\contentsline {section}{\numberline {5.4}Features}{68}{section.5.4}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.5}Comparison with existing software}{66}{section.5.5}
+\contentsline {section}{\numberline {5.5}Comparison with existing software}{68}{section.5.5}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.6}Future work}{66}{section.5.6}
+\contentsline {section}{\numberline {5.6}Future work}{68}{section.5.6}

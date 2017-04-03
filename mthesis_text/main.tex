@@ -1438,7 +1438,7 @@ We detail here results for all the models and parameter ranges considered in the
 
 \subsection{Description of the problem}
 
-Proteins are the main catalytic agents, transporters, signal transmitters on cells. In practice, proteins do not function on their own, they interact with other molecules to carry out their role. Particularly, proteins can interact with other proteins, and for instance, alterations on the interface (see Figure \ref{fig:interface}) can lead to disease. Hence, over the last years, protein-protein interfaces have become targets for rational drug-design [ref]. But a previous step for structural based drug design is identifying the interface itself. Many biochemical or biophysical experimental techniques are able to identify protein-protein interfaces, such as X-ray crystallography [ref] or nuclear magnetic resonance [ref]. However, while these methods are extremely accurate, carrying them out in practice is expensive, labor-intensive and very time-consuming. This is the main reason why computational approaches arose, they provide inexpensive ways of predicting these interfaces.\\
+Proteins are the main catalytic agents, transporters, signal transmitters on cells. In practice, proteins do not function on their own, they interact with other molecules to carry out their role. Particularly, proteins can interact with other proteins, and for instance, alterations on the interface (see Figure \ref{fig:interface}) can lead to disease. Hence, over the last years, protein-protein interfaces have become targets for rational drug-design \cite{Jubb2015}. But a previous step for structural based drug design is identifying the interface itself. Many biochemical or biophysical experimental techniques are able to identify protein-protein interfaces, such as X-ray crystallography \cite{Shi2014} or nuclear magnetic resonance (NMR) \cite{Gobl2014}. However, while these methods are extremely accurate, carrying them out in practice is expensive, labor-intensive and very time-consuming. This is the main reason why computational approaches arose, they provide inexpensive ways of predicting these interfaces.\\
 
 \begin{figure}
 \centering
@@ -1447,13 +1447,99 @@ Proteins are the main catalytic agents, transporters, signal transmitters on cel
 \label{fig:interface}
 \end{figure}
 
-Computational methods for predicting protein-protein interfaces can be mainly classified in three different groups: (1) data-driven or knowledge-based methods, where the quality of the predictions heavily relies on existing experimental data, either by the use of homology models [ref] or statistical models; (2) methods that rely on protein-protein docking [ref], that is, methods using physical and geometrical properties to search putative conformations with low free energy or (3), co-evolution based methods that work with the assumption that interface residues are preserved during co-evolution, typically identifying these using multiple sequence alignments [ref]. In the work presented here, we focus on (1). All methods have strength and weaknesses, and can be combined in different ways to make more reliable predictions.\\
+Computational methods for predicting protein-protein interfaces can be mainly classified in three different groups: (1) data-driven or knowledge-based methods, where the quality of the predictions heavily relies on existing experimental data, either by the use of homology models \cite{Jordan2012, Xue2011} or statistical models; (2) methods that rely on protein-protein docking \cite{Vakser2014}, that is, methods using physical and geometrical properties to search putative conformations with low free energy or (3), co-evolution based methods that work with the assumption that interface residues are preserved during co-evolution, typically identifying these using multiple sequence alignments \cite{Hopf2014}. In the work presented here, we focus on (1). All methods have strength and weaknesses, and can be combined in different ways to make more reliable predictions.\\
 
-Among the data-driven approaches, we can either distinguish among sequence based methods, those that require only the one-dimensional sequence of a target protein, and structural based methods, which use the full three-dimensional structure of a protein. The latter methods, while typically do not dispose as much data compared to the former, offer several advantages: rather than identifying every single residue on a protein, they can filter their search to the ones on the surface using quantities such as the Relative Solvent Accessible Area [ref].\\
+Among the data-driven approaches, we can either distinguish among sequence based methods, those that require only the one-dimensional sequence of a target protein, and structural based methods, which use the full three-dimensional structure of a protein. The latter methods, while typically do not dispose as much data compared to the former, offer several advantages: rather than identifying every single residue on a protein, they can filter their search to the ones on the surface using quantities such as the Relative Solvent Accessible Area \cite{Tien2013}.\\
 
-In practice, machine-learning models are applied to structure-based methods. The problem of predicting interfaces is defined as a binary classification task, where we classify each residue on the surface as either interficial or not. Typically a neighbourhood around each residue is considered, which is typically called a \textit{surface patch}, from which some properties $\boldsymbol{x}$ (descriptors) are extracted. Some recent structure-based machine learning methods are SPPIDER [ref], PINUP [ref], ProMate [ref] or PIER [ref]. There is also the problem of defining what an interface is, specially when benchmarking different methods: the most common one defines a residue as interficial if any heavy-atom is within $k$ \AA\ distance of any heavy-atom of the interacting protein [ref]. Other definitions consider van der Waals surface distance [ref] or delta accessible surface area change upn complexation [ref].
+In practice, machine-learning models are applied to structure-based methods. The problem of predicting interfaces is defined as a binary classification task, where we classify each residue on the surface as either interficial or not. Typically a neighbourhood around each residue is considered, which is typically called a \textit{surface patch}, from which some properties $\boldsymbol{x}$ (descriptors) are extracted. Some recent structure-based machine learning methods are SPPIDER \cite{Porollo2007}, PINUP \cite{Liang2006}, ProMate \cite{Neuvirth2004} or PIER \cite{Kufareva2007}. There is also the problem of defining what an interface is, specially when benchmarking different methods: the most common one defines a residue as interficial if any heavy-atom is within $k$ \AA\ distance of any heavy-atom of the interacting protein \cite{AfsarMinhas2014}. Other definitions consider van der Waals surface distance \cite{Jordan2012} or delta accessible surface area change upon complexation \cite{Jones1997}.
 
 \subsection{Description of the dataset}
+
+For the work described here, we use the PIFACE \cite{Cukuroglu2014} database. PIFACE is a non-redundant database extracted from the the PDB. It also provides clusters of \textit{unique} extracted interface, in terms of a similarity metric reported in [ref]. In total, it comprises 22604 non-redundant representative interfaces, from which a random sample of 2261 is selected for the work detailed here. While there are other more common databases used for protein-protein interface prediction, such as the protein-protein docking benchmark (DB4) [ref], we choose PIFACE mostly for (1) the number of annotated interfaces is significantly larger, (2) it provides structural clusters that help prevent overfitting issues when training classification models and (3) it is very clearly organized following PDB standards. Notice that while 2261 interfaces are selected, our samples are composed of residues, and depending on the size of the interacting proteins, the number of contacting ones can result to be quite large.\\
+
+Special care has to be taken with the unbalanced dataset problem \cite{Longadge2013}. Since only a few residues of a protein are considered part of the interface (positive-cases), most of the residues are marked non-interficial (negative-cases). In practice, this poses a problem since most classifiers would have an unfair tendency to classify most of the instances as the majority class, therefore rendering every conclusions useless. There are many strategies to circumvent this problem, the most simple one being balancing both classes by undersampling the majority class. There is also theoretical evidence on why this approach is preferable to others \cite{Wallace2011}.  \\ 
+
+In terms of the descriptors used, we used a simplified version of the ones detailed in [ref] for another problem of similar characteristics: protein binding site prediction. In summary, we treat protein structures from a computer vision perspective, as if they were 3D images. Coordinates of this 3D image are defined to span the bounding box of the protein plus a buffer of 8\AA\ to account for pockets located close to its edges. The 3D image is then discretized into a grid of 1x1x1\AA$^3$ sized voxels. For each of said voxels, a compendium of atomic-based pharmacophoric properties is defined. Voxel occupancies are defined with respect to the atoms in the protein depending on their excluded volume and other seven atom properties: hydrophobic, aromatic, hydrogen bond acceptor or donor, positive or negative ionizable and metallic. These are called \textit{channels}, to draw a comparison to computer vision, where an image can be represented with three different color arrays: red, green and blue. The AutoDock 4 \cite{Morris2009} atom types found in Table \ref{table:autodockprop} were used with the rules of Table \ref{table:corr} to assign each atom to a specific channel. Non-protein atoms are filtered out of the calculation. Atom occupancies were calculated by taking the simplest approximation for the pair correlation function defined by
+
+
+\begin{equation}
+    g(r) = \exp\left(-\beta V(r)\right), \label{gr_eq}
+\end{equation}
+where $V(r)=\epsilon (r_\mathrm{vdw}/r)^{12}$ is the repulsive component of a Lennard-Jones potential and $r_{\mathrm{vdw}}$ is the Van der Waals atom radius. For simplicity we take the same $\epsilon$ for every atom type and such that $\beta \epsilon=1$. The single atom occupancy estimate is therefore given by
+
+\begin{equation}
+    n(r) = 1-\exp\left(-(r_{\mathrm{vdw}}/r)^{12}\right).
+\end{equation}
+
+ Finally, the occupancy for each property of each voxel is calculated as the maximum of the contribution of all atoms belonging to that channel at its center. We provide a pseudo-code algorithm for the calculation of these descriptors in Algorithm \ref{alg}. For user convenience, these descriptors are implemented and available in the HTMD \cite{Doerr2016} Python package for molecular manipulation and computing. In the work described in [ref], the main model is a 3D-convolutional neural-network, since these descriptors are three dimensional (times 8 property channels) themselves. To simplify analyses and use the same models as with the other datasets, we flatten said channel descriptors to two-dimensions using the average for each channel. In practice, these represent the average prevalence of a particular property in a particular neighbourhood of the protein. The computed dataset is available in the accompanying GitHub repository of this work.
+ 
+ \begin{table}
+\centering
+\caption{AutoDock 4 atom types}
+\label{table:autodockprop}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Element} & \textbf{Description} \\ \midrule
+C  & Non H-bonding Aliphatic Carbon     \\
+A  & Non H-bonding Aromatic Carbon      \\
+NA & Acceptor 1 H-bond Nitrogen         \\
+NS & Acceptor S Spherical Nitrogen      \\
+OA & Acceptor 2 H-bonds Oxygen          \\
+OS & Acceptor S Spherical Oxygen        \\
+SA & Acceptor 2 H-bonds Sulphur         \\
+HD & Donor 1 H-bond Hydrogen            \\
+HS & Donor S Spherical Hydrogen         \\
+MG & Non H-bonding Magnesium            \\
+ZN & Non H-bonding Zinc                 \\
+MN & Non H-bonding Manganese            \\
+CA & Non H-bonding Calcium              \\
+FE & Non H-bonding Iron                 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!htb]
+\centering
+\caption{Property - atom type (AutoDock 4) correspondence used for Deepsite's 3D descriptor computation}
+\label{table:corr}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Property}      & \textbf{Rule}                          \\ \midrule
+Hydrophobic            & atom type C or A                       \\
+Aromatic               & atom type A                            \\
+Hydrogen bond acceptor & atom type NA or NS or OA or OS or SA   \\
+Hydrogen bond donor    & atom type HD or HS with O or N partner \\
+Positive ionizable     & atom with positive charge              \\
+Negative ionizable     & atom with negative charge              \\
+Metal                  & atom type MG or ZN or MN or CA or FE   \\
+Excluded volume        & all atom types                         \\ \bottomrule
+\end{tabular}
+\end{table}
+
+ 
+  	\begin{algorithm}
+		\caption{Descriptor pseudo-code computation.}
+		\label{alg}
+		\begin{algorithmic}[1]
+			\Function {Occupancy}{atomCoords, centerCoords, radii, channels}
+			\For{each atom $A$ in system}
+					\State{$\boldsymbol{a} \gets \mathrm{atomCoords}_A$}
+				    \State{$\boldsymbol{h} \gets \mathrm{channels}_A$}
+				    \State{$\boldsymbol{r}_\mathrm{vdw} \gets \mathrm{radii}_A$}
+					\For{each center $\boldsymbol{c}$  in centerCoords}
+							\State{$r \gets L_2\mathrm{Dist}(\boldsymbol{c}, \boldsymbol{a})$}
+							\State{$x \gets \dfrac{r_\mathrm{vdw}}{r}$}
+							\State{$n \gets 1 - \exp(-x^{12})$}
+							\For{each channel $p$ in $\boldsymbol{h}$}
+									\State{$O_{\boldsymbol{c}, p} \gets \max\left\lbrace n, O_{\boldsymbol{c}, p}\right\rbrace$}
+							\EndFor
+					\EndFor
+			\EndFor
+			\EndFunction
+		\end{algorithmic}
+	\end{algorithm}
+
+
 \subsection{Experiments}
 
 
@@ -1484,6 +1570,10 @@ In practice, machine-learning models are applied to structure-based methods. The
 \includegraphics[scale=0.75]{figures/chapter4/pinter/mlp}
 \label{fig:affmlp}
 \end{figure}
+
+\section{Other datasets}
+
+In this section, we detail more results for the same models considered throughout the chapter. We aim to further demonstrate with other examples that Bayesian Optimization is a good default strategy for optimizing machine-learning hyperparameters. The datasets shown here span areas different from the ones considered in the more detailed previous examples.
 
 \printbibliography
 
