@@ -1,44 +1,67 @@
+import matplotlib.pyplot as plt
+import matplotlib.cm as cmap
+cm = cmap.inferno
+
 import numpy as np
-from scipy.linalg import cholesky, inv
-from numpy.random import multivariate_normal, uniform
-from pyGPGO.covfunc import squaredExponential
-from pyGPGO.surrogates.GaussianProcess import GaussianProcess
-
-rng = np.random.RandomState(0)
-X = rng.uniform(0, 5, 20)[:, np.newaxis]
-y = 0.5 * np.sin(3 * X[:, 0]) + rng.normal(0, 0.5, X.shape[0])
-
-def computeStuff(l, scale=20):
-    S_theta = np.eye(X.shape[0])
-    sexp = squaredExponential(l=l)
-    gp = GaussianProcess(sexp)
-    Sigma_theta = gp.covfunc.K(X, X)
-    R_theta = S_theta - np.dot(np.dot(S_theta, inv(S_theta + Sigma_theta)), S_theta)
-    L_theta = cholesky(R_theta, lower=True)
-    m_theta = np.dot(R_theta.dot(inv(S_theta)), g)
-    return S_theta, Sigma_theta, R_theta, L_theta,m_theta
+import scipy as sp
+import theano
+import theano.tensor as tt
+import theano.tensor.nlinalg
+import sys
+sys.path.insert(0, "../../..")
+import pymc3 as pm
 
 
+if __name__ == '__main__':
+    np.random.seed(20090425)
+    n = 20
+    X = np.sort(3 * np.random.rand(n))[:, None]
 
-def sliceSampling():
-    l = 1
-    S_theta, Sigma_theta, R_theta, L_theta, m_theta = computeStuff(l = l)
-    # Draw surrogate data
-    g = multivariate_normal(y, S_theta)
-    nu = np.dot(inv(L_theta), (y - m_theta))
-    v = uniform(0, 1)
-    l_min = l - v
-    l_max = l_min + scale
-    u = uniform(0, 1)
-    # Determine threshold
-    prior = scipy.stats.gamma.pdf(l, 2, 1)
-    y = u * np.exp(gp.logp) * scipy.stats.multivariate_normal.pdf(g, np.zeros(X.shape[0]), Sigma_theta + S_theta) * prior
-    l_tilde = uniform(l_min, l_max)
-    _, _, Rtilde, Ltilde, m_tilde = computeStuff(l_tilde)
-    f_tilde = np.dot(Ltilde, nu) + m_tilde
+    with pm.Model() as model:
+        # f(x)
+        l_true = 0.3
+        s2_f_true = 1.0
+        cov = s2_f_true * pm.gp.cov.ExpQuad(1, l_true)
 
+        # noise, epsilon
+        s2_n_true = 0.1
+        K_noise = s2_n_true ** 2 * tt.eye(n)
+        K = cov(X) + K_noise
 
-sexp = squaredExponential()
-K = sexp.K(X, X)
-L = cholesky(K, lower=True)
+    # evaluate the covariance with the given hyperparameters
+    K = theano.function([], cov(X) + K_noise)()
 
+    # generate fake data from GP with white noise (with variance sigma2)
+    y = np.random.multivariate_normal(np.zeros(n), K)
+
+    # Proper fitting
+    Z = np.linspace(0, 3, 100)[:, None]
+
+    with pm.Model() as model:
+        # priors on the covariance function hyperparameters
+        l = pm.Uniform('l', 0, 10)
+
+        # uninformative prior on the function variance
+        log_s2_f = pm.Uniform('log_s2_f', lower=-10, upper=5)
+        s2_f = pm.Deterministic('s2_f', tt.exp(log_s2_f))
+
+        # uninformative prior on the noise variance
+        log_s2_n = pm.Uniform('log_s2_n', lower=-10, upper=5)
+        s2_n = pm.Deterministic('s2_n', tt.exp(log_s2_n))
+
+        # covariance functions for the function f and the noise
+        f_cov = s2_f * pm.gp.cov.ExpQuad(1, l)
+
+        y_obs = pm.gp.GP('y_obs', cov_func=f_cov, sigma=s2_n, observed={'X': X, 'Y': y})
+
+    with model:
+        trace = pm.sample(2000)
+
+    pm.traceplot(trace[1000:], varnames=['l', 's2_f', 's2_n'],
+                 lines={"l": l_true,
+                        "s2_f": s2_f_true,
+                        "s2_n": s2_n_true})
+
+    # Predictive distribution
+    with model:
+        gp_samples = pm.gp.sample_gp(trace[1500:], y_obs, Z, random_seed=42)

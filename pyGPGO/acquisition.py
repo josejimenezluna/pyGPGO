@@ -22,6 +22,8 @@ class Acquisition:
         self.eps = eps
         if mode == 'ExpectedImprovement':
             self.f = self.ExpectedImprovement
+        elif mode == 'IntegratedExpectedImprovement':
+            self.f = self.IntegratedExpectedImprovement
         elif mode == 'ProbabilityImprovement':
             self.f = self.ProbabilityImprovement
         elif mode == 'UCB':
@@ -113,10 +115,14 @@ class Acquisition:
         Returns
         -------
         float:
-            Predictive entropy..
+            Predictive entropy.
         """
         sp2 = std **2 + sigman
         return 0.5 * np.log(2 * np.pi * np.e * sp2)
+
+    def IntegratedExpectedImprovement(self, tau, meanmcmc, stdmcmc):
+        acq = [self.ExpectedImprovement(tau, np.array([mean]), np.array([std])) for mean, std in zip(meanmcmc, stdmcmc)]
+        return np.average(acq)
 
     def eval(self, tau, mean, std):
         """
