@@ -66,17 +66,17 @@
 \defcounter {refsection}{3}\relax 
 \contentsline {section}{\numberline {3.5}Optimizing the acquisition function}{31}{section.3.5}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.6}Computational costs}{32}{section.3.6}
+\contentsline {section}{\numberline {3.6}Computational costs}{33}{section.3.6}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.6.1}Approximations to the analytical GP. Alternative surrogates.}{32}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.1}Approximations to the analytical GP. Alternative surrogates.}{33}{subsection.3.6.1}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.6.2}Parallelization}{33}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.2}Parallelization}{34}{subsection.3.6.2}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.7}Step-by-step examples}{34}{section.3.7}
+\contentsline {section}{\numberline {3.7}Step-by-step examples}{35}{section.3.7}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.7.1}Optimizing the sine function}{34}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.1}Optimizing the sine function}{35}{subsection.3.7.1}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.7.2}Optimizing the Rastrigin function}{34}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.2}Optimizing the Rastrigin function}{35}{subsection.3.7.2}
 \defcounter {refsection}{3}\relax 
 \contentsline {chapter}{\numberline {4}Experiments}{43}{chapter.4}
 \defcounter {refsection}{4}\relax 
@@ -90,13 +90,13 @@
 \defcounter {refsection}{4}\relax 
 \contentsline {subsection}{\numberline {4.1.4}Machine-learning models used}{45}{subsection.4.1.4}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsubsection}{Support Vector Machines}{45}{section*.15}
+\contentsline {subsubsection}{Support Vector Machines}{45}{section*.16}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsubsection}{K-nearest neighbors}{46}{section*.17}
+\contentsline {subsubsection}{K-nearest neighbors}{46}{section*.18}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsubsection}{Gradient Boosting Machines}{46}{section*.19}
+\contentsline {subsubsection}{Gradient Boosting Machines}{46}{section*.20}
 \defcounter {refsection}{4}\relax 
-\contentsline {subsubsection}{Multilayer perceptron}{47}{section*.21}
+\contentsline {subsubsection}{Multilayer perceptron}{47}{section*.22}
 \defcounter {refsection}{4}\relax 
 \contentsline {section}{\numberline {4.2}The binding affinity dataset}{48}{section.4.2}
 \defcounter {refsection}{4}\relax 

@@ -121,7 +121,69 @@ class Acquisition:
         return 0.5 * np.log(2 * np.pi * np.e * sp2)
 
     def IntegratedExpectedImprovement(self, tau, meanmcmc, stdmcmc):
+        """
+        Integrated expected improvement. Can only be used with `GaussianProcessMCMC` instance.
+        
+        Parameters
+        ----------
+        tau: float
+            Best observed function evaluation
+        meanmcmc: array-like
+            Means of posterior predictive distributions after sampling.
+        stdmcmc
+            Standard deviations of posterior predictive distributions after sampling.
+            
+        Returns
+        -------
+        float:
+            Integrated Expected Improvement
+        """
         acq = [self.ExpectedImprovement(tau, np.array([mean]), np.array([std])) for mean, std in zip(meanmcmc, stdmcmc)]
+        return np.average(acq)
+
+    def IntegratedProbabilityImprovement(self, tau, meanmcmc, stdmcmc):
+        """
+        Integrated probability of improvement. Can only be used with `GaussianProcessMCMC` instance.
+
+        Parameters
+        ----------
+        tau: float
+            Best observed function evaluation
+        meanmcmc: array-like
+            Means of posterior predictive distributions after sampling.
+        stdmcmc
+            Standard deviations of posterior predictive distributions after sampling.
+
+        Returns
+        -------
+        float:
+            Integrated Probability of Improvement
+        """
+        acq = [self.ProbabilityImprovement(tau, np.array([mean]), np.array([std])) for mean, std in zip(meanmcmc, stdmcmc)]
+        return np.average(acq)
+
+    def IntegratedUCB(self, tau, meanmcmc, stdmcmc, beta):
+        """
+        Integrated probability of improvement. Can only be used with `GaussianProcessMCMC` instance.
+
+        Parameters
+        ----------
+        tau: float
+            Best observed function evaluation
+        meanmcmc: array-like
+            Means of posterior predictive distributions after sampling.
+        stdmcmc
+            Standard deviations of posterior predictive distributions after sampling.
+            
+        beta: float
+            Hyperparameter controlling exploitation/exploration ratio.
+            
+        Returns
+        -------
+        float:
+            Integrated UCB.
+        """
+        acq = [self.UCB(tau, np.array([mean]), np.array([std]), beta) for mean, std in zip(meanmcmc, stdmcmc)]
         return np.average(acq)
 
     def eval(self, tau, mean, std):
@@ -140,7 +202,7 @@ class Acquisition:
         Returns
         -------
         float
-            Acqusition function value.
+            Acquisition function value.
 
         """
         return self.f(tau, mean, std, **self.params)

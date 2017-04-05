@@ -126,7 +126,7 @@ class GPGO:
             for index, start_point in enumerate(start_points_arr):
                 res = minimize(self._acqWrapper, x0=start_point, method=method,
                                bounds=self.parameter_range)
-                x_best[index], f_best[index] = res.x, res.fun[0]
+                x_best[index], f_best[index] = res.x, np.atleast_1d(res.fun)[0]
         else:
             opt = Parallel(n_jobs=self.n_jobs)(delayed(minimize)(self._acqWrapper,
                                                                  x0=start_point,

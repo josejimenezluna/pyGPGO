@@ -950,13 +950,23 @@ The simplest way to do this is what we saw in \ref{posteriorhyper}, to optimize 
 
 That is, we optimize the acquisition function defined by the \textit{optimal} hyperparameters for the Gaussian Process determined in each step. Again, optimizing the marginal log-likelihood is a problem of its own, but it is common to use quasi-Newton methods such as L-BFGS-B methods.\\
 
-A more Bayesian approach is to incorporate the uncertainty of $\theta$ into our model, since it may have an important role in guiding exploration. Point estimates are in a sense \textit{winners} that may not capture the complexity of the response surface. The second approach we will be considering here, will be therefore to marginalize out hyperparameters using Markov Chain Monte Carlo (MCMC) sampling techniques. In practice, we will need to average $M$ samples $\left\lbrace\theta_n^{(i)}\right\rbrace ^{M}_{i=1}$ from the posterior distribution $p(\theta|\mathcal{D}_n)$.
+A more Bayesian approach is to incorporate the uncertainty of $\theta$ into our model, since it may have an important role in guiding exploration. Point estimates are in a sense \textit{winners} that may not capture the complexity of the response surface. The second approach we will be considering here, will be therefore to marginalize out hyperparameters using Markov Chain Monte Carlo (MCMC) sampling techniques. In practice, we will need to average $M$ samples $\left\lbrace\theta_n^{(i)}\right\rbrace ^{M}_{i=1}$ from the posterior distribution $p(\theta|\mathcal{D}_n)$:
 
 \begin{equation}
-\mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x},\theta )\right] \approx \sum_{i=1}^M \alpha(\boldsymbol{x},\theta_n^{(i)})
+\mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x},\theta )\right] \approx \dfrac{1}{M} \sum_{i=1}^M \alpha(\boldsymbol{x},\theta_n^{(i)})
 \end{equation}
 
-Since it is not possible to have an analytical expression for the posterior distribution $p(\theta|\mathcal{D}_n)$, it is common to use MCMC techniques like Hamiltonian Monte Carlo \cite{Neal2011} to produce a sequence of samples whose stationary distribution is the posterior we are looking for. Once $M$ valid samples are obtained, they are evaluated in the acquisition function and averaged. Quadrature methods can be used instead of MCMC techniques, yielding a weighted mixture:
+Since it is not possible to have an analytical expression for the posterior distribution $p(\theta|\mathcal{D}_n)$, it is common to use MCMC techniques like Hamiltonian Monte Carlo \cite{Neal2011} to produce a sequence of samples whose stationary distribution is the posterior we are looking for. Once $M$ valid samples are obtained, they are evaluated in the acquisition function and averaged. pyGPGO implements these \textit{integrated} acquisition functions using the pyMC3 software [ref]. A plot of sampled Gaussian Process associated with its posterior sampled $p(\theta|\mathcal{D}_n)$ can be seen in Figure  \ref{fig:integratedacq}. Its associated script can be checked in Appendix \ref{integratedacq}.
+
+\begin{figure}
+\centering
+\caption{Means of 200 posterior predictive distributions, taken from associated GPs to each posterior sample $p(\theta|\mathcal{D}_n)$ in the MCMC procedure. The integrated acquisition functions better take into account the uncertainty of hyperparameters, which leads to less peaky functions.}
+\includegraphics[width=\textwidth]{figures/chapter3/integratedacq}
+\label{fig:integratedacq}
+\end{figure}
+
+
+Quadrature methods can be used instead of MCMC techniques, yielding a weighted mixture:
 
 \begin{equation}
 \mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x},\theta )\right] \approx \sum_{i=1}^M \omega_i \alpha(\boldsymbol{x},\theta_n^{(i)})
@@ -2147,6 +2157,57 @@ if __name__ == '__main__':
 
         plt.show()                  
 \end{minted}
+
+\subsection*{integratedacq.py}
+\label{integratedacq}
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
+from pyGPGO.GPGO import GPGO
+
+
+if __name__ == '__main__':
+    sexp = squaredExponential()
+    gp = GaussianProcessMCMC(sexp)
+
+    def f(x):
+        return np.sin(x)
+
+    np.random.seed(200)
+    param = {'x': ('cont', [0, 6])}
+    acq = Acquisition(mode='IntegratedExpectedImprovement')
+    gpgo = GPGO(gp, acq, f, param)
+    gpgo._firstRun(n_eval=7)
+
+    plt.figure()
+    plt.subplot(2, 1, 1)
+
+    Z = np.linspace(0, 6, 100)[:, None]
+    post_mean, post_var = gpgo.GP.predict(Z, return_std=True, nsamples=200)
+    for i in range(200):
+        plt.plot(Z.flatten(), post_mean[i], linewidth=0.4)
+
+    plt.plot(gpgo.GP.X.flatten(), gpgo.GP.y, '*', label='Sampled data', markersize = 10, color='red')
+    plt.grid()
+    plt.legend()
+
+    xtest = np.linspace(0, 6, 200)[:, np.newaxis]
+    a = [-gpgo._acqWrapper(np.atleast_2d(x)) for x in xtest]
+    plt.subplot(2, 1, 2)
+    plt.plot(xtest, a, label = 'Integrated Expected Improvement')
+    plt.grid()
+    plt.legend()               
+\end{minted}
+
 
 \subsection*{bayoptwork.py}
 \label{bayoptwork}
