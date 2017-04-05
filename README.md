@@ -14,7 +14,7 @@ Available in PyPI
 pip install pyGPGO
 ```
 
-For the development version
+Recommended: development version
 
 ```bash
 pip install git+https://github.com/hawk31/pyGPGO
@@ -22,8 +22,10 @@ pip install git+https://github.com/hawk31/pyGPGO
 
 ### Dependencies
 
-At the moment, the only dependency is `numpy` and `joblib`.
-
+*   Typical Python scientific stuff: `numpy`, `scipy`.
+*   `joblib` (Optional, used for parallelizing computation)
+*   `pyMC3` (Optional, for integrated acquisition functions and MCMC inference)
+*   `theano` (Optional) development version. (pyMC3 dependency)
 ### Usage
 
 The user only has to define a function and a dictionary.

@@ -24,4 +24,7 @@ setup(name='pyGPGO',
         'scipy',
         'joblib'
     ],
+    extras_require={
+          'pyMC3': ["pyMC3"]
+    },
     zip_safe=False)

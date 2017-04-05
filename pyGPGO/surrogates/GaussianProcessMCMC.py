@@ -13,6 +13,15 @@ covariance_equivalence = {'squaredExponential': pm.gp.cov.ExpQuad,
 
 class GaussianProcessMCMC:
     def __init__(self, covfunc):
+        """
+        Gaussian Process class using MCMC sampling of covariance function hyperparameters.
+        
+        Parameters
+        ----------
+        covfunc:
+            Covariance function to use. Currently this instance only supports squaredExponential
+            and Matern.
+        """
         self.covfunc = covfunc
 
     def _extractParam(self, unittrace, covparams):
@@ -107,36 +116,3 @@ class GaussianProcessMCMC:
         y = np.concatenate((self.y, ynew), axis=0)
         X = np.concatenate((self.X, xnew), axis=0)
         self.fit(X, y, self.niter, self.burnin)
-
-
-if __name__ == '__main__':
-    # np.random.seed(20090425)
-    # n = 20
-    # X = np.sort(3 * np.random.rand(n))[:, None]
-    # with pm.Model() as model:
-    #     # f(x)
-    #     l_true = 0.3
-    #     s2_f_true = 1.0
-    #     cov = s2_f_true * pm.gp.cov.ExpQuad(1, l_true)
-    #
-    #     # noise, epsilon
-    #     s2_n_true = 0.1
-    #     K_noise = s2_n_true ** 2 * tt.eye(n)
-    #     K = cov(X) + K_noise
-    #
-    # K = theano.function([], cov(X) + K_noise)()
-    # y = np.random.multivariate_normal(np.zeros(n), K)
-    rng = np.random.RandomState(0)
-    X = rng.uniform(0, 6, 60)[:, np.newaxis]
-    y = 0.5 * np.sin(3 * X[:, 0]) + rng.normal(0, 0.2, X.shape[0])
-
-    sexp = squaredExponential()
-    gp = GaussianProcessMCMC(sexp)
-    gp.fit(X, y)
-    Z = np.linspace(0, 6, 100)[:, None]
-    post_mean, post_var = gp.predict(Z, return_std=True, nsamples=200)
-
-    import matplotlib.pyplot as plt
-    for i in range(100):
-        plt.plot(Z.flatten(), post_mean[i])
-    plt.show()

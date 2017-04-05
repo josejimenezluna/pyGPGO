@@ -134,7 +134,7 @@ class GPGO:
                                                                  bounds=self.parameter_range) for start_point in
                                                start_points_arr)
             x_best = np.array([res.x for res in opt])
-            f_best = np.array([res.fun[0] for res in opt])
+            f_best = np.array([np.atleast_1d(res.fun)[0] for res in opt])
 
         self.best = x_best[np.argmin(f_best)]
 
