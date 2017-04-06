@@ -51,13 +51,17 @@
 \BOOKMARK [2][-]{subsection.4.3.2}{Description of the dataset}{section.4.3}% 51
 \BOOKMARK [2][-]{subsection.4.3.3}{Experiments}{section.4.3}% 52
 \BOOKMARK [1][-]{section.4.4}{Other datasets}{chapter.4}% 53
-\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 54
-\BOOKMARK [1][-]{section.5.1}{Installation}{chapter.5}% 55
-\BOOKMARK [1][-]{section.5.2}{Usage}{chapter.5}% 56
-\BOOKMARK [2][-]{subsection.5.2.1}{A minimal example}{section.5.2}% 57
-\BOOKMARK [1][-]{section.5.3}{Examples}{chapter.5}% 58
-\BOOKMARK [2][-]{subsection.5.3.1}{Gaussian Process regression using the GPRegressor module.}{section.5.3}% 59
-\BOOKMARK [2][-]{subsection.5.3.2}{Optimizing parameters of a machine-learning model using the GPGO module.}{section.5.3}% 60
-\BOOKMARK [1][-]{section.5.4}{Features}{chapter.5}% 61
-\BOOKMARK [1][-]{section.5.5}{Comparison with existing software}{chapter.5}% 62
-\BOOKMARK [1][-]{section.5.6}{Future work}{chapter.5}% 63
+\BOOKMARK [2][-]{subsection.4.4.1}{The breast cancer dataset}{section.4.4}% 54
+\BOOKMARK [2][-]{subsection.4.4.2}{The LSVT voice rehabilitation dataset}{section.4.4}% 55
+\BOOKMARK [2][-]{subsection.4.4.3}{The Parkinson's disease dataset}{section.4.4}% 56
+\BOOKMARK [1][-]{section.4.5}{Discussion}{chapter.4}% 57
+\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 58
+\BOOKMARK [1][-]{section.5.1}{Installation}{chapter.5}% 59
+\BOOKMARK [1][-]{section.5.2}{Usage}{chapter.5}% 60
+\BOOKMARK [2][-]{subsection.5.2.1}{A minimal example}{section.5.2}% 61
+\BOOKMARK [1][-]{section.5.3}{Examples}{chapter.5}% 62
+\BOOKMARK [2][-]{subsection.5.3.1}{Gaussian Process regression using the GPRegressor module.}{section.5.3}% 63
+\BOOKMARK [2][-]{subsection.5.3.2}{Optimizing parameters of a machine-learning model using the GPGO module.}{section.5.3}% 64
+\BOOKMARK [1][-]{section.5.4}{Features}{chapter.5}% 65
+\BOOKMARK [1][-]{section.5.5}{Comparison with existing software}{chapter.5}% 66
+\BOOKMARK [1][-]{section.5.6}{Future work}{chapter.5}% 67

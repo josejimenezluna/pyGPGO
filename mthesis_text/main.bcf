@@ -2161,27 +2161,28 @@
     <bcf:citekey order="18">Auer1995</bcf:citekey>
     <bcf:citekey order="19">Shahriari2014</bcf:citekey>
     <bcf:citekey order="20">Neal2011</bcf:citekey>
-    <bcf:citekey order="21">Benassi2011</bcf:citekey>
-    <bcf:citekey order="21">Bull2011</bcf:citekey>
-    <bcf:citekey order="22">Wang2014</bcf:citekey>
-    <bcf:citekey order="23">Vazquez2010</bcf:citekey>
-    <bcf:citekey order="24">Snoek2012</bcf:citekey>
-    <bcf:citekey order="25">Bardenet2010</bcf:citekey>
-    <bcf:citekey order="26">Lizotte2012</bcf:citekey>
-    <bcf:citekey order="27">Hansen2001</bcf:citekey>
-    <bcf:citekey order="28">Kocsis2006</bcf:citekey>
-    <bcf:citekey order="28">Bubeck2010</bcf:citekey>
-    <bcf:citekey order="29">Wang2014</bcf:citekey>
-    <bcf:citekey order="30">Snelson2006</bcf:citekey>
-    <bcf:citekey order="31">Quinonero-candela2005</bcf:citekey>
-    <bcf:citekey order="32">Seeger2003</bcf:citekey>
-    <bcf:citekey order="33">Titsias2009</bcf:citekey>
-    <bcf:citekey order="34">Lazaro-Gredilla2010</bcf:citekey>
-    <bcf:citekey order="35">Hutter2011</bcf:citekey>
-    <bcf:citekey order="36">Breiman2001</bcf:citekey>
-    <bcf:citekey order="37">Hutter2011</bcf:citekey>
-    <bcf:citekey order="38">Snoek2012</bcf:citekey>
-    <bcf:citekey order="39">Desautels2012</bcf:citekey>
+    <bcf:citekey order="21">Coyle2015</bcf:citekey>
+    <bcf:citekey order="22">Benassi2011</bcf:citekey>
+    <bcf:citekey order="22">Bull2011</bcf:citekey>
+    <bcf:citekey order="23">Wang2014</bcf:citekey>
+    <bcf:citekey order="24">Vazquez2010</bcf:citekey>
+    <bcf:citekey order="25">Snoek2012</bcf:citekey>
+    <bcf:citekey order="26">Bardenet2010</bcf:citekey>
+    <bcf:citekey order="27">Lizotte2012</bcf:citekey>
+    <bcf:citekey order="28">Hansen2001</bcf:citekey>
+    <bcf:citekey order="29">Kocsis2006</bcf:citekey>
+    <bcf:citekey order="29">Bubeck2010</bcf:citekey>
+    <bcf:citekey order="30">Wang2014</bcf:citekey>
+    <bcf:citekey order="31">Snelson2006</bcf:citekey>
+    <bcf:citekey order="32">Quinonero-candela2005</bcf:citekey>
+    <bcf:citekey order="33">Seeger2003</bcf:citekey>
+    <bcf:citekey order="34">Titsias2009</bcf:citekey>
+    <bcf:citekey order="35">Lazaro-Gredilla2010</bcf:citekey>
+    <bcf:citekey order="36">Hutter2011</bcf:citekey>
+    <bcf:citekey order="37">Breiman2001</bcf:citekey>
+    <bcf:citekey order="38">Hutter2011</bcf:citekey>
+    <bcf:citekey order="39">Snoek2012</bcf:citekey>
+    <bcf:citekey order="40">Desautels2012</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2242,6 +2243,10 @@
     <bcf:citekey order="44">Wallace2011</bcf:citekey>
     <bcf:citekey order="45">Morris2009</bcf:citekey>
     <bcf:citekey order="46">Doerr2016</bcf:citekey>
+    <bcf:citekey order="47">Michalski1986</bcf:citekey>
+    <bcf:citekey order="48">Lichman2013</bcf:citekey>
+    <bcf:citekey order="49">Tsanas2014</bcf:citekey>
+    <bcf:citekey order="50">Little2007</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">

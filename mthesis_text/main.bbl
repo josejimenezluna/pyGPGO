@@ -701,6 +701,30 @@
       \endverb
       \keyw{Bayesian optimization,convergence rate,expected improvement,global optimization}
     \endentry
+    \entry{Coyle2015}{article}{}
+      \name{author}{1}{}{%
+        {{hash=92b374ce8d15b94dcbfea67931819d07}{%
+           family={Coyle},
+           family_i={C\bibinitperiod},
+           given={Peadar},
+           given_i={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{92b374ce8d15b94dcbfea67931819d07}
+      \strng{fullhash}{92b374ce8d15b94dcbfea67931819d07}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{—In recent years sports analytics has gotten more and more popular. We propose a model for Rugby data -in particular to model the 2014 Six Nations tournament. We propose a Bayesian hierarchical model to estimate the characteristics that bring a team to lose or win a game, and predict the score of particular matches. This is intended to be a brief introduction to Probabilistic Programming in Python and in particular the powerful library called PyMC3.}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{PROC. OF THE 8th EUR. CONF. ON PYTHON IN SCIENCE}
+      \field{title}{{Probabilistic Programming and PyMC3}}
+      \field{year}{2015}
+      \verb{eprint}
+      \verb 1607.0379
+      \endverb
+      \keyw{Bayesian Statistics,Hierarchical models,Index Terms—MCMC,Probabilistic Programming,PyMC3,Sports Analytics,monte carlo}
+    \endentry
     \entry{Desautels2012}{article}{}
       \name{author}{3}{}{%
         {{hash=0d20d983d88dbf2b66a97ecb07a946aa}{%
@@ -3059,6 +3083,84 @@
       \verb 10.1093/nar/gkl454
       \endverb
     \endentry
+    \entry{Lichman2013}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=7202d1c034f2a555a0a037bc17d642aa}{%
+           family={Lichman},
+           family_i={L\bibinitperiod},
+           given={M.},
+           given_i={M\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {University of California, Irvine, School of Information}%
+        {Computer Sciences}%
+      }
+      \strng{namehash}{7202d1c034f2a555a0a037bc17d642aa}
+      \strng{fullhash}{7202d1c034f2a555a0a037bc17d642aa}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{UCI} Machine Learning Repository}
+      \field{year}{2013}
+      \verb{url}
+      \verb http://archive.ics.uci.edu/ml
+      \endverb
+    \endentry
+    \entry{Little2007}{article}{}
+      \name{author}{5}{}{%
+        {{hash=4d0b94dc15af4c70d05d41e16b4402ea}{%
+           family={Little},
+           family_i={L\bibinitperiod},
+           given={Max\bibnamedelima A},
+           given_i={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=e4e958da448106489a8edc5a1b04789f}{%
+           family={McSharry},
+           family_i={M\bibinitperiod},
+           given={Patrick\bibnamedelima E},
+           given_i={P\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=1c361333d2480925c84c48e1fd006b04}{%
+           family={Roberts},
+           family_i={R\bibinitperiod},
+           given={Stephen\bibnamedelima J},
+           given_i={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=9ea3161effd23aeae48dded8416dcfde}{%
+           family={Costello},
+           family_i={C\bibinitperiod},
+           given={Declan\bibnamedelimb A\bibnamedelima E},
+           given_i={D\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=931933eaf5adf6bf256cece587c93d3e}{%
+           family={Moroz},
+           family_i={M\bibinitperiod},
+           given={Irene\bibnamedelima M},
+           given_i={I\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{48e618c1797c7e0b0a829e89e4884f13}
+      \strng{fullhash}{b59133fff7f5a2cd97419be8e4dd8993}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{BACKGROUND Voice disorders affect patients profoundly, and acoustic tools can potentially measure voice function objectively. Disordered sustained vowels exhibit wide-ranging phenomena, from nearly periodic to highly complex, aperiodic vibrations, and increased "breathiness". Modelling and surrogate data studies have shown significant nonlinear and non-Gaussian random properties in these sounds. Nonetheless, existing tools are limited to analysing voices displaying near periodicity, and do not account for this inherent biophysical nonlinearity and non-Gaussian randomness, often using linear signal processing methods insensitive to these properties. They do not directly measure the two main biophysical symptoms of disorder: complex nonlinear aperiodicity, and turbulent, aeroacoustic, non-Gaussian randomness. Often these tools cannot be applied to more severe disordered voices, limiting their clinical usefulness. METHODS This paper introduces two new tools to speech analysis: recurrence and fractal scaling, which overcome the range limitations of existing tools by addressing directly these two symptoms of disorder, together reproducing a "hoarseness" diagram. A simple bootstrapped classifier then uses these two features to distinguish normal from disordered voices. RESULTS On a large database of subjects with a wide variety of voice disorders, these new techniques can distinguish normal from disordered cases, using quadratic discriminant analysis, to overall correct classification performance of 91.8 +/- 2.0{\%}. The true positive classification performance is 95.4 +/- 3.2{\%}, and the true negative performance is 91.5 +/- 2.3{\%} (95{\%} confidence). This is shown to outperform all combinations of the most popular classical tools. CONCLUSION Given the very large number of arbitrary parameters and computational complexity of existing techniques, these new techniques are far simpler and yet achieve clinically useful classification performance using only a basic classification technique. They do so by exploiting the inherent nonlinearity and turbulent randomness in disordered voice signals. They are widely applicable to the whole range of disordered voice phenomena by design. These new measures could therefore be used for a variety of practical clinical purposes.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1475-925X}
+      \field{issn}{1475-925X}
+      \field{journaltitle}{Biomedical engineering online}
+      \field{title}{{Exploiting nonlinear recurrence and fractal scaling properties for voice disorder detection.}}
+      \field{volume}{6}
+      \field{year}{2007}
+      \field{pages}{23}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1186/1475-925X-6-23
+      \endverb
+      \verb{eprint}
+      \verb 0707.0086
+      \endverb
+      \verb{url}
+      \verb http://www.ncbi.nlm.nih.gov/pubmed/17594480$%5Cbackslash$nhttp://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC1913514
+      \endverb
+    \endentry
     \entry{Longadge2013}{article}{}
       \name{author}{3}{}{%
         {{hash=b0ac084c9fae5bda8bd5263d66e5b91c}{%
@@ -3101,6 +3203,37 @@
       \verb 1305.1707
       \endverb
       \keyw{class imbalance problem,data,imbalance,rare class mining,skewed data}
+    \endentry
+    \entry{Michalski1986}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=3bce94388849662417b19468913cb21f}{%
+           family={Michalski},
+           family_i={M\bibinitperiod},
+           given={Ryszard\bibnamedelima S.},
+           given_i={R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=ce6dd91dc99105e61d93650e6e93554b}{%
+           family={Mozetic},
+           family_i={M\bibinitperiod},
+           given={I.},
+           given_i={I\bibinitperiod}}}%
+        {{hash=5988d29d23ab0fbdb0f6f9d1d3ebaeac}{%
+           family={Hong},
+           family_i={H\bibinitperiod},
+           given={J.},
+           given_i={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b269a76204db17703348af075608f325}
+      \strng{fullhash}{b269a76204db17703348af075608f325}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This research was supported in part by the National Science Foundation under Grant No. DCR 84-06801, the Office of Naval Research under Grant No. N00014-82-K-0186, the Defense Advanced Research Project Agency under Grant No. N00014-K-85-0878, and by the Slovene Research Council.}
+      \field{booktitle}{Proceedings of IMAL 1986}
+      \field{title}{{The AQ15 Inductive Learning System: an Overview and Experiments}}
+      \field{year}{1986}
+      \field{pages}{36}
+      \range{pages}{1}
     \endentry
     \entry{Mooij2005}{article}{}
       \name{author}{2}{}{%
@@ -3429,6 +3562,50 @@
       \verb{eprint}
       \verb arXiv:1211.4251v3
       \endverb
+    \endentry
+    \entry{Tsanas2014}{article}{}
+      \name{author}{4}{}{%
+        {{hash=48608b54aa6a0cbddb28bc61484924e9}{%
+           family={Tsanas},
+           family_i={T\bibinitperiod},
+           given={Athanasios},
+           given_i={A\bibinitperiod}}}%
+        {{hash=351090193e737317f88fb1d7313819a0}{%
+           family={Little},
+           family_i={L\bibinitperiod},
+           given={Max\bibnamedelima A.},
+           given_i={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=382a120998c6812569eda0076dc18109}{%
+           family={Fox},
+           family_i={F\bibinitperiod},
+           given={Cynthia},
+           given_i={C\bibinitperiod}}}%
+        {{hash=b45705aee9a31ee00f769a7363b17e3b}{%
+           family={Ramig},
+           family_i={R\bibinitperiod},
+           given={Lorraine\bibnamedelima O.},
+           given_i={L\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \strng{namehash}{24c406718aac68815a1fb4d158140e28}
+      \strng{fullhash}{dfb638bdad30958d79f18ca8fb814995}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Vocal performance degradation is a common symptom for the vast majority of Parkinson's disease (PD) subjects, who typically follow personalized one-to-one periodic rehabilitation meetings with speech experts over a long-term period. Recently, a novel computer program called Lee Silverman voice treatment (LSVT) Companion was developed to allow PD subjects to independently progress through a rehabilitative treatment session. This study is part of the assessment of the LSVT Companion, aiming to investigate the potential of using sustained vowel phonations towards objectively and automatically replicating the speech experts' assessments of PD subjects' voices as “acceptable” (a clinician would allow persisting during in-person rehabilitation treatment) or “unacceptable” (a clinician would not allow persisting during in-person rehabilitation treatment). We characterize each of the 156 sustained vowel /a/ phonations with 309 dysphonia measures, select a parsimonious subset using a robust feature selection algorithm, and automatically distinguish the two cohorts (acceptable versus unacceptable) with about 90{\%} overall accuracy. Moreover, we illustrate the potential of the proposed methodology as a probabilistic decision support tool to speech experts to assess a phonation as “acceptable” or “unacceptable.” We envisage the findings of this study being a first step towards improving the effectiveness of an automated rehabilitative speech assessment tool.}
+      \field{isbn}{1534-4320}
+      \field{issn}{15344320}
+      \field{journaltitle}{IEEE Transactions on Neural Systems and Rehabilitation Engineering}
+      \field{number}{1}
+      \field{title}{{Objective automatic assessment of rehabilitative speech treatment in Parkinson's disease}}
+      \field{volume}{22}
+      \field{year}{2014}
+      \field{pages}{181\bibrangedash 190}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/TNSRE.2013.2293575
+      \endverb
+      \keyw{Decision support tool,Lee Silverman voice treatment (LSVT),Parkinson's disease (PD),Speech rehabilitation}
     \endentry
     \entry{Vakser2014}{misc}{}
       \name{author}{1}{}{%

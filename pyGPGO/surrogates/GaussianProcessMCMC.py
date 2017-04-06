@@ -7,12 +7,14 @@ import theano.tensor.nlinalg
 import pymc3 as pm
 from pyGPGO.covfunc import squaredExponential, matern
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+import matplotlib.pyplot as plt
 
 covariance_equivalence = {'squaredExponential': pm.gp.cov.ExpQuad,
                           'matern': pm.gp.cov.Matern52}
 
+
 class GaussianProcessMCMC:
-    def __init__(self, covfunc):
+    def __init__(self, covfunc, niter=2000, burnin=1000):
         """
         Gaussian Process class using MCMC sampling of covariance function hyperparameters.
         
@@ -23,6 +25,8 @@ class GaussianProcessMCMC:
             and Matern.
         """
         self.covfunc = covfunc
+        self.niter = niter
+        self.burnin = burnin
 
     def _extractParam(self, unittrace, covparams):
         d = {}
@@ -30,10 +34,10 @@ class GaussianProcessMCMC:
             if key in covparams:
                 d[key] = value
         if 'v' in covparams:
-            d['v'] = 5/2
+            d['v'] = 5 / 2
         return d
 
-    def fit(self, X, y, niter=2000, burnin=1000):
+    def fit(self, X, y):
         """
         Fits a Gaussian Process regressor using MCMC.
 
@@ -50,10 +54,9 @@ class GaussianProcessMCMC:
         """
         self.X = X
         self.y = y
-        self.niter = niter
-        self.burnin = burnin
+        self.model = pm.Model()
 
-        with pm.Model() as model:
+        with self.model as model:
             l = pm.Uniform('l', 0, 10)
 
             log_s2_f = pm.Uniform('log_s2_f', lower=-7, upper=5)
@@ -66,7 +69,16 @@ class GaussianProcessMCMC:
 
             y_obs = pm.gp.GP('y_obs', cov_func=f_cov, sigma=s2_n, observed={'X': self.X, 'Y': self.y})
         with model:
-            self.trace = list(pm.sample(niter)[burnin:])
+            self.trace = pm.sample(self.niter)[self.burnin:]
+
+    def posteriorPlot(self):
+        """
+        Plots sampled posterior distributions for hyperparameters.
+        
+        """
+        with self.model as model:
+            pm.traceplot(self.trace, varnames=['l', 'sigmaf', 'sigman'])
+            plt.show()
 
     def predict(self, Xstar, return_std=False, nsamples=100):
         """
@@ -89,7 +101,8 @@ class GaussianProcessMCMC:
         np.ndarray
             Covariance posterior process for each MCMC sample and Xstar.
         """
-        chunk = self.trace[::-1][:nsamples]
+        chunk = list(self.trace)
+        chunk = chunk[::-1][:nsamples]
         post_mean = []
         post_var = []
         for posterior_sample in chunk:
@@ -115,4 +128,4 @@ class GaussianProcessMCMC:
         """
         y = np.concatenate((self.y, ynew), axis=0)
         X = np.concatenate((self.X, xnew), axis=0)
-        self.fit(X, y, self.niter, self.burnin)
+        self.fit(X, y)

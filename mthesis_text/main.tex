@@ -956,7 +956,7 @@ A more Bayesian approach is to incorporate the uncertainty of $\theta$ into our 
 \mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x},\theta )\right] \approx \dfrac{1}{M} \sum_{i=1}^M \alpha(\boldsymbol{x},\theta_n^{(i)})
 \end{equation}
 
-Since it is not possible to have an analytical expression for the posterior distribution $p(\theta|\mathcal{D}_n)$, it is common to use MCMC techniques like Hamiltonian Monte Carlo \cite{Neal2011} to produce a sequence of samples whose stationary distribution is the posterior we are looking for. Once $M$ valid samples are obtained, they are evaluated in the acquisition function and averaged. pyGPGO implements these \textit{integrated} acquisition functions using the pyMC3 software [ref]. A plot of sampled Gaussian Process associated with its posterior sampled $p(\theta|\mathcal{D}_n)$ can be seen in Figure  \ref{fig:integratedacq}. Its associated script can be checked in Appendix \ref{integratedacq}.
+Since it is not possible to have an analytical expression for the posterior distribution $p(\theta|\mathcal{D}_n)$, it is common to use MCMC techniques like Hamiltonian Monte Carlo \cite{Neal2011} to produce a sequence of samples whose stationary distribution is the posterior we are looking for. Once $M$ valid samples are obtained, they are evaluated in the acquisition function and averaged. pyGPGO implements these \textit{integrated} acquisition functions using the pyMC3 software \cite{Coyle2015}. A plot of sampled Gaussian Process associated with its posterior sampled $p(\theta|\mathcal{D}_n)$ can be seen in Figure  \ref{fig:integratedacq}. Its associated script can be checked in Appendix \ref{integratedacq}.
 
 \begin{figure}
 \centering
@@ -1023,7 +1023,7 @@ Random Forests are known to provide very good estimates when doing \textit{inter
 \begin{figure}
 \centering
 \caption{A Random Forest with variance estimates over trees trained on the sine function}
-\includegraphics[width=0.7\textwidth]{figures/chapter3/RFsine}
+\includegraphics[width=\textwidth]{figures/chapter3/RFsine}
 \label{fig:RFsine}
 \end{figure}
 
@@ -1552,6 +1552,7 @@ Excluded volume        & all atom types                         \\ \bottomrule
 
 \subsection{Experiments}
 
+We repeat the same experiments as with the previous dataset. In all cases, Bayesian Optimization routines achieve better function evaluations in significantly less iterations than random search. Of particular interest is again how robust these methods are regardless of the acquisition function choice. Given the evidence presented here, and the size of some datasets present in computational chemistry problems (as well as in other areas), I believe Bayesian Optimization should be the default strategy to optimize hyperparameters of machine-learning models.
 
 \begin{figure}
 \centering
@@ -1584,6 +1585,127 @@ Excluded volume        & all atom types                         \\ \bottomrule
 \section{Other datasets}
 
 In this section, we detail more results for the same models considered throughout the chapter. We aim to further demonstrate with other examples that Bayesian Optimization is a good default strategy for optimizing machine-learning hyperparameters. The datasets shown here span areas different from the ones considered in the more detailed previous examples.
+
+\subsection{The breast cancer dataset}
+
+This breast cancer data comes from a study by the University Medical Centre, Institute of Oncology, Ljubljana, Yugoslavia in 1986. It was originally used in \cite{Michalski1986}. It is available as open data in the UCI Machine Learning repository \cite{Lichman2013}. A small descriptions of the predictors used for this binary classification problem can be found in Table \ref{breastcancer}. Results can be found on Figure \ref{fig:breastcancer}.
+
+
+\begin{table}[]
+\centering
+\caption{Description of the breast cancer dataset}
+\label{breastcancer}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Variable} & \textbf{Values}                                   \\ \midrule
+\textbf{Target}   & no-recurrence-events, recurrence-events           \\
+age               & 10-19, 20-29, $\dots$, 90-99.                         \\
+menopause         & less than 40, greater or equal 40, pre-menopausic \\
+tumor size        & 0-4, 5-9, $\dots$, 55-59                              \\
+invasive nodes    & 0-2, 3-5, $\dots$, 36-39                              \\
+node-caps         & yes, no                                           \\ 
+degree malignity  & 1, 2, 3                                           \\
+breast            & left, right                                       \\
+location          & left-up, left-low, right-up, right-low, central   \\
+irradiation       & yes, no\\
+\midrule                                          
+\end{tabular}
+\end{table}
+
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the breast cancer dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{SVM}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/breast/svm}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{KNN}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/breast/knn}
+  \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+    \caption{MLP}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/breast/mlp}
+  \end{subfigure}%
+    \begin{subfigure}[t]{0.5\textwidth}
+    \caption{GBM}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/breast/gbm}
+  \end{subfigure}
+  \label{fig:breastcancer}
+\end{figure}
+
+\subsection{The LSVT voice rehabilitation dataset}
+
+Dataset originally used in \cite{Tsanas2014}, in order to demonstrate that it was possible to replicate expert assessment in Parkinson's disease speech rehabilitation using machine-learning techniques. Also available in the UCI machine-repository. Each attribute (feature) corresponds to the application of a speech signal processing algorithm which aims to characterise objectively the signal. These algorithms include standard perturbation analysis methods, wavelet-based features, fundamental frequency-based features, and tools used to mine non-linear time-series. We refer the reader to the original paper for more information on the features.
+
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the LSVT Voice Rehabilitation dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{SVM}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/lsvt/svm}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{KNN}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/lsvt/knn}
+  \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+    \caption{MLP}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/lsvt/mlp}
+  \end{subfigure}%
+    \begin{subfigure}[t]{0.5\textwidth}
+    \caption{GBM}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/lsvt/gbm}
+  \end{subfigure}
+  \label{fig:breastcancer}
+\end{figure}
+
+\subsection{The Parkinson's disease dataset}
+
+The dataset was created by Max Little of the University of Oxford, in collaboration with the National Centre for Voice and Speech, Denver, Colorado, who recorded the speech signals. The original study \cite{Little2007} published the feature extraction methods for general voice disorders. This dataset is composed of a range of biomedical voice measurements from 31 people, 23 with Parkinson's disease. Each feature in the table is a particular voice measure, and each row corresponds one of 195 voice recording from these individuals. The main aim of the data is to discriminate healthy people from those with the disease. Features are described in Table \ref{parkinsons}. Results can be checked in Figure \ref{fig:parkinson}.
+
+
+\begin{table}[]
+\centering
+\caption{Features used in the Parkinson's disease dataset}
+\label{parkinsons}
+\begin{tabular}{p{7cm}p{7cm}}
+\toprule
+\textbf{Variable}                                                   & \textbf{Values}                                                    \\ \midrule
+\textbf{Target}                                                     & Health status of the subject (one) - Parkinson's, (zero) - healthy \\
+MDVP:Fo (Hz)                                                        & Average vocal fundamental frequency                                \\
+MDVP:Fhi (Hz)                                                       & Maximum vocal fundamental frequency                                \\
+MDVP:Flo (Hz)                                                       & Minimum vocal fundamental frequency                                \\
+MDVP:Jitter (\%), MDVP:Jitter (Abs), MDVP:RAP, MDVP:PPQ, Jitter:DDP & Several measures of variation in fundamental frequency             \\
+MDVP:Shimmer, MDVP:Shimmer (dB), Shimmer:APQ3, Shimmer              & Several measures of variation in amplitude                         \\
+NHR, HNR                                                            & Two measures of ratio of noise to tonal components in the voice    \\
+RPDE, D2                                                            & Two nonlinear dynamical complexity measures                        \\
+DFA                                                                 & Signal fractal scaling exponent                                    \\
+spread1, spread2, PPE                                               & Three nonlinear measures of fundamental frequency variation        \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the Parkinson's disease dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{SVM}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/parkinson/svm}
+  \end{subfigure}
+    \begin{subfigure}[t]{0.5\textwidth}
+    \caption{MLP}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/parkinson/mlp}
+  \end{subfigure}%
+    \begin{subfigure}[t]{0.5\textwidth}
+    \caption{GBM}
+    \centering\includegraphics[width=\textwidth]{figures/chapter4/parkinson/gbm}
+  \end{subfigure}
+  \label{fig:parkinson}
+\end{figure}
+
+
+\section{Discussion}
 
 \printbibliography
 
@@ -1658,7 +1780,7 @@ pyGPGO aims to be an easy to use package to perform Bayesian Optimization. All f
 
 \begin{itemize}
 \item The \texttt{covfunc} module contains all the code related to covariance function calculations. 
-\item The \texttt{GPRegressor} module implements regular Gaussian Process regression.
+\item The \texttt{surrogates} module implements different surrogate models: Gaussian Processes (with Type II ML estimates or MCMC sampling), Random Forests and Gradient Boosting Machines.
 \item The \texttt{Acquisition} module lets the user specify different acquisition function strategies.
 \item The \texttt{GPGO} module implements Bayesian Optimization procedures. 
 \end{itemize}
