@@ -9,12 +9,13 @@ from pyGPGO.covfunc import squaredExponential, matern
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 import matplotlib.pyplot as plt
 
+
 covariance_equivalence = {'squaredExponential': pm.gp.cov.ExpQuad,
                           'matern': pm.gp.cov.Matern52}
 
 
 class GaussianProcessMCMC:
-    def __init__(self, covfunc, niter=2000, burnin=1000):
+    def __init__(self, covfunc, niter=2000, burnin=1000, init='ADVI'):
         """
         Gaussian Process class using MCMC sampling of covariance function hyperparameters.
         
@@ -23,10 +24,18 @@ class GaussianProcessMCMC:
         covfunc:
             Covariance function to use. Currently this instance only supports squaredExponential
             and Matern.
+        niter: int
+            Number of iterations to run MCMC.
+        burnin: int
+            Burn-in iterations to discard at trace.
+            
+        init: str
+            Initialization method for NUTS. Check pyMC3 docs.
         """
         self.covfunc = covfunc
         self.niter = niter
         self.burnin = burnin
+        self.init = init
 
     def _extractParam(self, unittrace, covparams):
         d = {}
@@ -47,10 +56,7 @@ class GaussianProcessMCMC:
             Training instances to fit the GP.
         y: np.ndarray, shape=(nsamples,)
             Corresponding continuous target values to X.
-        niter: int
-            Number of iterations to run MCMC.
-        burnin: int
-            Burn-in iterations to discard at the beginnint
+
         """
         self.X = X
         self.y = y
@@ -69,7 +75,7 @@ class GaussianProcessMCMC:
 
             y_obs = pm.gp.GP('y_obs', cov_func=f_cov, sigma=s2_n, observed={'X': self.X, 'Y': self.y})
         with model:
-            self.trace = pm.sample(self.niter)[self.burnin:]
+            self.trace = pm.sample(self.niter, init=self.init)[self.burnin:]
 
     def posteriorPlot(self):
         """

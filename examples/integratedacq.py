@@ -37,3 +37,4 @@ if __name__ == '__main__':
     plt.plot(xtest, a, label = 'Integrated Expected Improvement')
     plt.grid()
     plt.legend()
+    plt.show()
