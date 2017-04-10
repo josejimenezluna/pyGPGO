@@ -20,18 +20,18 @@ class Acquisition:
         """
         self.params = params
         self.eps = eps
-        if mode == 'ExpectedImprovement':
-            self.f = self.ExpectedImprovement
-        elif mode == 'IntegratedExpectedImprovement':
-            self.f = self.IntegratedExpectedImprovement
-        elif mode == 'ProbabilityImprovement':
-            self.f = self.ProbabilityImprovement
-        elif mode == 'UCB':
-            self.f = self.UCB
-        elif mode == 'Entropy':
-            self.f = self.Entropy
-        else:
-            raise NotImplementedError('Not recognised acquisition function')
+
+        mode_dict = {
+            'ExpectedImprovement': self.ExpectedImprovement,
+            'IntegratedExpectedImprovement': self.IntegratedExpectedImprovement,
+            'ProbabilityImprovement': self.ProbabilityImprovement,
+            'IntegratedProbabilityImprovement': self.IntegratedProbabilityImprovement,
+            'UCB': self.UCB,
+            'IntegratedUCB': self.IntegratedUCB,
+            'Entropy': self.Entropy
+        }
+
+        self.f = mode_dict[mode]
 
     def ProbabilityImprovement(self, tau, mean, std):
         """

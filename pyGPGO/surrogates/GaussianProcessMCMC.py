@@ -84,6 +84,7 @@ class GaussianProcessMCMC:
         """
         with self.model as model:
             pm.traceplot(self.trace, varnames=['l', 'sigmaf', 'sigman'])
+            plt.tight_layout()
             plt.show()
 
     def predict(self, Xstar, return_std=False, nsamples=100):

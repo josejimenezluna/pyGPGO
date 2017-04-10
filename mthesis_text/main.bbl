@@ -3837,5 +3837,97 @@
     \endentry
   \endsortlist
 \endrefsection
+
+\refsection{5}
+  \sortlist[entry]{nty/global/}
+    \entry{Hoffman2014}{article}{}
+      \name{author}{2}{}{%
+        {{hash=fecdb5e2e5757320fd5a625a162d3503}{%
+           family={Hoffman},
+           family_i={H\bibinitperiod},
+           given={Md},
+           given_i={M\bibinitperiod}}}%
+        {{hash=1e1eb60e3b6e222217bf8e9b24070b28}{%
+           family={Gelman},
+           family_i={G\bibinitperiod},
+           given={Andrew},
+           given_i={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{f9f4a0d4f80eae0adc96bc2de7c6a44a}
+      \strng{fullhash}{f9f4a0d4f80eae0adc96bc2de7c6a44a}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Hamiltonian Monte Carlo (HMC) is a Markov chain Monte Carlo (MCMC) algorithm that avoids the random walk behavior and sensitivity to correlated parameters that plague many MCMC methods by taking a series of steps informed by first-order gradient information. These features allow it to converge to high-dimensional target distributions much more quickly than simpler methods such as random walk Metropolis or Gibbs sampling. However, HMC's performance is highly sensitive to two user-specified parameters: a step size {\{}$\backslash$epsilon{\}} and a desired number of steps L. In particular, if L is too small then the algorithm exhibits undesirable random walk behavior, while if L is too large the algorithm wastes computation. We introduce the No-U-Turn Sampler (NUTS), an extension to HMC that eliminates the need to set a number of steps L. NUTS uses a recursive algorithm to build a set of likely candidate points that spans a wide swath of the target distribution, stopping automatically when it starts to double back and retrace its steps. Empirically, NUTS perform at least as efficiently as and sometimes more efficiently than a well tuned standard HMC method, without requiring user intervention or costly tuning runs. We also derive a method for adapting the step size parameter {\{}$\backslash$epsilon{\}} on the fly based on primal-dual averaging. NUTS can thus be used with no hand-tuning at all. NUTS is also suitable for applications such as BUGS-style automatic inference engines that require efficient "turnkey" sampling algorithms.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1532-4435}
+      \field{issn}{15337928}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{{The No-U-Turn Sampler: Adaptively Setting Path Lengths in Hamiltonian Monte Carlo}}
+      \field{volume}{15}
+      \field{year}{2014}
+      \field{pages}{30}
+      \range{pages}{1}
+      \verb{eprint}
+      \verb 1111.4246
+      \endverb
+      \keyw{adaptive monte carlo,bayesian inference,dual averaging,hamiltonian monte carlo,markov chain monte carlo,monte carlo}
+    \endentry
+    \entry{Kucukelbir2016}{article}{}
+      \name{author}{5}{}{%
+        {{hash=9b4bd774638a5e11db087a94dc4950b1}{%
+           family={Kucukelbir},
+           family_i={K\bibinitperiod},
+           given={Alp},
+           given_i={A\bibinitperiod}}}%
+        {{hash=831126fd259babc16b5bd86bbc5f0098}{%
+           family={Tran},
+           family_i={T\bibinitperiod},
+           given={Dustin},
+           given_i={D\bibinitperiod}}}%
+        {{hash=bb5c273638bcd68f168fefeca29f69c1}{%
+           family={Ranganath},
+           family_i={R\bibinitperiod},
+           given={Rajesh},
+           given_i={R\bibinitperiod}}}%
+        {{hash=1e1eb60e3b6e222217bf8e9b24070b28}{%
+           family={Gelman},
+           family_i={G\bibinitperiod},
+           given={Andrew},
+           given_i={A\bibinitperiod}}}%
+        {{hash=7441e4d372e854fc6d24d0d5a16a1687}{%
+           family={Blei},
+           family_i={B\bibinitperiod},
+           given={David\bibnamedelima M.},
+           given_i={D\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{79e7ecd137446e05bb8377a30ad2d94a}
+      \strng{fullhash}{bd751e86bcddaa7d191d151e61946a3f}
+      \field{sortinit}{K}
+      \field{sortinithash}{a7d5b3aec5a0890aae7baf85a209abfc}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Probabilistic modeling is iterative. A scientist posits a simple model, fits it to her data, refines it according to her analysis, and repeats. However, fitting complex models to large data is a bottleneck in this process. Deriving algorithms for new models can be both mathematically and computationally challenging, which makes it difficult to efficiently cycle through the steps. To this end, we develop automatic differentiation variational inference (ADVI). Using our method, the scientist only provides a probabilistic model and a dataset, nothing else. ADVI automatically derives an efficient variational inference algorithm, freeing the scientist to refine and explore many models. ADVI supports a broad class of models-no conjugacy assumptions are required. We study ADVI across ten different models and apply it to a dataset with millions of observations. ADVI is integrated into Stan, a probabilistic programming system; it is available for immediate use.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1603.00788}
+      \field{issn}{15337928}
+      \field{journaltitle}{Arxiv}
+      \field{title}{{Automatic Differentiation Variational Inference}}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 38}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.3847/0004-637X/819/1/50
+      \endverb
+      \verb{eprint}
+      \verb 1603.00788
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1603.00788
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
 \endinput
 
