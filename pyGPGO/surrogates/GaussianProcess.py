@@ -4,7 +4,7 @@ from collections import OrderedDict
 from scipy.optimize import minimize
 
 class GaussianProcess:
-    def __init__(self, covfunc, optimize=False, usegrads=False):
+    def __init__(self, covfunc, optimize=False, usegrads=False, mprior=0):
         """
         Gaussian Process regressor class. Based on Rasmussen & Williams [1]_ algorithm 2.1.
 
@@ -26,6 +26,8 @@ class GaussianProcess:
             User chosen optimization configuration.
         usegrads: bool
             Gradient behavior
+        mprior: float
+            Explicit value for the mean function of the prior Gaussian Process.
 
         Notes
         -----
@@ -35,6 +37,7 @@ class GaussianProcess:
         self.covfunc = covfunc
         self.optimize = optimize
         self.usegrads = usegrads
+        self.mprior = mprior
 
     def getcovparams(self):
         """
@@ -73,7 +76,7 @@ class GaussianProcess:
 
         self.K = self.covfunc.K(self.X, self.X)
         self.L = cholesky(self.K).T
-        self.alpha = solve(self.L.T, solve(self.L, y))
+        self.alpha = solve(self.L.T, solve(self.L, y - self.mprior))
         self.logp = -.5 * np.dot(self.y, self.alpha) - np.sum(np.log(np.diag(self.L))) - self.nsamples / 2 * np.log(
             2 * np.pi)
 
@@ -215,7 +218,7 @@ class GaussianProcess:
         """
         Xstar = np.atleast_2d(Xstar)
         kstar = self.covfunc.K(self.X, Xstar).T
-        fmean = np.dot(kstar, self.alpha)
+        fmean = self.mprior + np.dot(kstar, self.alpha)
         v = solve(self.L, kstar.T)
         fcov = self.covfunc.K(Xstar, Xstar) - np.dot(v.T, v)
         if return_std:

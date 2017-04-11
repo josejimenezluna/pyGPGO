@@ -4,6 +4,7 @@ import numpy as np
 from scipy.optimize import minimize
 from joblib import Parallel, delayed
 
+from pyGPGO.logger import EventLogger
 
 class GPGO:
     def __init__(self, GPRegressor, Acquisition, f, parameter_dict, n_jobs=1):
@@ -46,6 +47,7 @@ class GPGO:
         self.parameter_range = [p[1] for p in self.parameter_value]
 
         self.history = []
+        self.logger = EventLogger(self)
 
     def _sampleParam(self):
         """
@@ -183,6 +185,8 @@ class GPGO:
         if not resume:
             self.init_evals = init_evals
             self._firstRun(self.init_evals)
+            self.logger._printInit(self)
         for iteration in range(max_iter):
             self._optimizeAcq()
             self.updateGP()
+            self.logger._printCurrent(self)
