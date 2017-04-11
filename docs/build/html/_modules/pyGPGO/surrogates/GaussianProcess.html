@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pyGPGO.surrogates.GaussianProcess &mdash; pyGPGO 0.1.0.dev1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> pyGPGO
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0.dev1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">pyGPGO documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyGPGO</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pyGPGO.surrogates.GaussianProcess</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pyGPGO.surrogates.GaussianProcess</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">cholesky</span><span class="p">,</span> <span class="n">solve</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">minimize</span>
+
+<div class="viewcode-block" id="GaussianProcess"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcess.html#pyGPGO.surrogates.GaussianProcess.GaussianProcess">[docs]</a><span class="k">class</span> <span class="nc">GaussianProcess</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">covfunc</span><span class="p">,</span> <span class="n">optimize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">usegrads</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mprior</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gaussian Process regressor class. Based on Rasmussen &amp; Williams [1]_ algorithm 2.1.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        covfunc: instance from a class of covfunc module</span>
+<span class="sd">            An instance from a class from the `covfunc` module.</span>
+<span class="sd">        optimize: bool:</span>
+<span class="sd">            Whether to perform covariance function hyperparameter optimization.</span>
+<span class="sd">        usegrads: bool</span>
+<span class="sd">            Whether to use gradient information on hyperparameter optimization. Only used</span>
+<span class="sd">            if `optimize=True`.</span>
+
+<span class="sd">        Attributes</span>
+<span class="sd">        ----------</span>
+<span class="sd">        covfunc: object</span>
+<span class="sd">            Internal covariance function.</span>
+<span class="sd">        optimize: bool</span>
+<span class="sd">            User chosen optimization configuration.</span>
+<span class="sd">        usegrads: bool</span>
+<span class="sd">            Gradient behavior</span>
+<span class="sd">        mprior: float</span>
+<span class="sd">            Explicit value for the mean function of the prior Gaussian Process.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        [1] Rasmussen, C. E., &amp; Williams, C. K. I. (2004). Gaussian processes for machine learning.</span>
+<span class="sd">        International journal of neural systems (Vol. 14). http://doi.org/10.1142/S0129065704001899</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span> <span class="o">=</span> <span class="n">covfunc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimize</span> <span class="o">=</span> <span class="n">optimize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usegrads</span> <span class="o">=</span> <span class="n">usegrads</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mprior</span> <span class="o">=</span> <span class="n">mprior</span>
+
+<div class="viewcode-block" id="GaussianProcess.getcovparams"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcess.html#pyGPGO.surrogates.GaussianProcess.GaussianProcess.getcovparams">[docs]</a>    <span class="k">def</span> <span class="nf">getcovparams</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns current covariance function hyperparameters</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dictionary containing covariance function hyperparameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">d</span></div>
+
+<div class="viewcode-block" id="GaussianProcess.fit"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcess.html#pyGPGO.surrogates.GaussianProcess.GaussianProcess.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fits a Gaussian Process regressor</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=(nsamples, nfeatures)</span>
+<span class="sd">            Training instances to fit the GP.</span>
+<span class="sd">        y: np.ndarray, shape=(nsamples,)</span>
+<span class="sd">            Corresponding continuous target values to X.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nsamples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimize</span><span class="p">:</span>
+            <span class="n">grads</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">usegrads</span><span class="p">:</span>
+                <span class="n">grads</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_grad</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">optHyp</span><span class="p">(</span><span class="n">param_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">parameters</span><span class="p">,</span> <span class="n">param_bounds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="n">grads</span><span class="o">=</span><span class="n">grads</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">K</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">K</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="n">cholesky</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">solve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mprior</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logp</span> <span class="o">=</span> <span class="o">-.</span><span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">)))</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">nsamples</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+            <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GaussianProcess.param_grad"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcess.html#pyGPGO.surrogates.GaussianProcess.GaussianProcess.param_grad">[docs]</a>    <span class="k">def</span> <span class="nf">param_grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k_param</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns gradient over hyperparameters. It is recommended to use `self._grad` instead.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        k_param: dict</span>
+<span class="sd">            Dictionary with keys being hyperparameters and values their queried values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Gradient corresponding to each hyperparameters. Order given by `k_param.keys()`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">k_param_key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">k_param</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">covfunc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="o">**</span><span class="n">k_param</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">covfunc</span><span class="o">.</span><span class="n">K</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="n">cholesky</span><span class="p">(</span><span class="n">K</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">L</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">solve</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+        <span class="n">inner</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+        <span class="n">grads</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">k_param_key</span><span class="p">:</span>
+            <span class="n">gradK</span> <span class="o">=</span> <span class="n">covfunc</span><span class="o">.</span><span class="n">gradK</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">)</span>
+            <span class="n">gradK</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">inner</span><span class="p">,</span> <span class="n">gradK</span><span class="p">))</span>
+            <span class="n">grads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gradK</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">grads</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GaussianProcess._lmlik"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcess.html#pyGPGO.surrogates.GaussianProcess.GaussianProcess._lmlik">[docs]</a>    <span class="k">def</span> <span class="nf">_lmlik</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_vector</span><span class="p">,</span> <span class="n">param_key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns marginal negative log-likelihood for given covariance hyperparameters.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        param_vector: list</span>
+<span class="sd">            List of values corresponding to hyperparameters to query.</span>
+<span class="sd">        param_key: list</span>
+<span class="sd">            List of hyperparameter strings corresponding to `param_vector`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Negative log-marginal likelihood for chosen hyperparameters.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">k_param</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">param_key</span><span class="p">,</span> <span class="n">param_vector</span><span class="p">):</span>
+            <span class="n">k_param</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="o">**</span><span class="n">k_param</span><span class="p">)</span>
+
+        <span class="c1"># This fixes recursion</span>
+        <span class="n">original_opt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimize</span>
+        <span class="n">original_grad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usegrads</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimize</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usegrads</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimize</span> <span class="o">=</span> <span class="n">original_opt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usegrads</span> <span class="o">=</span> <span class="n">original_grad</span>
+        <span class="k">return</span> <span class="p">(</span><span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">logp</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GaussianProcess._grad"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcess.html#pyGPGO.surrogates.GaussianProcess.GaussianProcess._grad">[docs]</a>    <span class="k">def</span> <span class="nf">_grad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_vector</span><span class="p">,</span> <span class="n">param_key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns gradient for each hyperparameter, evaluated at a given point.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        param_vector: list</span>
+<span class="sd">            List of values corresponding to hyperparameters to query.</span>
+<span class="sd">        param_key: list</span>
+<span class="sd">            List of hyperparameter strings corresponding to `param_vector`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Gradient for each evaluated hyperparameter.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">k_param</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">param_key</span><span class="p">,</span> <span class="n">param_vector</span><span class="p">):</span>
+            <span class="n">k_param</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">return</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_grad</span><span class="p">(</span><span class="n">k_param</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GaussianProcess.optHyp"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcess.html#pyGPGO.surrogates.GaussianProcess.GaussianProcess.optHyp">[docs]</a>    <span class="k">def</span> <span class="nf">optHyp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_key</span><span class="p">,</span> <span class="n">param_bounds</span><span class="p">,</span> <span class="n">grads</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Optimizes the negative marginal log-likelihood for given hyperparameters and bounds.</span>
+<span class="sd">        This is an empirical Bayes approach (or Type II maximum-likelihood).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        param_key: list</span>
+<span class="sd">            List of hyperparameters to optimize.</span>
+<span class="sd">        param_bounds: list</span>
+<span class="sd">            List containing tuples defining bounds for each hyperparameter to optimize over.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_lmlik</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">param_key</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
+            <span class="n">x0</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">bound</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">param_key</span><span class="p">,</span> <span class="n">param_bounds</span><span class="p">):</span>
+                <span class="n">x0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">bound</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bound</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">grads</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lmlik</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">param_key</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;L-BFGS-B&#39;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">param_bounds</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lmlik</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">param_key</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;L-BFGS-B&#39;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">param_bounds</span><span class="p">,</span> <span class="n">jac</span><span class="o">=</span><span class="n">grads</span><span class="p">)</span>
+            <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">fs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
+
+        <span class="n">argmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">fs</span><span class="p">)</span>
+        <span class="n">opt_param</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="n">argmin</span><span class="p">]</span>
+        <span class="n">k_param</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">param_key</span><span class="p">,</span> <span class="n">opt_param</span><span class="p">):</span>
+            <span class="n">k_param</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="o">**</span><span class="n">k_param</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GaussianProcess.predict"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcess.html#pyGPGO.surrogates.GaussianProcess.GaussianProcess.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">return_std</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns mean and covariances for the posterior Gaussian Process.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Xstar: np.ndarray, shape=((nsamples, nfeatures))</span>
+<span class="sd">            Testing instances to predict.</span>
+<span class="sd">        return_std: bool</span>
+<span class="sd">            Whether to return the standard deviation of the posterior process. Otherwise,</span>
+<span class="sd">            it returns the whole covariance matrix of the posterior process.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Mean of the posterior process for testing instances.</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Covariance of the posterior process for testing instances.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Xstar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">Xstar</span><span class="p">)</span>
+        <span class="n">kstar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">K</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">fmean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mprior</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">kstar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">,</span> <span class="n">kstar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">fcov</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">K</span><span class="p">(</span><span class="n">Xstar</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">return_std</span><span class="p">:</span>
+            <span class="n">fcov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">fcov</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fmean</span><span class="p">,</span> <span class="n">fcov</span></div>
+
+<div class="viewcode-block" id="GaussianProcess.update"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcess.html#pyGPGO.surrogates.GaussianProcess.GaussianProcess.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the internal model with `xnew` and `ynew` instances.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        xnew: np.ndarray, shape=((m, nfeatures))</span>
+<span class="sd">            New training instances to update the model with.</span>
+<span class="sd">        ynew: np.ndarray, shape=((m,))</span>
+<span class="sd">            New training targets to update the model with.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">ynew</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">xnew</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jose Jimenez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1.0.dev1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pyGPGO.surrogates.GaussianProcessMCMC &mdash; pyGPGO 0.1.0.dev1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> pyGPGO
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0.dev1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">pyGPGO documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyGPGO</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>pyGPGO.surrogates.GaussianProcessMCMC</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pyGPGO.surrogates.GaussianProcessMCMC</h1><div class="highlight"><pre>
+<span></span><span class="c1"># work in progress</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">theano</span>
+<span class="kn">import</span> <span class="nn">theano.tensor</span> <span class="k">as</span> <span class="nn">tt</span>
+<span class="kn">import</span> <span class="nn">theano.tensor.nlinalg</span>
+<span class="kn">import</span> <span class="nn">pymc3</span> <span class="k">as</span> <span class="nn">pm</span>
+<span class="kn">from</span> <span class="nn">pyGPGO.covfunc</span> <span class="k">import</span> <span class="n">squaredExponential</span><span class="p">,</span> <span class="n">matern</span>
+<span class="kn">from</span> <span class="nn">pyGPGO.surrogates.GaussianProcess</span> <span class="k">import</span> <span class="n">GaussianProcess</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">covariance_equivalence</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;squaredExponential&#39;</span><span class="p">:</span> <span class="n">pm</span><span class="o">.</span><span class="n">gp</span><span class="o">.</span><span class="n">cov</span><span class="o">.</span><span class="n">ExpQuad</span><span class="p">,</span>
+                          <span class="s1">&#39;matern&#39;</span><span class="p">:</span> <span class="n">pm</span><span class="o">.</span><span class="n">gp</span><span class="o">.</span><span class="n">cov</span><span class="o">.</span><span class="n">Matern52</span><span class="p">}</span>
+
+
+<div class="viewcode-block" id="GaussianProcessMCMC"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcessMCMC.html#pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC">[docs]</a><span class="k">class</span> <span class="nc">GaussianProcessMCMC</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">covfunc</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">burnin</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;ADVI&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gaussian Process class using MCMC sampling of covariance function hyperparameters.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        covfunc:</span>
+<span class="sd">            Covariance function to use. Currently this instance only supports squaredExponential</span>
+<span class="sd">            and Matern.</span>
+<span class="sd">        niter: int</span>
+<span class="sd">            Number of iterations to run MCMC.</span>
+<span class="sd">        burnin: int</span>
+<span class="sd">            Burn-in iterations to discard at trace.</span>
+<span class="sd">            </span>
+<span class="sd">        init: str</span>
+<span class="sd">            Initialization method for NUTS. Check pyMC3 docs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span> <span class="o">=</span> <span class="n">covfunc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">niter</span> <span class="o">=</span> <span class="n">niter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">burnin</span> <span class="o">=</span> <span class="n">burnin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span> <span class="o">=</span> <span class="n">init</span>
+
+    <span class="k">def</span> <span class="nf">_extractParam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unittrace</span><span class="p">,</span> <span class="n">covparams</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">unittrace</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">covparams</span><span class="p">:</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="s1">&#39;v&#39;</span> <span class="ow">in</span> <span class="n">covparams</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="n">d</span>
+
+<div class="viewcode-block" id="GaussianProcessMCMC.fit"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcessMCMC.html#pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fits a Gaussian Process regressor using MCMC.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=(nsamples, nfeatures)</span>
+<span class="sd">            Training instances to fit the GP.</span>
+<span class="sd">        y: np.ndarray, shape=(nsamples,)</span>
+<span class="sd">            Corresponding continuous target values to X.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+            <span class="n">log_s2_f</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="s1">&#39;log_s2_f&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=-</span><span class="mi">7</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">s2_f</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="n">tt</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_s2_f</span><span class="p">))</span>
+
+            <span class="n">log_s2_n</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="s1">&#39;log_s2_n&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="o">=-</span><span class="mi">7</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">s2_n</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;sigman&#39;</span><span class="p">,</span> <span class="n">tt</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_s2_n</span><span class="p">))</span>
+
+            <span class="n">f_cov</span> <span class="o">=</span> <span class="n">s2_f</span> <span class="o">*</span> <span class="n">covariance_equivalence</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="p">)</span><span class="o">.</span><span class="n">__name__</span><span class="p">](</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+
+            <span class="n">y_obs</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">gp</span><span class="o">.</span><span class="n">GP</span><span class="p">(</span><span class="s1">&#39;y_obs&#39;</span><span class="p">,</span> <span class="n">cov_func</span><span class="o">=</span><span class="n">f_cov</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">s2_n</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">})</span>
+        <span class="k">with</span> <span class="n">model</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trace</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">niter</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">burnin</span><span class="p">:]</span></div>
+
+<div class="viewcode-block" id="GaussianProcessMCMC.posteriorPlot"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcessMCMC.html#pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC.posteriorPlot">[docs]</a>    <span class="k">def</span> <span class="nf">posteriorPlot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots sampled posterior distributions for hyperparameters.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+            <span class="n">pm</span><span class="o">.</span><span class="n">traceplot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trace</span><span class="p">,</span> <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="GaussianProcessMCMC.predict"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcessMCMC.html#pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">return_std</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns mean and covariances for each posterior sampled Gaussian Process.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Xstar: np.ndarray, shape=((nsamples, nfeatures))</span>
+<span class="sd">            Testing instances to predict.</span>
+<span class="sd">        return_std: bool</span>
+<span class="sd">            Whether to return the standard deviation of the posterior process. Otherwise,</span>
+<span class="sd">            it returns the whole covariance matrix of the posterior process.</span>
+<span class="sd">        nsamples:</span>
+<span class="sd">            Number of posterior MCMC samples to consider.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Mean of the posterior process for each MCMC sample and Xstar.</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Covariance posterior process for each MCMC sample and Xstar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">chunk</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trace</span><span class="p">)</span>
+        <span class="n">chunk</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">nsamples</span><span class="p">]</span>
+        <span class="n">post_mean</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">post_var</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">posterior_sample</span> <span class="ow">in</span> <span class="n">chunk</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractParam</span><span class="p">(</span><span class="n">posterior_sample</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+            <span class="n">covfunc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">gp</span> <span class="o">=</span> <span class="n">GaussianProcess</span><span class="p">(</span><span class="n">covfunc</span><span class="p">)</span>
+            <span class="n">gp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xstar</span><span class="p">,</span> <span class="n">return_std</span><span class="o">=</span><span class="n">return_std</span><span class="p">)</span>
+            <span class="n">post_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+            <span class="n">post_var</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">post_mean</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">post_var</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GaussianProcessMCMC.update"><a class="viewcode-back" href="../../../pyGPGO.surrogates.GaussianProcessMCMC.html#pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates the internal model with `xnew` and `ynew` instances.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        xnew: np.ndarray, shape=((m, nfeatures))</span>
+<span class="sd">            New training instances to update the model with.</span>
+<span class="sd">        ynew: np.ndarray, shape=((m,))</span>
+<span class="sd">            New training targets to update the model with.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">ynew</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">xnew</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jose Jimenez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1.0.dev1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

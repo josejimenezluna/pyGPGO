@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pyGPGO.surrogates.GaussianProcess module &mdash; pyGPGO 0.1.0.dev1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
+        <link rel="up" title="pyGPGO.surrogates package" href="pyGPGO.surrogates.html"/>
+        <link rel="next" title="pyGPGO.surrogates.GaussianProcessMCMC module" href="pyGPGO.surrogates.GaussianProcessMCMC.html"/>
+        <link rel="prev" title="pyGPGO.surrogates.BoostedTrees module" href="pyGPGO.surrogates.BoostedTrees.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pyGPGO
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0.dev1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">pyGPGO documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.GPGO.html">Bayesian Optimization module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="pyGPGO.surrogates.html">Surrogates module</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyGPGO.surrogates.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.BoostedTrees.html">pyGPGO.surrogates.BoostedTrees module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pyGPGO.surrogates.GaussianProcess module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.GaussianProcessMCMC.html">pyGPGO.surrogates.GaussianProcessMCMC module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.RandomForest.html">pyGPGO.surrogates.RandomForest module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyGPGO.surrogates.html#module-pyGPGO.surrogates">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.covfunc.html">Covariance function module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.acquisition.html">Acquisition function module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyGPGO</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api.html">pyGPGO documentation</a> &raquo;</li>
+        
+          <li><a href="pyGPGO.surrogates.html">pyGPGO.surrogates package</a> &raquo;</li>
+        
+      <li>pyGPGO.surrogates.GaussianProcess module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pyGPGO.surrogates.GaussianProcess.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pyGPGO.surrogates.GaussianProcess">
+<span id="pygpgo-surrogates-gaussianprocess-module"></span><h1>pyGPGO.surrogates.GaussianProcess module<a class="headerlink" href="#module-pyGPGO.surrogates.GaussianProcess" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess">
+<em class="property">class </em><code class="descclassname">pyGPGO.surrogates.GaussianProcess.</code><code class="descname">GaussianProcess</code><span class="sig-paren">(</span><em>covfunc</em>, <em>optimize=False</em>, <em>usegrads=False</em>, <em>mprior=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess._grad">
+<code class="descname">_grad</code><span class="sig-paren">(</span><em>param_vector</em>, <em>param_key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess._grad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess._grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns gradient for each hyperparameter, evaluated at a given point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param_vector</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of values corresponding to hyperparameters to query.</li>
+<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameter strings corresponding to <cite>param_vector</cite>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Gradient for each evaluated hyperparameter.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess._lmlik">
+<code class="descname">_lmlik</code><span class="sig-paren">(</span><em>param_vector</em>, <em>param_key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess._lmlik"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess._lmlik" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns marginal negative log-likelihood for given covariance hyperparameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param_vector</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of values corresponding to hyperparameters to query.</li>
+<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameter strings corresponding to <cite>param_vector</cite>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Negative log-marginal likelihood for chosen hyperparameters.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits a Gaussian Process regressor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>np.ndarray, shape=(nsamples, nfeatures)</em>) &#8211; Training instances to fit the GP.</li>
+<li><strong>y</strong> (<em>np.ndarray, shape=(nsamples,)</em>) &#8211; Corresponding continuous target values to X.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.getcovparams">
+<code class="descname">getcovparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.getcovparams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.getcovparams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current covariance function hyperparameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dictionary containing covariance function hyperparameters</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.optHyp">
+<code class="descname">optHyp</code><span class="sig-paren">(</span><em>param_key</em>, <em>param_bounds</em>, <em>grads=None</em>, <em>n_trials=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.optHyp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.optHyp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimizes the negative marginal log-likelihood for given hyperparameters and bounds.
+This is an empirical Bayes approach (or Type II maximum-likelihood).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameters to optimize.</li>
+<li><strong>param_bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List containing tuples defining bounds for each hyperparameter to optimize over.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.param_grad">
+<code class="descname">param_grad</code><span class="sig-paren">(</span><em>k_param</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.param_grad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.param_grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns gradient over hyperparameters. It is recommended to use <cite>self._grad</cite> instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>k_param</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Dictionary with keys being hyperparameters and values their queried values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Gradient corresponding to each hyperparameters. Order given by <cite>k_param.keys()</cite></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">np.ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>Xstar</em>, <em>return_std=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns mean and covariances for the posterior Gaussian Process.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Xstar</strong> (<em>np.ndarray, shape=((nsamples, nfeatures))</em>) &#8211; Testing instances to predict.</li>
+<li><strong>return_std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Whether to return the standard deviation of the posterior process. Otherwise,
+it returns the whole covariance matrix of the posterior process.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>np.ndarray</em> &#8211; Mean of the posterior process for testing instances.</li>
+<li><em>np.ndarray</em> &#8211; Covariance of the posterior process for testing instances.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>xnew</em>, <em>ynew</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the internal model with <cite>xnew</cite> and <cite>ynew</cite> instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xnew</strong> (<em>np.ndarray, shape=((m, nfeatures))</em>) &#8211; New training instances to update the model with.</li>
+<li><strong>ynew</strong> (<em>np.ndarray, shape=((m,))</em>) &#8211; New training targets to update the model with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pyGPGO.surrogates.GaussianProcessMCMC.html" class="btn btn-neutral float-right" title="pyGPGO.surrogates.GaussianProcessMCMC module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pyGPGO.surrogates.BoostedTrees.html" class="btn btn-neutral" title="pyGPGO.surrogates.BoostedTrees module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Jose Jimenez.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0.dev1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
