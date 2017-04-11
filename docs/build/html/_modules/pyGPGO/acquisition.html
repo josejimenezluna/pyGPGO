@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -40,6 +42,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -80,7 +83,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">pyGPGO documentation</a></li>
 </ul>
 
@@ -94,8 +100,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../index.html">pyGPGO</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyGPGO</a>
+        
       </nav>
 
 
@@ -108,19 +116,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../index.html">Module code</a> &raquo;</li>
-      
-    <li>pyGPGO.acquisition</li>
+        
+      <li>pyGPGO.acquisition</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -149,14 +174,18 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
-        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;ExpectedImprovement&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ExpectedImprovement</span>
-        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;ProbabilityImprovement&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ProbabilityImprovement</span>
-        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;UCB&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">UCB</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Not recognised acquisition function&#39;</span><span class="p">)</span>
+
+        <span class="n">mode_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;ExpectedImprovement&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ExpectedImprovement</span><span class="p">,</span>
+            <span class="s1">&#39;IntegratedExpectedImprovement&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">IntegratedExpectedImprovement</span><span class="p">,</span>
+            <span class="s1">&#39;ProbabilityImprovement&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ProbabilityImprovement</span><span class="p">,</span>
+            <span class="s1">&#39;IntegratedProbabilityImprovement&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">IntegratedProbabilityImprovement</span><span class="p">,</span>
+            <span class="s1">&#39;UCB&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">UCB</span><span class="p">,</span>
+            <span class="s1">&#39;IntegratedUCB&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">IntegratedUCB</span><span class="p">,</span>
+            <span class="s1">&#39;Entropy&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Entropy</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">mode_dict</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Acquisition.ProbabilityImprovement"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition.ProbabilityImprovement">[docs]</a>    <span class="k">def</span> <span class="nf">ProbabilityImprovement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -222,6 +251,95 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">std</span></div>
 
+<div class="viewcode-block" id="Acquisition.Entropy"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition.Entropy">[docs]</a>    <span class="k">def</span> <span class="nf">Entropy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">sigman</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predictive entropy acquisition function</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        tau: float</span>
+<span class="sd">            Best observed function evaluation.</span>
+<span class="sd">        mean: float</span>
+<span class="sd">            Point mean of the posterior process.</span>
+<span class="sd">        std: float</span>
+<span class="sd">            Point std of the posterior process.</span>
+<span class="sd">        sigman: float</span>
+<span class="sd">            Noise variance</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float:</span>
+<span class="sd">            Predictive entropy.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sp2</span> <span class="o">=</span> <span class="n">std</span> <span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigman</span>
+        <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">e</span> <span class="o">*</span> <span class="n">sp2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Acquisition.IntegratedExpectedImprovement"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition.IntegratedExpectedImprovement">[docs]</a>    <span class="k">def</span> <span class="nf">IntegratedExpectedImprovement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">meanmcmc</span><span class="p">,</span> <span class="n">stdmcmc</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Integrated expected improvement. Can only be used with `GaussianProcessMCMC` instance.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        tau: float</span>
+<span class="sd">            Best observed function evaluation</span>
+<span class="sd">        meanmcmc: array-like</span>
+<span class="sd">            Means of posterior predictive distributions after sampling.</span>
+<span class="sd">        stdmcmc</span>
+<span class="sd">            Standard deviations of posterior predictive distributions after sampling.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float:</span>
+<span class="sd">            Integrated Expected Improvement</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">acq</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ExpectedImprovement</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mean</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">std</span><span class="p">]))</span> <span class="k">for</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">meanmcmc</span><span class="p">,</span> <span class="n">stdmcmc</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">acq</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Acquisition.IntegratedProbabilityImprovement"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition.IntegratedProbabilityImprovement">[docs]</a>    <span class="k">def</span> <span class="nf">IntegratedProbabilityImprovement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">meanmcmc</span><span class="p">,</span> <span class="n">stdmcmc</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Integrated probability of improvement. Can only be used with `GaussianProcessMCMC` instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        tau: float</span>
+<span class="sd">            Best observed function evaluation</span>
+<span class="sd">        meanmcmc: array-like</span>
+<span class="sd">            Means of posterior predictive distributions after sampling.</span>
+<span class="sd">        stdmcmc</span>
+<span class="sd">            Standard deviations of posterior predictive distributions after sampling.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float:</span>
+<span class="sd">            Integrated Probability of Improvement</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">acq</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ProbabilityImprovement</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mean</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">std</span><span class="p">]))</span> <span class="k">for</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">meanmcmc</span><span class="p">,</span> <span class="n">stdmcmc</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">acq</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Acquisition.IntegratedUCB"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition.IntegratedUCB">[docs]</a>    <span class="k">def</span> <span class="nf">IntegratedUCB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">meanmcmc</span><span class="p">,</span> <span class="n">stdmcmc</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Integrated probability of improvement. Can only be used with `GaussianProcessMCMC` instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        tau: float</span>
+<span class="sd">            Best observed function evaluation</span>
+<span class="sd">        meanmcmc: array-like</span>
+<span class="sd">            Means of posterior predictive distributions after sampling.</span>
+<span class="sd">        stdmcmc</span>
+<span class="sd">            Standard deviations of posterior predictive distributions after sampling.</span>
+<span class="sd">            </span>
+<span class="sd">        beta: float</span>
+<span class="sd">            Hyperparameter controlling exploitation/exploration ratio.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float:</span>
+<span class="sd">            Integrated UCB.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">acq</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">UCB</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mean</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">std</span><span class="p">]),</span> <span class="n">beta</span><span class="p">)</span> <span class="k">for</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">meanmcmc</span><span class="p">,</span> <span class="n">stdmcmc</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">acq</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Acquisition.eval"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition.eval">[docs]</a>    <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluates selected acquisition function.</span>
@@ -238,12 +356,15 @@
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        float</span>
-<span class="sd">            Acqusition function value.</span>
+<span class="sd">            Acquisition function value.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span></div></div>
 </pre></div>
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
@@ -278,7 +399,8 @@
             VERSION:'0.1.0.dev1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

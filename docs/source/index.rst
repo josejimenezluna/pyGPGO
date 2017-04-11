@@ -9,7 +9,7 @@ pyGPGO: A simple Python package for Bayesian Optimization
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    api
 

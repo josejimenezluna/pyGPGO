@@ -5,10 +5,10 @@ pyGPGO documentation
 Contents:
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
 
     Bayesian Optimization module <pyGPGO.GPGO>
-    Gaussian Process regression module <pyGPGO.GPRegressor>
+    Surrogates module <pyGPGO.surrogates>
     Covariance function module <pyGPGO.covfunc>
     Acquisition function module <pyGPGO.acquisition>
 

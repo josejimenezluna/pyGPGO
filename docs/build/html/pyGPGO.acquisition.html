@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -41,6 +43,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,8 +84,17 @@
           
             
             
-                <ul>
-<li class="toctree-l1"><a class="reference internal" href="api.html">pyGPGO documentation</a></li>
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">pyGPGO documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.GPGO.html">Bayesian Optimization module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.surrogates.html">Surrogates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.covfunc.html">Covariance function module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Acquisition function module</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -95,8 +107,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">pyGPGO</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyGPGO</a>
+        
       </nav>
 
 
@@ -105,25 +119,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
           <li><a href="api.html">pyGPGO documentation</a> &raquo;</li>
-      
-    <li>pyGPGO.acquisition module</li>
+        
+      <li>pyGPGO.acquisition module</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/pyGPGO.acquisition.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -135,6 +166,32 @@
 <dt id="pyGPGO.acquisition.Acquisition">
 <em class="property">class </em><code class="descclassname">pyGPGO.acquisition.</code><code class="descname">Acquisition</code><span class="sig-paren">(</span><em>mode</em>, <em>eps=1e-06</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="pyGPGO.acquisition.Acquisition.Entropy">
+<code class="descname">Entropy</code><span class="sig-paren">(</span><em>tau</em>, <em>mean</em>, <em>std</em>, <em>sigman</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition.Entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition.Entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predictive entropy acquisition function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Best observed function evaluation.</li>
+<li><strong>mean</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Point mean of the posterior process.</li>
+<li><strong>std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Point std of the posterior process.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Predictive entropy.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="pyGPGO.acquisition.Acquisition.ExpectedImprovement">
 <code class="descname">ExpectedImprovement</code><span class="sig-paren">(</span><em>tau</em>, <em>mean</em>, <em>std</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition.ExpectedImprovement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition.ExpectedImprovement" title="Permalink to this definition">¶</a></dt>
@@ -151,6 +208,82 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Expected improvement.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.acquisition.Acquisition.IntegratedExpectedImprovement">
+<code class="descname">IntegratedExpectedImprovement</code><span class="sig-paren">(</span><em>tau</em>, <em>meanmcmc</em>, <em>stdmcmc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition.IntegratedExpectedImprovement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition.IntegratedExpectedImprovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrated expected improvement. Can only be used with <cite>GaussianProcessMCMC</cite> instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Best observed function evaluation</li>
+<li><strong>meanmcmc</strong> (<em>array-like</em>) &#8211; Means of posterior predictive distributions after sampling.</li>
+<li><strong>stdmcmc</strong> &#8211; Standard deviations of posterior predictive distributions after sampling.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Integrated Expected Improvement</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.acquisition.Acquisition.IntegratedProbabilityImprovement">
+<code class="descname">IntegratedProbabilityImprovement</code><span class="sig-paren">(</span><em>tau</em>, <em>meanmcmc</em>, <em>stdmcmc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition.IntegratedProbabilityImprovement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition.IntegratedProbabilityImprovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrated probability of improvement. Can only be used with <cite>GaussianProcessMCMC</cite> instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Best observed function evaluation</li>
+<li><strong>meanmcmc</strong> (<em>array-like</em>) &#8211; Means of posterior predictive distributions after sampling.</li>
+<li><strong>stdmcmc</strong> &#8211; Standard deviations of posterior predictive distributions after sampling.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Integrated Probability of Improvement</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.acquisition.Acquisition.IntegratedUCB">
+<code class="descname">IntegratedUCB</code><span class="sig-paren">(</span><em>tau</em>, <em>meanmcmc</em>, <em>stdmcmc</em>, <em>beta</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition.IntegratedUCB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition.IntegratedUCB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrated probability of improvement. Can only be used with <cite>GaussianProcessMCMC</cite> instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Best observed function evaluation</li>
+<li><strong>meanmcmc</strong> (<em>array-like</em>) &#8211; Means of posterior predictive distributions after sampling.</li>
+<li><strong>stdmcmc</strong> &#8211; Standard deviations of posterior predictive distributions after sampling.</li>
+<li><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Hyperparameter controlling exploitation/exploration ratio.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Integrated UCB.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
@@ -226,7 +359,7 @@
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Acqusition function value.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Acquisition function value.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
@@ -242,13 +375,16 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="pyGPGO.covfunc.html" class="btn btn-neutral" title="pyGPGO.covfunc module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pyGPGO.covfunc.html" class="btn btn-neutral" title="pyGPGO.covfunc module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -282,7 +418,8 @@
             VERSION:'0.1.0.dev1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

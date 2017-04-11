@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -32,7 +34,7 @@
   
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO documentation" href="api.html"/>
-        <link rel="next" title="pyGPGO.GPRegressor module" href="pyGPGO.GPRegressor.html"/>
+        <link rel="next" title="pyGPGO.surrogates package" href="pyGPGO.surrogates.html"/>
         <link rel="prev" title="pyGPGO documentation" href="api.html"/> 
 
   
@@ -42,6 +44,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -82,8 +85,17 @@
           
             
             
-                <ul>
-<li class="toctree-l1"><a class="reference internal" href="api.html">pyGPGO documentation</a></li>
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">pyGPGO documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bayesian Optimization module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.surrogates.html">Surrogates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.covfunc.html">Covariance function module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.acquisition.html">Acquisition function module</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -96,8 +108,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">pyGPGO</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyGPGO</a>
+        
       </nav>
 
 
@@ -106,25 +120,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
           <li><a href="api.html">pyGPGO documentation</a> &raquo;</li>
-      
-    <li>pyGPGO.GPGO module</li>
+        
+      <li>pyGPGO.GPGO module</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/pyGPGO.GPGO.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -136,6 +167,72 @@
 <dt id="pyGPGO.GPGO.GPGO">
 <em class="property">class </em><code class="descclassname">pyGPGO.GPGO.</code><code class="descname">GPGO</code><span class="sig-paren">(</span><em>GPRegressor</em>, <em>Acquisition</em>, <em>f</em>, <em>parameter_dict</em>, <em>n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPGO.html#GPGO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPGO.GPGO" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="pyGPGO.GPGO.GPGO._acqWrapper">
+<code class="descname">_acqWrapper</code><span class="sig-paren">(</span><em>xnew</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPGO.html#GPGO._acqWrapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPGO.GPGO._acqWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluates the acquisition function on a point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>xnew</strong> (<em>np.ndarray, shape=((len(self.parameter_key),))</em>) &#8211; Point to evaluate the acquisition function on.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Acquisition function value for <cite>xnew</cite>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.GPGO.GPGO._firstRun">
+<code class="descname">_firstRun</code><span class="sig-paren">(</span><em>n_eval=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPGO.html#GPGO._firstRun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPGO.GPGO._firstRun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs initial evaluations before fitting GP.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n_eval</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Number of initial evaluations to perform. Default is 3.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.GPGO.GPGO._optimizeAcq">
+<code class="descname">_optimizeAcq</code><span class="sig-paren">(</span><em>method='L-BFGS-B'</em>, <em>n_start=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPGO.html#GPGO._optimizeAcq"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPGO.GPGO._optimizeAcq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimizes the acquisition function using a multistart approach.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>method</strong> (<em>str. Default 'L-BFGS-B'.</em>) &#8211; Any <cite>scipy.optimize</cite> method that admits bounds and gradients. Default is &#8216;L-BFGS-B&#8217;.</li>
+<li><strong>n_start</strong> (<em>int.</em>) &#8211; Number of starting points for the optimization procedure. Default is 100.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.GPGO.GPGO._sampleParam">
+<code class="descname">_sampleParam</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPGO.html#GPGO._sampleParam"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPGO.GPGO._sampleParam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Randomly samples parameters over bounds.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A random sample of specified parameters.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="pyGPGO.GPGO.GPGO.getResult">
 <code class="descname">getResult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPGO.html#GPGO.getResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPGO.GPGO.getResult" title="Permalink to this definition">¶</a></dt>
@@ -185,15 +282,18 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pyGPGO.GPRegressor.html" class="btn btn-neutral float-right" title="pyGPGO.GPRegressor module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pyGPGO.surrogates.html" class="btn btn-neutral float-right" title="pyGPGO.surrogates package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="api.html" class="btn btn-neutral" title="pyGPGO documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral" title="pyGPGO documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -227,7 +327,8 @@
             VERSION:'0.1.0.dev1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: ''
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

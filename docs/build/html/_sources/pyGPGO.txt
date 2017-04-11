@@ -1,13 +1,19 @@
 pyGPGO package
 ==============
 
+Subpackages
+-----------
+
+.. toctree::
+
+    pyGPGO.surrogates
+
 Submodules
 ----------
 
 .. toctree::
 
    pyGPGO.GPGO
-   pyGPGO.GPRegressor
    pyGPGO.acquisition
    pyGPGO.covfunc
    pyGPGO.logger
