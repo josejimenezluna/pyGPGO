@@ -3,9 +3,9 @@ from scipy.special import gamma, kv
 from scipy.spatial.distance import cdist
 
 default_bounds = {
-    'l': [1e-4, 10],
-    'sigmaf': [1e-4, 10],
-    'sigman': [1e-6, 10],
+    'l': [1e-4, 1],
+    'sigmaf': [1e-4, 2],
+    'sigman': [1e-6, 2],
     'v': [1e-3, 10],
     'gamma': [1e-3, 1.99],
     'alpha': [1e-3, 1e4],
