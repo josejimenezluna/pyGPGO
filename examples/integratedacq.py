@@ -27,7 +27,7 @@ if __name__ == '__main__':
     for i in range(200):
         plt.plot(Z.flatten(), post_mean[i], linewidth=0.4)
 
-    plt.plot(gpgo.GP.X.flatten(), gpgo.GP.y, '*', label='Sampled data', markersize = 10, color='red')
+    plt.plot(gpgo.GP.X.flatten(), gpgo.GP.y, 'X', label='Sampled data', markersize = 10, color='red')
     plt.grid()
     plt.legend()
 
