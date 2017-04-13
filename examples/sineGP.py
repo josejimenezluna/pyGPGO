@@ -1,18 +1,19 @@
 import numpy as np
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
-from pyGPGO.covfunc import squaredExponential
+from pyGPGO.covfunc import *
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     # Build synthetic data (sine function)
-    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 2)
+    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 3)
     y = np.sin(x)
     X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 
     # Specify covariance function
-    sexp = squaredExponential()
+    sexp = matern52(bounds=[(.82, 10), (0.0001, 10), (1e-6, 1)])
+    #sexp = matern32()
     # Instantiate GPRegressor class
-    gp = GaussianProcess(sexp)
+    gp = GaussianProcess(sexp, optimize=True, usegrads=True)
     # Fit the model to the data
     gp.fit(X, y)
 
