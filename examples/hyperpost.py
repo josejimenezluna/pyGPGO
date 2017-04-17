@@ -1,13 +1,12 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC
-from pyGPGO.covfunc import squaredExponential
+from pyGPGO.covfunc import matern32
 
 
 if __name__ == '__main__':
     np.random.seed(1337)
-    sexp = squaredExponential()
-    gp = GaussianProcessMCMC(sexp, niter=2000, init='MAP')
+    sexp = matern32()
+    gp = GaussianProcessMCMC(sexp, niter=2000, init='MAP', step=None)
 
     X = np.linspace(0, 6, 7)[:, None]
     y = np.sin(X).flatten()

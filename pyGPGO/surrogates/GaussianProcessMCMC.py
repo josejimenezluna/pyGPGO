@@ -11,11 +11,12 @@ import matplotlib.pyplot as plt
 
 
 covariance_equivalence = {'squaredExponential': pm.gp.cov.ExpQuad,
-                          'matern': pm.gp.cov.Matern52}
+                          'matern52': pm.gp.cov.Matern52,
+                          'matern32': pm.gp.cov.Matern32}
 
 
 class GaussianProcessMCMC:
-    def __init__(self, covfunc, niter=2000, burnin=1000, init='ADVI'):
+    def __init__(self, covfunc, niter=2000, burnin=1000, init='ADVI', step=None):
         """
         Gaussian Process class using MCMC sampling of covariance function hyperparameters.
         
@@ -36,6 +37,7 @@ class GaussianProcessMCMC:
         self.niter = niter
         self.burnin = burnin
         self.init = init
+        self.step = step
 
     def _extractParam(self, unittrace, covparams):
         d = {}
@@ -74,8 +76,11 @@ class GaussianProcessMCMC:
             f_cov = s2_f * covariance_equivalence[type(self.covfunc).__name__](1, l)
 
             y_obs = pm.gp.GP('y_obs', cov_func=f_cov, sigma=s2_n, observed={'X': self.X, 'Y': self.y})
-        with model:
-            self.trace = pm.sample(self.niter, init=self.init)[self.burnin:]
+        with self.model as model:
+            if self.step is not None:
+                self.trace = pm.sample(self.niter, step=self.step())[self.burnin:]
+            else:
+                self.trace = pm.sample(self.niter, init=self.init)[self.burnin:]
 
     def posteriorPlot(self):
         """
