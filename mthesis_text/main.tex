@@ -25,12 +25,58 @@
 \newtheorem{defini}{Definition}
 
 
+
 \makeindex
 
 \begin{document}
-\title{Bayesian optimization in machine learning}
-\author{Jos\'e Jim\'enez Luna}
-\maketitle
+%\title{Bayesian optimization in machine learning}
+%\subtitle{what}
+%\author{Jos\'e Jim\'enez Luna}
+%\maketitle
+%\tableofcontents
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE Universitat Politecnica de Catalunya\par
+	 Facultat de Matematiques i Estadistica\par}
+	\vspace{1cm}
+	{\scshape\Large Final Master's Thesis (MESIO)\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Bayesian optimization in machine learning\par}
+	\vspace{2cm}
+	{\Large\itshape José Jiménez\par}
+
+	\vfill
+	supervised by\par
+	Josep Ginebra. Dpto Estadística.
+
+	\vfill
+
+% Bottom of the page
+	    {\large \today\par}
+	    \vfill
+		\includegraphics[width=0.35\textwidth]{figures/upclogo}\par\vspace{1cm}
+\end{titlepage}
+
+
+\chapter*{\centering \begin{normalsize}Abstract\end{normalsize}}
+\begin{quotation}
+\noindent Blablablabla eqweqweqs qeqdqw
+\end{quotation}
+\clearpage
+
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{\stretch{1}}
+\begin{flushright}
+\itshape
+Dedicated to my cat\\
+and my dog
+\end{flushright}
+\vspace{\stretch{3}}
+\cleardoublepage
+
+
 \tableofcontents
 
 
@@ -2497,6 +2543,7 @@ if __name__ == '__main__':
                linenos,
                numbersep=5pt,
                gobble=0,
+               breaklines=true,
                frame=lines,
                framesep=2mm,
                python3 = true]{python}
@@ -2588,7 +2635,392 @@ if __name__ == '__main__':
 \end{minted}
 
 \section*{Testing code}
-eqweq 
+\subsection*{testing/utils.py}
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               breaklines=true,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+import os
+
+import numpy as np
+import pandas as pd
+from sklearn.metrics import log_loss, mean_squared_error
+from sklearn.model_selection import train_test_split, KFold
+from sklearn.preprocessing import StandardScaler
+
+from pyGPGO.GPGO import GPGO
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
+
+
+class loss:
+    def __init__(self, model, X, y, method='holdout', problem='binary'):
+        self.model = model
+        self.X = X
+        self.y = y
+        self.method = method
+        self.problem = problem
+        sc = StandardScaler()
+        self.X = sc.fit_transform(self.X)
+        if self.problem == 'binary':
+            self.loss = log_loss
+        elif self.problem == 'cont':
+            self.loss = mean_squared_error
+        else:
+            self.loss = log_loss
+
+    def evaluateLoss(self, **param):
+        if self.method == 'holdout':
+            X_train, X_test, y_train, y_test = train_test_split(self.X, self.y, random_state=93)
+            clf = self.model.__class__(**param, problem=self.problem).eval()
+            clf.fit(X_train, y_train)
+            if self.problem == 'binary':
+                yhat = clf.predict_proba(X_test)[:, 1]
+            elif self.problem == 'cont':
+                yhat = clf.predict(X_test)
+            else:
+                yhat = clf.predict_proba(X_test)
+            return (- self.loss(y_test, yhat))
+        elif self.method == '5fold':
+            kf = KFold(n_splits=5, shuffle=False)
+            losses = []
+            for train_index, test_index in kf.split(self.X):
+                X_train, X_test = self.X[train_index], self.X[test_index]
+                y_train, y_test = self.y[train_index], self.y[test_index]
+                clf = self.model.__class__(**param, problem=self.problem).eval()
+                clf.fit(X_train, y_train)
+                if self.problem == 'binary':
+                    yhat = clf.predict_proba(X_test)[:, 1]
+                elif self.problem == 'cont':
+                    yhat = clf.predict(X_test)
+                else:
+                    yhat = clf.predict_proba(X_test)
+                losses.append(- self.loss(y_test, yhat))
+            return (np.average(losses))
+
+
+def cumMax(history):
+    n = len(history)
+    res = np.empty((n,))
+    for i in range(n):
+        res[i] = np.max(history[:(i + 1)])
+    return (res)
+
+
+def build(csv_path, target_index, header=None):
+    data = pd.read_csv(csv_path, header=header)
+    data = data.as_matrix()
+    y = data[:, target_index]
+    X = np.delete(data, obj=np.array([target_index]), axis=1)
+    return X, y
+
+
+def evaluateDataset(csv_path, target_index, problem, model, parameter_dict, method='holdout', seed=20, max_iter=50):
+    print('Now evaluating {}...'.format(csv_path))
+    X, y = build(csv_path, target_index)
+
+    wrapper = loss(model, X, y, method=method, problem=problem)
+
+    print('Evaluating EI')
+    np.random.seed(seed)
+    sexp = squaredExponential()
+    gp = GaussianProcess(sexp, optimize=True, usegrads=True)
+    acq_ei = Acquisition(mode='ExpectedImprovement')
+    gpgo_ei = GPGO(gp, acq_ei, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
+    gpgo_ei.run(max_iter=max_iter)
+
+    # Also add UCB, beta = 0.5, beta = 1.5
+    print('Evaluating UCB beta = 0.5')
+    np.random.seed(seed)
+    sexp = squaredExponential()
+    gp = GaussianProcess(sexp, optimize=True, usegrads=True)
+    acq_ucb = Acquisition(mode='UCB', beta=0.5)
+    gpgo_ucb = GPGO(gp, acq_ucb, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
+    gpgo_ucb.run(max_iter=max_iter)
+
+    print('Evaluating UCB beta = 1.5')
+    np.random.seed(seed)
+    sexp = squaredExponential()
+    gp = GaussianProcess(sexp, optimize=True, usegrads=True)
+    acq_ucb2 = Acquisition(mode='UCB', beta=1.5)
+    gpgo_ucb2 = GPGO(gp, acq_ucb2, wrapper.evaluateLoss, parameter_dict, n_jobs=1)
+    gpgo_ucb2.run(max_iter=max_iter)
+
+    print('Evaluating random')
+    np.random.seed(seed)
+    r = evaluateRandom(gpgo_ei, wrapper.evaluateLoss, n_eval=max_iter + 1)
+    r = cumMax(r)
+
+    return np.array(gpgo_ei.history), np.array(gpgo_ucb.history), np.array(gpgo_ucb2.history), r
+
+
+def plotRes(gpgoei_history, gpgoucb_history, gpgoucb2_history, random, datasetname, model, problem):
+    import matplotlib
+    import matplotlib.pyplot as plt
+    x = np.arange(1, len(random) + 1)
+    fig = plt.figure()
+    plt.plot(x, -random, label='Random search', color='red')
+    plt.plot(x, -gpgoei_history, label='GPGO (EI)', color='blue')
+    plt.plot(x, -gpgoucb_history, label=r'GPGO (UCB) $\beta=.5$', color='yellow')
+    plt.plot(x, -gpgoucb2_history, label=r'GPGO (UCB) $\beta=1.5$', color='green')
+    plt.grid()
+    plt.legend(loc=0)
+    plt.xlabel('Number of evaluations')
+    if problem == 'binary':
+        plt.ylabel('Best log-loss found')
+    else:
+        plt.ylabel('Best MSE found')
+    datasetname = datasetname.split('.')[0]
+    plt.savefig(os.path.join(os.path.abspath('.'), 'testing/results/{}/{}.pdf'.format(model.name, datasetname)))
+    plt.close(fig)
+    return None
+
+
+def evaluateRandom(gpgo, loss, n_eval=20):
+    res = []
+    for i in range(n_eval):
+        param = gpgo._sampleParam()
+        l = loss(**param)
+        res.append(l)
+        print('Param {}, loss: {}'.format(param, l))
+    return (res)      
+\end{minted}
+
+\subsection*{testing/modaux.py}
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               breaklines=true,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor, AdaBoostClassifier, AdaBoostRegressor, \
+    GradientBoostingClassifier, GradientBoostingRegressor
+from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
+from sklearn.neural_network import MLPClassifier, MLPRegressor
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
+from sklearn.svm import SVC, SVR
+from collections import OrderedDict
+
+d_rf = OrderedDict()
+d_rf['n_estimators'] = ('int', (10, 50))
+d_rf['min_samples_split'] = ('cont', (0.1, 0.5))
+d_rf['max_features'] = ('cont', (0.1, 0.5))
+
+d_knn = OrderedDict()
+d_knn['n_neighbors'] = ('int', (10, 50))
+
+d_mlp = OrderedDict()
+d_mlp['hidden_layer_size'] = ('int', (5, 50))
+d_mlp['alpha'] = ('cont', (1e-5, 0.9))
+
+
+d_svm = OrderedDict()
+d_svm['C'] = ('cont', (-4, 5))
+d_svm['gamma'] = ('cont', (-4, 5))
+
+d_tree = OrderedDict()
+d_tree['max_features'] = ('cont', (0.1, 0.99))
+d_tree['max_depth'] = ('int', (4, 30))
+d_tree['min_samples_split'] = ('cont', (0.1, 0.99))
+
+d_ada = OrderedDict()
+d_ada['n_estimators'] = ('int', (5, 200))
+d_ada['learning_rate'] = ('cont', (1e-5, 1))
+
+d_gbm = OrderedDict()
+d_gbm['learning_rate'] = ('cont', (10e-5, 1e-1))
+d_gbm['n_estimators'] = ('int', (10, 100))
+d_gbm['max_depth'] = ('int', (2, 100))
+d_gbm['min_samples_split'] = ('int', (2, 100))
+
+
+
+class Tree:
+    def __init__(self, problem='binary', max_features=0.5, max_depth=1, min_samples_split=2):
+        self.problem = problem
+        self.max_features = max_features
+        self.max_depth = int(max_depth)
+        self.min_samples_split = min_samples_split
+        self.name = 'Tree'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = DecisionTreeClassifier(max_features=self.max_features, max_depth=self.max_depth, min_samples_split=self.min_samples_split, random_state=20)
+        else:
+            mod = DecisionTreeRegressor(max_features=self.max_features, max_depth=self.max_depth, min_samples_split=self.min_samples_split, random_state=20)
+        return mod
+
+
+class Ada:
+    def __init__(self, problem='binary', n_estimators=50, learning_rate=1):
+        self.problem = problem
+        self.n_estimators = int(n_estimators)
+        self.learning_rate = learning_rate
+        self.name = 'Ada'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = AdaBoostClassifier(n_estimators=self.n_estimators, learning_rate=self.learning_rate, random_state=20)
+        else:
+            mod = AdaBoostRegressor(n_estimators=self.n_estimators, learning_rate=self.learning_rate, random_state=20)
+        return mod
+
+
+class GBM:
+    def __init__(self, problem='binary', learning_rate=0.1, n_estimators=100, max_depth=3, min_samples_split=2,
+                 min_samples_leaf=1, min_weight_fraction_leaf=0.0, subsample=1.0, max_features=1.0):
+        self.problem = problem
+        self.learning_rate = learning_rate
+        self.n_estimators = int(n_estimators)
+        self.max_depth = int(max_depth)
+        self.min_samples_split = int(min_samples_split)
+        self.min_samples_leaf = int(min_samples_leaf)
+        self.min_weight_fraction_leaf = min_weight_fraction_leaf
+        self.subsample = subsample
+        self.max_features = max_features
+        self.name = 'GBM'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = GradientBoostingClassifier(learning_rate=self.learning_rate, n_estimators=self.n_estimators, max_depth=self.max_depth, min_samples_split=self.min_samples_split, min_samples_leaf=self.min_samples_leaf, min_weight_fraction_leaf=self.min_weight_fraction_leaf, subsample=self.subsample, max_features=self.max_features, random_state=20)
+        else:
+            mod = GradientBoostingRegressor(learning_rate=self.learning_rate, n_estimators=self.n_estimators, max_depth=self.max_depth, min_samples_split=self.min_samples_split, min_samples_leaf=self.min_samples_leaf, min_weight_fraction_leaf=self.min_weight_fraction_leaf, subsample=self.subsample, max_features=self.max_features, random_state=20)
+        return mod
+
+
+class SVM:
+    def __init__(self, problem='binary', C=0, gamma=0, kernel='rbf'):
+        self.problem = problem
+        self.C = 10**C
+        self.gamma = 10**gamma
+        self.kernel = kernel
+        self.name = 'SVM'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = SVC(kernel=self.kernel, C=self.C, gamma=self.gamma, probability=True, random_state=20)
+        else:
+            mod = SVR(kernel=self.kernel, C=self.C, gamma=self.gamma)
+        return mod
+
+
+class RF:
+    def __init__(self, problem='binary', n_estimators=10, max_features=0.5,
+                 min_samples_split=0.3, min_samples_leaf=0.2):
+        self.problem = problem
+        self.n_estimators = int(n_estimators)
+        self.max_features = max_features
+        self.min_samples_split = min_samples_split
+        self.min_samples_leaf = min_samples_leaf
+        self.name = 'RF'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = RandomForestClassifier(n_estimators=self.n_estimators,
+                                         max_features=self.max_features,
+                                         min_samples_split=self.min_samples_split,
+                                         min_samples_leaf=self.min_samples_leaf,
+                                         n_jobs=-1,
+                                         random_state=20)
+        else:
+            mod = RandomForestRegressor(n_estimators=self.n_estimators,
+                                        max_features=self.max_features,
+                                        min_samples_split=self.min_samples_split,
+                                        min_samples_leaf=self.min_samples_leaf,
+                                        n_jobs=-1,
+                                        random_state=20)
+        return mod
+
+
+class KNN:
+    def __init__(self, problem='binary', n_neighbors=5, leaf_size=30):
+        self.problem = problem
+        self.n_neighbors = int(n_neighbors)
+        self.leaf_size = int(leaf_size)
+        self.name = 'KNN'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = KNeighborsClassifier(n_neighbors=self.n_neighbors,
+                                       leaf_size=self.leaf_size)
+        else:
+            mod = KNeighborsRegressor(n_neighbors=self.n_neighbors,
+                                      leaf_size=self.leaf_size)
+        return mod
+
+
+class MLP:
+    def __init__(self, problem='binary', hidden_layer_size=100, alpha=10e-4,
+                 learning_rate_init=10e-4, beta_1=0.9, beta_2=0.999):
+        self.problem = problem
+        self.hidden_layer_sizes = (int(hidden_layer_size),)
+        self.alpha = alpha
+        self.learning_rate_init = learning_rate_init
+        self.beta_1 = beta_1
+        self.beta_2 = beta_2
+        self.name = 'MLP'
+
+    def eval(self):
+        if self.problem == 'binary':
+            mod = MLPClassifier(hidden_layer_sizes=self.hidden_layer_sizes, alpha=self.alpha, learning_rate_init=self.learning_rate_init, beta_1=self.beta_1, beta_2=self.beta_2, random_state=20)
+        else:
+            mod = MLPRegressor(hidden_layer_sizes=self.hidden_layer_sizes, alpha=self.alpha, learning_rate_init=self.learning_rate_init, beta_1=self.beta_1, beta_2=self.beta_2, random_state=20)
+        return mod
+               
+\end{minted}
+
+\subsection*{testing/testing.py}
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               autogobble,
+               breaklines=true,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+               
+from testing.utils import evaluateDataset, plotRes
+from testing.modaux import *
+import os
+import numpy as np
+
+if __name__ == '__main__':
+    models = [SVM(), MLP(), GBM(), KNN()]
+    params = [d_svm, d_mlp, d_gbm, d_knn]
+
+    path = os.path.join(os.getcwd(), 'datasets')
+    datasets = ['aff.csv', 'pinter.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',
+                'lsvt.csv', 'pima-indians-diabetes.csv']
+    problems = ['cont', 'binary', 'binary', 'binary', 'binary', 'binary', 'binary']
+    targets = [0, 0, 0, 10, 16, 0, 8]
+
+    for model, parameter_dict in zip(models, params):
+        print('Evaluating model {}'.format(model.name))
+        for dataset, target, problem in zip(datasets, targets, problems):
+            model.problem = problem
+            np.random.seed(93)
+            print(np.random.randn(1))
+            try:
+                g, g2, g3, r = evaluateDataset(os.path.join(path, dataset), target_index=target, model=model, parameter_dict=parameter_dict, method='5fold', seed=20, max_iter=50, problem=problem)
+                plotRes(g, g2, g3, r, dataset, model, problem=problem)
+                print(np.random.randn(1))
+            except Exception as e:
+                print(e)
+                continue
+
+\end{minted}
+
+
 
 
 \printbibliography
