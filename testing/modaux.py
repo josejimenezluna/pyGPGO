@@ -17,13 +17,9 @@ d_knn['n_neighbors'] = ('int', (10, 50))
 d_mlp = OrderedDict()
 d_mlp['hidden_layer_size'] = ('int', (5, 50))
 d_mlp['alpha'] = ('cont', (1e-5, 0.9))
-#d_mlp['learning_rate_init'] = ('cont', (1e-6, 1e-1))
-#d_mlp['beta_1'] = ('cont', (0.001, 0.999))
-#d_mlp['beta_2'] = ('cont', (0.001, 0.999))
+
 
 d_svm = OrderedDict()
-#d_svm['C'] = ('cont', (1e-4, 100))
-#d_svm['gamma'] = ('cont', (1e-4, 100))
 d_svm['C'] = ('cont', (-4, 5))
 d_svm['gamma'] = ('cont', (-4, 5))
 
@@ -43,9 +39,6 @@ d_gbm['max_depth'] = ('int', (2, 100))
 d_gbm['min_samples_split'] = ('int', (2, 100))
 
 
-# d_gbm['min_samples_leaf'] = ('int', (2, 100))
-# d_gbm['subsample'] = ('cont', (0.01, 0.99))
-# d_gbm['max_features'] = ('cont', (0.01, 0.99))
 
 class Tree:
     def __init__(self, problem='binary', max_features=0.5, max_depth=1, min_samples_split=2):

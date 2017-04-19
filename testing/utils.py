@@ -110,11 +110,6 @@ def evaluateDataset(csv_path, target_index, problem, model, parameter_dict, meth
     r = evaluateRandom(gpgo_ei, wrapper.evaluateLoss, n_eval=max_iter + 1)
     r = cumMax(r)
 
-    # print('Evaluating simulated annealing')
-    # np.random.seed(seed)
-    # sa = evaluateSA(gpgo_ei, wrapper, n_eval=max_iter + 1)
-    # sa = cumMax(sa)
-
     return np.array(gpgo_ei.history), np.array(gpgo_ucb.history), np.array(gpgo_ucb2.history), r
 
 
@@ -127,7 +122,6 @@ def plotRes(gpgoei_history, gpgoucb_history, gpgoucb2_history, random, datasetna
     plt.plot(x, -gpgoei_history, label='GPGO (EI)', color='blue')
     plt.plot(x, -gpgoucb_history, label=r'GPGO (UCB) $\beta=.5$', color='yellow')
     plt.plot(x, -gpgoucb2_history, label=r'GPGO (UCB) $\beta=1.5$', color='green')
-    # plt.plot(x, -sa, label='Simulated annealing')
     plt.grid()
     plt.legend(loc=0)
     plt.xlabel('Number of evaluations')
@@ -149,8 +143,3 @@ def evaluateRandom(gpgo, loss, n_eval=20):
         res.append(l)
         print('Param {}, loss: {}'.format(param, l))
     return (res)
-
-# def evaluateSA(gpgo, loss, T=100, cooling=0.9, n_eval=50):
-#     sa = SimulatedAnnealing(gpgo._sampleParam, loss.evaluateLoss, T=T, cooling=cooling)
-#     sa.run(n_eval)
-#     return (sa.history)

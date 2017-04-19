@@ -5,10 +5,11 @@ from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
 from pyGPGO.GPGO import GPGO
 
+import pymc3 as pm
 
 if __name__ == '__main__':
     sexp = squaredExponential()
-    gp = GaussianProcessMCMC(sexp)
+    gp = GaussianProcessMCMC(sexp, step=pm.Slice)
 
     def f(x):
         return np.sin(x)

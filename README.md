@@ -25,7 +25,7 @@ pip install git+https://github.com/hawk31/pyGPGO
 
 ### Features
 
-* Different surrogate models: Gaussian Processes, Random Forests, Gradient Boosting Machines.
+* Different surrogate models: Gaussian Processes, t-Student Processes, Random Forests, Gradient Boosting Machines.
 * Type II Maximum-Likelihood of covariance function hyperparameters.
 * MCMC sampling for full-Bayesian inference of hyperparameters (via `pyMC3`).
 * Integrated acquisition functions

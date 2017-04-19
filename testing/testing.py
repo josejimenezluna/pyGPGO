@@ -4,8 +4,8 @@ import os
 import numpy as np
 
 if __name__ == '__main__':
-    models = [SVM()]
-    params = [d_svm]
+    models = [SVM(), MLP(), GBM(), KNN()]
+    params = [d_svm, d_mlp, d_gbm, d_knn]
 
     path = os.path.join(os.getcwd(), 'datasets')
     datasets = ['aff.csv', 'pinter.csv', 'breast_cancer.csv', 'indian_liver.csv', 'parkinsons.csv',

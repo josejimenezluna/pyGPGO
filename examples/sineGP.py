@@ -10,7 +10,7 @@ if __name__ == '__main__':
     X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 
     # Specify covariance function
-    sexp = matern52(bounds=[(.82, 10), (0.0001, 10), (1e-6, 1)])
+    sexp = matern32(bounds=[(.82, 10), (0.0001, 10), (1e-6, 1)])
     #sexp = matern32()
     # Instantiate GPRegressor class
     gp = GaussianProcess(sexp, optimize=True, usegrads=True)
