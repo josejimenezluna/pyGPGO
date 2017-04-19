@@ -1318,6 +1318,40 @@
       \verb http://ipg.epfl.ch/%7B~%7Dseeger/lapmalmainweb/papers/aistats03-final.pdf
       \endverb
     \endentry
+    \entry{Shah2014}{article}{}
+      \name{author}{3}{}{%
+        {{hash=dbd6555228f6c241a2693cc967170f14}{%
+           family={Shah},
+           family_i={S\bibinitperiod},
+           given={Amar},
+           given_i={A\bibinitperiod}}}%
+        {{hash=13274b67cbfddacb12bec1969cbee8f0}{%
+           family={Wilson},
+           family_i={W\bibinitperiod},
+           given={Andrew\bibnamedelima Gordon},
+           given_i={A\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=bf5cf30deddddad00a6341ad7a414445}{%
+           family={Ghahramani},
+           family_i={G\bibinitperiod},
+           given={Zoubin},
+           given_i={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{aebbf20a9a4ebef5ea0c756641b17a4d}
+      \strng{fullhash}{aebbf20a9a4ebef5ea0c756641b17a4d}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Finding the global minimum of a function is often difficult. We consider efficiently minimizing functions which are computationally expensive to evaluate. A Bayesian approach to the global function optimization problem places a prior distribution on the function and chooses where to evaluate the function based on its posterior distribution given a set of observations. While many recent applications use Gaussian processes as a prior for the objective function, here we show that a Student-t process is an ideal prior for such a problem, as it is also nonparametric, but naturally models heavy tailed behaviour and has a predictive covariance which explicitly depends on observations.}
+      \field{number}{2}
+      \field{title}{{Bayesian Optimization using Student-t Processes}}
+      \field{year}{2014}
+      \field{pages}{1\bibrangedash 5}
+      \range{pages}{5}
+      \verb{file}
+      \verb :home/jose/tpoptimisation.pdf:pdf
+      \endverb
+    \endentry
     \entry{Shahriari2014}{article}{}
       \name{author}{5}{}{%
         {{hash=4b01bc2ebef2b134ce8110e0431af923}{%

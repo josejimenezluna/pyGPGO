@@ -55,13 +55,14 @@
 % Bottom of the page
 	    {\large \today\par}
 	    \vfill
-		\includegraphics[width=0.35\textwidth]{figures/upclogo}\par\vspace{1cm}
+		\includegraphics[width=0.35\textwidth]{figures/ublogo}\hspace{1cm}						\includegraphics[width=0.35\textwidth]{figures/upclogo}\par\vspace{1cm}
+\par\vspace{1cm}
 \end{titlepage}
 
 
 \chapter*{\centering \begin{normalsize}Abstract\end{normalsize}}
 \begin{quotation}
-\noindent Bayesian optimization has risen over the last few years as a very attractive approach to find the optimimum of noisy, expensive to evaluate, and possibly black-box functions. One of the fields where these functions are common is in machine-learning, where one typically has to fit a particular model by minimizing a particular form of loss. In this Master's thesis we first focus on reviewing the most recent literature on Gaussian Processes as well as Bayesian optimization methods, benchmarking Bayesian Optimization methods against several real case machine-learning scenarios and finally on programming software that will allow researchers to apply these strategies in other problems.\\
+\noindent Bayesian optimization has risen over the last few years as a very attractive approach to find the optimimum of noisy, expensive to evaluate, and possibly black-box functions. One of the fields where these functions are common is in machine-learning, where one typically has to fit a particular model by minimizing a particular form of loss. In this Master's thesis we first focus on reviewing the most recent literature on Gaussian Processes as well as Bayesian optimization methods, then we benchmark said methods against several real case machine-learning scenarios and lastly we provide open source software that will allow researchers to apply these strategies in other problems.\\
 
 \textbf{Keywords:} machine-learning, bayesian, optimization
 \end{quotation}
@@ -158,18 +159,20 @@ k(\boldsymbol{x}, \boldsymbol{x'}) = \mathbb{E}\left[\left( f(\boldsymbol{x}) - 
 We say that $f$ is a Gaussian Process with mean $m(\boldsymbol{x})$ and covariance function $k(x, x')$ and write:
 
 \begin{equation}
-f(\boldsymbol{x}) \sim \mathrm{GP}\left(m(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x'}) \right)
+f(\boldsymbol{x}) \sim \mathcal{GP}\left(m(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x'}) \right)
 \end{equation}
 \end{defini}
 
-In practice, for simplicity we will take $m(\boldsymbol{x}) = 0$, but this can be specified otherwise. As stated before, a Gaussian Process fulfils the marginalization property, that is to say that if the the GP specifies $(y_1, y_2) \sim \mathcal{N}(\boldsymbol{\mu}, \Sigma)$ then this implies that $y_1 \sim \mathcal{N}(\mu_1, \Sigma_{11})$. A Gaussian multivariate distribution is just a finite index set of a Gaussian process. 
+In practice, for simplicity we will take $m(\boldsymbol{x}) = 0$, but this can be specified otherwise. As stated before, a Gaussian Process fulfils the marginalization property, that is to say that if the the GP specifies $(y_1, y_2) \sim \mathcal{N}(\boldsymbol{\mu}, \Sigma)$ then this implies that $y_1 \sim \mathcal{N}(\mu_1, \Sigma_{11})$. A Gaussian multivariate distribution is just a finite index set of a Gaussian process. \\
 
 As seen in the previous section, a Gaussian Process can be viewed as a Bayesian regression model using a particular kernel, that is, the model $f(\boldsymbol{x}) = \phi(\boldsymbol{x})^T \boldsymbol{w}$ with the same prior as in equation \ref{wprior} has mean and covariance functions:
 
 \begin{align}
-\mathbb{E}\left[f(\boldsymbol{x})\right] = \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\right] = 0\\
-\mathbb{E}\left[f(\boldsymbol{x})f(\boldsymbol{x'})\right] = \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\boldsymbol{w}^T\right]
+\begin{split}
+\mathbb{E}\left[f(\boldsymbol{x})\right] &= \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\right] = 0\\
+\mathbb{E}\left[f(\boldsymbol{x})f(\boldsymbol{x'})\right] &= \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\boldsymbol{w}^T\right]
 \phi(\boldsymbol{x'}) = \phi(\boldsymbol{x})^T\Sigma_p\phi(\boldsymbol{x'})
+\end{split}
 \end{align}
 
 It is now a good time to start specifying several covariance functions, the \textit{squared exponential} kernel, defined as:
@@ -1069,7 +1072,7 @@ where $\boldsymbol{\omega}_{(i)} \sim s(\boldsymbol{\omega})/\nu$. The computati
 
 As an alternative, several authors \cite{Hutter2011} have suggested using different surrogate models in the Bayesian Optimization framework. Special attention has been drawn towards the Random Forest regression model, in the context of sequential model-based algorithm configuration. Random Forests \cite{Breiman2001} are a very popular choice in the machine-learning community with very successful results in practice. They are an ensemble bagging tree-based method. Random Forests allow for training using sub-samples of data, giving it the ability to scale to large evaluation budgets, where exact analytical Gaussian Process regression would be infeasible in practice. The exploration strategy requires an uncertainty estimation for prediction at test points to apply the Bayesian optimization framework. The empirical variance in the predictions across trees was proposed as a substitute. This heuristic has been shown to work in practice \cite{Hutter2011}.\\
 
-Random Forests are known to provide very good estimates when doing \textit{interpolation} of seen data (or in its neighbourhood), they are very poor \textit{extrapolators}. On points far from training data, the predictions across all trees in the model are very similar, providing poor predictions and more importantly, providing extremely confident (but erroneous) variance estimates. While Gaussian Processes are also terrible extrapolators, they produce reliable variance estimations far from training data, yielding sometimes better estimates for exploration and exploitation in the framework. An example of a Random Forest with variance estimates on the sine data is provided in Figure \ref{fig:RFsine}.
+Random Forests are known to provide very good estimates when doing \textit{interpolation} of seen data (or in its neighbourhood), they are very poor \textit{extrapolators}. On points far from training data, the predictions across all trees in the model are very similar, providing poor predictions and more importantly, providing extremely confident (but erroneous) variance estimates. While Gaussian Processes are also terrible extrapolators, they produce reliable variance estimations far from training data, yielding sometimes better estimates for exploration and exploitation in the framework. An example of a Random Forest with variance estimates on the sine data is provided in Figure \ref{fig:RFsine}.\\
 
 \begin{figure}
 \centering
@@ -1077,6 +1080,20 @@ Random Forests are known to provide very good estimates when doing \textit{inter
 \includegraphics[width=\textwidth]{figures/chapter3/RFsine}
 \label{fig:RFsine}
 \end{figure}
+
+Other authors \cite{Shah2014} have suggested the use of the t-Student process instead, claiming that it naturally models heavy tailed behaviour. Similarly to our Gaussian Process theory, we could assume  that $f(\boldsymbol{x}) \sim \mathcal{TP}\left(\nu, m(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x})\right)$. Since the conditional distribution of a multivariate Student-t is also multivariate Student-t, we can marginalize new observations $\boldsymbol{f}^*$ on $\boldsymbol{f}$ like we did in Section \ref{pred}. That is, it can be proven that:
+
+\begin{equation}
+p(\boldsymbol{f}^*|\boldsymbol{f}) = \dfrac{p(\boldsymbol{f}^*,\boldsymbol{f})}{p(\boldsymbol{f})} \propto \left( 1 + \frac{\beta_2}{\beta_1 + \nu - 2} \right)^{-\dfrac{\nu + n}{2}}
+\end{equation}
+
+which turns out to be the kernel of another multivariate Student-t, that is:
+
+\begin{equation}
+\boldsymbol{f}^*|\boldsymbol{f} \sim \mathcal{T}\left(\nu + n_1, \boldsymbol{\phi}_2, \dfrac{\nu + \beta_1 - 2}{\nu + n_1 - 2} \tilde{K}_{**} \right)
+\end{equation}
+
+where $n_1$ and $n$ are the training and total sample numbers, $\nu$ are the degrees of freedom of the Student-t Process, $\beta_1 = \boldsymbol{y}^{T}K^{-1}\boldsymbol{y}$, $\boldsymbol{\phi}_2 = K_{*}^T K^{-1}\boldsymbol{y}$ and $\tilde{K}_{**} = K_{**} - K_{*}^T K^{-1}K_{*}$. Notice that the predictive mean is the same as the Gaussian Process case, while the predictive covariance now explicitly depends on the observations.
 
 \subsection{Parallelization}
 

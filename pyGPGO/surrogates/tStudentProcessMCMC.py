@@ -64,7 +64,7 @@ class tStudentProcessMCMC:
         for posterior_sample in chunk:
             params = self._extractParam(posterior_sample, self.covfunc.parameters)
             covfunc = self.covfunc.__class__(**params)
-            gp = tStudentProcess(covfunc)
+            gp = tStudentProcess(covfunc, nu=self.nu + self.n)
             gp.fit(self.X, self.y)
             m, s = gp.predict(Xstar, return_std=return_std)
             post_mean.append(m)
