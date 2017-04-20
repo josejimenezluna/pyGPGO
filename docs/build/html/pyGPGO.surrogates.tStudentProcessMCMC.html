@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyGPGO.surrogates.BoostedTrees module &mdash; pyGPGO 0.1.0.dev1 documentation</title>
+  <title>pyGPGO.surrogates.tStudentProcessMCMC module &mdash; pyGPGO 0.1.0.dev1 documentation</title>
   
 
   
@@ -34,8 +34,8 @@
   
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO.surrogates package" href="pyGPGO.surrogates.html"/>
-        <link rel="next" title="pyGPGO.surrogates.GaussianProcess module" href="pyGPGO.surrogates.GaussianProcess.html"/>
-        <link rel="prev" title="pyGPGO.surrogates package" href="pyGPGO.surrogates.html"/> 
+        <link rel="next" title="pyGPGO.covfunc module" href="pyGPGO.covfunc.html"/>
+        <link rel="prev" title="pyGPGO.surrogates.tStudentProcess module" href="pyGPGO.surrogates.tStudentProcess.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -93,12 +93,12 @@
 <li class="toctree-l2"><a class="reference internal" href="pyGPGO.GPGO.html">Bayesian Optimization module</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="pyGPGO.surrogates.html">Surrogates module</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="pyGPGO.surrogates.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">pyGPGO.surrogates.BoostedTrees module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.BoostedTrees.html">pyGPGO.surrogates.BoostedTrees module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.GaussianProcess.html">pyGPGO.surrogates.GaussianProcess module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.GaussianProcessMCMC.html">pyGPGO.surrogates.GaussianProcessMCMC module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.RandomForest.html">pyGPGO.surrogates.RandomForest module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.tStudentProcess.html">pyGPGO.surrogates.tStudentProcess module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.tStudentProcessMCMC.html">pyGPGO.surrogates.tStudentProcessMCMC module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pyGPGO.surrogates.tStudentProcessMCMC module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pyGPGO.surrogates.html#module-pyGPGO.surrogates">Module contents</a></li>
@@ -156,13 +156,13 @@
         
           <li><a href="pyGPGO.surrogates.html">pyGPGO.surrogates package</a> &raquo;</li>
         
-      <li>pyGPGO.surrogates.BoostedTrees module</li>
+      <li>pyGPGO.surrogates.tStudentProcessMCMC module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pyGPGO.surrogates.BoostedTrees.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pyGPGO.surrogates.tStudentProcessMCMC.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,73 +175,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-pyGPGO.surrogates.BoostedTrees">
-<span id="pygpgo-surrogates-boostedtrees-module"></span><h1>pyGPGO.surrogates.BoostedTrees module<a class="headerlink" href="#module-pyGPGO.surrogates.BoostedTrees" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-pyGPGO.surrogates.tStudentProcessMCMC">
+<span id="pygpgo-surrogates-tstudentprocessmcmc-module"></span><h1>pyGPGO.surrogates.tStudentProcessMCMC module<a class="headerlink" href="#module-pyGPGO.surrogates.tStudentProcessMCMC" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="pyGPGO.surrogates.BoostedTrees.BoostedTrees">
-<em class="property">class </em><code class="descclassname">pyGPGO.surrogates.BoostedTrees.</code><code class="descname">BoostedTrees</code><span class="sig-paren">(</span><em>q1=0.16</em>, <em>q2=0.84</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/BoostedTrees.html#BoostedTrees"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.BoostedTrees.BoostedTrees" title="Permalink to this definition">¶</a></dt>
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC">
+<em class="property">class </em><code class="descclassname">pyGPGO.surrogates.tStudentProcessMCMC.</code><code class="descname">tStudentProcessMCMC</code><span class="sig-paren">(</span><em>covfunc</em>, <em>nu=3.0</em>, <em>niter=2000</em>, <em>burnin=1000</em>, <em>init='ADVI'</em>, <em>step=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <dl class="method">
-<dt id="pyGPGO.surrogates.BoostedTrees.BoostedTrees.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/BoostedTrees.html#BoostedTrees.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.BoostedTrees.BoostedTrees.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit a GBM model to data <cite>X</cite> and targets <cite>y</cite>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>X</strong> (<em>array-like</em>) &#8211; Input values.</li>
-<li><strong>y</strong> (<em>array-like</em>) &#8211; Target values.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
-<dt id="pyGPGO.surrogates.BoostedTrees.BoostedTrees.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>Xstar</em>, <em>return_std=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/BoostedTrees.html#BoostedTrees.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.BoostedTrees.BoostedTrees.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predicts &#8216;posterior&#8217; mean and variance for the GBM model.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>Xstar</strong> (<em>array-like</em>) &#8211; Input values.</li>
-<li><strong>return_std</strong> (<em>bool, optional</em>) &#8211; Whether to return posterior variance estimates. Default is <cite>True</cite>.</li>
-<li><strong>eps</strong> (<em>float, optional</em>) &#8211; Floating precision value for negative variance estimates. Default is <cite>1e-6</cite></li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><em>array-like</em> &#8211; Posterior predicted mean.</li>
-<li><em>array-like</em> &#8211; Posterior predicted std</li>
-</ul>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pyGPGO.surrogates.BoostedTrees.BoostedTrees.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>xnew</em>, <em>ynew</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/BoostedTrees.html#BoostedTrees.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.BoostedTrees.BoostedTrees.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Updates the internal RF model with observations <cite>xnew</cite> and targets <cite>ynew</cite>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xnew</strong> (<em>array-like</em>) &#8211; New observations.</li>
-<li><strong>ynew</strong> (<em>array-like</em>) &#8211; New targets.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>Xstar</em>, <em>return_std=False</em>, <em>nsamples=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.predict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -257,10 +205,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pyGPGO.surrogates.GaussianProcess.html" class="btn btn-neutral float-right" title="pyGPGO.surrogates.GaussianProcess module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pyGPGO.covfunc.html" class="btn btn-neutral float-right" title="pyGPGO.covfunc module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pyGPGO.surrogates.html" class="btn btn-neutral" title="pyGPGO.surrogates package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pyGPGO.surrogates.tStudentProcess.html" class="btn btn-neutral" title="pyGPGO.surrogates.tStudentProcess module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -97,6 +97,8 @@
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.GaussianProcess.html">pyGPGO.surrogates.GaussianProcess module</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">pyGPGO.surrogates.GaussianProcessMCMC module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.RandomForest.html">pyGPGO.surrogates.RandomForest module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.tStudentProcess.html">pyGPGO.surrogates.tStudentProcess module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.tStudentProcessMCMC.html">pyGPGO.surrogates.tStudentProcessMCMC module</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pyGPGO.surrogates.html#module-pyGPGO.surrogates">Module contents</a></li>
@@ -177,7 +179,7 @@
 <span id="pygpgo-surrogates-gaussianprocessmcmc-module"></span><h1>pyGPGO.surrogates.GaussianProcessMCMC module<a class="headerlink" href="#module-pyGPGO.surrogates.GaussianProcessMCMC" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC">
-<em class="property">class </em><code class="descclassname">pyGPGO.surrogates.GaussianProcessMCMC.</code><code class="descname">GaussianProcessMCMC</code><span class="sig-paren">(</span><em>covfunc</em>, <em>niter=2000</em>, <em>burnin=1000</em>, <em>init='ADVI'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcessMCMC.html#GaussianProcessMCMC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">pyGPGO.surrogates.GaussianProcessMCMC.</code><code class="descname">GaussianProcessMCMC</code><span class="sig-paren">(</span><em>covfunc</em>, <em>niter=2000</em>, <em>burnin=1000</em>, <em>init='ADVI'</em>, <em>step=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcessMCMC.html#GaussianProcessMCMC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <dl class="method">
 <dt id="pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC.fit">

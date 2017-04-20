@@ -35,7 +35,7 @@
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO documentation" href="api.html"/>
         <link rel="next" title="pyGPGO.acquisition module" href="pyGPGO.acquisition.html"/>
-        <link rel="prev" title="pyGPGO.surrogates.RandomForest module" href="pyGPGO.surrogates.RandomForest.html"/> 
+        <link rel="prev" title="pyGPGO.surrogates.tStudentProcessMCMC module" href="pyGPGO.surrogates.tStudentProcessMCMC.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -167,10 +167,69 @@
 <dt id="pyGPGO.covfunc.dotProd">
 <em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">dotProd</code><span class="sig-paren">(</span><em>sigmaf=1.0, sigman=1e-06, bounds=None, parameters=['sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#dotProd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.dotProd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Dot-product kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.covfunc.dotProd.K">
 <code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#dotProd.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.dotProd.K" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Computes covariance function values over <cite>X</cite> and <cite>Xstar</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Computed covariance matrix.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.dotProd.gradK">
+<code class="descname">gradK</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em>, <em>param</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#dotProd.gradK"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.dotProd.gradK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes gradient matrix for instances <cite>X</cite>, <cite>Xstar</cite> and hyperparameter <cite>param</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Parameter to compute gradient matrix for.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Gradient matrix for parameter <cite>param</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -178,9 +237,49 @@
 <dt id="pyGPGO.covfunc.expSine">
 <em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">expSine</code><span class="sig-paren">(</span><em>l=1.0, period=1.0, bounds=None, parameters=['l', 'period']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#expSine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.expSine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Exponential sine kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.    l: float</li>
+<li><strong>period</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Period hyperparameter.</li>
+<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.covfunc.expSine.K">
 <code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#expSine.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.expSine.K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes covariance function values over <cite>X</cite> and <cite>Xstar</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Computed covariance matrix.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.expSine.gradK">
+<code class="descname">gradK</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em>, <em>param</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#expSine.gradK"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.expSine.gradK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -319,6 +418,116 @@
 </dd></dl>
 
 <dl class="class">
+<dt id="pyGPGO.covfunc.matern32">
+<em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">matern32</code><span class="sig-paren">(</span><em>l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern32" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="pyGPGO.covfunc.matern32.K">
+<code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern32.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern32.K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes covariance function values over <cite>X</cite> and <cite>Xstar</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Computed covariance matrix.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.matern32.gradK">
+<code class="descname">gradK</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em>, <em>param</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern32.gradK"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern32.gradK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes gradient matrix for instances <cite>X</cite>, <cite>Xstar</cite> and hyperparameter <cite>param</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Parameter to compute gradient matrix for.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Gradient matrix for parameter <cite>param</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyGPGO.covfunc.matern52">
+<em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">matern52</code><span class="sig-paren">(</span><em>l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern52" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dl class="method">
+<dt id="pyGPGO.covfunc.matern52.K">
+<code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern52.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern52.K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes covariance function values over <cite>X</cite> and <cite>Xstar</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Computed covariance matrix.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.matern52.gradK">
+<code class="descname">gradK</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em>, <em>param</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern52.gradK"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern52.gradK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes gradient matrix for instances <cite>X</cite>, <cite>Xstar</cite> and hyperparameter <cite>param</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Parameter to compute gradient matrix for.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Gradient matrix for parameter <cite>param</cite>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="pyGPGO.covfunc.rationalQuadratic">
 <em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">rationalQuadratic</code><span class="sig-paren">(</span><em>alpha=1, l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['alpha', 'l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#rationalQuadratic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.rationalQuadratic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
@@ -443,7 +652,7 @@
         <a href="pyGPGO.acquisition.html" class="btn btn-neutral float-right" title="pyGPGO.acquisition module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pyGPGO.surrogates.RandomForest.html" class="btn btn-neutral" title="pyGPGO.surrogates.RandomForest module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pyGPGO.surrogates.tStudentProcessMCMC.html" class="btn btn-neutral" title="pyGPGO.surrogates.tStudentProcessMCMC module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

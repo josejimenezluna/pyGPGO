@@ -10,6 +10,8 @@ Submodules
    pyGPGO.surrogates.GaussianProcess
    pyGPGO.surrogates.GaussianProcessMCMC
    pyGPGO.surrogates.RandomForest
+   pyGPGO.surrogates.tStudentProcess
+   pyGPGO.surrogates.tStudentProcessMCMC
 
 Module contents
 ---------------

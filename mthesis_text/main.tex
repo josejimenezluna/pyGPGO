@@ -12,6 +12,11 @@
 \usepackage{algpseudocode}
 \usepackage{placeins}
 \usepackage{booktabs}
+\usepackage{rotating}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{adjustbox}
+
+
 \usepackage[style=numeric, refsection=chapter]{biblatex}
 \addbibresource{bib/chapter2.bib}
 \addbibresource{bib/chapter3.bib}
@@ -2133,6 +2138,36 @@ if __name__ == '__main__':
 
 \section{Features}\label{features}
 \section{Comparison with existing software}
+
+pyGPGO is, to the best of my knowledge, one of the most complete packages in Python for performing Bayesian optimization. It implements plenty of functionality, e.g different surrogate regressors, several strategies for hyperparameter treatment while being completely modular and open-source. A complete comparison of features against other popular packages of the Python eco-system can be checked in Table \ref{featurecomp}.
+
+\newpage
+
+\begin{sidewaystable}
+\centering
+\caption{Comparison of pyGPGO features against other software packages for Bayesian Optimization in the Python environment. (as of Apr 2017)}
+\label{featurecomp}
+\begin{adjustbox}{width=1\textwidth}
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+                                   & \begin{sideways}pyGPGO\end{sideways}                   & \begin{sideways}Spearmint\end{sideways}  & \begin{sideways}fmfn/BayesianOptimization\end{sideways} & \begin{sideways}pyBO\end{sideways}        & \begin{sideways}MOE\end{sideways}    & \begin{sideways}GPyOpt\end{sideways}          & \begin{sideways}scikit-optimize\end{sideways}   \\ \midrule
+GP implementation                  & Native                   & Native     & via scikit-learn\footnote{http://scikit-learn.org/stable/} & via Reggie\footnote{https://github.com/mwhoffman/reggie} & Native & via GPy\footnote{https://github.com/SheffieldML/GPy}        & via scikit-learn \\
+Modular                            & \color{green}Yes                      & \color{red} No         & \color{red} No                        & \color{red} No         & \color{red} No    & Experimental    & \color{red} No               \\
+Surrogates                         & \{GP, tSP, RF, ET, GBM\} & \{GP\}     & \{GP\}                    & \{GP\}      & \{GP\} & \{GP, RF, WGP\} & \{GP, RF, GBM\}   \\
+Type II ML optimization            & \color{green} Yes                      &     \color{red} No       & \color{red} No                       & \color{red} No         &  \color{green} Yes      & \color{green} Yes             & \color{green} Yes               \\
+MCMC inference                     & {\color{green} Yes} (via pyMC3)\footnote{https://github.com/pymc-devs/pymc3}          & \color{green} Yes        & \color{red} No                       & \color{green} Yes         & \color{red} No      & \color{green} Yes             &  \color{red} No                  \\
+Choice of MCMC sampler             & {\color{green} Yes} (via pyMC3)          &  \color{green} Yes          & \color{red} No                       &  \color{green} Yes           &  \color{red} No      & \color{red} No             & \color{red} No               \\
+Acquisition functions              & \{PI, EI, UCB, Entropy\} &  \{EI\}          & \{PI, EI, UCB\}           &  \{PI, EI, UCB, Th\}          &  \{EI\}      &       \{PI, EI, UCB\}          & \{PI, EI, UCB\}                   \\
+Integrated acquisition functions   & \color{green} Yes                      &  \color{green} Yes       & \color{red} No                       &  \color{green} Yes           &  \color{red} No      & \color{green} Yes             & \color{red} No               \\
+Parallel acquisition function opt. & \color{green} Yes                      & \color{red} No        & \color{red} No                       & \color{red} No         &   \color{red} No     & \color{red} No                 & \color{red} No               \\
+License                            & MIT                      &   Academic         & MIT                       & BSD-2       & Apache       & BSD-3           & BSD               \\
+Last update                        &            -              & Apr 2016 & Mar 2017  & Sept 2015           &   Apr 2016     &  Apr 2017                &     Apr 2017              \\
+Python version & $>$3.5 & 2.7 & 2/3 & 2/3 & 2.7 & 2/3 & 2/3 \\ \bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{sidewaystable}
+
+\newpage
 \section{Future work}
 
 \chapter*{Appendix}

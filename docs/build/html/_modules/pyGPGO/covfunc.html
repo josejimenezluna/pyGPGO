@@ -253,7 +253,7 @@
 <span class="sd">            Computed covariance matrix.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-.</span><span class="mi">5</span> <span class="o">*</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">*</span> <span class="n">kronDelta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-.</span><span class="mi">5</span> <span class="o">*</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">*</span> <span class="n">kronDelta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="squaredExponential.gradK"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.squaredExponential.gradK">[docs]</a>    <span class="k">def</span> <span class="nf">gradK</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -275,7 +275,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
             <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
-            <span class="n">num</span> <span class="o">=</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
             <span class="n">den</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">**</span> <span class="mi">3</span>
             <span class="n">l_grad</span> <span class="o">=</span> <span class="n">num</span> <span class="o">/</span> <span class="n">den</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">l_grad</span><span class="p">)</span>
@@ -350,6 +350,174 @@
         <span class="n">res</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">res</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="n">res</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">*</span> <span class="n">kronDelta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">res</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="matern32"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern32">[docs]</a><span class="k">class</span> <span class="nc">matern32</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Matern v=3/2 kernel class.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        l: float</span>
+<span class="sd">            Characteristic length-scale. Units in input space in which posterior GP values do not</span>
+<span class="sd">            change significantly.</span>
+<span class="sd">        sigmaf: float</span>
+<span class="sd">            Signal variance. Controls the overall scale of the covariance function.</span>
+<span class="sd">        sigman: float</span>
+<span class="sd">            Noise variance. Additive noise in output space.</span>
+<span class="sd">        bounds: list</span>
+<span class="sd">            List of tuples specifying hyperparameter range in optimization procedure.</span>
+<span class="sd">        parameters: list</span>
+<span class="sd">            List of strings specifying which hyperparameters should be optimized.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">=</span> <span class="n">l</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">=</span> <span class="n">sigmaf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">=</span> <span class="n">sigman</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+        <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="n">bounds</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+
+<div class="viewcode-block" id="matern32.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern32.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes covariance function values over `X` and `Xstar`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        Xstar: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Computed covariance matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
+        <span class="n">one</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="n">one</span> <span class="o">*</span> <span class="n">two</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">*</span> <span class="n">kronDelta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="matern32.gradK"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern32.gradK">[docs]</a>    <span class="k">def</span> <span class="nf">gradK</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes gradient matrix for instances `X`, `Xstar` and hyperparameter `param`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        Xstar: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        param: str</span>
+<span class="sd">            Parameter to compute gradient matrix for.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Gradient matrix for parameter `param`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">num</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
+            <span class="n">one</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="n">two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">one</span> <span class="o">*</span> <span class="n">two</span>
+        <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;sigman&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">kronDelta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Param not found&#39;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="matern52"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern52">[docs]</a><span class="k">class</span> <span class="nc">matern52</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Matern v=5/2 kernel class.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        l: float</span>
+<span class="sd">            Characteristic length-scale. Units in input space in which posterior GP values do not</span>
+<span class="sd">            change significantly.</span>
+<span class="sd">        sigmaf: float</span>
+<span class="sd">            Signal variance. Controls the overall scale of the covariance function.</span>
+<span class="sd">        sigman: float</span>
+<span class="sd">            Noise variance. Additive noise in output space.</span>
+<span class="sd">        bounds: list</span>
+<span class="sd">            List of tuples specifying hyperparameter range in optimization procedure.</span>
+<span class="sd">        parameters: list</span>
+<span class="sd">            List of strings specifying which hyperparameters should be optimized.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">=</span> <span class="n">l</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">=</span> <span class="n">sigmaf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">=</span> <span class="n">sigman</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+        <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="n">bounds</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+
+<div class="viewcode-block" id="matern52.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern52.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes covariance function values over `X` and `Xstar`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        Xstar: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Computed covariance matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
+        <span class="n">one</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="n">one</span> <span class="o">*</span> <span class="n">two</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">*</span> <span class="n">kronDelta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="matern52.gradK"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern52.gradK">[docs]</a>    <span class="k">def</span> <span class="nf">gradK</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes gradient matrix for instances `X`, `Xstar` and hyperparameter `param`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        Xstar: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        param: str</span>
+<span class="sd">            Parameter to compute gradient matrix for.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Gradient matrix for parameter `param`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
+            <span class="n">num_one</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
+            <span class="n">num_two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">num_one</span> <span class="o">*</span> <span class="n">num_two</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">res</span>
+        <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">:</span>
+            <span class="n">one</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">one</span> <span class="o">*</span> <span class="n">two</span>
+        <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;sigman&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">kronDelta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="gammaExponential"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.gammaExponential">[docs]</a><span class="k">class</span> <span class="nc">gammaExponential</span><span class="p">:</span>
@@ -547,7 +715,23 @@
 
 
 <div class="viewcode-block" id="expSine"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.expSine">[docs]</a><span class="k">class</span> <span class="nc">expSine</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">bounds</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exponential sine kernel class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    l: float</span>
+<span class="sd">        Characteristic length-scale. Units in input space in which posterior GP values do not</span>
+<span class="sd">        change significantly.    l: float</span>
+<span class="sd">    period: float</span>
+<span class="sd">        Period hyperparameter.</span>
+<span class="sd">    bounds: list</span>
+<span class="sd">        List of tuples specifying hyperparameter range in optimization procedure.</span>
+<span class="sd">    parameters: list</span>
+<span class="sd">        List of strings specifying which hyperparameters should be optimized.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">period</span> <span class="o">=</span> <span class="n">period</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">=</span> <span class="n">l</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
@@ -559,12 +743,55 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
 
 <div class="viewcode-block" id="expSine.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.expSine.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes covariance function values over `X` and `Xstar`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        Xstar: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Computed covariance matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
         <span class="n">num</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">num</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span></div></div>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">num</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">4</span></div>
+
+<div class="viewcode-block" id="expSine.gradK"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.expSine.gradK">[docs]</a>    <span class="k">def</span> <span class="nf">gradK</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
+            <span class="n">one</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
+            <span class="n">two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">one</span> <span class="o">*</span> <span class="n">two</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;period&#39;</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
+            <span class="n">one</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
+            <span class="n">two</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">one</span> <span class="o">*</span> <span class="n">two</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">l</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span></div></div>
+
 
 <div class="viewcode-block" id="dotProd"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.dotProd">[docs]</a><span class="k">class</span> <span class="nc">dotProd</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigmaf</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">sigman</span> <span class="o">=</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dot-product kernel class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sigmaf: float</span>
+<span class="sd">        Signal variance. Controls the overall scale of the covariance function.</span>
+<span class="sd">    sigman: float</span>
+<span class="sd">        Noise variance. Additive noise in output space.</span>
+<span class="sd">    bounds: list</span>
+<span class="sd">        List of tuples specifying hyperparameter range in optimization procedure.</span>
+<span class="sd">    parameters: list</span>
+<span class="sd">        List of strings specifying which hyperparameters should be optimized.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">=</span> <span class="n">sigmaf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">=</span> <span class="n">sigman</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
@@ -576,8 +803,45 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
 
 <div class="viewcode-block" id="dotProd.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.dotProd.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">*</span> <span class="n">kronDelta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span></div></div>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes covariance function values over `X` and `Xstar`.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        Xstar: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Computed covariance matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">*</span> <span class="n">kronDelta</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="dotProd.gradK"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.dotProd.gradK">[docs]</a>    <span class="k">def</span> <span class="nf">gradK</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes gradient matrix for instances `X`, `Xstar` and hyperparameter `param`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        Xstar: np.ndarray, shape=((n, nfeatures))</span>
+<span class="sd">            Instances</span>
+<span class="sd">        param: str</span>
+<span class="sd">            Parameter to compute gradient matrix for.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Gradient matrix for parameter `param`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;sigman&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="o">.</span><span class="n">T</span><span class="p">)</span></div></div>
 
 <span class="c1"># DEPRECATED</span>
 <span class="c1"># class arcSin:</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyGPGO.surrogates.GaussianProcess module &mdash; pyGPGO 0.1.0.dev1 documentation</title>
+  <title>pyGPGO.surrogates.tStudentProcess module &mdash; pyGPGO 0.1.0.dev1 documentation</title>
   
 
   
@@ -34,8 +34,8 @@
   
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO.surrogates package" href="pyGPGO.surrogates.html"/>
-        <link rel="next" title="pyGPGO.surrogates.GaussianProcessMCMC module" href="pyGPGO.surrogates.GaussianProcessMCMC.html"/>
-        <link rel="prev" title="pyGPGO.surrogates.BoostedTrees module" href="pyGPGO.surrogates.BoostedTrees.html"/> 
+        <link rel="next" title="pyGPGO.surrogates.tStudentProcessMCMC module" href="pyGPGO.surrogates.tStudentProcessMCMC.html"/>
+        <link rel="prev" title="pyGPGO.surrogates.RandomForest module" href="pyGPGO.surrogates.RandomForest.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -94,10 +94,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="pyGPGO.surrogates.html">Surrogates module</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="pyGPGO.surrogates.html#submodules">Submodules</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.BoostedTrees.html">pyGPGO.surrogates.BoostedTrees module</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">pyGPGO.surrogates.GaussianProcess module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.GaussianProcess.html">pyGPGO.surrogates.GaussianProcess module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.GaussianProcessMCMC.html">pyGPGO.surrogates.GaussianProcessMCMC module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.RandomForest.html">pyGPGO.surrogates.RandomForest module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.tStudentProcess.html">pyGPGO.surrogates.tStudentProcess module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pyGPGO.surrogates.tStudentProcess module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pyGPGO.surrogates.tStudentProcessMCMC.html">pyGPGO.surrogates.tStudentProcessMCMC module</a></li>
 </ul>
 </li>
@@ -156,13 +156,13 @@
         
           <li><a href="pyGPGO.surrogates.html">pyGPGO.surrogates package</a> &raquo;</li>
         
-      <li>pyGPGO.surrogates.GaussianProcess module</li>
+      <li>pyGPGO.surrogates.tStudentProcess module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pyGPGO.surrogates.GaussianProcess.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pyGPGO.surrogates.tStudentProcess.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -175,39 +175,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-pyGPGO.surrogates.GaussianProcess">
-<span id="pygpgo-surrogates-gaussianprocess-module"></span><h1>pyGPGO.surrogates.GaussianProcess module<a class="headerlink" href="#module-pyGPGO.surrogates.GaussianProcess" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess">
-<em class="property">class </em><code class="descclassname">pyGPGO.surrogates.GaussianProcess.</code><code class="descname">GaussianProcess</code><span class="sig-paren">(</span><em>covfunc</em>, <em>optimize=False</em>, <em>usegrads=False</em>, <em>mprior=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<dl class="method">
-<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess._grad">
-<code class="descname">_grad</code><span class="sig-paren">(</span><em>param_vector</em>, <em>param_key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess._grad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess._grad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns gradient for each hyperparameter, evaluated at a given point.</p>
+  <div class="section" id="module-pyGPGO.surrogates.tStudentProcess">
+<span id="pygpgo-surrogates-tstudentprocess-module"></span><h1>pyGPGO.surrogates.tStudentProcess module<a class="headerlink" href="#module-pyGPGO.surrogates.tStudentProcess" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="pyGPGO.surrogates.tStudentProcess.logpdf">
+<code class="descclassname">pyGPGO.surrogates.tStudentProcess.</code><code class="descname">logpdf</code><span class="sig-paren">(</span><em>x</em>, <em>df</em>, <em>mu</em>, <em>Sigma</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#logpdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.logpdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Marginal log-likelihood of a Student-t Process</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>param_vector</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of values corresponding to hyperparameters to query.</li>
-<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameter strings corresponding to <cite>param_vector</cite>.</li>
+<li><strong>x</strong> (<em>array-like</em>) &#8211; Point to be evaluated</li>
+<li><strong>df</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Degrees of freedom (&gt;2.0)</li>
+<li><strong>mu</strong> (<em>array-like</em>) &#8211; Mean</li>
+<li><strong>Sigma</strong> (<em>array-like</em>) &#8211; Covariance matrix</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Gradient for each evaluated hyperparameter.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>logp</strong> &#8211; log-likelihood</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
 </td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
+<dl class="class">
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess">
+<em class="property">class </em><code class="descclassname">pyGPGO.surrogates.tStudentProcess.</code><code class="descname">tStudentProcess</code><span class="sig-paren">(</span><em>covfunc</em>, <em>nu=3.0</em>, <em>optimize=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <dl class="method">
-<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess._lmlik">
-<code class="descname">_lmlik</code><span class="sig-paren">(</span><em>param_vector</em>, <em>param_key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess._lmlik"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess._lmlik" title="Permalink to this definition">¶</a></dt>
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess._lmlik">
+<code class="descname">_lmlik</code><span class="sig-paren">(</span><em>param_vector</em>, <em>param_key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess._lmlik"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess._lmlik" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns marginal negative log-likelihood for given covariance hyperparameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -230,9 +232,9 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fits a Gaussian Process regressor</p>
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits a t-Student Process regressor</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -248,8 +250,8 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.getcovparams">
-<code class="descname">getcovparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.getcovparams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.getcovparams" title="Permalink to this definition">¶</a></dt>
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess.getcovparams">
+<code class="descname">getcovparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess.getcovparams"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess.getcovparams" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns current covariance function hyperparameters</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -264,8 +266,8 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.optHyp">
-<code class="descname">optHyp</code><span class="sig-paren">(</span><em>param_key</em>, <em>param_bounds</em>, <em>grads=None</em>, <em>n_trials=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.optHyp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.optHyp" title="Permalink to this definition">¶</a></dt>
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess.optHyp">
+<code class="descname">optHyp</code><span class="sig-paren">(</span><em>param_key</em>, <em>param_bounds</em>, <em>n_trials=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess.optHyp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess.optHyp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Optimizes the negative marginal log-likelihood for given hyperparameters and bounds.
 This is an empirical Bayes approach (or Type II maximum-likelihood).</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -283,27 +285,9 @@ This is an empirical Bayes approach (or Type II maximum-likelihood).</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.param_grad">
-<code class="descname">param_grad</code><span class="sig-paren">(</span><em>k_param</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.param_grad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.param_grad" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns gradient over hyperparameters. It is recommended to use <cite>self._grad</cite> instead.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>k_param</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Dictionary with keys being hyperparameters and values their queried values.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Gradient corresponding to each hyperparameters. Order given by <cite>k_param.keys()</cite></td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">np.ndarray</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>Xstar</em>, <em>return_std=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.predict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns mean and covariances for the posterior Gaussian Process.</p>
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>Xstar</em>, <em>return_std=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns mean and covariances for the posterior t-Student process.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -327,8 +311,8 @@ it returns the whole covariance matrix of the posterior process.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>xnew</em>, <em>ynew</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.update" title="Permalink to this definition">¶</a></dt>
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>xnew</em>, <em>ynew</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates the internal model with <cite>xnew</cite> and <cite>ynew</cite> instances.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -358,10 +342,10 @@ it returns the whole covariance matrix of the posterior process.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pyGPGO.surrogates.GaussianProcessMCMC.html" class="btn btn-neutral float-right" title="pyGPGO.surrogates.GaussianProcessMCMC module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pyGPGO.surrogates.tStudentProcessMCMC.html" class="btn btn-neutral float-right" title="pyGPGO.surrogates.tStudentProcessMCMC module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pyGPGO.surrogates.BoostedTrees.html" class="btn btn-neutral" title="pyGPGO.surrogates.BoostedTrees module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pyGPGO.surrogates.RandomForest.html" class="btn btn-neutral" title="pyGPGO.surrogates.RandomForest module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
