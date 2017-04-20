@@ -1,12 +1,52 @@
 import numpy as np
+from collections import OrderedDict
+from numpy.linalg import slogdet
 from scipy.linalg import inv
+from scipy.optimize import minimize
+from scipy.special import gamma
+
+
+def logpdf(x, df, mu, Sigma):
+    """
+    Marginal log-likelihood of a Student-t Process
+    
+    Parameters
+    ----------
+    x: array-like
+        Point to be evaluated
+    df: float
+        Degrees of freedom (>2.0)
+    mu: array-like
+        Mean
+    Sigma: array-like
+        Covariance matrix
+
+    Returns
+    -------
+    logp: float
+        log-likelihood 
+
+    """
+    d = len(x)
+    x = np.atleast_2d(x)
+    xm = x - mu
+    V = df * Sigma
+    V_inv = np.linalg.inv(V)
+    _, logdet = slogdet(np.pi * V)
+
+    logz = -gamma(df / 2.0 + d / 2.0) + gamma(df / 2.0) + 0.5 * logdet
+    logp = -0.5 * (df + d) * np.log(1 + np.sum(np.dot(xm, V_inv) * xm, axis=1))
+
+    logp = logp - logz
+
+    return logp[0]
+
 
 class tStudentProcess:
-    def __init__(self, covfunc, nu=3.0):
+    def __init__(self, covfunc, nu=3.0, optimize=False):
         """
-        t-Student Process regressor class. This class DOES NOT support Type II ML of covariance function
-        hyperparameters.
-
+        t-Student Process regressor class. This class DOES NOT support gradients in ML estimation yet.
+        
         Parameters
         ----------
         covfunc: instance from a class of covfunc module
@@ -20,10 +60,88 @@ class tStudentProcess:
             Internal covariance function.
         nu: float
             Degrees of freedom.
+        optimize: bool
+            Whether to optimize covariance function hyperparameters.
 
         """
         self.covfunc = covfunc
         self.nu = nu
+        self.optimize = optimize
+
+    def getcovparams(self):
+        """
+        Returns current covariance function hyperparameters
+
+        Returns
+        -------
+        dict
+            Dictionary containing covariance function hyperparameters
+        """
+        d = {}
+        for param in self.covfunc.parameters:
+            d[param] = self.covfunc.__dict__[param]
+        return d
+
+    def _lmlik(self, param_vector, param_key):
+        """
+        Returns marginal negative log-likelihood for given covariance hyperparameters.
+
+        Parameters
+        ----------
+        param_vector: list
+            List of values corresponding to hyperparameters to query.
+        param_key: list
+            List of hyperparameter strings corresponding to `param_vector`.
+
+        Returns
+        -------
+        float
+            Negative log-marginal likelihood for chosen hyperparameters.
+
+        """
+        k_param = OrderedDict()
+        for k, v in zip(param_key, param_vector):
+            k_param[k] = v
+        self.covfunc = self.covfunc.__class__(**k_param)
+
+        # This fixes recursion
+        original_opt = self.optimize
+        self.optimize = False
+        self.fit(self.X, self.y)
+        self.optimize = original_opt
+
+        return (- self.logp)
+
+    def optHyp(self, param_key, param_bounds, n_trials=5):
+        """
+        Optimizes the negative marginal log-likelihood for given hyperparameters and bounds.
+        This is an empirical Bayes approach (or Type II maximum-likelihood).
+
+        Parameters
+        ----------
+        param_key: list
+            List of hyperparameters to optimize.
+        param_bounds: list
+            List containing tuples defining bounds for each hyperparameter to optimize over.
+
+        """
+        xs = [[1, 1, 1]]
+        fs = [self._lmlik(xs[0], param_key)]
+        for trial in range(n_trials):
+            x0 = []
+            for param, bound in zip(param_key, param_bounds):
+                x0.append(np.random.uniform(bound[0], bound[1], 1)[0])
+
+            res = minimize(self._lmlik, x0=x0, args=(param_key), method='L-BFGS-B', bounds=param_bounds)
+            xs.append(res.x)
+            fs.append(res.fun)
+
+        argmin = np.argmin(fs)
+        opt_param = xs[argmin]
+        k_param = OrderedDict()
+        for k, x in zip(param_key, opt_param):
+            k_param[k] = x
+        self.covfunc = self.covfunc.__class__(**k_param)
 
     def fit(self, X, y):
         """
@@ -41,8 +159,12 @@ class tStudentProcess:
         self.y = y
         self.n1 = X.shape[0]
 
+        if self.optimize:
+            self.optHyp(param_key=self.covfunc.parameters, param_bounds=self.covfunc.bounds)
+
         self.K11 = self.covfunc.K(self.X, self.X)
         self.beta1 = np.dot(np.dot(self.y.T, inv(self.K11)), self.y)
+        self.logp = logpdf(self.y, self.nu, mu=np.zeros(self.n1), Sigma=self.K11)
 
     def predict(self, Xstar, return_std=False):
         """
@@ -94,14 +216,14 @@ if __name__ == '__main__':
     from pyGPGO.covfunc import *
     import matplotlib.pyplot as plt
 
-    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 3)
+    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 4)
     y = np.sin(x)
     X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 
     # Specify covariance function
-    sexp = matern32()
+    sexp = squaredExponential()
     # Instantiate GPRegressor class
-    gp = tStudentProcess(sexp)
+    gp = tStudentProcess(sexp, optimize=True)
     # Fit the model to the data
     gp.fit(X, y)
 
@@ -121,4 +243,3 @@ if __name__ == '__main__':
     plt.grid()
     plt.legend(loc=0)
     plt.show()
-
