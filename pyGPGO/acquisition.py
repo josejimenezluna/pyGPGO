@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.stats import norm
+from scipy.stats import norm, t
 
 
 class Acquisition:
@@ -28,7 +28,8 @@ class Acquisition:
             'IntegratedProbabilityImprovement': self.IntegratedProbabilityImprovement,
             'UCB': self.UCB,
             'IntegratedUCB': self.IntegratedUCB,
-            'Entropy': self.Entropy
+            'Entropy': self.Entropy,
+            'tExpectedImprovement': self.tExpectedImprovement
         }
 
         self.f = mode_dict[mode]
@@ -185,6 +186,28 @@ class Acquisition:
         """
         acq = [self.UCB(tau, np.array([mean]), np.array([std]), beta) for mean, std in zip(meanmcmc, stdmcmc)]
         return np.average(acq)
+
+    def tExpectedImprovement(self, tau, mean, std, nu=3.0):
+        """
+        Expected Improvement acquisition function. Only to be used with Student-t Process surrogate.
+
+        Parameters
+        ----------
+        tau: float
+            Best observed function evaluation.
+        mean: float
+            Point mean of the posterior process.
+        std: float
+            Point std of the posterior process.
+
+        Returns
+        -------
+        float
+            Expected improvement.
+        """
+        gamma = (mean - tau - self.eps) / (std + self.eps)
+        return gamma * std * t.cdf(gamma, df=nu) + std * (1 + (gamma ** 2 - 1)/(nu - 1)) * t.pdf(gamma, df=nu)
+
 
     def eval(self, tau, mean, std):
         """

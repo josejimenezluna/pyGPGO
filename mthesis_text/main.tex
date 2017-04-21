@@ -180,27 +180,28 @@ As seen in the previous section, a Gaussian Process can be viewed as a Bayesian 
 \end{split}
 \end{align}
 
-It is now a good time to start specifying several covariance functions, the \textit{squared exponential} kernel, defined as:
+We define our first covariance function, the \textit{squared exponential} kernel, defined as:
 
 \begin{equation}
-k(x, x') = \exp\left(-\dfrac{1}{2}|x - x'|^2\right)
+k(\boldsymbol{x}, \boldsymbol{x}') = \exp\left(-\dfrac{1}{2}|\boldsymbol{x} - \boldsymbol{x}'|^2\right)
 \end{equation}
 
-where $|.|$ denotes the standard $L_2$ norm. Most of the covariance functions that we will see here are a function of this norm, therefore it is much more comfortable to write $r = |x - x'|$ and therefore the squared exponential kernel becomes:
+where $|.|$ denotes the standard $L_2$ norm. Most of the covariance functions that we will see here are a function of this norm, therefore it is much more comfortable to write $r = |\boldsymbol{x} - \boldsymbol{x}'|$ and therefore the squared exponential kernel becomes:
 
 \begin{equation}
 \label{sqexp}
 k(r) = \exp\left(-\dfrac{1}{2}r^2\right)
 \end{equation}
 
-It is straightforward to draw samples from a Gaussian Process. In particular, since we work with a finite number of points, choose an arbitrary number of them $X_*$ and compute the squared exponential kernel. Then the procedure is simplified to just samplimg from the following multivariate Gaussian:
+It is straightforward to draw samples from a Gaussian Process. In particular, since we work with a finite number of points, choose an arbitrary number of examples $X_*$ and compute the squared exponential kernel. Then the procedure is simplified to sampling from the following multivariate Gaussian:
 
 \begin{equation}
 \label{fprior}
 \boldsymbol{f_*} \sim \mathcal{N}\left(\boldsymbol{0}, K(X_*, X_*)\right)
 \end{equation}
 
-To illustrate this point, we will write a very simple Python script to draw samples from this function. For the moment, consider evenly spaced samples with a step of $\pi /16$. All code produced here and in other examples uses pyGPGO, the developed software alongside this thesis. In particular, the code available in Appendix \ref{drawGP} produces Figure \ref{fig:drawPrior}.\\
+
+We have written a very simple script to illustrate this point, which is available in Appendix \ref{drawGP}, producing Figure \ref{fig:drawPrior}. Most of the code examples presented throughout the rest of the text were programmed using pyGPGO, the software developed alongside this thesis.\\
 
 \begin{figure}
 \caption{Three sampled Gaussian Process priors using the Squared Exponential kernel.}
@@ -208,7 +209,7 @@ To illustrate this point, we will write a very simple Python script to draw samp
 \includegraphics[width=\textwidth]{figures/chapter2/drawPrior}
 \end{figure}
 
-There's one important concept to explain before we move on. Notice in Figure \ref{fig:drawPrior} that the drawn functions seem to have a characteristic length-scale. This can be interpreted as the distance you have to move in input space before the function value changes significantly. By default, the squared exponential kernel uses a characteristic length-scale of 1 ($l = 1$). To change this behaviour to another, it is sufficient to consider $r/l$ instead of $r$ in Equation \ref{sqexp}. This can be thought as an hyperparameter to optimize, but we will return to this in another section.
+Before we move on, notice that the drawn functions in Figure \ref{fig:drawPrior} seem to have a characteristic length-scale. This can be interpreted as the distance you have to move in input space before the function value changes significantly. By default, the squared exponential kernel uses a characteristic length-scale of 1 ($l = 1$). To change this behaviour, it is sufficient to consider $r/l$ instead of $r$ in Equation \ref{sqexp}. This can be thought as an hyperparameter to optimize. We will return to this problem in Section \ref{hyperopt}.
 
 \section{A weight space view for Gaussian Processes}
 
@@ -251,7 +252,7 @@ p(\boldsymbol{w}|X, \boldsymbol{y}) \sim \mathcal{N} \left(\dfrac{1}{\sigma_n^n}
 where $A = \sigma^{-2}XX^T + \Sigma_p^{-1}$. Notice that a simple MAP (maximum a posteriori) estimate of the weights can be obtained by just computing the mean of this distribution. Now, to make predictions for a particular test case $\boldsymbol{x_{*}}$, we average over all possible parameter values, hence we get a whole predictive distribution. Again, it can be proven that:
 
 \begin{equation}
-f_{*}|x_{*}, X, \boldsymbol{y} \sim \mathcal{N}\left(\dfrac{1}{\sigma_n^2}\boldsymbol{x_{*}}^T A^{-1}X\boldsymbol{y}, \boldsymbol{x_*}^T A^{-1} \boldsymbol{x}_{*}\right)
+f_{*}|\boldsymbol{x_{*}}, X, \boldsymbol{y} \sim \mathcal{N}\left(\dfrac{1}{\sigma_n^2}\boldsymbol{x_{*}}^T A^{-1}X\boldsymbol{y}, \boldsymbol{x_*}^T A^{-1} \boldsymbol{x}_{*}\right)
 \end{equation} 
 
 \subsection{Kernel functions in feature space}
@@ -268,13 +269,13 @@ where we assume the same prior over $\boldsymbol{w}$ as in Equation \ref{wprior}
 
 \begin{equation}
 \label{torewrite}
-f_{*}|x_{*}, X, \boldsymbol{y} \sim \mathcal{N}\left( \dfrac{1}{\sigma^2_n}\phi(\boldsymbol{x_*})^T A^{-1}\Phi \boldsymbol{y}, \phi(\boldsymbol{x_*})^T A^{-1}\phi(\boldsymbol{x_*})    \right)
+f_{*}|\boldsymbol{x}_{*}, X, \boldsymbol{y} \sim \mathcal{N}\left( \dfrac{1}{\sigma^2_n}\phi(\boldsymbol{x_*})^T A^{-1}\Phi \boldsymbol{y}, \phi(\boldsymbol{x_*})^T A^{-1}\phi(\boldsymbol{x_*})    \right)
 \end{equation}
 
 where for simplicity we have written $\Phi = \Phi(X)$ and $A = \sigma_n^{-2}\Phi\Phi^T + \Sigma_p^{-1}$. The predictive distribution needs to invert $N \times N$ matrix. Equation \ref{torewrite} can be rewritten as:
 
 \begin{equation}
-f_{*}|x_{*}, X, \boldsymbol{y} \sim \mathcal{N}\left(\boldsymbol{\phi_*}^T\Sigma_p\Phi(K + \sigma^2_n I)^{-1}\boldsymbol{y}, \boldsymbol{\phi_*}\Sigma_p\boldsymbol{\phi_*} - \boldsymbol{\phi_*}^T\Sigma_p\Phi(K + \sigma^2_n I)^{-1}\Phi^T\Sigma_p\boldsymbol{\phi_*}\right)
+f_{*}|\boldsymbol{x}_{*}, X, \boldsymbol{y} \sim \mathcal{N}\left(\boldsymbol{\phi_*}^T\Sigma_p\Phi(K + \sigma^2_n I)^{-1}\boldsymbol{y}, \boldsymbol{\phi_*}\Sigma_p\boldsymbol{\phi_*} - \boldsymbol{\phi_*}^T\Sigma_p\Phi(K + \sigma^2_n I)^{-1}\Phi^T\Sigma_p\boldsymbol{\phi_*}\right)
 \end{equation}
 
 where we have again simplified notation by $\boldsymbol{\phi_*} = \phi(\boldsymbol{x_*})$ and $K = \Phi^T\Sigma_p\Phi$. Now notice that the entries of $K$ for both train and test set are of the form  $\phi(\boldsymbol{x_*}^T)\Sigma_p\phi(\boldsymbol{x_*})$. We have implicitly defined now a \textit{covariance function} of the form $k(\boldsymbol{x}, \boldsymbol{x'}) = \phi(\boldsymbol{x_*}^T)\Sigma_p\phi(\boldsymbol{x_*})$. This is in fact an inner product with respect to $\Sigma_p$. That is if we define $\psi(\boldsymbol{x}) = \Sigma_p^{1/2}(\boldsymbol{x})$, then a simple dot product representation of a covariance function is:
@@ -283,7 +284,7 @@ where we have again simplified notation by $\boldsymbol{\phi_*} = \phi(\boldsymb
 k(\boldsymbol{x}, \boldsymbol{x'}) = \psi(\boldsymbol{x})^T\psi(\boldsymbol{x'})
 \end{equation}
 
-where $\Sigma_p^{1/2}$ can be defined by means of a singular value decomposition. We then replace the original feature vectors by these dot products, \textit{lifting} to a higher space.
+where $\Sigma_p^{1/2}$ can be defined by means of a singular value decomposition. We then replace the original feature vectors by these dot products, \textit{lifting} to a higher space. 
 
 \section{Prediction using a Gaussian Process prior}
 \label{pred}
@@ -393,7 +394,7 @@ Using the results from Equations \ref{hierarchical} and \ref{hierarchical2} we c
 \log p(\boldsymbol{y}|X) = - \dfrac{1}{2}\boldsymbol{y}^T(K + \sigma^2_n I)^{-1}\boldsymbol{y} - \dfrac{1}{2}\log |K + \sigma^2_n I| - \dfrac{n}{2}\log 2\pi
 \end{equation}
 
-We have now all the necessary ingredients to lay down pseudo-code for your own implementation of a Gaussian Process regressor, as presented in Algorithm \ref{alg}. It makes use of several tricks for computational stability, such as a Cholesky decomposition and several linear system of equations to avoid directly inverting matrices.\\
+Notice this result is equivalent to the log-density of $\boldsymbol{y} \sim \mathcal{N}(\boldsymbol{0}, K + \sigma_n^2 I)$. We have now all the necessary ingredients to lay down pseudo-code for your own implementation of a Gaussian Process regressor, as presented in Algorithm \ref{alg}. It makes use of several tricks for computational stability, such as a Cholesky decomposition and several linear system of equations to avoid directly inverting matrices.\\
 
 \begin{algorithm}
 	\caption{Gaussian regressor pseudo-code.}
@@ -463,24 +464,24 @@ k_{SE}(r) = \exp\left(-\dfrac{r^2}{2l^2} \right)
 
 where $l$ is the parameter controlling its characteristic length-scale. It is useful to define these functions in terms of $r$ since we can abstract this calculation to another function. \\
 
-The \textit{Matern class} of covariance functions \cite{Minasny2005} takes the form:
+The \textit{Mat\'ern class} of covariance functions \cite{Minasny2005} takes the form:
 
 \begin{equation}
 k_{\textrm{Matern}}(r) = \dfrac{2^{1-\nu}}{\Gamma(\nu)}\left(\dfrac{\sqrt{2\nu} r}{l}    \right)^\nu K_\nu\left( \dfrac{\sqrt{2\nu}r}{l} \right)
 \end{equation}
 
-with $\nu, l > 0$ and $K_\nu$ is a modified Bessel function of the second kind \cite{Arfken2005}.  Simple functional forms can be obtained when $\nu$ is half integer, that is $\nu = p + 1/2$ for $p$ non-negative integer. In particular, if $\nu=1/2$, we obtain the a simple exponential kernel and if we take limit $\nu \rightarrow \infty$ we obtain the squared exponential covariance function. Popular values are $\nu=3/2,\; 5/2$.\\
+with $\nu, l > 0$ and $K_\nu$ is a modified Bessel function of the second kind \cite{Arfken2005}.  Simple functional forms can be obtained when $\nu$ is half integer, that is $\nu = p + 1/2$ for $p$ non-negative integer. In particular, if $\nu=1/2$, we obtain the a simple exponential kernel and if we take limit $\nu \rightarrow \infty$ we obtain the squared exponential covariance function. Popular values are $\nu=3/2$ (once-differentiable) and $\nu=5/2$ (twice-differentiable).\\
 
 
-The $\gamma$-exponential covariance function, of which the squared exponential is a special case. It takes the general form:
+The $\gamma$\textit{-exponential} covariance function, of which the squared exponential is a special case, takes the general form:
 
 \begin{equation}
-k(r) = \exp\left( - \left(\dfrac{r}{l}\right)^\gamma  \right)
+k_{\mathrm{GE}}(r) = \exp\left( - \left(\dfrac{r}{l}\right)^\gamma  \right)
 \end{equation}
 
 for $0 < \gamma \leq 2$. \\
 
-The \textit{Rational Quadratic} covariance function takes the form:
+The \textit{Rational Quadratic} covariance function can be written as:
 
 \begin{equation}
 k_{RQ}(r) = \left( 1 + \dfrac{r^2}{2\alpha l^2} \right)^{-\alpha}
@@ -859,7 +860,7 @@ Bayesian optimization has risen over the last few years as a very attractive met
 Assume that we have sampled our function $f$ to optimize a small number of times $k$. Notice this can be treated as a regression problem where $\boldsymbol{x}_k$ is the $k$-th point we have sampled and $y_k$ its (possibly noisy) function evaluation. We can fit a Gaussian Process regression model over the set of sampled points and evaluations. Remember from Section \ref{pred} that this gives us a posterior distribution over all possible values in $\mathcal{A}$. Basically, we will use this information to optimize the function efficiently. Note by
 
 \begin{equation}
-D_n = \left\lbrace \boldsymbol{x}_i, y_i, i=1,\dots,n\right\rbrace.
+\mathcal{D}_n = \left\lbrace \boldsymbol{x}_i, y_i, i=1,\dots,n\right\rbrace.
 \end{equation}
 
 the set of training values.\\

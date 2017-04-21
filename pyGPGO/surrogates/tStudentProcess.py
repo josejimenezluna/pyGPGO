@@ -185,6 +185,7 @@ class tStudentProcess:
         np.ndarray
             Covariance of the posterior process for testing instances.
         """
+        Xstar = np.atleast_2d(Xstar)
         self.K21 = self.covfunc.K(Xstar, self.X)
         self.K22 = self.covfunc.K(Xstar, Xstar)
         self.K12 = self.covfunc.K(self.X, Xstar)
