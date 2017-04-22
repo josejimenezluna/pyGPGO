@@ -1780,7 +1780,7 @@ spread1, spread2, PPE                                               & Three nonl
 
 
 \section{Discussion}
-In these experiments, we have shown that Bayesian Optimization is more efficient when optimizing the parameters of a machine-learning model when taking into account the number of evaluations. This fact can be seen by the fact that we used the same evaluation over datasets of diverse enough nature. However, random search is embarrassingly parallel over threads, and therefore can potentially outperform these techniques when given extra computational power. My personal feeling is that further work needs to be done in parallelizing Bayesian Optimization strategies. This means sharing evaluation information over threads, so that in each iteration, every evaluation fits a similar surrogate model.
+In these experiments, we have shown that Bayesian Optimization is substantially more efficient than random search when optimizing the parameters of a machine-learning model. This can be seen by the fact that we have undergone the same evaluation over datasets and machine-learning models of diverse enough nature. However, random search is embarrassingly parallel over threads, and therefore can potentially outperform the techniques discussed here when given extra computational power. Further work needs to be done in parallelizing Bayesian Optimization strategies. This means sharing evaluation information over threads, so that in each iteration we can fit the most precise surrogate model possible.
 
 \printbibliography
 
@@ -2172,12 +2172,16 @@ Python version & $>$3.5 & 2.7 & 2/3 & 2/3 & 2.7 & 2/3 & 2/3 \\ \bottomrule
 \newpage
 \section{Future work}
 
-pyGPGO, while a very complete software for Bayesian Optimization remains still software in development. In particular, there are several improvements we can tackle on:
+pyGPGO, while a very complete software for Bayesian Optimization still remains in development. In particular, there are several improvements that will be tackled on:
 
 \begin{enumerate}
 	\item Improvements over covariance functions. Support for more complex kernel structures, such as adding and multiplication of different kernel functions.
-	\item Support for more diverse acquisition functions. Entropy-based acquisition functions are commonly used.
+	\item Support for more diverse acquisition functions: Entropy-based, or Thompson-like.
+	\item A wider choice of surrogate models. In particular, a modular interface for the user to specify its own.
+	\item Overall speed improvements and code optimization.
 \end{enumerate}
+
+In conclusion, pyGPGO, like any other piece of software, is never finished work. Being open-sourced, anyone can either contribute to the code base available through its GitHub repository or download the project and modify it in any way they see fit. pyGPGO's MIT License also allows for it to be used in mostly any kind of software, either academic or commercial.
 
 \chapter*{Appendix}
 \section*{Examples code}
