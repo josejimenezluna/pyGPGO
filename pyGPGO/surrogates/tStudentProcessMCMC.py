@@ -16,6 +16,24 @@ covariance_equivalence = {'squaredExponential': pm.gp.cov.ExpQuad,
 
 class tStudentProcessMCMC:
     def __init__(self, covfunc, nu=3.0, niter=2000, burnin=1000, init='ADVI', step=None):
+        """
+        Student-t class using MCMC sampling of covariance function hyperparameters.
+
+        Parameters
+        ----------
+        covfunc:
+            Covariance function to use. Currently this instance only supports squaredExponential
+            and Matern.
+        nu: float
+            Degrees of freedom (>2.0)
+        niter: int
+            Number of iterations to run MCMC.
+        burnin: int
+            Burn-in iterations to discard at trace.
+
+        init: str
+            Initialization method for NUTS. Check pyMC3 docs.
+        """
         self.covfunc = covfunc
         self.nu = nu
         self.niter = niter
@@ -33,6 +51,17 @@ class tStudentProcessMCMC:
         return d
 
     def fit(self, X, y):
+        """
+        Fits a Student-t regressor using MCMC.
+
+        Parameters
+        ----------
+        X: np.ndarray, shape=(nsamples, nfeatures)
+            Training instances to fit the GP.
+        y: np.ndarray, shape=(nsamples,)
+            Corresponding continuous target values to X.
+
+        """
         self.X = X
         self.n = self.X.shape[0]
         self.y = y
@@ -56,7 +85,37 @@ class tStudentProcessMCMC:
             else:
                 self.trace = pm.sample(self.niter, init=self.init)[self.burnin:]
 
+    def posteriorPlot(self):
+        """
+        Plots sampled posterior distributions for hyperparameters.
+
+        """
+        with self.model as model:
+            pm.traceplot(self.trace, varnames=['l', 'sigmaf', 'sigman'])
+            plt.tight_layout()
+            plt.show()
+
     def predict(self, Xstar, return_std=False, nsamples=100):
+        """
+        Returns mean and covariances for each posterior sampled Student-t Process.
+
+        Parameters
+        ----------
+        Xstar: np.ndarray, shape=((nsamples, nfeatures))
+            Testing instances to predict.
+        return_std: bool
+            Whether to return the standard deviation of the posterior process. Otherwise,
+            it returns the whole covariance matrix of the posterior process.
+        nsamples:
+            Number of posterior MCMC samples to consider.
+
+        Returns
+        -------
+        np.ndarray
+            Mean of the posterior process for each MCMC sample and Xstar.
+        np.ndarray
+            Covariance posterior process for each MCMC sample and Xstar.
+        """
         chunk = list(self.trace)
         chunk = chunk[::-1][:nsamples]
         post_mean = []

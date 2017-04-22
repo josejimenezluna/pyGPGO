@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from pyGPGO.surrogates.tStudentProcessMCMC import tStudentProcessMCMC
+from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
 from pyGPGO.GPGO import GPGO
@@ -9,7 +9,7 @@ import pymc3 as pm
 
 if __name__ == '__main__':
     sexp = squaredExponential()
-    gp = tStudentProcessMCMC(sexp, step=pm.Slice)
+    gp = GaussianProcessMCMC(sexp, step=pm.Slice)
 
     def f(x):
         return np.sin(x)
