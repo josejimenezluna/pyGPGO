@@ -29,7 +29,8 @@ class Acquisition:
             'UCB': self.UCB,
             'IntegratedUCB': self.IntegratedUCB,
             'Entropy': self.Entropy,
-            'tExpectedImprovement': self.tExpectedImprovement
+            'tExpectedImprovement': self.tExpectedImprovement,
+            'tIntegratedExpectedImprovement': self.tIntegratedExpectedImprovement
         }
 
         self.f = mode_dict[mode]
@@ -208,6 +209,29 @@ class Acquisition:
         gamma = (mean - tau - self.eps) / (std + self.eps)
         return gamma * std * t.cdf(gamma, df=nu) + std * (1 + (gamma ** 2 - 1)/(nu - 1)) * t.pdf(gamma, df=nu)
 
+    def tIntegratedExpectedImprovement(self, tau, meanmcmc, stdmcmc, nu=3.0):
+        """
+        Integrated expected improvement. Can only be used with `tStudentProcessMCMC` instance.
+
+        Parameters
+        ----------
+        tau: float
+            Best observed function evaluation
+        meanmcmc: array-like
+            Means of posterior predictive distributions after sampling.
+        stdmcmc
+            Standard deviations of posterior predictive distributions after sampling.
+        nu:
+            Degrees of freedom.
+
+        Returns
+        -------
+        float:
+            Integrated Expected Improvement
+        """
+
+        acq = [self.tExpectedImprovement(tau, np.array([mean]), np.array([std]), nu=nu) for mean, std in zip(meanmcmc, stdmcmc)]
+        return np.average(acq)
 
     def eval(self, tau, mean, std):
         """

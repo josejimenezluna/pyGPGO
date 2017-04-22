@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC
+from pyGPGO.surrogates.tStudentProcessMCMC import tStudentProcessMCMC
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
 from pyGPGO.GPGO import GPGO
@@ -9,14 +9,14 @@ import pymc3 as pm
 
 if __name__ == '__main__':
     sexp = squaredExponential()
-    gp = GaussianProcessMCMC(sexp, step=pm.Slice)
+    gp = tStudentProcessMCMC(sexp, step=pm.Slice)
 
     def f(x):
         return np.sin(x)
 
     np.random.seed(200)
     param = {'x': ('cont', [0, 6])}
-    acq = Acquisition(mode='IntegratedExpectedImprovement')
+    acq = Acquisition(mode='tIntegratedExpectedImprovement')
     gpgo = GPGO(gp, acq, f, param)
     gpgo._firstRun(n_eval=7)
 
