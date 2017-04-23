@@ -92,7 +92,7 @@ class GaussianProcessMCMC:
             plt.tight_layout()
             plt.show()
 
-    def predict(self, Xstar, return_std=False, nsamples=100):
+    def predict(self, Xstar, return_std=False, nsamples=10):
         """
         Returns mean and covariances for each posterior sampled Gaussian Process.
 

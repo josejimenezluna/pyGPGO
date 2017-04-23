@@ -7,6 +7,7 @@ from pyGPGO.GPGO import GPGO
 from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
+import pymc3 as pm
 
 
 def plotGPGO(gpgo, param):
@@ -31,7 +32,7 @@ if __name__ == '__main__':
         return (np.sin(x))
 
     sexp = squaredExponential()
-    gp = GaussianProcessMCMC(sexp)
+    gp = GaussianProcessMCMC(sexp, step=pm.Slice)
     acq = Acquisition(mode='IntegratedExpectedImprovement')
     param = {'x': ('cont', [0, 2 * np.pi])}
 

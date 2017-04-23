@@ -3,8 +3,6 @@ from collections import OrderedDict
 from numpy.linalg import slogdet
 from scipy.linalg import inv
 from scipy.optimize import minimize
-from scipy.special import gamma
-
 
 def logpdf(x, df, mu, Sigma):
     """
