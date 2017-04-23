@@ -67,7 +67,7 @@
 
 \chapter*{\centering \begin{normalsize}Abstract\end{normalsize}}
 \begin{quotation}
-\noindent Bayesian optimization has risen over the last few years as a very attractive approach to find the optimimum of noisy, expensive to evaluate, and possibly black-box functions. One of the fields where these functions are common is in machine-learning, where one typically has to fit a particular model by minimizing a particular form of loss. In this Master's thesis we first focus on reviewing the most recent literature on Gaussian Processes as well as Bayesian optimization methods, then we benchmark said methods against several real case machine-learning scenarios and lastly we provide open source software that will allow researchers to apply these strategies in other problems.\\
+\noindent Bayesian optimization has risen over the last few years as a very attractive approach to find the optimimum of noisy, expensive to evaluate, and possibly black-box functions. One of the fields where these functions are common is in machine-learning, where one typically has to fit a particular model by minimizing a specified form of loss. In this Master's thesis we first focus on reviewing the most recent literature on Gaussian Processes as well as Bayesian optimization methods, then we benchmark said methods against several real case machine-learning scenarios and lastly we provide open source software that will allow researchers to apply these strategies in other problems.\\
 
 \textbf{Keywords:} machine-learning, bayesian, optimization
 \end{quotation}
@@ -98,7 +98,7 @@ This Master's thesis aims to be a multi-objective optimization task:
 \begin{itemize}
 \item The first objective of the thesis is to provide the reader with an introduction to Gaussian Process regression and Bayesian optimization. While there are vast pieces of work for both Gaussian Processes and Bayesian Optimization, this work aims to bridge the gap between them. I try to cover as much literature as needed to provide the reader with enough background to understand and implement the theoretical work presented here. Explanations are accompanied by comprehensive coding implementations and examples that help understand the material.
 \item To show the Bayesian Optimization framework works in several real-world machine learning tasks. This is done by selecting several datasets related to open computational chemistry problems, following said methodology and finally comparing its performance to other already existing strategies. 
-\item Finally, to write a complete software package for users to apply Bayesian Optimization in their research. This comes in the form of a Python ($>$3.5) package named pyGPGO. The code can either be obtained through its GitHub repository \url{https://github.com/hawk31/pyGPGO} or the Python Package Index (PyPI). The entire software package is MIT licensed. All the examples and code snippets throughout this manual are based on this software. While certainly there are a couple implementations of Global Optimization software in Python, the software described here is modular, very minimalistic and requires minimal dependencies, while still being feature-wise competitive.
+\item Finally, to write a complete software package for users to apply Bayesian Optimization in their research. This comes in the form of a Python ($>$3.5) package named pyGPGO. The code can either be obtained through its GitHub repository \url{https://github.com/hawk31/pyGPGO} or the Python Package Index (PyPI). The entire software package is MIT licensed. All the examples and code snippets throughout this manual are based on this software. While certainly there are a couple implementations of Global Optimization software in Python, the software described here is modular, easy to use and requires minimal dependencies, while still being feature-wise competitive.
 \end{itemize}
 
 We begin by describing the title of this thesis. Bayesian Optimization focuses on the global optimization of a function $f:\mathbb{R}^n \rightarrow \mathbb{R}$ over a compact set $\mathcal{A}$. The problem can be formalized as:
@@ -109,7 +109,7 @@ We begin by describing the title of this thesis. Bayesian Optimization focuses o
 
 Most optimization procedures (local based ones such as gradient ascent, for example) assume that the function $f$ is closed-form, that is, it has an analytical expression, that it is convex, with known first or second order derivatives or cheap to evaluate. Bayesian optimization focuses on all these problems proposing a very elegant solution. By the use of a surrogate model, a Gaussian Process, a Bayesian optimization procedure can help find the global minimum of non-necessarily convex, expensive functions that are expensive to evaluate. These methods shine also where there is no closed-form expression to evaluate or derivatives.\\
 
-Now the machine learning part of the title comes into play, in machine learning (or statistical learning), we are usually interested in minimizing a loss function $\mathcal{L}$ over a subset of data. These losses can take many forms. For instance, when doing regression, a typical loss might be the mean squared error between predictions and observed values on a holdout test set.
+At the same time, in machine learning (or statistical learning), we are usually interested in minimizing a loss function $\mathcal{L}$ over a subset of data. These losses can take many forms, e.g. when doing regression, a typical loss might be the mean squared error between predictions and observed values on a holdout test set.
 
 \begin{equation}
 \mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = \dfrac{1}{n} \sum_i \left(y_i - \hat{y_i}\right)^2
@@ -121,23 +121,23 @@ In binary classification, for example, a very popular choice is the logarithmic 
 \mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = -\dfrac{1}{n} = \sum_i \left(y_i \log(\hat{y_i}) + (1 - y_i)\log(1-\hat{y_i})\right)
 \end{equation}
 
-Notice in any case, that these losses are typically defined in a subset of $\mathbb{R}$. We focus on the supervised setting of machine learning, and more specifically regression. Depending on the problem at hand, even evaluating these losses can be very expensive from a computational point of view. This may have to do with the machine learning algorithm used or the size of the dataset at hand. These machine learning algorithms typically have \textit{hyperparameters} that have to be tuned in a sensible way to get the best performance possible out of these models. In the machine learning community it is common for practitioners to perform hyperparameter grid lookups or randomized searches to reach reasonable solutions. However, with the advent of big-data and more computationally hungry strategies, the training of a single model could already take substantial resources in terms of CPU cycles or memory, that is translated in higher wall-clock waiting times. Therefore we would like to have a more efficient and cheap way to optimize these hyperparameters. Bayesian optimization will let us do that by proposing the next candidate point $\boldsymbol{x}$ to evaluate according to several criteria.
+Notice in any case, that these losses are typically defined in a subset of $\mathbb{R}$. In the work described here e focus on the supervised setting of machine learning. Depending on the problem at hand, even evaluating these losses can be very expensive from a computational point of view. This may have to do with the machine learning algorithm used or the size of the dataset at hand. These machine learning algorithms typically have \textit{hyperparameters} that have to be tuned in a sensible way to get the best performance possible out of these models. In the machine learning community it is common for practitioners to perform hyperparameter grid lookups or randomized searches to reach reasonable solutions. However, with the advent of big-data and more computationally hungry strategies, the training of a single model could already take substantial resources in terms of CPU cycles or memory, that is translated in higher wall-clock waiting times. Therefore we would like to have a more efficient and cheap way to optimize these hyperparameters. Bayesian optimization will let us do that by proposing the next candidate hyperparameter set $\boldsymbol{x}$ to evaluate according to several criteria.
 
 \section{Organization of the thesis}
 
 The whole thesis is organized in 5 self-contained chapters. First, all the theoretical work is presented, for both Gaussian Processes and Bayesian optimization, then benchmarking of the method is presented, and finally we describe the developed piece of software. I briefly describe the content of each chapter here: \\
 
-\textbf{Chapter 2} focuses on a swift but thorough introduction to regression problems using Gaussian Processes. These are the surrogate models we will use for Bayesian Optimization in Chapter 3. We will cover the theory behind them both from a weight space point of view and from a functional point of view. We will also explain different covariance functions and their role in these models, as well as methods for optimizing their hyperparameters. Further theoretical aspects are also discussed.\\
+\textbf{Chapter 2} focuses on a swift but thorough introduction to regression problems using Gaussian Processes. These are the surrogate models we will use for Bayesian Optimization in Chapter 3. We will cover the theory behind them from a functional point of view. We will also explain different covariance functions and their role in these models. Special attention is given to different approaches towards covariance hyperparameter treatment. Further theoretical aspects are also discussed.\\
 
-\textbf{Chapter 3} is about the main topic in this work, Bayesian Optimization. Once we have laid down all the foundations of Gaussian Processes, we can start explaining the theory of Bayesian optimization using these as surrogate models. The role of several acquisition functions, i.e. functions that will propose the next point to evaluate will be thoroughly discussed, as well as their advantages or disadvantages. References on this chapter will be very diverse, as I will try to summarize several recent publications. Readers already familiar with Gaussian Processes can jump directly into this chapter.\\
+\textbf{Chapter 3} is about the main topic in this work, Bayesian Optimization. Once we have laid down all the foundations of Gaussian Processes, we can start explaining the theory of Bayesian optimization using these as surrogate models. The role of several acquisition functions, i.e. functions that will propose the next point to evaluate will be thoroughly discussed, as well as their advantages or disadvantages. Different modelling choices are then further presented. References on this chapter will be very diverse, as I will try to summarize several recent publications on the field.  \\
 
-\textbf{Chapter 4} covers experiments using the software provided alongside this manual. These are mostly mid-sized regression or classification problems where we will compare the performance of Bayesian Optimization of hyperparameters with several regressors/classifiers with other strategies, such as random search. Most of these datasets are related to experimental sciences, and some of them were used for other benchmarking purposes in other studies. \\
+\textbf{Chapter 4} covers experiments using the software provided alongside this manual. These are mostly mid-sized regression or classification problems where we will compare the performance of Bayesian Optimization of hyperparameters with several regressors/classifiers with other strategies, such as random search. Most of these datasets are related to the experimental sciences, in particular chemistry, and some of them were used for other benchmarking purposes in other studies. \\
 
-\textbf{Chapter 5} has no theoretical content nor testing content. It will cover technical explanations of pyGPGO, the software developed alongside this manual. Software usage examples are also provided. 
+\textbf{Chapter 5} holds no theoretical content nor testing content. It will cover technical explanations of pyGPGO, the software developed alongside this manual. Usage examples are also provided. 
 
 \chapter{Gaussian Process regression}
 
- In this chapter we will focus on regression problems. Assume we have some labelled data $D = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$, where $\boldsymbol{x}$ is a vector of covariates and $y$ denotes a continuous objective variable. We wish to learn a predictive distribution over new values of $\boldsymbol{x}$, so that we can make predictions and inference over these. In practice, for simplicity we write that $D = \left(X, \boldsymbol{y}\right)$, where $X$ is our predictor matrix.\\
+ In this chapter we will focus on regression problems. Assume we have some labelled data $\mathcal{D} = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$, where $\boldsymbol{x}$ is a vector of covariates and $y$ denotes a continuous objective variable. We wish to learn a predictive distribution over new values of $\boldsymbol{x}$, so that we can make predictions and inference over these. In practice, for simplicity we write that $\mathcal{D} = \left(X, \boldsymbol{y}\right)$, where $X$ is our predictor matrix.\\
 
 One can interpret a Gaussian Process in several ways. The most widely known is the function space view, which is the one we will cover first here and the one we will assume for the rest for the thesis. In this view, we consider a Gaussian Process to be a stochastic process, hence, a distribution over functions, instead of over values. Inference takes place directly in this space. For completeness, we will also provide a weight-space view second, that might be more appealing to readers familiar with Bayesian linear regression.\\
 
@@ -168,19 +168,19 @@ f(\boldsymbol{x}) \sim \mathcal{GP}\left(m(\boldsymbol{x}), k(\boldsymbol{x}, \b
 \end{equation}
 \end{defini}
 
-In practice, for simplicity we will take $m(\boldsymbol{x}) = 0$, but this can be specified otherwise. As stated before, a Gaussian Process fulfils the marginalization property, that is to say that if the the GP specifies $(y_1, y_2) \sim \mathcal{N}(\boldsymbol{\mu}, \Sigma)$ then this implies that $y_1 \sim \mathcal{N}(\mu_1, \Sigma_{11})$. A Gaussian multivariate distribution is just a finite index set of a Gaussian process. \\
+In practice, for simplicity we will take $m(\boldsymbol{x}) = 0$, but this can be specified otherwise. Furthermore, a Gaussian Process fulfils the marginalization property, that is to say that if the the GP specifies $(y_1, y_2) \sim \mathcal{N}(\boldsymbol{\mu}, \Sigma)$ then it follows that $y_1 \sim \mathcal{N}(\mu_1, \Sigma_{11})$. A Gaussian multivariate distribution is just a finite index set of a Gaussian process. \\
 
-As seen in the previous section, a Gaussian Process can be viewed as a Bayesian regression model using a particular kernel, that is, the model $f(\boldsymbol{x}) = \phi(\boldsymbol{x})^T \boldsymbol{w}$ with the same prior as in equation \ref{wprior} has mean and covariance functions:
+%As seen in the previous section, a Gaussian Process can be viewed as a Bayesian regression model using a particular kernel, that is, the model $f(\boldsymbol{x}) = \phi(\boldsymbol{x})^T \boldsymbol{w}$ with the same prior as in equation \ref{wprior} has mean and covariance functions:
+%
+%\begin{align}
+%\begin{split}
+%\mathbb{E}\left[f(\boldsymbol{x})\right] &= \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\right] = 0\\
+%\mathbb{E}\left[f(\boldsymbol{x})f(\boldsymbol{x'})\right] &= \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\boldsymbol{w}^T\right]
+%\phi(\boldsymbol{x'}) = \phi(\boldsymbol{x})^T\Sigma_p\phi(\boldsymbol{x'})
+%\end{split}
+%\end{align}
 
-\begin{align}
-\begin{split}
-\mathbb{E}\left[f(\boldsymbol{x})\right] &= \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\right] = 0\\
-\mathbb{E}\left[f(\boldsymbol{x})f(\boldsymbol{x'})\right] &= \phi(\boldsymbol{x})^T\mathbb{E}\left[\boldsymbol{w}\boldsymbol{w}^T\right]
-\phi(\boldsymbol{x'}) = \phi(\boldsymbol{x})^T\Sigma_p\phi(\boldsymbol{x'})
-\end{split}
-\end{align}
-
-We define our first covariance function, the \textit{squared exponential} kernel, defined as:
+Define then a covariance function, such as the \textit{squared exponential} kernel, defined as:
 
 \begin{equation}
 k(\boldsymbol{x}, \boldsymbol{x}') = \exp\left(-\dfrac{1}{2}|\boldsymbol{x} - \boldsymbol{x}'|^2\right)
@@ -213,7 +213,7 @@ Before we move on, notice that the drawn functions in Figure \ref{fig:drawPrior}
 
 \section{A weight space view for Gaussian Processes}
 
-In this section we will try to draw connections between Bayesian linear regression \cite{Bolstad2007} and  Gaussian Processes, through the use of kernel functions. 
+In this section I will try to draw connections between Bayesian linear regression \cite{Bolstad2007} and  Gaussian Processes, through the use of kernel functions. 
 
 \subsection{Standard Bayesian linear regression}
 
@@ -257,7 +257,7 @@ f_{*}|\boldsymbol{x_{*}}, X, \boldsymbol{y} \sim \mathcal{N}\left(\dfrac{1}{\sig
 
 \subsection{Kernel functions in feature space}
 
-We have presented a very simple Bayesian approach to linear regression in the previous section. While useful, it lacks expressiveness due to its linearity. A very simple idea is to project this data into a higher dimension, where it may be more easily separated by a linear model of this sort. This is called using the kernel trick \cite{Hofmann2008}. We can do this through a covariance (or kernel) function $\phi(\boldsymbol{x})$. Note by $\Phi(X)$ the aggregation of columns after computing this kernel function in the entire dataset at hand.\\
+We have presented a very simple Bayesian approach to linear regression in the previous section. While useful, it lacks expressiveness due to its linearity. A very simple idea is to project this data into a higher dimension, where it may be more easily separated by a linear model of this sort. This is known as using the kernel trick \cite{Hofmann2008}. We can do this through a covariance (or kernel) function $\phi(\boldsymbol{x})$. Note by $\Phi(X)$ the aggregation of columns after computing this kernel function in the entire dataset at hand.\\
 
 The model becomes now:
 
@@ -284,12 +284,12 @@ where we have again simplified notation by $\boldsymbol{\phi_*} = \phi(\boldsymb
 k(\boldsymbol{x}, \boldsymbol{x'}) = \psi(\boldsymbol{x})^T\psi(\boldsymbol{x'})
 \end{equation}
 
-where $\Sigma_p^{1/2}$ can be defined by means of a singular value decomposition. We then replace the original feature vectors by these dot products, \textit{lifting} to a higher space. 
+where $\Sigma_p^{1/2}$ can be defined by means of a singular value decomposition. We then replace the original feature vectors by these dot products, \textit{lifting} to a higher space. In the next Section, we will perform the same calculations detailed here, but using the function space view that will be used throughout the rest of the text.
 
 \section{Prediction using a Gaussian Process prior}
 \label{pred}
 
-In this particular section, arguably the most important one in the chapter, we will learn how to incorporate the knowledge of training data $D = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$ into our Gaussian Process to obtain a posterior predictive distribution. We will start considering the case that we have a noiseless function, that is to say, when $\sigma^2_n = 0$. Let us define $K(X, X_{*})$, the covariance function evaluated on train and test points, $K(X, X)$ the covariance function evaluated at only the training points, $K(X_{*}, X_{*})$ equivalently defined for the test values. Notice the last two have to be square matrices by definition.\\
+In this particular section, arguably the most important one in the chapter, we will learn how to incorporate the knowledge of training data $\mathcal{D} = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$ into our Gaussian Process to obtain a posterior predictive distribution. We will start considering the case that we have a noiseless function, that is to say, when $\sigma^2_n = 0$. Let us define $K(X, X_{*})$, the covariance function evaluated on train and test points, $K(X, X)$ the covariance function evaluated at only the training points, $K(X_{*}, X_{*})$ equivalently defined for the test values. Notice the last two have to be square matrices by definition.\\
 
 Let us also use the following theorem:
 
@@ -315,7 +315,7 @@ C^T && B
 Then $\boldsymbol{x|y} \sim \left(\boldsymbol{\mu_x} + C B^{-1}(\boldsymbol{y} - \boldsymbol{\mu_y}), A - CB^{-1}C^T \right)$
 \end{mydef}
 
-According to the prior distribution chosen in \ref{fprior}, assume that $\boldsymbol{f}$ and $\boldsymbol{f_*}$ are jointly Gaussian:
+Similarly as in Equation \ref{fprior}, assume that $\boldsymbol{f}$ and $\boldsymbol{f_*}$ are jointly Gaussian:
 
 \begin{equation}
 \begin{bmatrix}
@@ -369,17 +369,21 @@ And conditioning again $\boldsymbol{f_{*}}$ on $\boldsymbol{y}$, we obtain our f
 where now:
 
 \begin{align}
-\boldsymbol{\overline{f_*}} = K(X_*, X)\left(K(X, X) + \sigma^2_n I   \right)^{-1}\boldsymbol{y}\\
-Cov(\boldsymbol{f_*}) = K(X_*, X_*) - K(X_*, X)\left(K(X, X) + \sigma_n^2 I \right)^{-1}K(X, X_*)
+\begin{split}
+\boldsymbol{\overline{f_*}} &= K(X_*, X)\left(K(X, X) + \sigma^2_n I   \right)^{-1}\boldsymbol{y}\\
+Cov(\boldsymbol{f_*}) &= K(X_*, X_*) - K(X_*, X)\left(K(X, X) + \sigma_n^2 I \right)^{-1}K(X, X_*)
+\end{split}
 \end{align}
 
-It will probably be useful to note that a Gaussian Process model can be written easily in terms of a Bayesian hierarchical model, since:
+It will probably be useful to note that a Gaussian Process model can be written in terms of a Bayesian hierarchical model, since:
 
 \begin{align}
+\begin{split}
 \label{hierarchical}
-\boldsymbol{y}|\boldsymbol{f} \sim \mathcal{N}(\boldsymbol{f}, \sigma^2_n I)\\
+\boldsymbol{y}|\boldsymbol{f} &\sim \mathcal{N}(\boldsymbol{f}, \sigma^2_n I)\\
 \label{hierarchical2}
-\boldsymbol{f}|X \sim \mathcal{N}(\boldsymbol{0}, K(X, X))
+\boldsymbol{f}|X &\sim \mathcal{N}(\boldsymbol{0}, K(X, X))
+\end{split}
 \end{align}
 
 In fact, one can also assume other priors, even over $\sigma_n^2$. This representation may help us understand the introduction of the \textit{marginal likelihood}. This marginal likelihood in a Gaussian Process setting is defined as:
@@ -394,7 +398,7 @@ Using the results from Equations \ref{hierarchical} and \ref{hierarchical2} we c
 \log p(\boldsymbol{y}|X) = - \dfrac{1}{2}\boldsymbol{y}^T(K + \sigma^2_n I)^{-1}\boldsymbol{y} - \dfrac{1}{2}\log |K + \sigma^2_n I| - \dfrac{n}{2}\log 2\pi
 \end{equation}
 
-Notice this result is equivalent to the log-density of $\boldsymbol{y} \sim \mathcal{N}(\boldsymbol{0}, K + \sigma_n^2 I)$. We have now all the necessary ingredients to lay down pseudo-code for your own implementation of a Gaussian Process regressor, as presented in Algorithm \ref{alg}. It makes use of several tricks for computational stability, such as a Cholesky decomposition and several linear system of equations to avoid directly inverting matrices.\\
+Notice this result is equivalent to the log-density of $\boldsymbol{y} \sim \mathcal{N}(\boldsymbol{0}, K + \sigma_n^2 I)$. We have now all the necessary ingredients to lay down pseudo-code for the implementation of a Gaussian Process regressor, as presented in Algorithm \ref{alg}. It makes use of several tricks for computational stability, such as a Cholesky decomposition and several linear system of equations to avoid directly inverting matrices.\\
 
 \begin{algorithm}
 	\caption{Gaussian regressor pseudo-code.}
@@ -502,7 +506,7 @@ Normally, these are the covariance functions that are used for the noiseless cas
 k^y(\boldsymbol{x}_p, \boldsymbol{x}_q) = \sigma^2_f k(\boldsymbol{x}_p, \boldsymbol{x}_q) + \sigma^2_n \delta_{pq} \,
 \end{equation}
 
-where $\sigma^2_f$ is the signal variance, and controls the overall scale of our covariance matrix, $\sigma^2_n$ is the noise variance and $\delta_{pq}$ is a Kronecker delta function. Notice we note now $k^y$ instead of $k$ to account for noisy observations. In practice, all covariance function internal parameters plus $\left\lbrace\sigma_n^2, \sigma^2_f\right\rbrace$ can be considered unknowns of our particular problem. Several different treatments of hyperparameters can be considered, for example, one may choose to fix them manually, try to optimize them in a maximum-likelihood fashion (Section \ref{hyper} or take the full Bayesian approach and marginalize over them (Section \ref{marginalize}).
+where $\sigma^2_f$ is the signal variance, and controls the overall scale of our covariance matrix, $\sigma^2_n$ is the noise variance and $\delta_{pq}$ is a Kronecker delta function. Notice we note now $k^y$ instead of $k$ to account for noisy observations. In practice, all covariance function internal parameters plus $\left\lbrace\sigma_n^2, \sigma^2_f\right\rbrace$ can be considered unknowns of our particular problem. Several different treatments of hyperparameters can be considered, for example, one may choose to fix them manually, try to optimize them in a maximum-likelihood fashion (Section \ref{hyper}) or take the full Bayesian approach and marginalize over them (Section \ref{marginalize}).
 
 
 \subsection{Visualizing different covariance functions}
@@ -524,7 +528,7 @@ As seen in the previous sections, different covariance functions have different 
 \subsection{Type II Maximum Likelihood}
 \label{empbayes}
 
-This is the empirical Bayes \cite{Rossi2006} analytical approach to optimizing hyperparameters. One may quickly notice that Gaussian Processes are non-parametric models, in the sense that apart from the quantities set in the covariance functions, there is nothing else to optimize for. First we will provide a small background on Bayesian model selection. Assume that we have a model  $\mathcal{H}_i$ with \textit{parameters} $\boldsymbol{w}$, \textit{hyperparameters} $\boldsymbol{\theta}$, and we have some training data $X, \boldsymbol{y}$. The posterior over the parameters is easily given by:
+This is the empirical Bayes \cite{Rossi2006} analytical approach to optimizing hyperparameters. One may quickly notice that Gaussian Processes are non-parametric models, in the sense that apart from the quantities set in the covariance functions, there is nothing else to optimize for. First we will provide a small background on Bayesian model selection. Assume that we have a model  $\mathcal{H}_i$ with \textit{parameters} $\boldsymbol{w}$, \textit{hyperparameters} $\boldsymbol{\theta}$, and we have some training data $X, \boldsymbol{y}$. The posterior over the parameters is given by Bayes's theorem:
 
 \begin{equation}
 \label{posteriorparam}
@@ -579,7 +583,7 @@ To evaluate the performance of hyperparameters $\boldsymbol{\theta}$, in $D=\lef
 
 \section{Further theoretical aspects}
 
-In this section, we will briefly mention other theoretical aspects of Gaussian Processes. This includes for example, how Gaussian Process can be seen as \textit{linear smoothers}, by means of a spectral analysis or how to incorporate explicit basis functions into the model. Readers can safely skip this section if not particularly interested, as it will not be mentioned any other time throughout the text.
+In this section, we will briefly mention other theoretical aspects of Gaussian Processes. This includes for example, how Gaussian Process can be seen as \textit{linear smoothers}, by means of a spectral analysis or how to incorporate explicit basis functions into the model. Finally, we will discuss a full Bayesian treatment of covariance function hyperparameters, by the use of different MCMC sampling strategies.
 
 \subsection{Gaussian processes as linear smoothers}
 

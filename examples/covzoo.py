@@ -10,8 +10,8 @@ if __name__ == '__main__':
 
     # Covariance functions to loop over
     covfuncs = [squaredExponential(), matern(), gammaExponential(), rationalQuadratic()]
-    #titles = [r'Squared Exponential ($l = 1$)', r'Matern ($\nu = 1$, $l = 1$)',
-    #          r'Gamma Exponential ($\gamma = 1, l = 1$)', r'Rational Quadratic ($\alpha = 1, l = 1$)']
+    titles = [r'Squared Exponential ($l = 1$)', r'Matern ($\nu = 1$, $l = 1$)',
+              r'Gamma Exponential ($\gamma = 1, l = 1$)', r'Rational Quadratic ($\alpha = 1, l = 1$)']
     plt.figure()
     #plt.rc('text', usetex=True)
     for i, cov in enumerate(covfuncs):
@@ -27,6 +27,6 @@ if __name__ == '__main__':
         plt.plot(xstar, np.sin(xstar), label='True function')
         plt.fill_between(xstar, lower, upper, alpha=0.4, label='95\% confidence band')
         plt.grid()
-    #    plt.title(titles[i])
+        plt.title(titles[i])
     plt.legend(loc=0)
     plt.show()
