@@ -22,9 +22,9 @@ setup(name='pyGPGO',
     install_requires=[
         'numpy',
         'scipy',
-        'joblib'
+        'joblib',
+        'scikit-learn',
+        'theano',
+        'pymc3'
     ],
-    extras_require={
-          'pyMC3': ["pyMC3"]
-    },
     zip_safe=False)
