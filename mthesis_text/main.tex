@@ -67,7 +67,7 @@
 
 \chapter*{\centering \begin{normalsize}Abstract\end{normalsize}}
 \begin{quotation}
-\noindent Bayesian optimization has risen over the last few years as a very attractive approach to find the optimimum of noisy, expensive to evaluate, and possibly black-box functions. One of the fields where these functions are common is in machine-learning, where one typically has to fit a particular model by minimizing a specified form of loss. In this Master's thesis we first focus on reviewing the most recent literature on Gaussian Processes as well as Bayesian optimization methods, then we benchmark said methods against several real case machine-learning scenarios and lastly we provide open source software that will allow researchers to apply these strategies in other problems.\\
+\noindent Bayesian optimization has risen over the last few years as a very attractive approach to find the optimum of noisy, expensive to evaluate, and possibly black-box functions. One of the fields where these functions are common is in machine-learning, where one typically has to fit a particular model by minimizing a specified form of loss. In this Master's thesis we first focus on reviewing the most recent literature on Gaussian Processes as well as Bayesian optimization methods, then we benchmark said methods against several real case machine-learning scenarios and lastly we provide open source software that will allow researchers to apply these strategies in other problems.\\
 
 \textbf{Keywords:} machine-learning, bayesian, optimization
 \end{quotation}
@@ -180,7 +180,7 @@ In practice, for simplicity we will take $m(\boldsymbol{x}) = 0$, but this can b
 %\end{split}
 %\end{align}
 
-Define then a covariance function, such as the \textit{squared exponential} kernel, defined as:
+Define then a covariance function, such as the \textit{squared exponential} kernel, written as:
 
 \begin{equation}
 k(\boldsymbol{x}, \boldsymbol{x}') = \exp\left(-\dfrac{1}{2}|\boldsymbol{x} - \boldsymbol{x}'|^2\right)
@@ -381,7 +381,6 @@ It will probably be useful to note that a Gaussian Process model can be written 
 \begin{split}
 \label{hierarchical}
 \boldsymbol{y}|\boldsymbol{f} &\sim \mathcal{N}(\boldsymbol{f}, \sigma^2_n I)\\
-\label{hierarchical2}
 \boldsymbol{f}|X &\sim \mathcal{N}(\boldsymbol{0}, K(X, X))
 \end{split}
 \end{align}
@@ -1224,11 +1223,14 @@ In this chapter we will expose all the results using all implemented code for Ga
 
 
 \section{Benchmarking rules}
+
+In this section we first present other strategies for machine-learning hyperparameter optimization, followed by an explanation of the rules used for benchmarking as well as some theoretical background of the models explored here.
+
 \subsection{Other strategies for hyper-parameter optimization}
 
 Hyper-parameter optimization is usually the most tedious part in fitting a machine-learning algorithm. In practice, we are interested in models whose loss, evaluated on an independent part of data is as low as possible. Different hyper-parameter choices lead to different losses, therefore finding the optimal set is of importance. In reality, we will never know that the point found is the global optimum, but from a practical point of view, we are only interested in finding the model that works best in a production setting.\\
 
-In the machine-learning community, hyper-parameter optimization is often overlooked, and in fact, some of the most famous models (e.g. Random Forests) have been shown to be somewhat insensitive to hyper-parameter optimization \cite{Verikas2011}. Four common strategies for finding \textit{better} hyper-parameters are presented here: grid search, random search, simulated annealing and gradient-based methods. Only random search and simulated annealing will be compared against our Bayesian Optimization algorithm, as implemented in pyGPGO. Details on how these work are laid down below:
+In the machine-learning community, hyper-parameter optimization is often overlooked, and in fact, some of the most famous models (e.g. Random Forests) have been shown to be somewhat insensitive to hyper-parameter optimization \cite{Verikas2011}. Two common strategies for finding \textit{better} hyper-parameters are presented here: grid search and random search. These two methods are used in different occasions: in particular grid search is typically used when the search space is not too large and the model to fit is not expensive to evaluate. Random search is more popular when it becomes impractical to explore the search. More details of these two common strategies are presented below. 
 
 \begin{itemize}
 	\item \textbf{Grid search}. Also known as parameter sweep. This is simply an exhaustive search in a user specified subset of parameter space. Search bounds have to be set manually. When multiple hyper-parameters have to be optimized over their sets, grid search considers the Cartesian product of all of them. This poses a problem when the number of hyper-parameters to optimize grows, also known as the curse of dimensionality. While suffering from this problem, grid search is still widely used for small to mid-sized problems, where function evaluations are not very expensive. Also, it is embarrassingly parallel: function evaluations can be distributed over in a simple way.
@@ -1450,9 +1452,11 @@ Matrices $W^{(1)}$, $W^{(2)}$ and biases $b^{(1)}$, $b^{(2)}$ are trained using 
 
 \section{The binding affinity dataset}
 
+We start our benchmarking with one of the most popular problems in computational chemistry, protein-ligand binding affinity prediction. Summarizing, this is defined as a supervised learning problem where two interacting molecules intervene, a target protein and a small drug-like molecule binding to the former.
+
 \subsection{Description of the problem}
 
-We will address one of the most popular problems in computational chemistry in this section: protein-ligand binding affinity prediction. The docking procedures (see Figure \ref{fig:docking}) in structural biology typically work as follows: first, by generating a large number of poses of the ligand (a small drug-like molecule compared to the host protein). A pose encompasses position, orientation and conformation of the ligand. Once enough poses are generated, a \textit{scoring function} is in charge of reranking these, that is, its job is to find the correct pose amongst the generated. Correct poses have more \textit{strength} to the binding site of the target than incorrect ones, and this is typically quantified by means of dissociation ($K_d$), inhibition constant ($K_i$) or free energy. These quantities are real valued, and can normally range from $10^{-9}$ to $10^6$ kcal/mol in studies. To account for this very large range of affinities, one typically defines a target variable as $y=-\log_{10}K_{d,i}$ and considers it as a classical regression problem.\\
+Docking procedures (see Figure \ref{fig:docking}) in structural biology typically work as follows: first, by generating a large number of poses of the ligand (a small drug-like molecule compared to the host protein). A pose encompasses position, orientation and conformation of said ligand. Once enough poses are generated, a \textit{scoring function} is in charge of re-ranking these, that is, its job is to find the correct pose amongst the generated. Correct poses have more \textit{strength} to the binding site of the target than incorrect ones, and this is typically quantified by means of dissociation ($K_d$), inhibition constant ($K_i$) or free energy. These quantities are real valued, and can normally range from $10^{-9}$ to $10^6$ kcal/mol in studies. To account for this very large range of affinities, one typically defines a target variable as $y=-\log_{10}K_{d,i}$ and considers it as a classical regression problem.\\
 
 \begin{figure}
 \centering
@@ -1523,6 +1527,8 @@ We detail here results for all the models and parameter ranges considered in the
 \newpage
 
 \section{The protein-protein interface prediction dataset}
+
+Our second round of experiments focuses on yet another problem in computational chemistry, protein-protein interface prediction. In this particular instance, we focus on determining whether a particular set of residues can be considered part of an interface with another protein. Machine-learning methods can be applied on this particular instance. We briefly describe the problem in more detail now.
 
 \subsection{Description of the problem}
 
@@ -2030,7 +2036,7 @@ if __name__ == '__main__':
 \end{minted}
 
 
-A few notes on the code, notice that we add two extra parameters to the \texttt{GPRegressor} module: \texttt{optimize=True, usegrads=True} indicates to the instance that it should perform Type II maximum likelihood estimation of the \texttt{squaredExponential} instance hyper-parameters using gradient information if available. By default all hyper-parameters are optimized, in this case, $\left\lbrace l, \sigma_n^2, \sigma_f^2 \right\rbrace$ are optimized. If we want only a subset of them to be optimized or none at all, we can specify so in the corresponding covariance function instance. 
+A few notes on the code, notice that we add two extra parameters to the \texttt{surrogates.GaussianProcess} module: \texttt{optimize=True, usegrads=True} indicates to the instance that it should perform Type II maximum likelihood estimation of the \texttt{squaredExponential} instance hyper-parameters using gradient information if available. By default all hyper-parameters are optimized, in this case, $\left\lbrace l, \sigma_n^2, \sigma_f^2 \right\rbrace$ are optimized. If we want only a subset of them to be optimized or none at all, we can specify so in the corresponding covariance function instance. 
 
 
 \subsection{MCMC inference over hyperparameters using the \texttt{GaussianProcessMCMC} module}
@@ -2083,7 +2089,7 @@ from sklearn.model_selection import cross_val_score
 
 
 from pyGPGO.GPGO import GPGO
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
 
@@ -2104,7 +2110,7 @@ if __name__ == '__main__':
     plt.show()
     
     sexp = squaredExponential()
-    gp = GPRegressor(sexp, optimize = True, usegrads = True)
+    gp = GaussianProcess(sexp, optimize = True, usegrads = True)
     acq = Acquisition(mode = 'UCB', beta = 1.5)
 
     params = {'C':      ('cont', (1e-4, 1e4)),
@@ -2143,6 +2149,19 @@ if __name__ == '__main__':
 
 
 \section{Features}\label{features}
+
+The features provided by pyGPGO are hard to summarize here. Among them, however, we can highlight several of them:
+
+\begin{itemize}
+\item Completely modular interface.
+\item Different surrogate models: Gaussian Processes, Student-t Processes, Random Forests, Gradient Boosting Machines.
+\item Type II Maximum-Likelihood of covariance function hyperparameters. 
+\item MCMC sampling for full-Bayesian inference of hyperparameters (via \texttt{pyMC3}).
+\item Integrated acquisition functions
+\end{itemize}
+
+Details of each particular module can be assessed in its documentation, available online through \url{http://pygpgo.readthedocs.io/en/latest/}.
+
 \section{Comparison with existing software}
 
 pyGPGO is, to the best of my knowledge, one of the most complete packages in Python for performing Bayesian optimization. It implements plenty of functionality, e.g different surrogate regressors, several strategies for hyperparameter treatment while being completely modular and open-source. A complete comparison of features against other popular packages of the Python eco-system can be checked in Table \ref{featurecomp}.
@@ -2178,12 +2197,12 @@ Python version & $>$3.5 & 2.7 & 2/3 & 2/3 & 2.7 & 2/3 & 2/3 \\ \bottomrule
 
 pyGPGO, while a very complete software for Bayesian Optimization still remains in development. In particular, there are several improvements that will be tackled on:
 
-\begin{enumerate}
+\begin{itemize}
 	\item Improvements over covariance functions. Support for more complex kernel structures, such as adding and multiplication of different kernel functions.
 	\item Support for more diverse acquisition functions: Entropy-based, or Thompson-like.
 	\item A wider choice of surrogate models. In particular, a modular interface for the user to specify its own.
 	\item Overall speed improvements and code optimization.
-\end{enumerate}
+\end{itemize}
 
 In conclusion, pyGPGO, like any other piece of software, is never finished work. Being open-sourced, anyone can either contribute to the code base available through its GitHub repository or download the project and modify it in any way they see fit. pyGPGO's MIT License also allows for it to be used in mostly any kind of software, either academic or commercial.
 
@@ -2241,8 +2260,8 @@ if __name__ == '__main__':
                framesep=2mm,
                python3 = true]{python}
 import numpy as np
-from GPRegressor import GPRegressor
-from covfunc import squaredExponential
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.covfunc import squaredExponential
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
@@ -2253,8 +2272,9 @@ if __name__ == '__main__':
 
     # Specify covariance function
     sexp = squaredExponential()
-    # Instantiate GPRegressor class
-    gp = GPRegressor(sexp)
+
+    # Instantiate GaussianProcess class
+    gp = GaussianProcess(sexp)
     # Fit the model to the data
     gp.fit(X, y)
 
@@ -2264,7 +2284,7 @@ if __name__ == '__main__':
     ymean, ystd = gp.predict(Xstar, return_std=True)
 
     # Confidence interval bounds
-    lower, upper = ymean - 1.96 * ystd, ymean + 1.96 * ystd
+    lower, upper = ymean - 1.96 * np.sqrt(ystd), ymean + 1.96 * np.sqrt(ystd)
 
     # Plot values
     plt.figure()
@@ -2284,41 +2304,39 @@ if __name__ == '__main__':
                frame=lines,
                framesep=2mm,
                python3 = true]{python}
-import numpy as np
-from covfunc import *
-from GPRegressor import GPRegressor
+from pyGPGO.covfunc import *
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 import matplotlib.pyplot as plt
 
-
 if __name__ == '__main__':
-        # Build synthetic data (sine function)
-        x = np.arange(0, 2 * np.pi + 0.01, step = np.pi / 2)
-        y = np.sin(x)
-        X = np.array([np.atleast_2d(u) for u in x])[:, 0]
+    # Build synthetic data (sine function)
+    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 2.05)
+    y = np.sin(x)
+    X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 
-        # Covariance functions to loop over
-        covfuncs = [squaredExponential(), matern(), gammaExponential(), rationalQuadratic()]
-        titles = [r'Squared Exponential ($l = 1$)', r'Matern ($\nu = 1$, $l = 1$)',
-         r'Gamma Exponential ($\gamma = 1, l = 1$)', r'Rational Quadratic ($\alpha = 1, l = 1$)']
-        plt.figure()
-        plt.rc('text', usetex=True)
-        for i, cov in enumerate(covfuncs):
-                gp = GPRegressor(cov)
-                gp.fit(X, y)
-                xstar = np.arange(0, 2 * np.pi, step = 0.01)
-                Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]
-                ymean, ystd = gp.predict(Xstar, return_std = True)
-                
-                lower, upper = ymean - 1.96 * ystd, ymean + 1.96 * ystd
-                plt.subplot(2, 2, i + 1)
-                plt.plot(xstar, ymean, label = 'Posterior mean')
-                plt.plot(xstar, np.sin(xstar), label = 'True function')
-                plt.fill_between(xstar, lower, upper, alpha = 0.4,
-                 label = '95\% confidence band')
-                plt.grid()
-                plt.title(titles[i])
-        plt.legend(loc = 0)
-        plt.show()
+    # Covariance functions to loop over
+    covfuncs = [squaredExponential(), matern(), gammaExponential(), rationalQuadratic()]
+    titles = [r'Squared Exponential ($l = 1$)', r'Matern ($\nu = 1$, $l = 1$)',
+              r'Gamma Exponential ($\gamma = 1, l = 1$)', r'Rational Quadratic ($\alpha = 1, l = 1$)']
+    plt.figure()
+    #plt.rc('text', usetex=True)
+    for i, cov in enumerate(covfuncs):
+        gp = GaussianProcess(cov, optimize=True, usegrads=False)
+        gp.fit(X, y)
+        xstar = np.arange(0, 2 * np.pi, step=0.01)
+        Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]
+        ymean, ystd = gp.predict(Xstar, return_std=True)
+
+        lower, upper = ymean - 1.96 * np.sqrt(ystd), ymean + 1.96 * np.sqrt(ystd)
+        plt.subplot(2, 2, i + 1)
+        plt.plot(xstar, ymean, label='Posterior mean')
+        plt.plot(xstar, np.sin(xstar), label='True function')
+        plt.fill_between(xstar, lower, upper, alpha=0.4, label='95\% confidence band')
+        plt.grid()
+        plt.title(titles[i])
+    plt.legend(loc=0)
+    plt.show()
+
 \end{minted}
 
 \subsection*{hyperopt.py}
@@ -2331,47 +2349,49 @@ if __name__ == '__main__':
                framesep=2mm,
                python3 = true]{python}
 import numpy as np
-from GPRegressor import GPRegressor
-from covfunc import squaredExponential
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.covfunc import squaredExponential
 import matplotlib.pyplot as plt
 
+
 def gradient(gp, sexp):
-        alpha = gp.alpha
-        K = gp.K
-        gradK = sexp.gradK(gp.X, gp.X, 'l')
-        inner = np.dot(np.atleast_2d(alpha).T, np.atleast_2d(alpha)) - np.linalg.inv(K)
-        return(.5 * np.trace(np.dot(inner, gradK)))
+    alpha = gp.alpha
+    K = gp.K
+    gradK = sexp.gradK(gp.X, gp.X, 'l')
+    inner = np.dot(np.atleast_2d(alpha).T, np.atleast_2d(alpha)) - np.linalg.inv(K)
+    return (.5 * np.trace(np.dot(inner, gradK)))
 
 
 if __name__ == '__main__':
-        x = np.arange(0, 2 * np.pi + 0.01, step = np.pi / 2)
-        X = np.array([np.atleast_2d(u) for u in x])[:, 0]
-        y = np.sin(x)
+    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 2)
+    X = np.array([np.atleast_2d(u) for u in x])[:, 0]
+    y = np.sin(x)
 
-        logp = []
-        grad = []
-        length_scales = np.linspace(0.1, 2, 1000)
+    logp = []
+    grad = []
+    length_scales = np.linspace(0.1, 2, 1000)
 
-        for l in length_scales:
-                sexp = squaredExponential(l = l)
-                gp = GPRegressor(sexp)
-                gp.fit(X, y)
-                logp.append(gp.logp)
-                grad.append(gradient(gp, sexp))
+    for l in length_scales:
+        sexp = squaredExponential(l=l)
+        gp = GaussianProcess(sexp)
+        gp.fit(X, y)
+        logp.append(gp.logp)
+        grad.append(gradient(gp, sexp))
 
-        plt.figure()
-        plt.subplot(2, 1, 1)
-        plt.plot(length_scales, logp)
-        plt.title('Marginal log-likelihood')
-        plt.xlabel('Characteristic length-scale l')
-        plt.ylabel('log-likelihood')
-        plt.grid()
-        plt.subplot(2, 1, 2)
-        plt.plot(length_scales, grad, '--', color = 'red')
-        plt.title('Gradient w.r.t. l')
-        plt.xlabel('Characteristic length-scale l')
-        plt.grid()
-        plt.show()
+    plt.figure()
+    plt.subplot(1, 2, 1)
+    plt.plot(length_scales, logp)
+    plt.title('Marginal log-likelihood')
+    plt.xlabel('Characteristic length-scale l')
+    plt.ylabel('log-likelihood')
+    plt.grid()
+    plt.subplot(1, 2, 2)
+    plt.plot(length_scales, grad, '--', color='red')
+    plt.title('Gradient w.r.t. l')
+    plt.xlabel('Characteristic length-scale l')
+    plt.grid()
+    plt.show()
+
 \end{minted}
 
 \subsection*{acqzoo.py}
@@ -2385,57 +2405,58 @@ if __name__ == '__main__':
                framesep=2mm,
                python3 = true]{python}
 import numpy as np
-from GPRegressor import GPRegressor
-from acquisition import Acquisition
-from covfunc import squaredExponential
-from GPGO import GPGO
+import matplotlib.pyplot as plt
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
+from pyGPGO.GPGO import GPGO
 
 
-def plotGPGO(gpgo, param, index, new = True):
-        param_value = list(param.values())[0][1]
-        x_test = np.linspace(param_value[0], param_value[1], 1000).reshape((1000, 1))
-        y_hat, y_var = gpgo.GP.predict(x_test, return_std = True)
-        std = np.sqrt(y_var)
-        l, u = y_hat - 1.96 * std, y_hat + 1.96 * std
-        if new:
-                plt.figure()
-                plt.subplot(5, 1, 1)
-                plt.fill_between(x_test.flatten(), l, u, alpha = 0.2)
-                plt.plot(x_test.flatten(), y_hat)
-        plt.subplot(5, 1, index)
-        a = np.array([-gpgo._acqWrapper(np.atleast_1d(x)) for x in x_test]).flatten()
-        plt.plot(x_test, a, color = colors[index - 2], label = acq_titles[index - 2])
-        gpgo._optimizeAcq(method = 'L-BFGS-B', n_start = 1000)
-        plt.axvline(x = gpgo.best)
-        plt.legend(loc = 0)
-        
+def plotGPGO(gpgo, param, index, new=True):
+    param_value = list(param.values())[0][1]
+    x_test = np.linspace(param_value[0], param_value[1], 1000).reshape((1000, 1))
+    y_hat, y_var = gpgo.GP.predict(x_test, return_std=True)
+    std = np.sqrt(y_var)
+    l, u = y_hat - 1.96 * std, y_hat + 1.96 * std
+    if new:
+        plt.figure()
+        plt.subplot(5, 1, 1)
+        plt.fill_between(x_test.flatten(), l, u, alpha=0.2)
+        plt.plot(x_test.flatten(), y_hat)
+    plt.subplot(5, 1, index)
+    a = np.array([-gpgo._acqWrapper(np.atleast_1d(x)) for x in x_test]).flatten()
+    plt.plot(x_test, a, color=colors[index - 2], label=acq_titles[index - 2])
+    gpgo._optimizeAcq(method='L-BFGS-B', n_start=1000)
+    plt.axvline(x=gpgo.best)
+    plt.legend(loc=0)
 
 
 if __name__ == '__main__':
-        def f(x):
-                return(np.sin(x))
+    def f(x):
+        return (np.sin(x))
 
-        acq_1 = Acquisition(mode = 'ExpectedImprovement')
-        acq_2 = Acquisition(mode = 'ProbabilityImprovement')
-        acq_3 = Acquisition(mode = 'UCB', beta = 0.5)
-        acq_4 = Acquisition(mode = 'UCB', beta = 1.5)
-        acq_list = [acq_1, acq_2, acq_3, acq_4]
-        sexp = squaredExponential()
-        param = {'x': ('cont', [0, 2 * np.pi])}
-        new = True
-        colors = ['green', 'red', 'orange', 'black']
-        acq_titles = [r'Expected improvement', r'Probability of Improvement',
-         r'GP-UCB $\beta = .5$', r'GP-UCB $\beta = 1.5$']
+    acq_1 = Acquisition(mode='ExpectedImprovement')
+    acq_2 = Acquisition(mode='ProbabilityImprovement')
+    acq_3 = Acquisition(mode='UCB', beta=0.5)
+    acq_4 = Acquisition(mode='UCB', beta=1.5)
+    acq_list = [acq_1, acq_2, acq_3, acq_4]
+    sexp = squaredExponential()
+    param = {'x': ('cont', [0, 2 * np.pi])}
+    new = True
+    colors = ['green', 'red', 'orange', 'black']
+    acq_titles = [r'Expected improvement', r'Probability of Improvement', r'GP-UCB $\beta = .5$',
+                  r'GP-UCB $\beta = 1.5$']
 
-        for index, acq in enumerate(acq_list):
-                np.random.seed(200)
-                gp = GPRegressor(sexp)
-                gpgo = GPGO(gp, acq, f, param)
-                gpgo._firstRun(n_eval = 3)
-                plotGPGO(gpgo, param, index = index + 2, new = new)
-                new = False
+    for index, acq in enumerate(acq_list):
+        np.random.seed(200)
+        gp = GaussianProcess(sexp)
+        gpgo = GPGO(gp, acq, f, param)
+        gpgo._firstRun(n_eval=3)
+        plotGPGO(gpgo, param, index=index + 2, new=new)
+        new = False
 
-        plt.show()                  
+    plt.show()
+                
 \end{minted}
 
 \subsection*{integratedacq.py}
@@ -2501,8 +2522,8 @@ if __name__ == '__main__':
                python3 = true]{python}
 
 import numpy as np
-from GPRegressor import GPRegressor
-from covfunc import squaredExponential
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.covfunc import squaredExponential
 import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
@@ -2514,7 +2535,7 @@ if __name__ == '__main__':
     # Specify covariance function
     sexp = squaredExponential()
     # Instantiate GPRegressor class
-    gp = GPRegressor(sexp)
+    gp = GaussianProcess(sexp)
     # Fit the model to the data
     gp.fit(X, y)
 
@@ -2538,7 +2559,8 @@ if __name__ == '__main__':
     plt.text(3.75, 0.75, 'max LCB')
     plt.grid()
     plt.legend(loc=0)
-    plt.show()                      
+    plt.show()
+                     
 \end{minted}
 
 \subsection*{sineopt.py}
@@ -2552,59 +2574,41 @@ if __name__ == '__main__':
                framesep=2mm,
                python3 = true]{python}
 
-import os
-
+import numpy as np
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.covfunc import squaredExponential
 import matplotlib.pyplot as plt
 
-from GPGO import GPGO
-from GPRegressor import GPRegressor
-from acquisition import Acquisition
-from covfunc import *
-
-
-def plotGPGO(gpgo, param):
-    param_value = list(param.values())[0][1]
-    x_test = np.linspace(param_value[0], param_value[1], 1000).reshape((1000, 1))
-    hat = gpgo.GP.predict(x_test, return_std=True)
-    y_hat, y_std = hat[0], np.sqrt(hat[1])
-    l, u = y_hat - 1.96 * y_std, y_hat + 1.96 * y_std
-    fig = plt.figure()
-    r = fig.add_subplot(2, 1, 1)
-    r.set_title('Fitted Gaussian process')
-    plt.fill_between(x_test.flatten(), l, u, alpha=0.2)
-    plt.plot(x_test.flatten(), y_hat, color='red', label='Posterior mean')
-    plt.legend(loc=0)
-    a = np.array([-gpgo._acqWrapper(np.atleast_1d(x)) for x in x_test]).flatten()
-    r = fig.add_subplot(2, 1, 2)
-    r.set_title('Acquisition function')
-    plt.plot(x_test, a, color='green')
-    gpgo._optimizeAcq(method='L-BFGS-B', n_start=1000)
-    plt.axvline(x=gpgo.best, color='black', label='Found optima')
-    plt.legend(loc=0)
-    plt.tight_layout()
-    plt.savefig(os.path.join(os.getcwd(), 'mthesis_text/figures/chapter3/sine/{}.pdf'.format(i)))
-    plt.show()
-
-
 if __name__ == '__main__':
-    np.random.seed(321)
+    # Build synthetic data (sine function)
+    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 2)
+    y = np.sin(x)
+    X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 
-
-    def f(x):
-        return (np.sin(x))
-
-
+    # Specify covariance function
     sexp = squaredExponential()
-    gp = GPRegressor(sexp)
-    acq = Acquisition(mode='ExpectedImprovement')
-    param = {'x': ('cont', [0, 2 * np.pi])}
 
-    gpgo = GPGO(gp, acq, f, param, n_jobs=-1)
-    gpgo._firstRun()
+    # Instantiate GaussianProcess class
+    gp = GaussianProcess(sexp)
+    # Fit the model to the data
+    gp.fit(X, y)
 
-    for i in range(6):
-        plotGPGO(gpgo, param)
-        gpgo.updateGP()
+    # Predict on new data
+    xstar = np.arange(0, 2 * np.pi, step=0.01)
+    Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]
+    ymean, ystd = gp.predict(Xstar, return_std=True)
+
+    # Confidence interval bounds
+    lower, upper = ymean - 1.96 * np.sqrt(ystd), ymean + 1.96 * np.sqrt(ystd)
+
+    # Plot values
+    plt.figure()
+    plt.plot(xstar, ymean, label='Posterior mean')
+    plt.plot(xstar, np.sin(xstar), label='True function')
+    plt.fill_between(xstar, lower, upper, alpha=0.4, label='95% confidence band')
+    plt.grid()
+    plt.legend(loc=0)
+    plt.show()
 
 \end{minted}
 
@@ -2623,12 +2627,13 @@ if __name__ == '__main__':
 import os
 from collections import OrderedDict
 
+import numpy as np
 import matplotlib.pyplot as plt
 
-from GPGO import GPGO
-from GPRegressor import GPRegressor
-from acquisition import Acquisition
-from covfunc import *
+from pyGPGO.GPGO import GPGO
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
 
 
 def rastrigin(x, y, A=10):
@@ -2690,7 +2695,7 @@ if __name__ == '__main__':
 
     np.random.seed(20)
     sexp = squaredExponential()
-    gp = GPRegressor(sexp)
+    gp = GaussianProcess(sexp)
     acq = Acquisition(mode='ExpectedImprovement')
 
     param = OrderedDict()
