@@ -19,7 +19,7 @@ pip install git+https://github.com/hawk31/pyGPGO
 
 *   Typical Python scientific stuff: `numpy`, `scipy`.
 *   `joblib` (Optional, used for parallel computation)
-*   `scikit-kearn` (Optional, for other surrogates different than GP.)
+*   `scikit-learn` (Optional, for other surrogates different than GP.)
 *   `pyMC3` (Optional, for integrated acquisition functions and MCMC inference)
 *   `theano` (Optional) development version. (pyMC3 dependency)
 

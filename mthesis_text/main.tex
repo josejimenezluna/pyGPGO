@@ -52,8 +52,9 @@
 	{\Large\itshape José Jiménez Luna\par}
 
 	\vfill
-	supervised by\par
-	Josep Ginebra. Dpto Estadística.
+	{\color{olive}{supervised by}}\par
+	Josep Ginebra\par
+	Departament Estadística i Investigació Operativa
 
 	\vfill
 
@@ -1837,18 +1838,8 @@ If the user has a working Python environment in the system and does not want to 
 pip install --upgrade numpy joblib            
 \end{minted}
 
-pyGPGO is available as well in PyPI, to install the latest \textit{stable} version it suffices to execute:
- 
-\begin{minted}[mathescape,
-               linenos,
-               numbersep=5pt,
-               gobble=0,
-               frame=lines,
-               framesep=2mm]{bash}
-pip install pyGPGO           
-\end{minted}
 
-To get the bleeding-edge version of pyGPGO, one can also retrieve it from the associated GitHub repository:
+It is recommended to install pyGPGO's development version, which can be retrieved from the associated GitHub repository:
 
 \begin{minted}[mathescape,
                linenos,
@@ -1859,13 +1850,27 @@ To get the bleeding-edge version of pyGPGO, one can also retrieve it from the as
 pip install git+https://github.com/hawk31/pyGPGO          
 \end{minted}
 
+Optionally, for MCMC inference of hyperparameters, we depend on pyMC3, whose installation is currently a bit more challenging (as of Apr 2017). It should suffice to do:
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{bash}
+git clone https://github.com/pymc-devs/pymc3.git
+cd pymc3/
+python setup.py install               
+\end{minted}
+
+ 
 \section{Usage}
 
 pyGPGO aims to be an easy to use package to perform Bayesian Optimization. All functionality is divided in different modules, each performing a very specific task. We go briefly over the different modules here, but they will be discussed in detail in Section \ref{features}.
 
 \begin{itemize}
 \item The \texttt{covfunc} module contains all the code related to covariance function calculations. 
-\item The \texttt{surrogates} module implements different surrogate models: Gaussian Processes (with Type II ML estimates or MCMC sampling), Random Forests and Gradient Boosting Machines.
+\item The \texttt{surrogates} module implements different surrogate models: Gaussian Processes or Student-t Processes (with Type II ML estimates or MCMC sampling), Random Forests and Gradient Boosting Machines.
 \item The \texttt{Acquisition} module lets the user specify different acquisition function strategies.
 \item The \texttt{GPGO} module implements Bayesian Optimization procedures. 
 \end{itemize}
