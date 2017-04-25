@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  25 APR 2017 14:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  25 APR 2017 14:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2119,8 +2119,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1827--1828
 4.pygtex)
 \openout3 = `main.pyg'.
 
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P m
+athescape=True -F gobble:n=0 -P python3=True -o _minted-main/3E6065B95B1CEFACB8
+A949678D993D059D188FF14B5B5A34504F2B9625FD44DE.pygtex main.pyg)...executed.
 
-(./_minted-main/155B2A0D213BD83C638FBA238A17A5909D188FF14B5B5A34504F2B9625FD44D
+
+(./_minted-main/3E6065B95B1CEFACB8A949678D993D059D188FF14B5B5A34504F2B9625FD44D
 E.pygtex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
@@ -2138,8 +2142,12 @@ Package pdftex.def Info: figures/chapter5/exfun.pdf used on input line 1917.
 (pdftex.def)             Requested size: 341.43307pt x 256.085pt.
 \openout3 = `main.pyg'.
 
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P m
+athescape=True -F gobble:n=0 -P python3=True -o _minted-main/51186E060491CC4097
+4939CA901B9DFC9D188FF14B5B5A34504F2B9625FD44DE.pygtex main.pyg)...executed.
 
-(./_minted-main/ECCD6F90EAA084022E8C322495374AEE9D188FF14B5B5A34504F2B9625FD44D
+
+(./_minted-main/51186E060491CC40974939CA901B9DFC9D188FF14B5B5A34504F2B9625FD44D
 E.pygtex)
 \openout3 = `main.pyg'.
 
@@ -2166,8 +2174,12 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
 
 \openout3 = `main.pyg'.
 
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P m
+athescape=True -F gobble:n=0 -P python3=True -o _minted-main/9C61FB0EE73D849C73
+79BEDDECCCFD289D188FF14B5B5A34504F2B9625FD44DE.pygtex main.pyg)...executed.
 
-(./_minted-main/A12ECB1F792E934EA3D22C7D903D3EE49D188FF14B5B5A34504F2B9625FD44D
+
+(./_minted-main/9C61FB0EE73D849C7379BEDDECCCFD289D188FF14B5B5A34504F2B9625FD44D
 E.pygtex [76])
 Overfull \hbox (3.05959pt too wide) in paragraph at lines 2039--2040
 []\OT1/cmr/m/n/10 A few notes on the code, no-tice that we add two ex-tra pa-ra
@@ -2297,6 +2309,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 (./_minted-main/E116F2D96D21FB822B476868A0AAA1A5A5B2E588DEA4379D0F9490484D1DA89
 D.pygtex [97]) [98]
+runsystem(rm _minted-main/155B2A0D213BD83C638FBA238A17A5909D188FF14B5B5A34504F2
+B9625FD44DE.pygtex)...executed.
+
+runsystem(rm _minted-main/ECCD6F90EAA084022E8C322495374AEE9D188FF14B5B5A34504F2
+B9625FD44DE.pygtex)...executed.
+
+runsystem(rm _minted-main/A12ECB1F792E934EA3D22C7D903D3EE49D188FF14B5B5A34504F2
+B9625FD44DE.pygtex)...executed.
+
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3104.
  [99
 
@@ -2323,8 +2344,8 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3104.
  ) 
 Here is how much of TeX's memory you used:
- 19390 strings out of 493013
- 333695 string characters out of 6135623
+ 19393 strings out of 493013
+ 333887 string characters out of 6135623
  839888 words of memory out of 5000000
  22065 multiletter control sequences out of 15000+600000
  17237 words of font info for 64 fonts, out of 8000000 for 9000
@@ -2359,7 +2380,7 @@ b></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></ho
 me/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></home/jos
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/jose
 /texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (99 pages, 3598067 bytes).
+Output written on main.pdf (99 pages, 3598095 bytes).
 PDF statistics:
  3554 PDF objects out of 3580 (max. 8388607)
  1973 compressed objects within 20 object streams

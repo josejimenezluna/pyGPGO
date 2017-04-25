@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]:} \PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np}
-   \PYG{o}{...}\PYG{p}{:} \PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k+kn}{as} \PYG{n+nn}{plt}
-   \PYG{o}{...}\PYG{p}{:} \PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.covfunc} \PYG{k+kn}{import} \PYG{n}{squaredExponential}
-   \PYG{o}{...}\PYG{p}{:} \PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.GPRegressor} \PYG{k+kn}{import} \PYG{n}{GPRegressor}
-   \PYG{o}{...}\PYG{p}{:} \PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.acquisition} \PYG{k+kn}{import} \PYG{n}{Acquisition}
-   \PYG{o}{...}\PYG{p}{:} \PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.GPGO} \PYG{k+kn}{import} \PYG{n}{GPGO}
-\end{Verbatim}

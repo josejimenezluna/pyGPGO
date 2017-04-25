@@ -87,8 +87,14 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="api.html">pyGPGO documentation</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">pyGPGO documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.GPGO.html">Bayesian Optimization module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.surrogates.html">Surrogates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGPGO.covfunc.html">Covariance function module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Acquisition function module</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -354,6 +360,57 @@
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Acquisition function value.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.acquisition.Acquisition.tExpectedImprovement">
+<code class="descname">tExpectedImprovement</code><span class="sig-paren">(</span><em>tau</em>, <em>mean</em>, <em>std</em>, <em>nu=3.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition.tExpectedImprovement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition.tExpectedImprovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expected Improvement acquisition function. Only to be used with Student-t Process surrogate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Best observed function evaluation.</li>
+<li><strong>mean</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Point mean of the posterior process.</li>
+<li><strong>std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Point std of the posterior process.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Expected improvement.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.acquisition.Acquisition.tIntegratedExpectedImprovement">
+<code class="descname">tIntegratedExpectedImprovement</code><span class="sig-paren">(</span><em>tau</em>, <em>meanmcmc</em>, <em>stdmcmc</em>, <em>nu=3.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition.tIntegratedExpectedImprovement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition.tIntegratedExpectedImprovement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrated expected improvement. Can only be used with <cite>tStudentProcessMCMC</cite> instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tau</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Best observed function evaluation</li>
+<li><strong>meanmcmc</strong> (<em>array-like</em>) &#8211; Means of posterior predictive distributions after sampling.</li>
+<li><strong>stdmcmc</strong> &#8211; Standard deviations of posterior predictive distributions after sampling.</li>
+<li><strong>nu</strong> &#8211; Degrees of freedom.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Integrated Expected Improvement</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)">float</a></p>

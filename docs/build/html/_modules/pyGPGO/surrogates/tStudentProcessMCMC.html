@@ -152,8 +152,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pyGPGO.surrogates.tStudentProcessMCMC</h1><div class="highlight"><pre>
-<span></span><span class="c1">#WIP</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">theano</span>
 <span class="kn">import</span> <span class="nn">theano.tensor</span> <span class="k">as</span> <span class="nn">tt</span>
@@ -170,6 +169,24 @@
 
 <div class="viewcode-block" id="tStudentProcessMCMC"><a class="viewcode-back" href="../../../pyGPGO.surrogates.tStudentProcessMCMC.html#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC">[docs]</a><span class="k">class</span> <span class="nc">tStudentProcessMCMC</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">covfunc</span><span class="p">,</span> <span class="n">nu</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">burnin</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;ADVI&#39;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Student-t class using MCMC sampling of covariance function hyperparameters.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        covfunc:</span>
+<span class="sd">            Covariance function to use. Currently this instance only supports squaredExponential</span>
+<span class="sd">            and Matern.</span>
+<span class="sd">        nu: float</span>
+<span class="sd">            Degrees of freedom (&gt;2.0)</span>
+<span class="sd">        niter: int</span>
+<span class="sd">            Number of iterations to run MCMC.</span>
+<span class="sd">        burnin: int</span>
+<span class="sd">            Burn-in iterations to discard at trace.</span>
+
+<span class="sd">        init: str</span>
+<span class="sd">            Initialization method for NUTS. Check pyMC3 docs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">covfunc</span> <span class="o">=</span> <span class="n">covfunc</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nu</span> <span class="o">=</span> <span class="n">nu</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">niter</span> <span class="o">=</span> <span class="n">niter</span>
@@ -187,6 +204,17 @@
         <span class="k">return</span> <span class="n">d</span>
 
 <div class="viewcode-block" id="tStudentProcessMCMC.fit"><a class="viewcode-back" href="../../../pyGPGO.surrogates.tStudentProcessMCMC.html#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fits a Student-t regressor using MCMC.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: np.ndarray, shape=(nsamples, nfeatures)</span>
+<span class="sd">            Training instances to fit the GP.</span>
+<span class="sd">        y: np.ndarray, shape=(nsamples,)</span>
+<span class="sd">            Corresponding continuous target values to X.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
@@ -210,7 +238,37 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">trace</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">niter</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">burnin</span><span class="p">:]</span></div>
 
+<div class="viewcode-block" id="tStudentProcessMCMC.posteriorPlot"><a class="viewcode-back" href="../../../pyGPGO.surrogates.tStudentProcessMCMC.html#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.posteriorPlot">[docs]</a>    <span class="k">def</span> <span class="nf">posteriorPlot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots sampled posterior distributions for hyperparameters.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+            <span class="n">pm</span><span class="o">.</span><span class="n">traceplot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trace</span><span class="p">,</span> <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
 <div class="viewcode-block" id="tStudentProcessMCMC.predict"><a class="viewcode-back" href="../../../pyGPGO.surrogates.tStudentProcessMCMC.html#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">return_std</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nsamples</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns mean and covariances for each posterior sampled Student-t Process.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Xstar: np.ndarray, shape=((nsamples, nfeatures))</span>
+<span class="sd">            Testing instances to predict.</span>
+<span class="sd">        return_std: bool</span>
+<span class="sd">            Whether to return the standard deviation of the posterior process. Otherwise,</span>
+<span class="sd">            it returns the whole covariance matrix of the posterior process.</span>
+<span class="sd">        nsamples:</span>
+<span class="sd">            Number of posterior MCMC samples to consider.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Mean of the posterior process for each MCMC sample and Xstar.</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Covariance posterior process for each MCMC sample and Xstar.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">chunk</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trace</span><span class="p">)</span>
         <span class="n">chunk</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">nsamples</span><span class="p">]</span>
         <span class="n">post_mean</span> <span class="o">=</span> <span class="p">[]</span>

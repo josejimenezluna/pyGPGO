@@ -1892,7 +1892,7 @@ Here we go through a minimal example to show how to use pyGPGO in its most simpl
 In [1]: import numpy as np
    ...: import matplotlib.pyplot as plt
    ...: from pyGPGO.covfunc import squaredExponential
-   ...: from pyGPGO.GPRegressor import GPRegressor
+   ...: from pyGPGO.surrogates.GaussianProcess import GaussianProcess
    ...: from pyGPGO.acquisition import Acquisition
    ...: from pyGPGO.GPGO import GPGO               
 \end{minted}
@@ -1929,7 +1929,7 @@ We now instantiate our covariance function, our regressor and our acquisition:
                framesep=2mm,
                python3=true]{python}
 In [3]:     sexp = squaredExponential()
-   ...:     gp = GPRegressor(sexp)
+   ...:     gp = GaussianProcess(sexp)
    ...:     acq = Acquisition(mode = 'ExpectedImprovement')
 \end{minted}
 
@@ -2003,7 +2003,7 @@ While pyGPGO is mainly a Bayesian Optimization package, it also exposes a very c
 import numpy as np
 import matplotlib.pyplot as plt
 from pyGPGO.GPGO import GPGO
-from pyGPGO.GPRegressor import GPRegressor
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.covfunc import squaredExponential
 
