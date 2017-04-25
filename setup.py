@@ -23,6 +23,7 @@ setup(name='pyGPGO',
         'numpy',
         'scipy',
         'joblib',
+        'h5py',
         'scikit-learn',
         'theano',
         'pymc3'
