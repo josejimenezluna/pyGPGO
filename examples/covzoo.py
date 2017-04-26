@@ -2,6 +2,7 @@ from pyGPGO.covfunc import *
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 import matplotlib.pyplot as plt
 
+
 if __name__ == '__main__':
     # Build synthetic data (sine function)
     x = np.arange(0, 2 * np.pi + 0.01, step=np.pi / 2.05)
@@ -12,7 +13,8 @@ if __name__ == '__main__':
     covfuncs = [squaredExponential(), matern(), gammaExponential(), rationalQuadratic()]
     titles = [r'Squared Exponential ($l = 1$)', r'Matern ($\nu = 1$, $l = 1$)',
               r'Gamma Exponential ($\gamma = 1, l = 1$)', r'Rational Quadratic ($\alpha = 1, l = 1$)']
-    plt.figure()
+
+    cm_bright = ['#9ad2cb', '#add0cd', '#b8c3ce', '#9daec9']
     #plt.rc('text', usetex=True)
     for i, cov in enumerate(covfuncs):
         gp = GaussianProcess(cov, optimize=True, usegrads=False)
@@ -25,7 +27,7 @@ if __name__ == '__main__':
         plt.subplot(2, 2, i + 1)
         plt.plot(xstar, ymean, label='Posterior mean')
         plt.plot(xstar, np.sin(xstar), label='True function')
-        plt.fill_between(xstar, lower, upper, alpha=0.4, label='95\% confidence band')
+        plt.fill_between(xstar, lower, upper, alpha=0.4, label='95% confidence band', color=cm_bright[i])
         plt.grid()
         plt.title(titles[i])
     plt.legend(loc=0)

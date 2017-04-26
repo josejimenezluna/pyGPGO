@@ -412,6 +412,34 @@
       \verb arXiv:1011.1669v3
       \endverb
     \endentry
+    \entry{Wahba1991}{book}{}
+      \name{author}{1}{}{%
+        {{hash=8854589115ff3f8518458b3abd5243a4}{%
+           family={Wahba},
+           family_i={W\bibinitperiod},
+           given={Grace},
+           given_i={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{8854589115ff3f8518458b3abd5243a4}
+      \strng{fullhash}{8854589115ff3f8518458b3abd5243a4}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This book serves well as an introduction into the more theoretical aspects of the use of spline models. It develops a theory and practice for the estimation of functions from noisy data on functionals. The simplest example is the estimation of a smooth curve, given noisy observations on a finite number of its values. Convergence properties, data based smoothing parameter selection, confidence intervals, and numerical methods are established which are appropriate to a number of}
+      \field{booktitle}{SIAM Review}
+      \field{isbn}{0-89871-244-0}
+      \field{issn}{0036-1445}
+      \field{number}{3}
+      \field{title}{{Spline Models for Observational Data}}
+      \field{volume}{33}
+      \field{year}{1991}
+      \field{pages}{502\bibrangedash 502}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1137/1033124
+      \endverb
+    \endentry
   \endsortlist
 \endrefsection
 

@@ -2127,11 +2127,12 @@
     <bcf:citekey order="5">Minasny2005</bcf:citekey>
     <bcf:citekey order="6">Arfken2005</bcf:citekey>
     <bcf:citekey order="7">Rossi2006</bcf:citekey>
-    <bcf:citekey order="8">BUJA1989</bcf:citekey>
-    <bcf:citekey order="9">Murray2010</bcf:citekey>
-    <bcf:citekey order="10">Murray2009</bcf:citekey>
+    <bcf:citekey order="8">Wahba1991</bcf:citekey>
+    <bcf:citekey order="9">BUJA1989</bcf:citekey>
     <bcf:citekey order="10">Murray2010</bcf:citekey>
-    <bcf:citekey order="11">Neal2003</bcf:citekey>
+    <bcf:citekey order="11">Murray2009</bcf:citekey>
+    <bcf:citekey order="11">Murray2010</bcf:citekey>
+    <bcf:citekey order="12">Neal2003</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">

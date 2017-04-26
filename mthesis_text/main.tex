@@ -572,14 +572,51 @@ To illustrate the previous point, it may be a good idea to see the behaviour of 
 
 \subsection{Cross validation}
 
-There is a very extensive analytical evaluation of cross validation using Gaussian Process in Rasmussen's book. Here, we will only lay down some very basic ideas related to model selection from a very basic machine learning perspective. The concepts presented here are more useful if one plans to use Gaussian Processes only as a regression model, not as a surrogate one towards another objective, as we will do in the following chapter. \\
-
-To evaluate the performance of hyperparameters $\boldsymbol{\theta}$, in $D=\left( X, \boldsymbol{y}\right)$ one could do the following:
+We first lay down some very basic ideas related to model selection from a general machine learning perspective. The concepts presented here are more useful if one plans to use Gaussian Processes purely as a regression model. To evaluate the performance of hyperparameters of a machine-learning model $\boldsymbol{\theta}$, in $\mathcal{D}=\left\lbrace X, \boldsymbol{y}\right\rbrace$ one could do the following:
 
 \begin{itemize}
-\item \textbf{Holdout test}. Consider $D = \left\lbrace D_T, D_V \right\rbrace$ as a training and validation set from your data and $\boldsymbol{\nu}$ the set of hyperparameter vectors $\boldsymbol{\nu}$ to test. Train your Gaussian Process regressor on $D_T$ with some subset of hyperparameters from $\boldsymbol{\nu}$ and test its performance according to some loss metric $\mathcal{L}$ on $D_V$. Choose hyperparameters according to the lower loss obtained.
-\item \textbf{$k$-fold cross validation}. Instead of considering a single test set $D_V$, partition $D={D_1,\dots, D_k}$. Train your model iteratively on $k-1$ sets and test on the remaining one. Consider an average of losses for each hyperparameter to test.  
+\item \textbf{Holdout test}. Consider $\mathcal{D} = \left\lbrace \mathcal{D}_T, \mathcal{D}_V \right\rbrace$ as a training and validation set from your data and $\boldsymbol{\theta}$ some chosen hyperparameters to test. Train your Gaussian Process regressor on $\mathcal{D}_T$ with hyperparameters $\boldsymbol{\theta}$ and test its performance according to some loss metric $\mathcal{L}$ on $\mathcal{D}_V$. Repeat as many times as needed with different hyperparameter choices. Choose the set of hyperparameters yielding the lowest loss.
+\item \textbf{$k$-fold cross validation}. Instead of considering a single test set $\mathcal{D}_V$, partition $\mathcal{D}={\mathcal{D}_1,\dots, \mathcal{D}_k}$. Train your model iteratively on $k-1$ partitions of the data and test on the remaining one. Consider an average of losses for each hyperparameter choice.  
 \end{itemize}
+
+When $k=n$, the resulting method is called \textit{jackniffe}, and theoretical analyses can be provided in the case of Gaussian Processes. The predictive log-density when leaving out training case $i$ is simply:
+
+\begin{equation}
+\log p(y_i |X, \boldsymbol{y}_{-i}, \boldsymbol{\theta}) = -\dfrac{1}{2}\log \sigma_i^2 - \dfrac{(y_i - \mu_i)^2}{2\sigma_i^2} - \dfrac{1}{2}\log 2\pi
+\end{equation}
+
+where $\boldsymbol{y}_{-i}$, means all target values excluding $i$ and $\mu_i$, $\sigma^2_i$ are computed according to the equations detailed in Section \ref{pred} considering $\mathcal{D} = \left\lbrace X_{-i}, \boldsymbol{y}_{-i} \right\rbrace$ as training sets. Consequently, the likelihood when this is computed for all training cases is given by:
+
+\begin{equation}
+\label{jk}
+L_{\mathrm{JK}}(X, \boldsymbol{y}, \boldsymbol{\theta}) = \sum_{i=1}^n \log p(y_i|X, \boldsymbol{y}_{-i}, \boldsymbol{\theta})
+\end{equation}
+
+This last quantity is sometimes called \textit{pseudo}-likelihood. Notice that to compute this quantity, one would need to fit $n$ GPs and therefore inverting matrices for each training case. This can be avoided by noticing that the computations in subsequent fittings are very similar, by using inversion by partitioning. In particular, the expressions for $\mu_i$ and $\sigma_i$ can be expressed in terms of the full GP:
+
+\begin{align}
+\begin{split}
+\mu_i &= y_i - \dfrac{[K^{-1}\boldsymbol{y}]_i}{[K^{-1}]_{ii}}\\
+\sigma^2_i &= \dfrac{1}{[K^{-1}]_{ii}}
+\end{split}
+\end{align}
+
+We can obtain derivatives w.r.t. hyperparameters from Equation \ref{jk} to perform gradient-based optimization. In particular, let us first define the derivatives of $\mu_i$ and $\sigma_i^2$:
+
+\begin{align}
+\begin{split}
+\dfrac{\partial \mu_i}{\partial \theta_j} &= \dfrac{[Z_j \boldsymbol{\alpha}]_i}{[K^{-1}]_{ii}} - \dfrac{\boldsymbol{\alpha}_i[Z_j K^{-1}]_{ii}}{[K^{-1}]^2_{ii}}\\
+\dfrac{\partial \sigma_i^2}{\partial \theta_j} &= \dfrac{[Z_j K^{-1}]_{ii}}{[K^{-1}]^2_{ii}}
+\end{split}
+\end{align}
+
+where $\boldsymbol{\alpha} = K^{-1}\boldsymbol{y}$ and $Z_j = K^{-1}\dfrac{\partial K}{\partial \theta_j}$. Finally, our gradient can be written as:
+
+\begin{equation}
+\dfrac{\partial L_{\mathrm{JK}}}{\partial \theta_j} = \sum_{i=1}^n \dfrac{\left(\alpha_i [Z_j\boldsymbol{\alpha}]_i - \dfrac{1}{2}\left( 1 + \dfrac{\alpha_i^2}{[K^{-1}]_{ii}} \right) [Z_j K^{-1}]_{ii}  \right)}{[K^{-1}]_{ii}}
+\end{equation}
+
+One may ask under which circumstances the jackniffe approach might be preferable to direct marginal likelihood optimization, since computationally they are almost identical. Some have argued \cite{Wahba1991} that the cross-validated approach should be more robust to model mis-specification.
 
 \section{Further theoretical aspects}
 
@@ -1902,7 +1939,7 @@ In [1]: import numpy as np
    ...: from pyGPGO.GPGO import GPGO               
 \end{minted}
 
-After loading \texttt{numpy} and \texttt{matplotlib}, we start loading all the needed modules for our example: we will use the \texttt{squaredExponential} covariance function, a Gaussian Process regressor \texttt{GPRegressor}, an \texttt{Acquisition} function and \texttt{GPGO}, the class for Bayesian Optimization. We fix a random seed, and define the function we are about to optimize, a plot of which is available in Figure \ref{fig:exfun}.
+After loading \texttt{numpy} and \texttt{matplotlib}, we start loading all the needed modules for our example: we will use the \texttt{squaredExponential} covariance function, a \texttt{GaussianProcess} regressor, an \texttt{Acquisition} function and \texttt{GPGO}, the class for Bayesian Optimization. We fix a random seed, and define the function we are about to optimize, a plot of which is available in Figure \ref{fig:exfun}.
 
 \begin{minted}[mathescape,
                linenos,

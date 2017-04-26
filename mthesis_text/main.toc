@@ -34,13 +34,13 @@
 \defcounter {refsection}{2}\relax 
 \contentsline {subsection}{\numberline {2.5.2}Cross validation}{20}{subsection.2.5.2}
 \defcounter {refsection}{2}\relax 
-\contentsline {section}{\numberline {2.6}Further theoretical aspects}{21}{section.2.6}
+\contentsline {section}{\numberline {2.6}Further theoretical aspects}{22}{section.2.6}
 \defcounter {refsection}{2}\relax 
-\contentsline {subsection}{\numberline {2.6.1}Gaussian processes as linear smoothers}{21}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.1}Gaussian processes as linear smoothers}{22}{subsection.2.6.1}
 \defcounter {refsection}{2}\relax 
-\contentsline {subsection}{\numberline {2.6.2}Explicit basis functions}{22}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.2}Explicit basis functions}{23}{subsection.2.6.2}
 \defcounter {refsection}{2}\relax 
-\contentsline {subsection}{\numberline {2.6.3}Marginalizing over hyperparameters}{23}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.3}Marginalizing over hyperparameters}{24}{subsection.2.6.3}
 \defcounter {refsection}{2}\relax 
 \contentsline {chapter}{\numberline {3}Bayesian optimization}{29}{chapter.3}
 \defcounter {refsection}{3}\relax 
