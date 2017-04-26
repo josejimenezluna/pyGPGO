@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     np.random.seed(200)
     param = {'x': ('cont', [0, 6])}
-    acq = Acquisition(mode='tIntegratedExpectedImprovement')
+    acq = Acquisition(mode='IntegratedExpectedImprovement')
     gpgo = GPGO(gp, acq, f, param)
     gpgo._firstRun(n_eval=7)
 

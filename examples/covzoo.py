@@ -10,8 +10,8 @@ if __name__ == '__main__':
     X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 
     # Covariance functions to loop over
-    covfuncs = [squaredExponential(), matern(), gammaExponential(), rationalQuadratic()]
-    titles = [r'Squared Exponential ($l = 1$)', r'Matern ($\nu = 1$, $l = 1$)',
+    covfuncs = [squaredExponential(), matern32(), gammaExponential(), rationalQuadratic()]
+    titles = [r'Squared Exponential ($l = 1$)', r'Matérn ($\nu = 1.5$, $l = 1$)',
               r'Gamma Exponential ($\gamma = 1, l = 1$)', r'Rational Quadratic ($\alpha = 1, l = 1$)']
 
     cm_bright = ['#9ad2cb', '#add0cd', '#b8c3ce', '#9daec9']

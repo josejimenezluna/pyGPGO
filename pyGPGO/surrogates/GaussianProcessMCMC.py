@@ -23,8 +23,8 @@ class GaussianProcessMCMC:
         Parameters
         ----------
         covfunc:
-            Covariance function to use. Currently this instance only supports squaredExponential
-            and Matern.
+            Covariance function to use. Currently this instance only supports `squaredExponential`
+            and `matern` v=1.5, 2.5 kernel
         niter: int
             Number of iterations to run MCMC.
         burnin: int

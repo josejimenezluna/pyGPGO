@@ -6,11 +6,8 @@ import theano.tensor.nlinalg
 import pymc3 as pm
 from pyGPGO.covfunc import squaredExponential, matern
 from pyGPGO.surrogates.tStudentProcess import tStudentProcess
+from pyGPGO.surrogates.GaussianProcessMCMC import covariance_equivalence
 import matplotlib.pyplot as plt
-
-covariance_equivalence = {'squaredExponential': pm.gp.cov.ExpQuad,
-                          'matern52': pm.gp.cov.Matern52,
-                          'matern32': pm.gp.cov.Matern32}
 
 
 class tStudentProcessMCMC:
