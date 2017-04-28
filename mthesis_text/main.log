@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  28 APR 2017 11:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  28 APR 2017 17:56
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1298,7 +1298,7 @@ Package biblatex Info: Reference section=0 on input line 141.
 Package biblatex Info: Reference section=2 on input line 141.
 Package biblatex Info: Setting label 'refsection:2' on input line 141.
 
-Overfull \hbox (41.81023pt too wide) in paragraph at lines 143--144
+Overfull \hbox (43.47685pt too wide) in paragraph at lines 143--144
 \OT1/cmr/m/n/10 In this chap-ter we will fo-cus on re-gres-sion prob-lems. As-s
 ume we have some la-belled data $\OMS/cmsy/m/n/10 D \OT1/cmr/m/n/10 = []$,
  []
@@ -2383,7 +2383,7 @@ m/cmti10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 /jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></home/jose/
 texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/jose/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (102 pages, 3688473 bytes).
+Output written on main.pdf (102 pages, 3688509 bytes).
 PDF statistics:
  3607 PDF objects out of 4296 (max. 8388607)
  2022 compressed objects within 21 object streams
