@@ -555,19 +555,17 @@
     \endentry
     \entry{Bergstra2012}{article}{}
       \name{author}{2}{}{%
-        {{hash=5ed349d7d3c7883110b8220af8cda41b}{%
-           family={{Bergstra JAMESBERGSTRA}},
+        {{hash=0bc66fe902c838c216bd3175dfeb045b}{%
+           family={{Bergstra}},
            family_i={B\bibinitperiod},
            given={James},
            given_i={J\bibinitperiod}}}%
-        {{hash=3c4bd16cdf1921d4a7de08fdb03aa5d6}{%
-           family={{Yoshua Bengio YOSHUABENGIO}},
-           family_i={Y\bibinitperiod},
-           given={Umontrealca},
-           given_i={U\bibinitperiod}}}%
+        {{hash=7d676bfd2d2cc8ea03ecb12bb22bcd30}{%
+           family={{Yoshua Bengio}},
+           family_i={Y\bibinitperiod}}}%
       }
-      \strng{namehash}{bb87c262fd893072c75759bf31c15ad4}
-      \strng{fullhash}{bb87c262fd893072c75759bf31c15ad4}
+      \strng{namehash}{d88e20131ffd10c876b461d6dba90c0e}
+      \strng{fullhash}{d88e20131ffd10c876b461d6dba90c0e}
       \field{sortinit}{B}
       \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
       \field{labelnamesource}{author}
@@ -1967,19 +1965,17 @@
     \endentry
     \entry{Bergstra2012}{article}{}
       \name{author}{2}{}{%
-        {{hash=5ed349d7d3c7883110b8220af8cda41b}{%
-           family={{Bergstra JAMESBERGSTRA}},
+        {{hash=0bc66fe902c838c216bd3175dfeb045b}{%
+           family={{Bergstra}},
            family_i={B\bibinitperiod},
            given={James},
            given_i={J\bibinitperiod}}}%
-        {{hash=3c4bd16cdf1921d4a7de08fdb03aa5d6}{%
-           family={{Yoshua Bengio YOSHUABENGIO}},
-           family_i={Y\bibinitperiod},
-           given={Umontrealca},
-           given_i={U\bibinitperiod}}}%
+        {{hash=7d676bfd2d2cc8ea03ecb12bb22bcd30}{%
+           family={{Yoshua Bengio}},
+           family_i={Y\bibinitperiod}}}%
       }
-      \strng{namehash}{bb87c262fd893072c75759bf31c15ad4}
-      \strng{fullhash}{bb87c262fd893072c75759bf31c15ad4}
+      \strng{namehash}{d88e20131ffd10c876b461d6dba90c0e}
+      \strng{fullhash}{d88e20131ffd10c876b461d6dba90c0e}
       \field{sortinit}{B}
       \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
       \field{labelnamesource}{author}
@@ -2541,9 +2537,6 @@
       \range{pages}{20}
       \verb{doi}
       \verb 10.1006/jmbi.1999.3371\rS0022-2836(99)93371-5 [pii]
-      \endverb
-      \verb{url}
-      \verb http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve%7B%5C&%7Ddb=PubMed%7B%5C&%7Ddopt=Citation%7B%5C&%7Dlist%7B%5C_%7Duids=10623530$%5Cbackslash$nhttp://ac.els-cdn.com/S0022283699933715/1-s2.0-S0022283699933715-main.pdf?%7B%5C_%7Dtid=eb8d0952-38c8-11e2-b722-00000aab0f6b%7B%5C&%7Dacdnat=1354044817%7B%5C_%7D5649d11c7214e293a2
       \endverb
       \keyw{*Artificial Intelligence,*Protein Binding,Ligands,Protein Conformation,Surface Properties,Thermodynamics}
     \endentry
@@ -3219,9 +3212,6 @@
       \verb{eprint}
       \verb 0707.0086
       \endverb
-      \verb{url}
-      \verb http://www.ncbi.nlm.nih.gov/pubmed/17594480$%5Cbackslash$nhttp://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC1913514
-      \endverb
     \endentry
     \entry{Longadge2013}{article}{}
       \name{author}{3}{}{%
@@ -3512,9 +3502,6 @@
       \endverb
       \verb{eprint}
       \verb arXiv:1011.1669v3
-      \endverb
-      \verb{url}
-      \verb http://books.google.com/books?hl=en%7B%5C&%7Dlr=%7B%5C&%7Did=FJblV%7B%5C_%7DiOPjIC%7B%5C&%7Doi=fnd%7B%5C&%7Dpg=PA213%7B%5C&%7Ddq=Learning+representations+by+back-propagating+errors%7B%5C&%7Dots=zZDj2mGYVQ%7B%5C&%7Dsig=mcyEACaE%7B%5C_%7DZB4FB4xsoTgXgcbE2g$%5Cbackslash$nhttp://books.google.com/books?hl=en%7B%5C&%7Dlr=%7B%5C&%7Did=FJblV%7B%5C_%7DiOPjIC%7B%5C&%7Doi=fnd%7B%5C&%7Dpg=PA213%7B%5C&%7Ddq=Learn
       \endverb
     \endentry
     \entry{Schapire1999}{inproceedings}{}
@@ -3856,9 +3843,6 @@
       \range{pages}{1}
       \verb{doi}
       \verb 10.1186/1471-2105-12-244
-      \endverb
-      \verb{url}
-      \verb http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3213298%7B%5C&%7Dtool=pmcentrez%7B%5C&%7Drendertype=abstract$%5Cbackslash$nhttp://www.ncbi.nlm.nih.gov/pubmed/21682895
       \endverb
       \keyw{Algorithms,Amino Acid Sequence,Humans,Protein,Protein: methods,Proteins,Proteins: chemistry,Proteins: metabolism,Sequence Analysis,Sequence Homology,Software}
     \endentry

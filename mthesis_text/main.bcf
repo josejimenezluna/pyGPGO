@@ -2272,6 +2272,30 @@
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
   </bcf:section>
+  <!-- SECTION 6 -->
+  <bcf:bibdata section="6">
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter2.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter3.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter4.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter5.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="6">
+  </bcf:section>
+  <!-- SECTION 0 (cont.) -->
+  <bcf:section number="0">
+  </bcf:section>
+  <!-- SECTION 7 -->
+  <bcf:bibdata section="7">
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter2.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter3.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter4.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">bib/chapter5.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="7">
+  </bcf:section>
+  <!-- SECTION 0 (cont.) -->
+  <bcf:section number="0">
+  </bcf:section>
   <bcf:sortlist section="2" name="nty/global/" type="entry" sortscheme="nty" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>
     <bcf:sort order="1">
@@ -2362,7 +2386,7 @@
     </bcf:sort>
   </bcf:sorting>
   </bcf:sortlist>
-  <bcf:sortlist section="5" name="nty/global/" type="entry" sortscheme="nty" sortnamekeyscheme="global" labelprefix="">
+  <bcf:sortlist section="7" name="nty/global/" type="entry" sortscheme="nty" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>
     <bcf:sort order="1">
       <bcf:sortitem order="1">presort</bcf:sortitem>

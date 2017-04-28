@@ -15,6 +15,8 @@
 \usepackage{rotating}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{adjustbox}
+\usepackage[toc,page]{appendix}
+
 
 
 \usepackage[style=numeric, refsection=chapter]{biblatex}
@@ -595,19 +597,14 @@ L_{\mathrm{JK}}(X, \boldsymbol{y}, \boldsymbol{\theta}) = \sum_{i=1}^n \log p(y_
 This last quantity is sometimes called \textit{pseudo}-likelihood. Notice that to compute this quantity, one would need to fit $n$ GPs and therefore inverting matrices for each training case. This can be avoided by noticing that the computations in subsequent fittings are very similar, by using inversion by partitioning. In particular, the expressions for $\mu_i$ and $\sigma_i$ can be expressed in terms of the full GP:
 
 \begin{align}
-\begin{split}
-\mu_i &= y_i - \dfrac{[K^{-1}\boldsymbol{y}]_i}{[K^{-1}]_{ii}}\\
-\sigma^2_i &= \dfrac{1}{[K^{-1}]_{ii}}
-\end{split}
+\mu_i = y_i - \dfrac{[K^{-1}\boldsymbol{y}]_i}{[K^{-1}]_{ii}} && \sigma^2_i = \dfrac{1}{[K^{-1}]_{ii}}
 \end{align}
 
 We can obtain derivatives w.r.t. hyperparameters from Equation \ref{jk} to perform gradient-based optimization. In particular, let us first define the derivatives of $\mu_i$ and $\sigma_i^2$:
 
 \begin{align}
-\begin{split}
-\dfrac{\partial \mu_i}{\partial \theta_j} &= \dfrac{[Z_j \boldsymbol{\alpha}]_i}{[K^{-1}]_{ii}} - \dfrac{\boldsymbol{\alpha}_i[Z_j K^{-1}]_{ii}}{[K^{-1}]^2_{ii}}\\
-\dfrac{\partial \sigma_i^2}{\partial \theta_j} &= \dfrac{[Z_j K^{-1}]_{ii}}{[K^{-1}]^2_{ii}}
-\end{split}
+\dfrac{\partial \mu_i}{\partial \theta_j} = \dfrac{[Z_j \boldsymbol{\alpha}]_i}{[K^{-1}]_{ii}} - \dfrac{\boldsymbol{\alpha}_i[Z_j K^{-1}]_{ii}}{[K^{-1}]^2_{ii}} && 
+\dfrac{\partial \sigma_i^2}{\partial \theta_j} = \dfrac{[Z_j K^{-1}]_{ii}}{[K^{-1}]^2_{ii}}
 \end{align}
 
 where $\boldsymbol{\alpha} = K^{-1}\boldsymbol{y}$ and $Z_j = K^{-1}\dfrac{\partial K}{\partial \theta_j}$. Finally, our gradient can be written as:
@@ -1794,7 +1791,7 @@ The dataset was created by Max Little of the University of Oxford, in collaborat
 \begin{tabular}{p{7cm}p{7cm}}
 \toprule
 \textbf{Variable}                                                   & \textbf{Values}                                                    \\ \midrule
-\textbf{Target}                                                     & Health status of the subject (one) - Parkinson's, (zero) - healthy \\
+\textbf{Target}                                                     & Health status of the subject\\
 MDVP:Fo (Hz)                                                        & Average vocal fundamental frequency                                \\
 MDVP:Fhi (Hz)                                                       & Maximum vocal fundamental frequency                                \\
 MDVP:Flo (Hz)                                                       & Minimum vocal fundamental frequency                                \\
@@ -2248,9 +2245,12 @@ pyGPGO, while a very complete software for Bayesian Optimization still remains i
 
 In conclusion, pyGPGO, like any other piece of software, is never finished work. Being open-sourced, anyone can either contribute to the code base available through its GitHub repository or download the project and modify it in any way they see fit. pyGPGO's MIT License also allows for it to be used in mostly any kind of software, either academic or commercial.
 
-\chapter*{Appendix}
-\section*{Examples code}
-\subsection*{drawGP.py}
+\begin{appendices}
+
+\chapter{Examples code}
+\label{appendix:code}
+
+\section{drawGP.py}
 \label{drawGP}
 \begin{minted}[mathescape,
                linenos,
@@ -2292,7 +2292,7 @@ if __name__ == '__main__':
         plt.show()	
 \end{minted}
 
-\subsection*{sineGP.py}
+\section{sineGP.py}
 \label{sineGP}
 \begin{minted}[mathescape,
                linenos,
@@ -2337,8 +2337,9 @@ if __name__ == '__main__':
     plt.legend(loc=0)
     plt.show()
    \end{minted}
-   \subsection*{covzoo.py}
-   \label{covzoo}
+   
+\section{covzoo.py}
+\label{covzoo}
    \begin{minted}[mathescape,
                linenos,
                numbersep=5pt,
@@ -2381,7 +2382,7 @@ if __name__ == '__main__':
 
 \end{minted}
 
-\subsection*{hyperopt.py}
+\section{hyperopt.py}
 \label{hyperopt}
 \begin{minted}[mathescape,
                linenos,
@@ -2436,7 +2437,7 @@ if __name__ == '__main__':
 
 \end{minted}
 
-\subsection*{acqzoo.py}
+\section{acqzoo.py}
 
 
 \begin{minted}[mathescape,
@@ -2501,7 +2502,7 @@ if __name__ == '__main__':
                 
 \end{minted}
 
-\subsection*{integratedacq.py}
+\section{integratedacq.py}
 \label{integratedacq}
 \begin{minted}[mathescape,
                linenos,
@@ -2552,7 +2553,7 @@ if __name__ == '__main__':
 \end{minted}
 
 
-\subsection*{bayoptwork.py}
+\section{bayoptwork.py}
 \label{bayoptwork}
 
 \begin{minted}[mathescape,
@@ -2605,7 +2606,7 @@ if __name__ == '__main__':
                      
 \end{minted}
 
-\subsection*{sineopt.py}
+\section{sineopt.py}
 \label{sineopt}
 
 \begin{minted}[mathescape,
@@ -2654,7 +2655,7 @@ if __name__ == '__main__':
 
 \end{minted}
 
-\subsection*{rastriginopt.py}
+\section{rastriginopt.py}
 \label{rastriginopt}
 
 \begin{minted}[mathescape,
@@ -2753,8 +2754,8 @@ if __name__ == '__main__':
                
 \end{minted}
 
-\section*{Testing code}
-\subsection*{testing/utils.py}
+\chapter{Testing code}
+\section{utils.py}
 
 \begin{minted}[mathescape,
                linenos,
@@ -2911,7 +2912,7 @@ def evaluateRandom(gpgo, loss, n_eval=20):
     return (res)      
 \end{minted}
 
-\subsection*{testing/modaux.py}
+\section{modaux.py}
 
 \begin{minted}[mathescape,
                linenos,
@@ -3097,7 +3098,7 @@ class MLP:
                
 \end{minted}
 
-\subsection*{testing/testing.py}
+\section{testing.py}
 
 \begin{minted}[mathescape,
                linenos,
@@ -3140,7 +3141,7 @@ if __name__ == '__main__':
 \end{minted}
 
 
-
+\end{appendices}
 
 \printbibliography
 \end{document}

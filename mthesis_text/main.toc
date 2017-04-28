@@ -145,3 +145,33 @@
 \contentsline {section}{\numberline {5.5}Comparison with existing software}{80}{section.5.5}
 \defcounter {refsection}{5}\relax 
 \contentsline {section}{\numberline {5.6}Future work}{81}{section.5.6}
+\defcounter {refsection}{5}\relax 
+\contentsline {chapter}{Appendices}{83}{section*.48}
+\defcounter {refsection}{5}\relax 
+\contentsline {chapter}{\numberline {A}Examples code}{85}{Appendix.1.A}
+\defcounter {refsection}{6}\relax 
+\contentsline {section}{\numberline {A.1}drawGP.py}{85}{section.1.A.1}
+\defcounter {refsection}{6}\relax 
+\contentsline {section}{\numberline {A.2}sineGP.py}{85}{section.1.A.2}
+\defcounter {refsection}{6}\relax 
+\contentsline {section}{\numberline {A.3}covzoo.py}{86}{section.1.A.3}
+\defcounter {refsection}{6}\relax 
+\contentsline {section}{\numberline {A.4}hyperopt.py}{87}{section.1.A.4}
+\defcounter {refsection}{6}\relax 
+\contentsline {section}{\numberline {A.5}acqzoo.py}{88}{section.1.A.5}
+\defcounter {refsection}{6}\relax 
+\contentsline {section}{\numberline {A.6}integratedacq.py}{89}{section.1.A.6}
+\defcounter {refsection}{6}\relax 
+\contentsline {section}{\numberline {A.7}bayoptwork.py}{90}{section.1.A.7}
+\defcounter {refsection}{6}\relax 
+\contentsline {section}{\numberline {A.8}sineopt.py}{90}{section.1.A.8}
+\defcounter {refsection}{6}\relax 
+\contentsline {section}{\numberline {A.9}rastriginopt.py}{91}{section.1.A.9}
+\defcounter {refsection}{6}\relax 
+\contentsline {chapter}{\numberline {B}Testing code}{95}{Appendix.1.B}
+\defcounter {refsection}{7}\relax 
+\contentsline {section}{\numberline {B.1}utils.py}{95}{section.1.B.1}
+\defcounter {refsection}{7}\relax 
+\contentsline {section}{\numberline {B.2}modaux.py}{98}{section.1.B.2}
+\defcounter {refsection}{7}\relax 
+\contentsline {section}{\numberline {B.3}testing.py}{101}{section.1.B.3}

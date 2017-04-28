@@ -66,3 +66,18 @@
 \BOOKMARK [1][-]{section.5.4}{Features}{chapter.5}% 66
 \BOOKMARK [1][-]{section.5.5}{Comparison with existing software}{chapter.5}% 67
 \BOOKMARK [1][-]{section.5.6}{Future work}{chapter.5}% 68
+\BOOKMARK [0][-]{section*.48}{Appendices}{}% 69
+\BOOKMARK [0][-]{Appendix.1.A}{Examples code}{}% 70
+\BOOKMARK [1][-]{section.1.A.1}{drawGP.py}{Appendix.1.A}% 71
+\BOOKMARK [1][-]{section.1.A.2}{sineGP.py}{Appendix.1.A}% 72
+\BOOKMARK [1][-]{section.1.A.3}{covzoo.py}{Appendix.1.A}% 73
+\BOOKMARK [1][-]{section.1.A.4}{hyperopt.py}{Appendix.1.A}% 74
+\BOOKMARK [1][-]{section.1.A.5}{acqzoo.py}{Appendix.1.A}% 75
+\BOOKMARK [1][-]{section.1.A.6}{integratedacq.py}{Appendix.1.A}% 76
+\BOOKMARK [1][-]{section.1.A.7}{bayoptwork.py}{Appendix.1.A}% 77
+\BOOKMARK [1][-]{section.1.A.8}{sineopt.py}{Appendix.1.A}% 78
+\BOOKMARK [1][-]{section.1.A.9}{rastriginopt.py}{Appendix.1.A}% 79
+\BOOKMARK [0][-]{Appendix.1.B}{Testing code}{}% 80
+\BOOKMARK [1][-]{section.1.B.1}{utils.py}{Appendix.1.B}% 81
+\BOOKMARK [1][-]{section.1.B.2}{modaux.py}{Appendix.1.B}% 82
+\BOOKMARK [1][-]{section.1.B.3}{testing.py}{Appendix.1.B}% 83
