@@ -15,9 +15,9 @@ def logpdf(x, df, mu, Sigma):
     df: float
         Degrees of freedom (>2.0)
     mu: array-like
-        Mean
+        Mean of the process.
     Sigma: array-like
-        Covariance matrix
+        Covariance matrix of the process.
 
     Returns
     -------
@@ -150,7 +150,7 @@ class tStudentProcess:
         X: np.ndarray, shape=(nsamples, nfeatures)
             Training instances to fit the GP.
         y: np.ndarray, shape=(nsamples,)
-            Corresponding continuous target values to X.
+            Corresponding continuous target values to `X`.
 
         """
         self.X = X

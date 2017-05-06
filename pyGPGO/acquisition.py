@@ -10,8 +10,11 @@ class Acquisition:
         Parameters
         ----------
         mode: str
-            Either `ExpectedImprovement`, `ProbabilityImprovement` or `UCB`. Defines the
-            behaviour of the acquisition strategy.
+            Defines the behaviour of the acquisition strategy. Currently supported values are
+            `ExpectedImprovement`, `IntegratedExpectedÌmprovement`, `ProbabilityImprovement`,
+            `IntegratedProbabilityImprovement`, `UCB`, `IntegratedUCB`, `Entropy`, `tExpectedImprovement`,
+            and `tIntegratedExpectedImprovement`. Integrated improvement functions are only to be used
+            with MCMC surrogates.
         eps: float
             Small floating value to avoid `np.sqrt` or zero-division warnings.
         params: float
@@ -190,7 +193,7 @@ class Acquisition:
 
     def tExpectedImprovement(self, tau, mean, std, nu=3.0):
         """
-        Expected Improvement acquisition function. Only to be used with Student-t Process surrogate.
+        Expected Improvement acquisition function. Only to be used with `tStudentProcess` surrogate.
 
         Parameters
         ----------

@@ -18,8 +18,8 @@ class tStudentProcessMCMC:
         Parameters
         ----------
         covfunc:
-            Covariance function to use. Currently this instance only supports squaredExponential
-            and Matern.
+            Covariance function to use. Currently this instance only supports `squaredExponential`
+            and `Matern` from the `covfunc` module.
         nu: float
             Degrees of freedom (>2.0)
         niter: int
@@ -55,7 +55,7 @@ class tStudentProcessMCMC:
         X: np.ndarray, shape=(nsamples, nfeatures)
             Training instances to fit the GP.
         y: np.ndarray, shape=(nsamples,)
-            Corresponding continuous target values to X.
+            Corresponding continuous target values to `X`.
 
         """
         self.X = X

@@ -6,8 +6,8 @@ class BoostedTrees:
         """
         Gradient boosted trees as surrogate model for Bayesian Optimization.
         Uses quantile regression for an estimate of the 'posterior' variance.
-        In practice, the std is computed as (q2 - q1)/2.
-        Relies on sklearn's `GradientBoostingRegressor`
+        In practice, the std is computed as (`q2` - `q1`) / 2.
+        Relies on `sklearn.ensemble.GradientBoostingRegressor`
 
         Parameters
         ----------

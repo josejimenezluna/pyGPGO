@@ -57,7 +57,7 @@ class GaussianProcessMCMC:
         X: np.ndarray, shape=(nsamples, nfeatures)
             Training instances to fit the GP.
         y: np.ndarray, shape=(nsamples,)
-            Corresponding continuous target values to X.
+            Corresponding continuous target values to `X`.
 
         """
         self.X = X
@@ -109,9 +109,9 @@ class GaussianProcessMCMC:
         Returns
         -------
         np.ndarray
-            Mean of the posterior process for each MCMC sample and Xstar.
+            Mean of the posterior process for each MCMC sample and `Xstar`.
         np.ndarray
-            Covariance posterior process for each MCMC sample and Xstar.
+            Covariance posterior process for each MCMC sample and `Xstar`.
         """
         chunk = list(self.trace)
         chunk = chunk[::-1][:nsamples]

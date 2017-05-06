@@ -11,7 +11,7 @@ class GaussianProcess:
         Parameters
         ----------
         covfunc: instance from a class of covfunc module
-            An instance from a class from the `covfunc` module.
+            Covariance function. An instance from a class in the `covfunc` module.
         optimize: bool:
             Whether to perform covariance function hyperparameter optimization.
         usegrads: bool
