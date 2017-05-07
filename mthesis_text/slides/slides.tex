@@ -1,0 +1,167 @@
+\documentclass[10pt]{beamer}
+\usetheme{Antibes}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\author{José Jiménez}
+\title{Bayesian Optimization in Machine Learning}
+
+\titlegraphic{
+
+	\includegraphics[scale=0.15]{figures/UPC-logo.jpg} \hfill
+	\includegraphics[scale=0.63]{figures/logo_home_nou.png}
+
+	}
+
+\institute{Master Thesis \vfill Master's degree in Statistics and Operations Research}
+
+\date{\tiny supervised by Josep Ginebra\textsuperscript{1}\vfill
+	\textsuperscript{1} Department of Statistics and Operations Research. ETSEIB.}
+
+\subject{Bayesian Optimization}
+
+\setbeamercovered{transparent}
+
+\setbeamertemplate{theorems}[ams style] 
+
+
+\begin{document}
+	\maketitle
+	
+	\begin{frame}
+		\frametitle{Goals of this thesis}
+		This Master's thesis aims to be a multi-objective optimization task:
+		
+		\begin{itemize}
+			\item \pause Provide an introduction to both Gaussian Process regression and Bayesian optimization. 
+			\item \pause Show that the Bayesian Optimization framework works in several real-world machine learning tasks.
+			\item \pause Write a complete software package (pyGPGO) for users to apply Bayesian Optimization in their research.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Organization of the work}
+		Organized in 5 self-contained chapters.
+		\begin{itemize}
+			\item \pause \textbf{Chapter 2} focuses on an introduction to regression problems using Gaussian Processes. These are surrogate models we will use for Bayesian Optimization.
+			\item \pause \textbf{Chapter 3} covers the main topic in this work, Bayesian Optimization.
+			\item \pause \textbf{Chapter 4} presents experiments using the Bayesian Optimization framework. Mostly mid-sized supervised-learning problems.
+			\item \pause \textbf{Chapter 5} provides technical explanations for pyGPGO, the software developed alongside this manual.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Gaussian Process Regression: basic definitions}
+		\begin{definition}
+			A Gaussian Process is a collection of random variables, any finite number of which have a joint Gaussian distribution.\pause  This process is defined by two functions. Its \textit{mean function}:
+			
+			\begin{equation}
+m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
+			\end{equation}
+			
+			\pause and its \textit{covariance function}:
+			
+			\begin{equation}
+			k(\boldsymbol{x}, \boldsymbol{x'}) = \mathbb{E}\left[\left( f(\boldsymbol{x}) - m(\boldsymbol{x}) \right)\left( f(\boldsymbol{x}') - m(\boldsymbol{x}')\right)\right]
+			\end{equation}
+			\pause
+			We say that $f$ is a Gaussian Process with mean $m(\boldsymbol{x})$ and covariance function $k(x, x')$ and write:
+			
+			\begin{equation}
+			f(\boldsymbol{x}) \sim \mathcal{GP}\left(m(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x'}) \right)
+			\end{equation}
+			
+			\end{definition}
+		\end{frame}
+			
+		\begin{frame}	
+			\frametitle{Gaussian Process Regression: basic definitions}
+			Define then a covariance function, such as the \textit{squared exponential} kernel:
+			
+			\begin{equation}
+			k(\boldsymbol{x}, \boldsymbol{x}') = \exp\left(-\dfrac{1}{2}|\boldsymbol{x} - \boldsymbol{x}'|^2\right)
+			\end{equation}
+			
+			where $|.|$ denotes the standard $L_2$ norm. Drawing samples from a Gaussian Process, assuming zero mean, for given finite inputs $X_*$ simplifies to sampling from:
+			
+			\begin{equation}
+			\label{fprior}
+			\boldsymbol{f_*} \sim \mathcal{N}\left(\boldsymbol{0}, K(X_*, X_*)\right)
+			\end{equation}
+			
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Gaussian Process Regression: prediction}
+			Assume training data  $\mathcal{D} = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) | i = 1,\dots,n\right\rbrace$
+			\begin{block}{Prediction using GP prior}
+				Let $\boldsymbol{y}$ and $\boldsymbol{f_*}$ be jointly Gaussian:
+				
+				\begin{equation}
+				\begin{bmatrix}
+				\boldsymbol{y}\\
+				\boldsymbol{f_*}
+				\end{bmatrix} \sim \mathcal{N}\left(
+				\boldsymbol{0},
+				\begin{bmatrix}
+				K(X, X) + \sigma^2_n I && K(X, X_*) \\
+				K(X_*, X) && K(X_*, X_*)
+				\end{bmatrix}
+				\right)
+				\end{equation}
+				
+				We want to condition $\boldsymbol{f_*}$ over $\boldsymbol{y}$.
+				
+				\begin{equation}
+				\boldsymbol{f_*|y} \sim \mathcal{N}(\boldsymbol{\overline{f_*}},  Cov(\boldsymbol{f_*}))
+				\end{equation}
+				
+				where:
+				
+				\begin{align}
+				\begin{split}
+				\boldsymbol{\overline{f_*}} &= K(X_*, X)\left(K(X, X) + \sigma^2_n I   \right)^{-1}\boldsymbol{y}\\
+				Cov(\boldsymbol{f_*}) &= K(X_*, X_*) - K(X_*, X)\left(K(X, X) + \sigma_n^2 I \right)^{-1}K(X, X_*)
+				\end{split}
+				\end{align}
+				
+			
+			\end{block}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Gaussian Process Regression: an example}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{../figures/chapter2/GPsine}
+			\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Gaussian Process Regression: on covariance functions}
+
+			\begin{block}{Covariance function choices}
+				\begin{equation}
+				k_{SE}(r) = \exp\left(-\dfrac{r^2}{2l^2} \right)
+				\end{equation}
+				
+				\begin{equation}
+				k_{\textrm{Matern}}(r) = \dfrac{2^{1-\nu}}{\Gamma(\nu)}\left(\dfrac{\sqrt{2\nu} r}{l}    \right)^\nu K_\nu\left( \dfrac{
+					\sqrt{2\nu}r}{l} \right)
+				\end{equation}
+				
+				\begin{equation}
+				k_{\mathrm{GE}}(r) = \exp\left( - \left(\dfrac{r}{l}\right)^\gamma  \right)
+				\end{equation}
+				
+			\end{block}
+		\end{frame}
+			
+			
+			
+			
+
+\end{document}
