@@ -6,6 +6,13 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+%\usepackage{algpseudocode}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
 
 \author{José Jiménez}
 \title{Bayesian Optimization in Machine Learning}
@@ -37,9 +44,9 @@
 		This Master's thesis aims to be a multi-objective optimization task:
 		
 		\begin{itemize}
-			\item \pause Provide an introduction to both Gaussian Process regression and Bayesian optimization. 
-			\item \pause Show that the Bayesian Optimization framework works in several real-world machine learning tasks.
-			\item \pause Write a complete software package (pyGPGO) for users to apply Bayesian Optimization in their research.
+			\item Provide an introduction to both Gaussian Process regression and Bayesian optimization. 
+			\item Show that the Bayesian Optimization framework works in several real-world machine learning tasks.
+			\item Write a complete software package (pyGPGO) for users to apply Bayesian Optimization in their research.
 		\end{itemize}
 	\end{frame}
 	
@@ -47,28 +54,51 @@
 		\frametitle{Organization of the work}
 		Organized in 5 self-contained chapters.
 		\begin{itemize}
-			\item \pause \textbf{Chapter 2} focuses on an introduction to regression problems using Gaussian Processes. These are surrogate models we will use for Bayesian Optimization.
-			\item \pause \textbf{Chapter 3} covers the main topic in this work, Bayesian Optimization.
-			\item \pause \textbf{Chapter 4} presents experiments using the Bayesian Optimization framework. Mostly mid-sized supervised-learning problems.
-			\item \pause \textbf{Chapter 5} provides technical explanations for pyGPGO, the software developed alongside this manual.
+			\item \textbf{Chapter 2} focuses on an introduction to regression problems using Gaussian Processes. These are surrogate models we will use for Bayesian Optimization.
+			\item \textbf{Chapter 3} covers the main topic in this work, Bayesian Optimization.
+			\item \textbf{Chapter 4} presents experiments using the Bayesian Optimization framework. Mostly mid-sized supervised-learning problems.
+			\item \textbf{Chapter 5} provides technical explanations for pyGPGO, the software developed alongside this manual.
 		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{A brief introduction}
+		Overall, Bayesian Optimization focuses on:
+		
+		\begin{equation}
+			\max_{\boldsymbol{x}\in \mathcal{A}} f(x)
+		\end{equation}
+		
+		We make almost no assumptions about $f$:
+		\begin{itemize}
+			\item $f$ may not have a closed-form expression.
+			\item Evaluations of $f$ may be noisy.
+			\item Gradient information is optional.
+		\end{itemize}
+		
+		These situations arise when optimizing the \textit{loss} function of a machine-learning model, depending on its hyperparameters (e.g. log-loss):
+		
+		\begin{equation}
+		\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = -\dfrac{1}{n} \sum_i \left(y_i \log(\hat{y_i}) + (1 - y_i)\log(1-\hat{y_i})\right)
+		\end{equation}
+
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Gaussian Process Regression: basic definitions}
 		\begin{definition}
-			A Gaussian Process is a collection of random variables, any finite number of which have a joint Gaussian distribution.\pause  This process is defined by two functions. Its \textit{mean function}:
+			A Gaussian Process is a collection of random variables, any finite number of which have a joint Gaussian distribution. This process is defined by two functions. Its \textit{mean function}:
 			
 			\begin{equation}
 m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 			\end{equation}
 			
-			\pause and its \textit{covariance function}:
+			and its \textit{covariance function}:
 			
 			\begin{equation}
 			k(\boldsymbol{x}, \boldsymbol{x'}) = \mathbb{E}\left[\left( f(\boldsymbol{x}) - m(\boldsymbol{x}) \right)\left( f(\boldsymbol{x}') - m(\boldsymbol{x}')\right)\right]
 			\end{equation}
-			\pause
+			
 			We say that $f$ is a Gaussian Process with mean $m(\boldsymbol{x})$ and covariance function $k(x, x')$ and write:
 			
 			\begin{equation}
@@ -143,25 +173,163 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\begin{frame}
 			\frametitle{Gaussian Process Regression: on covariance functions}
 
-			\begin{block}{Covariance function choices}
+			\begin{block}{Some common covariance function choices}
 				\begin{equation}
-				k_{SE}(r) = \exp\left(-\dfrac{r^2}{2l^2} \right)
+				\begin{matrix}
+				k_{SE}(r) = \exp\left(-\dfrac{r^2}{2l^2} \right) && 				k_{\textrm{Matèrn}}(r) = \dfrac{2^{1-\nu}}{\Gamma(\nu)}\left(\dfrac{\sqrt{2\nu} r}{l}    \right)^\nu K_\nu\left( \dfrac{
+					\sqrt{2\nu}r}{l} \right) \\
+				k_{\mathrm{GE}}(r) = \exp\left( - \left(\dfrac{r}{l}\right)^\gamma  \right) && k_{RQ}(r) = \left( 1 + \dfrac{r^2}{2\alpha l^2} \right)^{-\alpha}
+				\end{matrix}
 				\end{equation}
 				
-				\begin{equation}
-				k_{\textrm{Matern}}(r) = \dfrac{2^{1-\nu}}{\Gamma(\nu)}\left(\dfrac{\sqrt{2\nu} r}{l}    \right)^\nu K_\nu\left( \dfrac{
-					\sqrt{2\nu}r}{l} \right)
-				\end{equation}
+				where $r=|\boldsymbol{x} - \boldsymbol{x'}|$. Observations are noisy:
 				
 				\begin{equation}
-				k_{\mathrm{GE}}(r) = \exp\left( - \left(\dfrac{r}{l}\right)^\gamma  \right)
-				\end{equation}
+					k^y(\boldsymbol{x}_p, \boldsymbol{x}_q) = \sigma^2_f k(\boldsymbol{x}_p, \boldsymbol{x}_q) + \sigma^2_n \delta_{pq} \,
+				\end{equation} 
 				
 			\end{block}
 		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Gaussian Process Regression: Type II Maximum-Likelihood}
+			An empirical Bayes approach to choosing hyperparameters. Noticing that $\boldsymbol{y} \sim \mathcal{N}(\boldsymbol{0}, K + 
+			\sigma_n^2 I)$
+			\begin{block}{Marginal log-likelihood}
+				\begin{equation}
+				\log p(\boldsymbol{y}|X) = - \dfrac{1}{2}\boldsymbol{y}^T(K + \sigma^2_n I)^{-1}\boldsymbol{y} - \dfrac{1}{2}\log |K + \sigma^2_n I| - \dfrac{n}{2}\log 2\pi
+				\end{equation}
+			\end{block}
 			
+			\begin{block}{Derivative w.r.t hyperpameters}
+				\begin{equation}
+				\dfrac{\partial}{\partial \theta_j}\log p(\boldsymbol{y}|X, \boldsymbol{\theta}) = \dfrac{1}{2}\boldsymbol{y}^T K^{-1}\dfrac{\partial K}{\partial \theta_j}K^{-1}\boldsymbol{y} - \dfrac{1}{2}\textrm{tr}\left(K^{-1} \dfrac{\partial K}{\partial \theta_j} \right)
+				\end{equation}
+			\end{block}
+		\end{frame}
 			
+		\begin{frame}
+			\frametitle{Gaussian Process Regression: incorporating diff. priors}
+			We have assumed $m(\boldsymbol{x}) = 0$ for simplicity. If we dispose of prior knowledge, we can use it
 			
+			\begin{block}{Different prior mean}
+				\begin{equation}
+				f(\boldsymbol{x}) \sim \mathcal{G}\mathcal{P}\left(m(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x^*})\right)
+				\end{equation}
+				
+				Posterior mean becomes:
+				
+				\begin{equation}
+				\boldsymbol{f}_* = \boldsymbol{m}(X_*) + k(X_*, X)K^{-1}\left(\boldsymbol{y} - \boldsymbol{m}(X)\right) 
+				\end{equation}
+				
+				Posterior variance remains unchanged.
+			\end{block}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Gaussian Process Regression: marginalizing over hyperparameters}
+			The full Bayesian approach does not optimize the marginal likelihood, but integrates the uncertainty of hyperparameters $\theta$ into the model, either using MCMC or Variational Inference techniques.
+			
+			\begin{block}{Full Bayesian approach}
+				\begin{equation}
+				\theta \sim p_{h}(\theta)
+				\end{equation}
+				\begin{equation}
+				\boldsymbol{f} \sim \mathcal{N}(0, \Sigma_\theta)
+				\end{equation}
+				\begin{equation}
+				\mathcal{L(\boldsymbol{f})} = p(\mathrm{data}|\boldsymbol{f}) = p(\boldsymbol{y}|\boldsymbol{f})
+				\end{equation}
+				
+				We wish to sample from the joint posterior under unknowns:
+				
+				\begin{equation}
+				p(\boldsymbol{f}, \theta|\, \mathrm{data}) \propto \mathcal{L}(\boldsymbol{f})p(\boldsymbol{f}) p_h(\theta)
+				\end{equation}
+			\end{block}
+			Several strategies for sampling from latent Gaussian models proposed in main text.	
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Bayesian Optimization: introduction}
+			Again, assume:
+			 \begin{equation}
+			 \max_{\boldsymbol{x}\in \mathcal{A}} f(\boldsymbol{x})
+			 \end{equation}
+			 
+			 Assume that we have sampled our function $f$ to optimize a small number of times $n$. Providing us with training data:
+
+			 \begin{equation}
+			 \mathcal{D}_n = \left\lbrace \boldsymbol{x}_i, y_i, i=1,\dots,n\right\rbrace.
+			 \end{equation}
+			 
+			 Our steps here are:
+			 \begin{enumerate}
+			 	\item Fit a Gaussian Process regression model on $\mathcal{D}_n$.
+			 	\item Choose the next point to sample, according to an \textit{acquisition function}, depending on GP.
+			 	\item Evaluate said point. Augment training data. Repeat. 
+			 \end{enumerate}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Bayesian optimization: algorithm}
+			\begin{algorithm}[H]
+				\begin{algorithmic}[1]
+                \STATE {Sample a small number of points $\boldsymbol{x} \in \mathcal{A}$. Evaluate $f
+                        	(\boldsymbol{x})$ to get $\mathcal{D}_n$}
+					\FOR{$n=1, 2, \dots$}
+                                \STATE{Fit a GP regression model on $\mathcal{D}_n$}
+                                \STATE{$\boldsymbol{x}_{n+1} \gets \argmax_{\boldsymbol{x}} \alpha(\boldsymbol{x}, \mathcal{D}_n)$}
+                                \STATE{Evaluate $f(\boldsymbol{x}_{n+1}) = y_{n+1}$}
+                                \STATE{Augment data $\mathcal{D}_{n+1} = \left\lbrace \mathcal{D}_n, (\boldsymbol{x}_{n+1}, y_{n+1}) \right\rbrace$}
+					\ENDFOR
+				\end{algorithmic}
+				\caption{Bayesian optimization framework}
+				\label{alg:bayesopt}
+			\end{algorithm}	
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Bayesian optimization: on acquisition functions}
+			Three popular categories: improvement-based, optimistic, and information-based policies.
+			
+			\begin{block}{Improvement-based}
+				$\tau$ denotes our best evaluation so far.\\
+				Probability of improvement:
+				\begin{equation}
+				\alpha_{\mathrm{PI}}(\boldsymbol{x}, \mathcal{D}_n) = P\left(\nu > \tau\right) = \Phi\left(\dfrac{\mu_n(\boldsymbol{x}) - \tau}{\sigma_n(\boldsymbol{x})}  \right)
+				\end{equation}
+				
+				Expected improvement:
+				\begin{equation}
+				\alpha_{\mathrm{EI}}(\boldsymbol{x}, \mathcal{D}_n) = (\mu_n(\boldsymbol{x}) - \tau)\Phi\left(\dfrac{\mu_n(\boldsymbol{x}) - \tau}{\sigma_n(\boldsymbol{x})}  \right) + \sigma_n(\boldsymbol{x})\phi\left( \dfrac{\mu_n(\boldsymbol{x}) - \tau}{\sigma_n(\boldsymbol{x})} \right)
+				\end{equation}
+			\end{block}
+		\end{frame}	
+		
+		\begin{frame}
+			\frametitle{Bayesian optimization: on acquisition functions}
+			\begin{block}{Optimistic acquisitions}
+			Upper confidence bound:
+			\begin{equation}
+			\alpha_{\mathrm{UCB}}(\boldsymbol{x}, \mathcal{D}_n) = \mu_n(\boldsymbol{x}) + \beta_n\sigma_n(\boldsymbol{x})
+			\end{equation}
+			\end{block}
+			
+			\begin{block}{Information-based}
+			Entropy-based:
+			\begin{equation}
+			\label{acqes}
+			\alpha_{\mathrm{ES}}(\boldsymbol{x}|\mathcal{D}_n) = H(\boldsymbol{x}^*|\mathcal{D}_n) - \mathbb{E}_{y|\mathcal{D}_n, \boldsymbol{x}}\left[ H(\boldsymbol{x}^*|\mathcal{D}_n \cup \left\lbrace (\boldsymbol{x}, y) \right\rbrace) \right]
+			\end{equation}
+			Predictive entropy search:
+			\begin{equation}
+			\alpha_{\mathrm{PES}}(\boldsymbol{x}, \mathcal{D}_n) = H(y|\mathcal{D}_n, \boldsymbol{x}) - \mathbb{E}_{\boldsymbol{x}^*|\mathcal{D}_n}\left[ H(y |\mathcal{D}_n, \boldsymbol{x}, \boldsymbol{x}^*)  \right]
+			\end{equation}
+
+			\end{block}
+		\end{frame}
 			
 
 \end{document}
