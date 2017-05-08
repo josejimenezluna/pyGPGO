@@ -1,3 +1,7 @@
 \beamer@slide {fprior}{6}
 \beamer@slide {alg:bayesopt}{14}
-\beamer@slide {acqes}{16}
+\beamer@slide {acqes}{17}
+\beamer@slide {svmparam}{26}
+\beamer@slide {knnparams}{26}
+\beamer@slide {gbmparam}{27}
+\beamer@slide {mlpparam}{27}

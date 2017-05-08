@@ -7,7 +7,8 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{algorithm,algorithmic}
-%\usepackage{algpseudocode}
+\usepackage{animate}
+\usepackage{booktabs}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -24,7 +25,7 @@
 
 	}
 
-\institute{Master Thesis \vfill Master's degree in Statistics and Operations Research}
+\institute{Master's Thesis \vfill Master's degree in Statistics and Operations Research}
 
 \date{\tiny supervised by Josep Ginebra\textsuperscript{1}\vfill
 	\textsuperscript{1} Department of Statistics and Operations Research. ETSEIB.}
@@ -291,6 +292,12 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\end{frame}
 		
 		\begin{frame}
+		\frametitle{Bayesian optimization: example}
+		\centering
+		\animategraphics[loop,controls,scale=0.5]{12}{../figures/chapter3/sine/}{0}{5}
+		\end{frame}
+		
+		\begin{frame}
 			\frametitle{Bayesian optimization: on acquisition functions}
 			Three popular categories: improvement-based, optimistic, and information-based policies.
 			
@@ -329,6 +336,176 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 			\end{equation}
 
 			\end{block}
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Bayesian optimization: acquisition function behaviour}
+		\begin{figure}
+		\includegraphics[scale=0.32]{../figures/chapter3/acqzoo}
+		\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Bayesian optimization: why does it work?}
+		\begin{figure}
+		\includegraphics[width=\textwidth]{../figures/chapter3/explanation}
+		\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Bayesian optimization: role of hyperparameters}
+		
+		GP hyperparameters $\theta$ cause uncertainty in the optimization procedure:		
+		
+		\begin{equation}
+		\alpha(\boldsymbol{x}) = \mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x}, \theta) \right] 		= \int_{\Theta} \alpha(\boldsymbol{x}|\theta)p(\theta|\mathcal{D}_n)d\theta.
+		\end{equation}
+		
+		\begin{block}{Approach 1. MAP estimate $\hat{\theta}_{\mathrm{MAP}}$}
+		\begin{equation}
+		\hat{\alpha}(\boldsymbol{x}) = \alpha(\boldsymbol{x}, \hat{\theta})
+		\end{equation}
+		\end{block}
+		
+		\begin{block}{Approach 2. Sample posterior $p(\theta|\mathcal{D}_n)$. Integrated acquisition functions}
+		\begin{equation}
+	\mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x},\theta )\right] \approx \dfrac{1}{M} 				\sum_{i=1}^M \alpha(\boldsymbol{x},\theta_n^{(i)})
+	\end{equation}
+		\end{block}
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Bayesian optimization: Integrated acquisition example}
+		\begin{figure}
+		\caption{Means of 200 posterior predictive distributions, taken from sampled posterior $p(\theta|\mathcal{D}_n)$}
+		\includegraphics[scale=0.4]{../figures/chapter3/integratedacq}
+		\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Bayesian optimization: optimizing acquisitions}
+		We have assumed that the acquisition function is easily optimized. This is not necessarily the case:
+		
+		\begin{itemize}
+		\item It is often multimodal.
+		\item Or non-convex.
+		\item Furthermore theoretical convergence is guaranteed when finding true maximum $\boldsymbol{x}^{*}$.
+		\end{itemize}
+		
+		One may be thinking that we have switched optimization problems! ($f$ by $\alpha$). However, $\alpha$ 			is very cheap to compute.\\
+		\begin{itemize}
+		\item In practice $\alpha$ is optimized using multi-start quasi-Newton methods (e.g. L-BFGS-B) or 					evolutionary approaches (CMA-ES).
+		\end{itemize}
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Bayesian optimization: Other surrogates}
+		\begin{itemize}
+		\item Random Forests: empirical estimate of variance provided by predictions of trees.
+		\item Gradient Boosting Machines: using quantile regression for variance estimate.
+		\item Sparse pseudo-input GPs
+		\item Student-t Processes
+		\item ...
+		\end{itemize}
+		
+		\begin{block}{Student-t Process example}
+		\begin{equation}
+		\boldsymbol{f}^*|\boldsymbol{f} \sim \mathcal{T}\left(\nu + n_1, \boldsymbol{\phi}_2, \dfrac{\nu + 				\beta_1 - 2}{\nu + n_1 - 2} \tilde{K}_{**} \right)
+		\end{equation}
+		\end{block}
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Experiments: benchmarking rules}
+		Loss functions used:
+		\begin{block}{Binary classification}
+		Logarithmic loss:
+		\begin{equation}
+		\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = -\dfrac{1}{n} \sum_i \left(y_i \log(\hat{y_i}) + 			(1 - y_i)\log(1-\hat{y_i})\right)
+		\end{equation}
+		\end{block}
+		
+		\begin{block}{Regression}
+		Mean Squared Error (MSE)
+		\begin{equation}
+		\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = \dfrac{1}{n} \sum_i \left(y_i - \hat{y_i}\right)^2
+		\end{equation}
+		\end{block}		
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Experiments: benchmarking rules}
+		\begin{itemize}
+		\item Shuffled $k=5$ fold cross-validation scheme for loss evaluation.
+		\item Features scaled: zero mean, unit variance.
+		\item $n=50$ ($+3$ to account GP fitting) total function evaluations.
+		\item Gaussian Process surrogate, with squared exponential covariance function.
+		\item Type II ML estimation of all hyperparameters at each stage ($l$, $\sigma_n^2$, $\sigma_f^2$).
+		\item Expected Improvement and GP-UCB ($\beta = 0.5$, $\beta = 1.5$) acquisitions.
+		\item Machine-learning models used: Support Vector Machines, K-Nearest-Neighbours, Gradient Boosting 			Machines and One-Hidden Layer Neural Networks.
+		\end{itemize}
+		\end{frame}
+		
+		
+		\begin{frame}
+		\frametitle{Experiments: benchmarking rules}
+		\begin{table}[]
+		\centering
+		\caption{SVM parameters.}
+		\label{svmparam}
+		\begin{tabular}{@{}lll@{}}
+		\toprule
+		\textbf{Parameter} & \textbf{Type}                      & \textbf{Bounds}               \\ \midrule
+		$C$                & $\mathbb{R}^+$ & $\left[ 10^{-5}, 10^{5} \right]$ (log-scaled) \\
+		$\gamma$           & $\mathbb{R}^+$ & $\left[10^{-5}, 10^{5} \right]$  (log-scaled)       \\ 					\bottomrule
+		\end{tabular}
+		\end{table}
+		
+		\begin{table}[]
+		\centering
+		\caption{KNN parameters.}
+		\label{knnparams}
+		\begin{tabular}{@{}lll@{}}
+		\toprule
+		\textbf{Parameter} & \textbf{Type} & \textbf{Bounds}                           \\ \midrule
+		$k$                & Integer       & $\left\lbrace 10, \dots,50 \right\rbrace$
+		\end{tabular}
+		\end{table}
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Experiments: benchmarking rules}
+		\begin{table}[]
+		\centering
+		\caption{GBM parameters.}
+		\label{gbmparam}
+		\begin{tabular}{@{}lll@{}}
+		\toprule
+		\textbf{Parameter}             & \textbf{Type}  & \textbf{Bounds}                          \\ \midrule
+	\texttt{learning\_rate}      & $\mathbb{R}^+$ & $\left[10^{-5}, 10^{-2}\right]$                         \\
+	\texttt{n\_estimators}       & Integer        & $\left\lbrace 10,\dots, 100 \right\rbrace$ \\
+	\texttt{max\_depth}          & Integer        & $\left\lbrace 2, \dots, 100 \right\rbrace$ \\
+	\texttt{min\_samples\_split}  & Integer        & $\left\lbrace 2, \dots, 100 \right\rbrace$
+	\end{tabular}
+	\end{table}
+
+\begin{table}[]
+\centering
+\caption{MLP parameters.}
+\label{mlpparam}
+\begin{tabular}{lll}
+\hline
+\textbf{Parameter}             & \textbf{Type}    & \textbf{Bounds}       \\ \hline
+\texttt{hidden\_layer\_size} & Integer          & $\left[5, 50\right]$  \\
+\texttt{alpha}               & $\mathbb{R}^{+}$ & $\left[0, 0.9\right]$
+\end{tabular}
+\end{table}
+
+	
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Experiments: Binding affinity prediction}
 		\end{frame}
 			
 
