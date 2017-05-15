@@ -91,7 +91,7 @@ class tStudentProcessMCMC:
             plt.tight_layout()
             plt.show()
 
-    def predict(self, Xstar, return_std=False, nsamples=100):
+    def predict(self, Xstar, return_std=False, nsamples=10):
         """
         Returns mean and covariances for each posterior sampled Student-t Process.
 
@@ -125,6 +125,21 @@ class tStudentProcessMCMC:
             post_mean.append(m)
             post_var.append(s)
         return np.array(post_mean), np.array(post_var)
+
+    def update(self, xnew, ynew):
+        """
+        Updates the internal model with `xnew` and `ynew` instances.
+
+        Parameters
+        ----------
+        xnew: np.ndarray, shape=((m, nfeatures))
+            New training instances to update the model with.
+        ynew: np.ndarray, shape=((m,))
+            New training targets to update the model with.
+        """
+        y = np.concatenate((self.y, ynew), axis=0)
+        X = np.concatenate((self.X, xnew), axis=0)
+        self.fit(X, y)
 
 
 if __name__ == '__main__':

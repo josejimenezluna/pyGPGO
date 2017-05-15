@@ -8,7 +8,7 @@ if __name__ == '__main__':
     y = np.sin(x)
     X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 
-    gbm = BoostedTrees()
+    gbm = BoostedTrees(q2=0.84, q1=0.16)
     # Fit the model to the data
     gbm.fit(X, y)
     # Predict on new data

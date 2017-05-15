@@ -20,7 +20,7 @@ class EventLogger:
         proposed = str(gpgo.best)
         curr_eval = str(gpgo.GP.y[-1])
         curr_best = str(gpgo.tau)
-        if curr_eval >= curr_best:
+        if float(curr_eval) >= float(curr_best):
             curr_eval = bcolors.OKGREEN + curr_eval + bcolors.ENDC
         print(self.template.format(eval, proposed, curr_eval, curr_best))
 

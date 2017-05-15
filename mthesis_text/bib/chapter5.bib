@@ -1,0 +1,33 @@
+@article{Kucukelbir2016,
+abstract = {Probabilistic modeling is iterative. A scientist posits a simple model, fits it to her data, refines it according to her analysis, and repeats. However, fitting complex models to large data is a bottleneck in this process. Deriving algorithms for new models can be both mathematically and computationally challenging, which makes it difficult to efficiently cycle through the steps. To this end, we develop automatic differentiation variational inference (ADVI). Using our method, the scientist only provides a probabilistic model and a dataset, nothing else. ADVI automatically derives an efficient variational inference algorithm, freeing the scientist to refine and explore many models. ADVI supports a broad class of models-no conjugacy assumptions are required. We study ADVI across ten different models and apply it to a dataset with millions of observations. ADVI is integrated into Stan, a probabilistic programming system; it is available for immediate use.},
+archivePrefix = {arXiv},
+arxivId = {1603.00788},
+author = {Kucukelbir, Alp and Tran, Dustin and Ranganath, Rajesh and Gelman, Andrew and Blei, David M.},
+doi = {10.3847/0004-637X/819/1/50},
+eprint = {1603.00788},
+isbn = {1603.00788},
+issn = {15337928},
+journal = {Arxiv},
+pages = {1--38},
+title = {{Automatic Differentiation Variational Inference}},
+url = {http://arxiv.org/abs/1603.00788},
+year = {2016}
+}
+
+@article{Hoffman2014,
+abstract = {Hamiltonian Monte Carlo (HMC) is a Markov chain Monte Carlo (MCMC) algorithm that avoids the random walk behavior and sensitivity to correlated parameters that plague many MCMC methods by taking a series of steps informed by first-order gradient information. These features allow it to converge to high-dimensional target distributions much more quickly than simpler methods such as random walk Metropolis or Gibbs sampling. However, HMC's performance is highly sensitive to two user-specified parameters: a step size {\{}$\backslash$epsilon{\}} and a desired number of steps L. In particular, if L is too small then the algorithm exhibits undesirable random walk behavior, while if L is too large the algorithm wastes computation. We introduce the No-U-Turn Sampler (NUTS), an extension to HMC that eliminates the need to set a number of steps L. NUTS uses a recursive algorithm to build a set of likely candidate points that spans a wide swath of the target distribution, stopping automatically when it starts to double back and retrace its steps. Empirically, NUTS perform at least as efficiently as and sometimes more efficiently than a well tuned standard HMC method, without requiring user intervention or costly tuning runs. We also derive a method for adapting the step size parameter {\{}$\backslash$epsilon{\}} on the fly based on primal-dual averaging. NUTS can thus be used with no hand-tuning at all. NUTS is also suitable for applications such as BUGS-style automatic inference engines that require efficient "turnkey" sampling algorithms.},
+archivePrefix = {arXiv},
+arxivId = {1111.4246},
+author = {Hoffman, Md and Gelman, Andrew},
+eprint = {1111.4246},
+isbn = {1532-4435},
+issn = {15337928},
+journal = {Journal of Machine Learning Research},
+keywords = {adaptive monte carlo,bayesian inference,dual averaging,hamiltonian monte carlo,markov chain monte carlo,monte carlo},
+pages = {30},
+title = {{The No-U-Turn Sampler: Adaptively Setting Path Lengths in Hamiltonian Monte Carlo}},
+volume = {15},
+year = {2014}
+}
+
+

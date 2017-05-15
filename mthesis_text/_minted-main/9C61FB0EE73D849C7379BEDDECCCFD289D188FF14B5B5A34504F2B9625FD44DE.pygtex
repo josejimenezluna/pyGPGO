@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k+kn}{as} \PYG{n+nn}{plt}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.GPGO} \PYG{k+kn}{import} \PYG{n}{GPGO}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.surrogates.GaussianProcess} \PYG{k+kn}{import} \PYG{n}{GaussianProcess}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.acquisition} \PYG{k+kn}{import} \PYG{n}{Acquisition}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.covfunc} \PYG{k+kn}{import} \PYG{n}{squaredExponential}
+
+
+\PYG{k}{if} \PYG{n}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+    \PYG{n}{rng} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{RandomState}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}
+    \PYG{n}{X} \PYG{o}{=} \PYG{n}{rng}\PYG{o}{.}\PYG{n}{uniform}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{20}\PYG{p}{)[:,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{newaxis}\PYG{p}{]}
+    \PYG{n}{y} \PYG{o}{=} \PYG{l+m+mf}{0.5} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{l+m+mi}{3} \PYG{o}{*} \PYG{n}{X}\PYG{p}{[:,} \PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{+} \PYG{n}{rng}\PYG{o}{.}\PYG{n}{normal}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{n}{X}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+
+    \PYG{n}{sexp} \PYG{o}{=} \PYG{n}{squaredExponential}\PYG{p}{()}
+    \PYG{n}{gp} \PYG{o}{=} \PYG{n}{GPRegressor}\PYG{p}{(}\PYG{n}{sexp}\PYG{p}{,} \PYG{n}{optimize} \PYG{o}{=} \PYG{n+nb+bp}{True}\PYG{p}{,} \PYG{n}{usegrads} \PYG{o}{=} \PYG{n+nb+bp}{True}\PYG{p}{)}
+    \PYG{n}{gp}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)}
+
+    \PYG{n}{X\PYGZus{}} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{)}
+    \PYG{n}{y\PYGZus{}mean}\PYG{p}{,} \PYG{n}{y\PYGZus{}var} \PYG{o}{=} \PYG{n}{gp}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{(}\PYG{n}{X\PYGZus{}}\PYG{p}{[:,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{newaxis}\PYG{p}{],} \PYG{n}{return\PYGZus{}std}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{)}
+    \PYG{n}{y\PYGZus{}std} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{y\PYGZus{}var}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{X\PYGZus{}}\PYG{p}{,} \PYG{n}{y\PYGZus{}mean}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}}\PYG{p}{,} \PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{zorder}\PYG{o}{=}\PYG{l+m+mi}{9}\PYG{p}{,} \PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Posterior mean\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{fill\PYGZus{}between}\PYG{p}{(}\PYG{n}{X\PYGZus{}}\PYG{p}{,} \PYG{n}{y\PYGZus{}mean} \PYG{o}{\PYGZhy{}} \PYG{l+m+mf}{1.64} \PYG{o}{*} \PYG{n}{y\PYGZus{}std}\PYG{p}{,}
+                     \PYG{n}{y\PYGZus{}mean} \PYG{o}{+} \PYG{l+m+mf}{1.64} \PYG{o}{*} \PYG{n}{y\PYGZus{}std}\PYG{p}{,}
+                     \PYG{n}{alpha}\PYG{o}{=}\PYG{l+m+mf}{0.4}\PYG{p}{,} \PYG{n}{color}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}blue\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{X\PYGZus{}}\PYG{p}{,} \PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{X\PYGZus{}}\PYG{p}{),} \PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{,} \PYG{n}{lw}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{zorder}\PYG{o}{=}\PYG{l+m+mi}{9}\PYG{p}{,} \PYG{n}{label} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}Original function\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{scatter}\PYG{p}{(}\PYG{n}{X}\PYG{p}{[:,} \PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{y}\PYG{p}{,} \PYG{n}{c}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{,} \PYG{n}{s}\PYG{o}{=}\PYG{l+m+mi}{50}\PYG{p}{,} \PYG{n}{zorder}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{loc} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)}
+    \PYG{n}{params} \PYG{o}{=} \PYG{n}{gp}\PYG{o}{.}\PYG{n}{getcovparams}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Optimal params | \PYGZbs{}\PYGZdl{}l\PYGZbs{}\PYGZdl{}=\PYGZob{}\PYGZcb{}, \PYGZbs{}\PYGZdl{}\PYGZbs{}sigma\PYGZus{}n\PYGZca{}2\PYGZbs{}\PYGZdl{}}
+    \PYG{o}{=}\PYG{p}{\PYGZob{}\PYGZcb{},}\PYGZbs{}\PYG{n}{sigma\PYGZus{}f}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{=}\PYG{p}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}.format(np.round(params[\PYGZsq{}}\PYG{n}{l}\PYG{l+s+s1}{\PYGZsq{}],3),}
+    	  \PYG{n}{np}\PYG{o}{.}\PYG{n}{round}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}sigmaf\PYGZsq{}}\PYG{p}{],} \PYG{l+m+mi}{3}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{round}\PYG{p}{(}\PYG{n}{params}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}sigman\PYGZsq{}}\PYG{p}{],} \PYG{l+m+mi}{3}\PYG{p}{)))}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{tight\PYGZus{}layout}\PYG{p}{()}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]:}     \PYG{n}{sexp} \PYG{o}{=} \PYG{n}{squaredExponential}\PYG{p}{()}
+   \PYG{o}{...}\PYG{p}{:}     \PYG{n}{gp} \PYG{o}{=} \PYG{n}{GaussianProcess}\PYG{p}{(}\PYG{n}{sexp}\PYG{p}{)}
+   \PYG{o}{...}\PYG{p}{:}     \PYG{n}{acq} \PYG{o}{=} \PYG{n}{Acquisition}\PYG{p}{(}\PYG{n}{mode} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}ExpectedImprovement\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

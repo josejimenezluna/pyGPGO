@@ -56,6 +56,7 @@ class RandomForest:
             Posterior predicted std
 
         """
+        Xstar = np.atleast_2d(Xstar)
         ymean = self.model.predict(Xstar)
         if return_std:
             std = np.zeros(len(Xstar))
@@ -143,6 +144,7 @@ class ExtraForest:
             Posterior predicted std
 
         """
+        Xstar = np.atleast_2d(Xstar)
         ymean = self.model.predict(Xstar)
         if return_std:
             std = np.zeros(len(Xstar))

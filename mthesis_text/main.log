@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  28 APR 2017 17:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  10 MAY 2017 11:56
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1332,9 +1332,6 @@ File: figures/chapter2/drawPrior.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/chapter2/drawPrior.pdf used on input line 212.
 
 (pdftex.def)             Requested size: 455.24411pt x 330.09088pt.
-
-Underfull \vbox (badness 1005) has occurred while \output is active []
-
  [12 <./figures/chapter2/drawPrior.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 263--264
 
@@ -1351,11 +1348,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 343--344
  []
 
 [14]
-
-LaTeX Warning: Reference `hierarchical2' on page 15 undefined on input line 397
-.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 403--404
 
  []
@@ -1636,13 +1628,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 1208--1209
 
  []
 
-<figures/chapter3/rosen/rosen.pdf, id=1263, 462.72874pt x 347.2975pt>
+<figures/chapter3/rosen/rosen.pdf, id=1263, 462.52798pt x 346.89601pt>
 File: figures/chapter3/rosen/rosen.pdf Graphic file (type pdf)
 
 <use figures/chapter3/rosen/rosen.pdf>
 Package pdftex.def Info: figures/chapter3/rosen/rosen.pdf used on input line 12
 14.
-(pdftex.def)             Requested size: 231.3638pt x 173.64832pt.
+(pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1217--1218
 
@@ -1795,7 +1787,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1494--1495
 
  []
 
-<figures/chapter4/docking.png, id=1839, 667.293pt x 442.7742pt>
+<figures/chapter4/docking.png, id=1962, 667.293pt x 442.7742pt>
 File: figures/chapter4/docking.png Graphic file (type png)
 
 <use figures/chapter4/docking.png>
@@ -1817,28 +1809,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 1512--1513
  []
 
 [55 <./figures/chapter4/docking.png>]
-<figures/chapter4/aff/svm.pdf, id=1895, 462.52798pt x 346.89601pt>
+<figures/chapter4/aff/svm.pdf, id=2017, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/svm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/svm.pdf>
 Package pdftex.def Info: figures/chapter4/aff/svm.pdf used on input line 1537.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/aff/knn.pdf, id=1896, 462.52798pt x 346.89601pt>
+<figures/chapter4/aff/knn.pdf, id=2018, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/knn.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/knn.pdf>
 Package pdftex.def Info: figures/chapter4/aff/knn.pdf used on input line 1544.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/aff/gbm.pdf, id=1897, 462.52798pt x 346.89601pt>
+<figures/chapter4/aff/gbm.pdf, id=2019, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/gbm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/gbm.pdf>
 Package pdftex.def Info: figures/chapter4/aff/gbm.pdf used on input line 1551.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/aff/mlp.pdf, id=1898, 462.52798pt x 346.89601pt>
+<figures/chapter4/aff/mlp.pdf, id=2020, 462.52798pt x 346.89601pt>
 File: figures/chapter4/aff/mlp.pdf Graphic file (type pdf)
 
 <use figures/chapter4/aff/mlp.pdf>
@@ -1859,7 +1851,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1570--1571
 
  []
 
-<figures/chapter4/interface.png, id=2130, 1927.2pt x 1487.5575pt>
+<figures/chapter4/interface.png, id=2253, 1927.2pt x 1487.5575pt>
 File: figures/chapter4/interface.png Graphic file (type png)
 
 <use figures/chapter4/interface.png>
@@ -1886,7 +1878,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1589--1590
 
  []
 
-[60] <figures/chapter4/pinter/svm.pdf, id=2184, 462.52798pt x 346.89601pt>
+[60] <figures/chapter4/pinter/svm.pdf, id=2306, 462.52798pt x 346.89601pt>
 File: figures/chapter4/pinter/svm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/pinter/svm.pdf>
@@ -1894,7 +1886,7 @@ Package pdftex.def Info: figures/chapter4/pinter/svm.pdf used on input line 167
 9.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/pinter/knn.pdf, id=2185, 462.52798pt x 346.89601pt>
+<figures/chapter4/pinter/knn.pdf, id=2307, 462.52798pt x 346.89601pt>
 File: figures/chapter4/pinter/knn.pdf Graphic file (type pdf)
 
 <use figures/chapter4/pinter/knn.pdf>
@@ -1902,7 +1894,7 @@ Package pdftex.def Info: figures/chapter4/pinter/knn.pdf used on input line 168
 6.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/pinter/gbm.pdf, id=2186, 462.52798pt x 346.89601pt>
+<figures/chapter4/pinter/gbm.pdf, id=2308, 462.52798pt x 346.89601pt>
 File: figures/chapter4/pinter/gbm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/pinter/gbm.pdf>
@@ -1910,7 +1902,7 @@ Package pdftex.def Info: figures/chapter4/pinter/gbm.pdf used on input line 169
 3.
 (pdftex.def)             Requested size: 346.89513pt x 260.17136pt.
 
-<figures/chapter4/pinter/mlp.pdf, id=2187, 462.52798pt x 346.89601pt>
+<figures/chapter4/pinter/mlp.pdf, id=2309, 462.52798pt x 346.89601pt>
 File: figures/chapter4/pinter/mlp.pdf Graphic file (type pdf)
 
 <use figures/chapter4/pinter/mlp.pdf>
@@ -1932,7 +1924,7 @@ n a single page
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 1713.
 
-<figures/chapter4/breast/svm.pdf, id=2364, 462.52798pt x 346.89601pt>
+<figures/chapter4/breast/svm.pdf, id=2487, 462.52798pt x 346.89601pt>
 File: figures/chapter4/breast/svm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/breast/svm.pdf>
@@ -1940,7 +1932,7 @@ Package pdftex.def Info: figures/chapter4/breast/svm.pdf used on input line 173
 9.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
 
-<figures/chapter4/breast/knn.pdf, id=2365, 462.52798pt x 346.89601pt>
+<figures/chapter4/breast/knn.pdf, id=2488, 462.52798pt x 346.89601pt>
 File: figures/chapter4/breast/knn.pdf Graphic file (type pdf)
 
 <use figures/chapter4/breast/knn.pdf>
@@ -1948,7 +1940,7 @@ Package pdftex.def Info: figures/chapter4/breast/knn.pdf used on input line 174
 3.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
 
-<figures/chapter4/breast/mlp.pdf, id=2366, 462.52798pt x 346.89601pt>
+<figures/chapter4/breast/mlp.pdf, id=2489, 462.52798pt x 346.89601pt>
 File: figures/chapter4/breast/mlp.pdf Graphic file (type pdf)
 
 <use figures/chapter4/breast/mlp.pdf>
@@ -1956,7 +1948,7 @@ Package pdftex.def Info: figures/chapter4/breast/mlp.pdf used on input line 174
 7.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
 
-<figures/chapter4/breast/gbm.pdf, id=2367, 462.52798pt x 346.89601pt>
+<figures/chapter4/breast/gbm.pdf, id=2490, 462.52798pt x 346.89601pt>
 File: figures/chapter4/breast/gbm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/breast/gbm.pdf>
@@ -1964,7 +1956,7 @@ Package pdftex.def Info: figures/chapter4/breast/gbm.pdf used on input line 175
 1.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
  [64 <./figures/chapter4/pinter/mlp.pdf>]
-<figures/chapter4/lsvt/svm.pdf, id=2432, 462.52798pt x 346.89601pt>
+<figures/chapter4/lsvt/svm.pdf, id=2555, 462.52798pt x 346.89601pt>
 File: figures/chapter4/lsvt/svm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/lsvt/svm.pdf>
@@ -1972,7 +1964,7 @@ Package pdftex.def Info: figures/chapter4/lsvt/svm.pdf used on input line 1765.
 
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
 
-<figures/chapter4/lsvt/knn.pdf, id=2433, 462.52798pt x 346.89601pt>
+<figures/chapter4/lsvt/knn.pdf, id=2556, 462.52798pt x 346.89601pt>
 File: figures/chapter4/lsvt/knn.pdf Graphic file (type pdf)
 
 <use figures/chapter4/lsvt/knn.pdf>
@@ -1980,7 +1972,7 @@ Package pdftex.def Info: figures/chapter4/lsvt/knn.pdf used on input line 1769.
 
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
 
-<figures/chapter4/lsvt/mlp.pdf, id=2434, 462.52798pt x 346.89601pt>
+<figures/chapter4/lsvt/mlp.pdf, id=2557, 462.52798pt x 346.89601pt>
 File: figures/chapter4/lsvt/mlp.pdf Graphic file (type pdf)
 
 <use figures/chapter4/lsvt/mlp.pdf>
@@ -1988,7 +1980,7 @@ Package pdftex.def Info: figures/chapter4/lsvt/mlp.pdf used on input line 1773.
 
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
 
-<figures/chapter4/lsvt/gbm.pdf, id=2435, 462.52798pt x 346.89601pt>
+<figures/chapter4/lsvt/gbm.pdf, id=2558, 462.52798pt x 346.89601pt>
 File: figures/chapter4/lsvt/gbm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/lsvt/gbm.pdf>
@@ -2010,7 +2002,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1799--1799
 []|\OT1/cmr/m/n/10 MDVP:Shimmer, MDVP:Shimmer (dB),
  []
 
-<figures/chapter4/parkinson/svm.pdf, id=2439, 462.52798pt x 346.89601pt>
+<figures/chapter4/parkinson/svm.pdf, id=2562, 462.52798pt x 346.89601pt>
 File: figures/chapter4/parkinson/svm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/parkinson/svm.pdf>
@@ -2018,7 +2010,7 @@ Package pdftex.def Info: figures/chapter4/parkinson/svm.pdf used on input line
 1813.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
 
-<figures/chapter4/parkinson/mlp.pdf, id=2440, 462.52798pt x 346.89601pt>
+<figures/chapter4/parkinson/mlp.pdf, id=2563, 462.52798pt x 346.89601pt>
 File: figures/chapter4/parkinson/mlp.pdf Graphic file (type pdf)
 
 <use figures/chapter4/parkinson/mlp.pdf>
@@ -2026,7 +2018,7 @@ Package pdftex.def Info: figures/chapter4/parkinson/mlp.pdf used on input line
 1817.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
 
-<figures/chapter4/parkinson/gbm.pdf, id=2441, 462.52798pt x 346.89601pt>
+<figures/chapter4/parkinson/gbm.pdf, id=2564, 462.52798pt x 346.89601pt>
 File: figures/chapter4/parkinson/gbm.pdf Graphic file (type pdf)
 
 <use figures/chapter4/parkinson/gbm.pdf>
@@ -2132,7 +2124,7 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 
 (./_minted-main/90CC783EF02E2B6511021850047ABC389D188FF14B5B5A34504F2B9625FD44D
 E.pygtex [74])
-<figures/chapter5/exfun.pdf, id=3158, 462.52798pt x 346.89601pt>
+<figures/chapter5/exfun.pdf, id=3281, 462.52798pt x 346.89601pt>
 File: figures/chapter5/exfun.pdf Graphic file (type pdf)
 
 <use figures/chapter5/exfun.pdf>
@@ -2190,7 +2182,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2113--2114
 
 (./_minted-main/CCC7AA513808D2FFF6E0158F1ED4C62A9D188FF14B5B5A34504F2B9625FD44D
 E.pygtex [77])
-<figures/chapter5/noiseopt.pdf, id=3199, 462.52798pt x 346.89601pt>
+<figures/chapter5/noiseopt.pdf, id=3322, 462.52798pt x 346.89601pt>
 File: figures/chapter5/noiseopt.pdf Graphic file (type pdf)
 
 <use figures/chapter5/noiseopt.pdf>
@@ -2198,7 +2190,7 @@ Package pdftex.def Info: figures/chapter5/noiseopt.pdf used on input line 2168.
 
 (pdftex.def)             Requested size: 341.43307pt x 256.085pt.
 
-<figures/chapter5/hyperpost.pdf, id=3200, 708.9687pt x 474.0912pt>
+<figures/chapter5/hyperpost.pdf, id=3323, 708.9687pt x 474.0912pt>
 File: figures/chapter5/hyperpost.pdf Graphic file (type pdf)
 
 <use figures/chapter5/hyperpost.pdf>
@@ -2206,7 +2198,7 @@ Package pdftex.def Info: figures/chapter5/hyperpost.pdf used on input line 2175
 .
 (pdftex.def)             Requested size: 341.43307pt x 228.32076pt.
 
-<figures/chapter5/makemoons.pdf, id=3201, 462.52798pt x 346.89601pt>
+<figures/chapter5/makemoons.pdf, id=3324, 462.52798pt x 346.89601pt>
 File: figures/chapter5/makemoons.pdf Graphic file (type pdf)
 
 <use figures/chapter5/makemoons.pdf>
@@ -2341,10 +2333,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3147.
  ) 
 Here is how much of TeX's memory you used:
- 19526 strings out of 493013
- 335682 string characters out of 6135623
- 839679 words of memory out of 5000000
- 22190 multiletter control sequences out of 15000+600000
+ 19525 strings out of 493013
+ 335667 string characters out of 6135623
+ 839680 words of memory out of 5000000
+ 22189 multiletter control sequences out of 15000+600000
  17237 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,22n,77p,4250b,1229s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2373,20 +2365,19 @@ me/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/jose/
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/jose/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></home/jose/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsl10.pfb></home/jose/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmss12.pfb></home/jose/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></home/jose/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy5.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmti10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
-12.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb>
-</home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></home
-/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></home/jose/
-texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/jose/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (102 pages, 3688509 bytes).
+ts/type1/public/amsfonts/cm/cmsy10.pfb></home/jose/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy5.pfb></home/jose/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmti10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmti12.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
+7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+</home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></home
+/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/
+jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on main.pdf (102 pages, 3585719 bytes).
 PDF statistics:
- 3607 PDF objects out of 4296 (max. 8388607)
- 2022 compressed objects within 21 object streams
+ 3731 PDF objects out of 4296 (max. 8388607)
+ 1973 compressed objects within 20 object streams
  464 named destinations out of 1000 (max. 500000)
  905 words of extra memory for PDF output out of 10000 (max. 10000000)
 

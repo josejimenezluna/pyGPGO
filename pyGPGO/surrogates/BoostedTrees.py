@@ -22,6 +22,7 @@ class BoostedTrees:
         self.params = params
         self.q1 = q1
         self.q2 = q2
+        self.eps = 1e-1
 
     def fit(self, X, y):
         """
@@ -66,11 +67,12 @@ class BoostedTrees:
             Posterior predicted std
 
         """
+        Xstar = np.atleast_2d(Xstar)
         ymean = self.mod.predict(Xstar)
         if return_std:
             q1pred = self.modq1.predict(Xstar)
             q2pred = self.modq2.predict(Xstar)
-            ystd = (q2pred - q1pred) / 2
+            ystd = (q2pred - q1pred) / 2 + self.eps
             return ymean, ystd
         return ymean
 
