@@ -35,7 +35,24 @@ pip install git+https://github.com/hawk31/pyGPGO
 The user only has to define a function to maximize and a dictionary specifying input space.
 
 ```python
-c
+import numpy as np
+from pyGPGO.covfunc import squaredExponential
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.GPGO import GPGO
+
+def f(x):
+    return (np.sin(x))
+
+
+sexp = squaredExponential()
+gp = GaussianProcess(sexp)
+acq = Acquisition(mode='ExpectedImprovement')
+param = {'x': ('cont', [0, 2 * np.pi])}
+
+np.random.seed(23)
+gpgo = GPGO(gp, acq, f, param)
+gpgo.run(max_iter=20)
 
 ```
 
