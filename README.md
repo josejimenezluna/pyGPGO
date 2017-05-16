@@ -61,8 +61,8 @@ def f(x, y):
     four = 0.25 * np.exp(-(9*x -4)**2 - (9*y-7)**2)
     return one + two + three - four
 
-sexp = matern32()
-gp = tStudentProcess(sexp)
+cov = matern32()
+gp = GaussianProcess(cov)
 acq = Acquisition(mode='ExpectedImprovement')
 param = {'x': ('cont', [0, 1]),
          'y': ('cont', [0, 1])}
