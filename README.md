@@ -47,23 +47,29 @@ The user only has to define a function to maximize and a dictionary specifying i
 
 ```python
 import numpy as np
-from pyGPGO.covfunc import squaredExponential
+from pyGPGO.covfunc import matern32
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.GPGO import GPGO
 
-def f(x):
-    return (np.sin(x))
 
+def f(x, y):
+    # Franke's function (https://www.mathworks.com/help/curvefit/franke.html)
+    one = 0.75 * np.exp(-(9*x-2)**2/4 - (9*y - 2)**2/4)
+    two = 0.75 * np.exp(-(9*x+1)**2/49 - (9*y + 1)/10)
+    three = 0.5 * np.exp(-(9*x - 7)**2/4 - (9*y -3)**2/4)
+    four = 0.25 * np.exp(-(9*x -4)**2 - (9*y-7)**2)
+    return one + two + three - four
 
-sexp = squaredExponential()
-gp = GaussianProcess(sexp)
+sexp = matern32()
+gp = tStudentProcess(sexp)
 acq = Acquisition(mode='ExpectedImprovement')
-param = {'x': ('cont', [0, 2 * np.pi])}
+param = {'x': ('cont', [0, 1]),
+         'y': ('cont', [0, 1])}
 
-np.random.seed(23)
+np.random.seed(1337)
 gpgo = GPGO(gp, acq, f, param)
-gpgo.run(max_iter=20)
+gpgo.run(max_iter=10)
 
 ```
 
