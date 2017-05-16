@@ -164,8 +164,11 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        mode: str</span>
-<span class="sd">            Either `ExpectedImprovement`, `ProbabilityImprovement` or `UCB`. Defines the</span>
-<span class="sd">            behaviour of the acquisition strategy.</span>
+<span class="sd">            Defines the behaviour of the acquisition strategy. Currently supported values are</span>
+<span class="sd">            `ExpectedImprovement`, `IntegratedExpectedÌmprovement`, `ProbabilityImprovement`,</span>
+<span class="sd">            `IntegratedProbabilityImprovement`, `UCB`, `IntegratedUCB`, `Entropy`, `tExpectedImprovement`,</span>
+<span class="sd">            and `tIntegratedExpectedImprovement`. Integrated improvement functions are only to be used</span>
+<span class="sd">            with MCMC surrogates.</span>
 <span class="sd">        eps: float</span>
 <span class="sd">            Small floating value to avoid `np.sqrt` or zero-division warnings.</span>
 <span class="sd">        params: float</span>
@@ -344,7 +347,7 @@
 
 <div class="viewcode-block" id="Acquisition.tExpectedImprovement"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition.tExpectedImprovement">[docs]</a>    <span class="k">def</span> <span class="nf">tExpectedImprovement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">nu</span><span class="o">=</span><span class="mf">3.0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Expected Improvement acquisition function. Only to be used with Student-t Process surrogate.</span>
+<span class="sd">        Expected Improvement acquisition function. Only to be used with `tStudentProcess` surrogate.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>

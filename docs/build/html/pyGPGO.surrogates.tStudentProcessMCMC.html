@@ -173,7 +173,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>X</strong> (<em>np.ndarray, shape=(nsamples, nfeatures)</em>) &#8211; Training instances to fit the GP.</li>
-<li><strong>y</strong> (<em>np.ndarray, shape=(nsamples,)</em>) &#8211; Corresponding continuous target values to X.</li>
+<li><strong>y</strong> (<em>np.ndarray, shape=(nsamples,)</em>) &#8211; Corresponding continuous target values to <cite>X</cite>.</li>
 </ul>
 </td>
 </tr>
@@ -189,7 +189,7 @@
 
 <dl class="method">
 <dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>Xstar</em>, <em>return_std=False</em>, <em>nsamples=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>Xstar</em>, <em>return_std=False</em>, <em>nsamples=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns mean and covariances for each posterior sampled Student-t Process.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -208,6 +208,24 @@ it returns the whole covariance matrix of the posterior process.</li>
 <li><em>np.ndarray</em> &#8211; Covariance posterior process for each MCMC sample and Xstar.</li>
 </ul>
 </p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>xnew</em>, <em>ynew</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the internal model with <cite>xnew</cite> and <cite>ynew</cite> instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xnew</strong> (<em>np.ndarray, shape=((m, nfeatures))</em>) &#8211; New training instances to update the model with.</li>
+<li><strong>ynew</strong> (<em>np.ndarray, shape=((m,))</em>) &#8211; New training targets to update the model with.</li>
+</ul>
 </td>
 </tr>
 </tbody>

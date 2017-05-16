@@ -160,8 +160,8 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gradient boosted trees as surrogate model for Bayesian Optimization.</span>
 <span class="sd">        Uses quantile regression for an estimate of the &#39;posterior&#39; variance.</span>
-<span class="sd">        In practice, the std is computed as (q2 - q1)/2.</span>
-<span class="sd">        Relies on sklearn&#39;s `GradientBoostingRegressor`</span>
+<span class="sd">        In practice, the std is computed as (`q2` - `q1`) / 2.</span>
+<span class="sd">        Relies on `sklearn.ensemble.GradientBoostingRegressor`</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -176,6 +176,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">q1</span> <span class="o">=</span> <span class="n">q1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">q2</span> <span class="o">=</span> <span class="n">q2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">1</span>
 
 <div class="viewcode-block" id="BoostedTrees.fit"><a class="viewcode-back" href="../../../pyGPGO.surrogates.BoostedTrees.html#pyGPGO.surrogates.BoostedTrees.BoostedTrees.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -220,11 +221,12 @@
 <span class="sd">            Posterior predicted std</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Xstar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">Xstar</span><span class="p">)</span>
         <span class="n">ymean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mod</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xstar</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">return_std</span><span class="p">:</span>
             <span class="n">q1pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modq1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xstar</span><span class="p">)</span>
             <span class="n">q2pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">modq2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xstar</span><span class="p">)</span>
-            <span class="n">ystd</span> <span class="o">=</span> <span class="p">(</span><span class="n">q2pred</span> <span class="o">-</span> <span class="n">q1pred</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="n">ystd</span> <span class="o">=</span> <span class="p">(</span><span class="n">q2pred</span> <span class="o">-</span> <span class="n">q1pred</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span>
             <span class="k">return</span> <span class="n">ymean</span><span class="p">,</span> <span class="n">ystd</span>
         <span class="k">return</span> <span class="n">ymean</span></div>
 

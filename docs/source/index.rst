@@ -10,23 +10,22 @@ pyGPGO is a simple and modular Python (>3.5) package for Bayesian Optimization. 
 
 - Different surrogate models: Gaussian Processes, Student-t Processes, Random Forests, Gradient Boosting Machines.
 - Type II Maximum-Likelihood of covariance function hyperparameters.
-- MCMC sampling for full-Bayesian inference of hyperparameters (via pyMC3).
+- MCMC sampling for full-Bayesian inference of hyperparameters (via ``pyMC3``).
 - Integrated acquisition functions
 
-Check us out on .. `Github <https://github.com/hawk31/pyGPGO>`_.
+Check us out on  `Github <https://github.com/hawk31/pyGPGO>`_.
 
 Overall, pyGPGO is a very easy to use package. In practice, a user needs to specify:
 
 - A function to optimize according to some parameters.
 - A dictionary defining parameters, their type and bounds.
-- A surrogate model, such as a Gaussian Process, from the surrogates module.
-   - Some surrogate models require defining a covariance function, with hyperparameters. (from the covfunc module)
+- A surrogate model, such as a Gaussian Process, from the surrogates module. Some surrogate models require defining
+  a covariance function, with hyperparameters. (from the covfunc module)
 - An acquisition strategy, from the acquisition module.
 - A GPGO instance, from the GPGO module
 
-A simple example can be checked below:
+A simple example can be checked below::
 
-.. code:: python
    import numpy as np
    from pyGPGO.covfunc import squaredExponential
    from pyGPGO.acquisition import Acquisition

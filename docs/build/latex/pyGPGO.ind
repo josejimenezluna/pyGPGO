@@ -1,0 +1,170 @@
+\begin{theindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+
+  \bigletter {Symbols}
+  \item \_acqWrapper() (pyGPGO.GPGO.GPGO method), \hyperpage{3}
+  \item \_firstRun() (pyGPGO.GPGO.GPGO method), \hyperpage{3}
+  \item \_grad() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method), \hyperpage{6}
+  \item \_lmlik() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method), \hyperpage{6}
+  \item \_lmlik() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method), \hyperpage{10}
+  \item \_optimizeAcq() (pyGPGO.GPGO.GPGO method), \hyperpage{3}
+  \item \_sampleParam() (pyGPGO.GPGO.GPGO method), \hyperpage{4}
+
+  \indexspace
+  \bigletter A
+  \item Acquisition (class in pyGPGO.acquisition), \hyperpage{18}
+
+  \indexspace
+  \bigletter B
+  \item BoostedTrees (class in pyGPGO.surrogates.BoostedTrees), \hyperpage{4}
+
+  \indexspace
+  \bigletter C
+  \item covfunc (pyGPGO.surrogates.GaussianProcess.GaussianProcess attribute), \hyperpage{5}
+  \item covfunc (pyGPGO.surrogates.tStudentProcess.tStudentProcess attribute), \hyperpage{10}
+
+  \indexspace
+  \bigletter D
+  \item dotProd (class in pyGPGO.covfunc), \hyperpage{12}
+
+  \indexspace
+  \bigletter E
+  \item Entropy() (pyGPGO.acquisition.Acquisition method), \hyperpage{18}
+  \item eval() (pyGPGO.acquisition.Acquisition method), \hyperpage{20}
+  \item ExpectedImprovement() (pyGPGO.acquisition.Acquisition method), \hyperpage{19}
+  \item expSine (class in pyGPGO.covfunc), \hyperpage{13}
+  \item ExtraForest (class in pyGPGO.surrogates.RandomForest), \hyperpage{8}
+
+  \indexspace
+  \bigletter F
+  \item fit() (pyGPGO.surrogates.BoostedTrees.BoostedTrees method), \hyperpage{4}
+  \item fit() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method), \hyperpage{6}
+  \item fit() (pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC method), \hyperpage{7}
+  \item fit() (pyGPGO.surrogates.RandomForest.ExtraForest method), \hyperpage{8}
+  \item fit() (pyGPGO.surrogates.RandomForest.RandomForest method), \hyperpage{9}
+  \item fit() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method), \hyperpage{10}
+  \item fit() (pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC method), \hyperpage{12}
+
+  \indexspace
+  \bigletter G
+  \item gammaExponential (class in pyGPGO.covfunc), \hyperpage{13}
+  \item GaussianProcess (class in pyGPGO.surrogates.GaussianProcess), \hyperpage{5}
+  \item GaussianProcessMCMC (class in pyGPGO.surrogates.GaussianProcessMCMC), \hyperpage{7}
+  \item getcovparams() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method), \hyperpage{6}
+  \item getcovparams() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method), \hyperpage{10}
+  \item getResult() (pyGPGO.GPGO.GPGO method), \hyperpage{4}
+  \item GPGO (class in pyGPGO.GPGO), \hyperpage{3}
+  \item gradK() (pyGPGO.covfunc.dotProd method), \hyperpage{13}
+  \item gradK() (pyGPGO.covfunc.expSine method), \hyperpage{13}
+  \item gradK() (pyGPGO.covfunc.gammaExponential method), \hyperpage{14}
+  \item gradK() (pyGPGO.covfunc.matern32 method), \hyperpage{16}
+  \item gradK() (pyGPGO.covfunc.matern52 method), \hyperpage{16}
+  \item gradK() (pyGPGO.covfunc.rationalQuadratic method), \hyperpage{17}
+  \item gradK() (pyGPGO.covfunc.squaredExponential method), \hyperpage{18}
+
+  \indexspace
+  \bigletter H
+  \item history (pyGPGO.GPGO.GPGO attribute), \hyperpage{3}
+
+  \indexspace
+  \bigletter I
+  \item IntegratedExpectedImprovement() (pyGPGO.acquisition.Acquisition method), \hyperpage{19}
+  \item IntegratedProbabilityImprovement() (pyGPGO.acquisition.Acquisition method), \hyperpage{19}
+  \item IntegratedUCB() (pyGPGO.acquisition.Acquisition method), \hyperpage{19}
+
+  \indexspace
+  \bigletter K
+  \item K() (pyGPGO.covfunc.dotProd method), \hyperpage{13}
+  \item K() (pyGPGO.covfunc.expSine method), \hyperpage{13}
+  \item K() (pyGPGO.covfunc.gammaExponential method), \hyperpage{14}
+  \item K() (pyGPGO.covfunc.matern method), \hyperpage{15}
+  \item K() (pyGPGO.covfunc.matern32 method), \hyperpage{15}
+  \item K() (pyGPGO.covfunc.matern52 method), \hyperpage{16}
+  \item K() (pyGPGO.covfunc.rationalQuadratic method), \hyperpage{17}
+  \item K() (pyGPGO.covfunc.squaredExponential method), \hyperpage{18}
+  \item kronDelta() (in module pyGPGO.covfunc), \hyperpage{14}
+
+  \indexspace
+  \bigletter L
+  \item l2norm\_() (in module pyGPGO.covfunc), \hyperpage{14}
+  \item logpdf() (in module pyGPGO.surrogates.tStudentProcess), \hyperpage{10}
+
+  \indexspace
+  \bigletter M
+  \item matern (class in pyGPGO.covfunc), \hyperpage{15}
+  \item matern32 (class in pyGPGO.covfunc), \hyperpage{15}
+  \item matern52 (class in pyGPGO.covfunc), \hyperpage{16}
+  \item mprior (pyGPGO.surrogates.GaussianProcess.GaussianProcess attribute), \hyperpage{5}
+
+  \indexspace
+  \bigletter N
+  \item nu (pyGPGO.surrogates.tStudentProcess.tStudentProcess attribute), \hyperpage{10}
+
+  \indexspace
+  \bigletter O
+  \item optHyp() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method), \hyperpage{6}
+  \item optHyp() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method), \hyperpage{11}
+  \item optimize (pyGPGO.surrogates.GaussianProcess.GaussianProcess attribute), \hyperpage{5}
+  \item optimize (pyGPGO.surrogates.tStudentProcess.tStudentProcess attribute), \hyperpage{10}
+
+  \indexspace
+  \bigletter P
+  \item param\_grad() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method), \hyperpage{6}
+  \item parameter\_key (pyGPGO.GPGO.GPGO attribute), \hyperpage{3}
+  \item parameter\_range (pyGPGO.GPGO.GPGO attribute), \hyperpage{3}
+  \item parameter\_type (pyGPGO.GPGO.GPGO attribute), \hyperpage{3}
+  \item posteriorPlot() (pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC method), 
+		\hyperpage{8}
+  \item posteriorPlot() (pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC method), 
+		\hyperpage{12}
+  \item predict() (pyGPGO.surrogates.BoostedTrees.BoostedTrees method), \hyperpage{5}
+  \item predict() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method), \hyperpage{7}
+  \item predict() (pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC method), \hyperpage{8}
+  \item predict() (pyGPGO.surrogates.RandomForest.ExtraForest method), \hyperpage{8}
+  \item predict() (pyGPGO.surrogates.RandomForest.RandomForest method), \hyperpage{9}
+  \item predict() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method), \hyperpage{11}
+  \item predict() (pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC method), 
+		\hyperpage{12}
+  \item ProbabilityImprovement() (pyGPGO.acquisition.Acquisition method), \hyperpage{19}
+  \item pyGPGO.acquisition (module), \hyperpage{18}
+  \item pyGPGO.covfunc (module), \hyperpage{12}
+  \item pyGPGO.GPGO (module), \hyperpage{3}
+  \item pyGPGO.surrogates (module), \hyperpage{12}
+  \item pyGPGO.surrogates.BoostedTrees (module), \hyperpage{4}
+  \item pyGPGO.surrogates.GaussianProcess (module), \hyperpage{5}
+  \item pyGPGO.surrogates.GaussianProcessMCMC (module), \hyperpage{7}
+  \item pyGPGO.surrogates.RandomForest (module), \hyperpage{8}
+  \item pyGPGO.surrogates.tStudentProcess (module), \hyperpage{10}
+  \item pyGPGO.surrogates.tStudentProcessMCMC (module), \hyperpage{11}
+
+  \indexspace
+  \bigletter R
+  \item RandomForest (class in pyGPGO.surrogates.RandomForest), \hyperpage{9}
+  \item rationalQuadratic (class in pyGPGO.covfunc), \hyperpage{17}
+  \item run() (pyGPGO.GPGO.GPGO method), \hyperpage{4}
+
+  \indexspace
+  \bigletter S
+  \item squaredExponential (class in pyGPGO.covfunc), \hyperpage{17}
+
+  \indexspace
+  \bigletter T
+  \item tExpectedImprovement() (pyGPGO.acquisition.Acquisition method), \hyperpage{20}
+  \item tIntegratedExpectedImprovement() (pyGPGO.acquisition.Acquisition method), \hyperpage{20}
+  \item tStudentProcess (class in pyGPGO.surrogates.tStudentProcess), \hyperpage{10}
+  \item tStudentProcessMCMC (class in pyGPGO.surrogates.tStudentProcessMCMC), \hyperpage{11}
+
+  \indexspace
+  \bigletter U
+  \item UCB() (pyGPGO.acquisition.Acquisition method), \hyperpage{20}
+  \item update() (pyGPGO.surrogates.BoostedTrees.BoostedTrees method), \hyperpage{5}
+  \item update() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method), \hyperpage{7}
+  \item update() (pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC method), \hyperpage{8}
+  \item update() (pyGPGO.surrogates.RandomForest.ExtraForest method), \hyperpage{9}
+  \item update() (pyGPGO.surrogates.RandomForest.RandomForest method), \hyperpage{9}
+  \item update() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method), \hyperpage{11}
+  \item update() (pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC method), \hyperpage{12}
+  \item updateGP() (pyGPGO.GPGO.GPGO method), \hyperpage{4}
+  \item usegrads (pyGPGO.surrogates.GaussianProcess.GaussianProcess attribute), \hyperpage{5}
+
+\end{theindex}

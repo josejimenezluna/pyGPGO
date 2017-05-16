@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyGPGO: A simple Python package for Bayesian Optimization &mdash; pyGPGO 0.1.0.dev1 documentation</title>
+  <title>pyGPGO: Bayesian Optimization for Python &mdash; pyGPGO 0.1.0.dev1 documentation</title>
   
 
   
@@ -132,7 +132,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>pyGPGO: A simple Python package for Bayesian Optimization</li>
+      <li>pyGPGO: Bayesian Optimization for Python</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -151,8 +151,56 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="pygpgo-a-simple-python-package-for-bayesian-optimization">
-<h1>pyGPGO: A simple Python package for Bayesian Optimization<a class="headerlink" href="#pygpgo-a-simple-python-package-for-bayesian-optimization" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pygpgo-bayesian-optimization-for-python">
+<h1>pyGPGO: Bayesian Optimization for Python<a class="headerlink" href="#pygpgo-bayesian-optimization-for-python" title="Permalink to this headline">¶</a></h1>
+<p>pyGPGO is a simple and modular Python (&gt;3.5) package for Bayesian Optimization. It supports:</p>
+<ul class="simple">
+<li>Different surrogate models: Gaussian Processes, Student-t Processes, Random Forests, Gradient Boosting Machines.</li>
+<li>Type II Maximum-Likelihood of covariance function hyperparameters.</li>
+<li>MCMC sampling for full-Bayesian inference of hyperparameters (via pyMC3).</li>
+<li>Integrated acquisition functions</li>
+</ul>
+<p>Check us out on  <a class="reference external" href="https://github.com/hawk31/pyGPGO">Github</a>.</p>
+<p>Overall, pyGPGO is a very easy to use package. In practice, a user needs to specify:</p>
+<ul>
+<li><p class="first">A function to optimize according to some parameters.</p>
+</li>
+<li><p class="first">A dictionary defining parameters, their type and bounds.</p>
+</li>
+<li><dl class="first docutils">
+<dt>A surrogate model, such as a Gaussian Process, from the surrogates module.</dt>
+<dd><ul class="first last simple">
+<li>Some surrogate models require defining a covariance function, with hyperparameters. (from the covfunc module)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">An acquisition strategy, from the acquisition module.</p>
+</li>
+<li><p class="first">A GPGO instance, from the GPGO module</p>
+</li>
+</ul>
+<p>A simple example can be checked below:</p>
+<dl class="docutils">
+<dt>code:: python</dt>
+<dd><p class="first">import numpy as np
+from pyGPGO.covfunc import squaredExponential
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.GPGO import GPGO</p>
+<dl class="docutils">
+<dt>def f(x):</dt>
+<dd>return (np.sin(x))</dd>
+</dl>
+<p>sexp = squaredExponential()
+gp = GaussianProcess(sexp)
+acq = Acquisition(mode=&#8217;ExpectedImprovement&#8217;)
+param = {&#8216;x&#8217;: (&#8216;cont&#8217;, [0, 2 * np.pi])}</p>
+<p class="last">np.random.seed(23)
+gpgo = GPGO(gp, acq, f, param)
+gpgo.run(max_iter=20)</p>
+</dd>
+</dl>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>

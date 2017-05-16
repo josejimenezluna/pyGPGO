@@ -157,6 +157,7 @@
 <span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="k">import</span> <span class="n">slogdet</span>
 <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">inv</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">minimize</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">gamma</span>
 
 <div class="viewcode-block" id="logpdf"><a class="viewcode-back" href="../../../pyGPGO.surrogates.tStudentProcess.html#pyGPGO.surrogates.tStudentProcess.logpdf">[docs]</a><span class="k">def</span> <span class="nf">logpdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">Sigma</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -169,9 +170,9 @@
 <span class="sd">    df: float</span>
 <span class="sd">        Degrees of freedom (&gt;2.0)</span>
 <span class="sd">    mu: array-like</span>
-<span class="sd">        Mean</span>
+<span class="sd">        Mean of the process.</span>
 <span class="sd">    Sigma: array-like</span>
-<span class="sd">        Covariance matrix</span>
+<span class="sd">        Covariance matrix of the process.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -304,7 +305,7 @@
 <span class="sd">        X: np.ndarray, shape=(nsamples, nfeatures)</span>
 <span class="sd">            Training instances to fit the GP.</span>
 <span class="sd">        y: np.ndarray, shape=(nsamples,)</span>
-<span class="sd">            Corresponding continuous target values to X.</span>
+<span class="sd">            Corresponding continuous target values to `X`.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>

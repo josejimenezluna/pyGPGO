@@ -1,0 +1,104 @@
+\indexentry{pyGPGO.GPGO (module)|hyperpage}{3}
+\indexentry{GPGO (class in pyGPGO.GPGO)|hyperpage}{3}
+\indexentry{parameter\_key (pyGPGO.GPGO.GPGO attribute)|hyperpage}{3}
+\indexentry{parameter\_type (pyGPGO.GPGO.GPGO attribute)|hyperpage}{3}
+\indexentry{parameter\_range (pyGPGO.GPGO.GPGO attribute)|hyperpage}{3}
+\indexentry{history (pyGPGO.GPGO.GPGO attribute)|hyperpage}{3}
+\indexentry{\_acqWrapper() (pyGPGO.GPGO.GPGO method)|hyperpage}{3}
+\indexentry{\_firstRun() (pyGPGO.GPGO.GPGO method)|hyperpage}{3}
+\indexentry{\_optimizeAcq() (pyGPGO.GPGO.GPGO method)|hyperpage}{3}
+\indexentry{\_sampleParam() (pyGPGO.GPGO.GPGO method)|hyperpage}{4}
+\indexentry{getResult() (pyGPGO.GPGO.GPGO method)|hyperpage}{4}
+\indexentry{run() (pyGPGO.GPGO.GPGO method)|hyperpage}{4}
+\indexentry{updateGP() (pyGPGO.GPGO.GPGO method)|hyperpage}{4}
+\indexentry{pyGPGO.surrogates.BoostedTrees (module)|hyperpage}{4}
+\indexentry{BoostedTrees (class in pyGPGO.surrogates.BoostedTrees)|hyperpage}{4}
+\indexentry{fit() (pyGPGO.surrogates.BoostedTrees.BoostedTrees method)|hyperpage}{4}
+\indexentry{predict() (pyGPGO.surrogates.BoostedTrees.BoostedTrees method)|hyperpage}{5}
+\indexentry{update() (pyGPGO.surrogates.BoostedTrees.BoostedTrees method)|hyperpage}{5}
+\indexentry{pyGPGO.surrogates.GaussianProcess (module)|hyperpage}{5}
+\indexentry{GaussianProcess (class in pyGPGO.surrogates.GaussianProcess)|hyperpage}{5}
+\indexentry{covfunc (pyGPGO.surrogates.GaussianProcess.GaussianProcess attribute)|hyperpage}{5}
+\indexentry{optimize (pyGPGO.surrogates.GaussianProcess.GaussianProcess attribute)|hyperpage}{5}
+\indexentry{usegrads (pyGPGO.surrogates.GaussianProcess.GaussianProcess attribute)|hyperpage}{5}
+\indexentry{mprior (pyGPGO.surrogates.GaussianProcess.GaussianProcess attribute)|hyperpage}{5}
+\indexentry{\_grad() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method)|hyperpage}{6}
+\indexentry{\_lmlik() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method)|hyperpage}{6}
+\indexentry{fit() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method)|hyperpage}{6}
+\indexentry{getcovparams() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method)|hyperpage}{6}
+\indexentry{optHyp() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method)|hyperpage}{6}
+\indexentry{param\_grad() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method)|hyperpage}{6}
+\indexentry{predict() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method)|hyperpage}{7}
+\indexentry{update() (pyGPGO.surrogates.GaussianProcess.GaussianProcess method)|hyperpage}{7}
+\indexentry{pyGPGO.surrogates.GaussianProcessMCMC (module)|hyperpage}{7}
+\indexentry{GaussianProcessMCMC (class in pyGPGO.surrogates.GaussianProcessMCMC)|hyperpage}{7}
+\indexentry{fit() (pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC method)|hyperpage}{7}
+\indexentry{posteriorPlot() (pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC method)|hyperpage}{8}
+\indexentry{predict() (pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC method)|hyperpage}{8}
+\indexentry{update() (pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC method)|hyperpage}{8}
+\indexentry{pyGPGO.surrogates.RandomForest (module)|hyperpage}{8}
+\indexentry{ExtraForest (class in pyGPGO.surrogates.RandomForest)|hyperpage}{8}
+\indexentry{fit() (pyGPGO.surrogates.RandomForest.ExtraForest method)|hyperpage}{8}
+\indexentry{predict() (pyGPGO.surrogates.RandomForest.ExtraForest method)|hyperpage}{8}
+\indexentry{update() (pyGPGO.surrogates.RandomForest.ExtraForest method)|hyperpage}{9}
+\indexentry{RandomForest (class in pyGPGO.surrogates.RandomForest)|hyperpage}{9}
+\indexentry{fit() (pyGPGO.surrogates.RandomForest.RandomForest method)|hyperpage}{9}
+\indexentry{predict() (pyGPGO.surrogates.RandomForest.RandomForest method)|hyperpage}{9}
+\indexentry{update() (pyGPGO.surrogates.RandomForest.RandomForest method)|hyperpage}{9}
+\indexentry{pyGPGO.surrogates.tStudentProcess (module)|hyperpage}{10}
+\indexentry{logpdf() (in module pyGPGO.surrogates.tStudentProcess)|hyperpage}{10}
+\indexentry{tStudentProcess (class in pyGPGO.surrogates.tStudentProcess)|hyperpage}{10}
+\indexentry{covfunc (pyGPGO.surrogates.tStudentProcess.tStudentProcess attribute)|hyperpage}{10}
+\indexentry{nu (pyGPGO.surrogates.tStudentProcess.tStudentProcess attribute)|hyperpage}{10}
+\indexentry{optimize (pyGPGO.surrogates.tStudentProcess.tStudentProcess attribute)|hyperpage}{10}
+\indexentry{\_lmlik() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method)|hyperpage}{10}
+\indexentry{fit() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method)|hyperpage}{10}
+\indexentry{getcovparams() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method)|hyperpage}{10}
+\indexentry{optHyp() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method)|hyperpage}{11}
+\indexentry{predict() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method)|hyperpage}{11}
+\indexentry{update() (pyGPGO.surrogates.tStudentProcess.tStudentProcess method)|hyperpage}{11}
+\indexentry{pyGPGO.surrogates.tStudentProcessMCMC (module)|hyperpage}{11}
+\indexentry{tStudentProcessMCMC (class in pyGPGO.surrogates.tStudentProcessMCMC)|hyperpage}{11}
+\indexentry{fit() (pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC method)|hyperpage}{12}
+\indexentry{posteriorPlot() (pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC method)|hyperpage}{12}
+\indexentry{predict() (pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC method)|hyperpage}{12}
+\indexentry{update() (pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC method)|hyperpage}{12}
+\indexentry{pyGPGO.surrogates (module)|hyperpage}{12}
+\indexentry{pyGPGO.covfunc (module)|hyperpage}{12}
+\indexentry{dotProd (class in pyGPGO.covfunc)|hyperpage}{12}
+\indexentry{K() (pyGPGO.covfunc.dotProd method)|hyperpage}{13}
+\indexentry{gradK() (pyGPGO.covfunc.dotProd method)|hyperpage}{13}
+\indexentry{expSine (class in pyGPGO.covfunc)|hyperpage}{13}
+\indexentry{K() (pyGPGO.covfunc.expSine method)|hyperpage}{13}
+\indexentry{gradK() (pyGPGO.covfunc.expSine method)|hyperpage}{13}
+\indexentry{gammaExponential (class in pyGPGO.covfunc)|hyperpage}{13}
+\indexentry{K() (pyGPGO.covfunc.gammaExponential method)|hyperpage}{14}
+\indexentry{gradK() (pyGPGO.covfunc.gammaExponential method)|hyperpage}{14}
+\indexentry{kronDelta() (in module pyGPGO.covfunc)|hyperpage}{14}
+\indexentry{l2norm\_() (in module pyGPGO.covfunc)|hyperpage}{14}
+\indexentry{matern (class in pyGPGO.covfunc)|hyperpage}{15}
+\indexentry{K() (pyGPGO.covfunc.matern method)|hyperpage}{15}
+\indexentry{matern32 (class in pyGPGO.covfunc)|hyperpage}{15}
+\indexentry{K() (pyGPGO.covfunc.matern32 method)|hyperpage}{15}
+\indexentry{gradK() (pyGPGO.covfunc.matern32 method)|hyperpage}{16}
+\indexentry{matern52 (class in pyGPGO.covfunc)|hyperpage}{16}
+\indexentry{K() (pyGPGO.covfunc.matern52 method)|hyperpage}{16}
+\indexentry{gradK() (pyGPGO.covfunc.matern52 method)|hyperpage}{16}
+\indexentry{rationalQuadratic (class in pyGPGO.covfunc)|hyperpage}{17}
+\indexentry{K() (pyGPGO.covfunc.rationalQuadratic method)|hyperpage}{17}
+\indexentry{gradK() (pyGPGO.covfunc.rationalQuadratic method)|hyperpage}{17}
+\indexentry{squaredExponential (class in pyGPGO.covfunc)|hyperpage}{17}
+\indexentry{K() (pyGPGO.covfunc.squaredExponential method)|hyperpage}{18}
+\indexentry{gradK() (pyGPGO.covfunc.squaredExponential method)|hyperpage}{18}
+\indexentry{pyGPGO.acquisition (module)|hyperpage}{18}
+\indexentry{Acquisition (class in pyGPGO.acquisition)|hyperpage}{18}
+\indexentry{Entropy() (pyGPGO.acquisition.Acquisition method)|hyperpage}{18}
+\indexentry{ExpectedImprovement() (pyGPGO.acquisition.Acquisition method)|hyperpage}{19}
+\indexentry{IntegratedExpectedImprovement() (pyGPGO.acquisition.Acquisition method)|hyperpage}{19}
+\indexentry{IntegratedProbabilityImprovement() (pyGPGO.acquisition.Acquisition method)|hyperpage}{19}
+\indexentry{IntegratedUCB() (pyGPGO.acquisition.Acquisition method)|hyperpage}{19}
+\indexentry{ProbabilityImprovement() (pyGPGO.acquisition.Acquisition method)|hyperpage}{19}
+\indexentry{UCB() (pyGPGO.acquisition.Acquisition method)|hyperpage}{20}
+\indexentry{eval() (pyGPGO.acquisition.Acquisition method)|hyperpage}{20}
+\indexentry{tExpectedImprovement() (pyGPGO.acquisition.Acquisition method)|hyperpage}{20}
+\indexentry{tIntegratedExpectedImprovement() (pyGPGO.acquisition.Acquisition method)|hyperpage}{20}

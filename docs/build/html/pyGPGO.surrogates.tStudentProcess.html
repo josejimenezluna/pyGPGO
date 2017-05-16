@@ -170,8 +170,8 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>x</strong> (<em>array-like</em>) &#8211; Point to be evaluated</li>
 <li><strong>df</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Degrees of freedom (&gt;2.0)</li>
-<li><strong>mu</strong> (<em>array-like</em>) &#8211; Mean</li>
-<li><strong>Sigma</strong> (<em>array-like</em>) &#8211; Covariance matrix</li>
+<li><strong>mu</strong> (<em>array-like</em>) &#8211; Mean of the process.</li>
+<li><strong>Sigma</strong> (<em>array-like</em>) &#8211; Covariance matrix of the process.</li>
 </ul>
 </td>
 </tr>
@@ -223,7 +223,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>X</strong> (<em>np.ndarray, shape=(nsamples, nfeatures)</em>) &#8211; Training instances to fit the GP.</li>
-<li><strong>y</strong> (<em>np.ndarray, shape=(nsamples,)</em>) &#8211; Corresponding continuous target values to X.</li>
+<li><strong>y</strong> (<em>np.ndarray, shape=(nsamples,)</em>) &#8211; Corresponding continuous target values to <cite>X</cite>.</li>
 </ul>
 </td>
 </tr>

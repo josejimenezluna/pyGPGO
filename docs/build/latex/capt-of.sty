@@ -1,0 +1,30 @@
+%  CAPT-OF.STY v0.1
+%  Copyright 1996, 1999 Robin Fairbairns (rf10@cam.ac.uk)
+%
+%   This program can redistributed and/or modified under the terms
+%   of the LaTeX Project Public License Distributed from CTAN
+%   archives in directory macros/latex/base/lppl.txt; either
+%   version 1 of the License, or (at your option) any later version.
+%
+% This short package permits you to have things with apparently
+% `proper' captions in the body of your text.  This is sometimes
+% convenient in documents that only have small `figure's or `table's
+% (or small numbers of them) and you don't need to hassle yourself
+% dealing with floats (\begin{figure|table}...)
+%
+% Usage: \captionof{type}[move]{caption}
+%        type is `figure' or `table' (or some type you've defined with
+%             float.sty)
+%        move is the optional moving argument of \caption (the thing
+%             that goes to the listoftables/figures)
+%        caption is the text of the caption
+%
+% It's probably best to use \captionof within an enclosing group
+% (e.g., \begin{center} fig \captionof{figure}{blah blah} \end{center})
+%
+% CAVEAT: If you _do_ have `real' (floating) figures or tables in your
+% document, you may find this package causes the figures\tables to get
+% out of order.  You are (as far as I'm concerned) `on your own' if
+% you use this package in such circumstances.
+
+\newcommand\captionof[1]{\def\@captype{#1}\caption}

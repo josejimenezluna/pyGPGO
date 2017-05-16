@@ -1,0 +1,18 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}pyGPGO documentation}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}pyGPGO.GPGO module}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}pyGPGO.surrogates package}{4}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Submodules}{4}{subsection.1.2.1}
+\contentsline {subsubsection}{pyGPGO.surrogates.BoostedTrees module}{4}{subsubsection*.15}
+\contentsline {subsubsection}{pyGPGO.surrogates.GaussianProcess module}{5}{subsubsection*.20}
+\contentsline {paragraph}{Notes}{6}{paragraph*.26}
+\contentsline {subsubsection}{pyGPGO.surrogates.GaussianProcessMCMC module}{7}{subsubsection*.35}
+\contentsline {subsubsection}{pyGPGO.surrogates.RandomForest module}{8}{subsubsection*.41}
+\contentsline {subsubsection}{pyGPGO.surrogates.tStudentProcess module}{10}{subsubsection*.50}
+\contentsline {subsubsection}{pyGPGO.surrogates.tStudentProcessMCMC module}{11}{subsubsection*.62}
+\contentsline {subsection}{\numberline {1.2.2}Module contents}{12}{subsection.1.2.2}
+\contentsline {section}{\numberline {1.3}pyGPGO.covfunc module}{12}{section.1.3}
+\contentsline {section}{\numberline {1.4}pyGPGO.acquisition module}{18}{section.1.4}
+\contentsline {chapter}{\numberline {2}Indices and tables}{23}{chapter.2}
+\contentsline {chapter}{Python Module Index}{25}{section*.104}
+\contentsline {chapter}{Index}{27}{section*.105}
