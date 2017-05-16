@@ -61,6 +61,7 @@ class GaussianProcessMCMC:
 
         """
         self.X = X
+        self.n = self.X.shape[0]
         self.y = y
         self.model = pm.Model()
 
@@ -74,8 +75,8 @@ class GaussianProcessMCMC:
             s2_n = pm.Deterministic('sigman', tt.exp(log_s2_n))
 
             f_cov = s2_f * covariance_equivalence[type(self.covfunc).__name__](1, l)
-
-            y_obs = pm.gp.GP('y_obs', cov_func=f_cov, sigma=s2_n, observed={'X': self.X, 'Y': self.y})
+            Sigma = f_cov(self.X) + tt.eye(self.n) * s2_n ** 2
+            y_obs = pm.MvNormal('y_obs', mu=np.zeros(self.n), cov=Sigma, observed=self.y)
         with self.model as model:
             if self.step is not None:
                 self.trace = pm.sample(self.niter, step=self.step())[self.burnin:]
