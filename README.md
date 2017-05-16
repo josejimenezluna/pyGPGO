@@ -15,6 +15,15 @@ Just pip install the repo:
 pip install git+https://github.com/hawk31/pyGPGO
 ```
 
+Optionally, install `pyMC3`
+
+```bash
+git clone https://github.com/pymc-devs/pymc3
+cd pymc3
+pip install -r requirements.txt
+python setup.py install
+```
+
 ### Dependencies
 
 *   Typical Python scientific stuff: `numpy`, `scipy`.
@@ -22,6 +31,8 @@ pip install git+https://github.com/hawk31/pyGPGO
 *   `scikit-learn` (Optional, for other surrogates different than GP.)
 *   `pyMC3` (Optional, for integrated acquisition functions and MCMC inference)
 *   `theano` (Optional) development version. (pyMC3 dependency)
+
+All dependencies except `pyMC3` are taken care for in the requirements file.
 
 ### Features
 

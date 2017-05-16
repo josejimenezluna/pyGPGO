@@ -25,6 +25,8 @@ setup(name='pyGPGO',
         'joblib',
         'scikit-learn',
         'theano',
-        'git+https://github.com/pymc-devs/pymc3.git'
     ],
+    extras_require={
+          'pyMC3': ["pyMC3"]
+    },
     zip_safe=False)
