@@ -163,6 +163,22 @@
 <dt id="pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC">
 <em class="property">class </em><code class="descclassname">pyGPGO.surrogates.GaussianProcessMCMC.</code><code class="descname">GaussianProcessMCMC</code><span class="sig-paren">(</span><em>covfunc</em>, <em>niter=2000</em>, <em>burnin=1000</em>, <em>init='ADVI'</em>, <em>step=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcessMCMC.html#GaussianProcessMCMC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Gaussian Process class using MCMC sampling of covariance function hyperparameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>covfunc</strong> &#8211; Covariance function to use. Currently this instance only supports <cite>squaredExponential</cite>
+and <cite>matern</cite> v=1.5, 2.5 kernel</li>
+<li><strong>niter</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Number of iterations to run MCMC.</li>
+<li><strong>burnin</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Burn-in iterations to discard at trace.</li>
+<li><strong>init</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Initialization method for NUTS. Check pyMC3 docs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcessMCMC.html#GaussianProcessMCMC.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcessMCMC.GaussianProcessMCMC.fit" title="Permalink to this definition">¶</a></dt>

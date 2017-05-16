@@ -157,50 +157,40 @@
 <ul class="simple">
 <li>Different surrogate models: Gaussian Processes, Student-t Processes, Random Forests, Gradient Boosting Machines.</li>
 <li>Type II Maximum-Likelihood of covariance function hyperparameters.</li>
-<li>MCMC sampling for full-Bayesian inference of hyperparameters (via pyMC3).</li>
+<li>MCMC sampling for full-Bayesian inference of hyperparameters (via <code class="docutils literal"><span class="pre">pyMC3</span></code>).</li>
 <li>Integrated acquisition functions</li>
 </ul>
 <p>Check us out on  <a class="reference external" href="https://github.com/hawk31/pyGPGO">Github</a>.</p>
 <p>Overall, pyGPGO is a very easy to use package. In practice, a user needs to specify:</p>
-<ul>
-<li><p class="first">A function to optimize according to some parameters.</p>
-</li>
-<li><p class="first">A dictionary defining parameters, their type and bounds.</p>
-</li>
-<li><dl class="first docutils">
-<dt>A surrogate model, such as a Gaussian Process, from the surrogates module.</dt>
-<dd><ul class="first last simple">
-<li>Some surrogate models require defining a covariance function, with hyperparameters. (from the covfunc module)</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">An acquisition strategy, from the acquisition module.</p>
-</li>
-<li><p class="first">A GPGO instance, from the GPGO module</p>
-</li>
+<ul class="simple">
+<li>A function to optimize according to some parameters.</li>
+<li>A dictionary defining parameters, their type and bounds.</li>
+<li>A surrogate model, such as a Gaussian Process, from the surrogates module. Some surrogate models require defining
+a covariance function, with hyperparameters. (from the covfunc module)</li>
+<li>An acquisition strategy, from the acquisition module.</li>
+<li>A GPGO instance, from the GPGO module</li>
 </ul>
 <p>A simple example can be checked below:</p>
-<dl class="docutils">
-<dt>code:: python</dt>
-<dd><p class="first">import numpy as np
-from pyGPGO.covfunc import squaredExponential
-from pyGPGO.acquisition import Acquisition
-from pyGPGO.surrogates.GaussianProcess import GaussianProcess
-from pyGPGO.GPGO import GPGO</p>
-<dl class="docutils">
-<dt>def f(x):</dt>
-<dd>return (np.sin(x))</dd>
-</dl>
-<p>sexp = squaredExponential()
-gp = GaussianProcess(sexp)
-acq = Acquisition(mode=&#8217;ExpectedImprovement&#8217;)
-param = {&#8216;x&#8217;: (&#8216;cont&#8217;, [0, 2 * np.pi])}</p>
-<p class="last">np.random.seed(23)
-gpgo = GPGO(gp, acq, f, param)
-gpgo.run(max_iter=20)</p>
-</dd>
-</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pyGPGO.covfunc</span> <span class="k">import</span> <span class="n">squaredExponential</span>
+<span class="kn">from</span> <span class="nn">pyGPGO.acquisition</span> <span class="k">import</span> <span class="n">Acquisition</span>
+<span class="kn">from</span> <span class="nn">pyGPGO.surrogates.GaussianProcess</span> <span class="k">import</span> <span class="n">GaussianProcess</span>
+<span class="kn">from</span> <span class="nn">pyGPGO.GPGO</span> <span class="k">import</span> <span class="n">GPGO</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+
+<span class="n">sexp</span> <span class="o">=</span> <span class="n">squaredExponential</span><span class="p">()</span>
+<span class="n">gp</span> <span class="o">=</span> <span class="n">GaussianProcess</span><span class="p">(</span><span class="n">sexp</span><span class="p">)</span>
+<span class="n">acq</span> <span class="o">=</span> <span class="n">Acquisition</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;ExpectedImprovement&#39;</span><span class="p">)</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;cont&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">])}</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">gpgo</span> <span class="o">=</span> <span class="n">GPGO</span><span class="p">(</span><span class="n">gp</span><span class="p">,</span> <span class="n">acq</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+<span class="n">gpgo</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>

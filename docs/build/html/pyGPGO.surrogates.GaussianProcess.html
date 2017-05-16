@@ -163,6 +163,48 @@
 <dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess">
 <em class="property">class </em><code class="descclassname">pyGPGO.surrogates.GaussianProcess.</code><code class="descname">GaussianProcess</code><span class="sig-paren">(</span><em>covfunc</em>, <em>optimize=False</em>, <em>usegrads=False</em>, <em>mprior=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Gaussian Process regressor class. Based on Rasmussen &amp; Williams <a href="#id2"><span class="problematic" id="id3"><span id="id1"></span>[1]_</span></a> algorithm 2.1.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>covfunc</strong> (<em>instance from a class of covfunc module</em>) &#8211; Covariance function. An instance from a class in the <cite>covfunc</cite> module.</li>
+<li><strong>optimize</strong> (<em>bool:</em>) &#8211; Whether to perform covariance function hyperparameter optimization.</li>
+<li><strong>usegrads</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Whether to use gradient information on hyperparameter optimization. Only used
+if <cite>optimize=True</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.covfunc">
+<code class="descname">covfunc</code><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.covfunc" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> &#8211; Internal covariance function.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.optimize">
+<code class="descname">optimize</code><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> &#8211; User chosen optimization configuration.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.usegrads">
+<code class="descname">usegrads</code><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.usegrads" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> &#8211; Gradient behavior</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.mprior">
+<code class="descname">mprior</code><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.mprior" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> &#8211; Explicit value for the mean function of the prior Gaussian Process.</p>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>[1] Rasmussen, C. E., &amp; Williams, C. K. I. (2004). Gaussian processes for machine learning.
+International journal of neural systems (Vol. 14). <a class="reference external" href="http://doi.org/10.1142/S0129065704001899">http://doi.org/10.1142/S0129065704001899</a></p>
 <dl class="method">
 <dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess._grad">
 <code class="descname">_grad</code><span class="sig-paren">(</span><em>param_vector</em>, <em>param_key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess._grad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess._grad" title="Permalink to this definition">¶</a></dt>

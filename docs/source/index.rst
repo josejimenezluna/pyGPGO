@@ -19,10 +19,10 @@ Overall, pyGPGO is a very easy to use package. In practice, a user needs to spec
 
 - A function to optimize according to some parameters.
 - A dictionary defining parameters, their type and bounds.
-- A surrogate model, such as a Gaussian Process, from the surrogates module. Some surrogate models require defining
-  a covariance function, with hyperparameters. (from the covfunc module)
-- An acquisition strategy, from the acquisition module.
-- A GPGO instance, from the GPGO module
+- A surrogate model, such as a Gaussian Process, from the ``surrogates`` module. Some surrogate models require defining
+  a covariance function, with hyperparameters. (from the ``covfunc`` module)
+- An acquisition strategy, from the ``acquisition`` module.
+- A GPGO instance, from the ``GPGO`` module
 
 A simple example can be checked below::
 
@@ -44,6 +44,7 @@ A simple example can be checked below::
    np.random.seed(23)
    gpgo = GPGO(gp, acq, f, param)
    gpgo.run(max_iter=20)
+
 
 
 Contents:

@@ -7,13 +7,13 @@ from joblib import Parallel, delayed
 from pyGPGO.logger import EventLogger
 
 class GPGO:
-    def __init__(self, GPRegressor, Acquisition, f, parameter_dict, n_jobs=1):
+    def __init__(self, surrogate, acquisition, f, parameter_dict, n_jobs=1):
         """
         Bayesian Optimization class.
 
         Parameters
         ----------
-        GPRegressor: GaussianProcess instance
+        Surrogate: Surrogate model instance
             Gaussian Process surrogate model instance.
         Acquisition: Acquisition instance
             Acquisition instance.
@@ -35,8 +35,8 @@ class GPGO:
         history: list
             Target values evaluated along the procedure.
         """
-        self.GP = GPRegressor
-        self.A = Acquisition
+        self.GP = surrogate
+        self.A = acquisition
         self.f = f
         self.parameters = parameter_dict
         self.n_jobs = n_jobs

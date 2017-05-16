@@ -161,6 +161,46 @@
 <dt id="pyGPGO.GPGO.GPGO">
 <em class="property">class </em><code class="descclassname">pyGPGO.GPGO.</code><code class="descname">GPGO</code><span class="sig-paren">(</span><em>GPRegressor</em>, <em>Acquisition</em>, <em>f</em>, <em>parameter_dict</em>, <em>n_jobs=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPGO.html#GPGO"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPGO.GPGO" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Bayesian Optimization class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>GPRegressor</strong> (<em>GaussianProcess instance</em>) &#8211; Gaussian Process surrogate model instance.</li>
+<li><strong>Acquisition</strong> (<em>Acquisition instance</em>) &#8211; Acquisition instance.</li>
+<li><strong>f</strong> (<em>fun</em>) &#8211; Function to maximize over parameters specified by <cite>parameter_dict</cite>.</li>
+<li><strong>parameter_dict</strong> (<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; Dictionary specifying parameter, their type and bounds.</li>
+<li><strong>n_jobs</strong> (<em>int. Default 1</em>) &#8211; Parallel threads to use during acquisition optimization.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pyGPGO.GPGO.GPGO.parameter_key">
+<code class="descname">parameter_key</code><a class="headerlink" href="#pyGPGO.GPGO.GPGO.parameter_key" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> &#8211; Parameters to consider in optimization</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGPGO.GPGO.GPGO.parameter_type">
+<code class="descname">parameter_type</code><a class="headerlink" href="#pyGPGO.GPGO.GPGO.parameter_type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> &#8211; Parameter types.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGPGO.GPGO.GPGO.parameter_range">
+<code class="descname">parameter_range</code><a class="headerlink" href="#pyGPGO.GPGO.GPGO.parameter_range" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> &#8211; Parameter bounds during optimization</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGPGO.GPGO.GPGO.history">
+<code class="descname">history</code><a class="headerlink" href="#pyGPGO.GPGO.GPGO.history" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> &#8211; Target values evaluated along the procedure.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="pyGPGO.GPGO.GPGO._acqWrapper">
 <code class="descname">_acqWrapper</code><span class="sig-paren">(</span><em>xnew</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/GPGO.html#GPGO._acqWrapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.GPGO.GPGO._acqWrapper" title="Permalink to this definition">¶</a></dt>

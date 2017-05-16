@@ -282,6 +282,24 @@ change significantly.    l: float</li>
 <dt id="pyGPGO.covfunc.gammaExponential">
 <em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">gammaExponential</code><span class="sig-paren">(</span><em>gamma=1, l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['gamma', 'l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#gammaExponential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.gammaExponential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Gamma-exponential kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>gamma</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Hyperparameter of the Gamma-exponential covariance function.</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.covfunc.gammaExponential.K">
 <code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#gammaExponential.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.gammaExponential.K" title="Permalink to this definition">¶</a></dt>
@@ -385,6 +403,24 @@ change significantly.    l: float</li>
 <dt id="pyGPGO.covfunc.matern">
 <em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">matern</code><span class="sig-paren">(</span><em>v=1, l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['v', 'l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Matern kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>v</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Scale-mixture hyperparameter of the Matern covariance function.</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.covfunc.matern.K">
 <code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern.K" title="Permalink to this definition">¶</a></dt>
@@ -415,6 +451,23 @@ change significantly.    l: float</li>
 <dt id="pyGPGO.covfunc.matern32">
 <em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">matern32</code><span class="sig-paren">(</span><em>l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern32" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Matern v=3/2 kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.covfunc.matern32.K">
 <code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern32.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern32.K" title="Permalink to this definition">¶</a></dt>
@@ -470,6 +523,23 @@ change significantly.    l: float</li>
 <dt id="pyGPGO.covfunc.matern52">
 <em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">matern52</code><span class="sig-paren">(</span><em>l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern52" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Matern v=5/2 kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.covfunc.matern52.K">
 <code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern52.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern52.K" title="Permalink to this definition">¶</a></dt>
@@ -525,6 +595,24 @@ change significantly.    l: float</li>
 <dt id="pyGPGO.covfunc.rationalQuadratic">
 <em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">rationalQuadratic</code><span class="sig-paren">(</span><em>alpha=1, l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['alpha', 'l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#rationalQuadratic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.rationalQuadratic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Rational-quadratic kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Hyperparameter of the rational-quadratic covariance function.</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.covfunc.rationalQuadratic.K">
 <code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#rationalQuadratic.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.rationalQuadratic.K" title="Permalink to this definition">¶</a></dt>
@@ -580,6 +668,23 @@ change significantly.    l: float</li>
 <dt id="pyGPGO.covfunc.squaredExponential">
 <em class="property">class </em><code class="descclassname">pyGPGO.covfunc.</code><code class="descname">squaredExponential</code><span class="sig-paren">(</span><em>l=1, sigmaf=1.0, sigman=1e-06, bounds=None, parameters=['l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#squaredExponential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.squaredExponential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Squared exponential kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.covfunc.squaredExponential.K">
 <code class="descname">K</code><span class="sig-paren">(</span><em>X</em>, <em>Xstar</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#squaredExponential.K"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.squaredExponential.K" title="Permalink to this definition">¶</a></dt>

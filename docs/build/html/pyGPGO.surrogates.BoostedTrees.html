@@ -163,6 +163,23 @@
 <dt id="pyGPGO.surrogates.BoostedTrees.BoostedTrees">
 <em class="property">class </em><code class="descclassname">pyGPGO.surrogates.BoostedTrees.</code><code class="descname">BoostedTrees</code><span class="sig-paren">(</span><em>q1=0.16</em>, <em>q2=0.84</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/BoostedTrees.html#BoostedTrees"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.BoostedTrees.BoostedTrees" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Gradient boosted trees as surrogate model for Bayesian Optimization.
+Uses quantile regression for an estimate of the &#8216;posterior&#8217; variance.
+In practice, the std is computed as (<cite>q2</cite> - <cite>q1</cite>) / 2.
+Relies on <cite>sklearn.ensemble.GradientBoostingRegressor</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>q1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; First quantile.</li>
+<li><strong>q2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Second quantile</li>
+<li><strong>params</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a>) &#8211; Extra parameters to pass to <cite>GradientBoostingRegressor</cite></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="pyGPGO.surrogates.BoostedTrees.BoostedTrees.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/BoostedTrees.html#BoostedTrees.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.BoostedTrees.BoostedTrees.fit" title="Permalink to this definition">¶</a></dt>

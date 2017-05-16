@@ -189,6 +189,37 @@
 <dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess">
 <em class="property">class </em><code class="descclassname">pyGPGO.surrogates.tStudentProcess.</code><code class="descname">tStudentProcess</code><span class="sig-paren">(</span><em>covfunc</em>, <em>nu=3.0</em>, <em>optimize=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>t-Student Process regressor class. This class DOES NOT support gradients in ML estimation yet.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>covfunc</strong> (<em>instance from a class of covfunc module</em>) &#8211; An instance from a class from the <cite>covfunc</cite> module.</li>
+<li><strong>nu</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; (&gt;2.0) Degrees of freedom</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess.covfunc">
+<code class="descname">covfunc</code><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess.covfunc" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> &#8211; Internal covariance function.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess.nu">
+<code class="descname">nu</code><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess.nu" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> &#8211; Degrees of freedom.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess.optimize">
+<code class="descname">optimize</code><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> &#8211; Whether to optimize covariance function hyperparameters.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess._lmlik">
 <code class="descname">_lmlik</code><span class="sig-paren">(</span><em>param_vector</em>, <em>param_key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess._lmlik"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess._lmlik" title="Permalink to this definition">¶</a></dt>
