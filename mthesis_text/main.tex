@@ -83,7 +83,10 @@
 \begin{flushright}
 {\itshape
 There ain't no such thing as a free lunch.\\}
-Friedman. M. (1975)
+Friedman. M. (1975)\\
+\vfill
+{\itshape
+Be brave, be bayesian.\\}
 \end{flushright}
 \vspace{\stretch{3}}
 \cleardoublepage
@@ -1023,10 +1026,10 @@ In this small section, we will consider very briefly why the Bayesian Optimizati
 
 In practice, when we are interested in doing hyperparameter search in machine-learning, the algorithms are very blunt, in the sense that the most common strategies explore the entire space, either exhaustively or randomly. The acquisition functions defined in this chapter before use information from the Gaussian Process prior to explore efficiently the space. The specifics of each acquisition function have already been discussed, specially their exploration/exploitation balance, but they all share some common logic.\\
 
-Bayesian Optimization is efficient because it ignores all the space where the predicted upper confidence bound is lower than the maximum value of the lower confidence bound. It only uses the space that fulfills this criteria, according to the strategy selected by the chosen acquisition function. This remains a very reasonable assumption throughout the whole optimization procedure. The code for generating this particular representation can be consulted in Appendix \ref{bayoptwork}.
+Bayesian Optimization is efficient because it ignores all the space where the predicted upper confidence bound is lower than the maximum value of the lower confidence bound. It only uses the space that fulfills this criteria, according to the strategy selected by the chosen acquisition function. This remains a very reasonable assumption throughout the whole optimization procedure. In practice, the framework resembles a branch-and-bound type algorithm, but probabilistically.  The procedure assumes that the true function will lie, with high probability $1-\delta$ within both lower and upper confidence bounds respectively. However, there is always the probability $\delta$ of the function not fulfilling this criteria, in which case the fit surrogate Gaussian Process will be updated with further evaluations. The code for generating this particular representation can be consulted in Appendix \ref{bayoptwork}.
 
 \begin{figure}
-	\caption{A visual explanation on why Bayesian optimization is efficient at exploring the space. It ignores all the input space where the UPB is lower than the point with maximum LCB.}
+	\caption{A visual explanation on why Bayesian optimization is efficient at exploring the space. It ignores all the input space where the UCB is lower than the point with maximum LCB.}
 	\label{fig:explanation}
 	\includegraphics[width=\textwidth]{figures/chapter3/explanation}
 \end{figure}

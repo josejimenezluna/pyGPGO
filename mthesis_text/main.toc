@@ -70,9 +70,9 @@
 \defcounter {refsection}{3}\relax 
 \contentsline {subsection}{\numberline {3.6.1}Approximations to the analytical GP. Alternative surrogates.}{37}{subsection.3.6.1}
 \defcounter {refsection}{3}\relax 
-\contentsline {subsection}{\numberline {3.6.2}Parallelization}{39}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.2}Parallelization}{38}{subsection.3.6.2}
 \defcounter {refsection}{3}\relax 
-\contentsline {section}{\numberline {3.7}Step-by-step examples}{39}{section.3.7}
+\contentsline {section}{\numberline {3.7}Step-by-step examples}{40}{section.3.7}
 \defcounter {refsection}{3}\relax 
 \contentsline {subsection}{\numberline {3.7.1}Optimizing the sine function}{40}{subsection.3.7.1}
 \defcounter {refsection}{3}\relax 
