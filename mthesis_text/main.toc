@@ -124,54 +124,56 @@
 \defcounter {refsection}{4}\relax 
 \contentsline {section}{\numberline {4.5}Discussion}{66}{section.4.5}
 \defcounter {refsection}{4}\relax 
-\contentsline {chapter}{\numberline {5}pyGPGO: A simple Python Package for Bayesian Optimization}{73}{chapter.5}
+\contentsline {chapter}{\numberline {5}pyGPGO: Bayesian Optimization for Python}{73}{chapter.5}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.1}Installation}{73}{section.5.1}
+\contentsline {section}{\numberline {5.1}Features}{73}{section.5.1}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.2}Usage}{74}{section.5.2}
+\contentsline {section}{\numberline {5.2}Package logistics}{74}{section.5.2}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.2.1}A minimal example}{74}{subsection.5.2.1}
+\contentsline {section}{\numberline {5.3}Installation}{74}{section.5.3}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.3}Examples}{76}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}A minimal example}{75}{subsection.5.3.1}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.3.1}Gaussian Process regression using the \texttt {GaussianProcess} module.}{76}{subsection.5.3.1}
+\contentsline {section}{\numberline {5.4}Examples}{77}{section.5.4}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.3.2}MCMC inference over hyperparameters using the \texttt {GaussianProcessMCMC} module}{77}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.4.1}Gaussian Process regression using the \texttt {GaussianProcess} module.}{77}{subsection.5.4.1}
 \defcounter {refsection}{5}\relax 
-\contentsline {subsection}{\numberline {5.3.3}Optimizing parameters of a machine-learning model using the \texttt {GPGO} module.}{77}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.4.2}MCMC inference over hyperparameters using the \texttt {GaussianProcessMCMC} module}{78}{subsection.5.4.2}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.4}Features}{78}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.3}Using the \texttt {GPGO} module for global optimization.}{78}{subsection.5.4.3}
+\defcounter {refsection}{5}\relax 
+\contentsline {subsection}{\numberline {5.4.4}Optimizing parameters of a machine-learning model using the \texttt {GPGO} module.}{79}{subsection.5.4.4}
 \defcounter {refsection}{5}\relax 
 \contentsline {section}{\numberline {5.5}Comparison with existing software}{80}{section.5.5}
 \defcounter {refsection}{5}\relax 
-\contentsline {section}{\numberline {5.6}Future work}{81}{section.5.6}
+\contentsline {section}{\numberline {5.6}Future work}{83}{section.5.6}
 \defcounter {refsection}{5}\relax 
-\contentsline {chapter}{Appendices}{83}{section*.48}
+\contentsline {chapter}{Appendices}{87}{section*.50}
 \defcounter {refsection}{5}\relax 
-\contentsline {chapter}{\numberline {A}Examples code}{85}{Appendix.1.A}
+\contentsline {chapter}{\numberline {A}Examples code}{89}{Appendix.1.A}
 \defcounter {refsection}{6}\relax 
-\contentsline {section}{\numberline {A.1}drawGP.py}{85}{section.1.A.1}
+\contentsline {section}{\numberline {A.1}drawGP.py}{89}{section.1.A.1}
 \defcounter {refsection}{6}\relax 
-\contentsline {section}{\numberline {A.2}sineGP.py}{85}{section.1.A.2}
+\contentsline {section}{\numberline {A.2}sineGP.py}{89}{section.1.A.2}
 \defcounter {refsection}{6}\relax 
-\contentsline {section}{\numberline {A.3}covzoo.py}{86}{section.1.A.3}
+\contentsline {section}{\numberline {A.3}covzoo.py}{90}{section.1.A.3}
 \defcounter {refsection}{6}\relax 
-\contentsline {section}{\numberline {A.4}hyperopt.py}{87}{section.1.A.4}
+\contentsline {section}{\numberline {A.4}hyperopt.py}{91}{section.1.A.4}
 \defcounter {refsection}{6}\relax 
-\contentsline {section}{\numberline {A.5}acqzoo.py}{88}{section.1.A.5}
+\contentsline {section}{\numberline {A.5}acqzoo.py}{92}{section.1.A.5}
 \defcounter {refsection}{6}\relax 
-\contentsline {section}{\numberline {A.6}integratedacq.py}{89}{section.1.A.6}
+\contentsline {section}{\numberline {A.6}integratedacq.py}{93}{section.1.A.6}
 \defcounter {refsection}{6}\relax 
-\contentsline {section}{\numberline {A.7}bayoptwork.py}{90}{section.1.A.7}
+\contentsline {section}{\numberline {A.7}bayoptwork.py}{94}{section.1.A.7}
 \defcounter {refsection}{6}\relax 
-\contentsline {section}{\numberline {A.8}sineopt.py}{90}{section.1.A.8}
+\contentsline {section}{\numberline {A.8}sineopt.py}{94}{section.1.A.8}
 \defcounter {refsection}{6}\relax 
-\contentsline {section}{\numberline {A.9}rastriginopt.py}{91}{section.1.A.9}
+\contentsline {section}{\numberline {A.9}rastriginopt.py}{95}{section.1.A.9}
 \defcounter {refsection}{6}\relax 
-\contentsline {chapter}{\numberline {B}Testing code}{95}{Appendix.1.B}
+\contentsline {chapter}{\numberline {B}Testing code}{99}{Appendix.1.B}
 \defcounter {refsection}{7}\relax 
-\contentsline {section}{\numberline {B.1}utils.py}{95}{section.1.B.1}
+\contentsline {section}{\numberline {B.1}utils.py}{99}{section.1.B.1}
 \defcounter {refsection}{7}\relax 
-\contentsline {section}{\numberline {B.2}modaux.py}{98}{section.1.B.2}
+\contentsline {section}{\numberline {B.2}modaux.py}{102}{section.1.B.2}
 \defcounter {refsection}{7}\relax 
-\contentsline {section}{\numberline {B.3}testing.py}{101}{section.1.B.3}
+\contentsline {section}{\numberline {B.3}testing.py}{105}{section.1.B.3}

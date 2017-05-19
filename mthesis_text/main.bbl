@@ -2647,6 +2647,54 @@
       \verb 10.1039/b608269f
       \endverb
     \endentry
+    \entry{Hwang2010}{article}{}
+      \name{author}{4}{}{%
+        {{hash=8697121807ba7a82ec79848534f30747}{%
+           family={Hwang},
+           family_i={H\bibinitperiod},
+           given={Howook},
+           given_i={H\bibinitperiod}}}%
+        {{hash=5d507026c3622c0a8b633b13be72a4e9}{%
+           family={Vreven},
+           family_i={V\bibinitperiod},
+           given={Thom},
+           given_i={T\bibinitperiod}}}%
+        {{hash=d6401e15cc90ffd42bcddc4c9bb075f0}{%
+           family={Janin},
+           family_i={J\bibinitperiod},
+           given={Joël},
+           given_i={J\bibinitperiod}}}%
+        {{hash=3f25b743e7a9e726ca9c3be8b66859d6}{%
+           family={Weng},
+           family_i={W\bibinitperiod},
+           given={Zhiping},
+           given_i={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{9c1a81615ce56b5844a39d5b81ee5625}
+      \strng{fullhash}{ef7160b13b4086fdcb6fc3939980df10}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We updated our protein-protein docking benchmark to include complexes that became available since our previous release. As before, we only considered high-resolution complex structures that are nonredundant at the family-family pair level, for which the X-ray or NMR unbound structures of the constituent proteins are also available. Benchmark 4.0 adds 52 new complexes to the 124 cases of Benchmark 3.0, representing an increase of 42{\%}. Thus, benchmark 4.0 provides 176 unbound-unbound cases that can be used for protein-protein docking method development and assessment. Seventeen of the newly added cases are enzyme-inhibitor complexes, and we found no new antigen-antibody complexes. Classifying the new cases according to expected difficulty for protein-protein docking algorithms gives 33 rigid body cases, 11 cases of medium difficulty, and 8 cases that are difficult. Benchmark 4.0 listings and processed structure files are publicly accessible at http://zlab.umassmed.edu/benchmark/.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{1097-0134 (Electronic)$\backslash$r0887-3585 (Linking)}
+      \field{issn}{08873585}
+      \field{journaltitle}{Proteins: Structure, Function and Bioinformatics}
+      \field{number}{15}
+      \field{title}{{Protein-protein docking benchmark version 4.0}}
+      \field{volume}{78}
+      \field{year}{2010}
+      \field{pages}{3111\bibrangedash 3114}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1002/prot.22830
+      \endverb
+      \verb{eprint}
+      \verb NIHMS150003
+      \endverb
+      \keyw{Complex structure,Protein complexes,Protein-protein docking,Protein-protein interactions}
+    \endentry
     \entry{Jones1997}{article}{}
       \name{author}{2}{}{%
         {{hash=e2de5f8d350704a26582e90630d11945}{%
@@ -3886,6 +3934,53 @@
 
 \refsection{5}
   \sortlist[entry]{nty/global/}
+    \entry{ContinuumAnalytics2016}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=78e6438567f1a8521221dcccd658ab13}{%
+           family={{Continuum Analytics}},
+           family_i={C\bibinitperiod},
+           given={Inc},
+           given_i={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{78e6438567f1a8521221dcccd658ab13}
+      \strng{fullhash}{78e6438567f1a8521221dcccd658ab13}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Built to complement the rich, open source Python community, the Anaconda platform provides an enterprise-ready data analytics platform that empowers companies to adopt a modern open data science analytics architecture.$\backslash$r$\backslash$n$\backslash$r$\backslash$nWith Python at its core, Anaconda is a platform for connecting your expertise and curiosity with data to explore and deploy innovative analytic apps that solve challenging problems with ease and agility. Processing multi-workload data analytics – from batch through interactive to real-time – the platform is used$\backslash$r$\backslash$n$\backslash$r$\backslash$nfor both ad hoc and production deployments.$\backslash$r$\backslash$n$\backslash$r$\backslash$nAnaconda is tuned to take advantage of modern computing environments – everything from multi-core servers, to Spark and Hadoop, to GPUs – delivering flexibility and allowing you to maximize your infrastructure investment. All of this plus the key capabilities required of an open source modern analytics platform – spanning advanced analytics, interactive visualizations, governance, security and operational support.}
+      \field{booktitle}{Python The fastest growing open data platform}
+      \field{title}{{Anaconda: Continuum Analytics}}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://www.continuum.io/why-anaconda
+      \endverb
+    \endentry
+    \entry{Franke1980}{report}{}
+      \name{author}{1}{}{%
+        {{hash=f20cffeca452c0d6d134ec1370854d06}{%
+           family={Franke},
+           family_i={F\bibinitperiod},
+           given={Richard},
+           given_i={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{f20cffeca452c0d6d134ec1370854d06}
+      \strng{fullhash}{f20cffeca452c0d6d134ec1370854d06}
+      \field{sortinit}{F}
+      \field{sortinithash}{c6a7d9913bbd7b20ea954441c0460b78}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This report is concerned with methods for solving the scattered data interpolation problem. A comparison of 29 methods for solution of this problem has been made. Each of the methods is discussed and the results of extensive testing for their properties and appropiate values of their parameters is given. Both local and global methods are considered. Comparisons of timing, storage, accuracy, visual pleasantness of the surface, and earse of implementation are made. A large number number (over 200) of pages of perpective plots of surfaces are given. Suggestions for improvement of some methods are made, and methods which have poor approximation properties are identified.}
+      \field{booktitle}{Naval Post Graduate School}
+      \field{title}{{A critical comparison of some methods for interpolation of scattered data}}
+      \field{type}{techreport}
+      \field{year}{1980}
+      \field{pages}{379}
+      \range{pages}{1}
+      \verb{url}
+      \verb http://oai.dtic.mil/oai/oai?verb=getRecord%7B%5C&%7DmetadataPrefix=html%7B%5C&%7Didentifier=ADA081688
+      \endverb
+    \endentry
     \entry{Hoffman2014}{article}{}
       \name{author}{2}{}{%
         {{hash=fecdb5e2e5757320fd5a625a162d3503}{%

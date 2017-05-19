@@ -55,29 +55,30 @@
 \BOOKMARK [2][-]{subsection.4.4.2}{The LSVT voice rehabilitation dataset}{section.4.4}% 55
 \BOOKMARK [2][-]{subsection.4.4.3}{The Parkinson's disease dataset}{section.4.4}% 56
 \BOOKMARK [1][-]{section.4.5}{Discussion}{chapter.4}% 57
-\BOOKMARK [0][-]{chapter.5}{pyGPGO: A simple Python Package for Bayesian Optimization}{}% 58
-\BOOKMARK [1][-]{section.5.1}{Installation}{chapter.5}% 59
-\BOOKMARK [1][-]{section.5.2}{Usage}{chapter.5}% 60
-\BOOKMARK [2][-]{subsection.5.2.1}{A minimal example}{section.5.2}% 61
-\BOOKMARK [1][-]{section.5.3}{Examples}{chapter.5}% 62
-\BOOKMARK [2][-]{subsection.5.3.1}{Gaussian Process regression using the GaussianProcess module.}{section.5.3}% 63
-\BOOKMARK [2][-]{subsection.5.3.2}{MCMC inference over hyperparameters using the GaussianProcessMCMC module}{section.5.3}% 64
-\BOOKMARK [2][-]{subsection.5.3.3}{Optimizing parameters of a machine-learning model using the GPGO module.}{section.5.3}% 65
-\BOOKMARK [1][-]{section.5.4}{Features}{chapter.5}% 66
-\BOOKMARK [1][-]{section.5.5}{Comparison with existing software}{chapter.5}% 67
-\BOOKMARK [1][-]{section.5.6}{Future work}{chapter.5}% 68
-\BOOKMARK [0][-]{section*.48}{Appendices}{}% 69
-\BOOKMARK [0][-]{Appendix.1.A}{Examples code}{}% 70
-\BOOKMARK [1][-]{section.1.A.1}{drawGP.py}{Appendix.1.A}% 71
-\BOOKMARK [1][-]{section.1.A.2}{sineGP.py}{Appendix.1.A}% 72
-\BOOKMARK [1][-]{section.1.A.3}{covzoo.py}{Appendix.1.A}% 73
-\BOOKMARK [1][-]{section.1.A.4}{hyperopt.py}{Appendix.1.A}% 74
-\BOOKMARK [1][-]{section.1.A.5}{acqzoo.py}{Appendix.1.A}% 75
-\BOOKMARK [1][-]{section.1.A.6}{integratedacq.py}{Appendix.1.A}% 76
-\BOOKMARK [1][-]{section.1.A.7}{bayoptwork.py}{Appendix.1.A}% 77
-\BOOKMARK [1][-]{section.1.A.8}{sineopt.py}{Appendix.1.A}% 78
-\BOOKMARK [1][-]{section.1.A.9}{rastriginopt.py}{Appendix.1.A}% 79
-\BOOKMARK [0][-]{Appendix.1.B}{Testing code}{}% 80
-\BOOKMARK [1][-]{section.1.B.1}{utils.py}{Appendix.1.B}% 81
-\BOOKMARK [1][-]{section.1.B.2}{modaux.py}{Appendix.1.B}% 82
-\BOOKMARK [1][-]{section.1.B.3}{testing.py}{Appendix.1.B}% 83
+\BOOKMARK [0][-]{chapter.5}{pyGPGO: Bayesian Optimization for Python}{}% 58
+\BOOKMARK [1][-]{section.5.1}{Features}{chapter.5}% 59
+\BOOKMARK [1][-]{section.5.2}{Package logistics}{chapter.5}% 60
+\BOOKMARK [1][-]{section.5.3}{Installation}{chapter.5}% 61
+\BOOKMARK [2][-]{subsection.5.3.1}{A minimal example}{section.5.3}% 62
+\BOOKMARK [1][-]{section.5.4}{Examples}{chapter.5}% 63
+\BOOKMARK [2][-]{subsection.5.4.1}{Gaussian Process regression using the GaussianProcess module.}{section.5.4}% 64
+\BOOKMARK [2][-]{subsection.5.4.2}{MCMC inference over hyperparameters using the GaussianProcessMCMC module}{section.5.4}% 65
+\BOOKMARK [2][-]{subsection.5.4.3}{Using the GPGO module for global optimization.}{section.5.4}% 66
+\BOOKMARK [2][-]{subsection.5.4.4}{Optimizing parameters of a machine-learning model using the GPGO module.}{section.5.4}% 67
+\BOOKMARK [1][-]{section.5.5}{Comparison with existing software}{chapter.5}% 68
+\BOOKMARK [1][-]{section.5.6}{Future work}{chapter.5}% 69
+\BOOKMARK [0][-]{section*.50}{Appendices}{}% 70
+\BOOKMARK [0][-]{Appendix.1.A}{Examples code}{}% 71
+\BOOKMARK [1][-]{section.1.A.1}{drawGP.py}{Appendix.1.A}% 72
+\BOOKMARK [1][-]{section.1.A.2}{sineGP.py}{Appendix.1.A}% 73
+\BOOKMARK [1][-]{section.1.A.3}{covzoo.py}{Appendix.1.A}% 74
+\BOOKMARK [1][-]{section.1.A.4}{hyperopt.py}{Appendix.1.A}% 75
+\BOOKMARK [1][-]{section.1.A.5}{acqzoo.py}{Appendix.1.A}% 76
+\BOOKMARK [1][-]{section.1.A.6}{integratedacq.py}{Appendix.1.A}% 77
+\BOOKMARK [1][-]{section.1.A.7}{bayoptwork.py}{Appendix.1.A}% 78
+\BOOKMARK [1][-]{section.1.A.8}{sineopt.py}{Appendix.1.A}% 79
+\BOOKMARK [1][-]{section.1.A.9}{rastriginopt.py}{Appendix.1.A}% 80
+\BOOKMARK [0][-]{Appendix.1.B}{Testing code}{}% 81
+\BOOKMARK [1][-]{section.1.B.1}{utils.py}{Appendix.1.B}% 82
+\BOOKMARK [1][-]{section.1.B.2}{modaux.py}{Appendix.1.B}% 83
+\BOOKMARK [1][-]{section.1.B.3}{testing.py}{Appendix.1.B}% 84

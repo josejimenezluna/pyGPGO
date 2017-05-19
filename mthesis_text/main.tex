@@ -1584,7 +1584,7 @@ In practice, machine-learning models are applied to structure-based methods. The
 
 \subsection{Description of the dataset}
 
-For the work described here, we use the PIFACE \cite{Cukuroglu2014} database. PIFACE is a non-redundant database extracted from the the PDB. It also provides clusters of \textit{unique} extracted interface, in terms of a similarity metric reported in [ref]. In total, it comprises 22604 non-redundant representative interfaces, from which a random sample of 2261 is selected for the work detailed here. While there are other more common databases used for protein-protein interface prediction, such as the protein-protein docking benchmark (DB4) [ref], we choose PIFACE mostly for (1) the number of annotated interfaces is significantly larger, (2) it provides structural clusters that help prevent overfitting issues when training classification models and (3) it is very clearly organized following PDB standards. Notice that while 2261 interfaces are selected, our samples are composed of residues, and depending on the size of the interacting proteins, the number of contacting ones can result to be quite large.\\
+For the work described here, we use the PIFACE \cite{Cukuroglu2014} database. PIFACE is a non-redundant database extracted from the the PDB. It also provides clusters of \textit{unique} extracted interfaces, in terms of structural similarity metrics. In total, it comprises 22604 non-redundant representative interfaces, from which a random sample of 2261 is selected for the work detailed here. While there are other more common databases used for protein-protein interface prediction, such as the protein-protein docking benchmark (DB4) \cite{Hwang2010}, we choose PIFACE mostly for (1) the number of annotated interfaces is significantly larger, (2) it provides structural clusters that help prevent overfitting issues when training classification models and (3) it is very clearly organized following PDB standards. Notice that while 2261 interfaces are selected, our samples are composed of residues, and depending on the size of the interacting proteins, the number of contacting ones can result to be quite large.\\
 
 Special care has to be taken with the unbalanced dataset problem \cite{Longadge2013}. Since only a few residues of a protein are considered part of the interface (positive-cases), most of the residues are marked non-interficial (negative-cases). In practice, this poses a problem since most classifiers would have an unfair tendency to classify most of the instances as the majority class, therefore rendering every conclusions useless. There are many strategies to circumvent this problem, the most simple one being balancing both classes by undersampling the majority class. There is also theoretical evidence on why this approach is preferable to others \cite{Wallace2011}.  \\ 
 
@@ -1829,11 +1829,63 @@ In these experiments, we have shown that Bayesian Optimization is substantially 
 
 \printbibliography
 
-\chapter{pyGPGO: A simple Python Package for Bayesian Optimization}
+\chapter{pyGPGO: Bayesian Optimization for Python}
 
-In this chapter, we will explain the functionalities behind pyGPGO, the Bayesian Optimization software developed during this Master's thesis. pyGPGO aims to be minimalistic, modular, complete in functionality and up-to-date with latest research. pyGPGO is under the MIT License, which means it can be used for both academic and commercial purposes, while providing no warranty for the user.\\
+In this chapter, we will explain the functionalities behind pyGPGO, the Bayesian Optimization software developed alongside this Master's thesis. pyGPGO aims to be minimalistic, easy to understand, modular, complete in functionality and up-to-date with latest research. pyGPGO is under the MIT License, which means it can be used for both academic and commercial purposes, while providing no warranty for the user. pyGPGO is completely open-source, users can contribute to the package in any way the see fit, either by reporting bugs, filling out missing documentation, providing new functionality or improve the existing one.\\
 
-In summary, pyGPGO is a Python package to perform Bayesian Optimization with minimal effort from the user. First we will discuss installation details, followed by a detailed description of its functionality. Then several examples of usage will be shown, which will hopefully be useful for end users or machine-learning practitioners. Later, we will compare pyGPGO to other existing Bayesian Optimization software in terms of features. In the end, future improvements on pyGPGO will be discussed.
+All of pyGPGO's code can be accessed through its associated GitHub repository, in \url{https://github.com/hawk31/pyGPGO}. Extensive documentation for all the code in the package is available in both HTML and PDF format at ReadTheDocs \url{http://readthedocs.org/projects/pygpgo/}. For cleanness I have decided not to include neither in them in the present document.\\
+
+In summary, pyGPGO is a Python package to perform Bayesian Optimization with minimal effort from the user.
+In this final chapter we start by providing an overview of the functionality provided, this is by no means exhaustive and users are encouraged to check the documentation for in-detail explanations. We then explain the logic behind the implemented modules: this is done to provide some basic guidance for the user on where to look for intended functionality. Installation details are described next. \\
+
+Several real-world examples using the present software are then discussed, this section aims to help users understand the logic behind the software in a practical way. Different examples from the ones considered here can be found either in the Appendix of this thesis or in the GitHub repository of the package. Finally, we compare pyGPGO with other existing software and describe several future goals and improvements for the package.
+
+
+\section{Features}\label{features}
+
+The idea behind pyGPGO stems from the fact that there are many possible choices in the Bayesian Optimization framework, to name a few: 
+
+\begin{itemize}
+\item Choice of surrogate model.
+\item Covariance function to use
+\item Acquisition behaviour
+\item Hyperparameter treatment
+\item ...
+\end{itemize}
+
+In general, these many choices motivate a modular design, in an object-oriented way, so that users can experiment with different architectural choices. Most of the available software focuses on a particular implementation of the Bayesian optimization algorithm. pyGPGO on the other hand is completely modular and provides extensive functionality. In particular, my software features: 
+
+\begin{itemize}
+\item A completely modular and customizable design. Easy to setup and minimal dependencies. 
+\item A wide range of surrogate models: Gaussian Processes, Student-t Processes, Random Forests, Extra Random Forests and Gradient Boosting Machines.
+\item Most of the usual covariance functions, as well as its derivatives: squared exponential, Matérn, $\gamma$-exponential, rational quadratic, exponential sine, and dot product.
+\item Many acquisition function behaviours: probability of improvement, expected improvement, upper confidence bound and entropy-based, as well as their integrated versions. 
+\item Type II Maximum-Likelihood of covariance function hyperparameters. 
+\item MCMC sampling for full-Bayesian treatment of hyperparameters (via \texttt{pyMC3}).
+\end{itemize}
+
+
+To the best of my knowledge, pyGPGO is one of the most complete and simple packages for Bayesian Optimization implemented. 
+
+\section{Package logistics}
+
+All functionality is divided in different \textit{modules}, each performing a very specific task. We briefly describe these here. Again, the user is encourage to check the provided documentation for more detailed explanations on how to use the package.
+
+\begin{itemize}
+\item The \texttt{covfunc} module contains all the code related to covariance function calculations. 
+\item The \texttt{surrogates} module implements classes corresponding to different surrogate models
+\item The \texttt{Acquisition} module lets the user specify different acquisition function strategies.
+\item The \texttt{GPGO} module implements the main Bayesian Optimization procedure. 
+\end{itemize}
+
+Apart from this functionality, there is plenty of additional material in the GitHub repository of this package:
+
+\begin{itemize}
+\item A folder named \texttt{examples}, with all the coding examples laid down throughout the course of this master's thesis.
+\item Another folder named \texttt{testing} with all the code used regarding benchmarking and testing of the datasets used in Chapter 4 of this work.
+\item Yet another folder named \texttt{datasets} with all the datasets tested in Chapter 4, in .csv format. 
+\item Finally, a folder named \texttt{mthesis\_text}, containing all the text work presented here.
+\end{itemize}
 
 \section{Installation}
 
@@ -1848,7 +1900,7 @@ pyGPGO comes in the form of a Python package. Only Python versions equal or high
 python --version   
 \end{minted}
 
-If Python is not installed on the system, we highly recommend installing the Python distribution Anaconda [ref]. Along with the distribution, they also provide most common packages for numeric/scientific operations. In particular, should the user choose to install the Anaconda distribution all dependencies needed by pyGPGO are covered. After downloading the executable corresponding to your particular system configuration from their web page, it suffices to do (for UNIX-based systems):
+If Python is not installed on the system, we highly recommend installing the Python distribution Anaconda \cite{ContinuumAnalytics2016}. Along with the distribution, they also provide most common packages for numeric/scientific operations. In particular, should the user choose to install the Anaconda distribution all dependencies needed by pyGPGO are covered. After downloading the executable corresponding to your particular system configuration from their web page, it suffices to do (for UNIX-based systems):
 
 \begin{minted}[mathescape,
                linenos,
@@ -1898,25 +1950,6 @@ python setup.py install
 \end{minted}
 
  
-\section{Usage}
-
-pyGPGO aims to be an easy to use package to perform Bayesian Optimization. All functionality is divided in different modules, each performing a very specific task. We go briefly over the different modules here, but they will be discussed in detail in Section \ref{features}.
-
-\begin{itemize}
-\item The \texttt{covfunc} module contains all the code related to covariance function calculations. 
-\item The \texttt{surrogates} module implements different surrogate models: Gaussian Processes or Student-t Processes (with Type II ML estimates or MCMC sampling), Random Forests and Gradient Boosting Machines.
-\item The \texttt{Acquisition} module lets the user specify different acquisition function strategies.
-\item The \texttt{GPGO} module implements Bayesian Optimization procedures. 
-\end{itemize}
-
-Apart from this functionality, there is plenty of material in the GitHub repository of this package:
-
-\begin{itemize}
-\item A folder named \texttt{examples}, with all the coding examples laid down throughout the course of this master's thesis.
-\item A folder named \texttt{testing} with all the code used regarding benchmarking and testing of the datasets used in Chapter 4 of this work.
-\item A folder named \texttt{datasets} with all the datasets tested in Chapter 4, in .csv format. 
-\end{itemize}
-
 \subsection{A minimal example}
 
 Here we go through a minimal example to show how to use pyGPGO in its most simple form. We comment line by line using the IPython console.
@@ -2108,6 +2141,77 @@ if __name__ == '__main__':
 \end{minted}
 
 
+\subsection{Using the \texttt{GPGO} module for global optimization.}
+
+In this example, we will try to optimize a variant of the Franke function \cite{Franke1980} given by:
+
+\begin{align}
+\begin{split}
+f(x, y) = &\dfrac{3}{4}\exp\left(-\dfrac{(9x - 2)^2}{4} -\dfrac{(9y - 2)^2}{4}\right)+ \\
+&\dfrac{3}{4} \exp\left(-\dfrac{(9x+ 1)^2}{49} -\dfrac{(9y + 1)^2}{10}\right) + \\
+&\dfrac{1}{2} \exp\left(-\dfrac{(9x - 7)^2}{4} -\dfrac{(9y - 3)^2}{4}\right) - \\
+&\dfrac{1}{4} \exp\left(-(9x - 4)^2 -(9y - 7)^2 \right)
+\end{split}
+\end{align}
+
+
+A contour plot of said function can be checked in Figure \ref{fig:franke}. Optimum is around $\left\lbrace x=0.2,y=0.2\right\rbrace$. We use the Matérn ($\nu=3/2$) covariance function and a simple Gaussian Process disregarding hyperparameter treatment.
+
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3=true]{python}
+import numpy as np
+from pyGPGO.covfunc import matern32
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.GPGO import GPGO
+
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+from matplotlib import cm
+
+def f(x, y):
+    # Franke's function (https://www.mathworks.com/help/curvefit/franke.html)
+    one = 0.75 * np.exp(-(9*x-2)**2/4 - (9*y - 2)**2/4)
+    two = 0.75 * np.exp(-(9*x+1)**2/49 - (9*y + 1)/10)
+    three = 0.5 * np.exp(-(9*x - 7)**2/4 - (9*y -3)**2/4)
+    four = 0.25 * np.exp(-(9*x -4)**2 - (9*y-7)**2)
+    return one + two + three - four
+
+
+def plotFranke():
+    x = np.linspace(0, 1, num=1000)
+    y = np.linspace(0, 1, num=1000)
+    X, Y = np.meshgrid(x, y)
+    Z = f(X, Y)
+    
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+
+    surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
+                       linewidth=0)
+    fig.colorbar(surf, shrink=0.5, aspect=5)
+    plt.show()
+    
+if __name__ == '__main__':
+    plotFranke()
+
+    cov = matern32()
+    gp = GaussianProcess(cov)
+    acq = Acquisition(mode='ExpectedImprovement')
+    param = {'x': ('cont', [0, 1]),
+            'y': ('cont', [0, 1])}
+
+    np.random.seed(1337)
+    gpgo = GPGO(gp, acq, f, param)
+    gpgo.run(max_iter=10)
+\end{minted}
+
 \subsection{Optimizing parameters of a machine-learning model using the \texttt{GPGO} module.}
 
 While pyGPGO can optimize any function the user specifies, the main topic of this main thesis was the application of these algorithms to optimize the hyperparameters of machine-learning algorithms. We provide a very simple way of how to do so using \texttt{scikit-learn}, arguably the most complete machine-learning package for Python. The example generates synthetic data and tries to optimize a Support Vector Machine classifier parameters ($C, \gamma$), using cross-validation. A plot of the generated data can be checked in Figure \ref{fig:makemoons}.\\
@@ -2161,7 +2265,14 @@ if __name__ == '__main__':
     gpgo.getResult()               
 \end{minted}
 
-\FloatBarrier
+\begin{figure}
+\centering
+\caption{Franke's function contour plot.}
+\includegraphics[width=\textwidth]{figures/chapter5/franke}
+\label{fig:franke}
+\end{figure}
+
+
 \begin{figure}
 \centering
 \caption{Gaussian Process regression of noisy inputs with pyGPGO.}
@@ -2185,21 +2296,6 @@ if __name__ == '__main__':
 \end{figure}
 
 
-
-
-\section{Features}\label{features}
-
-The features provided by pyGPGO are hard to summarize here. Among them, however, we can highlight several of them:
-
-\begin{itemize}
-\item Completely modular interface.
-\item Different surrogate models: Gaussian Processes, Student-t Processes, Random Forests, Gradient Boosting Machines.
-\item Type II Maximum-Likelihood of covariance function hyperparameters. 
-\item MCMC sampling for full-Bayesian inference of hyperparameters (via \texttt{pyMC3}).
-\item Integrated acquisition functions
-\end{itemize}
-
-Details of each particular module can be assessed in its documentation, available online through \url{http://pygpgo.readthedocs.io/en/latest/}.
 
 \section{Comparison with existing software}
 
@@ -2237,13 +2333,17 @@ Python version & $>$3.5 & 2.7 & 2/3 & 2/3 & 2.7 & 2/3 & 2/3 \\ \bottomrule
 pyGPGO, while a very complete software for Bayesian Optimization still remains in development. In particular, there are several improvements that will be tackled on:
 
 \begin{itemize}
-	\item Improvements over covariance functions. Support for more complex kernel structures, such as adding and multiplication of different kernel functions.
-	\item Support for more diverse acquisition functions: Entropy-based, or Thompson-like.
-	\item A wider choice of surrogate models. In particular, a modular interface for the user to specify its own.
-	\item Overall speed improvements and code optimization.
+	\item Improvements over covariance functions: support for complex kernel structures, such as linear combinations of such, with automatic gradient computation.
+	\item Support for more diverse acquisition functions: predictive entropy search, hedge or Thompson-like.
+	\item A wider choice of surrogate models: Sparse-input or warped Gaussian Processes. 
+	\item GPU support for MCMC sampling.
+	\item Overall speed improvements and code optimization. 
 \end{itemize}
 
 In conclusion, pyGPGO, like any other piece of software, is never finished work. Being open-sourced, anyone can either contribute to the code base available through its GitHub repository or download the project and modify it in any way they see fit. pyGPGO's MIT License also allows for it to be used in mostly any kind of software, either academic or commercial.
+
+\printbibliography
+
 
 \begin{appendices}
 
