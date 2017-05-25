@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.covfunc} \PYG{k+kn}{import} \PYG{n}{matern32}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.acquisition} \PYG{k+kn}{import} \PYG{n}{Acquisition}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.surrogates.GaussianProcess} \PYG{k+kn}{import} \PYG{n}{GaussianProcess}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.GPGO} \PYG{k+kn}{import} \PYG{n}{GPGO}
+
+\PYG{k+kn}{from} \PYG{n+nn}{mpl\PYGZus{}toolkits.mplot3d} \PYG{k+kn}{import} \PYG{n}{Axes3D}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k+kn}{as} \PYG{n+nn}{plt}
+\PYG{k+kn}{from} \PYG{n+nn}{matplotlib} \PYG{k+kn}{import} \PYG{n}{cm}
+
+\PYG{k}{def} \PYG{n+nf}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} Franke\PYGZsq{}s function (https://www.mathworks.com/help/curvefit/franke.html)}
+    \PYG{n}{one} \PYG{o}{=} \PYG{l+m+mf}{0.75} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{o}{*}\PYG{n}{x}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{l+m+mi}{4} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{9}\PYG{o}{*}\PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{l+m+mi}{4}\PYG{p}{)}
+    \PYG{n}{two} \PYG{o}{=} \PYG{l+m+mf}{0.75} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{o}{*}\PYG{n}{x}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{l+m+mi}{49} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{9}\PYG{o}{*}\PYG{n}{y} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{three} \PYG{o}{=} \PYG{l+m+mf}{0.5} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{o}{*}\PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{7}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{l+m+mi}{4} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{9}\PYG{o}{*}\PYG{n}{y} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{o}{/}\PYG{l+m+mi}{4}\PYG{p}{)}
+    \PYG{n}{four} \PYG{o}{=} \PYG{l+m+mf}{0.25} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{o}{*}\PYG{n}{x} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{9}\PYG{o}{*}\PYG{n}{y}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{7}\PYG{p}{)}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{one} \PYG{o}{+} \PYG{n}{two} \PYG{o}{+} \PYG{n}{three} \PYG{o}{\PYGZhy{}} \PYG{n}{four}
+
+
+\PYG{k}{def} \PYG{n+nf}{plotFranke}\PYG{p}{():}
+    \PYG{n}{x} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{num}\PYG{o}{=}\PYG{l+m+mi}{1000}\PYG{p}{)}
+    \PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{linspace}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{num}\PYG{o}{=}\PYG{l+m+mi}{1000}\PYG{p}{)}
+    \PYG{n}{X}\PYG{p}{,} \PYG{n}{Y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{meshgrid}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)}
+    \PYG{n}{Z} \PYG{o}{=} \PYG{n}{f}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{)}
+
+    \PYG{n}{fig} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{()}
+    \PYG{n}{ax} \PYG{o}{=} \PYG{n}{fig}\PYG{o}{.}\PYG{n}{gca}\PYG{p}{(}\PYG{n}{projection}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}3d\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n}{surf} \PYG{o}{=} \PYG{n}{ax}\PYG{o}{.}\PYG{n}{plot\PYGZus{}surface}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{,} \PYG{n}{Z}\PYG{p}{,} \PYG{n}{cmap}\PYG{o}{=}\PYG{n}{cm}\PYG{o}{.}\PYG{n}{coolwarm}\PYG{p}{,}
+                       \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+    \PYG{n}{fig}\PYG{o}{.}\PYG{n}{colorbar}\PYG{p}{(}\PYG{n}{surf}\PYG{p}{,} \PYG{n}{shrink}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{n}{aspect}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{)}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{k}{if} \PYG{n}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+    \PYG{n}{plotFranke}\PYG{p}{()}
+
+    \PYG{n}{cov} \PYG{o}{=} \PYG{n}{matern32}\PYG{p}{()}
+    \PYG{n}{gp} \PYG{o}{=} \PYG{n}{GaussianProcess}\PYG{p}{(}\PYG{n}{cov}\PYG{p}{)}
+    \PYG{n}{acq} \PYG{o}{=} \PYG{n}{Acquisition}\PYG{p}{(}\PYG{n}{mode}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}ExpectedImprovement\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{param} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}x\PYGZsq{}}\PYG{p}{:} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}cont\PYGZsq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]),}
+            \PYG{l+s+s1}{\PYGZsq{}y\PYGZsq{}}\PYG{p}{:} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}cont\PYGZsq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])\PYGZcb{}}
+
+    \PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{seed}\PYG{p}{(}\PYG{l+m+mi}{1337}\PYG{p}{)}
+    \PYG{n}{gpgo} \PYG{o}{=} \PYG{n}{GPGO}\PYG{p}{(}\PYG{n}{gp}\PYG{p}{,} \PYG{n}{acq}\PYG{p}{,} \PYG{n}{f}\PYG{p}{,} \PYG{n}{param}\PYG{p}{)}
+    \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{max\PYGZus{}iter}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+\end{Verbatim}

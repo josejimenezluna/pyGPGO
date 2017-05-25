@@ -9,6 +9,7 @@
 \usepackage{algorithm,algorithmic}
 \usepackage{animate}
 \usepackage{booktabs}
+\usepackage{subcaption}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -504,9 +505,98 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 	
 		\end{frame}
 		
-		\begin{frame}
-		\frametitle{Experiments: Binding affinity prediction}
-		\end{frame}
+\begin{frame}
+	\frametitle{Experiments: Binding affinity prediction dataset}
+
+\begin{itemize}
+\item Problem is to predict some binding/inhibition constant between a protein and a ligand ($K_d, K_i$). Target variable is defined as $y = -\log_{10}K$
+\end{itemize}			
+
+\begin{figure}
+\includegraphics[width=0.6\textwidth]{../figures/chapter4/docking}
+\caption{Illustration of the protein-ligand binding scenario.}	
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: Binding affinity prediction dataset}
+\begin{block}{Set of features used}
+Pair of atom-type counts from protein and ligand in the binding site.
+\begin{align*}
+\left\lbrace P_j \right\rbrace_{j=1}^9 = \left\lbrace C, N, O, F, P, S, Cl, Br, I \right\rbrace \\
+\left\lbrace L_i \right\rbrace_{i=1}^9 = \left\lbrace C, N, O, F, P, S, Cl, Br, I \right\rbrace
+\end{align*}
+\begin{equation}
+\boldsymbol{x}\left(Z(P_j), Z(L_i)\right) = \sum_{k=1}^{P_j}\sum_{l=1}^{L_i}\Theta (d_{\mathrm{cutoff}} - d_{kl})
+\end{equation}
+\end{block}
+
+\begin{block}{Data}
+\begin{itemize}
+\item PDBbind v.2015 database of affinity and kinetic biological data.
+\item  A refined set of $n=3623$ of protein-ligand pairs for training, and another $m=195$ structurally diverse for testing.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: Binding affinity prediction dataset}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the binding affinity dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{SVM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/aff/svm}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{KNN}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/aff/knn}
+  \end{subfigure}
+  \label{fig:aff}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: Binding affinity prediction dataset}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the binding affinity dataset.}
+    \begin{subfigure}[t]{0.5\textwidth}
+    \caption{MLP}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/aff/mlp}
+  \end{subfigure}%
+    \begin{subfigure}[t]{0.5\textwidth}
+    \caption{GBM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/aff/gbm}
+  \end{subfigure}
+  \label{fig:aff2}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: Protein-protein interface prediction}
+\begin{itemize}
+\item Predict whether a particular residue is in contact with a chain of another protein.
+\item Interfaces are \textbf{not} considered target-specific.
+\begin{figure}
+\includegraphics[width=0.6\textwidth]{../figures/chapter4/interface}
+\caption{An interface between two chains of a dimer. Residues considered interficial are marked in blue.}	
+\end{figure}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Experiments: Protein-protein interface prediction}
+\begin{block}{Features used}
+Descriptors resemble those detailed in (Jim\'enez \textit{et al}. 2017). Average pharmacophoric-like features computed in a particular neighbourhood (20\AA$^3$) of a residue.
+\end{block}
+
+\begin{block}{Data}
+PIFACE database of clustered protein interface. Over 22k structurally unique interfaces extracted from the Protein Data Bank.
+\end{block}
+\end{frame}
 			
 
 \end{document}

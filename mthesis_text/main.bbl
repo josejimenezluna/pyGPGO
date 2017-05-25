@@ -978,6 +978,29 @@
       \verb 10.1007/978-3-642-25566-3_40
       \endverb
     \endentry
+    \entry{Ilinskas2002}{article}{}
+      \name{author}{1}{}{%
+        {{hash=99eaa3e88966c7639fe7f8148bb33889}{%
+           family={Ilinskas},
+           family_i={I\bibinitperiod},
+           given={A},
+           given_i={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{99eaa3e88966c7639fe7f8148bb33889}
+      \strng{fullhash}{99eaa3e88966c7639fe7f8148bb33889}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{02}
+      \field{title}{{Global Optimization Based on a Statistical Model and Simplicial Partitioning}}
+      \field{volume}{1221}
+      \field{year}{2002}
+      \verb{file}
+      \verb :home/jose/1-s2.0-S0898122102002067-main.pdf:pdf
+      \endverb
+      \keyw{-global,convergence,optimization,partitioning,simplices,statistical models}
+    \endentry
     \entry{Jones2001}{article}{}
       \name{author}{1}{}{%
         {{hash=9a94ff21888a040f9acff5f54fb90dff}{%
@@ -1204,6 +1227,35 @@
       \verb 10.1007/s10898-011-9732-z
       \endverb
       \keyw{Global optimization,Response surface,Surrogate model}
+    \endentry
+    \entry{Locatelli1997}{article}{}
+      \name{author}{1}{}{%
+        {{hash=fd3f5645ac25a5f50740d5c0c30afd75}{%
+           family={Locatelli},
+           family_i={L\bibinitperiod},
+           given={Marco},
+           given_i={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{fd3f5645ac25a5f50740d5c0c30afd75}
+      \strng{fullhash}{fd3f5645ac25a5f50740d5c0c30afd75}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper Bayesian analysis and Wiener process are used in order to build an algorithm to solve the problem of global optimization. The paper is divided in two main parts. In the first part an already known algorithm is considered: a new (Bayesian) stopping rule is added to it and some results are given, such as an upper bound for the number of iterations under the new stopping rule. In the second part a new algorithm is introduced in which the Bayesian approach is exploited not only in the choice of the Wiener model but also in the estimation of the parameter {\$}\backslashbackslash{\$}sigma{\^{}}2 of the Wiener process, whose value appears to be quite crucial. Some results about this algorithm are also given.}
+      \field{isbn}{0925-5001}
+      \field{issn}{0925-5001}
+      \field{journaltitle}{J. Global Optim.}
+      \field{number}{1}
+      \field{title}{{Bayesian algorithms for one-dimensional global optimization}}
+      \field{volume}{10}
+      \field{year}{1997}
+      \field{pages}{57\bibrangedash 76}
+      \range{pages}{20}
+      \verb{doi}
+      \verb Doi 10.1023/A:1008294716304
+      \endverb
+      \keyw{bayesian analysis,stopping rule,wiener process}
     \endentry
     \entry{Neal2011}{article}{}
       \name{author}{1}{}{%
@@ -1559,6 +1611,54 @@
       \verb arXiv:1206.2944v2
       \endverb
       \keyw{bayesian optimization,deep learning,gaussian process}
+    \endentry
+    \entry{Srinivas2009}{article}{}
+      \name{author}{4}{}{%
+        {{hash=bba8edc4dfbbc8fe73390e4b562c9cc3}{%
+           family={Srinivas},
+           family_i={S\bibinitperiod},
+           given={Niranjan},
+           given_i={N\bibinitperiod}}}%
+        {{hash=112eb0b147c4a7f674d015a86e5dea70}{%
+           family={Krause},
+           family_i={K\bibinitperiod},
+           given={Andreas},
+           given_i={A\bibinitperiod}}}%
+        {{hash=3d8be282574094d06ae37fbddf13078f}{%
+           family={Kakade},
+           family_i={K\bibinitperiod},
+           given={Sham\bibnamedelima M.},
+           given_i={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=9f881b2bdd82b01b43c0b7a6f9dd3208}{%
+           family={Seeger},
+           family_i={S\bibinitperiod},
+           given={Matthias},
+           given_i={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{461f4ef76fbf2abe225b67377bac9403}
+      \strng{fullhash}{0e42de1a4217889346ff0fdce6a4001e}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Many applications require optimizing an unknown, noisy function that is expensive to evaluate. We formalize this task as a multi-armed bandit problem, where the payoff function is either sampled from a Gaussian process (GP) or has low RKHS norm. We resolve the important open problem of deriving regret bounds for this setting, which imply novel convergence rates for GP optimization. We analyze GP-UCB, an intuitive upper-confidence based algorithm, and bound its cumulative regret in terms of maximal information gain, establishing a novel connection between GP optimization and experimental design. Moreover, by bounding the latter in terms of operator spectra, we obtain explicit sublinear regret bounds for many commonly used covariance functions. In some important cases, our bounds have surprisingly weak dependence on the dimensionality. In our experiments on real sensor data, GP-UCB compares favorably with other heuristical GP optimization approaches.}
+      \field{eprinttype}{arXiv}
+      \field{isbn}{9781605589077}
+      \field{issn}{00189448}
+      \field{title}{{Gaussian Process Optimization in the Bandit Setting: No Regret and Experimental Design}}
+      \field{year}{2009}
+      \verb{doi}
+      \verb 10.1109/TIT.2011.2182033
+      \endverb
+      \verb{eprint}
+      \verb 0912.3995
+      \endverb
+      \verb{file}
+      \verb :home/jose/bandit{\_}GP{\_}icml.pdf:pdf
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/0912.3995%7B%5C%%7D0Ahttp://dx.doi.org/10.1109/TIT.2011.2182033
+      \endverb
     \endentry
     \entry{Srinivas2010}{article}{}
       \name{author}{4}{}{%
@@ -2694,6 +2794,44 @@
       \verb NIHMS150003
       \endverb
       \keyw{Complex structure,Protein complexes,Protein-protein docking,Protein-protein interactions}
+    \endentry
+    \entry{Jimenez2017}{article}{}
+      \name{author}{5}{}{%
+        {{hash=e3886cb98b69d243a789e36f2a15350a}{%
+           family={Jiménez},
+           family_i={J\bibinitperiod},
+           given={José},
+           given_i={J\bibinitperiod}}}%
+        {{hash=aa4fc4ab499c57e269a31dd4720ffabe}{%
+           family={Doerr},
+           family_i={D\bibinitperiod},
+           given={Stefan},
+           given_i={S\bibinitperiod}}}%
+        {{hash=82dbcda912480b08cb9d0593aa25b3e5}{%
+           family={Martínez-Rosell},
+           family_i={M\bibinithyphendelim R\bibinitperiod},
+           given={Gerard},
+           given_i={G\bibinitperiod}}}%
+        {{hash=d3848a3016b121bc863d91f287a5880c}{%
+           family={Rose},
+           family_i={R\bibinitperiod},
+           given={Alexander},
+           given_i={A\bibinitperiod}}}%
+        {{hash=30714fe3f5594fde1d3dbcc15ca93c00}{%
+           family={De\bibnamedelima Fabritiis},
+           family_i={D\bibinitperiod\bibinitdelim F\bibinitperiod},
+           given={Gianni},
+           given_i={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{9f123cbd3f652645d5f6c078203309e5}
+      \strng{fullhash}{4a9b318669a04cad5ce412b4410de2e0}
+      \field{sortinit}{J}
+      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{[submitted]}
+      \field{title}{DeepSite: protein binding site predictor based on 3D-convolutional neural networks}
+      \field{year}{2017}
     \endentry
     \entry{Jones1997}{article}{}
       \name{author}{2}{}{%
