@@ -543,7 +543,7 @@ Pair of atom-type counts from protein and ligand in the binding site.
 \frametitle{Experiments: Binding affinity prediction dataset}
 \begin{figure}[ht]
   \centering
-  \caption{Benchmarking results for the binding affinity dataset.}
+  \caption{Benchmarking results for the binding affinity dataset (1/2).}
   \begin{subfigure}[t]{0.5\textwidth}
   	\caption{SVM}
     \centering\includegraphics[width=\textwidth]{../figures/chapter4/aff/svm}
@@ -561,7 +561,7 @@ Pair of atom-type counts from protein and ligand in the binding site.
 \frametitle{Experiments: Binding affinity prediction dataset}
 \begin{figure}[ht]
   \centering
-  \caption{Benchmarking results for the binding affinity dataset.}
+  \caption{Benchmarking results for the binding affinity dataset (2/2).}
     \begin{subfigure}[t]{0.5\textwidth}
     \caption{MLP}
     \centering\includegraphics[width=\textwidth]{../figures/chapter4/aff/mlp}
@@ -597,6 +597,139 @@ Descriptors resemble those detailed in (Jim\'enez \textit{et al}. 2017). Average
 PIFACE database of clustered protein interface. Over 22k structurally unique interfaces extracted from the Protein Data Bank.
 \end{block}
 \end{frame}
+
+\begin{frame}
+\frametitle{Experiments: Protein-protein interface prediction}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the protein-protein interface dataset (1/2).}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{SVM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/pinter/svm}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{KNN}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/pinter/knn}
+  \end{subfigure}
+  \label{fig:aff}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: Protein-protein interface prediction}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the protein-protein interface dataset (2/2).}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{MLP}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/pinter/mlp}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{GBM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/pinter/gbm}
+  \end{subfigure}
+  \label{fig:aff}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: other datasets}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the LSVT Voice Rehabilitation dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{SVM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/lsvt/svm}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{KNN}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/lsvt/knn}
+  \end{subfigure}
+  \label{fig:breastcancer}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: other datasets}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the LSVT Voice Rehabilitation dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{MLP}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/lsvt/mlp}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{GBM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/lsvt/gbm}
+  \end{subfigure}
+  \label{fig:breastcancer}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: other datasets}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the Parkinson's dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{SVM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/parkinson/svm}
+  \end{subfigure}%
+  \label{fig:park}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: other datasets}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the Parkinson's dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{MLP}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/parkinson/mlp}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{GBM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/parkinson/gbm}
+  \end{subfigure}
+  \label{fig:park}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: other datasets}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the Breast cancer dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{SVM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/breast/svm}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{KNN}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/breast/knn}
+  \end{subfigure}
+  \label{fig:breastcancer}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Experiments: other datasets}
+\begin{figure}[ht]
+  \centering
+  \caption{Benchmarking results for the Breast cancer dataset.}
+  \begin{subfigure}[t]{0.5\textwidth}
+  	\caption{MLP}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/breast/mlp}
+  \end{subfigure}%
+  \begin{subfigure}[t]{0.5\textwidth}
+    \caption{GBM}
+    \centering\includegraphics[width=\textwidth]{../figures/chapter4/breast/gbm}
+  \end{subfigure}
+  \label{fig:breastcancer}
+\end{figure}
+\end{frame}
+			
 			
 
 \end{document}

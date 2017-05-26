@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  25 MAY 2017 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  26 MAY 2017 16:37
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1304,7 +1304,26 @@ Package caption Info: Hyperref support is turned off
 )
 \c@subfigure=\count276
 \c@subtable=\count277
-) (./slides.aux)
+) (./slides.aux
+
+LaTeX Warning: Label `fig:aff' multiply defined.
+
+
+LaTeX Warning: Label `fig:aff' multiply defined.
+
+
+LaTeX Warning: Label `fig:breastcancer' multiply defined.
+
+
+LaTeX Warning: Label `fig:park' multiply defined.
+
+
+LaTeX Warning: Label `fig:breastcancer' multiply defined.
+
+
+LaTeX Warning: Label `fig:breastcancer' multiply defined.
+
+)
 \openout1 = `slides.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
@@ -1321,6 +1340,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1691,11 +1711,207 @@ Overfull \vbox (6.93172pt too high) detected at line 587
 
 [32
 
- <../figures/chapter4/interface.png>]
-Package atenddvi Info: Last page = 33.
- [33
+ <../figures/chapter4/interface.png>] [33
 
 ]
+<../figures/chapter4/pinter/svm.pdf, id=1570, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/pinter/svm.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/pinter/svm.pdf>
+Package pdftex.def Info: ../figures/chapter4/pinter/svm.pdf used on input line 
+616.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+
+<../figures/chapter4/pinter/knn.pdf, id=1571, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/pinter/knn.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/pinter/knn.pdf>
+Package pdftex.def Info: ../figures/chapter4/pinter/knn.pdf used on input line 
+616.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:aff}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.616 \end{frame}
+                  [34
+
+ <../figures/chapter4/pinter/svm.pdf> <../figures/chapter4/pinter/knn.pdf
+
+pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ../figures/c
+hapter4/pinter/knn.pdf): PDF inclusion: multiple pdfs with page group included 
+in a single page
+>] <../figures/chapter4/pinter/mlp.pdf, id=1704, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/pinter/mlp.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/pinter/mlp.pdf>
+Package pdftex.def Info: ../figures/chapter4/pinter/mlp.pdf used on input line 
+633.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+
+<../figures/chapter4/pinter/gbm.pdf, id=1705, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/pinter/gbm.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/pinter/gbm.pdf>
+Package pdftex.def Info: ../figures/chapter4/pinter/gbm.pdf used on input line 
+633.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:aff}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.633 \end{frame}
+                  [35
+
+ <../figures/chapter4/pinter/mlp.pdf> <../figures/chapter4/pinter/gbm.pdf
+
+pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ../figures/c
+hapter4/pinter/gbm.pdf): PDF inclusion: multiple pdfs with page group included 
+in a single page
+>] <../figures/chapter4/lsvt/svm.pdf, id=1838, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/lsvt/svm.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/lsvt/svm.pdf>
+Package pdftex.def Info: ../figures/chapter4/lsvt/svm.pdf used on input line 65
+0.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+
+<../figures/chapter4/lsvt/knn.pdf, id=1839, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/lsvt/knn.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/lsvt/knn.pdf>
+Package pdftex.def Info: ../figures/chapter4/lsvt/knn.pdf used on input line 65
+0.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+ [36
+
+ <../figures/chapter4/lsvt/svm.pdf> <../figures/chapter4/lsvt/knn.pdf
+
+pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ../figures/c
+hapter4/lsvt/knn.pdf): PDF inclusion: multiple pdfs with page group included in
+ a single page
+>] <../figures/chapter4/lsvt/mlp.pdf, id=1972, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/lsvt/mlp.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/lsvt/mlp.pdf>
+Package pdftex.def Info: ../figures/chapter4/lsvt/mlp.pdf used on input line 66
+7.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+
+<../figures/chapter4/lsvt/gbm.pdf, id=1973, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/lsvt/gbm.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/lsvt/gbm.pdf>
+Package pdftex.def Info: ../figures/chapter4/lsvt/gbm.pdf used on input line 66
+7.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:breastcan
+cer}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.667 \end{frame}
+                  [37
+
+ <../figures/chapter4/lsvt/mlp.pdf> <../figures/chapter4/lsvt/gbm.pdf
+
+pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ../figures/c
+hapter4/lsvt/gbm.pdf): PDF inclusion: multiple pdfs with page group included in
+ a single page
+>] <../figures/chapter4/parkinson/svm.pdf, id=2105, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/parkinson/svm.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/parkinson/svm.pdf>
+Package pdftex.def Info: ../figures/chapter4/parkinson/svm.pdf used on input li
+ne 680.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+ [38
+
+ <../figures/chapter4/parkinson/svm.pdf>]
+<../figures/chapter4/parkinson/mlp.pdf, id=2184, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/parkinson/mlp.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/parkinson/mlp.pdf>
+Package pdftex.def Info: ../figures/chapter4/parkinson/mlp.pdf used on input li
+ne 697.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+
+<../figures/chapter4/parkinson/gbm.pdf, id=2185, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/parkinson/gbm.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/parkinson/gbm.pdf>
+Package pdftex.def Info: ../figures/chapter4/parkinson/gbm.pdf used on input li
+ne 697.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:park}) ha
+s been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.697 \end{frame}
+                  [39
+
+ <../figures/chapter4/parkinson/mlp.pdf> <../figures/chapter4/parkinson/gbm.pdf
+
+
+pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ../figures/c
+hapter4/parkinson/gbm.pdf): PDF inclusion: multiple pdfs with page group includ
+ed in a single page
+>] <../figures/chapter4/breast/svm.pdf, id=2317, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/breast/svm.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/breast/svm.pdf>
+Package pdftex.def Info: ../figures/chapter4/breast/svm.pdf used on input line 
+714.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+
+<../figures/chapter4/breast/knn.pdf, id=2318, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/breast/knn.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/breast/knn.pdf>
+Package pdftex.def Info: ../figures/chapter4/breast/knn.pdf used on input line 
+714.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:breastcan
+cer}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.714 \end{frame}
+                  [40
+
+ <../figures/chapter4/breast/svm.pdf> <../figures/chapter4/breast/knn.pdf
+
+pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ../figures/c
+hapter4/breast/knn.pdf): PDF inclusion: multiple pdfs with page group included 
+in a single page
+>] <../figures/chapter4/breast/mlp.pdf, id=2450, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/breast/mlp.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/breast/mlp.pdf>
+Package pdftex.def Info: ../figures/chapter4/breast/mlp.pdf used on input line 
+731.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+
+<../figures/chapter4/breast/gbm.pdf, id=2451, 462.52798pt x 346.89601pt>
+File: ../figures/chapter4/breast/gbm.pdf Graphic file (type pdf)
+
+<use ../figures/chapter4/breast/gbm.pdf>
+Package pdftex.def Info: ../figures/chapter4/breast/gbm.pdf used on input line 
+731.
+(pdftex.def)             Requested size: 153.64493pt x 115.23296pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:breastcan
+cer}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.731 \end{frame}
+                 
+Package atenddvi Info: Last page = 41.
+ [41
+
+ <../figures/chapter4/breast/mlp.pdf> <../figures/chapter4/breast/gbm.pdf
+
+pdfTeX warning: /home/jose/texlive/bin/x86_64-linux/pdflatex (file ../figures/c
+hapter4/breast/gbm.pdf): PDF inclusion: multiple pdfs with page group included 
+in a single page
+>]
 \tf@nav=\write6
 \openout6 = `slides.nav'.
 
@@ -1705,11 +1921,11 @@ Package atenddvi Info: Last page = 33.
 \tf@snm=\write8
 \openout8 = `slides.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 602.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 602.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 735.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 735.
  (./slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 602.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 602.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 735.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 735.
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1717,13 +1933,16 @@ Package rerunfilecheck Info: File `slides.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 602.
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 735.
  ) 
 Here is how much of TeX's memory you used:
- 26223 strings out of 493013
- 502105 string characters out of 6135623
- 560363 words of memory out of 5000000
- 29159 multiletter control sequences out of 15000+600000
+ 26323 strings out of 493013
+ 504935 string characters out of 6135623
+ 560588 words of memory out of 5000000
+ 29237 multiletter control sequences out of 15000+600000
  19587 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,21n,63p,10410b,645s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1752,10 +1971,10 @@ sfonts/cm/cmtt10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts
 /symbols/msbm10.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/cm-super/
 sfso0800.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/cm-super/sfso100
 0.pfb>
-Output written on slides.pdf (33 pages, 2795293 bytes).
+Output written on slides.pdf (41 pages, 3021060 bytes).
 PDF statistics:
- 1669 PDF objects out of 1728 (max. 8388607)
- 1074 compressed objects within 11 object streams
- 76 named destinations out of 1000 (max. 500000)
- 271 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2689 PDF objects out of 2984 (max. 8388607)
+ 1425 compressed objects within 15 object streams
+ 94 named destinations out of 1000 (max. 500000)
+ 346 words of extra memory for PDF output out of 10000 (max. 10000000)
 
