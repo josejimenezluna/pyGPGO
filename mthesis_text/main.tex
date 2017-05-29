@@ -143,7 +143,7 @@ The whole thesis is organized in 5 self-contained chapters. First, all the theor
 
 \chapter{Gaussian Process regression}
 
- In this chapter we will focus on regression problems. Assume we have some labelled data $\mathcal{D} = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) |\, i = 1,\dots,n\right\rbrace$, where $\boldsymbol{x}$ is a vector of covariates and $y$ denotes a continuous objective variable. We wish to learn a predictive distribution over new values of $\boldsymbol{x}$, so that we can make predictions and inference over these. In practice, for simplicity we write that $\mathcal{D} = \left\lbrace X, \boldsymbol{y}\right\rbrace$, where $X$ is our predictor matrix.\\
+ In this chapter we will focus on regression problems. Assume we have some labelled data $\mathcal{D} = \left\lbrace \left(\boldsymbol{x_i}, y_i\right) |\, i = 1,\dots,n\right\rbrace$, where $\boldsymbol{x}$ is a vector of covariates and $y$ denotes a continuous objective variable. We wish to learn a predictive distribution over new values of $\boldsymbol{y}$ given $\boldsymbol{x}$, so that we can make predictions and inference over these. In practice, for simplicity we write that $\mathcal{D} = \left\lbrace X, \boldsymbol{y}\right\rbrace$, where $X$ is our predictor matrix.\\
 
 One can interpret a Gaussian Process in several ways. The most widely known is the function space view, which is the one we will cover first here and the one we will assume for the rest for the thesis. In this view, we consider a Gaussian Process to be a stochastic process, hence, a distribution over functions, instead of over values. Inference takes place directly in this space. For completeness, we will also provide a weight-space view second, that might be more appealing to readers familiar with Bayesian linear regression.\\
 
@@ -420,7 +420,7 @@ Notice this result is equivalent to the log-density of $\boldsymbol{y} \sim \mat
 		\end{algorithmic}
 \end{algorithm}
 
-pyGPGO includes an implementation of a Gaussian Process regressor under the \texttt{surrogates.GaussianProcess} module. The entire module along with its functionality will be explained in detail in Section \ref{features}.
+pyGPGO includes an implementation of a Gaussian Process regressor under the \texttt{surrogates.GaussianProcess} module. The entire module along with its functionality will be detailed in Section \ref{features}.
 
 \subsection{A toy example of Gaussian Process regression}
 
@@ -561,7 +561,7 @@ For typical local optimization methods to work fairly well, we may also need an 
 \dfrac{\partial}{\partial \theta_j}\log p(\boldsymbol{y}|X, \boldsymbol{\theta}) = \dfrac{1}{2}\boldsymbol{y}^T K^{-1}\dfrac{\partial K}{\partial \theta_j}K^{-1}\boldsymbol{y} - \dfrac{1}{2}\textrm{tr}\left(K^{-1} \dfrac{\partial K}{\partial \theta_j} \right)
 \end{equation}
 
-where $\dfrac{\partial K}{\partial \theta_j}$ denotes the derivative of the selected covariance function, evaluated at each pair of instances of the training set. For optimization, one may choose to make use of this expression or not, depending on both of the optimization algorithm (gradient ascent, L-BFGS-B...) or on the cost of evaluation of the derivative. In pyGPGO, most of the covariance functions are implemented with a method \texttt{gradK} to return the gradient. We will come back to detail pyGPGO optimization procedures in Section \ref{features}. 
+where $\dfrac{\partial K}{\partial \theta_j}$ denotes the derivative of the selected covariance function, evaluated at each pair of instances of the training set. For optimization, one may choose to make use of this expression or not, depending on both of the optimization algorithm (gradient ascent, L-BFGS-B...) or on the cost of evaluation of the derivative. In pyGPGO, most of the covariance functions are implemented with a method \texttt{gradK} to return the gradient. 
 
 \subsubsection{Another toy example: Optimizing the characteristic length-scale}
 
