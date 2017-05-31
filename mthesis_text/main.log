@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  31 MAY 2017 11:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  31 MAY 2017 15:50
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2131,7 +2131,7 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 
 (./_minted-main/90CC783EF02E2B6511021850047ABC389D188FF14B5B5A34504F2B9625FD44D
 E.pygtex [75])
-<figures/chapter5/exfun.pdf, id=3316, 462.52798pt x 346.89601pt>
+<figures/chapter5/exfun.pdf, id=3317, 462.52798pt x 346.89601pt>
 File: figures/chapter5/exfun.pdf Graphic file (type pdf)
 
 <use figures/chapter5/exfun.pdf>
@@ -2195,14 +2195,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 2228--2229
 
 
 (./_minted-main/CCC7AA513808D2FFF6E0158F1ED4C62A9D188FF14B5B5A34504F2B9625FD44D
-E.pygtex) <figures/chapter5/franke.pdf, id=3365, 1015.39348pt x 750.16258pt>
+E.pygtex) <figures/chapter5/franke.pdf, id=3366, 1015.39348pt x 750.16258pt>
 File: figures/chapter5/franke.pdf Graphic file (type pdf)
 
 <use figures/chapter5/franke.pdf>
 Package pdftex.def Info: figures/chapter5/franke.pdf used on input line 2282.
 (pdftex.def)             Requested size: 455.24411pt x 336.33382pt.
 
-<figures/chapter5/noiseopt.pdf, id=3366, 462.52798pt x 346.89601pt>
+<figures/chapter5/noiseopt.pdf, id=3367, 462.52798pt x 346.89601pt>
 File: figures/chapter5/noiseopt.pdf Graphic file (type pdf)
 
 <use figures/chapter5/noiseopt.pdf>
@@ -2210,7 +2210,7 @@ Package pdftex.def Info: figures/chapter5/noiseopt.pdf used on input line 2290.
 
 (pdftex.def)             Requested size: 341.43307pt x 256.085pt.
 
-<figures/chapter5/hyperpost.pdf, id=3367, 708.9687pt x 474.0912pt>
+<figures/chapter5/hyperpost.pdf, id=3368, 708.9687pt x 474.0912pt>
 File: figures/chapter5/hyperpost.pdf Graphic file (type pdf)
 
 <use figures/chapter5/hyperpost.pdf>
@@ -2218,7 +2218,7 @@ Package pdftex.def Info: figures/chapter5/hyperpost.pdf used on input line 2297
 .
 (pdftex.def)             Requested size: 341.43307pt x 228.32076pt.
 
-<figures/chapter5/makemoons.pdf, id=3368, 462.52798pt x 346.89601pt>
+<figures/chapter5/makemoons.pdf, id=3369, 462.52798pt x 346.89601pt>
 File: figures/chapter5/makemoons.pdf Graphic file (type pdf)
 
 <use figures/chapter5/makemoons.pdf>
@@ -2361,10 +2361,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3258.
  ) 
 Here is how much of TeX's memory you used:
- 19581 strings out of 493013
- 337313 string characters out of 6135623
- 852723 words of memory out of 5000000
- 22225 multiletter control sequences out of 15000+600000
+ 19583 strings out of 493013
+ 337369 string characters out of 6135623
+ 853854 words of memory out of 5000000
+ 22227 multiletter control sequences out of 15000+600000
  17237 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,22n,77p,4250b,1229s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2396,10 +2396,10 @@ ti7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
 b></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></ho
 me/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></hom
 e/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (106 pages, 5475334 bytes).
+Output written on main.pdf (106 pages, 5475054 bytes).
 PDF statistics:
- 3810 PDF objects out of 4296 (max. 8388607)
- 2038 compressed objects within 21 object streams
+ 3811 PDF objects out of 4296 (max. 8388607)
+ 2039 compressed objects within 21 object streams
  480 named destinations out of 1000 (max. 500000)
  918 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2817,21 +2817,30 @@
            family_i={R\bibinitperiod},
            given={Alexander},
            given_i={A\bibinitperiod}}}%
-        {{hash=30714fe3f5594fde1d3dbcc15ca93c00}{%
-           family={De\bibnamedelima Fabritiis},
-           family_i={D\bibinitperiod\bibinitdelim F\bibinitperiod},
-           given={Gianni},
+        {{hash=9e256b5343df9f7bf7470f29bae6ecbc}{%
+           family={{De Fabritiis}},
+           family_i={D\bibinitperiod},
+           given={G.},
            given_i={G\bibinitperiod}}}%
       }
       \strng{namehash}{9f123cbd3f652645d5f6c078203309e5}
-      \strng{fullhash}{4a9b318669a04cad5ce412b4410de2e0}
+      \strng{fullhash}{a567e2caf23c0723fdc8fd9d08f27f19}
       \field{sortinit}{J}
       \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{[submitted]}
-      \field{title}{DeepSite: protein binding site predictor based on 3D-convolutional neural networks}
+      \field{abstract}{Motivation: An important step in structure-based drug design consists in the prediction of druggable binding sites. Several algorithms for detecting binding cavities, those likely to bind to a small drug compound, have been developed over the years by clever exploitation of geometric, chemical and evolutionary features of the protein. Results: Here we present a novel knowledge-based approach that uses state-of-the-art convolutional neural networks, where the algorithm is learned by examples. In total, 7622 proteins from the scPDB database of binding sites have been evaluated using both a distance and a volumetric overlap approach. Our machine-learning based method demonstrates superior performance to two other competitive algorithmic strategies. Availability and implementation: DeepSite is freely available at www.playmolecule.org. Users can submit either a PDB ID or PDB file for pocket detection to our NVIDIA GPU-equipped servers through a WebGL graphical interface.}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{12}
+      \field{title}{{DeepSite: Protein binding site predictor using 3D-convolutional neural networks}}
+      \field{volume}{33}
       \field{year}{2017}
+      \field{pages}{1\bibrangedash 7}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1093/bioinformatics/btx350
+      \endverb
+      \keyw{deep learning,machine learning,structural biology}
     \endentry
     \entry{Jones1997}{article}{}
       \name{author}{2}{}{%
