@@ -409,7 +409,7 @@ Using the results from Equations \ref{hierarchical} we can derive the integral a
 \log p(\boldsymbol{y}|X) = - \dfrac{1}{2}\boldsymbol{y}^T(K + \sigma^2_n I)^{-1}\boldsymbol{y} - \dfrac{1}{2}\log |K + \sigma^2_n I| - \dfrac{n}{2}\log 2\pi
 \end{equation}
 
-Notice this result is equivalent to the log-density of $\boldsymbol{y} \sim \mathcal{N}(\boldsymbol{0}, K + \sigma_n^2 I)$. We have now all the necessary ingredients to lay down pseudo-code for the implementation of a Gaussian Process regressor, as presented in Algorithm \ref{alg}. It makes use of several tricks for computational stability, such as a Cholesky decomposition and several linear system of equations to avoid directly inverting matrices.\\
+where we write $K=K(X, X)$ for simplicity. Notice this result is equivalent to the log-density of $\boldsymbol{y} \sim \mathcal{N}(\boldsymbol{0}, K + \sigma_n^2 I)$. We have now all the necessary ingredients to lay down pseudo-code for the implementation of a Gaussian Process regressor, as presented in Algorithm \ref{alg}. It makes use of several tricks for computational stability, such as a Cholesky decomposition and several linear system of equations to avoid directly inverting matrices.\\
 
 \begin{algorithm}
 	\caption{Gaussian regressor pseudo-code.}
@@ -511,7 +511,7 @@ The \textit{arcSin} kernel is an example of a dot product covariance function, t
 k_{\textrm{arcSin}}(\boldsymbol{x}, \boldsymbol{x'}) = \dfrac{2}{\pi}\sin^{-1}\left(\dfrac{2\boldsymbol{x}\Sigma\boldsymbol{x'}}{\sqrt{(1 + 2\boldsymbol{x}^T\Sigma\boldsymbol{x})(1 + 2\boldsymbol{x'}^T\Sigma\boldsymbol{x})}}   \right)
 \end{equation}\\
 
-Normally, these are the covariance functions that are used for the noiseless case of observation, that is, we know precisely that $f(\boldsymbol{x}_i) = y_i, \;\; i=1\dots n$. In general, our covariance functions will take the form:
+where $\Sigma$ is some semidefinite positive matrix. Normally, these are the covariance functions that are used for the noiseless case of observation, that is, we know precisely that $f(\boldsymbol{x}_i) = y_i, \;\; i=1\dots n$. In general, our covariance functions will take the form:
 
 \begin{equation}
 k^y(\boldsymbol{x}_p, \boldsymbol{x}_q) = \sigma^2_f k(\boldsymbol{x}_p, \boldsymbol{x}_q) + \sigma^2_n \delta_{pq} \,

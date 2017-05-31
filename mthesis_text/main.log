@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  30 MAY 2017 13:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  31 MAY 2017 11:19
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1359,13 +1359,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 433--434
 
  []
 
-<figures/chapter2/GPsine.pdf, id=595, 555.03362pt x 404.712pt>
+[15] <figures/chapter2/GPsine.pdf, id=608, 555.03362pt x 404.712pt>
 File: figures/chapter2/GPsine.pdf Graphic file (type pdf)
 
 <use figures/chapter2/GPsine.pdf>
 Package pdftex.def Info: figures/chapter2/GPsine.pdf used on input line 439.
 (pdftex.def)             Requested size: 455.24411pt x 331.94627pt.
- [15]
+
 Underfull \hbox (badness 10000) in paragraph at lines 444--445
 
  []
@@ -2396,7 +2396,7 @@ ti7.pfb></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
 b></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></ho
 me/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></hom
 e/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (106 pages, 5475288 bytes).
+Output written on main.pdf (106 pages, 5475334 bytes).
 PDF statistics:
  3810 PDF objects out of 4296 (max. 8388607)
  2038 compressed objects within 21 object streams
