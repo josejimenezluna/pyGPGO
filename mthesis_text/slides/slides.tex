@@ -10,6 +10,10 @@
 \usepackage{animate}
 \usepackage{booktabs}
 \usepackage{subcaption}
+\usepackage{minted}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -728,6 +732,107 @@ PIFACE database of clustered protein interface. Over 22k structurally unique int
   \end{subfigure}
   \label{fig:breastcancer}
 \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{pyGPGO: Bayesian Optimization for Python}
+There are many possible choices in the Bayesian Optimization framework:
+\begin{itemize}
+\item Choice of surrogate model.
+\item Covariance function to use
+\item Acquisition behaviour
+\item Hyperparameter treatment
+\end{itemize}
+They naturally motivate a modular design. Most of the available software focuses on a particular
+implementation of the Bayesian optimization algorithm.\\
+
+pyGPGO is a package I wrote to cover as many of these scenarios as possible.
+\end{frame}
+
+\begin{frame}
+\frametitle{pyGPGO: features}
+pyGPGO features:
+\begin{itemize}
+\item A completely modular and customizable design. Easy to setup and minimal dependencies.
+\item A wide range of surrogate models: Gaussian Processes, Student-t Processes, Random Forests, Extra Random Forests and Gradient Boosting Machines.
+\item Most of the usual covariance functions, as well as its derivatives: squared exponential, Mat\'ern, $\gamma$-exponential, rational quadratic, exponential sine, and dot product.
+\item Many acquisition function behaviours: probability of improvement, expected improvement, upper confidence bound and entropy-based, as well as their integrated versions.
+\item Type II Maximum-Likelihood of covariance function hyperparameters.
+\item MCMC sampling for full-Bayesian treatment of hyperparameters (via \texttt{pyMC3}).
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{pyGPGO: example}
+\begin{minted}[mathescape,
+               linenos,
+               fontsize=\footnotesize ,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+import numpy as np
+from pyGPGO.covfunc import matern32
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.GPGO import GPGO
+
+
+def f(x, y):
+    # Franke's function (https://www.mathworks.com/help/curvefit/franke.html)
+    one = 0.75 * np.exp(-(9 * x - 2) ** 2 / 4 - (9 * y - 2) ** 2 / 4)
+    two = 0.75 * np.exp(-(9 * x + 1) ** 2/ 49 - (9 * y + 1) / 10)
+    three = 0.5 * np.exp(-(9 * x - 7) ** 2 / 4 - (9 * y -3) ** 2 / 4)
+    four = 0.25 * np.exp(-(9 * x - 4) ** 2 - (9 * y - 7) ** 2)
+    return one + two + three - four
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{pyGPGO: example}
+\begin{minted}[mathescape,
+               linenos,
+               fontsize=\footnotesize ,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+cov = matern32()
+gp = GaussianProcess(cov)
+acq = Acquisition(mode='ExpectedImprovement')
+param = {'x': ('cont', [0, 1]),
+         'y': ('cont', [0, 1])}
+
+np.random.seed(1337)
+gpgo = GPGO(gp, acq, f, param)
+gpgo.run(max_iter=10)
+\end{minted}
+\end{frame}
+
+\begin{frame}
+\frametitle{pyGPGO: Bayesian Optimization for Python}
+\begin{columns}
+\column{0.7\linewidth}
+\centering
+\begin{itemize}
+\item The software is MIT licensed and can be downloaded from its GitHub repository @ \textcolor{blue}{\url{https://github.com/hawk31/pyGPGO}}
+\item Extensive documentation can be found in ReadTheDocs. \textcolor{blue}{\url{pygpgo.readthedocs.io/en/latest}}
+\item Anyone can contribute to the project! (Implement new features, report bugs, improve docs...) 
+\end{itemize}
+\column{0.58\linewidth}
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{figures/github}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}[plain,c]
+\usebeamerfont*{frametitle}
+\begin{center}
+\Huge Thank you!
+\end{center}
 \end{frame}
 			
 			

@@ -1,0 +1,19 @@
+\frametitle{pyGPGO: example}
+\begin{minted}[mathescape,
+               linenos,
+               fontsize=\footnotesize ,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+cov = matern32()
+gp = GaussianProcess(cov)
+acq = Acquisition(mode='ExpectedImprovement')
+param = {'x': ('cont', [0, 1]),
+         'y': ('cont', [0, 1])}
+
+np.random.seed(1337)
+gpgo = GPGO(gp, acq, f, param)
+gpgo.run(max_iter=10)
+\end{minted}
