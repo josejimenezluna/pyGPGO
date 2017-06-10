@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  6 JUN 2017 11:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  8 JUN 2017 14:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2023,25 +2023,49 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 \openout5 = `slides.pyg'.
 
 
-(./_minted-slides/F0F4BB934C137A567E480F9FDF411EBD0D20D7C64B221B03DEC482B8814EB
+(./_minted-slides/50DE634E421A0CFBA4B9131FBC051A1C0D20D7C64B221B03DEC482B8814EB
 828.pygtex)) [45
 
-] <figures/github.png, id=2696, 562.1pt x 562.1pt>
+]
+\openout4 = `slides.vrb'.
+
+ (./slides.vrb
+\openout5 = `slides.pyg'.
+
+
+(./_minted-slides/955ED75CDFD6FEDDEFEF62987D0E90700D20D7C64B221B03DEC482B8814EB
+828.pygtex)) [46
+
+]
+\openout4 = `slides.vrb'.
+
+ (./slides.vrb
+\openout5 = `slides.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P m
+athescape=True -F gobble:n=0 -P python3=True -o _minted-slides/8EFB7D0C1E0A4665
+DCCADE6A8C166F270D20D7C64B221B03DEC482B8814EB828.pygtex slides.pyg)...executed.
+
+
+(./_minted-slides/8EFB7D0C1E0A4665DCCADE6A8C166F270D20D7C64B221B03DEC482B8814EB
+828.pygtex)) [47
+
+] <figures/github.png, id=2748, 562.1pt x 562.1pt>
 File: figures/github.png Graphic file (type png)
 
 <use figures/github.png>
-Package pdftex.def Info: figures/github.png used on input line 829.
+Package pdftex.def Info: figures/github.png used on input line 886.
 (pdftex.def)             Requested size: 71.29037pt x 71.28297pt.
 
-Overfull \hbox (29.13528pt too wide) detected at line 829
+Overfull \hbox (29.13528pt too wide) detected at line 886
 [][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
-[46
+[48
 
  <./figures/github.png>]
-Package atenddvi Info: Last page = 47.
- [47
+Package atenddvi Info: Last page = 49.
+ [49
 
 ]
 \tf@nav=\write9
@@ -2053,11 +2077,11 @@ Package atenddvi Info: Last page = 47.
 \tf@snm=\write11
 \openout11 = `slides.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 840.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 840.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 897.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 897.
  (./slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 840.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 840.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 897.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 897.
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2070,13 +2094,13 @@ LaTeX Warning: There were multiply-defined labels.
 
 runsystem(rm slides.pyg)...executed.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 840.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 897.
  ) 
 Here is how much of TeX's memory you used:
- 28775 strings out of 493013
- 553007 string characters out of 6135623
- 644255 words of memory out of 5000000
- 31611 multiletter control sequences out of 15000+600000
+ 28795 strings out of 493013
+ 553771 string characters out of 6135623
+ 644328 words of memory out of 5000000
+ 31617 multiletter control sequences out of 15000+600000
  20528 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,21n,63p,10410b,645s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2108,10 +2132,10 @@ b></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></hom
 e/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home
 /jose/texlive/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb></home/jose/t
 exlive/texmf-dist/fonts/type1/public/cm-super/sfso1000.pfb>
-Output written on slides.pdf (47 pages, 3077049 bytes).
+Output written on slides.pdf (49 pages, 3083410 bytes).
 PDF statistics:
- 2868 PDF objects out of 2984 (max. 8388607)
- 1591 compressed objects within 16 object streams
- 106 named destinations out of 1000 (max. 500000)
+ 2924 PDF objects out of 2984 (max. 8388607)
+ 1644 compressed objects within 17 object streams
+ 110 named destinations out of 1000 (max. 500000)
  351 words of extra memory for PDF output out of 10000 (max. 10000000)
 

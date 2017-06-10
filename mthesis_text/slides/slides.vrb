@@ -1,4 +1,4 @@
-\frametitle{pyGPGO: example}
+\frametitle{pyGPGO: optimizing SVM hyperparameters}
 \begin{minted}[mathescape,
                linenos,
                fontsize=\footnotesize ,
@@ -7,13 +7,17 @@
                frame=lines,
                framesep=2mm,
                python3 = true]{python}
-cov = matern32()
-gp = GaussianProcess(cov)
-acq = Acquisition(mode='ExpectedImprovement')
-param = {'x': ('cont', [0, 1]),
-         'y': ('cont', [0, 1])}
 
-np.random.seed(1337)
-gpgo = GPGO(gp, acq, f, param)
-gpgo.run(max_iter=10)
+X, y = make_moons(n_samples = 200, noise = 0.3)
+
+sexp = squaredExponential()
+gp = GaussianProcess(sexp, optimize = True, usegrads = True)
+acq = Acquisition(mode = 'UCB', beta = 1.5)
+
+params = {'C':      ('cont', (-4, 5)),
+          'gamma':  ('cont', (-4, 5))}
+
+gpgo = GPGO(gp, acq, evaluateModel, params)
+gpgo.run(max_iter = 50)
+gpgo.getResult()
 \end{minted}

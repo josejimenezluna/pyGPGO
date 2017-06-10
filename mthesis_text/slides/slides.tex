@@ -47,7 +47,7 @@
 	
 	\begin{frame}
 		\frametitle{Goals of this thesis}
-		This Master's thesis aims to be a multi-objective optimization task:
+		This Master's thesis has different and complimentary aims:
 		
 		\begin{itemize}
 			\item Provide an introduction to both Gaussian Process regression and Bayesian optimization. 
@@ -58,7 +58,7 @@
 	
 	\begin{frame}
 		\frametitle{Organization of the work}
-		Organized in 5 self-contained chapters.
+		Organized in 4 self-contained chapters.
 		\begin{itemize}
 			\item \textbf{Chapter 2} focuses on an introduction to regression problems using Gaussian Processes. These are surrogate models we will use for Bayesian Optimization.
 			\item \textbf{Chapter 3} covers the main topic in this work, Bayesian Optimization.
@@ -79,10 +79,10 @@
 		\begin{itemize}
 			\item $f$ may not have a closed-form expression.
 			\item Evaluations of $f$ may be noisy.
-			\item Gradient information is optional.
+			\item No gradient information needed.
 		\end{itemize}
 		
-		These situations arise when optimizing the \textit{loss} function of a machine-learning model, depending on its hyperparameters (e.g. log-loss):
+		An example arises when optimizing the \textit{loss} function of a machine-learning model, depending on its hyperparameters (e.g. log-loss):
 		
 		\begin{equation}
 		\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = -\dfrac{1}{n} \sum_i \left(y_i \log(\hat{y_i}) + (1 - y_i)\log(1-\hat{y_i})\right)
@@ -105,7 +105,7 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 			k(\boldsymbol{x}, \boldsymbol{x'}) = \mathbb{E}\left[\left( f(\boldsymbol{x}) - m(\boldsymbol{x}) \right)\left( f(\boldsymbol{x}') - m(\boldsymbol{x}')\right)\right]
 			\end{equation}
 			
-			We say that $f$ is a Gaussian Process with mean $m(\boldsymbol{x})$ and covariance function $k(x, x')$ and write:
+			We say that $f$ is a Gaussian Process with mean $m(\boldsymbol{x})$ and covariance function $k(\boldsymbol{x}, \boldsymbol{x}')$ and write:
 			
 			\begin{equation}
 			f(\boldsymbol{x}) \sim \mathcal{GP}\left(m(\boldsymbol{x}), k(\boldsymbol{x}, \boldsymbol{x'}) \right)
@@ -763,7 +763,7 @@ pyGPGO features:
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{pyGPGO: example}
+\frametitle{pyGPGO: a simple example}
 \begin{minted}[mathescape,
                linenos,
                fontsize=\footnotesize ,
@@ -790,7 +790,7 @@ def f(x, y):
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{pyGPGO: example}
+\frametitle{pyGPGO: a simple example}
 \begin{minted}[mathescape,
                linenos,
                fontsize=\footnotesize ,
@@ -808,6 +808,63 @@ param = {'x': ('cont', [0, 1]),
 np.random.seed(1337)
 gpgo = GPGO(gp, acq, f, param)
 gpgo.run(max_iter=10)
+gpgo.getResult()
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{pyGPGO: optimizing SVM hyperparameters}
+\begin{minted}[mathescape,
+               linenos,
+               fontsize=\footnotesize ,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+
+import numpy as np
+from sklearn.datasets import make_moons
+from sklearn.svm import SVC
+from sklearn.model_selection import cross_val_score
+
+
+from pyGPGO.GPGO import GPGO
+from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.acquisition import Acquisition
+from pyGPGO.covfunc import squaredExponential
+
+
+def evaluateModel(C, gamma):
+    clf = SVC(C=10**C, gamma=10**gamma)
+    return np.average(cross_val_score(clf, X, y))
+               
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{pyGPGO: optimizing SVM hyperparameters}
+\begin{minted}[mathescape,
+               linenos,
+               fontsize=\footnotesize ,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               python3 = true]{python}
+               
+X, y = make_moons(n_samples = 200, noise = 0.3)
+    
+sexp = squaredExponential()
+gp = GaussianProcess(sexp, optimize = True, usegrads = True)
+acq = Acquisition(mode = 'UCB', beta = 1.5)
+
+params = {'C':      ('cont', (-4, 5)),
+          'gamma':  ('cont', (-4, 5))}
+
+gpgo = GPGO(gp, acq, evaluateModel, params)
+gpgo.run(max_iter = 50)
+gpgo.getResult()
 \end{minted}
 \end{frame}
 

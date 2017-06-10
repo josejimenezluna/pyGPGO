@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+setup.py
+pyGPGO/GPGO.py
+pyGPGO/GPRegressor.py
+pyGPGO/__init__.py
+pyGPGO/acquisition.py
+pyGPGO/covfunc.py
+pyGPGO/logger.py
+pyGPGO.egg-info/PKG-INFO
+pyGPGO.egg-info/SOURCES.txt
+pyGPGO.egg-info/dependency_links.txt
+pyGPGO.egg-info/not-zip-safe
+pyGPGO.egg-info/requires.txt
+pyGPGO.egg-info/top_level.txt
