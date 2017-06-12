@@ -415,10 +415,21 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		
 		\begin{block}{Student-t Process example}
 		\begin{equation}
-		\boldsymbol{f}^*|\boldsymbol{f} \sim \mathcal{T}\left(\nu + n_1, \boldsymbol{\phi}_2, \dfrac{\nu + 				\beta_1 - 2}{\nu + n_1 - 2} \tilde{K}_{**} \right)
+		\boldsymbol{f}^*|\boldsymbol{f} \sim \mathcal{T}\left(\nu + n, \boldsymbol{\phi}_2, \dfrac{\nu + 				\beta_1 - 2}{\nu + n - 2} \tilde{K}_{**} \right)
 		\end{equation}
 		\end{block}
 		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Experiments}
+			The aim is to demonstrate that Bayesian Optimization works in real hyperparameter optimization problems.
+			\begin{itemize}
+				\item Mid-sized supervised learning problems. Both regression and classification considered.
+				\item Two examples explained in detail: datasets retrieved from computational chemistry problems.
+				\item Other examples drawn from other areas, such as medicine. Available from other sources (UCI ML repository).
+			\end{itemize}
+		\end{frame}
+		
 		
 		\begin{frame}
 		\frametitle{Experiments: benchmarking rules}
@@ -876,7 +887,8 @@ gpgo.getResult()
 \begin{itemize}
 \item The software is MIT licensed and can be downloaded from its GitHub repository @ \textcolor{blue}{\url{https://github.com/hawk31/pyGPGO}}
 \item Extensive documentation can be found in ReadTheDocs. \textcolor{blue}{\url{pygpgo.readthedocs.io/en/latest}}
-\item Anyone can contribute to the project! (Implement new features, report bugs, improve docs...) 
+\item Anyone can contribute to the project! (Implement new features, report bugs, improve docs...)
+\item All benchmarking, examples and thesis code is also available. 
 \end{itemize}
 \column{0.58\linewidth}
 \begin{figure}
