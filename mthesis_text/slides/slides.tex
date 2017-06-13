@@ -446,7 +446,7 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\begin{equation}
 		\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = \dfrac{1}{n} \sum_i \left(y_i - \hat{y_i}\right)^2
 		\end{equation}
-		\end{block}		
+		\end{block}
 		\end{frame}
 		
 		\begin{frame}
@@ -456,9 +456,16 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\item Features scaled: zero mean, unit variance.
 		\item $n=50$ ($+3$ to account GP fitting) total function evaluations.
 		\item Gaussian Process surrogate, with squared exponential covariance function.
+		\end{itemize}
+		\end{frame}
+		
+		\begin{frame}
+		\frametitle{Experiments: benchmarking rules}
+		\begin{itemize}
 		\item Type II ML estimation of all hyperparameters at each stage ($l$, $\sigma_n^2$, $\sigma_f^2$).
 		\item Expected Improvement and GP-UCB ($\beta = 0.5$, $\beta = 1.5$) acquisitions.
 		\item Machine-learning models used: Support Vector Machines, K-Nearest-Neighbours, Gradient Boosting 			Machines and One-Hidden Layer Neural Networks.
+		\item Random search is considered as baseline for all experiments.
 		\end{itemize}
 		\end{frame}
 		
@@ -895,6 +902,15 @@ gpgo.getResult()
 \includegraphics[width=0.4\textwidth]{figures/github}
 \end{figure}
 \end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{pyGPGO in numbers}
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/pygpgo_git}\\
+\includegraphics[width=\textwidth]{figures/visits}\\
+\includegraphics[scale=0.3]{figures/commits}
+\end{figure}
 \end{frame}
 
 \begin{frame}[plain,c]
