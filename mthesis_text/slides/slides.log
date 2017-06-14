@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  14 JUN 2017 14:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.6.29)  14 JUN 2017 14:29
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2054,38 +2054,44 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 File: figures/github.png Graphic file (type png)
 
 <use figures/github.png>
-Package pdftex.def Info: figures/github.png used on input line 905.
+Package pdftex.def Info: figures/github.png used on input line 910.
 (pdftex.def)             Requested size: 71.29037pt x 71.28297pt.
+ <figures/read.png, id=2803, 123.662pt x 123.662pt>
+File: figures/read.png Graphic file (type png)
 
-Overfull \hbox (29.13528pt too wide) detected at line 905
+<use figures/read.png>
+Package pdftex.def Info: figures/read.png used on input line 910.
+(pdftex.def)             Requested size: 53.46915pt x 53.46797pt.
+
+Overfull \hbox (29.13528pt too wide) detected at line 910
 [][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
 [50
 
- <./figures/github.png>]
-<figures/pygpgo_git.png, id=2830, 1219.55624pt x 224.33812pt>
+ <./figures/github.png> <./figures/read.png>]
+<figures/pygpgo_git.png, id=2832, 1219.55624pt x 224.33812pt>
 File: figures/pygpgo_git.png Graphic file (type png)
 
 <use figures/pygpgo_git.png>
-Package pdftex.def Info: figures/pygpgo_git.png used on input line 914.
+Package pdftex.def Info: figures/pygpgo_git.png used on input line 919.
 (pdftex.def)             Requested size: 307.28987pt x 56.52597pt.
 
-<figures/visits.png, id=2831, 1192.455pt x 350.81062pt>
+<figures/visits.png, id=2833, 1192.455pt x 350.81062pt>
 File: figures/visits.png Graphic file (type png)
 
 <use figures/visits.png>
-Package pdftex.def Info: figures/visits.png used on input line 914.
+Package pdftex.def Info: figures/visits.png used on input line 919.
 (pdftex.def)             Requested size: 307.28987pt x 90.40031pt.
 
-<figures/commits.png, id=2832, 592.46344pt x 234.1247pt>
+<figures/commits.png, id=2834, 592.46344pt x 234.1247pt>
 File: figures/commits.png Graphic file (type png)
 
 <use figures/commits.png>
-Package pdftex.def Info: figures/commits.png used on input line 914.
+Package pdftex.def Info: figures/commits.png used on input line 919.
 (pdftex.def)             Requested size: 177.7404pt x 70.23795pt.
 
-Overfull \vbox (15.35605pt too high) detected at line 914
+Overfull \vbox (15.35605pt too high) detected at line 919
  []
 
 [51
@@ -2107,11 +2113,11 @@ Package atenddvi Info: Last page = 53.
 \tf@snm=\write11
 \openout11 = `slides.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 957.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 957.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 962.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 962.
  (./slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 957.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 957.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 962.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 962.
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2124,13 +2130,13 @@ LaTeX Warning: There were multiply-defined labels.
 
 runsystem(rm slides.pyg)...executed.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 957.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 962.
  ) 
 Here is how much of TeX's memory you used:
- 28838 strings out of 493013
- 554411 string characters out of 6135623
+ 28842 strings out of 493013
+ 554498 string characters out of 6135623
  644401 words of memory out of 5000000
- 31646 multiletter control sequences out of 15000+600000
+ 31650 multiletter control sequences out of 15000+600000
  22476 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,21n,63p,10410b,645s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2162,10 +2168,10 @@ b></home/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></hom
 e/jose/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home
 /jose/texlive/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb></home/jose/t
 exlive/texmf-dist/fonts/type1/public/cm-super/sfso1000.pfb>
-Output written on slides.pdf (53 pages, 3211186 bytes).
+Output written on slides.pdf (53 pages, 3217974 bytes).
 PDF statistics:
- 3033 PDF objects out of 3580 (max. 8388607)
+ 3035 PDF objects out of 3580 (max. 8388607)
  1745 compressed objects within 18 object streams
  118 named destinations out of 1000 (max. 500000)
- 366 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 371 words of extra memory for PDF output out of 10000 (max. 10000000)
 
