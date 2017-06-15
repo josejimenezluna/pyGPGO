@@ -1,4 +1,4 @@
-\documentclass[10pt]{beamer}
+\documentclass[10pt,usenames,dvipsnames]{beamer}
 \usetheme{Antibes}
 
 \usepackage[utf8]{inputenc}
@@ -18,6 +18,26 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\setbeamercolor{footline}{fg=NavyBlue}
+\setbeamerfont{footline}{series=\bfseries}
 
 
 \author{José Jiménez}
@@ -68,7 +88,7 @@
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{A brief introduction}
+		\frametitle{A brief introduction: setting the problem}
 		Overall, Bayesian Optimization focuses on:
 		
 		\begin{equation}
@@ -82,24 +102,38 @@
 			\item No gradient information needed.
 		\end{itemize}
 		
-		An example arises when optimizing the \textit{loss} function of a machine-learning model, depending on its hyperparameters (e.g. log-loss):
+		An example arises when optimizing the \textit{loss} function of a machine-learning model w.r.t. hyperparameters (e.g. log-loss):
 		
 		\begin{equation}
 		\mathcal{L}(\boldsymbol{y}, \boldsymbol{\hat{y}}) = -\dfrac{1}{n} \sum_i \left(y_i \log(\hat{y_i}) + (1 - y_i)\log(1-\hat{y_i})\right)
 		\end{equation}
-
+		
+		We are interested in cases where $f$ is \textcolor{BrickRed}{expensive} to evaluate.
 	\end{frame}
+	
+	\begin{frame}
+		\frametitle{A brief introduction: the big picture}
+		\begin{block}{Main idea}
+		\begin{itemize}
+		\item We are going to use a \textcolor{blue}{Gaussian Process} to model $f$.
+		\item Our model will suggest new points to evaluate according to a GP dependant \textcolor{ForestGreen}{acquisition function} $\alpha$.
+		\item Then iteratively update the model with new information.
+		\end{itemize}
+		\end{block}
+	\end{frame}
+	
+	\section{Part I: Gaussian Process Regression}
 	
 	\begin{frame}
 		\frametitle{Gaussian Process Regression: basic definitions}
 		\begin{definition}
-			A Gaussian Process is a collection of random variables, any finite number of which have a joint Gaussian distribution. This process is defined by two functions. Its \textit{mean function}:
+			A Gaussian Process is a collection of random variables, any finite number of which have a joint Gaussian distribution. This process is defined by two functions. Its \textcolor{DarkOrchid}{\textit{mean function}}:
 			
 			\begin{equation}
 m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 			\end{equation}
 			
-			and its \textit{covariance function}:
+			and its \textcolor{Mahogany}{\textit{covariance function}}:
 			
 			\begin{equation}
 			k(\boldsymbol{x}, \boldsymbol{x'}) = \mathbb{E}\left[\left( f(\boldsymbol{x}) - m(\boldsymbol{x}) \right)\left( f(\boldsymbol{x}') - m(\boldsymbol{x}')\right)\right]
@@ -188,13 +222,16 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 				\end{matrix}
 				\end{equation}
 				
-				where $r=|\boldsymbol{x} - \boldsymbol{x'}|$. Observations are noisy:
+				where $r=|\boldsymbol{x} - \boldsymbol{x'}|$. Observations can be \textcolor{Periwinkle}{noisy}:
 				
 				\begin{equation}
 					k^y(\boldsymbol{x}_p, \boldsymbol{x}_q) = \sigma^2_f k(\boldsymbol{x}_p, \boldsymbol{x}_q) + \sigma^2_n \delta_{pq} \,
 				\end{equation} 
 				
 			\end{block}
+			\begin{itemize}
+				\item There are different approaches towards hyperparameter treatment.
+			\end{itemize}
 		\end{frame}
 		
 		\begin{frame}
@@ -216,7 +253,7 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 			
 		\begin{frame}
 			\frametitle{Gaussian Process Regression: incorporating diff. priors}
-			We have assumed $m(\boldsymbol{x}) = 0$ for simplicity. If we dispose of prior knowledge, we can use it
+			We have assumed $m(\boldsymbol{x}) = 0$ for simplicity. We can incorporate prior knowledge:
 			
 			\begin{block}{Different prior mean}
 				\begin{equation}
@@ -257,6 +294,8 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 			Several strategies for sampling from latent Gaussian models proposed in main text.	
 		\end{frame}
 		
+		\section{Part II: Bayesian Optimization}		
+		
 		\begin{frame}
 			\frametitle{Bayesian Optimization: introduction}
 			Again, assume:
@@ -272,8 +311,8 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 			 
 			 Our steps here are:
 			 \begin{enumerate}
-			 	\item Fit a Gaussian Process regression model on $\mathcal{D}_n$.
-			 	\item Choose the next point to sample, according to an \textit{acquisition function}, depending on GP.
+			 	\item Fit a \textcolor{NavyBlue}{Gaussian Process} regression model on $\mathcal{D}_n$.
+			 	\item Choose the next point to sample, according to an \textcolor{ForestGreen}{\textit{acquisition function}}, depending on GP.
 			 	\item Evaluate said point. Augment training data. Repeat. 
 			 \end{enumerate}
 		\end{frame}
@@ -307,13 +346,14 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 			Three popular categories: improvement-based, optimistic, and information-based policies.
 			
 			\begin{block}{Improvement-based}
-				$\tau$ denotes our best evaluation so far.\\
-				Probability of improvement:
+				Denote $\tau$ our best evaluation so far.\\
+				\phantom{we}\\
+				Probability of Improvement:
 				\begin{equation}
 				\alpha_{\mathrm{PI}}(\boldsymbol{x}, \mathcal{D}_n) = P\left(\nu > \tau\right) = \Phi\left(\dfrac{\mu_n(\boldsymbol{x}) - \tau}{\sigma_n(\boldsymbol{x})}  \right)
 				\end{equation}
 				
-				Expected improvement:
+				Expected Improvement:
 				\begin{equation}
 				\alpha_{\mathrm{EI}}(\boldsymbol{x}, \mathcal{D}_n) = (\mu_n(\boldsymbol{x}) - \tau)\Phi\left(\dfrac{\mu_n(\boldsymbol{x}) - \tau}{\sigma_n(\boldsymbol{x})}  \right) + \sigma_n(\boldsymbol{x})\phi\left( \dfrac{\mu_n(\boldsymbol{x}) - \tau}{\sigma_n(\boldsymbol{x})} \right)
 				\end{equation}
@@ -323,7 +363,7 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\begin{frame}
 			\frametitle{Bayesian optimization: on acquisition functions}
 			\begin{block}{Optimistic acquisitions}
-			Upper confidence bound:
+			Upper Confidence Bound:
 			\begin{equation}
 			\alpha_{\mathrm{UCB}}(\boldsymbol{x}, \mathcal{D}_n) = \mu_n(\boldsymbol{x}) + \beta_n\sigma_n(\boldsymbol{x})
 			\end{equation}
@@ -335,7 +375,7 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 			\label{acqes}
 			\alpha_{\mathrm{ES}}(\boldsymbol{x}|\mathcal{D}_n) = H(\boldsymbol{x}^*|\mathcal{D}_n) - \mathbb{E}_{y|\mathcal{D}_n, \boldsymbol{x}}\left[ H(\boldsymbol{x}^*|\mathcal{D}_n \cup \left\lbrace (\boldsymbol{x}, y) \right\rbrace) \right]
 			\end{equation}
-			Predictive entropy search:
+			Predictive Entropy Search:
 			\begin{equation}
 			\alpha_{\mathrm{PES}}(\boldsymbol{x}, \mathcal{D}_n) = H(y|\mathcal{D}_n, \boldsymbol{x}) - \mathbb{E}_{\boldsymbol{x}^*|\mathcal{D}_n}\left[ H(y |\mathcal{D}_n, \boldsymbol{x}, \boldsymbol{x}^*)  \right]
 			\end{equation}
@@ -360,7 +400,7 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\begin{frame}
 		\frametitle{Bayesian optimization: role of hyperparameters}
 		
-		GP hyperparameters $\theta$ cause uncertainty in the optimization procedure:		
+		\textcolor{NavyBlue}{Gaussian Process} hyperparameters $\theta$ cause uncertainty in the optimization procedure:		
 		
 		\begin{equation}
 		\alpha(\boldsymbol{x}) = \mathbb{E}_{\theta|\mathcal{D}_n}\left[ \alpha(\boldsymbol{x}, \theta) \right] 		= \int_{\Theta} \alpha(\boldsymbol{x}|\theta)p(\theta|\mathcal{D}_n)d\theta.
@@ -389,22 +429,23 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		
 		\begin{frame}
 		\frametitle{Bayesian optimization: optimizing acquisitions}
-		We have assumed that the acquisition function is easily optimized. This is not necessarily the case:
+		We have assumed that the \textcolor{ForestGreen}{acquisition function} is easily optimized. This is not necessarily the case:
 		
 		\begin{itemize}
 		\item It is often multimodal.
 		\item Or non-convex.
-		\item Furthermore theoretical convergence is guaranteed when finding true maximum $\boldsymbol{x}^{*}$.
+		\item Furthermore theoretical convergence is guaranteed when finding global maximum $\boldsymbol{x}^{*}$.
 		\end{itemize}
 		
-		One may be thinking that we have switched optimization problems! ($f$ by $\alpha$). However, $\alpha$ 			is very cheap to compute.\\
+		One may be thinking that we have switched optimization problems! ($f$ by $\alpha$). However, $\alpha$ is usually \underline{very cheap} to compute.\\
 		\begin{itemize}
-		\item In practice $\alpha$ is optimized using multi-start quasi-Newton methods (e.g. L-BFGS-B) or 					evolutionary approaches (CMA-ES).
+		\item In practice $\alpha$ is optimized using multi-start quasi-Newton methods (e.g. L-BFGS-B) or 	evolutionary approaches (e.g. CMA-ES).
 		\end{itemize}
 		\end{frame}
 		
 		\begin{frame}
 		\frametitle{Bayesian optimization: Other surrogates}
+		The Bayesian Optimization framework is not limited to a \textcolor{NavyBlue}{Gaussian Process} surrogate:
 		\begin{itemize}
 		\item Random Forests: empirical estimate of variance provided by predictions of trees.
 		\item Gradient Boosting Machines: using quantile regression for variance estimate.
@@ -420,12 +461,14 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\end{block}
 		\end{frame}
 		
+		\section{Part III: Experiments and benchmarking}
+		
 		\begin{frame}
 			\frametitle{Experiments}
 			The aim is to demonstrate that Bayesian Optimization works in real hyperparameter optimization problems.
 			\begin{itemize}
 				\item Mid-sized supervised learning problems. Both regression and classification considered.
-				\item Two examples explained in detail: datasets retrieved from computational chemistry problems.
+				\item Two examples explained in detail: datasets related to relevant computational chemistry problems.
 				\item Other examples drawn from other areas, such as medicine. Available from other sources (UCI ML repository).
 			\end{itemize}
 		\end{frame}
@@ -452,10 +495,10 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\begin{frame}
 		\frametitle{Experiments: benchmarking rules}
 		\begin{itemize}
-		\item Shuffled $k=5$ fold cross-validation scheme for loss evaluation.
+		\item Shuffled \textcolor{BurntOrange}{$k=5$} fold cross-validation scheme for loss evaluation.
 		\item Features scaled: zero mean, unit variance.
-		\item $n=50$ ($+3$ to account GP fitting) total function evaluations.
-		\item Gaussian Process surrogate, with squared exponential covariance function.
+		\item \textcolor{WildStrawberry}{$n=50$} ($+3$ to account GP fitting) total function evaluations.
+		\item \textcolor{NavyBlue}{Gaussian Process} surrogate, with squared exponential covariance function.
 		\end{itemize}
 		\end{frame}
 		
@@ -463,9 +506,15 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\frametitle{Experiments: benchmarking rules}
 		\begin{itemize}
 		\item Type II ML estimation of all hyperparameters at each stage ($l$, $\sigma_n^2$, $\sigma_f^2$).
-		\item Expected Improvement and GP-UCB ($\beta = 0.5$, $\beta = 1.5$) acquisitions.
-		\item Machine-learning models used: Support Vector Machines, K-Nearest-Neighbours, Gradient Boosting 			Machines and One-Hidden Layer Neural Networks.
-		\item Random search is considered as baseline for all experiments.
+		\item Expected Improvement and GP-UCB ($\textcolor{DarkOrchid}{\beta} = 0.5$, $\textcolor{DarkOrchid}{\beta} = 1.5$) acquisitions.
+		\item \textcolor{BrickRed}{Random search} is considered as baseline for all experiments.
+		\item Machine-learning models used:
+		\begin{itemize} 
+		\item Support Vector Machines
+		\item K-Nearest-Neighbours
+		\item Gradient Boosting Machines 
+		\item One-Hidden Layer Neural Networks
+		\end{itemize}
 		\end{itemize}
 		\end{frame}
 		
@@ -528,7 +577,7 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 		\end{frame}
 		
 \begin{frame}
-	\frametitle{Experiments: Binding affinity prediction dataset}
+	\frametitle{Experiment I: Binding affinity prediction dataset}
 
 \begin{itemize}
 \item Problem is to predict some binding/inhibition constant between a protein and a ligand ($K_d, K_i$). Target variable is defined as $y = -\log_{10}K$
@@ -541,7 +590,7 @@ m(\boldsymbol{x}) = \mathbb{E}\left[f(\boldsymbol{x})\right]
 \end{frame}
 
 \begin{frame}
-\frametitle{Experiments: Binding affinity prediction dataset}
+\frametitle{Experiment I: Binding affinity prediction dataset}
 \begin{block}{Set of features used}
 Pair of atom-type counts from protein and ligand in the binding site.
 \begin{align*}
@@ -562,7 +611,7 @@ Pair of atom-type counts from protein and ligand in the binding site.
 \end{frame}
 
 \begin{frame}
-\frametitle{Experiments: Binding affinity prediction dataset}
+\frametitle{Experiment I: Binding affinity prediction dataset}
 \begin{figure}[ht]
   \centering
   \caption{Benchmarking results for the binding affinity dataset (1/2).}
@@ -580,7 +629,7 @@ Pair of atom-type counts from protein and ligand in the binding site.
 \end{frame}
 
 \begin{frame}
-\frametitle{Experiments: Binding affinity prediction dataset}
+\frametitle{Experiment I: Binding affinity prediction dataset}
 \begin{figure}[ht]
   \centering
   \caption{Benchmarking results for the binding affinity dataset (2/2).}
@@ -597,7 +646,7 @@ Pair of atom-type counts from protein and ligand in the binding site.
 \end{frame}
 
 \begin{frame}
-\frametitle{Experiments: Protein-protein interface prediction}
+\frametitle{Experiment II: Protein-protein interface prediction}
 \begin{itemize}
 \item Predict whether a particular residue is in contact with a chain of another protein.
 \item Interfaces are \textbf{not} considered target-specific.
@@ -610,7 +659,7 @@ Pair of atom-type counts from protein and ligand in the binding site.
 
 
 \begin{frame}
-\frametitle{Experiments: Protein-protein interface prediction}
+\frametitle{Experiment II: Protein-protein interface prediction}
 \begin{block}{Features used}
 Descriptors resemble those detailed in (Jim\'enez \textit{et al}. 2017). Average pharmacophoric-like features computed in a particular neighbourhood (20\AA$^3$) of a residue.
 \end{block}
@@ -621,7 +670,7 @@ PIFACE database of clustered protein interface. Over 22k structurally unique int
 \end{frame}
 
 \begin{frame}
-\frametitle{Experiments: Protein-protein interface prediction}
+\frametitle{Experiment II: Protein-protein interface prediction}
 \begin{figure}[ht]
   \centering
   \caption{Benchmarking results for the protein-protein interface dataset (1/2).}
@@ -638,7 +687,7 @@ PIFACE database of clustered protein interface. Over 22k structurally unique int
 \end{frame}
 
 \begin{frame}
-\frametitle{Experiments: Protein-protein interface prediction}
+\frametitle{Experiment II: Protein-protein interface prediction}
 \begin{figure}[ht]
   \centering
   \caption{Benchmarking results for the protein-protein interface dataset (2/2).}
@@ -752,6 +801,7 @@ PIFACE database of clustered protein interface. Over 22k structurally unique int
 \end{figure}
 \end{frame}
 
+\section{Part IV: Software development}
 \begin{frame}
 \frametitle{pyGPGO: Bayesian Optimization for Python}
 There are many possible choices in the Bayesian Optimization framework:
