@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.covfunc} \PYG{k+kn}{import} \PYG{n}{matern32}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.acquisition} \PYG{k+kn}{import} \PYG{n}{Acquisition}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.surrogates.GaussianProcess} \PYG{k+kn}{import} \PYG{n}{GaussianProcess}
+\PYG{k+kn}{from} \PYG{n+nn}{pyGPGO.GPGO} \PYG{k+kn}{import} \PYG{n}{GPGO}
+
+
+\PYG{k}{def} \PYG{n+nf}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} Franke\PYGZsq{}s function (https://www.mathworks.com/help/curvefit/franke.html)}
+    \PYG{n}{one} \PYG{o}{=} \PYG{l+m+mf}{0.75} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m+mi}{9} \PYG{o}{*} \PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{/} \PYG{l+m+mi}{4} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{9} \PYG{o}{*} \PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{/} \PYG{l+m+mi}{4}\PYG{p}{)}
+    \PYG{n}{two} \PYG{o}{=} \PYG{l+m+mf}{0.75} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m+mi}{9} \PYG{o}{*} \PYG{n}{x} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mi}{2}\PYG{o}{/} \PYG{l+m+mi}{49} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{9} \PYG{o}{*} \PYG{n}{y} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{10}\PYG{p}{)}
+    \PYG{n}{three} \PYG{o}{=} \PYG{l+m+mf}{0.5} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m+mi}{9} \PYG{o}{*} \PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{7}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{/} \PYG{l+m+mi}{4} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{9} \PYG{o}{*} \PYG{n}{y} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{/} \PYG{l+m+mi}{4}\PYG{p}{)}
+    \PYG{n}{four} \PYG{o}{=} \PYG{l+m+mf}{0.25} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m+mi}{9} \PYG{o}{*} \PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{4}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{9} \PYG{o}{*} \PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{7}\PYG{p}{)} \PYG{o}{**} \PYG{l+m+mi}{2}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{one} \PYG{o}{+} \PYG{n}{two} \PYG{o}{+} \PYG{n}{three} \PYG{o}{\PYGZhy{}} \PYG{n}{four}
+\end{Verbatim}

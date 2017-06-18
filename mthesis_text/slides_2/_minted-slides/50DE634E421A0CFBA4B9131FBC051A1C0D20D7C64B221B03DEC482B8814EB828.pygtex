@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{cov} \PYG{o}{=} \PYG{n}{matern32}\PYG{p}{()}
+\PYG{n}{gp} \PYG{o}{=} \PYG{n}{GaussianProcess}\PYG{p}{(}\PYG{n}{cov}\PYG{p}{)}
+\PYG{n}{acq} \PYG{o}{=} \PYG{n}{Acquisition}\PYG{p}{(}\PYG{n}{mode}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}ExpectedImprovement\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{param} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}x\PYGZsq{}}\PYG{p}{:} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}cont\PYGZsq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]),}
+         \PYG{l+s+s1}{\PYGZsq{}y\PYGZsq{}}\PYG{p}{:} \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}cont\PYGZsq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])\PYGZcb{}}
+
+\PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{seed}\PYG{p}{(}\PYG{l+m+mi}{1337}\PYG{p}{)}
+\PYG{n}{gpgo} \PYG{o}{=} \PYG{n}{GPGO}\PYG{p}{(}\PYG{n}{gp}\PYG{p}{,} \PYG{n}{acq}\PYG{p}{,} \PYG{n}{f}\PYG{p}{,} \PYG{n}{param}\PYG{p}{)}
+\PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{max\PYGZus{}iter}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
+\PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{getResult}\PYG{p}{()}
+\end{Verbatim}
