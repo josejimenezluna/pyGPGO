@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]:} \PYG{n}{gpgo}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{max\PYGZus{}iter} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{p}{)}
-\end{Verbatim}

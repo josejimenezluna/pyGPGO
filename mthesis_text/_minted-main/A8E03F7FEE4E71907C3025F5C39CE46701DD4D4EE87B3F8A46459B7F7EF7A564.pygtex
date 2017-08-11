@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
-git clone https://github.com/pymc\PYGZhy{}devs/pymc3.git
-\PYG{n+nb}{cd} pymc3/
-python setup.py install
-\end{Verbatim}

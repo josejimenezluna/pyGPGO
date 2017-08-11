@@ -1,5 +1,0 @@
-\beamer@endinputifotherversion {3.36pt}
-\beamer@sectionintoc {1}{Part I: Gaussian Process Regression}{6}{0}{1}
-\beamer@sectionintoc {2}{Part II: Bayesian Optimization}{15}{0}{2}
-\beamer@sectionintoc {3}{Part III: Experiments and benchmarking}{32}{0}{3}
-\beamer@sectionintoc {4}{Part IV: Software development}{53}{0}{4}

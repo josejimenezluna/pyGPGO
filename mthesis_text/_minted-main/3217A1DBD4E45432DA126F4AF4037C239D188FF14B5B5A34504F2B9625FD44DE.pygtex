@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
-\PYG{n}{In} \PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]:}	\PYG{n}{gpgo} \PYG{o}{=} \PYG{n}{GPGO}\PYG{p}{(}\PYG{n}{gp}\PYG{p}{,} \PYG{n}{acq}\PYG{p}{,} \PYG{n}{f}\PYG{p}{,} \PYG{n}{params}\PYG{p}{)}
-\end{Verbatim}

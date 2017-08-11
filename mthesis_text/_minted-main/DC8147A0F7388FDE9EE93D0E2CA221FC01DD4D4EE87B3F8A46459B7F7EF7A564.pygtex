@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
-pip install \PYGZhy{}\PYGZhy{}upgrade numpy joblib
-\end{Verbatim}
