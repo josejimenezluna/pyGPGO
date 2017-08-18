@@ -1,9 +1,12 @@
 from setuptools import setup, find_packages
+import os
+
+execfile('pyGPGO/version.py')
 
 def readme():
     with open('README.md') as f:
         return f.read()
-
+    
 setup(name='pyGPGO',
     version='__version__',
     description='Bayesian Optimization tools in Python',
