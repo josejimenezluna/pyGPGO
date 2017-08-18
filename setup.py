@@ -1,14 +1,16 @@
 from setuptools import setup, find_packages
 import os
 
-execfile('pyGPGO/version.py')
+version = {}
+with open('pyGPGO/version.py') as fp:
+    exec(fp.read(), version)
 
 def readme():
     with open('README.md') as f:
         return f.read()
     
 setup(name='pyGPGO',
-    version='__version__',
+    version=version['__version__'],
     description='Bayesian Optimization tools in Python',
     classifiers=[
     'Development Status :: 2 - Pre-Alpha',
