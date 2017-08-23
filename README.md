@@ -1,6 +1,8 @@
 # pyGPGO: Bayesian Optimization for Python
 [![Build Status](https://travis-ci.org/hawk31/pyGPGO.svg?branch=master)](https://travis-ci.org/hawk31/pyGPGO)
 [![Documentation Status](https://readthedocs.org/projects/pygpgo/badge/?version=latest)](http://pygpgo.readthedocs.io/en/latest/?badge=latest)
+[![DOI](https://zenodo.org/badge/74589922.svg)](https://zenodo.org/badge/latestdoi/74589922)
+
 
 ![sine](http://i.giphy.com/l3q2s3MQ4bPb5RogU.gif)
 
