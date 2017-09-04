@@ -59,13 +59,8 @@ and [PyPI](https://pypi.python.org/pypi/pyGPGO/0.3.0.dev1), with extensive docum
 in the near future:
 
 - Support for linear combinations of covariance functions, with automatic gradient computation.
-- Support for more diverse acquisition functions, such as Predictive Entropy Search [citation] or
-Thompson sampling [citation].
+- Support for more diverse acquisition functions, such as Predictive Entropy Search [@Hernandez-Lobato2014].
 - GPU support for speed improvements during MCMC sampling.
  
-Citations to entries in paper.bib should be in
-[rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
-format.
-
 
 # References
