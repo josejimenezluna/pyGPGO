@@ -8,7 +8,7 @@ if __name__ == '__main__':
     y = np.sin(x)
     X = np.array([np.atleast_2d(u) for u in x])[:, 0]
 
-    rf = RandomForest(n_estimators = 20)
+    rf = RandomForest(n_estimators=20)
     # Fit the model to the data
     rf.fit(X, y)
     # Predict on new data

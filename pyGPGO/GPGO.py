@@ -6,6 +6,7 @@ from joblib import Parallel, delayed
 
 from pyGPGO.logger import EventLogger
 
+
 class GPGO:
     def __init__(self, surrogate, acquisition, f, parameter_dict, n_jobs=1):
         """

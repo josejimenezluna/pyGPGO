@@ -28,14 +28,14 @@ if __name__ == '__main__':
     for i in range(200):
         plt.plot(Z.flatten(), post_mean[i], linewidth=0.4)
 
-    plt.plot(gpgo.GP.X.flatten(), gpgo.GP.y, 'X', label='Sampled data', markersize = 10, color='red')
+    plt.plot(gpgo.GP.X.flatten(), gpgo.GP.y, 'X', label='Sampled data', markersize=10, color='red')
     plt.grid()
     plt.legend()
 
     xtest = np.linspace(0, 6, 200)[:, np.newaxis]
     a = [-gpgo._acqWrapper(np.atleast_2d(x)) for x in xtest]
     plt.subplot(2, 1, 2)
-    plt.plot(xtest, a, label = 'Integrated Expected Improvement')
+    plt.plot(xtest, a, label='Integrated Expected Improvement')
     plt.grid()
     plt.legend()
     plt.show()
