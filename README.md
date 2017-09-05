@@ -10,11 +10,17 @@ pyGPGO is a simple and modular Python (>3.5) package for Bayesian Optimization.
 
 ### Installation
 
-Just pip install the repo:
+You can either pip install the repo for the latest devel version,
 
 
 ```bash
 pip install git+https://github.com/hawk31/pyGPGO
+```
+
+or retrieve it from PyPI:
+
+```bash
+pip install pyGPGO
 ```
 
 Optionally, install `pyMC3`
@@ -29,9 +35,9 @@ python setup.py install
 ### Dependencies
 
 *   Typical Python scientific stuff: `numpy`, `scipy`.
-*   `joblib` (Optional, used for parallel computation)
-*   `scikit-learn` (Optional, for other surrogates different than GP.)
-*   `pyMC3` (Optional, for integrated acquisition functions and MCMC inference)
+*   `joblib` (Optional), used for parallel computation
+*   `scikit-learn` (Optional), for other surrogates different from Gaussian Processes.
+*   `pyMC3` (Optional), for integrated acquisition functions and MCMC inference.
 *   `theano` (Optional) development version. (pyMC3 dependency)
 
 All dependencies except `pyMC3` are taken care for in the requirements file.
@@ -75,4 +81,4 @@ gpgo.run(max_iter=10)
 
 ```
 
-Check the examples folder as well!
+Check the `examples` folder for more ideas on how to use the software.
