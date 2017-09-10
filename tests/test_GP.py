@@ -2,6 +2,7 @@ import numpy as np
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.covfunc import squaredExponential
 
+
 def test_GP():
     rng = np.random.RandomState(0)
     X = rng.uniform(0, 5, 20)[:, np.newaxis]
