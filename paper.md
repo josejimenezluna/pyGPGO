@@ -47,7 +47,7 @@ a wide range of choices, such as:
 - MCMC sampling for the full-bayesian treatment of hyperparameters (via `pyMC3`)
 
 
-*pyGPGO* is MIT-licensed, can be retrieved from both [GitHub](https://github.com/hawk31/pyGPGO)
+*pyGPGO* is MIT-licensed and can be retrieved from both [GitHub](https://github.com/hawk31/pyGPGO)
 and [PyPI](https://pypi.python.org/pypi/pyGPGO/0.3.0.dev1), with extensive documentation available at [ReadTheDocs](http://pygpgo.readthedocs.io/en/latest/).
 
 ![pyGPGO in action.](franke.gif)
