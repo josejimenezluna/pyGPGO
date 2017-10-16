@@ -60,7 +60,7 @@ in the near future:
 
 - Support for linear combinations of covariance functions, with automatic gradient computation.
 - Support for more diverse acquisition functions, such as Predictive Entropy Search [@Hernandez-Lobato2014].
-- GPU support for speed improvements during MCMC sampling.
+- A constrained Bayesian Optimization class is planned for the near future. [@Gardner2014]
  
 
 # References
