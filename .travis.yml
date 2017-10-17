@@ -10,7 +10,7 @@ install:
   - "pip install pytest-cov"
   - "pip install codecov"
 # command to run tests
-script: py.test --cov=./
+script: py.test --cov=./tests
 # codecov
 after_success:
   - codecov --token f98efc8d-1618-4942-87d6-c11337ae3840
