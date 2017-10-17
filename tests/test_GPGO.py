@@ -27,7 +27,7 @@ def test_GPGO():
 def test_GPGO_mcmc():
     np.random.seed(20)
     sexp = squaredExponential()
-    gp = GaussianProcessMCMC(sexp, step=pm.Slice)
+    gp = GaussianProcessMCMC(sexp, step=pm.Slice, niter=100)
     acq = Acquisition(mode='IntegratedExpectedImprovement')
     params = {'x': ('cont', (0, 1))}
     gpgo = GPGO(gp, acq, f, params)
