@@ -12,5 +12,3 @@ install:
 # command to run tests
 script: py.test --cov=./
 # codecov
-after_success:
-  - codecov --token f98efc8d-1618-4942-87d6-c11337ae3840
