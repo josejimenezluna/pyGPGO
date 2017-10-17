@@ -1,8 +1,0 @@
-numpy
-scipy
-joblib
-scikit-learn
-theano
-
-[pyMC3]
-pyMC3
