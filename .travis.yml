@@ -5,6 +5,12 @@ python:
   - "3.6"
   - "3.6-dev" # 3.6 development branch
 # command to install dependencies
-install: "pip install ."
+install: 
+  - "pip install ."
+  - "pip install pytest-cov"
+  - "pip install codecov"
 # command to run tests
-script: pytest
+script: py.test --cov=./
+# codecov
+after_success:
+  - codecov --token f98efc8d-1618-4942-87d6-c11337ae3840

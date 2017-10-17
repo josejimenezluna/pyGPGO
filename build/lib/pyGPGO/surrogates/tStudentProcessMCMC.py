@@ -1,4 +1,3 @@
-# work in progress
 import numpy as np
 import scipy as sp
 import theano
@@ -6,35 +5,33 @@ import theano.tensor as tt
 import theano.tensor.nlinalg
 import pymc3 as pm
 from pyGPGO.covfunc import squaredExponential, matern
-from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.surrogates.tStudentProcess import tStudentProcess
+from pyGPGO.surrogates.GaussianProcessMCMC import covariance_equivalence
 import matplotlib.pyplot as plt
 
 
-covariance_equivalence = {'squaredExponential': pm.gp.cov.ExpQuad,
-                          'matern52': pm.gp.cov.Matern52,
-                          'matern32': pm.gp.cov.Matern32}
-
-
-class GaussianProcessMCMC:
-    def __init__(self, covfunc, niter=2000, burnin=1000, init='ADVI', step=None):
+class tStudentProcessMCMC:
+    def __init__(self, covfunc, nu=3.0, niter=2000, burnin=1000, init='ADVI', step=None):
         """
-        Gaussian Process class using MCMC sampling of covariance function hyperparameters.
-        
+        Student-t class using MCMC sampling of covariance function hyperparameters.
+
         Parameters
         ----------
         covfunc:
             Covariance function to use. Currently this instance only supports `squaredExponential`
-            `matern32` and `matern52` kernels.
+            and `Matern` from the `covfunc` module.
+        nu: float
+            Degrees of freedom (>2.0)
         niter: int
             Number of iterations to run MCMC.
         burnin: int
             Burn-in iterations to discard at trace.
+
         init: str
             Initialization method for NUTS. Check pyMC3 docs.
-        step:
-            pyMC3's step method for the process, (e.g. `pm.Slice`)
         """
         self.covfunc = covfunc
+        self.nu = nu
         self.niter = niter
         self.burnin = burnin
         self.init = init
@@ -51,7 +48,7 @@ class GaussianProcessMCMC:
 
     def fit(self, X, y):
         """
-        Fits a Gaussian Process regressor using MCMC.
+        Fits a Student-t regressor using MCMC.
 
         Parameters
         ----------
@@ -77,7 +74,7 @@ class GaussianProcessMCMC:
 
             f_cov = s2_f * covariance_equivalence[type(self.covfunc).__name__](1, l)
             Sigma = f_cov(self.X) + tt.eye(self.n) * s2_n ** 2
-            y_obs = pm.MvNormal('y_obs', mu=np.zeros(self.n), cov=Sigma, observed=self.y)
+            y_obs = pm.MvStudentT('y_obs', nu=self.nu, mu=np.zeros(self.n), Sigma=Sigma, observed=self.y)
         with self.model as model:
             if self.step is not None:
                 self.trace = pm.sample(self.niter, step=self.step())[self.burnin:]
@@ -86,7 +83,8 @@ class GaussianProcessMCMC:
 
     def posteriorPlot(self):
         """
-        Plots sampled posterior distributions for hyperparameters. 
+        Plots sampled posterior distributions for hyperparameters.
+
         """
         with self.model as model:
             pm.traceplot(self.trace, varnames=['l', 'sigmaf', 'sigman'])
@@ -95,7 +93,7 @@ class GaussianProcessMCMC:
 
     def predict(self, Xstar, return_std=False, nsamples=10):
         """
-        Returns mean and covariances for each posterior sampled Gaussian Process.
+        Returns mean and covariances for each posterior sampled Student-t Process.
 
         Parameters
         ----------
@@ -110,9 +108,9 @@ class GaussianProcessMCMC:
         Returns
         -------
         np.ndarray
-            Mean of the posterior process for each MCMC sample and `Xstar`.
+            Mean of the posterior process for each MCMC sample and Xstar.
         np.ndarray
-            Covariance posterior process for each MCMC sample and `Xstar`.
+            Covariance posterior process for each MCMC sample and Xstar.
         """
         chunk = list(self.trace)
         chunk = chunk[::-1][:nsamples]
@@ -121,7 +119,7 @@ class GaussianProcessMCMC:
         for posterior_sample in chunk:
             params = self._extractParam(posterior_sample, self.covfunc.parameters)
             covfunc = self.covfunc.__class__(**params)
-            gp = GaussianProcess(covfunc)
+            gp = tStudentProcess(covfunc, nu=self.nu + self.n)
             gp.fit(self.X, self.y)
             m, s = gp.predict(Xstar, return_std=return_std)
             post_mean.append(m)
@@ -142,3 +140,44 @@ class GaussianProcessMCMC:
         y = np.concatenate((self.y, ynew), axis=0)
         X = np.concatenate((self.X, xnew), axis=0)
         self.fit(X, y)
+
+
+if __name__ == '__main__':
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from pyGPGO.acquisition import Acquisition
+    from pyGPGO.covfunc import squaredExponential
+    from pyGPGO.GPGO import GPGO
+
+    if __name__ == '__main__':
+        sexp = squaredExponential()
+        gp = tStudentProcessMCMC(sexp, step=pm.Slice)
+
+        def f(x):
+            return np.sin(x)
+
+        np.random.seed(200)
+        param = {'x': ('cont', [0, 6])}
+        acq = Acquisition(mode='IntegratedExpectedImprovement')
+        gpgo = GPGO(gp, acq, f, param)
+        gpgo._firstRun(n_eval=7)
+
+        plt.figure()
+        plt.subplot(2, 1, 1)
+
+        Z = np.linspace(0, 6, 100)[:, None]
+        post_mean, post_var = gpgo.GP.predict(Z, return_std=True, nsamples=200)
+        for i in range(200):
+            plt.plot(Z.flatten(), post_mean[i], linewidth=0.4)
+
+        plt.plot(gpgo.GP.X.flatten(), gpgo.GP.y, 'X', label='Sampled data', markersize=10, color='red')
+        plt.grid()
+        plt.legend()
+
+        xtest = np.linspace(0, 6, 200)[:, np.newaxis]
+        a = [-gpgo._acqWrapper(np.atleast_2d(x)) for x in xtest]
+        plt.subplot(2, 1, 2)
+        plt.plot(xtest, a, label='Integrated Expected Improvement')
+        plt.grid()
+        plt.legend()
+        plt.show()

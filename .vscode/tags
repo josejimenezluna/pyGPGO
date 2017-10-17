@@ -1,0 +1,592 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Acquisition	../examples/acqzoo.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:4
+Acquisition	../examples/example.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:8
+Acquisition	../examples/example2d.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:9
+Acquisition	../examples/exampleint.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:8
+Acquisition	../examples/franke.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:3
+Acquisition	../examples/gif_gen.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:3
+Acquisition	../examples/integratedacq.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:4
+Acquisition	../examples/minimalexample.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:5
+Acquisition	../examples/sklearn_gp.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:5
+Acquisition	../examples/sklearnexample.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:11
+Acquisition	../pyGPGO/acquisition.py	/^class Acquisition:$/;"	kind:class	line:5
+Acquisition	../pyGPGO/logger.py	/^    from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:36
+Acquisition	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:148
+Acquisition	../tests/test_GPGO.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:4
+Acquisition	../tests/test_sk.py	/^from pyGPGO.acquisition import Acquisition$/;"	kind:namespace	line:3
+Axes3D	../examples/franke.py	/^from mpl_toolkits.mplot3d import Axes3D$/;"	kind:namespace	line:7
+Axes3D	../examples/gif_gen.py	/^from mpl_toolkits.mplot3d import Axes3D$/;"	kind:namespace	line:7
+BOLD	../pyGPGO/logger.py	/^    BOLD = '\\033[1m'$/;"	kind:variable	line:8
+BoostedTrees	../examples/exampleGBM.py	/^from pyGPGO.surrogates.BoostedTrees import BoostedTrees$/;"	kind:namespace	line:2
+BoostedTrees	../pyGPGO/surrogates/BoostedTrees.py	/^class BoostedTrees:$/;"	kind:class	line:4
+BoostedTrees.py	../pyGPGO/surrogates/BoostedTrees.py	1;"	kind:file	line:1
+ENDC	../pyGPGO/logger.py	/^    ENDC = '\\033[0m'$/;"	kind:variable	line:7
+Entropy	../pyGPGO/acquisition.py	/^    def Entropy(self, tau, mean, std, sigman):$/;"	kind:member	line:105
+EventLogger	../pyGPGO/GPGO.py	/^from pyGPGO.logger import EventLogger$/;"	kind:namespace	line:7
+EventLogger	../pyGPGO/logger.py	/^class EventLogger:$/;"	kind:class	line:11
+ExpectedImprovement	../pyGPGO/acquisition.py	/^    def ExpectedImprovement(self, tau, mean, std):$/;"	kind:member	line:62
+ExtraForest	../pyGPGO/surrogates/RandomForest.py	/^class ExtraForest:$/;"	kind:class	line:92
+ExtraTreesRegressor	../pyGPGO/surrogates/RandomForest.py	/^from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor$/;"	kind:namespace	line:2
+FAIL	../pyGPGO/logger.py	/^    FAIL = '\\033[91m'$/;"	kind:variable	line:6
+GPGO	../examples/acqzoo.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:6
+GPGO	../examples/example.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:6
+GPGO	../examples/example2d.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:7
+GPGO	../examples/exampleint.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:6
+GPGO	../examples/franke.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:5
+GPGO	../examples/gif_gen.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:5
+GPGO	../examples/integratedacq.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:6
+GPGO	../examples/minimalexample.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:6
+GPGO	../examples/sklearn_gp.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:3
+GPGO	../examples/sklearnexample.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:9
+GPGO	../pyGPGO/GPGO.py	/^class GPGO:$/;"	kind:class	line:10
+GPGO	../pyGPGO/logger.py	/^    from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:37
+GPGO	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:150
+GPGO	../tests/test_GPGO.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:5
+GPGO	../tests/test_sk.py	/^from pyGPGO.GPGO import GPGO$/;"	kind:namespace	line:4
+GPGO.py	../pyGPGO/GPGO.py	1;"	kind:file	line:1
+GaussianProcess	../examples/acqzoo.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:3
+GaussianProcess	../examples/bayoptwork.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:2
+GaussianProcess	../examples/covzoo.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:2
+GaussianProcess	../examples/example.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:7
+GaussianProcess	../examples/example2d.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:8
+GaussianProcess	../examples/franke.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:4
+GaussianProcess	../examples/gif_gen.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:4
+GaussianProcess	../examples/hyperopt.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:2
+GaussianProcess	../examples/minimalexample.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:4
+GaussianProcess	../examples/sineGP.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:2
+GaussianProcess	../examples/sklearn_gp.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:4
+GaussianProcess	../examples/sklearnexample.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:10
+GaussianProcess	../pyGPGO/logger.py	/^    from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:35
+GaussianProcess	../pyGPGO/surrogates/GaussianProcess.py	/^class GaussianProcess:$/;"	kind:class	line:6
+GaussianProcess	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:9
+GaussianProcess	../tests/test_GP.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:2
+GaussianProcess	../tests/test_GPGO.py	/^from pyGPGO.surrogates.GaussianProcess import GaussianProcess$/;"	kind:namespace	line:3
+GaussianProcess.py	../pyGPGO/surrogates/GaussianProcess.py	1;"	kind:file	line:1
+GaussianProcessMCMC	../examples/exampleint.py	/^from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC$/;"	kind:namespace	line:7
+GaussianProcessMCMC	../examples/hyperpost.py	/^from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC$/;"	kind:namespace	line:2
+GaussianProcessMCMC	../examples/integratedacq.py	/^from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC$/;"	kind:namespace	line:3
+GaussianProcessMCMC	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^class GaussianProcessMCMC:$/;"	kind:class	line:18
+GaussianProcessMCMC.py	../pyGPGO/surrogates/GaussianProcessMCMC.py	1;"	kind:file	line:1
+GradientBoostingRegressor	../pyGPGO/surrogates/BoostedTrees.py	/^from sklearn.ensemble import GradientBoostingRegressor$/;"	kind:namespace	line:2
+HEADER	../pyGPGO/logger.py	/^    HEADER = '\\033[95m'$/;"	kind:variable	line:2
+IntegratedExpectedImprovement	../pyGPGO/acquisition.py	/^    def IntegratedExpectedImprovement(self, tau, meanmcmc, stdmcmc):$/;"	kind:member	line:128
+IntegratedProbabilityImprovement	../pyGPGO/acquisition.py	/^    def IntegratedProbabilityImprovement(self, tau, meanmcmc, stdmcmc):$/;"	kind:member	line:149
+IntegratedUCB	../pyGPGO/acquisition.py	/^    def IntegratedUCB(self, tau, meanmcmc, stdmcmc, beta):$/;"	kind:member	line:170
+K	../examples/drawGP.py	/^    K = sexp.K(Xstar, Xstar)$/;"	kind:variable	line:15
+K	../examples/slicetrial.py	/^        K = cov(X) + K_noise$/;"	kind:variable	line:29
+K	../examples/slicetrial.py	/^    K = theano.function([], cov(X) + K_noise)()$/;"	kind:variable	line:32
+K	../pyGPGO/covfunc.py	/^    def K(self, X, Xstar):$/;"	kind:member	line:176
+K	../pyGPGO/covfunc.py	/^    def K(self, X, Xstar):$/;"	kind:member	line:232
+K	../pyGPGO/covfunc.py	/^    def K(self, X, Xstar):$/;"	kind:member	line:316
+K	../pyGPGO/covfunc.py	/^    def K(self, X, Xstar):$/;"	kind:member	line:405
+K	../pyGPGO/covfunc.py	/^    def K(self, X, Xstar):$/;"	kind:member	line:502
+K	../pyGPGO/covfunc.py	/^    def K(self, X, Xstar):$/;"	kind:member	line:591
+K	../pyGPGO/covfunc.py	/^    def K(self, X, Xstar):$/;"	kind:member	line:651
+K	../pyGPGO/covfunc.py	/^    def K(self, X, Xstar):$/;"	kind:member	line:85
+K_noise	../examples/slicetrial.py	/^        K_noise = s2_n_true ** 2 * tt.eye(n)$/;"	kind:variable	line:28
+ListedColormap	../examples/sklearnexample.py	/^from matplotlib.colors import ListedColormap$/;"	kind:namespace	line:3
+OKBLUE	../pyGPGO/logger.py	/^    OKBLUE = '\\033[94m'$/;"	kind:variable	line:3
+OKGREEN	../pyGPGO/logger.py	/^    OKGREEN = '\\033[92m'$/;"	kind:variable	line:4
+OrderedDict	../examples/example2d.py	/^from collections import OrderedDict$/;"	kind:namespace	line:2
+OrderedDict	../pyGPGO/GPGO.py	/^from collections import OrderedDict$/;"	kind:namespace	line:1
+OrderedDict	../pyGPGO/surrogates/GaussianProcess.py	/^from collections import OrderedDict$/;"	kind:namespace	line:3
+OrderedDict	../pyGPGO/surrogates/tStudentProcess.py	/^from collections import OrderedDict$/;"	kind:namespace	line:2
+Parallel	../pyGPGO/GPGO.py	/^from joblib import Parallel, delayed$/;"	kind:namespace	line:5
+ProbabilityImprovement	../pyGPGO/acquisition.py	/^    def ProbabilityImprovement(self, tau, mean, std):$/;"	kind:member	line:41
+RandomForest	../examples/exampleRF.py	/^from pyGPGO.surrogates.RandomForest import RandomForest$/;"	kind:namespace	line:2
+RandomForest	../pyGPGO/surrogates/RandomForest.py	/^class RandomForest:$/;"	kind:class	line:4
+RandomForest	../tests/test_sk.py	/^from pyGPGO.surrogates.RandomForest import RandomForest$/;"	kind:namespace	line:2
+RandomForest.py	../pyGPGO/surrogates/RandomForest.py	1;"	kind:file	line:1
+RandomForestRegressor	../pyGPGO/surrogates/RandomForest.py	/^from sklearn.ensemble import RandomForestRegressor, ExtraTreesRegressor$/;"	kind:namespace	line:2
+SVC	../examples/sklearnexample.py	/^from sklearn.svm import SVC$/;"	kind:namespace	line:5
+UCB	../pyGPGO/acquisition.py	/^    def UCB(self, tau, mean, std, beta):$/;"	kind:member	line:83
+UNDERLINE	../pyGPGO/logger.py	/^    UNDERLINE = '\\033[4m'$/;"	kind:variable	line:9
+WARNING	../pyGPGO/logger.py	/^    WARNING = '\\033[93m'$/;"	kind:variable	line:5
+X	../examples/bayoptwork.py	/^    X = np.array([np.atleast_2d(u) for u in x])[:, 0]$/;"	kind:variable	line:10
+X	../examples/covzoo.py	/^    X = np.array([np.atleast_2d(u) for u in x])[:, 0]$/;"	kind:variable	line:10
+X	../examples/exampleGBM.py	/^    X = np.array([np.atleast_2d(u) for u in x])[:, 0]$/;"	kind:variable	line:9
+X	../examples/exampleRF.py	/^    X = np.array([np.atleast_2d(u) for u in x])[:, 0]$/;"	kind:variable	line:9
+X	../examples/hyperopt.py	/^    X = np.array([np.atleast_2d(u) for u in x])[:, 0]$/;"	kind:variable	line:17
+X	../examples/hyperpost.py	/^    X = np.linspace(0, 6, 7)[:, None]$/;"	kind:variable	line:11
+X	../examples/sineGP.py	/^    X = np.array([np.atleast_2d(u) for u in x])[:, 0]$/;"	kind:variable	line:10
+X	../examples/sklearn_gp.py	/^    X = rng.uniform(0, 5, 20)[:, np.newaxis]$/;"	kind:variable	line:11
+X	../examples/slicetrial.py	/^    X = np.sort(3 * np.random.rand(n))[:, None]$/;"	kind:variable	line:18
+X	../pyGPGO/surrogates/tStudentProcess.py	/^    X = np.array([np.atleast_2d(u) for u in x])[:, 0]$/;"	kind:variable	line:221
+X_	../examples/sklearn_gp.py	/^    X_ = np.linspace(0, 5, 100)$/;"	kind:variable	line:18
+Xstar	../examples/bayoptwork.py	/^    Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]$/;"	kind:variable	line:21
+Xstar	../examples/covzoo.py	/^        Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]$/;"	kind:variable	line:23
+Xstar	../examples/drawGP.py	/^    Xstar = np.arange(0, 2 * np.pi, step=np.pi \/ 24)$/;"	kind:variable	line:9
+Xstar	../examples/drawGP.py	/^    Xstar = np.array([np.atleast_2d(x) for x in Xstar])[:, 0]$/;"	kind:variable	line:10
+Xstar	../examples/exampleGBM.py	/^    Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]$/;"	kind:variable	line:16
+Xstar	../examples/exampleRF.py	/^    Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]$/;"	kind:variable	line:16
+Xstar	../examples/sineGP.py	/^    Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]$/;"	kind:variable	line:22
+Xstar	../pyGPGO/surrogates/tStudentProcess.py	/^    Xstar = np.array([np.atleast_2d(u) for u in xstar])[:, 0]$/;"	kind:variable	line:232
+Z	../examples/integratedacq.py	/^    Z = np.linspace(0, 6, 100)[:, None]$/;"	kind:variable	line:26
+Z	../examples/slicetrial.py	/^    Z = np.linspace(0, 3, 100)[:, None]$/;"	kind:variable	line:38
+__init__	../pyGPGO/GPGO.py	/^    def __init__(self, surrogate, acquisition, f, parameter_dict, n_jobs=1):$/;"	kind:member	line:11
+__init__	../pyGPGO/acquisition.py	/^    def __init__(self, mode, eps=1e-06, **params):$/;"	kind:member	line:6
+__init__	../pyGPGO/covfunc.py	/^    def __init__(self, alpha=1, l=1, sigmaf=1, sigman=1e-6, bounds=None, parameters=['alpha',$/;"	kind:member	line:467
+__init__	../pyGPGO/covfunc.py	/^    def __init__(self, gamma=1, l=1, sigmaf=1, sigman=1e-6, bounds=None, parameters=['gamma',$/;"	kind:member	line:370
+__init__	../pyGPGO/covfunc.py	/^    def __init__(self, l=1, sigmaf=1, sigman=1e-6, bounds=None, parameters=['l', 'sigmaf', 'sigman']):$/;"	kind:member	line:202
+__init__	../pyGPGO/covfunc.py	/^    def __init__(self, l=1, sigmaf=1, sigman=1e-6, bounds=None, parameters=['l', 'sigmaf', 'sigman']):$/;"	kind:member	line:287
+__init__	../pyGPGO/covfunc.py	/^    def __init__(self, l=1, sigmaf=1.0, sigman=1e-6, bounds=None, parameters=['l', 'sigmaf',$/;"	kind:member	line:55
+__init__	../pyGPGO/covfunc.py	/^    def __init__(self, l=1.0, period=1.0, bounds=None, parameters=['l', 'period']):$/;"	kind:member	line:580
+__init__	../pyGPGO/covfunc.py	/^    def __init__(self, sigmaf=1.0, sigman=1e-6, bounds=None, parameters=['sigmaf', 'sigman']):$/;"	kind:member	line:640
+__init__	../pyGPGO/covfunc.py	/^    def __init__(self, v=1, l=1, sigmaf=1, sigman=1e-6, bounds=None, parameters=['v',$/;"	kind:member	line:142
+__init__	../pyGPGO/logger.py	/^    def __init__(self, gpgo):$/;"	kind:member	line:12
+__init__	../pyGPGO/surrogates/BoostedTrees.py	/^    def __init__(self, q1=.16, q2=.84,**params):$/;"	kind:member	line:5
+__init__	../pyGPGO/surrogates/GaussianProcess.py	/^    def __init__(self, covfunc, optimize=False, usegrads=False, mprior=0):$/;"	kind:member	line:7
+__init__	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^    def __init__(self, covfunc, niter=2000, burnin=1000, init='ADVI', step=None):$/;"	kind:member	line:19
+__init__	../pyGPGO/surrogates/RandomForest.py	/^    def __init__(self, **params):$/;"	kind:member	line:5
+__init__	../pyGPGO/surrogates/RandomForest.py	/^    def __init__(self, **params):$/;"	kind:member	line:93
+__init__	../pyGPGO/surrogates/tStudentProcess.py	/^    def __init__(self, covfunc, nu=3.0, optimize=False):$/;"	kind:member	line:45
+__init__	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    def __init__(self, covfunc, nu=3.0, niter=2000, burnin=1000, init='ADVI', step=None):$/;"	kind:member	line:14
+__init__.py	../pyGPGO/__init__.py	1;"	kind:file	line:1
+__init__.py	../pyGPGO/surrogates/__init__.py	1;"	kind:file	line:1
+__version__	../pyGPGO/__init__.py	/^from .version import __version__$/;"	kind:namespace	line:1
+__version__	../pyGPGO/version.py	/^__version__ = '0.3.0.dev1'$/;"	kind:variable	line:1
+_acqWrapper	../pyGPGO/GPGO.py	/^    def _acqWrapper(self, xnew):$/;"	kind:member	line:93
+_extractParam	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^    def _extractParam(self, unittrace, covparams):$/;"	kind:member	line:42
+_extractParam	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    def _extractParam(self, unittrace, covparams):$/;"	kind:member	line:40
+_firstRun	../pyGPGO/GPGO.py	/^    def _firstRun(self, n_eval=3):$/;"	kind:member	line:72
+_grad	../pyGPGO/surrogates/GaussianProcess.py	/^    def _grad(self, param_vector, param_key):$/;"	kind:member	line:145
+_lmlik	../pyGPGO/surrogates/GaussianProcess.py	/^    def _lmlik(self, param_vector, param_key):$/;"	kind:member	line:111
+_lmlik	../pyGPGO/surrogates/tStudentProcess.py	/^    def _lmlik(self, param_vector, param_key):$/;"	kind:member	line:84
+_optimizeAcq	../pyGPGO/GPGO.py	/^    def _optimizeAcq(self, method='L-BFGS-B', n_start=100):$/;"	kind:member	line:112
+_printCurrent	../pyGPGO/logger.py	/^    def _printCurrent(self, gpgo):$/;"	kind:member	line:18
+_printInit	../pyGPGO/logger.py	/^    def _printInit(self, gpgo):$/;"	kind:member	line:27
+_sampleParam	../pyGPGO/GPGO.py	/^    def _sampleParam(self):$/;"	kind:member	line:53
+a	../examples/integratedacq.py	/^    a = [-gpgo._acqWrapper(np.atleast_2d(x)) for x in xtest]$/;"	kind:variable	line:36
+acq	../examples/example.py	/^    acq = Acquisition(mode='ExpectedImprovement')$/;"	kind:variable	line:44
+acq	../examples/example2d.py	/^    acq = Acquisition(mode='ExpectedImprovement')$/;"	kind:variable	line:73
+acq	../examples/exampleint.py	/^    acq = Acquisition(mode='IntegratedExpectedImprovement')$/;"	kind:variable	line:36
+acq	../examples/franke.py	/^    acq = Acquisition(mode='ExpectedImprovement')$/;"	kind:variable	line:40
+acq	../examples/gif_gen.py	/^    acq = Acquisition(mode='ExpectedImprovement')$/;"	kind:variable	line:62
+acq	../examples/integratedacq.py	/^    acq = Acquisition(mode='IntegratedExpectedImprovement')$/;"	kind:variable	line:19
+acq	../examples/minimalexample.py	/^    acq = Acquisition(mode = 'ExpectedImprovement')$/;"	kind:variable	line:23
+acq	../examples/sklearnexample.py	/^    acq = Acquisition(mode = 'UCB', beta = 1.5)$/;"	kind:variable	line:32
+acq	../pyGPGO/logger.py	/^    acq = Acquisition(mode = 'ExpectedImprovement')$/;"	kind:variable	line:46
+acq_1	../examples/acqzoo.py	/^    acq_1 = Acquisition(mode='ExpectedImprovement')$/;"	kind:variable	line:32
+acq_2	../examples/acqzoo.py	/^    acq_2 = Acquisition(mode='ProbabilityImprovement')$/;"	kind:variable	line:33
+acq_3	../examples/acqzoo.py	/^    acq_3 = Acquisition(mode='UCB', beta=0.5)$/;"	kind:variable	line:34
+acq_4	../examples/acqzoo.py	/^    acq_4 = Acquisition(mode='UCB', beta=1.5)$/;"	kind:variable	line:35
+acq_list	../examples/acqzoo.py	/^    acq_list = [acq_1, acq_2, acq_3, acq_4]$/;"	kind:variable	line:36
+acquisition.py	../pyGPGO/acquisition.py	1;"	kind:file	line:1
+acqzoo.py	../examples/acqzoo.py	1;"	kind:file	line:1
+author	../docs/source/conf.py	/^author = 'Jose Jimenez'$/;"	kind:variable	line:70
+autoclass_content	../docs/source/conf.py	/^autoclass_content = 'both'$/;"	kind:variable	line:48
+bayoptwork.py	../examples/bayoptwork.py	1;"	kind:file	line:1
+bcolors	../pyGPGO/logger.py	/^class bcolors:$/;"	kind:class	line:1
+cdist	../pyGPGO/covfunc.py	/^from scipy.spatial.distance import cdist$/;"	kind:namespace	line:3
+cholesky	../pyGPGO/surrogates/GaussianProcess.py	/^from scipy.linalg import cholesky, solve$/;"	kind:namespace	line:2
+cm	../examples/franke.py	/^from matplotlib import cm$/;"	kind:namespace	line:9
+cm	../examples/gif_gen.py	/^from matplotlib import cm$/;"	kind:namespace	line:9
+cm	../examples/slicetrial.py	/^cm = cmap.inferno$/;"	kind:variable	line:3
+cm_bright	../examples/covzoo.py	/^    cm_bright = ['#9ad2cb', '#add0cd', '#b8c3ce', '#9daec9']$/;"	kind:variable	line:17
+cm_bright	../examples/sklearnexample.py	/^    cm_bright = ListedColormap(['#fc4349', '#6dbcdb'])$/;"	kind:variable	line:24
+cmap	../examples/slicetrial.py	/^import matplotlib.cm as cmap$/;"	kind:namespace	line:2
+colors	../examples/acqzoo.py	/^    colors = ['green', 'red', 'orange', 'black']$/;"	kind:variable	line:40
+conf.py	../docs/source/conf.py	1;"	kind:file	line:1
+copyright	../docs/source/conf.py	/^copyright = '2017, Jose Jimenez'$/;"	kind:variable	line:69
+cov	../examples/franke.py	/^    cov = matern32()$/;"	kind:variable	line:38
+cov	../examples/gif_gen.py	/^    cov = matern32()$/;"	kind:variable	line:60
+cov	../examples/slicetrial.py	/^        cov = s2_f_true * pm.gp.cov.ExpQuad(1, l_true)$/;"	kind:variable	line:24
+covariance_equivalence	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^covariance_equivalence = {'squaredExponential': pm.gp.cov.ExpQuad,$/;"	kind:variable	line:13
+covariance_equivalence	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^from pyGPGO.surrogates.GaussianProcessMCMC import covariance_equivalence$/;"	kind:namespace	line:9
+covfunc.py	../pyGPGO/covfunc.py	1;"	kind:file	line:1
+covfuncs	../examples/covzoo.py	/^    covfuncs = [squaredExponential(), matern32(), gammaExponential(), rationalQuadratic()]$/;"	kind:variable	line:13
+covzoo.py	../examples/covzoo.py	1;"	kind:file	line:1
+cross_val_score	../examples/sklearnexample.py	/^from sklearn.model_selection import cross_val_score$/;"	kind:namespace	line:6
+default_bounds	../pyGPGO/covfunc.py	/^default_bounds = {$/;"	kind:variable	line:5
+delayed	../pyGPGO/GPGO.py	/^from joblib import Parallel, delayed$/;"	kind:namespace	line:5
+dotProd	../pyGPGO/covfunc.py	/^class dotProd:$/;"	kind:class	line:624
+drawFun	../examples/minimalexample.py	/^def drawFun(f):$/;"	kind:function	line:8
+drawGP.py	../examples/drawGP.py	1;"	kind:file	line:1
+eval	../pyGPGO/acquisition.py	/^    def eval(self, tau, mean, std):$/;"	kind:member	line:239
+evaluateModel	../examples/sklearnexample.py	/^def evaluateModel(C, gamma):$/;"	kind:function	line:15
+example.py	../examples/example.py	1;"	kind:file	line:1
+example2d.py	../examples/example2d.py	1;"	kind:file	line:1
+exampleGBM.py	../examples/exampleGBM.py	1;"	kind:file	line:1
+exampleRF.py	../examples/exampleRF.py	1;"	kind:file	line:1
+exampleint.py	../examples/exampleint.py	1;"	kind:file	line:1
+exclude_patterns	../docs/source/conf.py	/^exclude_patterns = []$/;"	kind:variable	line:100
+expSine	../pyGPGO/covfunc.py	/^class expSine:$/;"	kind:class	line:563
+extensions	../docs/source/conf.py	/^extensions = [$/;"	kind:variable	line:35
+f	../examples/acqzoo.py	/^    def f(x):$/;"	kind:function	line:29
+f	../examples/example.py	/^    def f(x):$/;"	kind:function	line:39
+f	../examples/exampleint.py	/^    def f(x):$/;"	kind:function	line:31
+f	../examples/franke.py	/^def f(x, y):$/;"	kind:function	line:12
+f	../examples/gif_gen.py	/^def f(x, y):$/;"	kind:function	line:12
+f	../examples/integratedacq.py	/^    def f(x):$/;"	kind:function	line:14
+f	../examples/minimalexample.py	/^    def f(x):$/;"	kind:function	line:16
+f	../pyGPGO/logger.py	/^    def f(x):$/;"	kind:function	line:41
+f	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^        def f(x):$/;"	kind:function	line:156
+f	../tests/test_GPGO.py	/^def f(x):$/;"	kind:function	line:8
+f	../tests/test_sk.py	/^def f(x):$/;"	kind:function	line:7
+f_cov	../examples/slicetrial.py	/^        f_cov = s2_f * pm.gp.cov.ExpQuad(1, l)$/;"	kind:variable	line:53
+fig	../examples/gif_gen.py	/^        fig = plt.figure(figsize=plt.figaspect(0.5))$/;"	kind:variable	line:71
+fig	../examples/sklearnexample.py	/^    fig = plt.figure()$/;"	kind:variable	line:26
+find_packages	../setup.py	/^from setuptools import setup, find_packages$/;"	kind:namespace	line:1
+fit	../pyGPGO/surrogates/BoostedTrees.py	/^    def fit(self, X, y):$/;"	kind:member	line:27
+fit	../pyGPGO/surrogates/GaussianProcess.py	/^    def fit(self, X, y):$/;"	kind:member	line:56
+fit	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^    def fit(self, X, y):$/;"	kind:member	line:51
+fit	../pyGPGO/surrogates/RandomForest.py	/^    def fit(self, X, y):$/;"	kind:member	line:108
+fit	../pyGPGO/surrogates/RandomForest.py	/^    def fit(self, X, y):$/;"	kind:member	line:20
+fit	../pyGPGO/surrogates/tStudentProcess.py	/^    def fit(self, X, y):$/;"	kind:member	line:145
+fit	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    def fit(self, X, y):$/;"	kind:member	line:49
+franke.py	../examples/franke.py	1;"	kind:file	line:1
+gamma	../pyGPGO/covfunc.py	/^from scipy.special import gamma, kv$/;"	kind:namespace	line:2
+gamma	../pyGPGO/surrogates/tStudentProcess.py	/^from scipy.special import gamma$/;"	kind:namespace	line:6
+gammaExponential	../pyGPGO/covfunc.py	/^class gammaExponential:$/;"	kind:class	line:369
+gbm	../examples/exampleGBM.py	/^    gbm = BoostedTrees(q2=0.84, q1=0.16)$/;"	kind:variable	line:11
+getResult	../pyGPGO/GPGO.py	/^    def getResult(self):$/;"	kind:member	line:154
+getcovparams	../pyGPGO/surrogates/GaussianProcess.py	/^    def getcovparams(self):$/;"	kind:member	line:42
+getcovparams	../pyGPGO/surrogates/tStudentProcess.py	/^    def getcovparams(self):$/;"	kind:member	line:70
+gif_gen.py	../examples/gif_gen.py	1;"	kind:file	line:1
+gp	../examples/bayoptwork.py	/^    gp = GaussianProcess(sexp)$/;"	kind:variable	line:15
+gp	../examples/covzoo.py	/^        gp = GaussianProcess(cov, optimize=True, usegrads=False)$/;"	kind:variable	line:20
+gp	../examples/example.py	/^    gp = GaussianProcess(sexp)$/;"	kind:variable	line:43
+gp	../examples/example2d.py	/^    gp = GaussianProcess(sexp)$/;"	kind:variable	line:72
+gp	../examples/exampleint.py	/^    gp = GaussianProcessMCMC(sexp, step=pm.Slice)$/;"	kind:variable	line:35
+gp	../examples/franke.py	/^    gp = GaussianProcess(cov)$/;"	kind:variable	line:39
+gp	../examples/gif_gen.py	/^    gp = GaussianProcess(cov)$/;"	kind:variable	line:61
+gp	../examples/hyperopt.py	/^        gp = GaussianProcess(sexp)$/;"	kind:variable	line:26
+gp	../examples/hyperpost.py	/^    gp = GaussianProcessMCMC(sexp, niter=2000, init='MAP', step=None)$/;"	kind:variable	line:9
+gp	../examples/integratedacq.py	/^    gp = GaussianProcessMCMC(sexp, step=pm.Slice)$/;"	kind:variable	line:12
+gp	../examples/minimalexample.py	/^    gp = GaussianProcess(sexp)$/;"	kind:variable	line:22
+gp	../examples/sineGP.py	/^    gp = GaussianProcess(sexp)$/;"	kind:variable	line:16
+gp	../examples/sklearn_gp.py	/^    gp = GaussianProcess(sexp, optimize=True, usegrads=True)$/;"	kind:variable	line:15
+gp	../examples/sklearnexample.py	/^    gp = GaussianProcess(sexp, optimize = True, usegrads = True)$/;"	kind:variable	line:31
+gp	../pyGPGO/logger.py	/^    gp = GaussianProcess(sexp)$/;"	kind:variable	line:45
+gp	../pyGPGO/surrogates/tStudentProcess.py	/^    gp = tStudentProcess(sexp, optimize=True)$/;"	kind:variable	line:226
+gp_samples	../examples/slicetrial.py	/^        gp_samples = pm.gp.sample_gp(trace[1500:], y_obs, Z, random_seed=42)/;"	kind:variable	line:67
+gpgo	../examples/example.py	/^    gpgo = GPGO(gp, acq, f, param, n_jobs=-1)$/;"	kind:variable	line:47
+gpgo	../examples/example2d.py	/^    gpgo = GPGO(gp, acq, rastrigin, param, n_jobs=-1)$/;"	kind:variable	line:79
+gpgo	../examples/exampleint.py	/^    gpgo = GPGO(gp, acq, f, param, n_jobs=-1)$/;"	kind:variable	line:39
+gpgo	../examples/franke.py	/^    gpgo = GPGO(gp, acq, f, param)$/;"	kind:variable	line:45
+gpgo	../examples/gif_gen.py	/^    gpgo = GPGO(gp, acq, f, param)$/;"	kind:variable	line:67
+gpgo	../examples/integratedacq.py	/^    gpgo = GPGO(gp, acq, f, param)$/;"	kind:variable	line:20
+gpgo	../examples/minimalexample.py	/^    gpgo = GPGO(gp, acq, f, params)$/;"	kind:variable	line:26
+gpgo	../examples/sklearnexample.py	/^    gpgo = GPGO(gp, acq, evaluateModel, params)$/;"	kind:variable	line:38
+gpgo	../pyGPGO/logger.py	/^    gpgo = GPGO(gp, acq, f, params)$/;"	kind:variable	line:49
+grad	../examples/hyperopt.py	/^    grad = []$/;"	kind:variable	line:21
+gradK	../pyGPGO/covfunc.py	/^    def gradK(self, X, Xstar, param):$/;"	kind:member	line:253
+gradK	../pyGPGO/covfunc.py	/^    def gradK(self, X, Xstar, param):$/;"	kind:member	line:337
+gradK	../pyGPGO/covfunc.py	/^    def gradK(self, X, Xstar, param):$/;"	kind:member	line:425
+gradK	../pyGPGO/covfunc.py	/^    def gradK(self, X, Xstar, param):$/;"	kind:member	line:522
+gradK	../pyGPGO/covfunc.py	/^    def gradK(self, X, Xstar, param):$/;"	kind:member	line:611
+gradK	../pyGPGO/covfunc.py	/^    def gradK(self, X, Xstar, param):$/;"	kind:member	line:669
+gradK	../pyGPGO/covfunc.py	/^    def gradK(self, X, Xstar, param='l'):$/;"	kind:member	line:104
+gradient	../examples/hyperopt.py	/^def gradient(gp, sexp):$/;"	kind:function	line:7
+html_static_path	../docs/source/conf.py	/^html_static_path = ['_static']$/;"	kind:variable	line:175
+html_theme	../docs/source/conf.py	/^html_theme = 'sphinx_rtd_theme'$/;"	kind:variable	line:139
+html_theme_path	../docs/source/conf.py	/^html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]$/;"	kind:variable	line:140
+htmlhelp_basename	../docs/source/conf.py	/^htmlhelp_basename = 'pyGPGOdoc'$/;"	kind:variable	line:255
+hyperopt.py	../examples/hyperopt.py	1;"	kind:file	line:1
+hyperpost.py	../examples/hyperpost.py	1;"	kind:file	line:1
+integratedacq.py	../examples/integratedacq.py	1;"	kind:file	line:1
+intersphinx_mapping	../docs/source/conf.py	/^intersphinx_mapping = {'https:\/\/docs.python.org\/': None}$/;"	kind:variable	line:361
+inv	../pyGPGO/surrogates/tStudentProcess.py	/^from scipy.linalg import inv$/;"	kind:namespace	line:4
+kronDelta	../pyGPGO/covfunc.py	/^def kronDelta(X, Xstar):$/;"	kind:function	line:35
+kv	../pyGPGO/covfunc.py	/^from scipy.special import gamma, kv$/;"	kind:namespace	line:2
+l	../examples/slicetrial.py	/^        l = pm.Uniform('l', 0, 10)$/;"	kind:variable	line:42
+l2norm_	../pyGPGO/covfunc.py	/^def l2norm_(X, Xstar):$/;"	kind:function	line:16
+l_true	../examples/slicetrial.py	/^        l_true = 0.3$/;"	kind:variable	line:22
+language	../docs/source/conf.py	/^language = None$/;"	kind:variable	line:86
+latex_documents	../docs/source/conf.py	/^latex_documents = [$/;"	kind:variable	line:280
+latex_elements	../docs/source/conf.py	/^latex_elements = {$/;"	kind:variable	line:259
+length_scales	../examples/hyperopt.py	/^    length_scales = np.linspace(0.1, 2, 1000)$/;"	kind:variable	line:22
+lines	../examples/slicetrial.py	/^                 lines={"l": l_true,$/;"	kind:variable	line:61
+log_s2_f	../examples/slicetrial.py	/^        log_s2_f = pm.Uniform('log_s2_f', lower=-10, upper=5)$/;"	kind:variable	line:45
+log_s2_n	../examples/slicetrial.py	/^        log_s2_n = pm.Uniform('log_s2_n', lower=-10, upper=5)$/;"	kind:variable	line:49
+logger.py	../pyGPGO/logger.py	1;"	kind:file	line:1
+logp	../examples/hyperopt.py	/^    logp = []$/;"	kind:variable	line:20
+logpdf	../pyGPGO/surrogates/tStudentProcess.py	/^def logpdf(x, df, mu, Sigma):$/;"	kind:function	line:8
+m	../examples/drawGP.py	/^    m = np.zeros(Xstar.shape[0])$/;"	kind:variable	line:13
+make_moons	../examples/sklearnexample.py	/^from sklearn.datasets import make_moons$/;"	kind:namespace	line:4
+man_pages	../docs/source/conf.py	/^man_pages = [$/;"	kind:variable	line:322
+master_doc	../docs/source/conf.py	/^master_doc = 'index'$/;"	kind:variable	line:65
+matern	../pyGPGO/covfunc.py	/^class matern:$/;"	kind:class	line:141
+matern	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^from pyGPGO.covfunc import squaredExponential, matern$/;"	kind:namespace	line:8
+matern	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^from pyGPGO.covfunc import squaredExponential, matern$/;"	kind:namespace	line:7
+matern32	../examples/franke.py	/^from pyGPGO.covfunc import matern32$/;"	kind:namespace	line:2
+matern32	../examples/gif_gen.py	/^from pyGPGO.covfunc import matern32$/;"	kind:namespace	line:2
+matern32	../examples/hyperpost.py	/^from pyGPGO.covfunc import matern32$/;"	kind:namespace	line:3
+matern32	../pyGPGO/covfunc.py	/^class matern32:$/;"	kind:class	line:201
+matern52	../pyGPGO/covfunc.py	/^class matern52:$/;"	kind:class	line:286
+matplotlib	../examples/acqzoo.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+matplotlib	../examples/bayoptwork.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:4
+matplotlib	../examples/covzoo.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+matplotlib	../examples/drawGP.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:4
+matplotlib	../examples/example.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+matplotlib	../examples/example2d.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+matplotlib	../examples/exampleGBM.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+matplotlib	../examples/exampleRF.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+matplotlib	../examples/exampleint.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+matplotlib	../examples/franke.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:8
+matplotlib	../examples/gif_gen.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:8
+matplotlib	../examples/hyperopt.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:4
+matplotlib	../examples/integratedacq.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+matplotlib	../examples/minimalexample.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+matplotlib	../examples/sineGP.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:4
+matplotlib	../examples/sklearn_gp.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+matplotlib	../examples/sklearnexample.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+matplotlib	../examples/slicetrial.py	/^import matplotlib.cm as cmap$/;"	kind:namespace	line:2
+matplotlib	../examples/slicetrial.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:1
+matplotlib	../pyGPGO/logger.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:33
+matplotlib	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:10
+matplotlib	../pyGPGO/surrogates/tStudentProcess.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:217
+matplotlib	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:147
+matplotlib	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:10
+minimalexample.py	../examples/minimalexample.py	1;"	kind:file	line:1
+minimize	../pyGPGO/GPGO.py	/^from scipy.optimize import minimize$/;"	kind:namespace	line:4
+minimize	../pyGPGO/surrogates/GaussianProcess.py	/^from scipy.optimize import minimize$/;"	kind:namespace	line:4
+minimize	../pyGPGO/surrogates/tStudentProcess.py	/^from scipy.optimize import minimize$/;"	kind:namespace	line:5
+multivariate_normal	../examples/drawGP.py	/^from numpy.random import multivariate_normal$/;"	kind:namespace	line:2
+n	../examples/slicetrial.py	/^    n = 20$/;"	kind:variable	line:17
+n_iter	../examples/gif_gen.py	/^    n_iter = 10$/;"	kind:variable	line:59
+n_samples	../examples/drawGP.py	/^    n_samples = 3$/;"	kind:variable	line:17
+napoleon_include_init_with_doc	../docs/source/conf.py	/^napoleon_include_init_with_doc = True$/;"	kind:variable	line:47
+napoleon_include_private_with_doc	../docs/source/conf.py	/^napoleon_include_private_with_doc = True$/;"	kind:variable	line:46
+napoleon_include_special_with_doc	../docs/source/conf.py	/^napoleon_include_special_with_doc = True$/;"	kind:variable	line:45
+new	../examples/acqzoo.py	/^    new = True$/;"	kind:variable	line:39
+nlinalg	../examples/slicetrial.py	/^import theano.tensor.nlinalg$/;"	kind:namespace	line:9
+nlinalg	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import theano.tensor.nlinalg$/;"	kind:namespace	line:6
+nlinalg	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import theano.tensor.nlinalg$/;"	kind:namespace	line:5
+norm	../pyGPGO/acquisition.py	/^from scipy.stats import norm, t$/;"	kind:namespace	line:2
+np	../examples/acqzoo.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/bayoptwork.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/drawGP.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/example.py	/^import numpy as np$/;"	kind:namespace	line:5
+np	../examples/example2d.py	/^import numpy as np$/;"	kind:namespace	line:4
+np	../examples/exampleGBM.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/exampleRF.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/exampleint.py	/^import numpy as np$/;"	kind:namespace	line:5
+np	../examples/franke.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/gif_gen.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/hyperopt.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/hyperpost.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/integratedacq.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/minimalexample.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/sineGP.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/sklearn_gp.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/sklearnexample.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../examples/slicetrial.py	/^import numpy as np$/;"	kind:namespace	line:5
+np	../pyGPGO/GPGO.py	/^import numpy as np$/;"	kind:namespace	line:3
+np	../pyGPGO/acquisition.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../pyGPGO/covfunc.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../pyGPGO/logger.py	/^    import numpy as np$/;"	kind:namespace	line:32
+np	../pyGPGO/surrogates/BoostedTrees.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../pyGPGO/surrogates/GaussianProcess.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import numpy as np$/;"	kind:namespace	line:2
+np	../pyGPGO/surrogates/RandomForest.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../pyGPGO/surrogates/tStudentProcess.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    import numpy as np$/;"	kind:namespace	line:146
+np	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../tests/test_GP.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../tests/test_GPGO.py	/^import numpy as np$/;"	kind:namespace	line:1
+np	../tests/test_sk.py	/^import numpy as np$/;"	kind:namespace	line:1
+optHyp	../pyGPGO/surrogates/GaussianProcess.py	/^    def optHyp(self, param_key, param_bounds, grads=None, n_trials=5):$/;"	kind:member	line:167
+optHyp	../pyGPGO/surrogates/tStudentProcess.py	/^    def optHyp(self, param_key, param_bounds, n_trials=5):$/;"	kind:member	line:114
+os	../examples/example.py	/^import os$/;"	kind:namespace	line:1
+os	../examples/example2d.py	/^import os$/;"	kind:namespace	line:1
+os	../examples/exampleint.py	/^import os$/;"	kind:namespace	line:1
+os	../setup.py	/^import os$/;"	kind:namespace	line:2
+param	../examples/acqzoo.py	/^    param = {'x': ('cont', [0, 2 * np.pi])}$/;"	kind:variable	line:38
+param	../examples/example.py	/^    param = {'x': ('cont', [0, 2 * np.pi])}$/;"	kind:variable	line:45
+param	../examples/example2d.py	/^    param = OrderedDict()$/;"	kind:variable	line:75
+param	../examples/exampleint.py	/^    param = {'x': ('cont', [0, 2 * np.pi])}$/;"	kind:variable	line:37
+param	../examples/franke.py	/^    param = {'x': ('cont', [0, 1]),$/;"	kind:variable	line:41
+param	../examples/gif_gen.py	/^    param = {'x': ('cont', [0, 1]),$/;"	kind:variable	line:63
+param	../examples/integratedacq.py	/^    param = {'x': ('cont', [0, 6])}$/;"	kind:variable	line:18
+param_grad	../pyGPGO/surrogates/GaussianProcess.py	/^    def param_grad(self, k_param):$/;"	kind:member	line:83
+params	../examples/minimalexample.py	/^    params = {'x': ('cont', (0, 1))}$/;"	kind:variable	line:25
+params	../examples/sklearn_gp.py	/^    params = gp.getcovparams()$/;"	kind:variable	line:26
+params	../examples/sklearnexample.py	/^    params = {'C':      ('cont', (-4, 5)),$/;"	kind:variable	line:34
+params	../pyGPGO/logger.py	/^    params = {'x': ('cont', (0, 1))}$/;"	kind:variable	line:48
+plot2dgpgo	../examples/example2d.py	/^def plot2dgpgo(gpgo):$/;"	kind:function	line:28
+plotFranke	../examples/franke.py	/^def plotFranke():$/;"	kind:function	line:21
+plotFranke	../examples/gif_gen.py	/^def plotFranke():$/;"	kind:function	line:21
+plotGPGO	../examples/acqzoo.py	/^def plotGPGO(gpgo, param, index, new=True):$/;"	kind:function	line:9
+plotGPGO	../examples/example.py	/^def plotGPGO(gpgo, param):$/;"	kind:function	line:12
+plotGPGO	../examples/exampleint.py	/^def plotGPGO(gpgo, param):$/;"	kind:function	line:13
+plotPred	../examples/gif_gen.py	/^def plotPred(gpgo, num=100):$/;"	kind:function	line:34
+plot_f	../examples/example2d.py	/^def plot_f(x_values, y_values, f):$/;"	kind:function	line:17
+plt	../examples/acqzoo.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+plt	../examples/bayoptwork.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:4
+plt	../examples/covzoo.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+plt	../examples/drawGP.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:4
+plt	../examples/example.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+plt	../examples/example2d.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:5
+plt	../examples/exampleGBM.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+plt	../examples/exampleRF.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+plt	../examples/exampleint.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:3
+plt	../examples/franke.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:8
+plt	../examples/gif_gen.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:8
+plt	../examples/hyperopt.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:4
+plt	../examples/integratedacq.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+plt	../examples/minimalexample.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+plt	../examples/sineGP.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:4
+plt	../examples/sklearn_gp.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+plt	../examples/sklearnexample.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:2
+plt	../examples/slicetrial.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:1
+plt	../pyGPGO/logger.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:33
+plt	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:10
+plt	../pyGPGO/surrogates/tStudentProcess.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:217
+plt	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    import matplotlib.pyplot as plt$/;"	kind:namespace	line:147
+plt	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import matplotlib.pyplot as plt$/;"	kind:namespace	line:10
+pm	../examples/exampleint.py	/^import pymc3 as pm$/;"	kind:namespace	line:10
+pm	../examples/integratedacq.py	/^import pymc3 as pm$/;"	kind:namespace	line:8
+pm	../examples/slicetrial.py	/^import pymc3 as pm$/;"	kind:namespace	line:12
+pm	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import pymc3 as pm$/;"	kind:namespace	line:7
+pm	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import pymc3 as pm$/;"	kind:namespace	line:6
+posteriorPlot	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^    def posteriorPlot(self):$/;"	kind:member	line:86
+posteriorPlot	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    def posteriorPlot(self):$/;"	kind:member	line:84
+predict	../pyGPGO/surrogates/BoostedTrees.py	/^    def predict(self, Xstar, return_std = True):$/;"	kind:member	line:48
+predict	../pyGPGO/surrogates/GaussianProcess.py	/^    def predict(self, Xstar, return_std=False):$/;"	kind:member	line:200
+predict	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^    def predict(self, Xstar, return_std=False, nsamples=10):$/;"	kind:member	line:96
+predict	../pyGPGO/surrogates/RandomForest.py	/^    def predict(self, Xstar, return_std = True, eps = 1e-6):$/;"	kind:member	line:125
+predict	../pyGPGO/surrogates/RandomForest.py	/^    def predict(self, Xstar, return_std = True, eps = 1e-6):$/;"	kind:member	line:37
+predict	../pyGPGO/surrogates/tStudentProcess.py	/^    def predict(self, Xstar, return_std=False):$/;"	kind:member	line:168
+predict	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    def predict(self, Xstar, return_std=False, nsamples=10):$/;"	kind:member	line:94
+project	../docs/source/conf.py	/^project = 'pyGPGO'$/;"	kind:variable	line:68
+pygments_style	../docs/source/conf.py	/^pygments_style = 'sphinx'$/;"	kind:variable	line:122
+rastrigin	../examples/example2d.py	/^def rastrigin(x, y, A=10):$/;"	kind:function	line:13
+rationalQuadratic	../pyGPGO/covfunc.py	/^class rationalQuadratic:$/;"	kind:class	line:466
+readme	../setup.py	/^def readme():$/;"	kind:function	line:8
+release	../docs/source/conf.py	/^release = '0.1.0.dev1'$/;"	kind:variable	line:79
+rf	../examples/exampleRF.py	/^    rf = RandomForest(n_estimators=20)$/;"	kind:variable	line:11
+rng	../examples/sklearn_gp.py	/^    rng = np.random.RandomState(0)$/;"	kind:variable	line:10
+run	../pyGPGO/GPGO.py	/^    def run(self, max_iter=10, init_evals=3, resume=False):$/;"	kind:member	line:173
+s2_f	../examples/slicetrial.py	/^        s2_f = pm.Deterministic('s2_f', tt.exp(log_s2_f))$/;"	kind:variable	line:46
+s2_f_true	../examples/slicetrial.py	/^        s2_f_true = 1.0$/;"	kind:variable	line:23
+s2_n	../examples/slicetrial.py	/^        s2_n = pm.Deterministic('s2_n', tt.exp(log_s2_n))$/;"	kind:variable	line:50
+s2_n_true	../examples/slicetrial.py	/^        s2_n_true = 0.1$/;"	kind:variable	line:27
+samples	../examples/drawGP.py	/^    samples = multivariate_normal(m, K, size=n_samples)$/;"	kind:variable	line:19
+setup	../setup.py	/^from setuptools import setup, find_packages$/;"	kind:namespace	line:1
+setup.py	../setup.py	1;"	kind:file	line:1
+sexp	../examples/acqzoo.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:37
+sexp	../examples/bayoptwork.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:13
+sexp	../examples/drawGP.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:11
+sexp	../examples/example.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:42
+sexp	../examples/example2d.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:71
+sexp	../examples/exampleint.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:34
+sexp	../examples/hyperopt.py	/^        sexp = squaredExponential(l=l)$/;"	kind:variable	line:25
+sexp	../examples/hyperpost.py	/^    sexp = matern32()$/;"	kind:variable	line:8
+sexp	../examples/integratedacq.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:11
+sexp	../examples/minimalexample.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:21
+sexp	../examples/sineGP.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:13
+sexp	../examples/sklearn_gp.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:14
+sexp	../examples/sklearnexample.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:30
+sexp	../pyGPGO/logger.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:44
+sexp	../pyGPGO/surrogates/tStudentProcess.py	/^    sexp = squaredExponential()$/;"	kind:variable	line:224
+sineGP.py	../examples/sineGP.py	1;"	kind:file	line:1
+sklearn_gp.py	../examples/sklearn_gp.py	1;"	kind:file	line:1
+sklearnexample.py	../examples/sklearnexample.py	1;"	kind:file	line:1
+slicetrial.py	../examples/slicetrial.py	1;"	kind:file	line:1
+slogdet	../pyGPGO/surrogates/tStudentProcess.py	/^from numpy.linalg import slogdet$/;"	kind:namespace	line:3
+solve	../pyGPGO/surrogates/GaussianProcess.py	/^from scipy.linalg import cholesky, solve$/;"	kind:namespace	line:2
+source_suffix	../docs/source/conf.py	/^source_suffix = '.rst'$/;"	kind:variable	line:58
+sp	../examples/slicetrial.py	/^import scipy as sp$/;"	kind:namespace	line:6
+sp	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import scipy as sp$/;"	kind:namespace	line:3
+sp	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import scipy as sp$/;"	kind:namespace	line:2
+sphinx_rtd_theme	../docs/source/conf.py	/^import sphinx_rtd_theme$/;"	kind:namespace	line:33
+squaredExponential	../examples/acqzoo.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:5
+squaredExponential	../examples/bayoptwork.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:3
+squaredExponential	../examples/drawGP.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:3
+squaredExponential	../examples/example.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:9
+squaredExponential	../examples/example2d.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:10
+squaredExponential	../examples/exampleint.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:9
+squaredExponential	../examples/hyperopt.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:3
+squaredExponential	../examples/integratedacq.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:5
+squaredExponential	../examples/minimalexample.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:3
+squaredExponential	../examples/sineGP.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:3
+squaredExponential	../examples/sklearn_gp.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:6
+squaredExponential	../examples/sklearnexample.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:12
+squaredExponential	../pyGPGO/covfunc.py	/^class squaredExponential:$/;"	kind:class	line:54
+squaredExponential	../pyGPGO/logger.py	/^    from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:34
+squaredExponential	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^from pyGPGO.covfunc import squaredExponential, matern$/;"	kind:namespace	line:8
+squaredExponential	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:149
+squaredExponential	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^from pyGPGO.covfunc import squaredExponential, matern$/;"	kind:namespace	line:7
+squaredExponential	../tests/test_GP.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:3
+squaredExponential	../tests/test_GPGO.py	/^from pyGPGO.covfunc import squaredExponential$/;"	kind:namespace	line:2
+sys	../examples/slicetrial.py	/^import sys$/;"	kind:namespace	line:10
+t	../pyGPGO/acquisition.py	/^from scipy.stats import norm, t$/;"	kind:namespace	line:2
+tExpectedImprovement	../pyGPGO/acquisition.py	/^    def tExpectedImprovement(self, tau, mean, std, nu=3.0):$/;"	kind:member	line:194
+tIntegratedExpectedImprovement	../pyGPGO/acquisition.py	/^    def tIntegratedExpectedImprovement(self, tau, meanmcmc, stdmcmc, nu=3.0):$/;"	kind:member	line:215
+tStudentProcess	../pyGPGO/surrogates/tStudentProcess.py	/^class tStudentProcess:$/;"	kind:class	line:44
+tStudentProcess	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^from pyGPGO.surrogates.tStudentProcess import tStudentProcess$/;"	kind:namespace	line:8
+tStudentProcess.py	../pyGPGO/surrogates/tStudentProcess.py	1;"	kind:file	line:1
+tStudentProcessMCMC	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^class tStudentProcessMCMC:$/;"	kind:class	line:13
+tStudentProcessMCMC.py	../pyGPGO/surrogates/tStudentProcessMCMC.py	1;"	kind:file	line:1
+templates_path	../docs/source/conf.py	/^templates_path = ['_templates']$/;"	kind:variable	line:52
+tensor	../examples/slicetrial.py	/^import theano.tensor.nlinalg$/;"	kind:namespace	line:9
+tensor	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import theano.tensor.nlinalg$/;"	kind:namespace	line:6
+tensor	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import theano.tensor.nlinalg$/;"	kind:namespace	line:5
+test_GP	../tests/test_GP.py	/^def test_GP():$/;"	kind:function	line:6
+test_GP.py	../tests/test_GP.py	1;"	kind:file	line:1
+test_GPGO	../tests/test_GPGO.py	/^def test_GPGO():$/;"	kind:function	line:12
+test_GPGO.py	../tests/test_GPGO.py	1;"	kind:file	line:1
+test_sk	../tests/test_sk.py	/^def test_sk():$/;"	kind:function	line:11
+test_sk.py	../tests/test_sk.py	1;"	kind:file	line:1
+texinfo_documents	../docs/source/conf.py	/^texinfo_documents = [$/;"	kind:variable	line:337
+theano	../examples/slicetrial.py	/^import theano$/;"	kind:namespace	line:7
+theano	../examples/slicetrial.py	/^import theano.tensor as tt$/;"	kind:namespace	line:8
+theano	../examples/slicetrial.py	/^import theano.tensor.nlinalg$/;"	kind:namespace	line:9
+theano	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import theano$/;"	kind:namespace	line:4
+theano	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import theano.tensor as tt$/;"	kind:namespace	line:5
+theano	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import theano.tensor.nlinalg$/;"	kind:namespace	line:6
+theano	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import theano$/;"	kind:namespace	line:3
+theano	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import theano.tensor as tt$/;"	kind:namespace	line:4
+theano	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import theano.tensor.nlinalg$/;"	kind:namespace	line:5
+titles	../examples/covzoo.py	/^    titles = [r'Squared Exponential ($l = 1$)', r'Matérn ($\\nu = 1.5$, $l = 1$)',$/;"	kind:variable	line:14
+todo_include_todos	../docs/source/conf.py	/^todo_include_todos = False$/;"	kind:variable	line:131
+trace	../examples/slicetrial.py	/^        trace = pm.sample(2000)$/;"	kind:variable	line:58
+tt	../examples/slicetrial.py	/^import theano.tensor as tt$/;"	kind:namespace	line:8
+tt	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^import theano.tensor as tt$/;"	kind:namespace	line:5
+tt	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^import theano.tensor as tt$/;"	kind:namespace	line:4
+update	../pyGPGO/surrogates/BoostedTrees.py	/^    def update(self, xnew, ynew):$/;"	kind:member	line:79
+update	../pyGPGO/surrogates/GaussianProcess.py	/^    def update(self, xnew, ynew):$/;"	kind:member	line:228
+update	../pyGPGO/surrogates/GaussianProcessMCMC.py	/^    def update(self, xnew, ynew):$/;"	kind:member	line:131
+update	../pyGPGO/surrogates/RandomForest.py	/^    def update(self, xnew, ynew):$/;"	kind:member	line:165
+update	../pyGPGO/surrogates/RandomForest.py	/^    def update(self, xnew, ynew):$/;"	kind:member	line:77
+update	../pyGPGO/surrogates/tStudentProcess.py	/^    def update(self, xnew, ynew):$/;"	kind:member	line:199
+update	../pyGPGO/surrogates/tStudentProcessMCMC.py	/^    def update(self, xnew, ynew):$/;"	kind:member	line:129
+updateGP	../pyGPGO/GPGO.py	/^    def updateGP(self):$/;"	kind:member	line:144
+version	../docs/source/conf.py	/^version = '0.1.0.dev1'$/;"	kind:variable	line:77
+version	../setup.py	/^version = {}$/;"	kind:variable	line:4
+version.py	../pyGPGO/version.py	1;"	kind:file	line:1
+x	../examples/bayoptwork.py	/^    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi \/ 1.5)$/;"	kind:variable	line:8
+x	../examples/covzoo.py	/^    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi \/ 2.05)$/;"	kind:variable	line:8
+x	../examples/drawGP.py	/^    x = Xstar.flatten()$/;"	kind:variable	line:22
+x	../examples/example2d.py	/^    x = np.linspace(-1, 1, 1000)$/;"	kind:variable	line:66
+x	../examples/exampleGBM.py	/^    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi \/ 16)$/;"	kind:variable	line:7
+x	../examples/exampleRF.py	/^    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi \/ 8)$/;"	kind:variable	line:7
+x	../examples/hyperopt.py	/^    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi \/ 2)$/;"	kind:variable	line:16
+x	../examples/sineGP.py	/^    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi \/ 2)$/;"	kind:variable	line:8
+x	../pyGPGO/surrogates/tStudentProcess.py	/^    x = np.arange(0, 2 * np.pi + 0.01, step=np.pi \/ 4)$/;"	kind:variable	line:219
+xstar	../examples/bayoptwork.py	/^    xstar = np.arange(0, 2 * np.pi, step=0.01)$/;"	kind:variable	line:20
+xstar	../examples/covzoo.py	/^        xstar = np.arange(0, 2 * np.pi, step=0.01)$/;"	kind:variable	line:22
+xstar	../examples/exampleGBM.py	/^    xstar = np.arange(0, 2 * np.pi, step=0.01)$/;"	kind:variable	line:15
+xstar	../examples/exampleRF.py	/^    xstar = np.arange(0, 2 * np.pi, step=0.01)$/;"	kind:variable	line:15
+xstar	../examples/sineGP.py	/^    xstar = np.arange(0, 2 * np.pi, step=0.01)$/;"	kind:variable	line:21
+xstar	../pyGPGO/surrogates/tStudentProcess.py	/^    xstar = np.arange(0, 2 * np.pi, step=0.01)$/;"	kind:variable	line:231
+xtest	../examples/integratedacq.py	/^    xtest = np.linspace(0, 6, 200)[:, np.newaxis]$/;"	kind:variable	line:35
+y	../examples/bayoptwork.py	/^    y = np.sin(x)$/;"	kind:variable	line:9
+y	../examples/covzoo.py	/^    y = np.sin(x)$/;"	kind:variable	line:9
+y	../examples/example2d.py	/^    y = np.linspace(-1, 1, 1000)$/;"	kind:variable	line:67
+y	../examples/exampleGBM.py	/^    y = np.sin(x)$/;"	kind:variable	line:8
+y	../examples/exampleRF.py	/^    y = np.sin(x)$/;"	kind:variable	line:8
+y	../examples/hyperopt.py	/^    y = np.sin(x)$/;"	kind:variable	line:18
+y	../examples/hyperpost.py	/^    y = np.sin(X).flatten()$/;"	kind:variable	line:12
+y	../examples/sineGP.py	/^    y = np.sin(x)$/;"	kind:variable	line:9
+y	../examples/sklearn_gp.py	/^    y = 0.5 * np.sin(3 * X[:, 0]) + rng.normal(0, 0.5, X.shape[0])$/;"	kind:variable	line:12
+y	../examples/slicetrial.py	/^    y = np.random.multivariate_normal(np.zeros(n), K)$/;"	kind:variable	line:35
+y	../pyGPGO/surrogates/tStudentProcess.py	/^    y = np.sin(x)$/;"	kind:variable	line:220
+y_obs	../examples/slicetrial.py	/^        y_obs = pm.gp.GP('y_obs', cov_func=f_cov, sigma=s2_n, observed={'X': X, 'Y': y})$/;"	kind:variable	line:55
+y_std	../examples/sklearn_gp.py	/^    y_std = np.sqrt(y_var)$/;"	kind:variable	line:20

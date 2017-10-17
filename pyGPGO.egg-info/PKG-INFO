@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: pyGPGO
+Version: 0.3.0.dev1
+Summary: Bayesian Optimization tools in Python
+Home-page: https://github.com/hawk31/pyGPGO
+Author: Jose Jimenez
+Author-email: jose.jimenez@upf.edu
+License: MIT
+Description: UNKNOWN
+Keywords: machine-learning,optimization,bayesian
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Scientific/Engineering :: Mathematics

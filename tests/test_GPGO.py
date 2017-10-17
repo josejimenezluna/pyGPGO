@@ -1,6 +1,9 @@
 import numpy as np
+import pymc3 as pm
 from pyGPGO.covfunc import squaredExponential
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
+from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC
+from pyGPGO.surrogates.RandomForest import RandomForest
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.GPGO import GPGO
 
@@ -13,7 +16,19 @@ def test_GPGO():
     np.random.seed(20)
     sexp = squaredExponential()
     gp = GaussianProcess(sexp)
-    acq = Acquisition(mode= 'ExpectedImprovement')
+    acq = Acquisition(mode='ExpectedImprovement')
+    params = {'x': ('cont', (0, 1))}
+    gpgo = GPGO(gp, acq, f, params)
+    gpgo.run(max_iter=10)
+    res = gpgo.getResult()[0]
+    assert .7 < res['x'] < .8
+
+
+def test_GPGO_mcmc():
+    np.random.seed(20)
+    sexp = squaredExponential()
+    gp = GaussianProcessMCMC(sexp, step=pm.Slice)
+    acq = Acquisition(mode='IntegratedExpectedImprovement')
     params = {'x': ('cont', (0, 1))}
     gpgo = GPGO(gp, acq, f, params)
     gpgo.run(max_iter=10)
@@ -22,3 +37,4 @@ def test_GPGO():
 
 if __name__ == '__main__':
     test_GPGO()
+    test_GPGO_mcmc()

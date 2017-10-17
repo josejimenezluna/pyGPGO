@@ -24,15 +24,14 @@ class GaussianProcessMCMC:
         ----------
         covfunc:
             Covariance function to use. Currently this instance only supports `squaredExponential`
-            `matern32` and `matern52` kernels.
+            and `matern` v=1.5, 2.5 kernel
         niter: int
             Number of iterations to run MCMC.
         burnin: int
             Burn-in iterations to discard at trace.
+            
         init: str
             Initialization method for NUTS. Check pyMC3 docs.
-        step:
-            pyMC3's step method for the process, (e.g. `pm.Slice`)
         """
         self.covfunc = covfunc
         self.niter = niter
@@ -86,7 +85,8 @@ class GaussianProcessMCMC:
 
     def posteriorPlot(self):
         """
-        Plots sampled posterior distributions for hyperparameters. 
+        Plots sampled posterior distributions for hyperparameters.
+        
         """
         with self.model as model:
             pm.traceplot(self.trace, varnames=['l', 'sigmaf', 'sigman'])

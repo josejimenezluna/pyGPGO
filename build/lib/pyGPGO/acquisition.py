@@ -80,7 +80,7 @@ class Acquisition:
         z = (mean - tau - self.eps) / (std + self.eps)
         return (mean - tau) * norm.cdf(z) + std * norm.pdf(z)[0]
 
-    def UCB(self, tau, mean, std, beta=1.5):
+    def UCB(self, tau, mean, std, beta):
         """
         Upper-confidence bound acquisition function.
 
@@ -102,7 +102,7 @@ class Acquisition:
         """
         return mean + beta * std
 
-    def Entropy(self, tau, mean, std, sigman=1.0):
+    def Entropy(self, tau, mean, std, sigman):
         """
         Predictive entropy acquisition function
 
@@ -167,7 +167,7 @@ class Acquisition:
         acq = [self.ProbabilityImprovement(tau, np.array([mean]), np.array([std])) for mean, std in zip(meanmcmc, stdmcmc)]
         return np.average(acq)
 
-    def IntegratedUCB(self, tau, meanmcmc, stdmcmc, beta=1.5):
+    def IntegratedUCB(self, tau, meanmcmc, stdmcmc, beta):
         """
         Integrated probability of improvement. Can only be used with `GaussianProcessMCMC` instance.
 

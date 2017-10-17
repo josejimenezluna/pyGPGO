@@ -30,8 +30,6 @@ setup(name='pyGPGO',
         'joblib',
         'scikit-learn',
         'theano',
+        'pyMC3'
     ],
-    extras_require={
-          'pyMC3': ["pyMC3"]
-    },
     zip_safe=False)

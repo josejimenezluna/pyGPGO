@@ -5,11 +5,10 @@ from scipy.linalg import inv
 from scipy.optimize import minimize
 from scipy.special import gamma
 
-
 def logpdf(x, df, mu, Sigma):
     """
     Marginal log-likelihood of a Student-t Process
-
+    
     Parameters
     ----------
     x: array-like
@@ -45,9 +44,8 @@ def logpdf(x, df, mu, Sigma):
 class tStudentProcess:
     def __init__(self, covfunc, nu=3.0, optimize=False):
         """
-        t-Student Process regressor class.
-        This class DOES NOT support gradients in ML estimation yet.
-
+        t-Student Process regressor class. This class DOES NOT support gradients in ML estimation yet.
+        
         Parameters
         ----------
         covfunc: instance from a class of covfunc module

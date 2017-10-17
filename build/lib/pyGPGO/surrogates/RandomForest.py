@@ -89,7 +89,6 @@ class RandomForest:
         X = np.concatenate((self.X, xnew), axis=0)
         self.fit(X, y)
 
-
 class ExtraForest:
     def __init__(self, **params):
         """
