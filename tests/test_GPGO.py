@@ -35,6 +35,19 @@ def test_GPGO_mcmc():
     res = gpgo.getResult()[0]
     assert .7 < res['x'] < .8
 
+
+def test_GPGO_sk():
+    np.random.seed(20)
+    rf = RandomForest()
+    acq = Acquisition(mode='ExpectedImprovement')
+    params = {'x': ('cont', (0, 1))}
+    gpgo = GPGO(rf, acq, f, params)
+    gpgo.run(max_iter=10)
+    res = gpgo.getResult()[0]
+    assert .7 < res['x'] < .8
+
+
 if __name__ == '__main__':
     test_GPGO()
     test_GPGO_mcmc()
+    test_GPGO_sk()

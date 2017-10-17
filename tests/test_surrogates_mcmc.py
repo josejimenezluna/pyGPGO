@@ -21,7 +21,7 @@ def test_tSP():
     y = 0.5 * np.sin(3 * X[:, 0]) + rng.normal(0, 0.5, X.shape[0])
 
     sexp = squaredExponential()
-    tsp = tStudentProcessMCMC(sexp, step=pm.Slice)
+    tsp = tStudentProcessMCMC(sexp, step=pm.Slice, niter=100)
     tsp.fit(X, y)
 
 
