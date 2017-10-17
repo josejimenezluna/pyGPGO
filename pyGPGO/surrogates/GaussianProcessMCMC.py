@@ -7,7 +7,6 @@ import theano.tensor.nlinalg
 import pymc3 as pm
 from pyGPGO.covfunc import squaredExponential, matern
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
-import matplotlib.pyplot as plt
 
 
 covariance_equivalence = {'squaredExponential': pm.gp.cov.ExpQuad,

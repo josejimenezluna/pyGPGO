@@ -7,7 +7,6 @@ import pymc3 as pm
 from pyGPGO.covfunc import squaredExponential, matern
 from pyGPGO.surrogates.tStudentProcess import tStudentProcess
 from pyGPGO.surrogates.GaussianProcessMCMC import covariance_equivalence
-import matplotlib.pyplot as plt
 
 
 class tStudentProcessMCMC:
