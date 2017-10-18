@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO documentation" href="api.html"/>
         <link rel="next" title="pyGPGO.acquisition module" href="pyGPGO.acquisition.html"/>
@@ -142,7 +145,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pyGPGO.covfunc.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pyGPGO.covfunc.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -169,8 +172,8 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
 <li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
-<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
 </ul>
 </td>
 </tr>
@@ -185,8 +188,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 </ul>
 </td>
 </tr>
@@ -209,8 +212,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 <li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Parameter to compute gradient matrix for.</li>
 </ul>
 </td>
@@ -240,8 +243,8 @@
 <li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
 change significantly.    l: float</li>
 <li><strong>period</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Period hyperparameter.</li>
-<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
 </ul>
 </td>
 </tr>
@@ -256,8 +259,8 @@ change significantly.    l: float</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 </ul>
 </td>
 </tr>
@@ -293,8 +296,8 @@ change significantly.    l: float</li>
 change significantly.</li>
 <li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
 <li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
-<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
 </ul>
 </td>
 </tr>
@@ -309,8 +312,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 </ul>
 </td>
 </tr>
@@ -318,6 +321,29 @@ change significantly.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.gammaExponential.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>gamma=1, l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['gamma', 'l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#gammaExponential.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.gammaExponential.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gamma-exponential kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>gamma</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Hyperparameter of the Gamma-exponential covariance function.</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -333,8 +359,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 <li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Parameter to compute gradient matrix for.</li>
 </ul>
 </td>
@@ -360,8 +386,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances.</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape((m, nfeatures))</em>) &#8211; Instances.</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances.</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape</em><em>(</em><em>(</em><em>m</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances.</li>
 </ul>
 </td>
 </tr>
@@ -384,8 +410,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances.</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((m, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances.</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>m</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 </ul>
 </td>
 </tr>
@@ -414,8 +440,8 @@ change significantly.</li>
 change significantly.</li>
 <li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
 <li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
-<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
 </ul>
 </td>
 </tr>
@@ -430,8 +456,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 </ul>
 </td>
 </tr>
@@ -439,6 +465,29 @@ change significantly.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.matern.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>v=1, l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['v', 'l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matern kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>v</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Scale-mixture hyperparameter of the Matern covariance function.</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -461,8 +510,8 @@ change significantly.</li>
 change significantly.</li>
 <li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
 <li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
-<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
 </ul>
 </td>
 </tr>
@@ -477,8 +526,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 </ul>
 </td>
 </tr>
@@ -486,6 +535,28 @@ change significantly.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.matern32.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern32.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern32.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matern v=3/2 kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -501,8 +572,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 <li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Parameter to compute gradient matrix for.</li>
 </ul>
 </td>
@@ -533,8 +604,8 @@ change significantly.</li>
 change significantly.</li>
 <li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
 <li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
-<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
 </ul>
 </td>
 </tr>
@@ -549,8 +620,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 </ul>
 </td>
 </tr>
@@ -558,6 +629,28 @@ change significantly.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.matern52.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#matern52.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.matern52.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matern v=5/2 kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -573,8 +666,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 <li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Parameter to compute gradient matrix for.</li>
 </ul>
 </td>
@@ -606,8 +699,8 @@ change significantly.</li>
 change significantly.</li>
 <li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
 <li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
-<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
 </ul>
 </td>
 </tr>
@@ -622,8 +715,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 </ul>
 </td>
 </tr>
@@ -631,6 +724,29 @@ change significantly.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.rationalQuadratic.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>alpha=1, l=1, sigmaf=1, sigman=1e-06, bounds=None, parameters=['alpha', 'l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#rationalQuadratic.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.rationalQuadratic.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rational-quadratic kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Hyperparameter of the rational-quadratic covariance function.</li>
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -646,8 +762,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 <li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Parameter to compute gradient matrix for.</li>
 </ul>
 </td>
@@ -678,8 +794,8 @@ change significantly.</li>
 change significantly.</li>
 <li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
 <li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
-<li><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
-<li><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
 </ul>
 </td>
 </tr>
@@ -694,8 +810,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 </ul>
 </td>
 </tr>
@@ -703,6 +819,28 @@ change significantly.</li>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">np.ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.covfunc.squaredExponential.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>l=1, sigmaf=1.0, sigman=1e-06, bounds=None, parameters=['l', 'sigmaf', 'sigman']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/covfunc.html#squaredExponential.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.covfunc.squaredExponential.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Squared exponential kernel class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>l</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Characteristic length-scale. Units in input space in which posterior GP values do not
+change significantly.</li>
+<li><strong>sigmaf</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Signal variance. Controls the overall scale of the covariance function.</li>
+<li><strong>sigman</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Noise variance. Additive noise in output space.</li>
+<li><strong>bounds</strong> (<em>list</em>) &#8211; List of tuples specifying hyperparameter range in optimization procedure.</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of strings specifying which hyperparameters should be optimized.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -718,8 +856,8 @@ change significantly.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((n, nfeatures))</em>) &#8211; Instances</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>n</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Instances</li>
 <li><strong>param</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Parameter to compute gradient matrix for.</li>
 </ul>
 </td>
@@ -786,13 +924,13 @@ change significantly.</li>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyGPGO: Bayesian Optimization for Python &mdash; pyGPGO 0.1.0.dev1 documentation</title>
+  <title>pyGPGO: Bayesian optimization for Python &mdash; pyGPGO 0.1.0.dev1 documentation</title>
   
 
   
@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="#"/>
         <link rel="next" title="pyGPGO documentation" href="api.html"/> 
 
@@ -132,13 +135,13 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>pyGPGO: Bayesian Optimization for Python</li>
+      <li>pyGPGO: Bayesian optimization for Python</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -152,8 +155,8 @@
            <div itemprop="articleBody">
             
   <div class="section" id="pygpgo-bayesian-optimization-for-python">
-<h1>pyGPGO: Bayesian Optimization for Python<a class="headerlink" href="#pygpgo-bayesian-optimization-for-python" title="Permalink to this headline">¶</a></h1>
-<p>pyGPGO is a simple and modular Python (&gt;3.5) package for Bayesian Optimization. It supports:</p>
+<h1>pyGPGO: Bayesian optimization for Python<a class="headerlink" href="#pygpgo-bayesian-optimization-for-python" title="Permalink to this headline">¶</a></h1>
+<p>pyGPGO is a simple and modular Python (&gt;3.5) package for Bayesian optimization. It supports:</p>
 <ul class="simple">
 <li>Different surrogate models: Gaussian Processes, Student-t Processes, Random Forests, Gradient Boosting Machines.</li>
 <li>Type II Maximum-Likelihood of covariance function hyperparameters.</li>
@@ -161,14 +164,37 @@
 <li>Integrated acquisition functions</li>
 </ul>
 <p>Check us out on  <a class="reference external" href="https://github.com/hawk31/pyGPGO">Github</a>.</p>
+</div>
+<div class="section" id="what-is-bayesian-optimization">
+<h1>What is Bayesian Optimization?<a class="headerlink" href="#what-is-bayesian-optimization" title="Permalink to this headline">¶</a></h1>
+<p>Bayesian optimization is a framework that is useful in several scenarios:</p>
+<ul class="simple">
+<li>Your objective function has no closed-form.</li>
+<li>No access to gradients</li>
+<li>In presence of noise</li>
+<li>It may be expensive to evaluate.</li>
+</ul>
+<p>The bayesian optimization framework uses a surrogate model to approximate the objective function and chooses to
+optimize it according to some acquisition function. This framework gives a lot of freedom to the user in terms
+of optimization choices:</p>
+<ul class="simple">
+<li>Surrogate model choice</li>
+<li>Covariance function choice</li>
+<li>Acquisition function behaviour</li>
+<li>Hyperparameter treatment</li>
+</ul>
+<p>pyGPGO provides an extensive range of choices in each of the previous points, in a modular way.</p>
+</div>
+<div class="section" id="how-do-i-get-started-with-pygpgo">
+<h1>How do I get started with pyGPGO?<a class="headerlink" href="#how-do-i-get-started-with-pygpgo" title="Permalink to this headline">¶</a></h1>
 <p>Overall, pyGPGO is a very easy to use package. In practice, a user needs to specify:</p>
 <ul class="simple">
 <li>A function to optimize according to some parameters.</li>
 <li>A dictionary defining parameters, their type and bounds.</li>
-<li>A surrogate model, such as a Gaussian Process, from the surrogates module. Some surrogate models require defining
-a covariance function, with hyperparameters. (from the covfunc module)</li>
-<li>An acquisition strategy, from the acquisition module.</li>
-<li>A GPGO instance, from the GPGO module</li>
+<li>A surrogate model, such as a Gaussian Process, from the <code class="docutils literal"><span class="pre">surrogates</span></code> module. Some surrogate models require defining
+a covariance function, with hyperparameters. (from the <code class="docutils literal"><span class="pre">covfunc</span></code> module)</li>
+<li>An acquisition strategy, from the <code class="docutils literal"><span class="pre">acquisition</span></code> module.</li>
+<li>A GPGO instance, from the <code class="docutils literal"><span class="pre">GPGO</span></code> module</li>
 </ul>
 <p>A simple example can be checked below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -191,7 +217,9 @@ a covariance function, with hyperparameters. (from the covfunc module)</li>
 <span class="n">gpgo</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Contents:</p>
+<p>There are a couple of tutorials to help get you started on the <a class="reference external" href="https://github.com/hawk31/pyGPGO/tree/master/tutorials">tutorials</a> folder.</p>
+<p>For a full list of features with explanations check our Features section.</p>
+<p>API documentation:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">pyGPGO documentation</a><ul>
@@ -263,13 +291,13 @@ a covariance function, with hyperparameters. (from the covfunc module)</li>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

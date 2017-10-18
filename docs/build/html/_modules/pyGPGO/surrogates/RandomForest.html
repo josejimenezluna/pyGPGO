@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
@@ -156,7 +159,7 @@
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="n">ExtraTreesRegressor</span>
 
 <div class="viewcode-block" id="RandomForest"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.RandomForest">[docs]</a><span class="k">class</span> <span class="nc">RandomForest</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+<div class="viewcode-block" id="RandomForest.__init__"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.RandomForest.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Wrapper around sklearn&#39;s Random Forest implementation for pyGPGO.</span>
 <span class="sd">        Random Forests can also be used for surrogate models in Bayesian Optimization.</span>
@@ -169,7 +172,7 @@
 <span class="sd">            Any parameters to pass to `RandomForestRegressor`. Defaults to sklearn&#39;s.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span></div>
 
 <div class="viewcode-block" id="RandomForest.fit"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.RandomForest.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -188,7 +191,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RandomForest.predict"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.RandomForest.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">return_std</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">):</span>
+<div class="viewcode-block" id="RandomForest.predict"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.RandomForest.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">return_std</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Predicts &#39;posterior&#39; mean and variance for the RF model.</span>
 
@@ -244,7 +247,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="ExtraForest"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.ExtraForest">[docs]</a><span class="k">class</span> <span class="nc">ExtraForest</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+<div class="viewcode-block" id="ExtraForest.__init__"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.ExtraForest.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Wrapper around sklearn&#39;s ExtraTreesRegressor implementation for pyGPGO.</span>
 <span class="sd">        Random Forests can also be used for surrogate models in Bayesian Optimization.</span>
@@ -257,7 +260,7 @@
 <span class="sd">            Any parameters to pass to `RandomForestRegressor`. Defaults to sklearn&#39;s.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span></div>
 
 <div class="viewcode-block" id="ExtraForest.fit"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.ExtraForest.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -276,7 +279,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ExtraTreesRegressor</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ExtraForest.predict"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.ExtraForest.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">return_std</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">):</span>
+<div class="viewcode-block" id="ExtraForest.predict"><a class="viewcode-back" href="../../../pyGPGO.surrogates.RandomForest.html#pyGPGO.surrogates.RandomForest.ExtraForest.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">return_std</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Predicts &#39;posterior&#39; mean and variance for the RF model.</span>
 
@@ -370,13 +373,13 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

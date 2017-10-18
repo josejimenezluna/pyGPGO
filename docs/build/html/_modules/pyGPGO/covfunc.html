@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
@@ -157,13 +160,13 @@
 <span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="k">import</span> <span class="n">cdist</span>
 
 <span class="n">default_bounds</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="s1">&#39;sigmaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-    <span class="s1">&#39;sigman&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-    <span class="s1">&#39;v&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
-    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mf">1.99</span><span class="p">],</span>
-    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="n">e4</span><span class="p">],</span>
-    <span class="s1">&#39;period&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s1">&#39;sigmaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="s1">&#39;sigman&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="s1">&#39;v&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1.99</span><span class="p">],</span>
+    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">],</span>
+    <span class="s1">&#39;period&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 <span class="p">}</span>
 
 
@@ -206,7 +209,7 @@
 
 
 <div class="viewcode-block" id="squaredExponential"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.squaredExponential">[docs]</a><span class="k">class</span> <span class="nc">squaredExponential</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span>
+<div class="viewcode-block" id="squaredExponential.__init__"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.squaredExponential.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span>
                                                                               <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Squared exponential kernel class.</span>
@@ -234,7 +237,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="squaredExponential.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.squaredExponential.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -293,7 +296,7 @@
 
 
 <div class="viewcode-block" id="matern"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern">[docs]</a><span class="k">class</span> <span class="nc">matern</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">,</span>
+<div class="viewcode-block" id="matern.__init__"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">,</span>
                                                                                  <span class="s1">&#39;l&#39;</span><span class="p">,</span>
                                                                                  <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span>
                                                                                  <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
@@ -325,7 +328,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="matern.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -353,7 +356,7 @@
 
 
 <div class="viewcode-block" id="matern32"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern32">[docs]</a><span class="k">class</span> <span class="nc">matern32</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
+<div class="viewcode-block" id="matern32.__init__"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern32.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Matern v=3/2 kernel class.</span>
 
@@ -381,7 +384,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="matern32.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern32.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -438,7 +441,7 @@
 
 
 <div class="viewcode-block" id="matern52"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern52">[docs]</a><span class="k">class</span> <span class="nc">matern52</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
+<div class="viewcode-block" id="matern52.__init__"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern52.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Matern v=5/2 kernel class.</span>
 
@@ -465,7 +468,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="matern52.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.matern52.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -521,7 +524,7 @@
 
 
 <div class="viewcode-block" id="gammaExponential"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.gammaExponential">[docs]</a><span class="k">class</span> <span class="nc">gammaExponential</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">,</span>
+<div class="viewcode-block" id="gammaExponential.__init__"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.gammaExponential.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">,</span>
                                                                                      <span class="s1">&#39;l&#39;</span><span class="p">,</span>
                                                                                      <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span>
                                                                                      <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
@@ -554,7 +557,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="gammaExponential.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.gammaExponential.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -595,7 +598,7 @@
 <span class="sd">            Gradient matrix for parameter `param`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span>
-            <span class="n">eps</span> <span class="o">=</span> <span class="mi">10</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span>
+            <span class="n">eps</span> <span class="o">=</span> <span class="mf">10e-6</span>
             <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span>
             <span class="n">first</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">)</span>
             <span class="n">sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span>
@@ -618,7 +621,7 @@
 
 
 <div class="viewcode-block" id="rationalQuadratic"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.rationalQuadratic">[docs]</a><span class="k">class</span> <span class="nc">rationalQuadratic</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span>
+<div class="viewcode-block" id="rationalQuadratic.__init__"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.rationalQuadratic.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span>
                                                                                      <span class="s1">&#39;l&#39;</span><span class="p">,</span>
                                                                                      <span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span>
                                                                                      <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
@@ -651,7 +654,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">default_bounds</span><span class="p">[</span><span class="n">param</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="rationalQuadratic.K"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.rationalQuadratic.K">[docs]</a>    <span class="k">def</span> <span class="nf">K</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -760,7 +763,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">l2norm_</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">)</span>
         <span class="n">num</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">num</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">4</span></div>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">num</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">l</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1e-4</span></div>
 
 <div class="viewcode-block" id="expSine.gradK"><a class="viewcode-back" href="../../pyGPGO.covfunc.html#pyGPGO.covfunc.expSine.gradK">[docs]</a>    <span class="k">def</span> <span class="nf">gradK</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Xstar</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
@@ -791,7 +794,7 @@
 <span class="sd">        List of strings specifying which hyperparameters should be optimized.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sigmaf</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigman</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sigmaf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigman&#39;</span><span class="p">]):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sigmaf</span> <span class="o">=</span> <span class="n">sigmaf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sigman</span> <span class="o">=</span> <span class="n">sigman</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
@@ -897,13 +900,13 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

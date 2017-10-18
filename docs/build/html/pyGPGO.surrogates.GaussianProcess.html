@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO.surrogates package" href="pyGPGO.surrogates.html"/>
         <link rel="next" title="pyGPGO.surrogates.GaussianProcessMCMC module" href="pyGPGO.surrogates.GaussianProcessMCMC.html"/>
@@ -144,7 +147,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pyGPGO.surrogates.GaussianProcess.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pyGPGO.surrogates.GaussianProcess.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,7 +166,7 @@
 <dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess">
 <em class="property">class </em><code class="descclassname">pyGPGO.surrogates.GaussianProcess.</code><code class="descname">GaussianProcess</code><span class="sig-paren">(</span><em>covfunc</em>, <em>optimize=False</em>, <em>usegrads=False</em>, <em>mprior=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
-<p>Gaussian Process regressor class. Based on Rasmussen &amp; Williams <a href="#id2"><span class="problematic" id="id3"><span id="id1"></span>[1]_</span></a> algorithm 2.1.</p>
+<p>Gaussian Process regressor class. Based on Rasmussen &amp; Williams <a href="#id3"><span class="problematic" id="id4"><span id="id1"></span>[1]_</span></a> algorithm 2.1.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -206,6 +209,53 @@ if <cite>optimize=True</cite>.</li>
 <p>[1] Rasmussen, C. E., &amp; Williams, C. K. I. (2004). Gaussian processes for machine learning.
 International journal of neural systems (Vol. 14). <a class="reference external" href="http://doi.org/10.1142/S0129065704001899">http://doi.org/10.1142/S0129065704001899</a></p>
 <dl class="method">
+<dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>covfunc</em>, <em>optimize=False</em>, <em>usegrads=False</em>, <em>mprior=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gaussian Process regressor class. Based on Rasmussen &amp; Williams <a href="#id5"><span class="problematic" id="id6"><span id="id2"></span>[1]_</span></a> algorithm 2.1.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>covfunc</strong> (<em>instance from a class of covfunc module</em>) &#8211; Covariance function. An instance from a class in the <cite>covfunc</cite> module.</li>
+<li><strong>optimize</strong> (<em>bool:</em>) &#8211; Whether to perform covariance function hyperparameter optimization.</li>
+<li><strong>usegrads</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Whether to use gradient information on hyperparameter optimization. Only used
+if <cite>optimize=True</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt>
+<code class="descname">covfunc</code></dt>
+<dd><p><em>object</em> &#8211; Internal covariance function.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">optimize</code></dt>
+<dd><p><em>bool</em> &#8211; User chosen optimization configuration.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">usegrads</code></dt>
+<dd><p><em>bool</em> &#8211; Gradient behavior</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">mprior</code></dt>
+<dd><p><em>float</em> &#8211; Explicit value for the mean function of the prior Gaussian Process.</p>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>[1] Rasmussen, C. E., &amp; Williams, C. K. I. (2004). Gaussian processes for machine learning.
+International journal of neural systems (Vol. 14). <a class="reference external" href="http://doi.org/10.1142/S0129065704001899">http://doi.org/10.1142/S0129065704001899</a></p>
+</dd></dl>
+
+<dl class="method">
 <dt id="pyGPGO.surrogates.GaussianProcess.GaussianProcess._grad">
 <code class="descname">_grad</code><span class="sig-paren">(</span><em>param_vector</em>, <em>param_key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/GaussianProcess.html#GaussianProcess._grad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.GaussianProcess.GaussianProcess._grad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns gradient for each hyperparameter, evaluated at a given point.</p>
@@ -214,8 +264,8 @@ International journal of neural systems (Vol. 14). <a class="reference external"
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>param_vector</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of values corresponding to hyperparameters to query.</li>
-<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameter strings corresponding to <cite>param_vector</cite>.</li>
+<li><strong>param_vector</strong> (<em>list</em>) &#8211; List of values corresponding to hyperparameters to query.</li>
+<li><strong>param_key</strong> (<em>list</em>) &#8211; List of hyperparameter strings corresponding to <cite>param_vector</cite>.</li>
 </ul>
 </td>
 </tr>
@@ -238,8 +288,8 @@ International journal of neural systems (Vol. 14). <a class="reference external"
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>param_vector</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of values corresponding to hyperparameters to query.</li>
-<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameter strings corresponding to <cite>param_vector</cite>.</li>
+<li><strong>param_vector</strong> (<em>list</em>) &#8211; List of values corresponding to hyperparameters to query.</li>
+<li><strong>param_key</strong> (<em>list</em>) &#8211; List of hyperparameter strings corresponding to <cite>param_vector</cite>.</li>
 </ul>
 </td>
 </tr>
@@ -262,8 +312,8 @@ International journal of neural systems (Vol. 14). <a class="reference external"
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=(nsamples, nfeatures)</em>) &#8211; Training instances to fit the GP.</li>
-<li><strong>y</strong> (<em>np.ndarray, shape=(nsamples,)</em>) &#8211; Corresponding continuous target values to X.</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>nsamples</em><em>, </em><em>nfeatures</em><em>)</em>) &#8211; Training instances to fit the GP.</li>
+<li><strong>y</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>nsamples</em><em>,</em><em>)</em>) &#8211; Corresponding continuous target values to X.</li>
 </ul>
 </td>
 </tr>
@@ -297,8 +347,8 @@ This is an empirical Bayes approach (or Type II maximum-likelihood).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameters to optimize.</li>
-<li><strong>param_bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List containing tuples defining bounds for each hyperparameter to optimize over.</li>
+<li><strong>param_key</strong> (<em>list</em>) &#8211; List of hyperparameters to optimize.</li>
+<li><strong>param_bounds</strong> (<em>list</em>) &#8211; List containing tuples defining bounds for each hyperparameter to optimize over.</li>
 </ul>
 </td>
 </tr>
@@ -333,7 +383,7 @@ This is an empirical Bayes approach (or Type II maximum-likelihood).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((nsamples, nfeatures))</em>) &#8211; Testing instances to predict.</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>nsamples</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Testing instances to predict.</li>
 <li><strong>return_std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Whether to return the standard deviation of the posterior process. Otherwise,
 it returns the whole covariance matrix of the posterior process.</li>
 </ul>
@@ -359,8 +409,8 @@ it returns the whole covariance matrix of the posterior process.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xnew</strong> (<em>np.ndarray, shape=((m, nfeatures))</em>) &#8211; New training instances to update the model with.</li>
-<li><strong>ynew</strong> (<em>np.ndarray, shape=((m,))</em>) &#8211; New training targets to update the model with.</li>
+<li><strong>xnew</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>m</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; New training instances to update the model with.</li>
+<li><strong>ynew</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>m</em><em>,</em><em>)</em><em>)</em>) &#8211; New training targets to update the model with.</li>
 </ul>
 </td>
 </tr>
@@ -420,13 +470,13 @@ it returns the whole covariance matrix of the posterior process.</li>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

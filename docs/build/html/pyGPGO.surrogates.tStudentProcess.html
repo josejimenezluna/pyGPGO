@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO.surrogates package" href="pyGPGO.surrogates.html"/>
         <link rel="next" title="pyGPGO.surrogates.tStudentProcessMCMC module" href="pyGPGO.surrogates.tStudentProcessMCMC.html"/>
@@ -144,7 +147,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pyGPGO.surrogates.tStudentProcess.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pyGPGO.surrogates.tStudentProcess.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -221,6 +224,42 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>covfunc</em>, <em>nu=3.0</em>, <em>optimize=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>t-Student Process regressor class. This class DOES NOT support gradients in ML estimation yet.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>covfunc</strong> (<em>instance from a class of covfunc module</em>) &#8211; An instance from a class from the <cite>covfunc</cite> module.</li>
+<li><strong>nu</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; (&gt;2.0) Degrees of freedom</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt>
+<code class="descname">covfunc</code></dt>
+<dd><p><em>object</em> &#8211; Internal covariance function.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">nu</code></dt>
+<dd><p><em>float</em> &#8211; Degrees of freedom.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">optimize</code></dt>
+<dd><p><em>bool</em> &#8211; Whether to optimize covariance function hyperparameters.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
 <dt id="pyGPGO.surrogates.tStudentProcess.tStudentProcess._lmlik">
 <code class="descname">_lmlik</code><span class="sig-paren">(</span><em>param_vector</em>, <em>param_key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcess.html#tStudentProcess._lmlik"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcess.tStudentProcess._lmlik" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns marginal negative log-likelihood for given covariance hyperparameters.</p>
@@ -229,8 +268,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>param_vector</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of values corresponding to hyperparameters to query.</li>
-<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameter strings corresponding to <cite>param_vector</cite>.</li>
+<li><strong>param_vector</strong> (<em>list</em>) &#8211; List of values corresponding to hyperparameters to query.</li>
+<li><strong>param_key</strong> (<em>list</em>) &#8211; List of hyperparameter strings corresponding to <cite>param_vector</cite>.</li>
 </ul>
 </td>
 </tr>
@@ -253,8 +292,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>X</strong> (<em>np.ndarray, shape=(nsamples, nfeatures)</em>) &#8211; Training instances to fit the GP.</li>
-<li><strong>y</strong> (<em>np.ndarray, shape=(nsamples,)</em>) &#8211; Corresponding continuous target values to <cite>X</cite>.</li>
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>nsamples</em><em>, </em><em>nfeatures</em><em>)</em>) &#8211; Training instances to fit the GP.</li>
+<li><strong>y</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>nsamples</em><em>,</em><em>)</em>) &#8211; Corresponding continuous target values to <cite>X</cite>.</li>
 </ul>
 </td>
 </tr>
@@ -288,8 +327,8 @@ This is an empirical Bayes approach (or Type II maximum-likelihood).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>param_key</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List of hyperparameters to optimize.</li>
-<li><strong>param_bounds</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; List containing tuples defining bounds for each hyperparameter to optimize over.</li>
+<li><strong>param_key</strong> (<em>list</em>) &#8211; List of hyperparameters to optimize.</li>
+<li><strong>param_bounds</strong> (<em>list</em>) &#8211; List containing tuples defining bounds for each hyperparameter to optimize over.</li>
 </ul>
 </td>
 </tr>
@@ -306,7 +345,7 @@ This is an empirical Bayes approach (or Type II maximum-likelihood).</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>Xstar</strong> (<em>np.ndarray, shape=((nsamples, nfeatures))</em>) &#8211; Testing instances to predict.</li>
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>nsamples</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Testing instances to predict.</li>
 <li><strong>return_std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Whether to return the standard deviation of the posterior process. Otherwise,
 it returns the whole covariance matrix of the posterior process.</li>
 </ul>
@@ -332,8 +371,8 @@ it returns the whole covariance matrix of the posterior process.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xnew</strong> (<em>np.ndarray, shape=((m, nfeatures))</em>) &#8211; New training instances to update the model with.</li>
-<li><strong>ynew</strong> (<em>np.ndarray, shape=((m,))</em>) &#8211; New training targets to update the model with.</li>
+<li><strong>xnew</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>m</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; New training instances to update the model with.</li>
+<li><strong>ynew</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>m</em><em>,</em><em>)</em><em>)</em>) &#8211; New training targets to update the model with.</li>
 </ul>
 </td>
 </tr>
@@ -393,13 +432,13 @@ it returns the whole covariance matrix of the posterior process.</li>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

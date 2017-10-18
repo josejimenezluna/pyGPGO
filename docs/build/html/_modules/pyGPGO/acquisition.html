@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
@@ -157,7 +160,7 @@
 
 
 <div class="viewcode-block" id="Acquisition"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition">[docs]</a><span class="k">class</span> <span class="nc">Acquisition</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">06</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+<div class="viewcode-block" id="Acquisition.__init__"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-06</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Acquisition function class.</span>
 
@@ -190,7 +193,7 @@
             <span class="s1">&#39;tIntegratedExpectedImprovement&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tIntegratedExpectedImprovement</span>
         <span class="p">}</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">mode_dict</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">mode_dict</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Acquisition.ProbabilityImprovement"><a class="viewcode-back" href="../../pyGPGO.acquisition.html#pyGPGO.acquisition.Acquisition.ProbabilityImprovement">[docs]</a>    <span class="k">def</span> <span class="nf">ProbabilityImprovement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -450,13 +453,13 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

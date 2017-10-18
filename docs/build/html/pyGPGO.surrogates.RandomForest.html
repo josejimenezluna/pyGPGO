@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO.surrogates package" href="pyGPGO.surrogates.html"/>
         <link rel="next" title="pyGPGO.surrogates.tStudentProcess module" href="pyGPGO.surrogates.tStudentProcess.html"/>
@@ -144,7 +147,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pyGPGO.surrogates.RandomForest.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pyGPGO.surrogates.RandomForest.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,10 +174,27 @@ criterion value in each subtree.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<em>tuple, optional</em>) &#8211; Any parameters to pass to <cite>RandomForestRegressor</cite>. Defaults to sklearn&#8217;s.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a><em>, </em><em>optional</em>) &#8211; Any parameters to pass to <cite>RandomForestRegressor</cite>. Defaults to sklearn&#8217;s.</td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="pyGPGO.surrogates.RandomForest.ExtraForest.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/RandomForest.html#ExtraForest.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.RandomForest.ExtraForest.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper around sklearn&#8217;s ExtraTreesRegressor implementation for pyGPGO.
+Random Forests can also be used for surrogate models in Bayesian Optimization.
+An estimate of &#8216;posterior&#8217; variance can be obtained by using the <cite>impurity</cite>
+criterion value in each subtree.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a><em>, </em><em>optional</em>) &#8211; Any parameters to pass to <cite>RandomForestRegressor</cite>. Defaults to sklearn&#8217;s.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="pyGPGO.surrogates.RandomForest.ExtraForest.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/RandomForest.html#ExtraForest.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.RandomForest.ExtraForest.fit" title="Permalink to this definition">¶</a></dt>
@@ -203,8 +223,8 @@ criterion value in each subtree.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>Xstar</strong> (<em>array-like</em>) &#8211; Input values.</li>
-<li><strong>return_std</strong> (<em>bool, optional</em>) &#8211; Whether to return posterior variance estimates. Default is <cite>True</cite>.</li>
-<li><strong>eps</strong> (<em>float, optional</em>) &#8211; Floating precision value for negative variance estimates. Default is <cite>1e-6</cite></li>
+<li><strong>return_std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a><em>, </em><em>optional</em>) &#8211; Whether to return posterior variance estimates. Default is <cite>True</cite>.</li>
+<li><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a><em>, </em><em>optional</em>) &#8211; Floating precision value for negative variance estimates. Default is <cite>1e-6</cite></li>
 </ul>
 </td>
 </tr>
@@ -251,10 +271,27 @@ criterion value in each subtree.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<em>tuple, optional</em>) &#8211; Any parameters to pass to <cite>RandomForestRegressor</cite>. Defaults to sklearn&#8217;s.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a><em>, </em><em>optional</em>) &#8211; Any parameters to pass to <cite>RandomForestRegressor</cite>. Defaults to sklearn&#8217;s.</td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="pyGPGO.surrogates.RandomForest.RandomForest.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/RandomForest.html#RandomForest.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.RandomForest.RandomForest.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper around sklearn&#8217;s Random Forest implementation for pyGPGO.
+Random Forests can also be used for surrogate models in Bayesian Optimization.
+An estimate of &#8216;posterior&#8217; variance can be obtained by using the <cite>impurity</cite>
+criterion value in each subtree.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a><em>, </em><em>optional</em>) &#8211; Any parameters to pass to <cite>RandomForestRegressor</cite>. Defaults to sklearn&#8217;s.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="pyGPGO.surrogates.RandomForest.RandomForest.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/RandomForest.html#RandomForest.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.RandomForest.RandomForest.fit" title="Permalink to this definition">¶</a></dt>
@@ -283,8 +320,8 @@ criterion value in each subtree.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>Xstar</strong> (<em>array-like</em>) &#8211; Input values.</li>
-<li><strong>return_std</strong> (<em>bool, optional</em>) &#8211; Whether to return posterior variance estimates. Default is <cite>True</cite>.</li>
-<li><strong>eps</strong> (<em>float, optional</em>) &#8211; Floating precision value for negative variance estimates. Default is <cite>1e-6</cite></li>
+<li><strong>return_std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a><em>, </em><em>optional</em>) &#8211; Whether to return posterior variance estimates. Default is <cite>True</cite>.</li>
+<li><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a><em>, </em><em>optional</em>) &#8211; Floating precision value for negative variance estimates. Default is <cite>1e-6</cite></li>
 </ul>
 </td>
 </tr>
@@ -369,13 +406,13 @@ criterion value in each subtree.</p>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

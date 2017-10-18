@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
@@ -161,13 +164,13 @@
 <span class="kn">from</span> <span class="nn">pyGPGO.logger</span> <span class="k">import</span> <span class="n">EventLogger</span>
 
 <div class="viewcode-block" id="GPGO"><a class="viewcode-back" href="../../pyGPGO.GPGO.html#pyGPGO.GPGO.GPGO">[docs]</a><span class="k">class</span> <span class="nc">GPGO</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">GPRegressor</span><span class="p">,</span> <span class="n">Acquisition</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">parameter_dict</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="GPGO.__init__"><a class="viewcode-back" href="../../pyGPGO.GPGO.html#pyGPGO.GPGO.GPGO.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surrogate</span><span class="p">,</span> <span class="n">acquisition</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">parameter_dict</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Bayesian Optimization class.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        GPRegressor: GaussianProcess instance</span>
+<span class="sd">        Surrogate: Surrogate model instance</span>
 <span class="sd">            Gaussian Process surrogate model instance.</span>
 <span class="sd">        Acquisition: Acquisition instance</span>
 <span class="sd">            Acquisition instance.</span>
@@ -189,8 +192,8 @@
 <span class="sd">        history: list</span>
 <span class="sd">            Target values evaluated along the procedure.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">GP</span> <span class="o">=</span> <span class="n">GPRegressor</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">Acquisition</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">GP</span> <span class="o">=</span> <span class="n">surrogate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">acquisition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameter_dict</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
@@ -201,7 +204,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">parameter_range</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_value</span><span class="p">]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">EventLogger</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">EventLogger</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GPGO._sampleParam"><a class="viewcode-back" href="../../pyGPGO.GPGO.html#pyGPGO.GPGO.GPGO._sampleParam">[docs]</a>    <span class="k">def</span> <span class="nf">_sampleParam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -259,7 +262,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">new_mean</span><span class="p">,</span> <span class="n">new_var</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GP</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xnew</span><span class="p">,</span> <span class="n">return_std</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">new_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">new_var</span> <span class="o">+</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">new_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">new_var</span> <span class="o">+</span> <span class="mf">1e-6</span><span class="p">)</span>
         <span class="k">return</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tau</span><span class="p">,</span> <span class="n">new_mean</span><span class="p">,</span> <span class="n">new_std</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GPGO._optimizeAcq"><a class="viewcode-back" href="../../pyGPGO.GPGO.html#pyGPGO.GPGO.GPGO._optimizeAcq">[docs]</a>    <span class="k">def</span> <span class="nf">_optimizeAcq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;L-BFGS-B&#39;</span><span class="p">,</span> <span class="n">n_start</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
@@ -384,13 +387,13 @@
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

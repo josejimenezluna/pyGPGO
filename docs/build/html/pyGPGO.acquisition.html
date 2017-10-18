@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO documentation" href="api.html"/>
         <link rel="prev" title="pyGPGO.covfunc module" href="pyGPGO.covfunc.html"/> 
@@ -141,7 +144,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pyGPGO.acquisition.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pyGPGO.acquisition.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -358,6 +361,30 @@ to be supplied with <cite>beta</cite>.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="pyGPGO.acquisition.Acquisition.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>mode</em>, <em>eps=1e-06</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Acquisition function class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Defines the behaviour of the acquisition strategy. Currently supported values are
+<cite>ExpectedImprovement</cite>, <cite>IntegratedExpectedÌmprovement</cite>, <cite>ProbabilityImprovement</cite>,
+<cite>IntegratedProbabilityImprovement</cite>, <cite>UCB</cite>, <cite>IntegratedUCB</cite>, <cite>Entropy</cite>, <cite>tExpectedImprovement</cite>,
+and <cite>tIntegratedExpectedImprovement</cite>. Integrated improvement functions are only to be used
+with MCMC surrogates.</li>
+<li><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Small floating value to avoid <cite>np.sqrt</cite> or zero-division warnings.</li>
+<li><strong>params</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Extra parameters needed for certain acquisition functions, e.g. UCB needs
+to be supplied with <cite>beta</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="pyGPGO.acquisition.Acquisition.eval">
 <code class="descname">eval</code><span class="sig-paren">(</span><em>tau</em>, <em>mean</em>, <em>std</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/acquisition.html#Acquisition.eval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.acquisition.Acquisition.eval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluates selected acquisition function.</p>
@@ -483,13 +510,13 @@ to be supplied with <cite>beta</cite>.</li>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

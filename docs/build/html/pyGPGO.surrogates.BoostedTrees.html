@@ -32,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
         <link rel="up" title="pyGPGO.surrogates package" href="pyGPGO.surrogates.html"/>
         <link rel="next" title="pyGPGO.surrogates.GaussianProcess module" href="pyGPGO.surrogates.GaussianProcess.html"/>
@@ -144,7 +147,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pyGPGO.surrogates.BoostedTrees.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/pyGPGO.surrogates.BoostedTrees.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -181,6 +184,28 @@ Relies on <cite>sklearn.ensemble.GradientBoostingRegressor</cite></p>
 </tbody>
 </table>
 <dl class="method">
+<dt id="pyGPGO.surrogates.BoostedTrees.BoostedTrees.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>q1=0.16</em>, <em>q2=0.84</em>, <em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/BoostedTrees.html#BoostedTrees.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.BoostedTrees.BoostedTrees.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gradient boosted trees as surrogate model for Bayesian Optimization.
+Uses quantile regression for an estimate of the &#8216;posterior&#8217; variance.
+In practice, the std is computed as (<cite>q2</cite> - <cite>q1</cite>) / 2.
+Relies on <cite>sklearn.ensemble.GradientBoostingRegressor</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>q1</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; First quantile.</li>
+<li><strong>q2</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Second quantile</li>
+<li><strong>params</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#tuple" title="(in Python v2.7)"><em>tuple</em></a>) &#8211; Extra parameters to pass to <cite>GradientBoostingRegressor</cite></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="pyGPGO.surrogates.BoostedTrees.BoostedTrees.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/BoostedTrees.html#BoostedTrees.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.BoostedTrees.BoostedTrees.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit a GBM model to data <cite>X</cite> and targets <cite>y</cite>.</p>
@@ -208,8 +233,8 @@ Relies on <cite>sklearn.ensemble.GradientBoostingRegressor</cite></p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>Xstar</strong> (<em>array-like</em>) &#8211; Input values.</li>
-<li><strong>return_std</strong> (<em>bool, optional</em>) &#8211; Whether to return posterior variance estimates. Default is <cite>True</cite>.</li>
-<li><strong>eps</strong> (<em>float, optional</em>) &#8211; Floating precision value for negative variance estimates. Default is <cite>1e-6</cite></li>
+<li><strong>return_std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a><em>, </em><em>optional</em>) &#8211; Whether to return posterior variance estimates. Default is <cite>True</cite>.</li>
+<li><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a><em>, </em><em>optional</em>) &#8211; Floating precision value for negative variance estimates. Default is <cite>1e-6</cite></li>
 </ul>
 </td>
 </tr>
@@ -294,13 +319,13 @@ Relies on <cite>sklearn.ensemble.GradientBoostingRegressor</cite></p>
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: ''
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
