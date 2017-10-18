@@ -7,41 +7,39 @@
 
 ![sine](http://i.giphy.com/l3q2s3MQ4bPb5RogU.gif)
 
-pyGPGO is a simple and modular Python (>3.5) package for Bayesian Optimization.
+pyGPGO is a simple and modular Python (>3.5) package for bayesian optimization. 
+
+Bayesian optimization is a framework that can be used in situations where:
+
+* Your objective function may not have a closed-form. (e.g. the result of a simulation)
+* No gradient information is available.
+* Function evaluations may be noisy.
+* Evaluations are expensive (time/cost-wise)
+
 
 ### Installation
 
-You can either pip install the repo for the latest devel version,
-
-
-```bash
-pip install git+https://github.com/hawk31/pyGPGO
-```
-
-or retrieve it from PyPI:
+Retrieve the latest stable release from pyPI:
 
 ```bash
 pip install pyGPGO
 ```
 
-Optionally, install `pyMC3`
+Or if you're feeling adventurous, retrieve it from this repo,
 
 ```bash
-git clone https://github.com/pymc-devs/pymc3
-cd pymc3
-pip install -r requirements.txt
-python setup.py install
+pip install git+https://github.com/hawk31/pyGPGO
 ```
 
 ### Dependencies
 
 *   Typical Python scientific stuff: `numpy`, `scipy`.
-*   `joblib` (Optional), used for parallel computation
-*   `scikit-learn` (Optional), for other surrogates different from Gaussian Processes.
-*   `pyMC3` (Optional), for integrated acquisition functions and MCMC inference.
-*   `theano` (Optional) development version. (pyMC3 dependency)
+*   `joblib`, used for parallel computation
+*   `scikit-learn`, for other surrogates different from Gaussian Processes.
+*   `pyMC3`, for integrated acquisition functions and MCMC inference.
+*   `theano` for GPU processing.
 
-All dependencies except `pyMC3` are taken care for in the requirements file.
+All dependencies are automatically taken care for in the requirements file.
 
 ### Features
 
@@ -50,7 +48,7 @@ All dependencies except `pyMC3` are taken care for in the requirements file.
 * MCMC sampling for full-Bayesian inference of hyperparameters (via `pyMC3`).
 * Integrated acquisition functions
 
-### Usage
+### A small example!
 
 The user only has to define a function to maximize and a dictionary specifying input space.
 
@@ -82,4 +80,4 @@ gpgo.run(max_iter=10)
 
 ```
 
-Check the `examples` folder for more ideas on how to use the software.
+Check the `tutorials` and `examples` folders for more ideas on how to use the software.
