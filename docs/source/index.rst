@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-pyGPGO: Bayesian Optimization for Python
+pyGPGO: Bayesian optimization for Python
 ==================================
 
-pyGPGO is a simple and modular Python (>3.5) package for Bayesian Optimization. It supports:
+pyGPGO is a simple and modular Python (>3.5) package for Bayesian optimization. It supports:
 
 - Different surrogate models: Gaussian Processes, Student-t Processes, Random Forests, Gradient Boosting Machines.
 - Type II Maximum-Likelihood of covariance function hyperparameters.
@@ -14,6 +14,32 @@ pyGPGO is a simple and modular Python (>3.5) package for Bayesian Optimization. 
 - Integrated acquisition functions
 
 Check us out on  `Github <https://github.com/hawk31/pyGPGO>`_.
+
+
+What is Bayesian Optimization?
+==================================
+
+Bayesian optimization is a framework that is useful in several scenarios:
+
+- Your objective function has no closed-form.
+- No access to gradients
+- In presence of noise
+- It may be expensive to evaluate.
+
+The bayesian optimization framework uses a surrogate model to approximate the objective function and chooses to
+optimize it according to some acquisition function. This framework gives a lot of freedom to the user in terms
+of optimization choices:
+
+- Surrogate model choice
+- Covariance function choice
+- Acquisition function behaviour
+- Hyperparameter treatment
+
+pyGPGO provides an extensive range of choices in each of the previous points, in a modular way.
+
+
+How do I get started with pyGPGO?
+==================================
 
 Overall, pyGPGO is a very easy to use package. In practice, a user needs to specify:
 
@@ -46,8 +72,11 @@ A simple example can be checked below::
    gpgo.run(max_iter=20)
 
 
+There are a couple of tutorials to help get you started on the `tutorials <https://github.com/hawk31/pyGPGO/tree/master/tutorials>`_ folder.
 
-Contents:
+For a full list of features with explanations check our Features section.
+
+API documentation:
 
 .. toctree::
    :maxdepth: 3
