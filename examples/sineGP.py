@@ -1,3 +1,8 @@
+#######################################
+# pyGPGO examples
+# sineGP: Fits a Gaussian Process on a sine-like function.
+#######################################
+
 import numpy as np
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.covfunc import squaredExponential

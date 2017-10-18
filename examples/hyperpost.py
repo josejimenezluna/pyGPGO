@@ -1,3 +1,9 @@
+#######################################
+# pyGPGO examples
+# hyperpost: shows posterior distribution of hyperparameters
+# for a Gaussian Process example
+#######################################
+
 import numpy as np
 from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC
 from pyGPGO.covfunc import matern32

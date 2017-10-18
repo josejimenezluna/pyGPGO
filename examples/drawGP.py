@@ -1,3 +1,8 @@
+#######################################
+# pyGPGO examples
+# drawGP: Samples from a GP prior.
+#######################################
+
 import numpy as np
 from numpy.random import multivariate_normal
 from pyGPGO.covfunc import squaredExponential

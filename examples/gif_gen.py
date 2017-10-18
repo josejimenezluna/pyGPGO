@@ -1,3 +1,9 @@
+#######################################
+# pyGPGO examples
+# gif_gen: generates a gif (the one in paper.md) showing how the BO framework
+# works on the Franke function, step by step.
+#######################################
+
 import numpy as np
 from pyGPGO.covfunc import matern32
 from pyGPGO.acquisition import Acquisition
@@ -73,5 +79,6 @@ if __name__ == '__main__':
         gpgo.run(max_iter=1, resume=True)
         plotFranke()
         plotPred(gpgo)
+        plt.show()
         #plt.savefig('/home/jose/gif/{}.png'.format(i), dpi=300)
         plt.close()

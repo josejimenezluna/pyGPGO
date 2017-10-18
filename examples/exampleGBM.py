@@ -1,3 +1,8 @@
+#######################################
+# pyGPGO examples
+# exampleGBM: tests the Gradient Boosting Machine surrogate.
+#######################################
+
 import numpy as np
 from pyGPGO.surrogates.BoostedTrees import BoostedTrees
 import matplotlib.pyplot as plt

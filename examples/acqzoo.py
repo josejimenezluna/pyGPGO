@@ -1,3 +1,11 @@
+#######################################
+# pyGPGO examples
+# acqzoo: shows the behaviour of different
+# acquisition functions on a GP surrogate
+# for a sine-like function
+#######################################
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess

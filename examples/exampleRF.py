@@ -1,3 +1,8 @@
+#######################################
+# pyGPGO examples
+# exampleRF: tests the Random Forest surrogate model.
+#######################################
+
 import numpy as np
 from pyGPGO.surrogates.RandomForest import RandomForest
 import matplotlib.pyplot as plt

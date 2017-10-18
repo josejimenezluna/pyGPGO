@@ -1,3 +1,8 @@
+#######################################
+# pyGPGO examples
+# sklearn_gp: Replicates sklearn example for hyperparam opt.
+#######################################
+
 import numpy as np
 import matplotlib.pyplot as plt
 from pyGPGO.GPGO import GPGO

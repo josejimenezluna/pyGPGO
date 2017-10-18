@@ -1,3 +1,10 @@
+#######################################
+# pyGPGO examples
+# example2d: SHows how the Bayesian Optimization works on a two-dimensional
+# rastrigin function, step by step.
+#######################################
+
+
 import os
 from collections import OrderedDict
 

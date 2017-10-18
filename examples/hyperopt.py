@@ -1,3 +1,10 @@
+#######################################
+# pyGPGO examples
+# hyperopt: shows the gradient w.r.t. the characteristic length scale
+# on a simple example.
+#######################################
+
+
 import numpy as np
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.covfunc import squaredExponential

@@ -1,3 +1,8 @@
+#######################################
+# pyGPGO examples
+# franke: optimizes Franke's function.
+#######################################
+
 import numpy as np
 from pyGPGO.covfunc import matern32
 from pyGPGO.acquisition import Acquisition
@@ -19,6 +24,9 @@ def f(x, y):
 
 
 def plotFranke():
+    """
+    Plots Franke's function
+    """
     x = np.linspace(0, 1, num=1000)
     y = np.linspace(0, 1, num=1000)
     X, Y = np.meshgrid(x, y)
@@ -31,16 +39,18 @@ def plotFranke():
                            linewidth=0)
     fig.colorbar(surf, shrink=0.5, aspect=5)
     plt.show()
-    
+
+
 if __name__ == '__main__':
     plotFranke()
 
-    cov = matern32()
-    gp = GaussianProcess(cov)
-    acq = Acquisition(mode='ExpectedImprovement')
+    cov = matern32()     # Using a matern v=3/2 covariance kernel
+    gp = GaussianProcess(cov)   # A Gaussian Process regressor without hyperparameter optimization
+    acq = Acquisition(mode='ExpectedImprovement')   # Expected Improvement acquisition function
     param = {'x': ('cont', [0, 1]),
-             'y': ('cont', [0, 1])}
+             'y': ('cont', [0, 1])}     # Specify parameter space
 
     np.random.seed(1337)
-    gpgo = GPGO(gp, acq, f, param)
-    gpgo.run(max_iter=10)
+    gpgo = GPGO(gp, acq, f, param)  # Call GPGO class 
+    gpgo.run(max_iter=10)   # 10 iterations
+    gpgo.getResult()    # Get your result

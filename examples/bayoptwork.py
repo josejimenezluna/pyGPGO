@@ -1,3 +1,10 @@
+#######################################
+# pyGPGO examples
+# bayoptwork: Generates a plot to show how the Bayesian Optimization framework
+# works, ignoring areas with either low posterior mean or low variance. 
+#######################################
+
+
 import numpy as np
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.covfunc import squaredExponential

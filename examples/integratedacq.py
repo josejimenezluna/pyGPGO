@@ -1,3 +1,8 @@
+#######################################
+# pyGPGO examples
+# integratedacq: Shows the computation of the integrated acquisition function.
+#######################################
+
 import numpy as np
 import matplotlib.pyplot as plt
 from pyGPGO.surrogates.GaussianProcessMCMC import GaussianProcessMCMC
