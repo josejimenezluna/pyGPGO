@@ -35,7 +35,8 @@ of optimization choices:
 - Acquisition function behaviour
 - Hyperparameter treatment
 
-pyGPGO provides an extensive range of choices in each of the previous points, in a modular way.
+pyGPGO provides an extensive range of choices in each of the previous points, in a modular way. We recommend checking
+[@Shahriari2016] for an in-depth review of the framework if you're interested.
 
 
 How do I get started with pyGPGO?
@@ -89,13 +90,19 @@ of the features offered by pyGPGO compared to other sofware, check the following
 
    comparison
 
-API documentation:
+API documentation
+=================
 
 .. toctree::
    :maxdepth: 3
 
    api
 
+
+References
+==========
+
+[@Shahriari2016]: Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., & De Freitas, N. (2016). Taking the human out of the loop: A review of Bayesian optimization. Proceedings of the IEEE. http://doi.org/10.1109/JPROC.2015.2494218
 
 
 Indices and tables
