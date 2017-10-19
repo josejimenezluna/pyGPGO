@@ -42,7 +42,17 @@ pyGPGO provides an extensive range of choices in each of the previous points, in
 How do I get started with pyGPGO?
 ==================================
 
-Overall, pyGPGO is a very easy to use package. In practice, a user needs to specify:
+Install the latest stable release from pyPI::
+
+  pip install pyGPGO
+
+
+or if you're feeling adventurous, install the latest devel version from the Github repository::
+
+  pip install git+https://github.com/hawk31/pyGPGO
+
+
+pyGPGO is straightforward to use, we only need to specify:
 
 - A function to optimize according to some parameters.
 - A dictionary defining parameters, their type and bounds.
