@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pyGPGO package &mdash; pyGPGO 0.1.0.dev1 documentation</title>
+  <title>Comparison with other software &mdash; pyGPGO 0.1.0.dev1 documentation</title>
   
 
   
@@ -35,7 +35,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/> 
+    <link rel="top" title="pyGPGO 0.1.0.dev1 documentation" href="index.html"/>
+        <link rel="next" title="pyGPGO documentation" href="api.html"/>
+        <link rel="prev" title="Features" href="features.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -91,8 +93,8 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="comparison.html">Comparison with other software</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Comparison with other software</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">pyGPGO documentation</a></li>
@@ -140,13 +142,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>pyGPGO package</li>
+      <li>Comparison with other software</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/pyGPGO.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/comparison.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,43 +161,139 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="pygpgo-package">
-<h1>pyGPGO package<a class="headerlink" href="#pygpgo-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pyGPGO.surrogates.html">pyGPGO.surrogates package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pyGPGO.surrogates.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pyGPGO.surrogates.BoostedTrees.html">pyGPGO.surrogates.BoostedTrees module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyGPGO.surrogates.GaussianProcess.html">pyGPGO.surrogates.GaussianProcess module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyGPGO.surrogates.GaussianProcessMCMC.html">pyGPGO.surrogates.GaussianProcessMCMC module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyGPGO.surrogates.RandomForest.html">pyGPGO.surrogates.RandomForest module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyGPGO.surrogates.tStudentProcess.html">pyGPGO.surrogates.tStudentProcess module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pyGPGO.surrogates.tStudentProcessMCMC.html">pyGPGO.surrogates.tStudentProcessMCMC module</a></li>
+  <div class="section" id="comparison-with-other-software">
+<h1>Comparison with other software<a class="headerlink" href="#comparison-with-other-software" title="Permalink to this headline">¶</a></h1>
+<p>pyGPGO is not the only available Python package for bayesian optimization. To the best of our knowledge, we believe
+that it is one of the most comprehensive ones in terms of features available to the user. We show a table comparing
+some of the most common features here:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="14%" />
+<col width="6%" />
+<col width="16%" />
+<col width="20%" />
+<col width="6%" />
+<col width="9%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">pyGPGO</th>
+<th class="head">Spearmint</th>
+<th class="head">fmfn/BayesianOptimization</th>
+<th class="head">pyBO</th>
+<th class="head">MOE</th>
+<th class="head">GPyOpt</th>
+<th class="head">scikit-optimize</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GP implementation</td>
+<td>Native</td>
+<td>Native</td>
+<td>via scikit-learn</td>
+<td>via Reggie</td>
+<td>Native</td>
+<td>via GPy</td>
+<td>via scikit-learn</td>
+</tr>
+<tr class="row-odd"><td>Modular</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Surrogates</td>
+<td>{GP, tSP, RF, ET, GBM}</td>
+<td>{GP}</td>
+<td>{GP}</td>
+<td>{GP}</td>
+<td>{GP}</td>
+<td>{GP, RF, WGP}</td>
+<td>{GP, RF, GBM}</td>
+</tr>
+<tr class="row-odd"><td>Type II ML optimization</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>MCMC inference</td>
+<td>Yes (via pyMC3)</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>Choice of MCMC sampler</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>Acquisition functions</td>
+<td>{PI, EI, UCB, Entropy}</td>
+<td>{EI}</td>
+<td>{PI, EI, UCB}</td>
+<td>{PI, EI, UCB, Thompson sampling}</td>
+<td>{EI}</td>
+<td>{PI, EI, UCB}</td>
+<td>{PI, EI, UCB}</td>
+</tr>
+<tr class="row-odd"><td>Integrated acq. function</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>License</td>
+<td>MIT</td>
+<td>Academic</td>
+<td>MIT</td>
+<td>BSD-2</td>
+<td>Apache</td>
+<td>BSD-3</td>
+<td>BSD</td>
+</tr>
+<tr class="row-odd"><td>Last update (as of Apr. 2017)</td>
+<td><ul class="first last simple">
+<li></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pyGPGO.surrogates.html#module-pyGPGO.surrogates">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pyGPGO.GPGO.html">pyGPGO.GPGO module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pyGPGO.acquisition.html">pyGPGO.acquisition module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pyGPGO.covfunc.html">pyGPGO.covfunc module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pyGPGO.logger.html">pyGPGO.logger module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pyGPGO.version.html">pyGPGO.version module</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="module-pyGPGO">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyGPGO" title="Permalink to this headline">¶</a></h2>
-</div>
+</td>
+<td>Apr 2016</td>
+<td>Mar 2017</td>
+<td>Sept 2015</td>
+<td>Apr 2016</td>
+<td>Apr 2017</td>
+<td>Apr 2017</td>
+</tr>
+<tr class="row-even"><td>Python version</td>
+<td>&gt; 3.5</td>
+<td>2.7</td>
+<td>2/3</td>
+<td>2/3</td>
+<td>2.7</td>
+<td>2/3</td>
+<td>2/3</td>
+</tr>
+</tbody>
+</table>
+<p>If you like some other feature implemented into pyGPGO or think this table is outdated or incorrect, please let us know by opening an issue on the Github repository of the package!</p>
 </div>
 
 
@@ -205,6 +303,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="pyGPGO documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="features.html" class="btn btn-neutral" title="Features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

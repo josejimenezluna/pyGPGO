@@ -92,6 +92,12 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparison.html">Comparison with other software</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">pyGPGO documentation</a></li>
 </ul>
 
@@ -160,8 +166,122 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="pygpgo-surrogates-tstudentprocessmcmc-module">
-<h1>pyGPGO.surrogates.tStudentProcessMCMC module<a class="headerlink" href="#pygpgo-surrogates-tstudentprocessmcmc-module" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-pyGPGO.surrogates.tStudentProcessMCMC">
+<span id="pygpgo-surrogates-tstudentprocessmcmc-module"></span><h1>pyGPGO.surrogates.tStudentProcessMCMC module<a class="headerlink" href="#module-pyGPGO.surrogates.tStudentProcessMCMC" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC">
+<em class="property">class </em><code class="descclassname">pyGPGO.surrogates.tStudentProcessMCMC.</code><code class="descname">tStudentProcessMCMC</code><span class="sig-paren">(</span><em>covfunc</em>, <em>nu=3.0</em>, <em>niter=2000</em>, <em>burnin=1000</em>, <em>init='ADVI'</em>, <em>step=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Student-t class using MCMC sampling of covariance function hyperparameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>covfunc</strong> &#8211; Covariance function to use. Currently this instance only supports <cite>squaredExponential</cite>
+and <cite>Matern</cite> from the <cite>covfunc</cite> module.</li>
+<li><strong>nu</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Degrees of freedom (&gt;2.0)</li>
+<li><strong>niter</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Number of iterations to run MCMC.</li>
+<li><strong>burnin</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Burn-in iterations to discard at trace.</li>
+<li><strong>init</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Initialization method for NUTS. Check pyMC3 docs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>covfunc</em>, <em>nu=3.0</em>, <em>niter=2000</em>, <em>burnin=1000</em>, <em>init='ADVI'</em>, <em>step=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Student-t class using MCMC sampling of covariance function hyperparameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>covfunc</strong> &#8211; Covariance function to use. Currently this instance only supports <cite>squaredExponential</cite>
+and <cite>Matern</cite> from the <cite>covfunc</cite> module.</li>
+<li><strong>nu</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; Degrees of freedom (&gt;2.0)</li>
+<li><strong>niter</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Number of iterations to run MCMC.</li>
+<li><strong>burnin</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Burn-in iterations to discard at trace.</li>
+<li><strong>init</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; Initialization method for NUTS. Check pyMC3 docs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits a Student-t regressor using MCMC.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>nsamples</em><em>, </em><em>nfeatures</em><em>)</em>) &#8211; Training instances to fit the GP.</li>
+<li><strong>y</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>nsamples</em><em>,</em><em>)</em>) &#8211; Corresponding continuous target values to <cite>X</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.posteriorPlot">
+<code class="descname">posteriorPlot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.posteriorPlot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.posteriorPlot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots sampled posterior distributions for hyperparameters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>Xstar</em>, <em>return_std=False</em>, <em>nsamples=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns mean and covariances for each posterior sampled Student-t Process.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Xstar</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>nsamples</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; Testing instances to predict.</li>
+<li><strong>return_std</strong> (<a class="reference external" href="https://docs.python.org/2/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; Whether to return the standard deviation of the posterior process. Otherwise,
+it returns the whole covariance matrix of the posterior process.</li>
+<li><strong>nsamples</strong> &#8211; Number of posterior MCMC samples to consider.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>np.ndarray</em> &#8211; Mean of the posterior process for each MCMC sample and Xstar.</li>
+<li><em>np.ndarray</em> &#8211; Covariance posterior process for each MCMC sample and Xstar.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>xnew</em>, <em>ynew</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyGPGO/surrogates/tStudentProcessMCMC.html#tStudentProcessMCMC.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyGPGO.surrogates.tStudentProcessMCMC.tStudentProcessMCMC.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the internal model with <cite>xnew</cite> and <cite>ynew</cite> instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xnew</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>m</em><em>, </em><em>nfeatures</em><em>)</em><em>)</em>) &#8211; New training instances to update the model with.</li>
+<li><strong>ynew</strong> (<em>np.ndarray</em><em>, </em><em>shape=</em><em>(</em><em>(</em><em>m</em><em>,</em><em>)</em><em>)</em>) &#8211; New training targets to update the model with.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

@@ -74,7 +74,20 @@ A simple example can be checked below::
 
 There are a couple of tutorials to help get you started on the `tutorials <https://github.com/hawk31/pyGPGO/tree/master/tutorials>`_ folder.
 
-For a full list of features with explanations check our Features section.
+For a full list of features with explanations check our Features section
+
+.. toctree::
+   :maxdepth: 1
+
+   features
+
+pyGPGO is not the only package for bayesian optimization in Python, other excellent alternatives exist. For an in-depth comparison
+of the features offered by pyGPGO compared to other sofware, check the following section:
+
+.. toctree::
+   :maxdepth: 1
+
+   comparison
 
 API documentation:
 
