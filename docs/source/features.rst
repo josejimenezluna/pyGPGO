@@ -12,7 +12,7 @@ better after each evaluation. The most common surrogate in the literature is the
 Process, but the framework is model agnostic. Some featured models are:
 
 - Gaussian Processes (:class:`pyGPGO.surrogates.GaussianProcess` and :class:`pyGPGO.surrogates.GaussianProcessMCMC`): By far the most common choice, it needs the user to specify a covariance function (detailed in the next section), measuring similarity among training examples. For a good introduction to Gaussian Processes, check [@Rasmussen-Williams2004].
-- Student-t Processes (:class:`pyGPGO.surrogates.tStudentProcess` and  :class:`pyGPGO.surrogates.tStudentProcessMCMC`): Some functions benefit from the heavy-tailed nature of the Student-t distribution. It also requires providing a covariance function.
+- Student-t Processes (:class:`pyGPGO.surrogates.tStudentProcess` and :class:`pyGPGO.surrogates.tStudentProcessMCMC`): Some functions benefit from the heavy-tailed nature of the Student-t distribution. It also requires providing a covariance function.
 - Random Forests (:class:`pyGPGO.surrogates.RandomForest`): provided by `sklearn`, it represents a nonparametric surrogate model. Does not require specifying a covariance function. A class for Extra Random Forests is also available. Posterior variance is approximated by averaging the variance of each subtree [@reference].
 - Gradient Boosting Machines (:class:`pyGPGO.surrogates.BoostedTrees`): similar to the latter, posterior variance is approximated using quantile regression.
 
@@ -25,12 +25,12 @@ have hyperparameters that need to be taken into account. pyGPGO implements
 the most common covariance functions and its gradients w.r.t. hyperparamers,
 that we briefly list here.
 
-- Squared Exponential
-- Matérn
-- Gamma-Exponential
-- Rational-Quadratic
-- ArcSine
-- Dot-product
+- Squared Exponential (:class:`pyGPGO.covfunc.squaredExponential`)
+- Matérn (:class:`pyGPGO.covfunc.matern` or :class:`pyGPGO.covfunc.matern32` or :class:`pyGPGO.covfunc.matern52`)
+- Gamma-Exponential (:class:`pyGPGO.covfunc.gammaExponential`)
+- Rational-Quadratic (:class:`pyGPGO.covfunc.rationalQuadratic`)
+- ArcSine (:class:`pyGPGO.covfunc.arcSine`)
+- Dot-product (:class:`pyGPGO.covfunc.dotProd`)
 
 
 Acquisition behaviour :class:`pyGPGO.acquisition`
