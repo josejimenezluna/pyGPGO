@@ -189,11 +189,20 @@ of optimization choices:</p>
 <li>Acquisition function behaviour</li>
 <li>Hyperparameter treatment</li>
 </ul>
-<p>pyGPGO provides an extensive range of choices in each of the previous points, in a modular way.</p>
+<p>pyGPGO provides an extensive range of choices in each of the previous points, in a modular way. We recommend checking
+[&#64;Shahriari2016] for an in-depth review of the framework if you&#8217;re interested.</p>
 </div>
 <div class="section" id="how-do-i-get-started-with-pygpgo">
 <h1>How do I get started with pyGPGO?<a class="headerlink" href="#how-do-i-get-started-with-pygpgo" title="Permalink to this headline">¶</a></h1>
-<p>Overall, pyGPGO is a very easy to use package. In practice, a user needs to specify:</p>
+<p>Install the latest stable release from pyPI:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pyGPGO</span>
+</pre></div>
+</div>
+<p>or if you&#8217;re feeling adventurous, install the latest devel version from the Github repository:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">hawk31</span><span class="o">/</span><span class="n">pyGPGO</span>
+</pre></div>
+</div>
+<p>pyGPGO is straightforward to use, we only need to specify:</p>
 <ul class="simple">
 <li>A function to optimize according to some parameters.</li>
 <li>A dictionary defining parameters, their type and bounds.</li>
@@ -237,7 +246,9 @@ of the features offered by pyGPGO compared to other sofware, check the following
 <li class="toctree-l1"><a class="reference internal" href="comparison.html">Comparison with other software</a></li>
 </ul>
 </div>
-<p>API documentation:</p>
+</div>
+<div class="section" id="api-documentation">
+<h1>API documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">pyGPGO documentation</a><ul>
@@ -253,6 +264,10 @@ of the features offered by pyGPGO compared to other sofware, check the following
 </li>
 </ul>
 </div>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p>[&#64;Shahriari2016]: Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., &amp; De Freitas, N. (2016). Taking the human out of the loop: A review of Bayesian optimization. Proceedings of the IEEE. <a class="reference external" href="http://doi.org/10.1109/JPROC.2015.2494218">http://doi.org/10.1109/JPROC.2015.2494218</a></p>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>

@@ -35,13 +35,24 @@ of optimization choices:
 - Acquisition function behaviour
 - Hyperparameter treatment
 
-pyGPGO provides an extensive range of choices in each of the previous points, in a modular way.
+pyGPGO provides an extensive range of choices in each of the previous points, in a modular way. We recommend checking
+[@Shahriari2016] for an in-depth review of the framework if you're interested.
 
 
 How do I get started with pyGPGO?
 ==================================
 
-Overall, pyGPGO is a very easy to use package. In practice, a user needs to specify:
+Install the latest stable release from pyPI::
+
+  pip install pyGPGO
+
+
+or if you're feeling adventurous, install the latest devel version from the Github repository::
+
+  pip install git+https://github.com/hawk31/pyGPGO
+
+
+pyGPGO is straightforward to use, we only need to specify:
 
 - A function to optimize according to some parameters.
 - A dictionary defining parameters, their type and bounds.
@@ -89,13 +100,19 @@ of the features offered by pyGPGO compared to other sofware, check the following
 
    comparison
 
-API documentation:
+API documentation
+=================
 
 .. toctree::
    :maxdepth: 3
 
    api
 
+
+References
+==========
+
+[@Shahriari2016]: Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., & De Freitas, N. (2016). Taking the human out of the loop: A review of Bayesian optimization. Proceedings of the IEEE. http://doi.org/10.1109/JPROC.2015.2494218
 
 
 Indices and tables

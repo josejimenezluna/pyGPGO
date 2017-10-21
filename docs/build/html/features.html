@@ -92,9 +92,9 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Features</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#surrogate-models-pygpgo-surrogates">Surrogate models &lt;pyGPGO.surrogates&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#covariance-functions-pygpgo-covfunc">Covariance functions &lt;pyGPGO.covfunc&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#acquisition-behaviour-pygpgo-acquisition">Acquisition behaviour &lt;pyGPGO.acquisition&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#surrogate-models-pygpgo-surrogates">Surrogate models <code class="docutils literal"><span class="pre">pyGPGO.surrogates</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#covariance-functions-pygpgo-covfunc">Covariance functions <code class="docutils literal"><span class="pre">pyGPGO.covfunc</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acquisition-behaviour-pygpgo-acquisition">Acquisition behaviour <code class="docutils literal"><span class="pre">pyGPGO.acquisition</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hyperparameter-treatment">Hyperparameter treatment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
@@ -173,19 +173,19 @@
 <p>The Bayesian optimization framework is very flexible, as it allows for choices in many
 steps of its design. To name a few of the choices that pyGPGO provides to the user:</p>
 <div class="section" id="surrogate-models-pygpgo-surrogates">
-<h2>Surrogate models &lt;pyGPGO.surrogates&gt;<a class="headerlink" href="#surrogate-models-pygpgo-surrogates" title="Permalink to this headline">¶</a></h2>
+<h2>Surrogate models <a class="reference internal" href="pyGPGO.surrogates.html#module-pyGPGO.surrogates" title="pyGPGO.surrogates"><code class="xref py py-class docutils literal"><span class="pre">pyGPGO.surrogates</span></code></a><a class="headerlink" href="#surrogate-models-pygpgo-surrogates" title="Permalink to this headline">¶</a></h2>
 <p>The framework works by specifying a model that will approximate our target function,
 better after each evaluation. The most common surrogate in the literature is the Gaussian
 Process, but the framework is model agnostic. Some featured models are:</p>
 <ul class="simple">
-<li>Gaussian Processes (&lt;pyGPGO.surrogates.GaussianProcess&gt; &lt;pyGPGO.surrogates.GaussianProcessMCMC&gt;): By far the most common choice, it needs the user to specify a covariance function (detailed in the next section), measuring similarity among training examples. For a good introduction to Gaussian Processes, check [&#64;Rasmussen-Williams2004].</li>
-<li>Student-t Processes (&lt;pyGPGO.surrogates.tStudentProcess&gt; &lt;pyGPGO.surrogates.tStudentProcessMCMC&gt;): Some functions benefit from the heavy-tailed nature of the Student-t distribution. It also requires providing a covariance function.</li>
-<li>Random Forests (&lt;pyGPGO.surrogates.RandomForest&gt;): provided by <cite>sklearn</cite>, it represents a nonparametric surrogate model. Does not require specifying a covariance function. A class for Extra Random Forests is also available. Posterior variance is approximated by averaging the variance of each subtree [&#64;reference].</li>
-<li>Gradient Boosting Machines (&lt;pyGPGO.surrogates.BoostedTrees&gt;): similar to the latter, posterior variance is approximated using quantile regression.</li>
+<li>Gaussian Processes (<a class="reference internal" href="pyGPGO.surrogates.GaussianProcess.html#module-pyGPGO.surrogates.GaussianProcess" title="pyGPGO.surrogates.GaussianProcess"><code class="xref py py-class docutils literal"><span class="pre">pyGPGO.surrogates.GaussianProcess</span></code></a> <a class="reference internal" href="pyGPGO.surrogates.GaussianProcessMCMC.html#module-pyGPGO.surrogates.GaussianProcessMCMC" title="pyGPGO.surrogates.GaussianProcessMCMC"><code class="xref py py-class docutils literal"><span class="pre">pyGPGO.surrogates.GaussianProcessMCMC</span></code></a>): By far the most common choice, it needs the user to specify a covariance function (detailed in the next section), measuring similarity among training examples. For a good introduction to Gaussian Processes, check [&#64;Rasmussen-Williams2004].</li>
+<li>Student-t Processes (<a class="reference internal" href="pyGPGO.surrogates.tStudentProcess.html#module-pyGPGO.surrogates.tStudentProcess" title="pyGPGO.surrogates.tStudentProcess"><code class="xref py py-class docutils literal"><span class="pre">pyGPGO.surrogates.tStudentProcess</span></code></a> <a class="reference internal" href="pyGPGO.surrogates.tStudentProcessMCMC.html#module-pyGPGO.surrogates.tStudentProcessMCMC" title="pyGPGO.surrogates.tStudentProcessMCMC"><code class="xref py py-class docutils literal"><span class="pre">pyGPGO.surrogates.tStudentProcessMCMC</span></code></a>): Some functions benefit from the heavy-tailed nature of the Student-t distribution. It also requires providing a covariance function.</li>
+<li>Random Forests (<a class="reference internal" href="pyGPGO.surrogates.RandomForest.html#module-pyGPGO.surrogates.RandomForest" title="pyGPGO.surrogates.RandomForest"><code class="xref py py-class docutils literal"><span class="pre">pyGPGO.surrogates.RandomForest</span></code></a>): provided by <cite>sklearn</cite>, it represents a nonparametric surrogate model. Does not require specifying a covariance function. A class for Extra Random Forests is also available. Posterior variance is approximated by averaging the variance of each subtree [&#64;reference].</li>
+<li>Gradient Boosting Machines (<a class="reference internal" href="pyGPGO.surrogates.BoostedTrees.html#module-pyGPGO.surrogates.BoostedTrees" title="pyGPGO.surrogates.BoostedTrees"><code class="xref py py-class docutils literal"><span class="pre">pyGPGO.surrogates.BoostedTrees</span></code></a>): similar to the latter, posterior variance is approximated using quantile regression.</li>
 </ul>
 </div>
 <div class="section" id="covariance-functions-pygpgo-covfunc">
-<h2>Covariance functions &lt;pyGPGO.covfunc&gt;<a class="headerlink" href="#covariance-functions-pygpgo-covfunc" title="Permalink to this headline">¶</a></h2>
+<h2>Covariance functions <a class="reference internal" href="pyGPGO.covfunc.html#module-pyGPGO.covfunc" title="pyGPGO.covfunc"><code class="xref py py-class docutils literal"><span class="pre">pyGPGO.covfunc</span></code></a><a class="headerlink" href="#covariance-functions-pygpgo-covfunc" title="Permalink to this headline">¶</a></h2>
 <p>These determine how similar training examples are for the surrogate model. Most of these also
 have hyperparameters that need to be taken into account. pyGPGO implements
 the most common covariance functions and its gradients w.r.t. hyperparamers,
@@ -200,7 +200,7 @@ that we briefly list here.</p>
 </ul>
 </div>
 <div class="section" id="acquisition-behaviour-pygpgo-acquisition">
-<h2>Acquisition behaviour &lt;pyGPGO.acquisition&gt;<a class="headerlink" href="#acquisition-behaviour-pygpgo-acquisition" title="Permalink to this headline">¶</a></h2>
+<h2>Acquisition behaviour <a class="reference internal" href="pyGPGO.acquisition.html#module-pyGPGO.acquisition" title="pyGPGO.acquisition"><code class="xref py py-class docutils literal"><span class="pre">pyGPGO.acquisition</span></code></a><a class="headerlink" href="#acquisition-behaviour-pygpgo-acquisition" title="Permalink to this headline">¶</a></h2>
 <p>In each iteration of the framework, we choose the next point to evaluate according to a behaviour,
 dictated by what we call an acquisition function, leveraging exploration and exploitation of
 the sampled space. pyGPGO supports the most common acquisition functions in the literature.</p>

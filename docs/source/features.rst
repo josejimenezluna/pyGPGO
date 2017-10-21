@@ -11,8 +11,8 @@ The framework works by specifying a model that will approximate our target funct
 better after each evaluation. The most common surrogate in the literature is the Gaussian
 Process, but the framework is model agnostic. Some featured models are:
 
-- Gaussian Processes (:class:`pyGPGO.surrogates.GaussianProcess` :class:`pyGPGO.surrogates.GaussianProcessMCMC`): By far the most common choice, it needs the user to specify a covariance function (detailed in the next section), measuring similarity among training examples. For a good introduction to Gaussian Processes, check [@Rasmussen-Williams2004].
-- Student-t Processes (:class:`pyGPGO.surrogates.tStudentProcess` :class:`pyGPGO.surrogates.tStudentProcessMCMC`): Some functions benefit from the heavy-tailed nature of the Student-t distribution. It also requires providing a covariance function.
+- Gaussian Processes (:class:`pyGPGO.surrogates.GaussianProcess` and :class:`pyGPGO.surrogates.GaussianProcessMCMC`): By far the most common choice, it needs the user to specify a covariance function (detailed in the next section), measuring similarity among training examples. For a good introduction to Gaussian Processes, check [@Rasmussen-Williams2004].
+- Student-t Processes (:class:`pyGPGO.surrogates.tStudentProcess` and  :class:`pyGPGO.surrogates.tStudentProcessMCMC`): Some functions benefit from the heavy-tailed nature of the Student-t distribution. It also requires providing a covariance function.
 - Random Forests (:class:`pyGPGO.surrogates.RandomForest`): provided by `sklearn`, it represents a nonparametric surrogate model. Does not require specifying a covariance function. A class for Extra Random Forests is also available. Posterior variance is approximated by averaging the variance of each subtree [@reference].
 - Gradient Boosting Machines (:class:`pyGPGO.surrogates.BoostedTrees`): similar to the latter, posterior variance is approximated using quantile regression.
 
