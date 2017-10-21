@@ -16,7 +16,7 @@ affiliations:
          Universitat Pompeu Fabra (UPF).
    index: 1
  - name: Department of Statistics and Operations Research.
-         Universitat Politècnica de Catalunya (UPC)-
+         Universitat Politècnica de Catalunya (UPC).
    index: 2
 date: 4 September 2017
 bibliography: paper.bib

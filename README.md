@@ -31,6 +31,8 @@ Or if you're feeling adventurous, retrieve it from this repo,
 pip install git+https://github.com/hawk31/pyGPGO
 ```
 
+Check our documentation in http://pygpgo.readthedocs.io/.
+
 ### Dependencies
 
 *   Typical Python scientific stuff: `numpy`, `scipy`.
