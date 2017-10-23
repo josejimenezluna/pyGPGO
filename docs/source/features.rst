@@ -11,9 +11,9 @@ The framework works by specifying a model that will approximate our target funct
 better after each evaluation. The most common surrogate in the literature is the Gaussian
 Process, but the framework is model agnostic. Some featured models are:
 
-- Gaussian Processes (:class:`pyGPGO.surrogates.GaussianProcess` and :class:`pyGPGO.surrogates.GaussianProcessMCMC`): By far the most common choice, it needs the user to specify a covariance function (detailed in the next section), measuring similarity among training examples. For a good introduction to Gaussian Processes, check [@Rasmussen-Williams2004].
+- Gaussian Processes (:class:`pyGPGO.surrogates.GaussianProcess` and :class:`pyGPGO.surrogates.GaussianProcessMCMC`): By far the most common choice, it needs the user to specify a covariance function (detailed in the next section), measuring similarity among training examples. For a good introduction to Gaussian Processes, check [Rasmussen-Williams2004]_ .
 - Student-t Processes (:class:`pyGPGO.surrogates.tStudentProcess` and :class:`pyGPGO.surrogates.tStudentProcessMCMC`): Some functions benefit from the heavy-tailed nature of the Student-t distribution. It also requires providing a covariance function.
-- Random Forests (:class:`pyGPGO.surrogates.RandomForest`): provided by `sklearn`, it represents a nonparametric surrogate model. Does not require specifying a covariance function. A class for Extra Random Forests is also available. Posterior variance is approximated by averaging the variance of each subtree [@reference].
+- Random Forests (:class:`pyGPGO.surrogates.RandomForest`): provided by `sklearn`, it represents a nonparametric surrogate model. Does not require specifying a covariance function. A class for Extra Random Forests is also available. Posterior variance is approximated by averaging the variance of each subtree.
 - Gradient Boosting Machines (:class:`pyGPGO.surrogates.BoostedTrees`): similar to the latter, posterior variance is approximated using quantile regression.
 
 
@@ -51,7 +51,7 @@ models.
 Hyperparameter treatment
 ------------------------
 
-Covariance functions also have hyperparameters, and their treatment is also thoroughly discussed in the literature (see [@Shahriari2016]).
+Covariance functions also have hyperparameters, and their treatment is also thoroughly discussed in the literature (see [Shahriari2016]_).
 To summarize, we mainly have two options available:
 
 - Optimizing the marginal log-likelihood, also called the Empirical Bayes approach. pyGPGO supports this feature using analytical gradients for almost all acquisition functions.
@@ -60,6 +60,6 @@ To summarize, we mainly have two options available:
 References
 ----------
 
-[@Rasmussen-Williams2004]: Rasmussen, C. E., & Williams, C. K. I. (2004). Gaussian processes for machine learning. International journal of neural systems (Vol. 14). http://doi.org/10.1142/S0129065704001899
+..[Rasmussen-Williams2004]: Rasmussen, C. E., & Williams, C. K. I. (2004). Gaussian processes for machine learning. International journal of neural systems (Vol. 14). http://doi.org/10.1142/S0129065704001899
 
-[@Shahriari2016]: Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., & De Freitas, N. (2016). Taking the human out of the loop: A review of Bayesian optimization. Proceedings of the IEEE. http://doi.org/10.1109/JPROC.2015.2494218
+..[Shahriari2016]: Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., & De Freitas, N. (2016). Taking the human out of the loop: A review of Bayesian optimization. Proceedings of the IEEE. http://doi.org/10.1109/JPROC.2015.2494218
