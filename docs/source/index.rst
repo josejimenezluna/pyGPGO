@@ -112,7 +112,7 @@ API documentation
 References
 ==========
 
-..[Shahriari2016]: Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., & De Freitas, N. (2016). Taking the human out of the loop: A review of Bayesian optimization. Proceedings of the IEEE. http://doi.org/10.1109/JPROC.2015.2494218
+.. [Shahriari2016] Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., & De Freitas, N. (2016). Taking the human out of the loop: A review of Bayesian optimization. Proceedings of the IEEE. http://doi.org/10.1109/JPROC.2015.2494218
 
 
 Indices and tables

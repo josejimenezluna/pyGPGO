@@ -17,9 +17,6 @@ Process, but the framework is model agnostic. Some featured models are:
 - Gradient Boosting Machines (:class:`pyGPGO.surrogates.BoostedTrees`): similar to the latter, posterior variance is approximated using quantile regression.
 
 
-.. [Rasmussen-Williams2004] Rasmussen, C. E., & Williams, C. K. I. (2004). Gaussian processes for machine learning. International journal of neural systems (Vol. 14). http://doi.org/10.1142/S0129065704001899
-
-
 Covariance functions :class:`pyGPGO.covfunc`
 --------------------
 
@@ -57,7 +54,6 @@ Hyperparameter treatment
 Covariance functions also have hyperparameters, and their treatment is also thoroughly discussed in the literature (see [Shahriari2016]_ ).
 To summarize, we mainly have two options available:
 
-.. [Shahriari2016] Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., & De Freitas, N. (2016). Taking the human out of the loop: A review of Bayesian optimization. Proceedings of the IEEE. http://doi.org/10.1109/JPROC.2015.2494218
 
 - Optimizing the marginal log-likelihood, also called the Empirical Bayes approach. pyGPGO supports this feature using analytical gradients for almost all acquisition functions.
 - The full Bayesian approach takes into account the uncertainty caused by the hyperparameters in the optimization procedure by marginalizing them, thatis, integrating over them. pyGPGO implements this via MCMC sampling provided by the pyMC3 software, which in turns also provides an easy way for the user to choose whatever sampler they wish.
@@ -65,4 +61,5 @@ To summarize, we mainly have two options available:
 References
 ----------
 
-
+.. [Rasmussen-Williams2004] Rasmussen, C. E., & Williams, C. K. I. (2004). Gaussian processes for machine learning. International journal of neural systems (Vol. 14). http://doi.org/10.1142/S0129065704001899
+.. [Shahriari2016] Shahriari, B., Swersky, K., Wang, Z., Adams, R. P., & De Freitas, N. (2016). Taking the human out of the loop: A review of Bayesian optimization. Proceedings of the IEEE. http://doi.org/10.1109/JPROC.2015.2494218
