@@ -12,11 +12,9 @@ authors:
    orcid: 0000-0001-9521-9635
    affiliation: 2
 affiliations:
- - name: Computational Biophysics Laboratory. Parc de Recerca Biomèdica de Barcelona (PRBB). 
-         Universitat Pompeu Fabra (UPF).
+ - name: Computational Biophysics Laboratory, Universitat Pompeu Fabra, Parc de Recerca Biomèdica de Barcelona, Carrer del Dr. Aiguader 88. Barcelona 08003, Spain.
    index: 1
- - name: Department of Statistics and Operations Research.
-         Universitat Politècnica de Catalunya (UPC).
+ - name: Department of Statistics and Operations Research. Universitat Politècnica de Catalunya (UPC). Av. Diagonal 647, Barcelona 08028, Spain.
    index: 2
 date: 4 September 2017
 bibliography: paper.bib
@@ -25,17 +23,13 @@ bibliography: paper.bib
 # Summary
 
 Bayesian optimization has risen over the last few years as a very attractive method to optimize
-expensive to evaluate, black box, derivative-free and possibly noisy functions [@Shahriari2016,
-@Snoek2012]. It has grabbed the attention of machine learning researchers over simpler model hyperparameter optimization strategies, such as grid search or random search [@Bergstra2012]. The Bayesian optimization
-framework uses prior information and evidence to define a posterior distribution over the space of functions.
+expensive to evaluate, black box, derivative-free and possibly noisy functions [@Shahriari2016]. This framework uses _surrogate models_, such as the likes of a Gaussian Process[@Rasmussen-Williams200] which describe a prior belief over the possible objective functions and approximate it. The procedure itself is inherently sequential: our function is first evaluated a few times, a surrogate model is then fit with this information, which will later suggest the next point to be evaluated according to a predefined _acquisition function_. These strategies typically aim to balance exploitation and exploration, that is, areas where the posterior mean or variance of our surrogate model are high respectively.
 
-*pyGPGO* is an open-source Python package for Bayesian Optimization. This framework is 
-inherently modular, as there are many design choices, such as surrogate model choice, 
-covariance function specification or acquisition function behaviour or hyperparameter
-treatment, to name a few. While other software for Bayesian Optimization exists, either they
-are restricted to non-commercial applications [@SpearmintSnoek2012] or are not modular nor extensive
-enough to accomodate the framework's flexibility [@scikitoptimize, @yelpmoe]. *pyGPGO* aims to provide
-a wide range of choices, such as:
+
+These strategies have recently grabbed the attention of machine learning researchers over simpler black-box optimization strategies, such as grid search or random search [@Bergstra2012]. It is specially interesting in areas such as automatic machine-learning hyperparameter optimization [@Snoek2012], A/B testing [@Chapelle2011] or recommender systems[@Vanchinathan2014], among others. Furthermore, the framework is entirely modular; there are many choices a user could take regarding the design of the optimization procedure: choice of surrogate model, covariance function, acquisition function behaviour or hyperparameter treatment, to name a few.
+
+
+Here we present *pyGPGO* , an open-source Python package for Bayesian Optimization, which embraces this modularity in its design. While additional Python packages exist for the same purpose, either they are restricted for non-commercial applications [@SpearmingSnoek2012], implement a small subset of the features [@yelpmoe], or do not provide a modular interface [@scikitoptimize].  *pyGPGO* on the other hand aims to provide the highest degree of freedom in the design and inference of a Bayesian optimization pipeline, while being feature-wise competitive with other existing software. *pyGPGO* currently supports:
 
 - Different surrogate models: Gaussian Processes, Student-t Processes, Random Forests (& variants)
   and Gradient Boosting Machines.
@@ -44,7 +38,7 @@ a wide range of choices, such as:
 - Several acquisition function behaviours: probability of improvement, expected improvement,
   upper confidence bound and entropy-based, as well as their integrated versions.
 - Type II maximum-likelihood estimation of covariance hyperparameters.
-- MCMC sampling for the full-bayesian treatment of hyperparameters (via `pyMC3`)
+- MCMC sampling for the full-bayesian treatment of hyperparameters (via `pyMC3` [@Salvatier2016])
 
 
 *pyGPGO* is MIT-licensed and can be retrieved from both [GitHub](https://github.com/hawk31/pyGPGO)
@@ -60,7 +54,7 @@ in the near future:
 
 - Support for linear combinations of covariance functions, with automatic gradient computation.
 - Support for more diverse acquisition functions, such as Predictive Entropy Search [@Hernandez-Lobato2014].
-- A constrained Bayesian Optimization class is planned for the near future. [@Gardner2014]
+- A class for constrained Bayesian Optimization is planned for the near future. [@Gardner2014]
  
 
 # References
