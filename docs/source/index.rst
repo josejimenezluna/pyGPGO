@@ -15,6 +15,17 @@ pyGPGO is a simple and modular Python (>3.5) package for Bayesian optimization. 
 
 Check us out on  `Github <https://github.com/hawk31/pyGPGO>`_.
 
+pyGPGO uses other well-known packages of the Python scientific ecosystem as dependencies:
+
+- numpy
+- scipy
+- joblib
+- scikit-learn
+- pyMC3
+- theano
+
+These are automatically taken care for in the requirements file.
+
 
 What is Bayesian Optimization?
 ==================================
