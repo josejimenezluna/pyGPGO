@@ -42,7 +42,7 @@ Here we present *pyGPGO* , an open-source Python package for Bayesian Optimizati
 
 
 *pyGPGO* is MIT-licensed and can be retrieved from both [GitHub](https://github.com/hawk31/pyGPGO)
-and [PyPI](https://pypi.python.org/pypi/pyGPGO/0.3.0.dev1), with extensive documentation available at [ReadTheDocs](http://pygpgo.readthedocs.io/en/latest/).
+and [PyPI](https://pypi.python.org/pypi/pyGPGO/), with extensive documentation available at [ReadTheDocs](http://pygpgo.readthedocs.io/en/latest/). *pyGPGO* is built on top of other well known packages of the Python scientific ecosystem as dependencies, such as numpy, scikit-learn, pyMC3 and theano.
 
 ![pyGPGO in action.](franke.gif)
 
