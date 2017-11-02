@@ -3,6 +3,7 @@
 [![codecov](https://codecov.io/gh/hawk31/pyGPGO/branch/master/graph/badge.svg)](https://codecov.io/gh/hawk31/pyGPGO)
 [![Documentation Status](https://readthedocs.org/projects/pygpgo/badge/?version=latest)](http://pygpgo.readthedocs.io/en/latest/?badge=latest)
 [![DOI](https://zenodo.org/badge/74589922.svg)](https://zenodo.org/badge/latestdoi/74589922)
+[![status](http://joss.theoj.org/papers/7d60820fabf7fa81501e3d638cac522d/status.svg)](http://joss.theoj.org/papers/7d60820fabf7fa81501e3d638cac522d)
 
 
 ![sine](http://i.giphy.com/l3q2s3MQ4bPb5RogU.gif)
