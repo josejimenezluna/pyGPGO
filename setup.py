@@ -27,7 +27,7 @@ setup(name='pyGPGO',
     install_requires=[
         'numpy',
         'scipy',
-        'joblib',
+        'joblib==0.11',
         'scikit-learn',
         'theano',
         'pyMC3'
