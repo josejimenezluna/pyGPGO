@@ -21,7 +21,7 @@ def test_GPGO():
     gpgo = GPGO(gp, acq, f, params)
     gpgo.run(max_iter=10)
     res = gpgo.getResult()[0]
-    assert .7 < res['x'] < .8
+    assert .6 < res['x'] < .8
 
 
 def test_GPGO_mcmc():
