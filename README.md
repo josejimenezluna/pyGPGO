@@ -50,17 +50,23 @@ All dependencies are automatically taken care for in the requirements file.
 * Type II Maximum-Likelihood of covariance function hyperparameters. 
 * MCMC sampling for full-Bayesian inference of hyperparameters (via `pyMC3`).
 * Integrated acquisition functions
-
-### A small example!
+  
+### An Example of Using an Ensemble Gaussian Process!
 
 The user only has to define a function to maximize and a dictionary specifying input space.
 
 ```python
 import numpy as np
 from pyGPGO.covfunc import matern32
+from pyGPGO.covfunc import matern52
+from pyGPGO.covfunc import gammaExponential
+from pyGPGO.covfunc import expSine
 from pyGPGO.acquisition import Acquisition
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 from pyGPGO.GPGO import GPGO
+from pyGPGO.surrogates.Ensemble import Ensemble
+from pyGPGO.covfunc import squaredExponential
+from pyGPGO.covfunc import rationalQuadratic
 
 
 def f(x, y):
@@ -71,15 +77,23 @@ def f(x, y):
     four = 0.25 * np.exp(-(9 * x - 4) ** 2 - (9 * y - 7) ** 2)
     return one + two + three - four
 
-cov = matern32()
-gp = GaussianProcess(cov)
-acq = Acquisition(mode='ExpectedImprovement')
+np.random.seed(42)
+mat32 = matern32()
+mat52 = matern52()
+gamex = gammaExponential()
+sqex = squaredExponential()
+rquad = rationalQuadratic()
+gpmat32 = GaussianProcess(mat32,optimize=False, usegrads=False)
+gpmat52 = GaussianProcess(mat52,optimize=False, usegrads=False)
+gpsqex = GaussianProcess(sqex,optimize=False)
+gprquad = GaussianProcess(rquad,optimize=False)
+gpgamex = GaussianProcess(gamex,optimize=False)
+acqEI = Acquisition(mode='ExpectedImprovement')
 param = {'x': ('cont', [0, 1]),
          'y': ('cont', [0, 1])}
-
-np.random.seed(1337)
-gpgo = GPGO(gp, acq, f, param)
-gpgo.run(max_iter=10)
+ens = Ensemble([gprquad,gpsqex,gpmat32,gpgamex,gpmat52])
+gpgo = GPGO(ens, acqEI, franke, param)
+gpgo.run(max_iter=100)
 
 ```
 
