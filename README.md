@@ -20,19 +20,15 @@ Bayesian optimization is a framework that can be used in situations where:
 
 ### Installation
 
-Retrieve the latest stable release from pyPI:
+Retrieve our fork from the repo,
 
 ```bash
-pip install pyGPGO
-```
-
-Or if you're feeling adventurous, retrieve it from this repo,
-
-```bash
-pip install git+https://github.com/hawk31/pyGPGO
+pip install git+https://github.com/dataronio/pyGPGO
 ```
 
 Check our documentation in http://pygpgo.readthedocs.io/.
+
+
 
 ### Dependencies
 
