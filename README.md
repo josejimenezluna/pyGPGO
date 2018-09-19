@@ -8,6 +8,8 @@
 
 ![sine](http://i.giphy.com/l3q2s3MQ4bPb5RogU.gif)
 
+## Now with Ensemble Goodness Added
+
 pyGPGO is a simple and modular Python (>3.5) package for bayesian optimization. 
 
 Bayesian optimization is a framework that can be used in situations where:
@@ -16,6 +18,12 @@ Bayesian optimization is a framework that can be used in situations where:
 * No gradient information is available.
 * Function evaluations may be noisy.
 * Evaluations are expensive (time/cost-wise)
+  
+This fork adds the ability to ensemble Gaussian Processes or even Random Forests and Boosted Trees
+as the surrogate function.
+
+* Should reduce the possibility of model regret for expensive test runs.
+* Reduce model variance and improve prediction should lead to improved optimization.
 
 
 ### Installation
