@@ -96,7 +96,6 @@ class GaussianProcess:
         """
         k_param_key = list(k_param.keys())
         covfunc = self.covfunc.__class__(**k_param)
-        n = self.X.shape[0]
         K = covfunc.K(self.X, self.X)
         L = cholesky(K).T
         alpha = solve(L.T, solve(L, self.y))

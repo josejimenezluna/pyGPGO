@@ -1,10 +1,7 @@
 import numpy as np
-import scipy as sp
-import theano
 import theano.tensor as tt
 import theano.tensor.nlinalg
 import pymc3 as pm
-from pyGPGO.covfunc import squaredExponential, matern
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 
 
@@ -17,7 +14,7 @@ class GaussianProcessMCMC:
     def __init__(self, covfunc, niter=2000, burnin=1000, init='ADVI', step=None):
         """
         Gaussian Process class using MCMC sampling of covariance function hyperparameters.
-        
+
         Parameters
         ----------
         covfunc:
