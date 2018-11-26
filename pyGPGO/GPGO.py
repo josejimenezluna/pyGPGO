@@ -166,8 +166,11 @@ class GPGO:
         argtau = np.argmax(self.GP.y)
         opt_x = self.GP.X[argtau]
         res_d = OrderedDict()
-        for i, key in enumerate(self.parameter_key):
-            res_d[key] = opt_x[i]
+        for i, (key, param_type) in enumerate(zip(self.parameter_key, self.parameter_type)):
+            if param_type == 'int':
+                res_d[key] = int(opt_x[i])
+            else:
+                res_d[key] = opt_x[i]
         return res_d, self.tau
 
     def run(self, max_iter=10, init_evals=3, resume=False):
