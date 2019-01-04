@@ -1,10 +1,9 @@
 from collections import OrderedDict
 
 import numpy as np
-from scipy.optimize import minimize
 from joblib import Parallel, delayed
-
 from pyGPGO.logger import EventLogger
+from scipy.optimize import minimize
 
 
 class GPGO:
@@ -62,9 +61,11 @@ class GPGO:
         d = OrderedDict()
         for index, param in enumerate(self.parameter_key):
             if self.parameter_type[index] == 'int':
-                d[param] = np.random.randint(self.parameter_range[index][0], self.parameter_range[index][1])
+                d[param] = np.random.randint(
+                    self.parameter_range[index][0], self.parameter_range[index][1])
             elif self.parameter_type[index] == 'cont':
-                d[param] = np.random.uniform(self.parameter_range[index][0], self.parameter_range[index][1])
+                d[param] = np.random.uniform(
+                    self.parameter_range[index][0], self.parameter_range[index][1])
             else:
                 raise ValueError('Unsupported variable type.')
         return d
@@ -122,7 +123,8 @@ class GPGO:
 
         """
         start_points_dict = [self._sampleParam() for i in range(n_start)]
-        start_points_arr = np.array([list(s.values()) for s in start_points_dict])
+        start_points_arr = np.array([list(s.values())
+                                     for s in start_points_dict])
         x_best = np.empty((n_start, len(self.parameter_key)))
         f_best = np.empty((n_start,))
         if self.n_jobs == 1:
@@ -133,7 +135,7 @@ class GPGO:
         else:
             opt = Parallel(n_jobs=self.n_jobs)(delayed(minimize)(self._acqWrapper,
                                                                  x0=start_point,
-                                                                 method='L-BFGS-B',
+                                                                 method=method,
                                                                  bounds=self.parameter_range) for start_point in
                                                start_points_arr)
             x_best = np.array([res.x for res in opt])
@@ -145,7 +147,8 @@ class GPGO:
         """
         Updates the internal model with the next acquired point and its evaluation.
         """
-        kw = {param: self.best[i] for i, param in enumerate(self.parameter_key)}
+        kw = {param: self.best[i]
+              for i, param in enumerate(self.parameter_key)}
         f_new = self.f(**kw)
         self.GP.update(np.atleast_2d(self.best), np.atleast_1d(f_new))
         self.tau = np.max(self.GP.y)
