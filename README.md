@@ -37,7 +37,7 @@ Check our documentation in http://pygpgo.readthedocs.io/.
 ### Dependencies
 
 *   Typical Python scientific stuff: `numpy`, `scipy`.
-*   `joblib==0.11`, used for parallel computation
+*   `joblib`, used for parallel computation
 *   `scikit-learn`, for other surrogates different from Gaussian Processes.
 *   `pyMC3`, for integrated acquisition functions and MCMC inference.
 *   `theano` for GPU processing.
