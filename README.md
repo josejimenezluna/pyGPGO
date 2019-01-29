@@ -84,3 +84,9 @@ gpgo.run(max_iter=10)
 ```
 
 Check the `tutorials` and `examples` folders for more ideas on how to use the software.
+
+### Citation
+
+If you use pyGPGO in academic work please cite:
+
+Jiménez, J., & Ginebra, J. (2017). pyGPGO: Bayesian Optimization for Python. The Journal of Open Source Software, 2, 431.
