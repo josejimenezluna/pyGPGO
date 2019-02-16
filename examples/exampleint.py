@@ -3,8 +3,6 @@
 # exampleint: tests and visualizes an integrated acquisition function.
 #######################################
 
-import os
-
 import matplotlib.pyplot as plt
 
 import numpy as np

@@ -4,7 +4,8 @@
 # works, ignoring areas with either low posterior mean or low variance. 
 #######################################
 
-from pyGPGO.covfunc import *
+import numpy as np
+from pyGPGO.covfunc import squaredExponential, matern32, gammaExponential, rationalQuadratic
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 import matplotlib.pyplot as plt
 
