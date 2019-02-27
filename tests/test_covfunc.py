@@ -50,7 +50,7 @@ def test_sim():
     rng = np.random.RandomState(0)
     X = np.random.randn(100, 3)
     for cov in covfuncs:
-        K = cov.K(X, X)
+        cov.K(X, X)
 
 
 def test_grad(): 
