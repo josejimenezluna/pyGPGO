@@ -329,8 +329,8 @@ class matern52:
         np.ndarray
             Computed covariance matrix.
         """
-        r = l2norm_(X, Xstar)
-        one = (1 + np.sqrt(5 * (r / self.l) ** 2) + 5 * (r / self.l) ** 2 / 3)
+        r = l2norm_(X, Xstar)/self.l
+        one = (1 + np.sqrt(5 * r ** 2) + 5 * r ** 2 / 3)
         two = np.exp(-np.sqrt(5 * r ** 2))
         return self.sigmaf * one * two + self.sigman * kronDelta(X, Xstar)
 
