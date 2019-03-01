@@ -67,7 +67,7 @@ def test_tSP_opt_nograd():
     params = tsp.getcovparams()
 
     assert 0.3 < params['l'] < 0.4
-    assert 0.3 < params['sigmaf'] < 0.5
+    assert 0.3 < params['sigmaf'] < 0.6
     assert 0.2 < params['sigman'] < 0.4
 
 
