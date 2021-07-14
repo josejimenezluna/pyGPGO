@@ -1,6 +1,5 @@
 import numpy as np
 import theano.tensor as tt
-import theano.tensor.nlinalg
 import pymc3 as pm
 from pyGPGO.surrogates.GaussianProcess import GaussianProcess
 
@@ -75,9 +74,9 @@ class GaussianProcessMCMC:
             y_obs = pm.MvNormal('y_obs', mu=np.zeros(self.n), cov=Sigma, observed=self.y)
         with self.model as model:
             if self.step is not None:
-                self.trace = pm.sample(self.niter, step=self.step())[self.burnin:]
+                self.trace = pm.sample(self.niter, step=self.step(), return_inferencedata=False)[self.burnin:]
             else:
-                self.trace = pm.sample(self.niter, init=self.init)[self.burnin:]
+                self.trace = pm.sample(self.niter, init=self.init, return_inferencedata=False)[self.burnin:]
 
     def posteriorPlot(self):
         """
@@ -115,7 +114,7 @@ class GaussianProcessMCMC:
         post_var = []
         for posterior_sample in chunk:
             params = self._extractParam(posterior_sample, self.covfunc.parameters)
-            covfunc = self.covfunc.__class__(**params)
+            covfunc = self.covfunc.__class__(**params, bounds=self.covfunc.bounds)
             gp = GaussianProcess(covfunc)
             gp.fit(self.X, self.y)
             m, s = gp.predict(Xstar, return_std=return_std)

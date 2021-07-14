@@ -103,7 +103,7 @@ class tStudentProcess:
         k_param = OrderedDict()
         for k, v in zip(param_key, param_vector):
             k_param[k] = v
-        self.covfunc = self.covfunc.__class__(**k_param)
+        self.covfunc = self.covfunc.__class__(**k_param, bounds=self.covfunc.bounds)
 
         # This fixes recursion
         original_opt = self.optimize
@@ -142,7 +142,7 @@ class tStudentProcess:
         k_param = OrderedDict()
         for k, x in zip(param_key, opt_param):
             k_param[k] = x
-        self.covfunc = self.covfunc.__class__(**k_param)
+        self.covfunc = self.covfunc.__class__(**k_param, bounds=self.covfunc.bounds)
 
     def fit(self, X, y):
         """

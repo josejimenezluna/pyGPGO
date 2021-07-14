@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-import os
 
 version = {}
 with open('pyGPGO/version.py') as fp:
@@ -29,7 +28,7 @@ setup(name='pyGPGO',
         'scipy',
         'joblib',
         'scikit-learn',
-        'theano',
+        'Theano-PyMC',
         'pyMC3'
     ],
     zip_safe=False)

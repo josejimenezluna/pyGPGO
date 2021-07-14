@@ -95,7 +95,7 @@ class GaussianProcess:
             Gradient corresponding to each hyperparameters. Order given by `k_param.keys()`
         """
         k_param_key = list(k_param.keys())
-        covfunc = self.covfunc.__class__(**k_param)
+        covfunc = self.covfunc.__class__(**k_param, bounds=self.covfunc.bounds)
         K = covfunc.K(self.X, self.X)
         L = cholesky(K).T
         alpha = solve(L.T, solve(L, self.y))
@@ -127,7 +127,7 @@ class GaussianProcess:
         k_param = OrderedDict()
         for k, v in zip(param_key, param_vector):
             k_param[k] = v
-        self.covfunc = self.covfunc.__class__(**k_param)
+        self.covfunc = self.covfunc.__class__(**k_param, bounds=self.covfunc.bounds)
 
         # This fixes recursion
         original_opt = self.optimize
@@ -194,7 +194,7 @@ class GaussianProcess:
         k_param = OrderedDict()
         for k, x in zip(param_key, opt_param):
             k_param[k] = x
-        self.covfunc = self.covfunc.__class__(**k_param)
+        self.covfunc = self.covfunc.__class__(**k_param, bounds=self.covfunc.bounds)
 
     def predict(self, Xstar, return_std=False):
         """
