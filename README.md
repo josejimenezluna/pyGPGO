@@ -34,15 +34,6 @@ pip install git+https://github.com/hawk31/pyGPGO
 
 Check our documentation in http://pygpgo.readthedocs.io/.
 
-### Dependencies
-
-*   Typical Python scientific stuff: `numpy`, `scipy`.
-*   `joblib`, used for parallel computation
-*   `scikit-learn`, for other surrogates different from Gaussian Processes.
-*   `pyMC3`, for integrated acquisition functions and MCMC inference.
-*   `theano` for GPU processing.
-
-All dependencies are automatically taken care for in the requirements file.
 
 ### Features
 
