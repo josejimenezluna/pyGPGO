@@ -25,6 +25,7 @@ setup(name='pyGPGO',
     packages=find_packages(),
     install_requires=[
         'numpy',
+        'mkl',
         'scipy',
         'joblib',
         'scikit-learn',

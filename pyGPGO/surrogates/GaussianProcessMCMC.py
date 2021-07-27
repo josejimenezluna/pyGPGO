@@ -83,7 +83,7 @@ class GaussianProcessMCMC:
         Plots sampled posterior distributions for hyperparameters. 
         """
         with self.model as model:
-            pm.traceplot(self.trace, varnames=['l', 'sigmaf', 'sigman'])
+            pm.traceplot(self.trace, var_names=['l', 'sigmaf', 'sigman'])
             plt.tight_layout()
             plt.show()
 
