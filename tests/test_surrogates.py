@@ -21,7 +21,7 @@ def test_GP_opt_nograd():
 
     sexp = squaredExponential()
     gp = GaussianProcess(sexp, optimize=True, usegrads=False)
-    gp.fit(X, y)
+    gp.fit(X, y, 20)
 
     params = gp.getcovparams()
 
