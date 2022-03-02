@@ -171,7 +171,7 @@ class GPGO:
         res_d = OrderedDict()
         for i, (key, param_type) in enumerate(zip(self.parameter_key, self.parameter_type)):
             if param_type == 'int':
-                res_d[key] = int(opt_x[i])
+                res_d[key] = int(round(opt_x[i]))
             else:
                 res_d[key] = opt_x[i]
         return res_d, self.tau
