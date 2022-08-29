@@ -144,7 +144,7 @@ class tStudentProcess:
             k_param[k] = x
         self.covfunc = self.covfunc.__class__(**k_param, bounds=self.covfunc.bounds)
 
-    def fit(self, X, y):
+    def fit(self, X, y, n_trials=5):
         """
         Fits a t-Student Process regressor
 
@@ -161,7 +161,7 @@ class tStudentProcess:
         self.n1 = X.shape[0]
 
         if self.optimize:
-            self.optHyp(param_key=self.covfunc.parameters, param_bounds=self.covfunc.bounds)
+            self.optHyp(param_key=self.covfunc.parameters, param_bounds=self.covfunc.bounds, n_trials=n_trials)
 
         self.K11 = self.covfunc.K(self.X, self.X)
         self.beta1 = np.dot(np.dot(self.y.T, inv(self.K11)), self.y)

@@ -63,7 +63,7 @@ def test_tSP_opt_nograd():
 
     sexp = squaredExponential()
     tsp = tStudentProcess(sexp, optimize=True)
-    tsp.fit(X, y)
+    tsp.fit(X, y, 20)
     params = tsp.getcovparams()
 
     assert 0.3 < params['l'] < 0.5
